@@ -34,7 +34,7 @@ export function ProjectCard({
 
   return (
     <article
-      className="relative grid grid-cols-[1fr] gap-4 border-b border-border/50 py-6 last:border-b-0 sm:grid-cols-[auto_1fr]"
+      className="relative grid grid-cols-[1fr] gap-4 sm:grid-cols-[auto_1fr] bg-card p-6 rounded-2xl border border-foreground/10 "
       aria-labelledby={`project-title-${title}`}
     >
       <div className="flex flex-col gap-5">
@@ -79,7 +79,7 @@ export function ProjectCard({
           </div>
         )}
 
-        <div className="flex items-center gap-4 ">
+        <div className="flex items-center gap-4">
           {actions.map((action) => {
             const IconComp =
               typeof action.icon === 'function' ? (action.icon as React.ElementType) : null;
@@ -95,7 +95,7 @@ export function ProjectCard({
               </>
             );
 
-            const cls = 'inline-flex items-center gap-1.5 text-xs text-muted-foreground';
+            const cls = 'inline-flex items-center gap-1.5 text-sm text-muted-foreground';
 
             if (action.internal) {
               return (
