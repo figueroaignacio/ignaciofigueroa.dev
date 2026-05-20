@@ -132,8 +132,8 @@
         "viewDocumentation": "Leer la Documentación"
       },
       "href": {
-        "components": "https://nach-ui.vercel.app/es/docs/components",
-        "documentation": "https://nach-ui.vercel.app/es/docs"
+        "components": "https://es.nachui.tech/docs/components",
+        "documentation": "https://es.nachui.tech/docs"
       },
       "stats": {
         "components": "componentes",
