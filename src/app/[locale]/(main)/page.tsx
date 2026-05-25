@@ -76,6 +76,14 @@ export async function generateMetadata({ params }: HomePageProps) {
       locale: locale === 'en' ? 'en_US' : 'es_ES',
       type: 'website',
       siteName: 'Ignacio Figueroa',
+      images: [
+        {
+          url: '/images/og-home.png',
+          width: 1200,
+          height: 630,
+          alt: 'Ignacio Figueroa | Full Stack Developer',
+        },
+      ],
     },
   };
 }

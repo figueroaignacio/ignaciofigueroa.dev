@@ -174,6 +174,14 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
       locale: locale === 'en' ? 'en_US' : 'es_ES',
       type: 'website',
       siteName: 'Ignacio Figueroa',
+      images: [
+        {
+          url: '/images/og-contact.png',
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
     },
   };
 }

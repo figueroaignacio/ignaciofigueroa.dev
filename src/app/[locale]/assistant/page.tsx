@@ -26,6 +26,14 @@ export async function generateMetadata({ params }: AssistantPageProps) {
       description: t('description'),
       type: 'website',
       locale: locale,
+      images: [
+        {
+          url: '/images/og-assistant.png',
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
