@@ -12,15 +12,11 @@
 
 </div>
 
----
-
 # A modern, fast, and fully custom portfolio built with Next.js, Tailwind CSS, Payload CMS, and PostgreSQL.
 
 It showcases my work, projects, and includes an AI-powered assistant to help visitors explore my content in an interactive way.
 
 This portfolio reflects my focus on clean UI, high performance, accessibility, and a great developer experience.
-
----
 
 # Tech Stack
 
@@ -50,8 +46,6 @@ This project uses a modern full-stack setup:
 - ESLint, Prettier
 - pnpm workspace setup
 
----
-
 # 🏗️ Project Structure
 
 The project follows a standard Next.js 16 (App Router) structure, integrated with Payload CMS 3.0.
@@ -77,8 +71,6 @@ The project follows a standard Next.js 16 (App Router) structure, integrated wit
     └── payload-types.ts  # Auto-generated CMS types
 ```
 
----
-
 # AI Assistant
 
 This portfolio includes a fully integrated AI assistant to help visitors explore my content in an interactive way.
@@ -99,8 +91,6 @@ This portfolio includes a fully integrated AI assistant to help visitors explore
 - Clean, minimal UI with Tailwind
 
 It is part personal assistant, part tech demo, and a fun nod to my name.
-
----
 
 # 💬 Contact
 
