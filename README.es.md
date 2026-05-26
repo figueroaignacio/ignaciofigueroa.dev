@@ -1,10 +1,16 @@
-![Ignacio Figueroa Portfolio](https://ignaciofigueroa.vercel.app/es/opengraph-image)
+<div>
+
+<img src="https://ignaciofigueroa.dev/images/og-home.png" alt="Ignacio Figueroa Portfolio" />
+
+<br />
 
 <!-- README-I18N:START -->
 
-[English](./README.md) | **Español**
+**English** | [Español](./README.es.md)
 
 <!-- README-I18N:END -->
+
+</div>
 
 ## Un portafolio moderno, rápido y completamente personalizado construido con Next.js, Tailwind CSS, Payload CMS y PostgreSQL.
 
