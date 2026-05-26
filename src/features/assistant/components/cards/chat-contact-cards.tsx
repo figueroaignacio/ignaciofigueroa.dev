@@ -22,7 +22,7 @@ export function ChatContactCards() {
       id: 'email',
       label: 'Email',
       icon: Mail01Icon,
-      href: 'mailto:ignaciofigueroadev@gmail.com',
+      href: 'mailto:contact@ignaciofigueroa.dev',
     },
     {
       id: 'cv-en',

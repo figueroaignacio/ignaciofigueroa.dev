@@ -1,13 +1,12 @@
 import { GitHubIcon } from '@/components/tech-icons/github-icon';
-
-import { useTranslations } from 'next-intl';
-import { Mail01Icon, Linkedin01Icon } from '@hugeicons/core-free-icons';
+import { Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { useTranslations } from 'next-intl';
 
 const contact = [
   {
     label: 'Email',
-    href: 'mailto:ignaciofigueroadev@gmail.com',
+    href: 'mailto:contact@ignaciofigueroa.dev',
     icon: <HugeiconsIcon icon={Mail01Icon} />,
     target: '',
   },
@@ -29,7 +28,7 @@ export function CTAContact() {
   const t = useTranslations('components.ctaContact');
 
   return (
-    <section className="   space-y-6">
+    <section className="space-y-6">
       <div className=" space-y-2">
         <h2 className="text-xl font-semibold">{t('title')}</h2>
         <p className="text-muted-foreground">{t('description')}</p>

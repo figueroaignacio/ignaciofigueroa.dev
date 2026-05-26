@@ -21,9 +21,9 @@ const SOCIAL_LINKS = [
   {
     id: 'email',
     label: 'Email',
-    href: 'mailto:ignaciofigueroadev@gmail.com',
+    href: 'mailto:contact@ignaciofigueroa.dev',
     icon: Mail01Icon,
-    handle: 'ignaciofigueroadev@gmail.com',
+    handle: 'contact@ignaciofigueroa.dev',
     external: false,
   },
   {
@@ -64,7 +64,7 @@ export default function ContactPage({ params }: ContactPageProps) {
       name: 'Ignacio Figueroa',
       url: `${BASE_URL}/${locale}`,
       jobTitle: 'Full Stack Developer',
-      email: 'ignaciofigueroadev@gmail.com',
+      email: 'contact@ignaciofigueroa.dev',
       sameAs: ['https://github.com/figueroaignacio', 'https://linkedin.com/in/figueroa-ignacio'],
     },
   };
