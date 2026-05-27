@@ -1,62 +1,62 @@
 {
   "metadata": {
     "home": {
-      "title": "Fullstack Developer - AI Developer - Software Architecture",
-      "description": "Ignacio Figueroa's Portfolio. Fullstack Developer specializing in React, Next.js, Node.js and AI integration. Building scalable, production-ready web applications.",
-      "keywords": "Web Developer, Fullstack, Frontend, React, Next.js, Argentina, UTN, Software Engineer, Portfolio, Linux, Fedora"
+      "title": "Fullstack AI Developer - Ignacio Figueroa",
+      "description": "Ignacio Figueroa's portfolio. I build fullstack systems in React, FastAPI, Python, and integrate AI to automate workflows. No fluff, just clean architecture.",
+      "keywords": "Web Developer, Fullstack, Frontend, React, Next.js, Argentina, UTN, Software Engineer, Portfolio, Linux, Fedora, AI Developer"
     },
     "aboutMe": {
-      "title": "About Me",
-      "description": "Learn about my journey as a developer, my studies at UTN, my tech stack (React, Node, AI), and my professional experience.",
+      "title": "About - Ignacio Figueroa",
+      "description": "Bio and tech stack of Ignacio Figueroa. A look at how I write code, my UTN studies, and why I use Fedora Linux.",
       "keywords": "About Me, Developer Bio, Tech Stack, Work Experience, Ignacio Figueroa, Professional Profile, Linux, Fedora"
     },
     "projects": {
-      "title": "Projects",
-      "description": "Explore my personal and commercial projects. Modern web developments, UI designs, and AI-powered applications.",
+      "title": "Projects - Ignacio Figueroa",
+      "description": "A list of things I built. Leading with technical design details and actual impact rather than generic checklists.",
       "keywords": "Web Projects, Project Portfolio, Case Studies, App Development, React Projects, Open Source"
     },
     "chat": {
-      "title": "AI Assistant",
-      "description": "Chat with my AI assistant to learn more about me, my skills, and my projects."
+      "title": "AI Bot - Ignacio Figueroa",
+      "description": "Talk to my AI chatbot to ask about my stack, projects, and work history."
     },
     "contact": {
-      "title": "Contact",
-      "description": "Get in touch with Ignacio Figueroa. Fullstack Developer open to engineering roles, freelance projects, and technical collaborations.",
-      "keywords": "Contact, Hire Developer, Fullstack Engineer, Freelance, Ignacio Figueroa, React Developer"
+      "title": "Contact - Ignacio Figueroa",
+      "description": "Get in touch. Open to fullstack engineering roles or technical collaborations. Direct email available.",
+      "keywords": "Contact, Hire Developer, Fullstack Engineer, Ignacio Figueroa, React Developer"
     }
   },
   "sections": {
     "home": {
-      "greeting": "Hi, I'm",
+      "greeting": "I am",
       "name": "Ignacio Figueroa",
-      "title": "Fullstack Developer - AI Developer - Software Architecture",
-      "description": "Fullstack Developer specializing in React, Node.js and AI integration. Building scalable, production-ready web applications.",
+      "title": "I build fullstack systems and write AI integrations that do real work.",
+      "description": "I build fullstack apps with React, FastAPI, and Python, and prefer developing on Fedora Linux. I use AI to write better code faster, not to generate marketing buzzwords.",
       "actions": {
-        "viewProjects": "View my work",
-        "learnMore": "Learn more about me",
-        "chatAssistant": "Chat with AI",
-        "viewCv": "Download CV"
+        "viewProjects": "See the code",
+        "learnMore": "Read my stack",
+        "chatAssistant": "Talk to my bot",
+        "viewCv": "Get the resume"
       }
     },
     "aboutMe": {
       "title": "About Me",
-      "description": "I build solutions for complex problems. Focused on software architecture, AI integration, and clean code.",
+      "description": "UTN student and fullstack builder who enjoys developing on Fedora Linux and prefers clean abstractions over bloated frameworks.",
       "items": [
         {
-          "content": "<b>Fullstack Developer & UTN Student.</b> I architect production-grade applications with a focus on technical excellence. Specializing in the modern React and Node ecosystem, I build resilient systems and intuitive interfaces that drive business value."
+          "content": "<b>Fullstack Engineering.</b> I work with React, Next.js, Node.js, and FastAPI. I build complete products from initial DB schema to frontend deployment, keeping the architecture straightforward."
         },
         {
-          "content": "<b>Software Architecture.</b> From crafting high-performance Frontend architectures to designing robust Backend APIs, I deliver end-to-end solutions that are scalable, maintainable, and optimized for growth."
+          "content": "<b>Real-World AI.</b> AI shouldn't be a wrapper. I write APIs that connect LLMs to structured data and local agentic workflows, using prompt engineering and serverless backends to solve tangible problems."
         },
         {
-          "content": "<b>AI-Powered Innovation.</b> I leverage Large Language Models to automate complex workflows and build intelligent product features. I focus on practical AI implementation that enhances user productivity and business efficiency."
+          "content": "<b>Linux & Tooling.</b> I develop on Fedora Linux because a local, tailored environment speeds up my feedback loop. I value clean git history, automated tests, and terminal-centric workflows."
         }
       ],
       "content": {
         "title": "About",
-        "subtitle": "Building systems, not just features.",
-        "bio": "I'm a Fullstack Developer and UTN student based in Argentina. I design software architecture and integrate AI to solve real business problems. Instead of just writing code, I build resilient web applications that scale effortlessly and feel intuitive to use.",
-        "details": "My approach is minimalist: reduce complexity, improve maintainability, and focus on what matters. I'm currently looking for fullstack roles where I can tackle deep architectural challenges and build intelligent, future-proof products."
+        "subtitle": "I write code that works, build on Fedora Linux, and automate whatever I can.",
+        "bio": "I'm a Fullstack AI Developer and UTN student based in Argentina. I don't believe in adding dependencies for things that can be solved with a few lines of clean code, nor do I believe in AI wrappers that just forward user messages. I build products end-to-end, linking frontend state to robust FastAPI backends.",
+        "details": "If you want a developer who spent hours configuring their system to match their exact workflow, understands why bad abstractions fail under load, and treats LLMs as standard tools rather than magic, let's talk."
       }
     },
     "projects": {
@@ -125,8 +125,8 @@
     },
     "mateUiCta": {
       "badge": "UI Components",
-      "title": "Speed up your workflow with {count} pre-built components",
-      "description": "Stop reinventing the wheel. Use MateUI's accessible, customizable component library to ship beautiful interfaces faster.",
+      "title": "I built my own UI component library to avoid copying Tailwind setups.",
+      "description": "MateUI is a collection of {count} custom, accessible primitives. It exists because I wanted components that actually look good out of the box and don't require an essay of class names to customize.",
       "actions": {
         "viewComponents": "Browse Components",
         "viewDocumentation": "Read the Docs"
@@ -166,11 +166,11 @@
   "pages": {
     "contact": {
       "label": "Contact",
-      "title": "Let's work together.",
-      "description": "I'm currently open to new engineering opportunities, freelance projects, and technical collaborations. Pick the channel that works best for you.",
+      "title": "Let's connect. No forms necessary if you prefer email.",
+      "description": "I'm open to fullstack engineering roles or technical collaborations. If you have an interesting codebase, a complex integration, or just want to talk terminal configurations, reach out.",
       "linksTitle": "Find me on",
-      "formTitle": "Send a message",
-      "formDescription": "Or drop me a line directly. I'll get back to you shortly."
+      "formTitle": "Drop a message",
+      "formDescription": "This sends a direct email. I actually read them."
     }
   },
   "ui": {
@@ -208,21 +208,21 @@
       "role": "Fullstack Developer",
       "thanks": "Thanks for visiting my portfolio",
       "rights": "All rights reserved",
-      "kiss": "Keep it simple, Stupid."
+      "kiss": "I was told to keep it simple. So I didn't add more pages. - Ignacio"
     },
     "error": "An error occurred while loading the data.",
     "loader": "Loading...",
     "ctaCv": {
       "url": "/pdf/cv_ignacio_figueroa_fullstack_developer.pdf",
       "cta": {
-        "title": "Looking for technical details?",
-        "description": "Review my complete work history, technical stack, and education. Currently open to new Fullstack Developer roles.",
-        "text": "Download My Resume"
+        "title": "Need the paper version?",
+        "description": "You can download my full work history, technical stacks, and education details in a standard PDF.",
+        "text": "Download PDF Resume"
       }
     },
     "ctaContact": {
-      "title": "Available for New Opportunities",
-      "description": "I am currently open to Fullstack Developer roles. If you are looking for someone who combines architectural rigor with a product-driven mindset, let's connect."
+      "title": "Available for hire",
+      "description": "Looking for a fullstack developer who actually knows how to debug their build environment and doesn't just copy-paste from AI chat logs? Let's talk."
     },
     "chat": {
       "disclaimers": [
@@ -300,15 +300,15 @@
       "title": "Let's Connect.",
       "description": "Currently open to new development opportunities and technical collaborations. Send me a message and I'll get back to you shortly.",
       "nameLabel": "Name",
-      "namePlaceholder": "How should I call you?",
+      "namePlaceholder": "Your name",
       "emailLabel": "Email",
-      "emailPlaceholder": "where@to-reply.com",
+      "emailPlaceholder": "your.email@domain.com",
       "messageLabel": "Message",
-      "messagePlaceholder": "What are we building?",
+      "messagePlaceholder": "What's the project about?",
       "submit": "Send",
       "sending": "Sending...",
-      "success": "Got it. Talk soon.",
-      "error": "Error. Try again."
+      "success": "Message sent. I'll reply soon.",
+      "error": "Failed to send. Try again or use direct email."
     }
   }
 }

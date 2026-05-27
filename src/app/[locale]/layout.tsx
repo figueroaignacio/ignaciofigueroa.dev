@@ -49,18 +49,18 @@ export const viewport: Viewport = {
 
 const baseMetadata: Metadata = {
   title: {
-    default: 'Ignacio Figueroa | Full Stack Developer',
+    default: 'Ignacio Figueroa | Fullstack AI Developer',
     template: '%s | Ignacio Figueroa',
   },
   description:
-    'Full Stack Developer specializing in React, Next.js, and TypeScript. Building scalable and performant web applications.',
+    'Fullstack Developer building systems in React, FastAPI, and Python. No buzzwords, just clean code and functional AI integrations.',
   applicationName: 'Ignacio Figueroa',
   keywords: [
-    'Full Stack Developer',
+    'Fullstack Developer',
     'Ignacio Figueroa',
     'React Developer',
-    'Next.js Developer',
-    'TypeScript',
+    'FastAPI Developer',
+    'Python AI',
     'Portfolio',
     'Software Engineer',
   ],
@@ -121,12 +121,12 @@ export async function generateMetadata({
     openGraph: {
       title:
         locale === 'es'
-          ? 'Ignacio Figueroa | Full Stack Developer'
-          : 'Ignacio Figueroa | Full Stack Developer',
+          ? 'Ignacio Figueroa | Desarrollador Fullstack AI'
+          : 'Ignacio Figueroa | Fullstack AI Developer',
       description:
         locale === 'es'
-          ? 'Desarrollador Full Stack especializado en React, Next.js y TypeScript.'
-          : 'Full Stack Developer specializing in React, Next.js and TypeScript.',
+          ? 'Desarrollador Fullstack centrado en React, FastAPI y Python. Código directo sin rodeos ni buzzwords.'
+          : 'Fullstack Developer working with React, FastAPI, and Python. Direct code, no buzzwords.',
       type: 'website',
       locale: locale === 'es' ? 'es_ES' : 'en_US',
       alternateLocale: locale === 'es' ? ['en_US'] : ['es_ES'],

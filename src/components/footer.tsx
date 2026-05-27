@@ -18,9 +18,7 @@ export function Footer() {
         <p className="text-muted-foreground pt-2">{t('components.footer.thanks')}</p>
       </div>
       <CTAContact />
-      <p className="text-sm text-muted-foreground/60 italic">
-        I was told to keep it simple. So I did. - Nacho
-      </p>
+      <p className="text-sm text-muted-foreground/60 italic">{t('components.footer.kiss')}</p>
     </footer>
   );
 }

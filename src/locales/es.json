@@ -1,27 +1,27 @@
 {
   "metadata": {
     "home": {
-      "title": "Desarrollador Fullstack - AI Developer - Arquitectura de Software",
-      "description": "Portfolio de Ignacio Figueroa. Desarrollador Fullstack especializado en React, Next.js, Node.js e integración de IA. Construyendo aplicaciones web escalables y listas para producción.",
-      "keywords": "Desarrollador Web, Fullstack, Frontend, React, Next.js, Argentina, UTN, Desarrollador Software, Portfolio, Linux, Fedora"
+      "title": "Desarrollador Fullstack AI - Ignacio Figueroa",
+      "description": "Portfolio de Ignacio Figueroa. Construyo sistemas fullstack usando React, FastAPI y Python, e integro IA para automatizar flujos de trabajo. Código real y arquitectura limpia.",
+      "keywords": "Desarrollador Web, Fullstack, Frontend, React, Next.js, Argentina, UTN, Desarrollador Software, Portfolio, Linux, Fedora, IA"
     },
     "aboutMe": {
-      "title": "Sobre Mí",
-      "description": "Conoce mi trayectoria como desarrollador, mis estudios en la UTN, mi stack tecnológico (React, Node, AI) y mi experiencia profesional.",
+      "title": "Sobre Mí - Ignacio Figueroa",
+      "description": "Biografía y stack tecnológico de Ignacio Figueroa. Cómo escribo código, mis estudios en la UTN y por qué me gusta usar Fedora Linux.",
       "keywords": "Sobre mí, Biografía Developer, Stack Tecnológico, Experiencia Laboral, Ignacio Figueroa, Perfil Profesional, Linux, Fedora"
     },
     "projects": {
-      "title": "Proyectos",
-      "description": "Explora mis proyectos personales y comerciales. Desarrollos web modernos, interfaces de usuario y aplicaciones con Inteligencia Artificial.",
+      "title": "Proyectos - Ignacio Figueroa",
+      "description": "Lista de proyectos que construí. Enfocados en diseño técnico y soluciones reales, no en checklists genéricas.",
       "keywords": "Proyectos Web, Portfolio Proyectos, Casos de Éxito, Desarrollo Apps, React Projects, Open Source"
     },
     "chat": {
-      "title": "Asistente de IA",
-      "description": "Charla con mi asistente de IA para conocer más sobre mí, mis habilidades y mis proyectos."
+      "title": "Bot de IA - Ignacio Figueroa",
+      "description": "Hablá con mi chatbot de IA para preguntar sobre mi stack, proyectos e historial laboral."
     },
     "contact": {
-      "title": "Contacto",
-      "description": "Contactá a Ignacio Figueroa. Desarrollador Fullstack abierto a roles de ingeniería, proyectos freelance y colaboraciones técnicas.",
+      "title": "Contacto - Ignacio Figueroa",
+      "description": "Escribime. Abierto a roles fullstack o colaboraciones técnicas. Disponible para contacto por mail directo.",
       "keywords": "Contacto, Contratar Desarrollador, Ingeniero Fullstack, Freelance, Ignacio Figueroa, Desarrollador React"
     }
   },
@@ -29,34 +29,34 @@
     "home": {
       "greeting": "Hola, soy",
       "name": "Ignacio Figueroa",
-      "title": "Desarrollador Fullstack - AI Developer - Arquitectura de Software",
-      "description": "Desarrollador Fullstack especializado en React, Node.js e integración de IA. Construyo aplicaciones web escalables y listas para producción.",
+      "title": "Desarrollo sistemas fullstack e integro IA donde realmente tiene sentido.",
+      "description": "Desarrollo aplicaciones fullstack con React, FastAPI y Python, y me gusta programar usando Fedora Linux. Uso IA como multiplicador de productividad, no para generar humo.",
       "actions": {
-        "viewProjects": "Ver mi trabajo",
-        "learnMore": "Conocé más sobre mí",
-        "chatAssistant": "Charlar con IA",
-        "viewCv": "Descargar CV"
+        "viewProjects": "Ver código",
+        "learnMore": "Ver mi stack",
+        "chatAssistant": "Hablar con el bot",
+        "viewCv": "Ver currículum"
       }
     },
     "aboutMe": {
       "title": "Sobre mí",
-      "description": "Construyo soluciones a problemas complejos. Enfocado en arquitectura de software, integración de IA y código limpio.",
+      "description": "Estudiante de la UTN y desarrollador fullstack al que le gusta usar Fedora Linux y prefiere abstracciones limpias antes que frameworks pesados.",
       "items": [
         {
-          "content": "<b>Desarrollador Fullstack y Estudiante UTN.</b> Diseño aplicaciones de nivel producción con un enfoque en la excelencia técnica. Especializado en el ecosistema moderno de React y Node, construyo sistemas resilientes e interfaces intuitivas que generan valor de negocio."
+          "content": "<b>Ingeniería Fullstack.</b> Trabajo con React, Next.js, Node.js y FastAPI. Construyo productos completos desde el esquema de base de datos hasta el deploy en frontend, manteniendo la arquitectura directa y sin rodeos."
         },
         {
-          "content": "<b>Arquitectura de Software.</b> Desde el desarrollo de arquitecturas Frontend de alto rendimiento hasta el diseño de APIs robustas en el Backend, entrego soluciones end-to-end escalables, mantenibles y optimizadas para el crecimiento."
+          "content": "<b>IA en el Mundo Real.</b> La IA no debería ser solo un wrapper. Escribo APIs que conectan LLMs con datos estructurados y flujos de trabajo locales, usando ingeniería de prompts y backends serverless para resolver problemas reales."
         },
         {
-          "content": "<b>Innovación con IA.</b> Utilizo modelos de lenguaje para automatizar flujos de trabajo complejos y construir funcionalidades inteligentes. Me enfoco en la implementación práctica de IA para mejorar la productividad y la eficiencia operativa."
+          "content": "<b>Linux y Entorno.</b> Desarrollo en Fedora Linux porque un entorno local a medida acelera mi ciclo de desarrollo. Valoro un historial de git limpio, tests automatizados y flujos de trabajo centrados en la terminal."
         }
       ],
       "content": {
         "title": "Sobre Mí",
-        "subtitle": "Sistemas escalables, no solo features.",
-        "bio": "Soy Desarrollador Fullstack y estudiante de la UTN con base en Argentina. Me especializo en arquitectura de software e integración de IA. En lugar de solo escribir código, construyo aplicaciones web resilientes que escalan sin esfuerzo y resultan intuitivas para el usuario.",
-        "details": "Mi enfoque es minimalista: reducir la complejidad, mejorar la mantenibilidad y centrarme en lo que importa. Actualmente busco oportunidades como desarrollador donde pueda resolver desafíos arquitectónicos profundos y crear productos inteligentes preparados para el futuro."
+        "subtitle": "Escribo código que funciona, desarrollo en Fedora Linux y automatizo todo lo que puedo.",
+        "bio": "Soy desarrollador Fullstack AI y estudiante de la UTN en Argentina. No me gusta agregar librerías para cosas que se resuelven con unas pocas líneas de código limpio, ni creo en wrappers de IA que solo reenvían mensajes. Construyo productos de punta a punta, acoplando el estado del frontend con backends robustos en FastAPI.",
+        "details": "Si buscás un desarrollador que pasó horas configurando su sistema para adaptarlo a su flujo de trabajo, que entiende por qué las malas abstracciones fallan bajo carga y que trata a los LLMs como herramientas estándar en lugar de magia, hablemos."
       }
     },
     "projects": {
@@ -125,8 +125,8 @@
     },
     "mateUiCta": {
       "badge": "Componentes de UI",
-      "title": "Acelerá tu desarrollo con {count} componentes preconstruidos",
-      "description": "No reinventes la rueda. Usá la librería de componentes accesible y personalizable de MateUI para crear interfaces hermosas más rápido.",
+      "title": "Construí mi propia librería de componentes de UI para no copiar configuraciones de Tailwind.",
+      "description": "MateUI es una colección de {count} primitivas personalizadas y accesibles. Existe porque quería componentes que se vean bien por defecto y no requieran un ensayo de clases para personalizarlos.",
       "actions": {
         "viewComponents": "Explorar Componentes",
         "viewDocumentation": "Leer la Documentación"
@@ -166,11 +166,11 @@
   "pages": {
     "contact": {
       "label": "Contacto",
-      "title": "Trabajemos juntos.",
-      "description": "Actualmente estoy abierto a nuevas oportunidades de ingeniería, proyectos freelance y colaboraciones técnicas. Elegí el canal que más te sirva.",
+      "title": "Conectemos. Sin formularios obligatorios si preferís mail.",
+      "description": "Estoy abierto a roles de ingeniería fullstack o colaboraciones técnicas. Si tenés una base de código interesante, una integración compleja o simplemente querés charlar sobre configuraciones de terminal, escribime.",
       "linksTitle": "Encontrame en",
-      "formTitle": "Enviame un mensaje",
-      "formDescription": "O escribime directamente. Te respondo a la brevedad."
+      "formTitle": "Escribir un mensaje",
+      "formDescription": "Esto manda un mail directo. Realmente los leo."
     }
   },
   "ui": {
@@ -208,21 +208,21 @@
       "role": "Fullstack Developer",
       "thanks": "Gracias por visitar mi portafolio",
       "rights": "Todos los derechos reservados",
-      "kiss": "Keep it simple, Stupid."
+      "kiss": "Me dijeron que lo mantenga simple. Así que no agregué más páginas. - Ignacio"
     },
     "error": "Ha ocurrido un error al cargar los datos.",
     "loader": "Cargando...",
     "ctaCv": {
       "url": "/pdf/cv_ignacio_figueroa_desarrollador_fullstack.pdf",
       "cta": {
-        "title": "¿Buscás detalles técnicos?",
-        "description": "Revisá mi historial laboral completo, stack tecnológico y educación. Actualmente abierto a nuevos roles como Desarrollador Fullstack.",
-        "text": "Descargar mi CV"
+        "title": "¿Buscás el formato clásico?",
+        "description": "Podés descargar mi historial laboral, stacks técnicos y detalles de educación en un PDF estándar.",
+        "text": "Descargar CV en PDF"
       }
     },
     "ctaContact": {
-      "title": "Disponible para nuevas oportunidades",
-      "description": "Actualmente estoy abierto a roles de Desarrollador Fullstack. Si buscás a alguien que combine rigor arquitectónico con una mentalidad orientada a producto, conectemos."
+      "title": "Disponible para contratar",
+      "description": "¿Buscás un desarrollador fullstack que sepa debuguear su propio entorno de build y no se limite a copiar y pegar del chat de la IA? Hablemos."
     },
     "chat": {
       "disclaimers": [
@@ -292,15 +292,15 @@
       "title": "Hablemos.",
       "description": "Actualmente abierto a nuevas oportunidades de desarrollo y colaboraciones técnicas. Enviame un mensaje y te responderé a la brevedad.",
       "nameLabel": "Nombre",
-      "namePlaceholder": "¿Cómo te digo?",
+      "namePlaceholder": "Tu nombre",
       "emailLabel": "Email",
-      "emailPlaceholder": "correo@ejemplo.com",
+      "emailPlaceholder": "tu.email@dominio.com",
       "messageLabel": "Mensaje",
-      "messagePlaceholder": "¿Qué vamos a construir?",
+      "messagePlaceholder": "¿De qué se trata el proyecto?",
       "submit": "Enviar",
       "sending": "Enviando...",
-      "success": "Listo. Hablamos pronto.",
-      "error": "Error. Intentá de nuevo."
+      "success": "Mensaje enviado. Te respondo pronto.",
+      "error": "Error al enviar. Intentá de nuevo o mandá mail directo."
     }
   }
 }

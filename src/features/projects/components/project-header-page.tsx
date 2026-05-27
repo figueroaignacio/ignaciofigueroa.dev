@@ -3,14 +3,17 @@ import { GitHubIcon } from '@/components/tech-icons/github-icon';
 import type { Project } from '@/payload-types';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { getTranslations } from 'next-intl/server';
 
-export function ProjectHeaderPage({
+export async function ProjectHeaderPage({
   title,
   description,
   demo,
   repository,
   icon,
 }: Partial<Project>) {
+  const t = await getTranslations('components.projectItem.actions');
+
   return (
     <header className="mb-12 flex flex-col items-start pt-4 pb-8 border-b border-border/40">
       <div className="mb-8">
@@ -43,7 +46,7 @@ export function ProjectHeaderPage({
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background hover:opacity-90 transition-opacity"
             >
-              <span>Visit Demo</span>
+              <span>{t('preview')}</span>
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
             </a>
           )}
@@ -55,7 +58,7 @@ export function ProjectHeaderPage({
               className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border hover:bg-muted transition-colors text-foreground"
             >
               <GitHubIcon />
-              <span>Source</span>
+              <span>{t('source')}</span>
             </a>
           )}
         </div>
