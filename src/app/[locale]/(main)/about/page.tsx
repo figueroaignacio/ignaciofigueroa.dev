@@ -1,5 +1,5 @@
 import { AboutContent } from '@/features/about/components/about-content';
-import { BASE_URL } from '@/lib/constants';
+import { BASE_URL } from '@/shared/lib/constants';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { use } from 'react';

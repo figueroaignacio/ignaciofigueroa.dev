@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/shared/components/ui/badge';
 import type { Education } from '@/payload-types';
 
 import { getLocale, getTranslations } from 'next-intl/server';

@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs } from '@/components/ui/tabs';
+import { Tabs } from '@/shared/components/ui/tabs';
 import { useTranslations } from 'next-intl';
 
 export function ProjectsTabs({

@@ -1,4 +1,4 @@
-import { findCollection, findOneBySlug } from '@/lib/collection-query';
+import { findCollection, findOneBySlug } from '@/shared/lib/collection-query';
 import type { Project } from '@/payload-types';
 import { Locale } from 'next-intl';
 

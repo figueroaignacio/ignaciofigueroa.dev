@@ -1,4 +1,4 @@
-import { GitHubIcon } from '@/components/tech-icons/github-icon';
+import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { File01Icon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';

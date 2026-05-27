@@ -1,6 +1,6 @@
 'use client';
 
-import { ASSISTANT_API_URL } from '@/lib/constants';
+import { ASSISTANT_API_URL } from '@/shared/lib/constants';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Message } from '../types';

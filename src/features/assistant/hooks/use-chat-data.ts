@@ -1,4 +1,4 @@
-import { ASSISTANT_API_URL } from '@/lib/constants';
+import { ASSISTANT_API_URL } from '@/shared/lib/constants';
 import type { Experience, Project } from '@/payload-types';
 import { useLocale } from 'next-intl';
 import { useEffect, useState } from 'react';

@@ -1,7 +1,7 @@
 import { getProjectBySlug, getProjects } from '@/features/projects/api/projects';
 import { ProjectHeaderPage } from '@/features/projects/components/project-header-page';
 import { ProjectVideo } from '@/features/projects/components/project-video';
-import { BASE_URL } from '@/lib/constants';
+import { BASE_URL } from '@/shared/lib/constants';
 import type { Project } from '@/payload-types';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import type { Metadata } from 'next';

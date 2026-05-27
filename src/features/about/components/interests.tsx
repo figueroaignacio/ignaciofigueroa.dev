@@ -1,9 +1,9 @@
 'use client';
 
-import { LinuxIcon } from '@/components/tech-icons/linux-icon';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/cn';
-import type { Icon } from '@/lib/constants';
+import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
+import { Badge } from '@/shared/components/ui/badge';
+import { cn } from '@/shared/lib/cn';
+import type { Icon } from '@/shared/lib/constants';
 import {
   AiBrain01Icon,
   CloudServerIcon,

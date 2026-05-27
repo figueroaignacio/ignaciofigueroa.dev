@@ -1,4 +1,4 @@
-import { Separator } from '@/components/ui/separator';
+import { Separator } from '@/shared/components/ui/separator';
 import { motion } from 'motion/react';
 import { Fragment } from 'react';
 import { parseMessageContent } from '../lib/parse-message';

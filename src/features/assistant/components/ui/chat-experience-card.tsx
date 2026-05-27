@@ -1,5 +1,5 @@
-import { Badge } from '@/components/ui/badge';
-import { formatDate } from '@/lib/format-date';
+import { Badge } from '@/shared/components/ui/badge';
+import { formatDate } from '@/shared/lib/format-date';
 import { Experience } from '@/payload-types';
 import { Briefcase01Icon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';

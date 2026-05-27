@@ -1,6 +1,6 @@
 'use client';
 
-import { Badge } from '@/components/ui/badge';
+import { Badge } from '@/shared/components/ui/badge';
 import { Link } from '@/i18n/navigation';
 import type { Project, TechStack } from '@/payload-types';
 

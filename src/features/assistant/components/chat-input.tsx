@@ -1,6 +1,6 @@
 'use client';
 
-import { Spinner } from '@/components/ui/spinner';
+import { Spinner } from '@/shared/components/ui/spinner';
 
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';

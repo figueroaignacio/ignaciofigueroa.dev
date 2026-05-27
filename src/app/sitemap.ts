@@ -1,6 +1,6 @@
 import { getProjects } from '@/features/projects/api/projects';
 import { routing } from '@/i18n/routing';
-import { BASE_URL } from '@/lib/constants';
+import { BASE_URL } from '@/shared/lib/constants';
 import type { MetadataRoute } from 'next';
 
 const staticRoutes = ['', '/contact', '/about'];

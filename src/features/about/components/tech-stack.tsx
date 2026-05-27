@@ -3,7 +3,7 @@
 import { motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
-import { Icon, type IconName } from '@/components/tech-icons/index';
+import { Icon, type IconName } from '@/shared/components/tech-icons/index';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

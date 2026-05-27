@@ -7,7 +7,7 @@ import { HomeHero } from '@/features/home/components/home-hero';
 import { NachUICta } from '@/features/home/components/nach-ui-cta';
 import { ProjectsSection } from '@/features/home/components/projects-section';
 import { Testimonials } from '@/features/home/components/testimonials';
-import { BASE_URL } from '@/lib/constants';
+import { BASE_URL } from '@/shared/lib/constants';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { use } from 'react';

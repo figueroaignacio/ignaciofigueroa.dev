@@ -1,5 +1,5 @@
 import { routing } from '@/i18n/routing';
-import { BASE_URL } from '@/lib/constants';
+import { BASE_URL } from '@/shared/lib/constants';
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse, type NextRequest } from 'next/server';
 

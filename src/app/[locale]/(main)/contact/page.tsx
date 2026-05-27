@@ -1,6 +1,6 @@
-import { GitHubIcon } from '@/components/tech-icons';
+import { GitHubIcon } from '@/shared/components/tech-icons';
 import { ContactForm } from '@/features/contact/components/contact-form';
-import { BASE_URL } from '@/lib/constants';
+import { BASE_URL } from '@/shared/lib/constants';
 import {
   ArrowUpRight01Icon,
   DiscordIcon,

@@ -1,5 +1,5 @@
-import { ThemeToggle } from '@/components/theme-toggle';
-import { Dialog } from '@/components/ui/dialog';
+import { ThemeToggle } from '@/shared/components/theme-toggle';
+import { Dialog } from '@/shared/components/ui/dialog';
 import { Link } from '@/i18n/navigation';
 
 import { useTranslations } from 'next-intl';

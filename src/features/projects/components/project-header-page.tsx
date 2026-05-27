@@ -1,5 +1,5 @@
-import { BackButton } from '@/components/back-button';
-import { GitHubIcon } from '@/components/tech-icons/github-icon';
+import { BackButton } from '@/shared/components/back-button';
+import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import type { Project } from '@/payload-types';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';

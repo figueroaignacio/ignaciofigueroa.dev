@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/shared/components/ui/button';
 
 import { useEffect } from 'react';
 import { AlertCircleIcon } from '@hugeicons/core-free-icons';

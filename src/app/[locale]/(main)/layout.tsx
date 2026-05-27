@@ -1,5 +1,5 @@
-import { Dock } from '@/components/dock';
-import { Footer } from '@/components/footer';
+import { Dock } from '@/shared/components/dock';
+import { Footer } from '@/shared/components/footer';
 import { routing } from '@/i18n/routing';
 import { hasLocale, type Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';

@@ -1,7 +1,7 @@
 'use client';
 
-import { GitHubIcon } from '@/components/tech-icons';
-import { Badge } from '@/components/ui/badge';
+import { GitHubIcon } from '@/shared/components/tech-icons';
+import { Badge } from '@/shared/components/ui/badge';
 import type { Contribution, TechStack } from '@/payload-types';
 
 import { GitBranchIcon, GitPullRequestIcon, LinkSquare02Icon } from '@hugeicons/core-free-icons';

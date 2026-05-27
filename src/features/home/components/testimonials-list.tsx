@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/cn';
+import { cn } from '@/shared/lib/cn';
 
 import { AnimatePresence, motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
