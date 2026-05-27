@@ -2,7 +2,7 @@
 
 import { AssistantAvatar } from '@/features/assistant/components/ui/assistant-avatar';
 import { Link, usePathname } from '@/i18n/navigation';
-import { cn } from '@/lib/cn';
+import { cn } from '@/shared/lib/cn';
 
 import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
