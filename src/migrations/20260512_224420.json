@@ -74,12 +74,8 @@
           "name": "users_sessions_parent_id_fk",
           "tableFrom": "users_sessions",
           "tableTo": "users",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -278,12 +274,8 @@
           "name": "experience_tasks_parent_id_fk",
           "tableFrom": "experience_tasks",
           "tableTo": "experience",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -360,12 +352,8 @@
           "name": "experience_technologies_parent_id_fk",
           "tableFrom": "experience_technologies",
           "tableTo": "experience",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -592,12 +580,8 @@
           "name": "_experience_v_version_tasks_parent_id_fk",
           "tableFrom": "_experience_v_version_tasks",
           "tableTo": "_experience_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -680,12 +664,8 @@
           "name": "_experience_v_version_technologies_parent_id_fk",
           "tableFrom": "_experience_v_version_technologies",
           "tableTo": "_experience_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -922,12 +902,8 @@
           "name": "_experience_v_parent_id_experience_id_fk",
           "tableFrom": "_experience_v",
           "tableTo": "experience",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -1334,12 +1310,8 @@
           "name": "_education_v_parent_id_education_id_fk",
           "tableFrom": "_education_v",
           "tableTo": "education",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -1546,12 +1518,8 @@
           "name": "projects_project_image_id_media_id_fk",
           "tableFrom": "projects",
           "tableTo": "media",
-          "columnsFrom": [
-            "project_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["project_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -1664,12 +1632,8 @@
           "name": "projects_rels_parent_fk",
           "tableFrom": "projects_rels",
           "tableTo": "projects",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1677,12 +1641,8 @@
           "name": "projects_rels_tech_stack_fk",
           "tableFrom": "projects_rels",
           "tableTo": "tech_stack",
-          "columnsFrom": [
-            "tech_stack_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tech_stack_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1973,12 +1933,8 @@
           "name": "_projects_v_parent_id_projects_id_fk",
           "tableFrom": "_projects_v",
           "tableTo": "projects",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -1986,12 +1942,8 @@
           "name": "_projects_v_version_project_image_id_media_id_fk",
           "tableFrom": "_projects_v",
           "tableTo": "media",
-          "columnsFrom": [
-            "version_project_image_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["version_project_image_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2104,12 +2056,8 @@
           "name": "_projects_v_rels_parent_fk",
           "tableFrom": "_projects_v_rels",
           "tableTo": "_projects_v",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -2117,12 +2065,8 @@
           "name": "_projects_v_rels_tech_stack_fk",
           "tableFrom": "_projects_v_rels",
           "tableTo": "tech_stack",
-          "columnsFrom": [
-            "tech_stack_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tech_stack_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2764,12 +2708,8 @@
           "name": "_testimonials_v_parent_id_testimonials_id_fk",
           "tableFrom": "_testimonials_v",
           "tableTo": "testimonials",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -2852,12 +2792,8 @@
           "name": "contributions_pull_requests_parent_id_fk",
           "tableFrom": "contributions_pull_requests",
           "tableTo": "contributions",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3089,12 +3025,8 @@
           "name": "contributions_rels_parent_fk",
           "tableFrom": "contributions_rels",
           "tableTo": "contributions",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -3102,12 +3034,8 @@
           "name": "contributions_rels_tech_stack_fk",
           "tableFrom": "contributions_rels",
           "tableTo": "tech_stack",
-          "columnsFrom": [
-            "tech_stack_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tech_stack_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3196,12 +3124,8 @@
           "name": "_contributions_v_version_pull_requests_parent_id_fk",
           "tableFrom": "_contributions_v_version_pull_requests",
           "tableTo": "_contributions_v",
-          "columnsFrom": [
-            "_parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["_parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -3413,12 +3337,8 @@
           "name": "_contributions_v_parent_id_contributions_id_fk",
           "tableFrom": "_contributions_v",
           "tableTo": "contributions",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -3531,12 +3451,8 @@
           "name": "_contributions_v_rels_parent_fk",
           "tableFrom": "_contributions_v_rels",
           "tableTo": "_contributions_v",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -3544,12 +3460,8 @@
           "name": "_contributions_v_rels_tech_stack_fk",
           "tableFrom": "_contributions_v_rels",
           "tableTo": "tech_stack",
-          "columnsFrom": [
-            "tech_stack_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tech_stack_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4032,12 +3944,8 @@
           "name": "payload_locked_documents_rels_parent_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "payload_locked_documents",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4045,12 +3953,8 @@
           "name": "payload_locked_documents_rels_users_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "users",
-          "columnsFrom": [
-            "users_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["users_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4058,12 +3962,8 @@
           "name": "payload_locked_documents_rels_experience_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "experience",
-          "columnsFrom": [
-            "experience_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["experience_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4071,12 +3971,8 @@
           "name": "payload_locked_documents_rels_education_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "education",
-          "columnsFrom": [
-            "education_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["education_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4084,12 +3980,8 @@
           "name": "payload_locked_documents_rels_projects_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "projects",
-          "columnsFrom": [
-            "projects_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["projects_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4097,12 +3989,8 @@
           "name": "payload_locked_documents_rels_media_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "media",
-          "columnsFrom": [
-            "media_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["media_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4110,12 +3998,8 @@
           "name": "payload_locked_documents_rels_tech_stack_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "tech_stack",
-          "columnsFrom": [
-            "tech_stack_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["tech_stack_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4123,12 +4007,8 @@
           "name": "payload_locked_documents_rels_testimonials_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "testimonials",
-          "columnsFrom": [
-            "testimonials_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["testimonials_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4136,12 +4016,8 @@
           "name": "payload_locked_documents_rels_contributions_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "contributions",
-          "columnsFrom": [
-            "contributions_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["contributions_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4149,12 +4025,8 @@
           "name": "payload_locked_documents_rels_project_labels_fk",
           "tableFrom": "payload_locked_documents_rels",
           "tableTo": "project_labels",
-          "columnsFrom": [
-            "project_labels_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["project_labels_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4358,12 +4230,8 @@
           "name": "payload_preferences_rels_parent_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "payload_preferences",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -4371,12 +4239,8 @@
           "name": "payload_preferences_rels_users_fk",
           "tableFrom": "payload_preferences_rels",
           "tableTo": "users",
-          "columnsFrom": [
-            "users_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["users_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -4468,162 +4332,102 @@
     "public.enum_experience_locale": {
       "name": "enum_experience_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum_experience_status": {
       "name": "enum_experience_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__experience_v_version_locale": {
       "name": "enum__experience_v_version_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum__experience_v_version_status": {
       "name": "enum__experience_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_education_locale": {
       "name": "enum_education_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum_education_status": {
       "name": "enum_education_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__education_v_version_locale": {
       "name": "enum__education_v_version_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum__education_v_version_status": {
       "name": "enum__education_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_projects_locale": {
       "name": "enum_projects_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum_projects_status": {
       "name": "enum_projects_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__projects_v_version_locale": {
       "name": "enum__projects_v_version_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum__projects_v_version_status": {
       "name": "enum__projects_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_testimonials_locale": {
       "name": "enum_testimonials_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum_testimonials_status": {
       "name": "enum_testimonials_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__testimonials_v_version_locale": {
       "name": "enum__testimonials_v_version_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum__testimonials_v_version_status": {
       "name": "enum__testimonials_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum_contributions_locale": {
       "name": "enum_contributions_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum_contributions_status": {
       "name": "enum_contributions_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     },
     "public.enum__contributions_v_version_locale": {
       "name": "enum__contributions_v_version_locale",
       "schema": "public",
-      "values": [
-        "en",
-        "es"
-      ]
+      "values": ["en", "es"]
     },
     "public.enum__contributions_v_version_status": {
       "name": "enum__contributions_v_version_status",
       "schema": "public",
-      "values": [
-        "draft",
-        "published"
-      ]
+      "values": ["draft", "published"]
     }
   },
   "schemas": {},

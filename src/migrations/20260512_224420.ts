@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres';
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -13,7 +13,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "project_labels_updated_at_idx" ON "project_labels" USING btree ("updated_at");
   CREATE INDEX "project_labels_created_at_idx" ON "project_labels" USING btree ("created_at");
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_project_labels_fk" FOREIGN KEY ("project_labels_id") REFERENCES "public"."project_labels"("id") ON DELETE cascade ON UPDATE no action;
-  CREATE INDEX "payload_locked_documents_rels_project_labels_id_idx" ON "payload_locked_documents_rels" USING btree ("project_labels_id");`)
+  CREATE INDEX "payload_locked_documents_rels_project_labels_id_idx" ON "payload_locked_documents_rels" USING btree ("project_labels_id");`);
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
@@ -23,5 +23,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_project_labels_fk";
   
   DROP INDEX "payload_locked_documents_rels_project_labels_id_idx";
-  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "project_labels_id";`)
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "project_labels_id";`);
 }
