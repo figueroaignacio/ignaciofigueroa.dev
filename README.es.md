@@ -1,101 +1,51 @@
 <div>
-
 <img src="https://ignaciofigueroa.dev/images/og-home.png" alt="Ignacio Figueroa Portfolio" />
-
 <br />
 
 <!-- README-I18N:START -->
 
-**English** | [Español](./README.es.md)
+[English](./README.md) | **Español**
 
 <!-- README-I18N:END -->
-
 </div>
 
-## Un portafolio moderno, rápido y completamente personalizado construido con Next.js, Tailwind CSS, Payload CMS y PostgreSQL.
+# Portafolio de Ignacio Figueroa
 
-Muestra mi trabajo, proyectos e incluye un asistente con IA para ayudar a los visitantes a explorar mi contenido de manera interactiva.
+Un portafolio fullstack construido con Next.js (App Router), Tailwind CSS, Payload CMS y PostgreSQL.
 
-Este portafolio refleja mi enfoque en UI limpia, alto rendimiento, accesibilidad y una excelente experiencia de desarrollo.
+Cuenta con un chatbot de IA personalizado que se conecta a un backend en FastAPI para permitir a los visitantes explorar mi stack y mi experiencia de forma interactiva.
 
 ## Stack Tecnológico
 
-Este proyecto utiliza una configuración moderna de full-stack:
+- **Frontend:** Next.js 16, React 19, Tailwind CSS 4, Motion
+- **Backend y CMS:** Payload CMS 3.0, PostgreSQL (Vercel/Neon)
+- **Backend de IA:** FastAPI con inferencia de Groq ([github.com/figueroaignacio/assistant](https://github.com/figueroaignacio/assistant))
+- **Herramientas:** pnpm, ESLint, Prettier, Husky
 
-### Frontend
+## 🏗️ Estructura del Proyecto
 
-- Next.js
-- React
-- Tailwind CSS
-- Motion (animaciones)
-
-### Backend y CMS
-
-- Payload CMS
-- PostgreSQL
-- Adaptador de Vercel Postgres
-
-### IA
-
-- Backend FastAPI ([github.com/figueroaignacio/assistant](https://github.com/figueroaignacio/assistant))
-- Groq – inferencia ultrarrápida
-- Chatbot de IA personalizado
-
-### Herramientas
-
-- ESLint, Prettier
-- Configuración con pnpm workspace
-
-## Estructura del Proyecto
-
-El proyecto sigue una estructura estándar de Next.js 16 (App Router), integrado con Payload CMS 3.0.
-
-```
+```txt
 .
-├── public/              # Assets estáticos (imágenes, fuentes, etc.)
+├── public/               # Assets estáticos
 └── src/
-    ├── app/             # Páginas de Next.js App Router
-    │   ├── [locale]/    # Rutas internacionalizadas
-    │   ├── (payload)/   # Rutas del admin de Payload
-    │   └── api/         # Rutas de API
-    ├── collections/     # Definiciones de colecciones de Payload CMS
-    ├── components/      # Componentes globales de React
-    │   └── ui/          # Primitivas de UI reutilizables (estilo shadcn/ui)
-    ├── features/        # Lógica y componentes específicos de funciones
-    ├── hooks/           # Hooks personalizados de React
-    ├── i18n/            # Configuración de internacionalización
-    ├── lib/             # Utilidades compartidas, cliente de DB y auth
-    ├── locales/         # Diccionarios de traducción (JSON)
-    ├── migrations/      # Migraciones de base de datos
-    ├── payload.config.ts # Configuración de Payload CMS
-    └── payload-types.ts # Tipos generados automáticamente del CMS
+    ├── app/              # Rutas de App Router (enrutamiento dinámico y backend de Payload)
+    │   ├── [locale]/     # Páginas principales internacionalizadas
+    │   ├── (payload)/    # Interfaz de administración de Payload CMS
+    │   └── api/          # Route handlers internos
+    ├── collections/      # Configuraciones de esquemas de colecciones de Payload
+    ├── components/       # Layout y componentes del frontend principal
+    ├── features/         # Grupos de features modulares (about, assistant, contact)
+    ├── locales/          # Diccionarios de traducción (JSON)
+    ├── migrations/       # Migraciones DDL para base de datos Vercel/Neon
+    └── payload.config.ts # Configuración del CMS
 ```
 
 ## Asistente de IA
 
-Este portafolio incluye un asistente de IA completamente integrado para ayudar a los visitantes a explorar mi contenido de manera interactiva.
+Un chatbot de IA promedio suele ser un simple wrapper que reenvía preguntas del usuario. Este asistente usa FastAPI y Groq para responder rápidamente sobre mi stack, proyectos y educación directamente en la UI. Funciona tanto como un chatbot de ayuda como una demo técnica de la integración de un agente con el cliente.
 
-### Potenciado por FastAPI y Groq, el Asistente de IA ofrece:
-
-- Respuestas sobre mí, mi formación y mi trabajo
-- Ayuda para navegar por el sitio
-- Información sobre las tecnologías que utilizo
-- Discusiones y resúmenes de mis artículos del blog
-- Orientación contextual sobre mis proyectos y stack
-
-### El Asistente de IA muestra cómo las funciones de IA del mundo real pueden integrarse en una UI moderna usando:
-
-- Next.js App Router
-- Modelos de Groq
-- Animaciones con Framer Motion
-- UI limpia y minimalista con Tailwind
-
-Es parte asistente personal, parte demo técnica y un guiño divertido a mi nombre:
-
-## Contacto
-
-No dudes en contactarme:
+## 💬 Contacto
 
 - Email: figueroaignaciodev@gmail.com
-- LinkedIn: https://www.linkedin.com/in/figueroa-ignacio
-- GitHub: https://github.com/figueroaignacio
+- LinkedIn: [linkedin.com/in/figueroa-ignacio](https://www.linkedin.com/in/figueroa-ignacio)
+- GitHub: [github.com/figueroaignacio](https://github.com/figueroaignacio)

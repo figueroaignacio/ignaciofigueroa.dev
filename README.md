@@ -1,7 +1,5 @@
 <div>
-
 <img src="https://ignaciofigueroa.dev/images/og-home.png" alt="Ignacio Figueroa Portfolio" />
-
 <br />
 
 <!-- README-I18N:START -->
@@ -9,187 +7,45 @@
 **English** | [Español](./README.es.md)
 
 <!-- README-I18N:END -->
-
 </div>
 
-# A modern, fast, and fully custom portfolio built with Next.js, Tailwind CSS, Payload CMS, and PostgreSQL.
+# Ignacio Figueroa's Portfolio
 
-It showcases my work, projects, and includes an AI-powered assistant to help visitors explore my content in an interactive way.
+A fullstack portfolio built with Next.js (App Router), Tailwind CSS, Payload CMS, and PostgreSQL.
 
-This portfolio reflects my focus on clean UI, high performance, accessibility, and a great developer experience.
-
-# Tech Stack
-
-This project uses a modern full-stack setup:
-
-## Frontend
-
-- Next.js
-- React
-- Tailwind CSS
-- Motion (animations)
-
-## Backend & CMS
-
-- Payload CMS
-- PostgreSQL
-- Vercel Postgres adapter
-
-## AI
-
-- FastAPI backend ([github.com/figueroaignacio/assistant](https://github.com/figueroaignacio/assistant))
-- Groq – ultra-fast inference
-- Custom AI chatbot
-
-## Tooling
-
-- ESLint, Prettier
-- pnpm workspace setup
-
-# 🏗️ Project Structure
-
-The project follows a standard Next.js 16 (App Router) structure, integrated with Payload CMS 3.0.
-
-```txt
-.
-├── public/               # Static assets (images, fonts, etc.)
-└── src/
-    ├── app/              # Next.js App Router pages
-    │   ├── [locale]/     # Internationalized routes
-    │   ├── (payload)/    # Payload admin routes
-    │   └── api/          # API routes
-    ├── collections/      # Payload CMS collections definitions
-    ├── components/       # Global React components
-    │   └── ui/           # Reusable UI primitives (shadcn/ui style)
-    ├── features/         # Feature-specific logic and components
-    ├── hooks/            # Custom React hooks
-    ├── i18n/             # Internationalization configuration
-    ├── lib/              # Shared utilities, DB client, and auth
-    ├── locales/          # Translation dictionaries (JSON)
-    ├── migrations/       # Database migrations
-    ├── payload.config.ts # Payload CMS configuration
-    └── payload-types.ts  # Auto-generated CMS types
-```
-
-# AI Assistant
-
-This portfolio includes a fully integrated AI assistant to help visitors explore my content in an interactive way.
-
-## Powered by FastAPI and Groq, AI Assistant provides:
-
-- Answers about me, my background, and my work
-- Help navigating the website
-- Insights about the technologies I use
-- Discussions and summaries of my blog posts
-- Context-aware guidance about my projects and stack
-
-## AI Assistant shows how real-world AI features can be integrated into a modern UI using:
-
-- Next.js App Router
-- Groq models
-- Framer Motion animations
-- Clean, minimal UI with Tailwind
-
-It is part personal assistant, part tech demo, and a fun nod to my name.
-
-# 💬 Contact
-
-Feel free to reach out:
-
-- Email: figueroaignaciodev@gmail.com
-- LinkedIn: https://www.linkedin.com/in/figueroa-ignacio
-- GitHub: https://github.com/figueroaignacio
-
-<!-- README-I18N:START -->
-
-**English** | [Español](./README.es.md)
-
-<!-- README-I18N:END -->
-
-## A modern, fast, and fully custom portfolio built with Next.js, Tailwind CSS, Payload CMS, and PostgreSQL.
-
-It showcases my work, projects, and includes an AI-powered assistant to help visitors explore my content in an interactive way.
-
-This portfolio reflects my focus on clean UI, high performance, accessibility, and a great developer experience.
+It features a custom AI chatbot that integrates with a FastAPI backend to let visitors explore my stack and experience interactively.
 
 ## Tech Stack
 
-This project uses a modern full-stack setup:
-
-### Frontend
-
-- Next.js
-- React
-- Tailwind CSS
-- Motion (animations)
-
-### Backend & CMS
-
-- Payload CMS
-- PostgreSQL
-- Vercel Postgres adapter
-
-### AI
-
-- FastAPI backend ([github.com/figueroaignacio/assistant](https://github.com/figueroaignacio/assistant))
-- Groq – ultra-fast inference
-- Custom AI chatbot
-
-### Tooling
-
-- ESLint, Prettier
-- pnpm workspace setup
+- **Frontend:** Next.js 16, React 19, Tailwind CSS 4, Motion
+- **Backend & CMS:** Payload CMS 3.0, PostgreSQL (Vercel/Neon)
+- **AI Backend:** FastAPI running Groq-powered inference ([github.com/figueroaignacio/assistant](https://github.com/figueroaignacio/assistant))
+- **Tooling:** pnpm, ESLint, Prettier, Husky
 
 ## 🏗️ Project Structure
 
-The project follows a standard Next.js 16 (App Router) structure, integrated with Payload CMS 3.0.
-
-```
+```txt
 .
-├── public/              # Static assets (images, fonts, etc.)
+├── public/               # Static assets
 └── src/
-    ├── app/             # Next.js App Router pages
-    │   ├── [locale]/    # Internationalized routes
-    │   ├── (payload)/   # Payload admin routes
-    │   └── api/         # API routes
-    ├── collections/     # Payload CMS collections definitions
-    ├── components/      # Global React components
-    │   └── ui/          # Reusable UI primitives (shadcn/ui style)
-    ├── features/        # Feature-specific logic and components
-    ├── hooks/           # Custom React hooks
-    ├── i18n/            # Internationalization configuration
-    ├── lib/             # Shared utilities, DB client, and auth
-    ├── locales/         # Translation dictionaries (JSON)
-    ├── migrations/      # Database migrations
-    ├── payload.config.ts # Payload CMS configuration
-    └── payload-types.ts # Auto-generated CMS types
+    ├── app/              # App Router routes (dynamic routing & Payload backend)
+    │   ├── [locale]/     # Internationalized main pages
+    │   ├── (payload)/    # Payload CMS admin interface
+    │   └── api/          # Internal route handlers
+    ├── collections/      # Payload collection schema configurations
+    ├── components/       # Core frontend layout and components
+    ├── features/         # Modular feature groups (about, assistant, contact)
+    ├── locales/          # Translation dictionaries (JSON)
+    ├── migrations/       # Vercel/Neon DB DDL migrations
+    └── payload.config.ts # CMS configuration
 ```
 
 ## AI Assistant
 
-This portfolio includes a fully integrated AI assistant to help visitors explore my content in an interactive way.
-
-### Powered by FastAPI and Groq, AI Assistant provides:
-
-- Answers about me, my background, and my work
-- Help navigating the website
-- Insights about the technologies I use
-- Discussions and summaries of my blog posts
-- Context-aware guidance about my projects and stack
-
-### AI Assistant shows how real-world AI features can be integrated into a modern UI using:
-
-- Next.js App Router
-- Groq models
-- Framer Motion animations
-- Clean, minimal UI with Tailwind
-
-It is part personal assistant, part tech demo, and a fun nod to my name:
+A standard AI chatbot is usually a simple wrapper forwarding user queries. This assistant uses FastAPI and Groq to provide fast answers about my stack, projects, and education directly inside the UI. It functions as both a helper chatbot and a technical demo of client-to-agent integration.
 
 ## 💬 Contact
 
-Feel free to reach out:
-
 - Email: figueroaignaciodev@gmail.com
-- LinkedIn: https://www.linkedin.com/in/figueroa-ignacio
-- GitHub: https://github.com/figueroaignacio
+- LinkedIn: [linkedin.com/in/figueroa-ignacio](https://www.linkedin.com/in/figueroa-ignacio)
+- GitHub: [github.com/figueroaignacio](https://github.com/figueroaignacio)
