@@ -58,7 +58,10 @@ export function useChat() {
         const response = await fetch(`${ASSISTANT_API_URL}/chat`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: trimmed }),
+          body: JSON.stringify({
+            message: trimmed,
+            history: messages,
+          }),
           signal: controller.signal,
         });
 
