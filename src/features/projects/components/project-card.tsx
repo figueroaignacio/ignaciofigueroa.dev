@@ -1,9 +1,9 @@
 'use client';
 
-import { GitHubIcon } from '@/shared/components/tech-icons';
-import { Badge } from '@/shared/components/ui/badge';
 import { Link } from '@/i18n/navigation';
 import type { Project, ProjectLabel, TechStack } from '@/payload-types';
+import { GitHubIcon } from '@/shared/components/tech-icons';
+import { Badge } from '@/shared/components/ui/badge';
 import { Globe02Icon, InformationCircleIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon, type IconSvgElement } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
@@ -34,7 +34,9 @@ export function ProjectCard({
 
   return (
     <article
-      className="relative grid grid-cols-[1fr] gap-4 sm:grid-cols-[auto_1fr] bg-card p-6 rounded-2xl border border-foreground/10 "
+      className={`relative bg-card p-6 rounded-2xl border border-foreground/10 ${
+        icon ? 'grid grid-cols-[1fr] gap-4 sm:grid-cols-[auto_1fr]' : 'flex flex-col'
+      }`}
       aria-labelledby={`project-title-${title}`}
     >
       <div className="flex flex-col gap-5">
@@ -67,19 +69,28 @@ export function ProjectCard({
 
         {techList.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
-            {techList.map((tech) => (
-              <Badge
-                key={tech.id}
-                variant="secondary"
-                className="rounded-md px-2 py-0.5 text-[11px] font-normal"
-              >
-                {tech.name}
-              </Badge>
-            ))}
+            {techList.map((tech) => {
+              const techIcon = tech.icon && typeof tech.icon === 'object' ? tech.icon : null;
+              return (
+                <Badge
+                  key={tech.id}
+                  variant="secondary"
+                  className="rounded-md px-2 py-1 font-normal flex items-center gap-1.5"
+                >
+                  {techIcon?.svg && (
+                    <span
+                      className="size-3.5 flex items-center justify-center [&>svg]:size-full [&>svg]:fill-current text-foreground shrink-0"
+                      dangerouslySetInnerHTML={{ __html: techIcon.svg }}
+                    />
+                  )}
+                  <span>{tech.name}</span>
+                </Badge>
+              );
+            })}
           </div>
         )}
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-end gap-4">
           {actions.map((action) => {
             const IconComp =
               typeof action.icon === 'function' ? (action.icon as React.ElementType) : null;
@@ -95,7 +106,8 @@ export function ProjectCard({
               </>
             );
 
-            const cls = 'inline-flex items-center gap-1.5 text-sm text-muted-foreground';
+            const cls =
+              'inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:underline hover:text-foreground transition-colors';
 
             if (action.internal) {
               return (
