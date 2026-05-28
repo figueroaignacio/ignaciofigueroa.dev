@@ -5,15 +5,7 @@ import path from 'path';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { fileURLToPath } from 'url';
-import { Contributions } from './shared/collections/contributions';
-import { Education } from './shared/collections/education';
-import { Experience } from './shared/collections/experience';
-import { Media } from './shared/collections/media';
-import { ProjectLabels } from './shared/collections/project-labels';
-import { Projects } from './shared/collections/projects';
-import { TechIcon } from './shared/collections/tech-icons';
-import { TechStack } from './shared/collections/tech-stack';
-import { Testimonials } from './shared/collections/testimonials';
+import { collections } from './shared/collections/collections';
 import { Users } from './shared/collections/users';
 
 const filename = fileURLToPath(import.meta.url);
@@ -26,18 +18,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [
-    Users,
-    Experience,
-    Education,
-    Projects,
-    Media,
-    TechStack,
-    Testimonials,
-    Contributions,
-    ProjectLabels,
-    TechIcon,
-  ],
+  collections: [...collections],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],
   }),

@@ -67,16 +67,16 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
-    experience: Experience;
+    contributions: Contribution;
     education: Education;
-    projects: Project;
+    experience: Experience;
     media: Media;
+    'project-labels': ProjectLabel;
+    projects: Project;
+    'tech-icons': TechIcon;
     'tech-stack': TechStack;
     testimonials: Testimonial;
-    contributions: Contribution;
-    'project-labels': ProjectLabel;
-    'tech-icons': TechIcon;
+    users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,16 +84,16 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
-    experience: ExperienceSelect<false> | ExperienceSelect<true>;
+    contributions: ContributionsSelect<false> | ContributionsSelect<true>;
     education: EducationSelect<false> | EducationSelect<true>;
-    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    experience: ExperienceSelect<false> | ExperienceSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'project-labels': ProjectLabelsSelect<false> | ProjectLabelsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    'tech-icons': TechIconsSelect<false> | TechIconsSelect<true>;
     'tech-stack': TechStackSelect<false> | TechStackSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
-    contributions: ContributionsSelect<false> | ContributionsSelect<true>;
-    'project-labels': ProjectLabelsSelect<false> | ProjectLabelsSelect<true>;
-    'tech-icons': TechIconsSelect<false> | TechIconsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -135,28 +135,78 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "contributions".
  */
-export interface User {
+export interface Contribution {
   id: number;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
+  locale: 'en' | 'es';
+  title: string;
+  description: string;
+  technologies?: (number | TechStack)[] | null;
+  repository: string;
+  fork: string;
+  pullRequests?:
     | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
+        url: string;
+        label?: string | null;
+        id?: string | null;
       }[]
     | null;
-  password?: string | null;
-  collection: 'users';
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tech-stack".
+ */
+export interface TechStack {
+  id: number;
+  name: string;
+  icon?: (number | null) | TechIcon;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tech-icons".
+ */
+export interface TechIcon {
+  id: number;
+  name: string;
+  /**
+   * Paste the full SVG markup here
+   */
+  svg: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "education".
+ */
+export interface Education {
+  id: number;
+  locale: 'en' | 'es';
+  title: string;
+  institution: string;
+  location?: string | null;
+  description?: string | null;
+  startDate: string;
+  /**
+   * Leave empty if still in progress
+   */
+  endDate?: string | null;
+  isCurrent?: boolean | null;
+  certificateUrl?: string | null;
+  highlight?: boolean | null;
+  /**
+   * Use to manually sort education entries
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -195,30 +245,42 @@ export interface Experience {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "education".
+ * via the `definition` "media".
  */
-export interface Education {
+export interface Media {
   id: number;
-  locale: 'en' | 'es';
-  title: string;
-  institution: string;
-  location?: string | null;
-  description?: string | null;
-  startDate: string;
-  /**
-   * Leave empty if still in progress
-   */
-  endDate?: string | null;
-  isCurrent?: boolean | null;
-  certificateUrl?: string | null;
-  highlight?: boolean | null;
-  /**
-   * Use to manually sort education entries
-   */
-  order?: number | null;
+  alt: string;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-labels".
+ */
+export interface ProjectLabel {
+  id: number;
+  label: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -273,70 +335,6 @@ export interface Project {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tech-stack".
- */
-export interface TechStack {
-  id: number;
-  name: string;
-  icon?: (number | null) | TechIcon;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tech-icons".
- */
-export interface TechIcon {
-  id: number;
-  name: string;
-  /**
-   * Paste the full SVG markup here
-   */
-  svg: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "project-labels".
- */
-export interface ProjectLabel {
-  id: number;
-  label: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "testimonials".
  */
 export interface Testimonial {
@@ -361,26 +359,28 @@ export interface Testimonial {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contributions".
+ * via the `definition` "users".
  */
-export interface Contribution {
+export interface User {
   id: number;
-  locale: 'en' | 'es';
-  title: string;
-  description: string;
-  technologies?: (number | TechStack)[] | null;
-  repository: string;
-  fork: string;
-  pullRequests?:
-    | {
-        url: string;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ('draft' | 'published') | null;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'users';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -407,24 +407,32 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
-      } | null)
-    | ({
-        relationTo: 'experience';
-        value: number | Experience;
+        relationTo: 'contributions';
+        value: number | Contribution;
       } | null)
     | ({
         relationTo: 'education';
         value: number | Education;
       } | null)
     | ({
-        relationTo: 'projects';
-        value: number | Project;
+        relationTo: 'experience';
+        value: number | Experience;
       } | null)
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'project-labels';
+        value: number | ProjectLabel;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'tech-icons';
+        value: number | TechIcon;
       } | null)
     | ({
         relationTo: 'tech-stack';
@@ -435,16 +443,8 @@ export interface PayloadLockedDocument {
         value: number | Testimonial;
       } | null)
     | ({
-        relationTo: 'contributions';
-        value: number | Contribution;
-      } | null)
-    | ({
-        relationTo: 'project-labels';
-        value: number | ProjectLabel;
-      } | null)
-    | ({
-        relationTo: 'tech-icons';
-        value: number | TechIcon;
+        relationTo: 'users';
+        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -490,52 +490,22 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
+ * via the `definition` "contributions_select".
  */
-export interface UsersSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
-      };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "experience_select".
- */
-export interface ExperienceSelect<T extends boolean = true> {
+export interface ContributionsSelect<T extends boolean = true> {
   locale?: T;
   title?: T;
-  company?: T;
-  location?: T;
-  tasks?:
+  description?: T;
+  technologies?: T;
+  repository?: T;
+  fork?: T;
+  pullRequests?:
     | T
     | {
-        item?: T;
+        url?: T;
+        label?: T;
         id?: T;
       };
-  startDate?: T;
-  endDate?: T;
-  isCurrent?: T;
-  technologies?:
-    | T
-    | {
-        name?: T;
-        id?: T;
-      };
-  link?: T;
-  order?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -562,23 +532,29 @@ export interface EducationSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects_select".
+ * via the `definition` "experience_select".
  */
-export interface ProjectsSelect<T extends boolean = true> {
+export interface ExperienceSelect<T extends boolean = true> {
   locale?: T;
-  projectImage?: T;
-  videoUrl?: T;
   title?: T;
-  subtitle?: T;
-  icon?: T;
-  slug?: T;
-  description?: T;
-  body?: T;
-  technologies?: T;
-  labels?: T;
-  repository?: T;
-  demo?: T;
-  isCommercialProject?: T;
+  company?: T;
+  location?: T;
+  tasks?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  startDate?: T;
+  endDate?: T;
+  isCurrent?: T;
+  technologies?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  link?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -618,6 +594,49 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-labels_select".
+ */
+export interface ProjectLabelsSelect<T extends boolean = true> {
+  label?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  locale?: T;
+  projectImage?: T;
+  videoUrl?: T;
+  title?: T;
+  subtitle?: T;
+  icon?: T;
+  slug?: T;
+  description?: T;
+  body?: T;
+  technologies?: T;
+  labels?: T;
+  repository?: T;
+  demo?: T;
+  isCommercialProject?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tech-icons_select".
+ */
+export interface TechIconsSelect<T extends boolean = true> {
+  name?: T;
+  svg?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tech-stack_select".
  */
 export interface TechStackSelect<T extends boolean = true> {
@@ -645,44 +664,25 @@ export interface TestimonialsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contributions_select".
+ * via the `definition` "users_select".
  */
-export interface ContributionsSelect<T extends boolean = true> {
-  locale?: T;
-  title?: T;
-  description?: T;
-  technologies?: T;
-  repository?: T;
-  fork?: T;
-  pullRequests?:
+export interface UsersSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
     | T
     | {
-        url?: T;
-        label?: T;
         id?: T;
+        createdAt?: T;
+        expiresAt?: T;
       };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "project-labels_select".
- */
-export interface ProjectLabelsSelect<T extends boolean = true> {
-  label?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tech-icons_select".
- */
-export interface TechIconsSelect<T extends boolean = true> {
-  name?: T;
-  svg?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
