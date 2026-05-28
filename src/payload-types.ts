@@ -76,6 +76,7 @@ export interface Config {
     testimonials: Testimonial;
     contributions: Contribution;
     'project-labels': ProjectLabel;
+    'tech-icons': TechIcon;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,10 +93,9 @@ export interface Config {
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     contributions: ContributionsSelect<false> | ContributionsSelect<true>;
     'project-labels': ProjectLabelsSelect<false> | ProjectLabelsSelect<true>;
+    'tech-icons': TechIconsSelect<false> | TechIconsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
-    'payload-locked-documents':
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
@@ -307,6 +307,21 @@ export interface Media {
 export interface TechStack {
   id: number;
   name: string;
+  icon?: (number | null) | TechIcon;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tech-icons".
+ */
+export interface TechIcon {
+  id: number;
+  name: string;
+  /**
+   * Paste the full SVG markup here
+   */
+  svg: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -426,6 +441,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'project-labels';
         value: number | ProjectLabel;
+      } | null)
+    | ({
+        relationTo: 'tech-icons';
+        value: number | TechIcon;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -603,6 +622,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface TechStackSelect<T extends boolean = true> {
   name?: T;
+  icon?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -651,6 +671,16 @@ export interface ContributionsSelect<T extends boolean = true> {
  */
 export interface ProjectLabelsSelect<T extends boolean = true> {
   label?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tech-icons_select".
+ */
+export interface TechIconsSelect<T extends boolean = true> {
+  name?: T;
+  svg?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -711,6 +741,7 @@ export interface CollectionsWidget {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}

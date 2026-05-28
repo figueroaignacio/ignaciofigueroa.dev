@@ -14,6 +14,7 @@ import { Projects } from './shared/collections/Projects';
 import { TechStack } from './shared/collections/TechStack';
 import { Testimonials } from './shared/collections/Testimonials';
 import { Users } from './shared/collections/Users';
+import { TechIcon } from './shared/collections/tech-icons';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -35,6 +36,7 @@ export default buildConfig({
     Testimonials,
     Contributions,
     ProjectLabels,
+    TechIcon,
   ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures],

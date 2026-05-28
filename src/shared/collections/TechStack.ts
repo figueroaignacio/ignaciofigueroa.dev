@@ -20,5 +20,12 @@ export const TechStack: CollectionConfig = {
       required: true,
       unique: true,
     },
+    {
+      name: 'icon',
+      label: 'Icon',
+      type: 'relationship',
+      relationTo: 'tech-icons',
+      required: false,
+    },
   ],
 };
