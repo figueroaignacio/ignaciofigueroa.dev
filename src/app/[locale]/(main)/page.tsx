@@ -1,5 +1,6 @@
 import { ContactSection } from '@/features/contact/components/contact-section';
 import { ContributionsSection } from '@/features/home/components/contributions-section';
+import { GithubStatsSection } from '@/features/home/components/github-stats-section';
 import { CTACurriculum } from '@/features/home/components/cta-curriculum';
 import { EducationSection } from '@/features/home/components/education-section';
 import { ExperienceSection } from '@/features/home/components/experience-section';
@@ -42,6 +43,7 @@ export default function HomePage({ params }: HomePageProps) {
         <HomeHero />
         <ProjectsSection />
         <ContributionsSection />
+        <GithubStatsSection />
         <ExperienceSection />
         <NachUICta />
         <EducationSection />
