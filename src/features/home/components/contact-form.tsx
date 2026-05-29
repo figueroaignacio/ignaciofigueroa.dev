@@ -1,10 +1,10 @@
 'use client';
 
+import { Loading02Icon, MailSend02Icon, Tick01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useActionState, useRef } from 'react';
 import { sendEmail } from '../actions/send-email';
-import { Tick01Icon, Loading02Icon, MailSend02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 type ContactFormState = {
   error: string | null;
