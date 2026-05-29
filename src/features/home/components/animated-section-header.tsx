@@ -6,6 +6,7 @@ interface AnimatedSectionHeaderProps {
   title: string;
   description?: string;
   className?: string;
+  id?: string;
 }
 
 const headerVariants: Variants = {
@@ -24,6 +25,7 @@ export function AnimatedSectionHeader({
   title,
   description,
   className,
+  id,
 }: AnimatedSectionHeaderProps) {
   return (
     <motion.div
@@ -33,7 +35,9 @@ export function AnimatedSectionHeader({
       variants={headerVariants}
       className={className}
     >
-      <h2 className="text-lg font-medium">{title}</h2>
+      <h2 id={id} className="text-lg font-medium">
+        {title}
+      </h2>
       {description && <p className="text-sm text-muted-foreground mt-1">{description}</p>}
     </motion.div>
   );

@@ -3,7 +3,7 @@ import { routing } from '@/i18n/routing';
 import { BASE_URL } from '@/shared/lib/constants';
 import type { MetadataRoute } from 'next';
 
-const staticRoutes = ['', '/contact', '/about'];
+const staticRoutes = [''];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries: MetadataRoute.Sitemap = [];

@@ -6,14 +6,14 @@ import { cn } from '@/shared/lib/cn';
 
 import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { type ReactNode, useCallback, useMemo } from 'react';
+import { type ReactNode, useCallback, useMemo, useState, useEffect } from 'react';
 import { Home01Icon, Mail01Icon, UserIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
 const ICON_MAP: Record<string, ReactNode> = {
   '/': <HugeiconsIcon icon={Home01Icon} className="size-5" strokeWidth={1.5} />,
-  '/about': <HugeiconsIcon icon={UserIcon} className="size-5" strokeWidth={1.5} />,
-  '/contact': <HugeiconsIcon icon={Mail01Icon} className="size-5" strokeWidth={1.5} />,
+  '/#about': <HugeiconsIcon icon={UserIcon} className="size-5" strokeWidth={1.5} />,
+  '/#contact': <HugeiconsIcon icon={Mail01Icon} className="size-5" strokeWidth={1.5} />,
   '/assistant': <AssistantAvatar size="sm" className="scale-110" />,
 };
 
@@ -25,13 +25,54 @@ export function Dock() {
     [t],
   );
 
-  const isActive = useCallback(
-    (href: string) => {
-      if (href === '/') return pathname === '/';
-      return pathname.startsWith(href);
-    },
-    [pathname],
-  );
+  const [activeSection, setActiveSection] = useState<string>('/');
+
+  useEffect(() => {
+    if (pathname !== '/') {
+      setActiveSection(pathname);
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -60% 0px',
+      threshold: 0,
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === 'about') {
+            setActiveSection('/#about');
+          } else if (id === 'contact') {
+            setActiveSection('/#contact');
+          }
+        }
+      });
+    };
+
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('/');
+      }
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    const aboutEl = document.getElementById('about');
+    const contactEl = document.getElementById('contact');
+
+    if (aboutEl) observer.observe(aboutEl);
+    if (contactEl) observer.observe(contactEl);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    handleScroll();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [pathname]);
 
   return (
     <nav
@@ -45,7 +86,7 @@ export function Dock() {
         className="flex items-center gap-2 rounded-2xl border border-foreground/10 bg-foreground px-2.5 py-2.5 shadow-2xl"
       >
         {navigation.map((item) => {
-          const active = isActive(item.href);
+          const active = activeSection === item.href;
           return (
             <Link
               key={item.href}

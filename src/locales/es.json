@@ -199,11 +199,11 @@
 
       {
         "label": "Sobre Mí",
-        "href": "/about"
+        "href": "/#about"
       },
       {
         "label": "Contacto",
-        "href": "/contact"
+        "href": "/#contact"
       },
       {
         "label": "Asistente",
