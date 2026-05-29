@@ -104,6 +104,22 @@
       "viewFork": "Ver fork",
       "pr": "Pull Request"
     },
+    "github": {
+      "title": "Estadísticas y Actividad de GitHub",
+      "description": "Estadísticas en tiempo real y contribuciones obtenidas directamente de mi perfil de GitHub.",
+      "stats": {
+        "stars": "Estrellas",
+        "repos": "Repos públicos",
+        "followers": "Seguidores",
+        "following": "Siguiendo",
+        "contributions": "Contribuciones totales",
+        "topLanguages": "Lenguajes principales"
+      },
+      "grid": {
+        "less": "Menos",
+        "more": "Más"
+      }
+    },
     "interests": {
       "title": "Especialización Técnica",
       "description": "Competencias principales y conocimientos especializados aplicados en cada proyecto.",

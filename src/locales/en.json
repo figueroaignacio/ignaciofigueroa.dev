@@ -104,6 +104,22 @@
       "viewFork": "View fork",
       "pr": "Pull Request"
     },
+    "github": {
+      "title": "GitHub Stats & Activity",
+      "description": "Real-time statistics and contributions fetched directly from my GitHub profile.",
+      "stats": {
+        "stars": "Stars",
+        "repos": "Public Repos",
+        "followers": "Followers",
+        "following": "Following",
+        "contributions": "Total Contributions",
+        "topLanguages": "Top Languages"
+      },
+      "grid": {
+        "less": "Less",
+        "more": "More"
+      }
+    },
     "interests": {
       "title": "Technical Expertise",
       "description": "Core competencies and specialized knowledge applied in every project.",
