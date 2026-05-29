@@ -4,6 +4,7 @@ import { motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
+import { AnimatedSectionHeader } from './animated-section-header';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -86,20 +87,11 @@ export function TechStack() {
 
   return (
     <section className="space-y-8" aria-labelledby="tech-stack-title">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
-        variants={itemVariants}
-        className="space-y-2"
-      >
-        <h2 id="tech-stack-title" className="text-2xl font-medium tracking-tight">
-          {t('stack.title')}
-        </h2>
-        <p className="text-lg text-muted-foreground font-normal mt-1 max-w-xl">
-          {t('stack.description')}
-        </p>
-      </motion.div>
+      <AnimatedSectionHeader
+        id="tech-stack-title"
+        title={t('stack.title')}
+        description={t('stack.description')}
+      />
 
       <div className="space-y-6">
         {techStack.map((section) => (

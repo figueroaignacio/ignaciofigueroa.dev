@@ -20,6 +20,7 @@ import {
 import { HugeiconsIcon } from '@hugeicons/react';
 import { motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import { AnimatedSectionHeader } from './animated-section-header';
 
 type InterestConfig = {
   key: string;
@@ -71,18 +72,11 @@ export function Interests() {
 
   return (
     <section className="space-y-6" aria-labelledby="interests-title">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
-        variants={itemVariants}
-        className="space-y-2"
-      >
-        <h2 id="interests-title" className="text-2xl font-medium tracking-tight">
-          {tSection('title')}
-        </h2>
-        <p className="text-lg text-muted-foreground font-normal mt-1">{tSection('description')}</p>
-      </motion.div>
+      <AnimatedSectionHeader
+        id="interests-title"
+        title={tSection('title')}
+        description={tSection('description')}
+      />
       <motion.ul
         variants={containerVariants}
         initial="hidden"
