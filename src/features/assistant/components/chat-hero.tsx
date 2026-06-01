@@ -15,25 +15,28 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
   return (
     <div className="flex flex-col justify-center items-center min-h-[40vh] max-w-3xl mx-auto w-full text-center">
       <motion.div
-        initial={{ opacity: 0, scale: 0.7, rotate: -4 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, scale: 0.7, y: 15 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ type: 'spring', damping: 20, stiffness: 150 }}
         className="relative"
       >
-        <div className="absolute inset-0 -z-10 rounded-full blur-2xl bg-primary/15 scale-150" />
-        <AssistantAvatar size="xl" />
+        {/* Glowing, pulsing background gradient aligned with the amber terracotta theme */}
+        <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-gradient-to-tr from-[#E8845A]/20 to-[#D4704A]/30 scale-150 animate-pulse duration-[6000ms]" />
+        <div className="p-3 bg-card/40 border border-border/30 rounded-2xl backdrop-blur-md shadow-lg">
+          <AssistantAvatar size="xl" />
+        </div>
       </motion.div>
 
       <motion.div
-        className="space-y-2 mt-5"
+        className="space-y-3 mt-6"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h1 className="text-2xl font-bold tracking-tight text-balance leading-snug">
+        <h1 className="text-3xl font-extrabold tracking-tight text-balance leading-tight bg-gradient-to-br from-foreground via-foreground/90 to-[#E8845A] bg-clip-text text-transparent">
           {t('greeting')}
         </h1>
-        <p className="text-muted-foreground text-[13px] max-w-xs mx-auto text-balance leading-relaxed">
+        <p className="text-muted-foreground text-sm max-w-sm mx-auto text-balance leading-relaxed">
           {t('subtitle')}
         </p>
       </motion.div>

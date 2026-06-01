@@ -48,19 +48,24 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
             type="button"
             key={index}
             onClick={() => onSuggestionClick(suggestion.text)}
-            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{
-              duration: 0.3,
-              delay: index * 0.055,
-              ease: [0.16, 1, 0.3, 1],
+              type: 'spring',
+              damping: 15,
+              stiffness: 200,
+              delay: index * 0.04,
             }}
-            whileHover={{ scale: 1.04, y: -1 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border/50 bg-muted/30 hover:bg-card hover:border-border/80 text-muted-foreground hover:text-foreground transition-all duration-150 cursor-pointer shadow-sm hover:shadow"
+            whileHover={{ 
+              scale: 1.03, 
+              y: -2,
+              boxShadow: '0 4px 12px rgba(232, 132, 90, 0.08)' 
+            }}
+            whileTap={{ scale: 0.97 }}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border/40 bg-card/60 dark:bg-card/30 hover:bg-gradient-to-r hover:from-[#E8845A]/10 hover:to-[#D4704A]/5 hover:border-[#E8845A]/35 text-muted-foreground hover:text-[#E8845A] transition-all duration-200 cursor-pointer shadow-xs"
           >
-            <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-70" />
-            <span className="text-[11px] font-medium">{suggestion.text}</span>
+            <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-80" />
+            <span className="text-[11px] font-medium tracking-wide">{suggestion.text}</span>
           </motion.button>
         );
       })}
