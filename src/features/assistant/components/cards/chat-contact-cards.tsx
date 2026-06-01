@@ -39,11 +39,11 @@ export function ChatContactCards() {
   ];
 
   return (
-    <div className="flex flex-col gap-3">
-      <h2 className="text-lg font-semibold underline">{t('title')}</h2>
-      <p className="text-sm text-muted-foreground">{t('description')}</p>
+    <div className="flex flex-col gap-3.5 mt-2">
+      <h2 className="text-base sm:text-lg font-bold tracking-tight text-foreground">{t('title')}</h2>
+      <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-1">
         {contacts.map((contact) => {
           const Icon = contact.icon;
           return (
@@ -52,14 +52,18 @@ export function ChatContactCards() {
               href={contact.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-border/40 bg-card/40 hover:bg-card hover:border-border text-muted-foreground hover:text-foreground transition-colors duration-150"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:bg-card hover:border-[#E8845A]/35 text-muted-foreground hover:text-[#E8845A] hover:-translate-y-0.5 transition-all duration-200 shadow-xs hover:shadow-sm"
             >
-              {typeof Icon === 'function' ? (
-                <Icon />
-              ) : (
-                <HugeiconsIcon icon={Icon} className="size-4 shrink-0" />
-              )}
-              <span className="text-xs font-medium">{contact.label}</span>
+              <div className="size-6 rounded-lg bg-muted-foreground/5 flex items-center justify-center shrink-0">
+                {typeof Icon === 'function' ? (
+                  <div className="size-4 shrink-0 flex items-center justify-center">
+                    <Icon />
+                  </div>
+                ) : (
+                  <HugeiconsIcon icon={Icon} className="size-4 shrink-0" />
+                )}
+              </div>
+              <span className="text-xs font-semibold tracking-wide">{contact.label}</span>
             </a>
           );
         })}

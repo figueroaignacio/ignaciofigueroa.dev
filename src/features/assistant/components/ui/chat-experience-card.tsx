@@ -11,48 +11,55 @@ interface ChatExperienceCardProps {
 
 export function ChatExperienceCard({ experience, locale }: ChatExperienceCardProps) {
   return (
-    <article className="space-y-3">
+    <article className="space-y-3 relative group">
+      {/* Glow node for active experience */}
       <div
-        className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center ${
-          experience.isCurrent ? 'border-foreground bg-foreground' : 'border-border bg-card'
+        className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
+          experience.isCurrent 
+            ? 'border-[#E8845A] bg-[#E8845A]' 
+            : 'border-border/60 bg-muted/40 group-hover:border-[#E8845A]/50'
         }`}
       >
+        {experience.isCurrent && (
+          <span className="absolute inset-0 rounded-full bg-[#E8845A] opacity-40 animate-ping" />
+        )}
         <HugeiconsIcon
           icon={Briefcase01Icon}
-          className={`size-3 ${experience.isCurrent ? 'text-background' : 'text-muted-foreground'}`}
+          className={`size-3 transition-colors ${experience.isCurrent ? 'text-white' : 'text-muted-foreground'}`}
         />
       </div>
+      
       <div className="space-y-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="font-semibold text-foreground">{experience.title}</h3>
+          <h3 className="font-semibold text-foreground tracking-tight text-sm sm:text-base">{experience.title}</h3>
           {experience.isCurrent && (
-            <Badge variant="default" className="text-[10px] px-1.5 py-0">
+            <Badge className="text-[10px] px-1.5 py-0 bg-[#E8845A] text-white hover:bg-[#D4704A] border-none font-medium rounded-md">
               {locale === 'es' ? 'Actual' : 'Current'}
             </Badge>
           )}
         </div>
-        <div className="flex items-center gap-2 text-sm">
+        <div className="flex items-center gap-2 text-xs sm:text-sm">
           {experience.link ? (
             <a
               href={experience.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
+              className="text-muted-foreground hover:text-[#E8845A] hover:underline underline-offset-2 transition-colors inline-flex items-center gap-1 font-medium"
             >
               {experience.company}
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-3" />
             </a>
           ) : (
-            <span className="text-muted-foreground">{experience.company}</span>
+            <span className="text-muted-foreground font-medium">{experience.company}</span>
           )}
           {experience.location && (
             <>
-              <span className="text-muted-foreground/40">·</span>
-              <span className="text-muted-foreground">{experience.location}</span>
+              <span className="text-muted-foreground/30">·</span>
+              <span className="text-muted-foreground/80">{experience.location}</span>
             </>
           )}
         </div>
-        <p className="text-xs text-muted-foreground/70">
+        <p className="text-[11px] text-muted-foreground/50 font-medium">
           {formatDate(experience.startDate, locale)} —{' '}
           {experience.endDate
             ? formatDate(experience.endDate, locale)
@@ -63,20 +70,24 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       </div>
 
       {experience.tasks && experience.tasks.length > 0 && (
-        <ul className="space-y-1.5">
+        <ul className="space-y-1.5 mt-2">
           {experience.tasks.map((task) => (
-            <li key={task.id} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
-              <span className="text-muted-foreground/40 mt-0.5 shrink-0">▸</span>
-              {task.item}
+            <li key={task.id} className="text-[13px] text-foreground/80 leading-relaxed flex gap-2 items-start">
+              <span className="text-[#E8845A] mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-[#E8845A]/80 block" />
+              <span>{task.item}</span>
             </li>
           ))}
         </ul>
       )}
 
       {experience.technologies && experience.technologies.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1.5 pt-1">
           {experience.technologies.map((tech) => (
-            <Badge key={tech.id} variant="secondary" className="text-[11px]">
+            <Badge 
+              key={tech.id} 
+              variant="outline" 
+              className="text-[10px] px-2 py-0.5 font-medium border-[#E8845A]/15 bg-[#E8845A]/5 dark:bg-[#E8845A]/10 text-[#E8845A] dark:text-[#E8845A] rounded-md transition-colors"
+            >
               {tech.name}
             </Badge>
           ))}
