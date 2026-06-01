@@ -12,10 +12,10 @@ export function ChatHeader({ onResetChat }: ChatHeaderProps) {
   const t = useTranslations('components.chat.header');
 
   return (
-    <header className="z-40 flex items-center justify-between w-full px-5 py-3 border-b border-border/40">
+    <header className="z-40 flex items-center justify-between w-full px-5 py-4 border-b border-border/40 bg-card/65 dark:bg-[#161718]/65 backdrop-blur-md">
       <Link
         href="/"
-        className="flex items-center justify-center size-8 rounded-lg text-muted-foreground hover:text-foreground hover:bg-card transition-colors duration-150"
+        className="flex items-center justify-center size-8.5 rounded-xl text-muted-foreground hover:text-[#E8845A] hover:bg-[#E8845A]/10 transition-all duration-200"
         aria-label="Back"
       >
         <HugeiconsIcon icon={ArrowLeft01Icon} className="size-4" />
@@ -26,11 +26,11 @@ export function ChatHeader({ onResetChat }: ChatHeaderProps) {
           <Dialog>
             <Dialog.Trigger asChild>
               <button
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-card transition-colors duration-150 text-sm"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-muted-foreground hover:text-[#E8845A] hover:bg-[#E8845A]/10 transition-all duration-200 text-xs font-bold uppercase tracking-wider cursor-pointer"
                 title={t('reset')}
               >
-                <HugeiconsIcon icon={Message01Icon} size={14} />
-                <span className="text-xs">{t('newChat')}</span>
+                <HugeiconsIcon icon={Message01Icon} size={13} />
+                <span>{t('newChat')}</span>
               </button>
             </Dialog.Trigger>
             <Dialog.Content className="bg-card">
