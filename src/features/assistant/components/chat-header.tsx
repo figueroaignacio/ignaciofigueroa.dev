@@ -1,10 +1,8 @@
-import { ThemeToggle } from '@/shared/components/theme-toggle';
-import { Dialog } from '@/shared/components/ui/dialog';
 import { Link } from '@/i18n/navigation';
-
-import { useTranslations } from 'next-intl';
+import { Dialog } from '@/shared/components/ui/dialog';
 import { ArrowLeft01Icon, Message01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { useTranslations } from 'next-intl';
 
 interface ChatHeaderProps {
   onResetChat?: () => void;
@@ -25,7 +23,6 @@ export function ChatHeader({ onResetChat }: ChatHeaderProps) {
 
       {onResetChat && (
         <div className="flex items-center gap-1">
-          <ThemeToggle />
           <Dialog>
             <Dialog.Trigger asChild>
               <button

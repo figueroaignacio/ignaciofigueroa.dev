@@ -1,12 +1,11 @@
 'use client';
 
 import { Spinner } from '@/shared/components/ui/spinner';
-
-import { motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
-import React, { useEffect, useRef, useState } from 'react';
 import { ArrowUp01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface ChatInputProps {
   message: string;
@@ -29,6 +28,7 @@ export function ChatInput({
   const disclaimers = tChat.raw('disclaimers') as string[];
   const [disclaimerIndex, setDisclaimerIndex] = useState<number>(0);
   const [mounted, setMounted] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -61,55 +61,84 @@ export function ChatInput({
     [onSubmit],
   );
 
+  const hasContent = message.trim().length > 0;
+
   return (
     <motion.div
       className={`relative w-full ${isHero ? 'max-w-3xl mx-auto container' : 'max-w-3xl container mx-auto'}`}
     >
       <form
         onSubmit={handleSubmit}
-        className={`relative flex items-end gap-2 rounded-xl bg-card/80 backdrop-blur-sm border border-border/60 focus-within:border-border focus-within:bg-card transition-all duration-200 ${
-          isHero ? 'min-h-[56px]' : 'min-h-[48px]'
-        } ${isLoading ? 'opacity-80' : ''}`}
+        className={`relative flex items-end gap-2 rounded-xl border transition-all duration-200 ${
+          isFocused
+            ? 'border-foreground/20 bg-card shadow-[0_0_0_3px_rgba(0,0,0,0.04)] dark:shadow-[0_0_0_3px_rgba(255,255,255,0.04)]'
+            : 'border-border/50 bg-card/80 hover:border-border/80 hover:bg-card'
+        } ${isHero ? 'min-h-14' : 'min-h-12'} ${isLoading ? 'opacity-70' : ''}`}
       >
         <textarea
           ref={textareaRef}
           value={message}
           onChange={(e) => onMessageChange(e.target.value)}
           onKeyDown={handleKeyDown}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           placeholder={t('inputPlaceholder')}
           rows={1}
           disabled={isLoading}
-          className={`w-full resize-none bg-transparent focus:ring-0 focus:outline-none px-5 py-3.5 max-h-[200px] overflow-y-auto placeholder:text-muted-foreground/50 ${
-            isHero ? 'text-base' : 'text-sm'
+          className={`w-full resize-none bg-transparent focus:ring-0 focus:outline-none px-4 py-3.5 max-h-50 overflow-y-auto text-foreground placeholder:text-muted-foreground/40 ${
+            isHero ? 'text-sm' : 'text-sm'
           }`}
           style={{ minHeight: isHero ? '56px' : '48px' }}
         />
+
         <div className="flex pb-2 pr-2">
-          <motion.button
-            type="submit"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            whileTap={{ scale: 0.9 }}
-            disabled={!message.trim() && !isLoading}
-            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
-              message.trim() || isLoading
-                ? 'bg-foreground text-background cursor-pointer'
-                : 'bg-transparent text-muted-foreground/20 cursor-not-allowed'
-            }`}
-          >
-            {isLoading ? <Spinner /> : <HugeiconsIcon icon={ArrowUp01Icon} className="h-4 w-4" />}
-          </motion.button>
+          <AnimatePresence mode="wait">
+            {isLoading ? (
+              <motion.div
+                key="loading"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-foreground/10 text-muted-foreground"
+              >
+                <Spinner />
+              </motion.div>
+            ) : (
+              <motion.button
+                key="send"
+                type="submit"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                whileTap={{ scale: 0.88 }}
+                transition={{ duration: 0.15 }}
+                disabled={!hasContent}
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
+                  hasContent
+                    ? 'bg-foreground text-background cursor-pointer shadow-sm hover:opacity-90'
+                    : 'bg-foreground/6 text-muted-foreground/30 cursor-not-allowed'
+                }`}
+              >
+                <HugeiconsIcon icon={ArrowUp01Icon} className="h-4 w-4" />
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
       </form>
+
       {isHero && (
         <motion.div
-          className="mt-4 flex justify-center text-[11px] text-muted-foreground/40"
+          className="mt-3 flex justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.6 }}
         >
           {mounted && (
-            <span key={disclaimerIndex} className="text-center px-4">
+            <span
+              key={disclaimerIndex}
+              className="text-[10px] text-muted-foreground/35 text-center px-4 leading-relaxed"
+            >
               {disclaimers[disclaimerIndex]}
             </span>
           )}

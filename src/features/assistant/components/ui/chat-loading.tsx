@@ -6,28 +6,31 @@ export function ChatLoading() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
+      initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      className="flex items-center gap-3"
+      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      className="flex items-center gap-2.5 pl-1"
     >
-      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <div className="flex gap-1">
-          <span
-            className="size-1.5 rounded-full bg-muted-foreground/60 animate-bounce"
-            style={{ animationDelay: '0ms', animationDuration: '1.2s' }}
+      {/* Animated typing dots */}
+      <div className="flex items-center gap-1 px-3 py-2.5 rounded-xl bg-muted/40 border border-border/30">
+        {[0, 1, 2].map((i) => (
+          <motion.span
+            key={i}
+            className="block size-1.5 rounded-full bg-muted-foreground/50"
+            animate={{
+              scaleY: [1, 1.8, 1],
+              opacity: [0.4, 1, 0.4],
+            }}
+            transition={{
+              duration: 0.9,
+              repeat: Infinity,
+              delay: i * 0.18,
+              ease: 'easeInOut',
+            }}
           />
-          <span
-            className="size-1.5 rounded-full bg-muted-foreground/60 animate-bounce"
-            style={{ animationDelay: '150ms', animationDuration: '1.2s' }}
-          />
-          <span
-            className="size-1.5 rounded-full bg-muted-foreground/60 animate-bounce"
-            style={{ animationDelay: '300ms', animationDuration: '1.2s' }}
-          />
-        </div>
-        <span>{t('thinking')}</span>
+        ))}
       </div>
+      <span className="text-[11px] text-muted-foreground/50 tracking-wide">{t('thinking')}</span>
     </motion.div>
   );
 }

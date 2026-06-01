@@ -6,6 +6,7 @@ import { AssistantAvatar } from './ui/assistant-avatar';
 import { ChatLoading } from './ui/chat-loading';
 import { ChatMessage } from './chat-message';
 import { ChatSuggestions } from './ui/chat-suggestions';
+import { motion } from 'motion/react';
 
 interface ChatMessagesProps {
   messages: Message[];
@@ -42,26 +43,57 @@ export function ChatMessages({ messages, isLoading, onSuggestionClick }: ChatMes
   const showSuggestions = messages.length === 1 && messages[0].role === 'assistant';
 
   return (
-    <div className="space-y-5 container">
+    <div className="flex flex-col gap-6 container">
       {messages.map((msg, idx) => {
         const isAssistant = msg.role === 'assistant';
         return (
-          <div key={idx} className={`flex ${isAssistant ? 'flex-col gap-3' : 'justify-end'}`}>
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className={`flex ${isAssistant ? 'flex-col gap-2.5' : 'justify-end'}`}
+          >
             {isAssistant && (
               <div className="flex items-center gap-2">
-                <AssistantAvatar />
+                <AssistantAvatar size="sm" />
+                <span className="text-[10px] font-medium text-muted-foreground/60 tracking-wide uppercase">
+                  Assistant
+                </span>
               </div>
             )}
-            <div className="flex-1">
+            <div className={isAssistant ? 'pl-6' : ''}>
               <ChatMessage message={msg} />
             </div>
-          </div>
+          </motion.div>
         );
       })}
 
-      {showSuggestions && !isLoading && <ChatSuggestions onSuggestionClick={onSuggestionClick} />}
+      {showSuggestions && !isLoading && (
+        <motion.div
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: 0.1 }}
+          className="pl-6"
+        >
+          <ChatSuggestions onSuggestionClick={onSuggestionClick} />
+        </motion.div>
+      )}
 
-      {isLoading && <ChatLoading />}
+      {isLoading && (
+        <div className="flex flex-col gap-2.5">
+          <div className="flex items-center gap-2">
+            <AssistantAvatar size="sm" />
+            <span className="text-[10px] font-medium text-muted-foreground/60 tracking-wide uppercase">
+              Assistant
+            </span>
+          </div>
+          <div className="pl-6">
+            <ChatLoading />
+          </div>
+        </div>
+      )}
+
       <div ref={messagesEndRef} />
     </div>
   );

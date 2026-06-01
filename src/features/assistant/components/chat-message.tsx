@@ -13,7 +13,7 @@ interface ChatMessageProps {
 }
 
 const MOTION_VARIANTS = {
-  initial: { opacity: 0, y: 8 },
+  initial: { opacity: 0, y: 10 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
 };
@@ -34,26 +34,24 @@ export function ChatMessage({ message }: ChatMessageProps) {
   return (
     <motion.div
       variants={MOTION_VARIANTS}
-      className={`flex w-full ${isUser ? 'justify-end' : 'justify-start'}`}
+      className={`flex w-full min-w-0 ${isUser ? 'justify-end' : 'justify-start'}`}
     >
-      <div
-        className={`max-w-full ${
-          isUser ? 'bg-foreground text-background rounded-2xl rounded-br-sm px-4 py-2.5' : ''
-        }`}
-      >
-        {isUser ? (
-          <p className="text-sm whitespace-pre-wrap leading-relaxed">{cleanContent}</p>
-        ) : (
-          <div className="flex flex-col space-y-12">
-            {contentBlocks.map((block, index) => (
-              <Fragment key={index}>
-                {block}
-                {index < contentBlocks.length - 1 && <Separator label="o" />}
-              </Fragment>
-            ))}
-          </div>
-        )}
-      </div>
+      {isUser ? (
+        <div className="min-w-0 max-w-[82%] overflow-hidden bg-foreground text-background rounded-2xl rounded-br-sm px-4 py-2.5 shadow-sm">
+          <p className="text-sm whitespace-pre-wrap wrap-break-word leading-relaxed">
+            {cleanContent}
+          </p>
+        </div>
+      ) : (
+        <div className="max-w-full flex flex-col space-y-10 text-sm">
+          {contentBlocks.map((block, index) => (
+            <Fragment key={index}>
+              {block}
+              {index < contentBlocks.length - 1 && <Separator label="o" />}
+            </Fragment>
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 }
