@@ -1,5 +1,6 @@
 'use client';
 
+import { sendContactEmailAction } from '@/features/home/actions/send-email';
 import { ASSISTANT_API_URL } from '@/shared/lib/constants';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -95,6 +96,57 @@ export function useChat() {
           persistMessages(prev);
           return prev;
         });
+
+        // Intercept [SEND_EMAIL_TRIGGER] and trigger NextJS server action from client
+        if (streamedText.includes('[SEND_EMAIL_TRIGGER]')) {
+          const match = streamedText.match(/\[SEND_EMAIL_TRIGGER\](\{[\s\S]*?\})/);
+          if (match) {
+            try {
+              const { name, email, message: msgBody } = JSON.parse(match[1]);
+
+              // Transition to sending state
+              setMessages((prev) => {
+                const updated = [...prev];
+                const lastMsg = updated[updated.length - 1];
+                if (lastMsg) {
+                  lastMsg.content = streamedText.replace(
+                    /\[SEND_EMAIL_TRIGGER\]\{[\s\S]*?\}/,
+                    '[EMAIL_SENDING]',
+                  );
+                }
+                persistMessages(updated);
+                return updated;
+              });
+
+              const result = await sendContactEmailAction({
+                name,
+                email,
+                message: msgBody,
+              });
+
+              // Update state based on result
+              setMessages((prev) => {
+                const updated = [...prev];
+                const lastMsg = updated[updated.length - 1];
+                if (lastMsg) {
+                  if (result.success) {
+                    lastMsg.content = lastMsg.content.replace('[EMAIL_SENDING]', '[EMAIL_SUCCESS]');
+                  } else {
+                    const errorMsg = result.error || 'Unknown error';
+                    lastMsg.content = lastMsg.content.replace(
+                      '[EMAIL_SENDING]',
+                      `[EMAIL_ERROR:${errorMsg}]`,
+                    );
+                  }
+                }
+                persistMessages(updated);
+                return updated;
+              });
+            } catch (e) {
+              console.error('Failed to parse email trigger:', e);
+            }
+          }
+        }
       } catch (error) {
         if ((error as Error).name === 'AbortError') return;
 

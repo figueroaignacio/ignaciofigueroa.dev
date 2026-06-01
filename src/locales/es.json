@@ -278,7 +278,10 @@
         "initial": "¡Hola! 👋 ¿En qué puedo ayudarte hoy?",
         "error": "Lo siento, ocurrió un error. Por favor, intenta de nuevo.",
         "tooltip": "Hey, ¿Que onda?",
-        "thinking": "Pensando..."
+        "thinking": "Pensando...",
+        "emailSending": "Enviando mensaje...",
+        "emailSuccess": "¡Mensaje enviado con éxito!",
+        "emailError": "Error al enviar el mensaje."
       },
       "suggestions": {
         "title": "Prueba con...",

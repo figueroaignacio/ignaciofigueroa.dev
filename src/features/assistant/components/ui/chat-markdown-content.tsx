@@ -25,11 +25,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         p: ({ children }) => (
           <p className="mb-3 last:mb-0 text-sm text-foreground/90 leading-relaxed">{children}</p>
         ),
-        ul: ({ children }) => (
-          <ul className="list-none ml-0 mb-3.5 space-y-1.5">
-            {children}
-          </ul>
-        ),
+        ul: ({ children }) => <ul className="list-none ml-0 mb-3.5 space-y-1.5">{children}</ul>,
         ol: ({ children }) => (
           <ol className="list-decimal list-outside ml-4 mb-3.5 space-y-1.5 text-sm text-foreground/90 marker:text-muted-foreground/50 marker:text-xs">
             {children}
@@ -92,7 +88,9 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
           </blockquote>
         ),
         hr: () => <hr className="my-4 border-border/30" />,
-        strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+        strong: ({ children }) => (
+          <strong className="font-semibold text-foreground">{children}</strong>
+        ),
         em: ({ children }) => <em className="italic text-foreground/75">{children}</em>,
       }}
     >

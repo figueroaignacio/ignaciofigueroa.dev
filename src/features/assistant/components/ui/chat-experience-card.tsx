@@ -15,8 +15,8 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       {/* Glow node for active experience */}
       <div
         className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
-          experience.isCurrent 
-            ? 'border-foreground bg-foreground' 
+          experience.isCurrent
+            ? 'border-foreground bg-foreground'
             : 'border-border/60 bg-muted/40 group-hover:border-foreground/50'
         }`}
       >
@@ -28,10 +28,12 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
           className={`size-3 transition-colors ${experience.isCurrent ? 'text-background' : 'text-muted-foreground'}`}
         />
       </div>
-      
+
       <div className="space-y-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="font-semibold text-foreground tracking-tight text-sm sm:text-base">{experience.title}</h3>
+          <h3 className="font-semibold text-foreground tracking-tight text-sm sm:text-base">
+            {experience.title}
+          </h3>
           {experience.isCurrent && (
             <Badge className="text-[10px] px-1.5 py-0 bg-foreground text-background hover:opacity-90 border-none font-medium rounded-md">
               {locale === 'es' ? 'Actual' : 'Current'}
@@ -72,7 +74,10 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       {experience.tasks && experience.tasks.length > 0 && (
         <ul className="space-y-1.5 mt-2">
           {experience.tasks.map((task) => (
-            <li key={task.id} className="text-[13px] text-foreground/80 leading-relaxed flex gap-2 items-start">
+            <li
+              key={task.id}
+              className="text-[13px] text-foreground/80 leading-relaxed flex gap-2 items-start"
+            >
               <span className="text-muted-foreground/40 mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-muted-foreground/45 block" />
               <span>{task.item}</span>
             </li>
@@ -83,9 +88,9 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       {experience.technologies && experience.technologies.length > 0 && (
         <div className="flex flex-wrap gap-1.5 pt-1">
           {experience.technologies.map((tech) => (
-            <Badge 
-              key={tech.id} 
-              variant="secondary" 
+            <Badge
+              key={tech.id}
+              variant="secondary"
               className="text-[10px] px-2 py-0.5 font-medium rounded-md"
             >
               {tech.name}

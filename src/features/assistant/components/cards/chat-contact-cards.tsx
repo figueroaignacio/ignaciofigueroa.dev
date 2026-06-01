@@ -40,7 +40,9 @@ export function ChatContactCards() {
 
   return (
     <div className="flex flex-col gap-3.5 mt-2">
-      <h2 className="text-base sm:text-lg font-bold tracking-tight text-foreground">{t('title')}</h2>
+      <h2 className="text-base sm:text-lg font-bold tracking-tight text-foreground">
+        {t('title')}
+      </h2>
       <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-1">

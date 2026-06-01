@@ -75,9 +75,10 @@ export function ChatInput({
             : 'border-border/40 bg-card/60 dark:bg-card/30 backdrop-blur-md hover:border-border/80 hover:bg-card'
         } ${isHero ? 'min-h-14' : 'min-h-12'} ${isLoading ? 'opacity-70' : ''}`}
       >
-        {/* Subtle decorative brand status dot */}
         <div className="absolute top-3.5 left-4 flex items-center justify-center pointer-events-none">
-          <span className={`w-2 h-2 rounded-full transition-all duration-500 ${isFocused ? 'bg-foreground/60 animate-pulse' : 'bg-muted-foreground/30'}`} />
+          <span
+            className={`w-2 h-2 rounded-full transition-all duration-500 ${isFocused ? 'bg-foreground/60 animate-pulse' : 'bg-muted-foreground/30'}`}
+          />
         </div>
 
         <textarea
@@ -114,7 +115,7 @@ export function ChatInput({
                 initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.85, opacity: 0 }}
-                whileTap={{ scale: 0.90 }}
+                whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', damping: 12, stiffness: 200 }}
                 disabled={!hasContent}
                 className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-200 ${
@@ -123,7 +124,7 @@ export function ChatInput({
                     : 'bg-muted-foreground/10 text-muted-foreground/30 cursor-not-allowed'
                 }`}
               >
-                <HugeiconsIcon icon={ArrowUp01Icon} className="h-4 w-4 stroke-[2]" />
+                <HugeiconsIcon icon={ArrowUp01Icon} className="h-4 w-4 stroke-2" />
               </motion.button>
             )}
           </AnimatePresence>

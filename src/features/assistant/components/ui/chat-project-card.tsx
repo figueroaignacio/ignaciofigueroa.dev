@@ -17,7 +17,9 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
   return (
     <article className="group flex flex-col gap-3 p-5 rounded-2xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:border-border/80 hover:bg-card hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.25)] transition-all duration-300 relative overflow-hidden text-sm">
       <div className="flex items-start justify-between gap-4">
-        <h3 className="font-semibold text-foreground tracking-tight group-hover:text-foreground transition-colors duration-200">{title}</h3>
+        <h3 className="font-semibold text-foreground tracking-tight group-hover:text-foreground transition-colors duration-200">
+          {title}
+        </h3>
         <div className="flex items-center gap-2.5 shrink-0 pt-0.5">
           {repository && (
             <a

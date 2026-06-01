@@ -56,8 +56,8 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
               stiffness: 200,
               delay: index * 0.04,
             }}
-            whileHover={{ 
-              scale: 1.03, 
+            whileHover={{
+              scale: 1.03,
               y: -2,
             }}
             whileTap={{ scale: 0.97 }}

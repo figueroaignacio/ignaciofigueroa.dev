@@ -279,7 +279,10 @@
         "initial": "Hi! 👋 How can I help you today?",
         "error": "I'm sorry, I encountered an error. Please try again.",
         "tooltip": "Ask me about Ignacio",
-        "thinking": "Thinking..."
+        "thinking": "Thinking...",
+        "emailSending": "Sending message...",
+        "emailSuccess": "Message sent successfully!",
+        "emailError": "Failed to send message."
       },
       "suggestions": {
         "title": "Try with...",
