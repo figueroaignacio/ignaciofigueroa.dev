@@ -168,6 +168,7 @@ type DialogOverlayProps = HTMLMotionProps<'div'> & {
 const DialogOverlay = ({
   className,
   ref,
+  style,
   ...props
 }: DialogOverlayProps & { ref?: React.Ref<HTMLDivElement> }) => {
   const { setOpen } = useDialogContext();
@@ -180,7 +181,7 @@ const DialogOverlay = ({
       animate="animate"
       exit="exit"
       transition={OVERLAY_TRANSITION}
-      style={OVERLAY_STYLE}
+      style={{ ...OVERLAY_STYLE, ...style }}
       className={cn('fixed inset-0 z-200 bg-white/10 dark:bg-black/40', className)}
       onClick={() => setOpen(false)}
       {...props}
@@ -192,11 +193,13 @@ DialogOverlay.displayName = 'DialogOverlay';
 type DialogContentProps = {
   className?: string;
   children?: React.ReactNode;
+  zIndex?: number;
 };
 
 const DialogContent = ({
   className,
   children,
+  zIndex,
   ref,
 }: DialogContentProps & { ref?: React.Ref<HTMLDivElement> }) => {
   const { id, open, setOpen } = useDialogContext();
@@ -268,7 +271,7 @@ const DialogContent = ({
     <AnimatePresence mode="wait">
       {open && (
         <DialogPortal>
-          <DialogOverlay />
+          <DialogOverlay style={zIndex !== undefined ? { zIndex: zIndex - 1 } : undefined} />
           <motion.div
             ref={(node) => {
               contentRef.current = node;
@@ -284,7 +287,7 @@ const DialogContent = ({
             animate="animate"
             exit={{ ...DIALOG_VARIANTS.exit, transition: DIALOG_EXIT_TRANSITION }}
             transition={DIALOG_TRANSITION}
-            style={DIALOG_STYLE}
+            style={zIndex !== undefined ? { ...DIALOG_STYLE, zIndex } : DIALOG_STYLE}
             className={cn(
               'bg-background fixed top-[50%] left-[50%] z-500 grid w-full max-w-xl translate-x-[-50%] translate-y-[-50%] gap-4 rounded-xl border border-border p-6',
               className,
