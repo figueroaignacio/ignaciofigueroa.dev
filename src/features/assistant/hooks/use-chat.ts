@@ -130,7 +130,11 @@ export function useChat() {
                 const lastMsg = updated[updated.length - 1];
                 if (lastMsg) {
                   if (result.success) {
-                    lastMsg.content = lastMsg.content.replace('[EMAIL_SENDING]', '[EMAIL_SUCCESS]');
+                    const successPayload = JSON.stringify({ name, email, message: msgBody });
+                    lastMsg.content = lastMsg.content.replace(
+                      '[EMAIL_SENDING]',
+                      `[EMAIL_SUCCESS:${successPayload}]`,
+                    );
                   } else {
                     const errorMsg = result.error || 'Unknown error';
                     lastMsg.content = lastMsg.content.replace(
