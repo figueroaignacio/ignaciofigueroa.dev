@@ -35,12 +35,10 @@ export function Dock() {
     setMounted(true);
   }, []);
 
-  // Close floating chat when route changes
   useEffect(() => {
     setIsChatOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when chat is open
   useEffect(() => {
     document.body.style.overflow = isChatOpen ? 'hidden' : '';
     return () => {
@@ -107,7 +105,7 @@ export function Dock() {
                 exit={{ opacity: 0 }}
                 onClick={() => setIsChatOpen(false)}
                 style={{ zIndex: 10999999 }}
-                className="fixed inset-0 bg-background/40 backdrop-blur-sm dark:bg-black/50"
+                className="fixed inset-0 bg-background/40  dark:bg-black/50"
               />
               <motion.div
                 key="chat-panel"
