@@ -23,21 +23,21 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
           </h3>
         ),
         p: ({ children }) => (
-          <p className="mb-2.5 last:mb-0 text-[13px] text-foreground/85 leading-[1.75]">{children}</p>
+          <p className="mb-3 last:mb-0 text-sm text-foreground/90 leading-relaxed">{children}</p>
         ),
         ul: ({ children }) => (
-          <ul className="list-none ml-0 mb-3 space-y-1.5">
+          <ul className="list-none ml-0 mb-3.5 space-y-1.5">
             {children}
           </ul>
         ),
         ol: ({ children }) => (
-          <ol className="list-decimal list-outside ml-4 mb-3 space-y-1.5 text-[13px] text-foreground/85 marker:text-muted-foreground/50 marker:text-xs">
+          <ol className="list-decimal list-outside ml-4 mb-3.5 space-y-1.5 text-sm text-foreground/90 marker:text-[#E8845A]/50 marker:text-xs font-medium">
             {children}
           </ol>
         ),
         li: ({ children }) => (
-          <li className="flex gap-2 items-start text-[13px] text-foreground/85 leading-[1.7]">
-            <span className="mt-[7px] shrink-0 w-1 h-1 rounded-full bg-muted-foreground/40 block" />
+          <li className="flex gap-2 items-start text-sm text-foreground/90 leading-relaxed">
+            <span className="mt-[8px] shrink-0 w-1.5 h-1.5 rounded-full bg-[#E8845A]/70 block" />
             <span>{children}</span>
           </li>
         ),
@@ -49,13 +49,16 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         }: ComponentProps<'code'> & { inline?: boolean }) => {
           const match = /language-(\w+)/.exec(className || '');
           return !inline ? (
-            <div className="relative my-3 rounded-lg overflow-hidden border border-border/40 bg-muted/30 dark:bg-muted/20">
-              <div className="flex items-center justify-between px-3.5 py-1.5 bg-muted/50 dark:bg-muted/30 border-b border-border/30">
-                <span className="text-[10px] font-mono text-muted-foreground/60 tracking-wide uppercase">
-                  {match?.[1] || 'code'}
-                </span>
+            <div className="relative my-3 rounded-xl overflow-hidden border border-border/40 bg-card/40 dark:bg-card/20 shadow-xs">
+              <div className="flex items-center justify-between px-3.5 py-2 bg-card/65 dark:bg-card/45 border-b border-border/40 backdrop-blur-md">
+                <div className="flex items-center gap-1.5">
+                  <span className="size-2 rounded-full bg-[#E8845A]/85" />
+                  <span className="text-[10px] font-bold font-mono text-muted-foreground/60 tracking-wider uppercase">
+                    {match?.[1] || 'code'}
+                  </span>
+                </div>
               </div>
-              <div className="p-3.5 overflow-x-auto">
+              <div className="p-4 overflow-x-auto bg-[#1b1b1c]/80 dark:bg-black/40">
                 <code
                   className={`block text-[12px] font-mono text-foreground/90 leading-relaxed ${className ?? ''}`}
                   {...props}
@@ -66,7 +69,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             </div>
           ) : (
             <code
-              className="bg-muted/60 dark:bg-muted/40 text-foreground/90 px-1.5 py-0.5 rounded-md text-[12px] font-mono font-medium border border-border/30"
+              className="bg-[#E8845A]/8 dark:bg-[#E8845A]/12 text-[#E8845A] px-1.5 py-0.5 rounded-md text-[12px] font-mono font-semibold border border-[#E8845A]/15"
               {...props}
             >
               {children}
