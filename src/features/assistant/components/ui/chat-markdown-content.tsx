@@ -31,13 +31,13 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
           </ul>
         ),
         ol: ({ children }) => (
-          <ol className="list-decimal list-outside ml-4 mb-3.5 space-y-1.5 text-sm text-foreground/90 marker:text-[#E8845A]/50 marker:text-xs font-medium">
+          <ol className="list-decimal list-outside ml-4 mb-3.5 space-y-1.5 text-sm text-foreground/90 marker:text-muted-foreground/50 marker:text-xs">
             {children}
           </ol>
         ),
         li: ({ children }) => (
           <li className="flex gap-2 items-start text-sm text-foreground/90 leading-relaxed">
-            <span className="mt-[8px] shrink-0 w-1.5 h-1.5 rounded-full bg-[#E8845A]/70 block" />
+            <span className="mt-[8px] shrink-0 w-1.5 h-1.5 rounded-full bg-muted-foreground/45 block" />
             <span>{children}</span>
           </li>
         ),
@@ -52,7 +52,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             <div className="relative my-3 rounded-xl overflow-hidden border border-border/40 bg-card/40 dark:bg-card/20 shadow-xs">
               <div className="flex items-center justify-between px-3.5 py-2 bg-card/65 dark:bg-card/45 border-b border-border/40 backdrop-blur-md">
                 <div className="flex items-center gap-1.5">
-                  <span className="size-2 rounded-full bg-[#E8845A]/85" />
+                  <span className="size-2 rounded-full bg-muted-foreground/50" />
                   <span className="text-[10px] font-bold font-mono text-muted-foreground/60 tracking-wider uppercase">
                     {match?.[1] || 'code'}
                   </span>
@@ -69,7 +69,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             </div>
           ) : (
             <code
-              className="bg-[#E8845A]/8 dark:bg-[#E8845A]/12 text-[#E8845A] px-1.5 py-0.5 rounded-md text-[12px] font-mono font-semibold border border-[#E8845A]/15"
+              className="bg-muted/60 dark:bg-muted/40 text-foreground/90 px-1.5 py-0.5 rounded-md text-[12px] font-mono font-medium border border-border/30"
               {...props}
             >
               {children}

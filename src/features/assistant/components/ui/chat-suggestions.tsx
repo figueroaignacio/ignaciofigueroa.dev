@@ -59,10 +59,9 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
             whileHover={{ 
               scale: 1.03, 
               y: -2,
-              boxShadow: '0 4px 12px rgba(232, 132, 90, 0.08)' 
             }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border/40 bg-card/60 dark:bg-card/30 hover:bg-gradient-to-r hover:from-[#E8845A]/10 hover:to-[#D4704A]/5 hover:border-[#E8845A]/35 text-muted-foreground hover:text-[#E8845A] transition-all duration-200 cursor-pointer shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border/40 bg-card/60 dark:bg-card/30 hover:bg-card hover:border-border/80 text-muted-foreground hover:text-foreground transition-all duration-200 cursor-pointer shadow-xs"
           >
             <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-80" />
             <span className="text-[11px] font-medium tracking-wide">{suggestion.text}</span>

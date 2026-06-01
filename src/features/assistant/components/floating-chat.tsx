@@ -76,7 +76,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
               <Dialog.Trigger asChild>
                 <button
                   type="button"
-                  className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-[#E8845A] hover:bg-[#E8845A]/10 transition-all duration-200"
+                  className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200"
                   title={t('header.reset')}
                 >
                   <HugeiconsIcon icon={Message01Icon} className="size-4" />
@@ -103,7 +103,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
 
           <Link
             href="/assistant"
-            className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-[#E8845A] hover:bg-[#E8845A]/10 transition-all duration-200"
+            className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200"
             aria-label="Expand to full screen"
             title="Open full page"
             onClick={onClose}

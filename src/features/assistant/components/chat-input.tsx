@@ -71,13 +71,13 @@ export function ChatInput({
         onSubmit={handleSubmit}
         className={`relative flex items-end gap-2 rounded-2xl border transition-all duration-300 ${
           isFocused
-            ? 'border-[#E8845A]/40 bg-card shadow-[0_0_0_4px_rgba(232,132,90,0.12)]'
+            ? 'border-foreground/20 bg-card shadow-[0_0_0_4px_rgba(0,0,0,0.04)] dark:shadow-[0_0_0_4px_rgba(255,255,255,0.04)]'
             : 'border-border/40 bg-card/60 dark:bg-card/30 backdrop-blur-md hover:border-border/80 hover:bg-card'
         } ${isHero ? 'min-h-14' : 'min-h-12'} ${isLoading ? 'opacity-70' : ''}`}
       >
         {/* Subtle decorative brand status dot */}
         <div className="absolute top-3.5 left-4 flex items-center justify-center pointer-events-none">
-          <span className={`w-2 h-2 rounded-full transition-all duration-500 ${isFocused ? 'bg-[#E8845A] shadow-[0_0_8px_rgba(232,132,90,0.6)] animate-pulse' : 'bg-muted-foreground/30'}`} />
+          <span className={`w-2 h-2 rounded-full transition-all duration-500 ${isFocused ? 'bg-foreground/60 animate-pulse' : 'bg-muted-foreground/30'}`} />
         </div>
 
         <textarea
@@ -103,7 +103,7 @@ export function ChatInput({
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.85, opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#E8845A]/10 text-[#E8845A]"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-foreground/10 text-muted-foreground"
               >
                 <Spinner />
               </motion.div>
@@ -119,7 +119,7 @@ export function ChatInput({
                 disabled={!hasContent}
                 className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-200 ${
                   hasContent
-                    ? 'bg-[#E8845A] text-white cursor-pointer shadow-[0_2px_8px_rgba(232,132,90,0.25)] hover:bg-[#D4704A] hover:shadow-[0_4px_12px_rgba(232,132,90,0.4)]'
+                    ? 'bg-foreground text-background cursor-pointer shadow-sm hover:opacity-90'
                     : 'bg-muted-foreground/10 text-muted-foreground/30 cursor-not-allowed'
                 }`}
               >

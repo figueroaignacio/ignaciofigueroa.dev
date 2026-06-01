@@ -1,4 +1,3 @@
-import { Separator } from '@/shared/components/ui/separator';
 import { motion } from 'motion/react';
 import { Fragment } from 'react';
 import { parseMessageContent } from '../lib/parse-message';
@@ -37,7 +36,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       className={`flex w-full min-w-0 ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       {isUser ? (
-        <div className="min-w-0 max-w-[82%] overflow-hidden bg-gradient-to-br from-[#E8845A] to-[#D4704A] text-white rounded-2xl rounded-br-xs px-4 py-2.5 shadow-sm shadow-[#E8845A]/10 border border-[#E8845A]/10">
+        <div className="min-w-0 max-w-full overflow-hidden bg-foreground text-background rounded-2xl rounded-br-xs px-4.5 py-2.5 shadow-sm border border-foreground/10">
           <p className="text-[13px] sm:text-sm font-medium whitespace-pre-wrap wrap-break-word leading-relaxed">
             {cleanContent}
           </p>

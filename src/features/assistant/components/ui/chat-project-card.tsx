@@ -15,12 +15,9 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
     technologies?.filter((tech): tech is TechStack => typeof tech === 'object') ?? [];
 
   return (
-    <article className="group flex flex-col gap-3 p-5 rounded-2xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:border-[#E8845A]/30 hover:bg-card hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.25)] transition-all duration-300 relative overflow-hidden text-sm">
-      {/* Decorative accent gradient line on hover */}
-      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#E8845A] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
+    <article className="group flex flex-col gap-3 p-5 rounded-2xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:border-border/80 hover:bg-card hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.25)] transition-all duration-300 relative overflow-hidden text-sm">
       <div className="flex items-start justify-between gap-4">
-        <h3 className="font-semibold text-foreground tracking-tight group-hover:text-[#E8845A] transition-colors duration-200">{title}</h3>
+        <h3 className="font-semibold text-foreground tracking-tight group-hover:text-foreground transition-colors duration-200">{title}</h3>
         <div className="flex items-center gap-2.5 shrink-0 pt-0.5">
           {repository && (
             <a
@@ -28,7 +25,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('source')}
-              className="text-muted-foreground hover:text-[#E8845A] hover:scale-110 transition-all duration-150"
+              className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all duration-150"
             >
               <HugeiconsIcon icon={CodeIcon} className="size-4" />
             </a>
@@ -39,7 +36,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('preview')}
-              className="text-muted-foreground hover:text-[#E8845A] hover:scale-110 transition-all duration-150"
+              className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all duration-150"
             >
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
             </a>
@@ -48,7 +45,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
             <Link
               href={`/projects/${slug}`}
               aria-label={t('details')}
-              className="text-muted-foreground hover:text-[#E8845A] hover:scale-110 transition-all duration-150"
+              className="text-muted-foreground hover:text-foreground hover:scale-110 transition-all duration-150"
             >
               <HugeiconsIcon icon={InformationCircleIcon} className="size-4" />
             </Link>
@@ -60,8 +57,8 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
           {techList.map((tech) => (
             <Badge
               key={tech.id}
-              variant="outline"
-              className="text-[10px] px-2 py-0.5 font-medium border-[#E8845A]/15 bg-[#E8845A]/5 dark:bg-[#E8845A]/10 text-[#E8845A] dark:text-[#E8845A] rounded-md transition-colors"
+              variant="secondary"
+              className="text-[10px] px-2 py-0.5 font-medium rounded-md"
             >
               {tech.name}
             </Badge>

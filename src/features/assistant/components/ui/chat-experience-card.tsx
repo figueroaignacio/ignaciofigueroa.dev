@@ -16,16 +16,16 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       <div
         className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
           experience.isCurrent 
-            ? 'border-[#E8845A] bg-[#E8845A]' 
-            : 'border-border/60 bg-muted/40 group-hover:border-[#E8845A]/50'
+            ? 'border-foreground bg-foreground' 
+            : 'border-border/60 bg-muted/40 group-hover:border-foreground/50'
         }`}
       >
         {experience.isCurrent && (
-          <span className="absolute inset-0 rounded-full bg-[#E8845A] opacity-40 animate-ping" />
+          <span className="absolute inset-0 rounded-full bg-foreground opacity-30 animate-ping" />
         )}
         <HugeiconsIcon
           icon={Briefcase01Icon}
-          className={`size-3 transition-colors ${experience.isCurrent ? 'text-white' : 'text-muted-foreground'}`}
+          className={`size-3 transition-colors ${experience.isCurrent ? 'text-background' : 'text-muted-foreground'}`}
         />
       </div>
       
@@ -33,7 +33,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
         <div className="flex items-center gap-2 flex-wrap">
           <h3 className="font-semibold text-foreground tracking-tight text-sm sm:text-base">{experience.title}</h3>
           {experience.isCurrent && (
-            <Badge className="text-[10px] px-1.5 py-0 bg-[#E8845A] text-white hover:bg-[#D4704A] border-none font-medium rounded-md">
+            <Badge className="text-[10px] px-1.5 py-0 bg-foreground text-background hover:opacity-90 border-none font-medium rounded-md">
               {locale === 'es' ? 'Actual' : 'Current'}
             </Badge>
           )}
@@ -44,7 +44,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
               href={experience.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-[#E8845A] hover:underline underline-offset-2 transition-colors inline-flex items-center gap-1 font-medium"
+              className="text-muted-foreground hover:text-foreground hover:underline underline-offset-2 transition-colors inline-flex items-center gap-1 font-medium"
             >
               {experience.company}
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-3" />
@@ -73,7 +73,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
         <ul className="space-y-1.5 mt-2">
           {experience.tasks.map((task) => (
             <li key={task.id} className="text-[13px] text-foreground/80 leading-relaxed flex gap-2 items-start">
-              <span className="text-[#E8845A] mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-[#E8845A]/80 block" />
+              <span className="text-muted-foreground/40 mt-1.5 shrink-0 w-1.5 h-1.5 rounded-full bg-muted-foreground/45 block" />
               <span>{task.item}</span>
             </li>
           ))}
@@ -85,8 +85,8 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
           {experience.technologies.map((tech) => (
             <Badge 
               key={tech.id} 
-              variant="outline" 
-              className="text-[10px] px-2 py-0.5 font-medium border-[#E8845A]/15 bg-[#E8845A]/5 dark:bg-[#E8845A]/10 text-[#E8845A] dark:text-[#E8845A] rounded-md transition-colors"
+              variant="secondary" 
+              className="text-[10px] px-2 py-0.5 font-medium rounded-md"
             >
               {tech.name}
             </Badge>

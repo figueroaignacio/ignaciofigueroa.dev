@@ -20,8 +20,8 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         transition={{ type: 'spring', damping: 20, stiffness: 150 }}
         className="relative"
       >
-        {/* Glowing, pulsing background gradient aligned with the amber terracotta theme */}
-        <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-gradient-to-tr from-[#E8845A]/20 to-[#D4704A]/30 scale-150 animate-pulse duration-[6000ms]" />
+        {/* Glowing, pulsing background gradient using the original primary/15 */}
+        <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-primary/15 scale-150 animate-pulse duration-[6000ms]" />
         <div className="p-3 bg-card/40 border border-border/30 rounded-2xl backdrop-blur-md shadow-lg">
           <AssistantAvatar size="xl" />
         </div>
@@ -33,7 +33,7 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h1 className="text-3xl font-extrabold tracking-tight text-balance leading-tight bg-gradient-to-br from-foreground via-foreground/90 to-[#E8845A] bg-clip-text text-transparent">
+        <h1 className="text-3xl font-extrabold tracking-tight text-balance leading-tight text-foreground">
           {t('greeting')}
         </h1>
         <p className="text-muted-foreground text-sm max-w-sm mx-auto text-balance leading-relaxed">

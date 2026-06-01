@@ -52,7 +52,7 @@ export function ChatContactCards() {
               href={contact.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:bg-card hover:border-[#E8845A]/35 text-muted-foreground hover:text-[#E8845A] hover:-translate-y-0.5 transition-all duration-200 shadow-xs hover:shadow-sm"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:bg-card hover:border-border text-muted-foreground hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 shadow-xs hover:shadow-sm"
             >
               <div className="size-6 rounded-lg bg-muted-foreground/5 flex items-center justify-center shrink-0">
                 {typeof Icon === 'function' ? (
