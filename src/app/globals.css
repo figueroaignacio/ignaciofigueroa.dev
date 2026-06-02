@@ -4,26 +4,26 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
-  --card: #f2f2f2;
-  --card-foreground: #0a0a0a;
+  --foreground: #1f1f1f;
+  --card: #ffffff;
+  --card-foreground: #1f1f1f;
   --popover: #ffffff;
-  --popover-foreground: #0a0a0a;
-  --primary: #2563eb;
+  --popover-foreground: #1f1f1f;
+  --primary: #1a73e8;
   --primary-foreground: #ffffff;
-  --secondary: #e5e5e5;
-  --secondary-foreground: #0a0a0a;
-  --muted: #fafafa;
-  --muted-foreground: #737373;
-  --accent: #e5e5e5;
-  --accent-foreground: #2563eb;
-  --destructive: #ef4444;
+  --secondary: #e9eef6;
+  --secondary-foreground: #1f1f1f;
+  --muted: #f0f4f9;
+  --muted-foreground: #444746;
+  --accent: #dde3ea;
+  --accent-foreground: #1a73e8;
+  --destructive: #d93025;
   --destructive-foreground: #ffffff;
-  --border: #e5e5e5;
+  --border: #e3e3e3;
   --input: #ffffff;
-  --ring: #2563eb;
+  --ring: #0b57d0;
   --radius: 1.25rem;
-  --grid-color: rgba(10, 10, 10, 0.02);
+  --grid-color: rgba(0, 0, 0, 0.02);
 }
 
 .dark {
