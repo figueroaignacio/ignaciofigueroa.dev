@@ -144,7 +144,7 @@ export function Dock() {
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.1 }}
-          className="flex items-center gap-2 rounded-2xl border border-foreground/10 bg-foreground px-2.5 py-2.5 shadow-2xl"
+          className="flex items-center gap-1.5 rounded-2xl border border-border/80 bg-background/80 backdrop-blur-xl px-2 py-2 shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]"
         >
           {navigation.map((item) => {
             const isAssistant = item.href === '/assistant';
@@ -156,7 +156,7 @@ export function Dock() {
                   {active && (
                     <motion.span
                       layoutId="dock-indicator"
-                      className="absolute inset-0 rounded-xl bg-background/10"
+                      className="absolute inset-0 rounded-xl bg-secondary/85 border border-border/50"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
@@ -187,7 +187,7 @@ export function Dock() {
               'transition-all duration-150 ease-out',
               'active:scale-95',
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
-              active ? 'text-background' : 'text-background/40 hover:text-background/80',
+              active ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground/80',
             );
 
             if (isAssistant) {
