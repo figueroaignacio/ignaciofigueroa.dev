@@ -1,9 +1,8 @@
 'use client';
 
 import { useChat } from '@/features/assistant/hooks/use-chat';
-import { Link } from '@/i18n/navigation';
 import { Dialog } from '@/shared/components/ui/dialog';
-import { Cancel01Icon, Maximize01Icon, Message01Icon } from '@hugeicons/core-free-icons';
+import { Cancel01Icon, Maximize01Icon, Minimize01Icon, Message01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
@@ -14,9 +13,11 @@ import { AssistantAvatar } from './ui/assistant-avatar';
 
 interface FloatingChatProps {
   onClose: () => void;
+  isExpanded?: boolean;
+  onToggleExpand?: () => void;
 }
 
-export function FloatingChat({ onClose }: FloatingChatProps) {
+export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: FloatingChatProps) {
   const { messages, isLoading, sendMessage, resetChat, isMounted } = useChat();
   const [message, setMessage] = useState('');
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -101,15 +102,17 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
             </Dialog>
           )}
 
-          <Link
-            href="/assistant"
-            className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200"
-            aria-label="Expand to full screen"
-            title="Open full page"
-            onClick={onClose}
-          >
-            <HugeiconsIcon icon={Maximize01Icon} className="size-4" />
-          </Link>
+          {onToggleExpand && (
+            <button
+              type="button"
+              onClick={onToggleExpand}
+              className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200 cursor-pointer"
+              aria-label={isExpanded ? 'Collapse' : 'Expand to full screen'}
+              title={isExpanded ? 'Collapse' : 'Expand'}
+            >
+              <HugeiconsIcon icon={isExpanded ? Minimize01Icon : Maximize01Icon} className="size-4" />
+            </button>
+          )}
           <button
             type="button"
             onClick={onClose}
