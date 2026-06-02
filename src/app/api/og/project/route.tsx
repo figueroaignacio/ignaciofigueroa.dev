@@ -109,7 +109,7 @@ export async function GET(req: NextRequest) {
         </div>
       )}
 
-      {/* description */}
+      {}
       {truncDesc && (
         <div
           style={{

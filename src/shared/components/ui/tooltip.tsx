@@ -4,8 +4,6 @@ import { cn } from '@/shared/lib/cn';
 import { AnimatePresence, type HTMLMotionProps, motion } from 'motion/react';
 import * as React from 'react';
 
-// --- Animation constants (module level) ---
-
 const TOOLTIP_POSITION_CLASSES = {
   top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
   bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
@@ -43,8 +41,6 @@ const TOOLTIP_TRANSITION = { duration: 0.2, ease: 'easeOut' } as const;
 
 const TOOLTIP_STYLE = { willChange: 'opacity, transform, filter' } as const;
 
-// --- Context ---
-
 interface TooltipContextType {
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -61,8 +57,6 @@ const useTooltip = () => {
   }
   return context;
 };
-
-// --- Components ---
 
 interface TooltipProps {
   children: React.ReactNode;

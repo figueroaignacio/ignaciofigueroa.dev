@@ -17,7 +17,6 @@ export function parseMessageContent(content: string) {
   const emailError =
     content.includes(ASSISTANT_TAGS.EMAIL_ERROR) || content.includes('[EMAIL_ERROR:');
 
-  // Extract custom success data if present
   let emailSuccessData: { name: string; email: string; message: string } | null = null;
   if (content.includes('[EMAIL_SUCCESS:')) {
     const successMatch = content.match(/\[EMAIL_SUCCESS:([\s\S]*?)\]/);
@@ -30,7 +29,6 @@ export function parseMessageContent(content: string) {
     }
   }
 
-  // Extract custom error message if present
   let emailErrorMessage = '';
   if (content.includes('[EMAIL_ERROR:')) {
     const errorMatch = content.match(/\[EMAIL_ERROR:([\s\S]*?)\]/);
@@ -39,7 +37,6 @@ export function parseMessageContent(content: string) {
     }
   }
 
-  // Clean trigger, error, and success tags and their arguments if present
   const cleanTriggerRegex = /\[SEND_EMAIL_TRIGGER\]\{.*\}/g;
   const cleanErrorRegex = /\[EMAIL_ERROR:.*?\]/g;
   const cleanSuccessRegex = /\[EMAIL_SUCCESS:.*?\]/g;

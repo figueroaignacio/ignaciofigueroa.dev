@@ -38,7 +38,9 @@ export function AnimatedSectionHeader({
       <h2 id={id} className="text-2xl sm:text-3xl font-normal tracking-tight text-foreground">
         {title}
       </h2>
-      {description && <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{description}</p>}
+      {description && (
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{description}</p>
+      )}
     </motion.div>
   );
 }

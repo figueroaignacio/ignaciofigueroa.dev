@@ -26,7 +26,7 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
         {children}
       </main>
       <Footer />
-      {/* Safe area spacer for fixed dock */}
+      {}
       <div className="h-32 w-full shrink-0 relative z-10" aria-hidden="true" />
       <Dock />
     </div>

@@ -84,7 +84,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
         animate={{ opacity: 1, scale: 1 }}
         className="relative overflow-hidden w-full max-w-xs sm:max-w-sm rounded-2xl border border-emerald-500/25 dark:border-emerald-500/15 bg-emerald-500/5 dark:bg-emerald-500/2 px-4 py-4.5 shadow-sm mt-2 flex flex-col gap-3.5 animate-in fade-in slide-in-from-top-1"
       >
-        {/* Header success indicator */}
+        {}
         <div className="flex items-center gap-3">
           <div className="relative flex items-center justify-center size-8 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shrink-0">
             <HugeiconsIcon icon={Tick01Icon} className="size-4 stroke-[2.5]" />
@@ -104,7 +104,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
           </div>
         </div>
 
-        {/* Sender details list */}
+        {}
         {emailSuccessData && (
           <div className="flex flex-col gap-2 rounded-xl bg-card/45 dark:bg-card/25 border border-border/20 p-3 text-[11px] leading-relaxed">
             <div className="grid grid-cols-4 gap-1">

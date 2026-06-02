@@ -14,8 +14,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import * as React from 'react';
 import { createPortal } from 'react-dom';
 
-// --- Position ---
-
 type ToastPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
 const POSITION_CLASSES: Record<ToastPosition, string> = {
@@ -24,8 +22,6 @@ const POSITION_CLASSES: Record<ToastPosition, string> = {
   'bottom-left': 'bottom-0 left-0 flex-col',
   'bottom-right': 'bottom-0 right-0 flex-col items-end',
 } as const;
-
-// --- Animation constants ---
 
 const TOAST_ENTER = {
   initial: { opacity: 0, y: 20, scale: 0.95, filter: 'blur(4px)' },
@@ -48,8 +44,6 @@ const TOAST_TRANSITION = {
 
 const TOAST_EXIT_TRANSITION = { duration: 0.2, ease: 'easeIn' } as const;
 
-// --- CVA variants ---
-
 const toastVariants = cva(
   'pointer-events-auto relative flex w-full items-center gap-3 overflow-hidden rounded-lg border p-4 bg-background',
   {
@@ -70,8 +64,6 @@ const toastVariants = cva(
 
 type ToastVariant = VariantProps<typeof toastVariants>['variant'];
 
-// --- Variant icons ---
-
 const VARIANT_ICONS: Record<string, typeof CheckmarkCircle01Icon | undefined> = {
   default: undefined,
   success: CheckmarkCircle01Icon,
@@ -79,8 +71,6 @@ const VARIANT_ICONS: Record<string, typeof CheckmarkCircle01Icon | undefined> = 
   info: InformationCircleIcon,
   warning: Alert02Icon,
 };
-
-// --- Types ---
 
 interface ToastData {
   id: string;
@@ -101,8 +91,6 @@ interface ToastContextType {
   dismiss: (id: string) => void;
 }
 
-// --- Context ---
-
 const ToastContext = React.createContext<ToastContextType | undefined>(undefined);
 
 const useToast = () => {
@@ -112,8 +100,6 @@ const useToast = () => {
   }
   return context;
 };
-
-// --- Toast Item ---
 
 interface ToastItemProps {
   toast: ToastData;
@@ -178,8 +164,6 @@ function ToastItem({ toast: t, onDismiss, position }: ToastItemProps) {
     </motion.div>
   );
 }
-
-// --- Provider ---
 
 const DEFAULT_MAX_TOASTS = 5;
 
@@ -252,8 +236,6 @@ function ToastProvider({
 }
 
 ToastProvider.displayName = 'ToastProvider';
-
-// --- Exports ---
 
 const Toast = {
   Provider: ToastProvider,

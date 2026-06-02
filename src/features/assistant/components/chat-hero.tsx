@@ -20,7 +20,7 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         transition={{ type: 'spring', damping: 20, stiffness: 150 }}
         className="relative"
       >
-        {/* Glowing, pulsing background gradient using the original primary/15 */}
+        {}
         <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-primary/15 scale-150 animate-pulse duration-[6000ms]" />
         <div className="p-3 bg-card/40 border border-border/30 rounded-2xl backdrop-blur-md shadow-lg">
           <AssistantAvatar size="xl" />

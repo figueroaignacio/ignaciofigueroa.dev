@@ -8,7 +8,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
-  
+
   ALTER TABLE "payload_locked_documents_rels" ADD COLUMN "project_labels_id" integer;
   CREATE INDEX "project_labels_updated_at_idx" ON "project_labels" USING btree ("updated_at");
   CREATE INDEX "project_labels_created_at_idx" ON "project_labels" USING btree ("created_at");
@@ -21,7 +21,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
    ALTER TABLE "project_labels" DISABLE ROW LEVEL SECURITY;
   DROP TABLE "project_labels" CASCADE;
   ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_project_labels_fk";
-  
+
   DROP INDEX "payload_locked_documents_rels_project_labels_id_idx";
   ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "project_labels_id";`);
 }

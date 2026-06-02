@@ -31,7 +31,6 @@ export function ChatInput({
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     setDisclaimerIndex(Math.floor(Math.random() * disclaimers.length));
   }, [disclaimers.length]);

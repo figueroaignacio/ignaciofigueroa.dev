@@ -31,7 +31,6 @@ export function useChat() {
   const [isMounted, setIsMounted] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
-  // Hydrate from localStorage once
   useEffect(() => {
     setMessages(loadMessages());
     setIsMounted(true);
@@ -97,14 +96,12 @@ export function useChat() {
           return prev;
         });
 
-        // Intercept [SEND_EMAIL_TRIGGER] and trigger NextJS server action from client
         if (streamedText.includes('[SEND_EMAIL_TRIGGER]')) {
           const match = streamedText.match(/\[SEND_EMAIL_TRIGGER\](\{[\s\S]*?\})/);
           if (match) {
             try {
               const { name, email, message: msgBody } = JSON.parse(match[1]);
 
-              // Transition to sending state
               setMessages((prev) => {
                 const updated = [...prev];
                 const lastMsg = updated[updated.length - 1];
@@ -124,7 +121,6 @@ export function useChat() {
                 message: msgBody,
               });
 
-              // Update state based on result
               setMessages((prev) => {
                 const updated = [...prev];
                 const lastMsg = updated[updated.length - 1];

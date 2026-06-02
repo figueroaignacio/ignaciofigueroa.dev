@@ -8,8 +8,6 @@ import * as React from 'react';
 import { cloneElement } from 'react';
 import { createPortal } from 'react-dom';
 
-// --- Animation constants (module level) ---
-
 const OVERLAY_VARIANTS = {
   initial: { opacity: 0, backdropFilter: 'blur(0px)' },
   animate: { opacity: 1, backdropFilter: 'blur(4px)' },
@@ -35,8 +33,6 @@ const DIALOG_TRANSITION = {
 const DIALOG_EXIT_TRANSITION = { duration: 0.2, ease: 'easeIn' } as const;
 const DIALOG_STYLE = { willChange: 'opacity, transform, filter' } as const;
 
-// --- Context ---
-
 type DialogContextType = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,8 +48,6 @@ const useDialogContext = () => {
   }
   return context;
 };
-
-// --- Components ---
 
 interface DialogProps {
   children: React.ReactNode;

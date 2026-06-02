@@ -19,7 +19,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"latest" boolean
   );
-  
+
   CREATE TABLE "_contributions_v_rels" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"order" integer,
@@ -27,7 +27,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"path" varchar NOT NULL,
   	"tech_stack_id" integer
   );
-  
+
   ALTER TABLE "contributions" ALTER COLUMN "locale" DROP NOT NULL;
   ALTER TABLE "contributions" ALTER COLUMN "title" DROP NOT NULL;
   ALTER TABLE "contributions" ALTER COLUMN "description" DROP NOT NULL;

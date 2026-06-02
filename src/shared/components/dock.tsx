@@ -200,7 +200,9 @@ export function Dock() {
               'transition-all duration-150 ease-out',
               'active:scale-95',
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
-              active ? 'text-foreground font-semibold' : 'text-muted-foreground hover:text-foreground/80',
+              active
+                ? 'text-foreground font-semibold'
+                : 'text-muted-foreground hover:text-foreground/80',
             );
 
             if (isAssistant) {

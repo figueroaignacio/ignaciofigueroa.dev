@@ -12,7 +12,7 @@ interface ChatExperienceCardProps {
 export function ChatExperienceCard({ experience, locale }: ChatExperienceCardProps) {
   return (
     <article className="space-y-3 relative group">
-      {/* Glow node for active experience */}
+      {}
       <div
         className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
           experience.isCurrent

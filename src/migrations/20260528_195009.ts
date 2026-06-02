@@ -9,7 +9,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
-  
+
   ALTER TABLE "tech_stack" ADD COLUMN "icon_id" integer;
   ALTER TABLE "payload_locked_documents_rels" ADD COLUMN "tech_icons_id" integer;
   CREATE UNIQUE INDEX "tech_icons_name_idx" ON "tech_icons" USING btree ("name");
@@ -26,9 +26,9 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
    ALTER TABLE "tech_icons" DISABLE ROW LEVEL SECURITY;
   DROP TABLE "tech_icons" CASCADE;
   ALTER TABLE "tech_stack" DROP CONSTRAINT "tech_stack_icon_id_tech_icons_id_fk";
-  
+
   ALTER TABLE "payload_locked_documents_rels" DROP CONSTRAINT "payload_locked_documents_rels_tech_icons_fk";
-  
+
   DROP INDEX "tech_stack_icon_idx";
   DROP INDEX "payload_locked_documents_rels_tech_icons_id_idx";
   ALTER TABLE "tech_stack" DROP COLUMN "icon_id";

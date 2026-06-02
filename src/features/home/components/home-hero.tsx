@@ -67,10 +67,7 @@ export function HomeHero() {
         {t('description')}
       </motion.p>
       <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-2">
-        <button
-          onClick={handleChatClick}
-          className="btn btn-primary group"
-        >
+        <button onClick={handleChatClick} className="btn btn-primary group">
           {t('actions.chatAssistant')}
           <div className="transition-transform duration-300 group-hover:scale-110">
             <AssistantAvatar size="sm" />

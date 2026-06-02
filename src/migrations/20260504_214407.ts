@@ -9,7 +9,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"url" varchar,
   	"label" varchar
   );
-  
+
   CREATE TABLE "_contributions_v_version_pull_requests" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -18,7 +18,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"label" varchar,
   	"_uuid" varchar
   );
-  
+
   ALTER TABLE "contributions_pull_requests" ADD CONSTRAINT "contributions_pull_requests_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."contributions"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "_contributions_v_version_pull_requests" ADD CONSTRAINT "_contributions_v_version_pull_requests_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."_contributions_v"("id") ON DELETE cascade ON UPDATE no action;
   CREATE INDEX "contributions_pull_requests_order_idx" ON "contributions_pull_requests" USING btree ("_order");

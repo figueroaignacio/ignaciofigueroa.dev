@@ -34,7 +34,6 @@ export const getGithubStats = cache(async (): Promise<GithubStatsData | null> =>
   }
 
   try {
-    // 1. Fetch user profile
     const profileRes = await fetch(`https://api.github.com/users/${username}`, {
       headers,
       next: { revalidate: 3600 },
@@ -45,7 +44,6 @@ export const getGithubStats = cache(async (): Promise<GithubStatsData | null> =>
     }
     const profile = await profileRes.json();
 
-    // 2. Fetch repos for stars & languages
     const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
       headers,
       next: { revalidate: 3600 },
@@ -64,7 +62,6 @@ export const getGithubStats = cache(async (): Promise<GithubStatsData | null> =>
     const nonForks = repos.filter((r) => !r.fork);
     const totalStars = nonForks.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
 
-    // Calculate top languages
     const langCounts: Record<string, number> = {};
     nonForks.forEach((r) => {
       if (r.language) {
@@ -77,7 +74,6 @@ export const getGithubStats = cache(async (): Promise<GithubStatsData | null> =>
       .sort((a, b) => b.count - a.count)
       .slice(0, 5);
 
-    // 3. Fetch contributions per year in parallel
     const yearsData: Record<number, YearContributionData> = {};
     const yearsToFetch: number[] = [];
     for (let y = startYear; y <= currentYear; y++) {
@@ -107,7 +103,6 @@ export const getGithubStats = cache(async (): Promise<GithubStatsData | null> =>
       }),
     );
 
-    // Verify we have data for all years, otherwise we will let components generate fallbacks
     return {
       publicRepos: profile.public_repos || 0,
       followers: profile.followers || 0,
