@@ -1,5 +1,3 @@
-'use client';
-
 import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
 import { Badge } from '@/shared/components/ui/badge';
 import { cn } from '@/shared/lib/cn';
@@ -18,7 +16,6 @@ import {
   TestTube01Icon,
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { AnimatedSectionHeader } from './animated-section-header';
 
@@ -44,28 +41,6 @@ const INTERESTS_CONFIG: InterestConfig[] = [
   { key: 'linux', icon: LinuxIcon, color: 'text-foreground' },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.21, 0.47, 0.32, 0.98] as const,
-    },
-  },
-};
-
 export function Interests() {
   const t = useTranslations('sections.interests.items');
   const tSection = useTranslations('sections.interests');
@@ -77,16 +52,9 @@ export function Interests() {
         title={tSection('title')}
         description={tSection('description')}
       />
-      <motion.ul
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-50px' }}
-        className="flex flex-wrap gap-2"
-        role="list"
-      >
+      <ul className="flex flex-wrap gap-2" role="list">
         {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
-          <motion.li key={key} variants={itemVariants} role="listitem">
+          <li key={key} role="listitem">
             <Badge
               variant="outline"
               className="space-x-3 py-2 px-4 hover:bg-secondary/50 hover:border-primary/30 transition-all duration-300 cursor-default group"
@@ -102,9 +70,9 @@ export function Interests() {
               )}
               <span className="text-xs">{t(key)}</span>
             </Badge>
-          </motion.li>
+          </li>
         ))}
-      </motion.ul>
+      </ul>
     </section>
   );
 }

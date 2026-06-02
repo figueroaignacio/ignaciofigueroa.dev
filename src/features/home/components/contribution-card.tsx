@@ -6,7 +6,6 @@ import type { Contribution, TechStack } from '@/payload-types';
 
 import { GitBranchIcon, GitPullRequestIcon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 type ContributionCardProps = Pick<
@@ -28,11 +27,7 @@ export function ContributionCard({
     technologies?.filter((tech): tech is TechStack => typeof tech === 'object') ?? [];
 
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="relative flex flex-col gap-5 border border-foreground/10 rounded-2xl p-6 bg-card backdrop-blur-sm"
-    >
+    <article className="relative flex flex-col gap-5 border border-foreground/10 rounded-2xl p-6 bg-card backdrop-blur-sm">
       <div className="space-y-2">
         <div className="flex items-center justify-between gap-4">
           <h3 className="font-normal text-foreground text-xl tracking-tight transition-colors">
@@ -102,6 +97,6 @@ export function ContributionCard({
           ))}
         </div>
       )}
-    </motion.article>
+    </article>
   );
 }

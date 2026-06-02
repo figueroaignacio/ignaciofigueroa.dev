@@ -1,32 +1,7 @@
-'use client';
-
-import { motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
 import { AnimatedSectionHeader } from './animated-section-header';
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.21, 0.47, 0.32, 0.98] as const,
-    },
-  },
-};
 
 const iconMap: Record<string, IconName> = {
   Vite: 'vite',
@@ -99,29 +74,20 @@ export function TechStack() {
             <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70 ml-1">
               {section.category}
             </h3>
-            <motion.ul
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-50px' }}
-              className="flex flex-wrap gap-2"
-              role="list"
-            >
+            <ul className="flex flex-wrap gap-2" role="list">
               {section.items.map((name) => (
-                <motion.li
+                <li
                   key={name}
-                  variants={itemVariants}
-                  whileHover={{ y: -2, backgroundColor: 'var(--color-secondary)' }}
-                  className="flex items-center gap-2 rounded-full border-border border px-3 py-1.5 bg-background/40 backdrop-blur-[2px] transition-colors duration-200 group"
+                  className="flex items-center gap-2 rounded-full border-border border px-3 py-1.5 bg-background/40 backdrop-blur-[2px] hover:-translate-y-0.5 hover:bg-secondary/40 transition-all duration-200 group"
                   role="listitem"
                 >
                   <span aria-hidden="true" className="size-4 flex items-center justify-center">
                     <Icon name={iconMap[name]} />
                   </span>
                   <span className="text-xs font-medium">{name}</span>
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
+            </ul>
           </div>
         ))}
       </div>

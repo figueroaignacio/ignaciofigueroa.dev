@@ -1,8 +1,6 @@
 'use client';
 
 import { cn } from '@/shared/lib/cn';
-
-import { AnimatePresence, motion, type Variants } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { QuoteUpIcon } from '@hugeicons/core-free-icons';
@@ -17,24 +15,6 @@ interface TestimonialData {
 
 const INITIAL_COUNT = 2;
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.21, 0.47, 0.32, 0.98] as const,
-    },
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.95,
-    transition: { duration: 0.2 },
-  },
-};
-
 export function TestimonialsList({ testimonials }: { testimonials: TestimonialData[] }) {
   const [expanded, setExpanded] = useState(false);
   const t = useTranslations('sections.testimonials');
@@ -45,42 +25,35 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
   return (
     <div className="relative">
       <div id="testimonials-grid" className="grid gap-4">
-        <AnimatePresence mode="popLayout">
-          {visible.map((testimonial) => (
-            <motion.figure
-              layout
-              key={testimonial.id}
-              variants={itemVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="p-6 bg-card rounded-2xl border border-border/80 m-0 group transition-all duration-300 hover:border-primary/20 hover:-translate-y-[2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 p-4 opacity-5 transition-opacity">
-                <HugeiconsIcon icon={QuoteUpIcon} className="size-12 rotate-12" />
+        {visible.map((testimonial) => (
+          <figure
+            key={testimonial.id}
+            className="p-6 bg-card rounded-2xl border border-border/80 m-0 group transition-all duration-300 hover:border-primary/20 hover:-translate-y-[2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-4 opacity-5 transition-opacity">
+              <HugeiconsIcon icon={QuoteUpIcon} className="size-12 rotate-12" />
+            </div>
+            <HugeiconsIcon
+              icon={QuoteUpIcon}
+              className="h-6 w-6 text-muted-foreground/30 mb-4 transition-colors duration-300"
+              aria-hidden="true"
+            />
+            <blockquote className="text-foreground/90 leading-relaxed mb-6 relative z-10">
+              <p>{testimonial.testimonial}</p>
+            </blockquote>
+            <figcaption className="flex items-center gap-3 relative z-10">
+              <div className="size-8 rounded-full bg-secondary border border-border/60 flex items-center justify-center text-[10px] font-bold text-primary uppercase">
+                {testimonial.name.substring(0, 2)}
               </div>
-              <HugeiconsIcon
-                icon={QuoteUpIcon}
-                className="h-6 w-6 text-muted-foreground/30 mb-4 transition-colors duration-300"
-                aria-hidden="true"
-              />
-              <blockquote className="text-foreground/90 leading-relaxed mb-6 relative z-10">
-                <p>{testimonial.testimonial}</p>
-              </blockquote>
-              <figcaption className="flex items-center gap-3 relative z-10">
-                <div className="size-8 rounded-full bg-secondary border border-border/60 flex items-center justify-center text-[10px] font-bold text-primary uppercase">
-                  {testimonial.name.substring(0, 2)}
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground transition-colors duration-300">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-                </div>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </AnimatePresence>
+              <div>
+                <p className="text-sm font-medium text-foreground transition-colors duration-300">
+                  {testimonial.name}
+                </p>
+                <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
       {hasMore && !expanded && (

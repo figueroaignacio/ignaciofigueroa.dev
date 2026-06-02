@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'motion/react';
 import { Fragment } from 'react/jsx-runtime';
 import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -64,28 +63,17 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as const }}
-      className="relative overflow-hidden"
-    >
+    <div className="relative overflow-hidden">
       <div className="card-outline text-center relative z-10 overflow-hidden group">
         <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         <div className="absolute -right-20 -top-20 size-60 bg-primary/10 blur-[100px] rounded-full" />
         <div className="absolute -left-20 -bottom-20 size-60 bg-primary/5 blur-[100px] rounded-full" />
 
         <div className="relative z-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-secondary/50 backdrop-blur-sm border border-border rounded-full px-4 py-1 text-xs text-muted-foreground mb-6"
-          >
+          <div className="inline-flex items-center gap-2 bg-secondary/50 backdrop-blur-sm border border-border rounded-full px-4 py-1 text-xs text-muted-foreground mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             {t.badge}
-          </motion.div>
+          </div>
 
           <h2 className="text-3xl font-normal text-foreground mb-3 leading-tight tracking-tight">
             {t.title.replace('{count}', count.toString())}
@@ -126,6 +114,6 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
