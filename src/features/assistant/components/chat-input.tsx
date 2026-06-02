@@ -75,12 +75,6 @@ export function ChatInput({
             : 'border-border/40 bg-card/60 dark:bg-card/30 backdrop-blur-md hover:border-border/80 hover:bg-card'
         } ${isHero ? 'min-h-14' : 'min-h-12'} ${isLoading ? 'opacity-70' : ''}`}
       >
-        <div className="absolute top-3.5 left-4 flex items-center justify-center pointer-events-none">
-          <span
-            className={`w-2 h-2 rounded-full transition-all duration-500 ${isFocused ? 'bg-foreground/60 animate-pulse' : 'bg-muted-foreground/30'}`}
-          />
-        </div>
-
         <textarea
           ref={textareaRef}
           value={message}

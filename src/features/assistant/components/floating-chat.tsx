@@ -2,7 +2,12 @@
 
 import { useChat } from '@/features/assistant/hooks/use-chat';
 import { Dialog } from '@/shared/components/ui/dialog';
-import { Cancel01Icon, Maximize01Icon, Minimize01Icon, Message01Icon } from '@hugeicons/core-free-icons';
+import {
+  Cancel01Icon,
+  Maximize01Icon,
+  Message01Icon,
+  Minimize01Icon,
+} from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
@@ -106,11 +111,14 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
             <button
               type="button"
               onClick={onToggleExpand}
-              className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200 cursor-pointer"
+              className="items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200 cursor-pointer hidden md:flex"
               aria-label={isExpanded ? 'Collapse' : 'Expand to full screen'}
               title={isExpanded ? 'Collapse' : 'Expand'}
             >
-              <HugeiconsIcon icon={isExpanded ? Minimize01Icon : Maximize01Icon} className="size-4" />
+              <HugeiconsIcon
+                icon={isExpanded ? Minimize01Icon : Maximize01Icon}
+                className="size-4"
+              />
             </button>
           )}
           <button
