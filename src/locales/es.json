@@ -290,7 +290,8 @@
         "projects": "¿Qué proyectos tiene?",
         "technologies": "¿Qué tecnologías usa?",
         "education": "Hablame sobre su educación",
-        "recruiterMode": "Modo reclutador"
+        "recruiterMode": "Modo reclutador",
+        "contact": "Enviar mensaje"
       },
       "page": {
         "goodMorning": "¡Buenos días!",

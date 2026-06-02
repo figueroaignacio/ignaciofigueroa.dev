@@ -291,7 +291,8 @@
         "projects": "What are his projects?",
         "technologies": "What stack does he use?",
         "education": "Tell me about his studies",
-        "recruiterMode": "Recruiter Mode"
+        "recruiterMode": "Recruiter Mode",
+        "contact": "Send him a message"
       },
       "page": {
         "goodMorning": "Good morning!",

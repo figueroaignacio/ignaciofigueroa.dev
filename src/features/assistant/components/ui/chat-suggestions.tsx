@@ -2,6 +2,7 @@ import {
   BulbIcon,
   CodeIcon,
   Folder01Icon,
+  Mail01Icon,
   Message01Icon,
   SparklesIcon,
 } from '@hugeicons/core-free-icons';
@@ -36,6 +37,10 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
     {
       icon: BulbIcon,
       text: t('recruiterMode'),
+    },
+    {
+      icon: Mail01Icon,
+      text: t('contact'),
     },
   ];
 

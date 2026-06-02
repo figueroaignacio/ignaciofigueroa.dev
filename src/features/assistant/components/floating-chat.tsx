@@ -61,7 +61,7 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
     <div className="flex flex-col w-full h-full bg-card/95 dark:bg-[#161718]/90 backdrop-blur-xl overflow-hidden">
       <header className="flex items-center justify-between w-full px-4.5 py-3.5 shrink-0 border-b border-border/40 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md safe-top">
         <div className="flex items-center gap-2.5">
-          <div className="relative shrink-0 p-1 bg-card/60 dark:bg-card/25 border border-border/40 rounded-xl">
+          <div>
             <AssistantAvatar size="sm" />
             <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-500 rounded-full border border-card shadow-[0_0_6px_rgba(16,185,129,0.7)]" />
           </div>
