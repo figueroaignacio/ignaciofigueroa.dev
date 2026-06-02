@@ -46,7 +46,7 @@ export function HomeHero() {
       </motion.p>
       <motion.h1
         variants={itemVariants}
-        className="text-4xl sm:text-5xl font-bold tracking-tight text-balance leading-[1.1]"
+        className="text-5xl sm:text-6xl font-normal tracking-tight text-balance leading-[1.05]"
       >
         {t('name')}
       </motion.h1>
