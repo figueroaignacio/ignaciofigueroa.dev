@@ -59,20 +59,9 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
 
   return (
     <div className="flex flex-col w-full h-full bg-card/95 dark:bg-[#161718]/90 backdrop-blur-xl overflow-hidden">
-      <header className="flex items-center justify-between w-full px-4.5 py-3.5 shrink-0 border-b border-border/40 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md safe-top">
+      <header className="flex items-center justify-between w-full px-4.5 py-3.5 shrink-0 border-b border-border/40 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md safe-top relative">
         <div className="flex items-center gap-2.5">
-          <div>
-            <AssistantAvatar size="sm" />
-            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-emerald-500 rounded-full border border-card shadow-[0_0_6px_rgba(16,185,129,0.7)]" />
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-[11px] font-bold text-foreground tracking-wider uppercase">
-              {t('header.title')}
-            </span>
-            <span className="text-[9px] font-medium text-muted-foreground/50 mt-0.5 tracking-wide">
-              Online · Ready to help
-            </span>
-          </div>
+          <AssistantAvatar size="sm" />
         </div>
         <div className="flex items-center gap-1">
           {messages.length > 0 && (
@@ -148,7 +137,7 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto min-h-0 py-4.5 bg-gradient-to-b from-transparent to-muted-foreground/3">
+            <div className="flex-1 overflow-y-auto min-h-0 py-4.5 bg-linear-to-b from-transparent to-muted-foreground/3">
               <ChatMessages
                 messages={messages}
                 isLoading={isLoading}
