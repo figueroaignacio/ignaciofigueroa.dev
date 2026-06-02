@@ -40,6 +40,16 @@ export function Dock() {
   }, [pathname]);
 
   useEffect(() => {
+    const handleOpenChat = () => {
+      setIsChatOpen(true);
+    };
+    window.addEventListener('open-chat', handleOpenChat);
+    return () => {
+      window.removeEventListener('open-chat', handleOpenChat);
+    };
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = isChatOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
