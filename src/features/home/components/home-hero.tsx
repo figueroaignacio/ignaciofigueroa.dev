@@ -34,6 +34,11 @@ export function HomeHero() {
   const t = useTranslations('sections.home');
   const tCv = useTranslations('components.ctaCv');
 
+  const handleChatClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.dispatchEvent(new Event('open-chat'));
+  };
+
   return (
     <motion.section
       className="space-y-6 mt-10"
@@ -63,7 +68,11 @@ export function HomeHero() {
         {t('description')}
       </motion.p>
       <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-2">
-        <Link href="/assistant" className="btn btn-primary group">
+        <Link
+          href="/assistant"
+          className="btn btn-primary group"
+          onClick={handleChatClick}
+        >
           {t('actions.chatAssistant')}
           <div className="transition-transform duration-300 group-hover:scale-110">
             <AssistantAvatar size="sm" />
