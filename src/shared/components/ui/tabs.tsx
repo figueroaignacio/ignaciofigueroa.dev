@@ -5,11 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { motion } from 'motion/react';
 import * as React from 'react';
 
-// --- Animation constants (module level) ---
-
 const TABS_INDICATOR_TRANSITION = { type: 'spring', bounce: 0.2, duration: 0.6 } as const;
-
-// --- CVA ---
 
 const tabsListVariants = cva(
   'inline-flex rounded-xl p-1 text-muted-foreground w-full sm:w-auto overflow-hidden',
@@ -56,8 +52,6 @@ const tabsTriggerVariants = cva(
   },
 );
 
-// --- Context ---
-
 interface TabsContextValue {
   activeTab: string;
   setActiveTab: (value: string) => void;
@@ -74,8 +68,6 @@ function useTabsContext() {
   if (!context) throw new Error('Tabs components must be used within Tabs');
   return context;
 }
-
-// --- Components ---
 
 interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultValue?: string;
@@ -229,7 +221,6 @@ const TabsTrigger = ({
     }
   };
 
-  // Merge the external ref with our internal buttonRef
   React.useEffect(() => {
     if (!ref) return;
     if (typeof ref === 'function') {
