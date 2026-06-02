@@ -10,7 +10,7 @@ interface GithubStatsCardProps {
 
 export function GithubStatsCard({ title, value, icon, subtitle }: GithubStatsCardProps) {
   return (
-    <div className="flex flex-col p-4 rounded-xl border border-border/50 bg-secondary/15 transition-all duration-300">
+    <div className="flex flex-col p-4 rounded-xl border border-border/50 bg-secondary/15 transition-all duration-300 hover:border-primary/20 hover:-translate-y-[2px] hover:shadow-[0_4px_20px_rgba(0,0,0,0.02)] dark:hover:shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
       <div className="flex items-center justify-between gap-2">
         <span className="text-xs text-muted-foreground font-medium">{title}</span>
         <div className="flex size-7 items-center justify-center rounded-lg border border-border/60 bg-secondary/40 text-muted-foreground">

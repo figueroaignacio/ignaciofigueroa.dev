@@ -12,12 +12,12 @@ const TABS_INDICATOR_TRANSITION = { type: 'spring', bounce: 0.2, duration: 0.6 }
 // --- CVA ---
 
 const tabsListVariants = cva(
-  'inline-flex rounded-md p-1 text-muted-foreground w-full sm:w-auto overflow-hidden',
+  'inline-flex rounded-xl p-1 text-muted-foreground w-full sm:w-auto overflow-hidden',
   {
     variants: {
       variant: {
-        default: 'bg-muted/50 border border-border/50 backdrop-blur-sm',
-        outline: 'border border-border bg-transparent',
+        default: 'bg-secondary/45 border border-border/60 backdrop-blur-sm',
+        outline: 'border border-border/60 bg-transparent',
         underline: 'bg-transparent border-b border-border rounded-none p-0 justify-start w-full',
         ghost: 'bg-transparent p-0 gap-2',
         unstyled: '',
@@ -262,7 +262,7 @@ const TabsTrigger = ({
             'absolute inset-0 z-10',
             finalVariant === 'underline'
               ? 'bg-secondary-foreground top-auto bottom-0 h-[2px] shadow-[0_0_10px_rgba(var(--primary),0.5)]'
-              : 'bg-secondary border-border/50 rounded-sm border shadow-sm',
+              : 'bg-card border-border/60 rounded-[10px] border shadow-[0_2px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)]',
           )}
           transition={TABS_INDICATOR_TRANSITION}
         />

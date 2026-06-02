@@ -35,7 +35,7 @@ export function ContributionCard({
     >
       <div className="space-y-2">
         <div className="flex items-center justify-between gap-4">
-          <h3 className="font-bold text-foreground text-xl tracking-tight transition-colors">
+          <h3 className="font-normal text-foreground text-xl tracking-tight transition-colors">
             {title}
           </h3>
           <div className="flex gap-2">

@@ -57,7 +57,7 @@ export function ProjectCard({
             )}
             <h3
               id={`project-title-${title}`}
-              className="font-heading text-[15px] font-bold text-foreground "
+              className="font-heading text-lg font-normal text-foreground"
             >
               {title}
             </h3>

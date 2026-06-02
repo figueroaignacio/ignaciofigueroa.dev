@@ -64,14 +64,14 @@ export function ContactSection() {
         <h3 className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
           {tPages('linksTitle')}
         </h3>
-        <div className="grid gap-px border border-border rounded-lg overflow-hidden sm:grid-cols-2 bg-border">
+        <div className="grid gap-px border border-border/60 rounded-2xl overflow-hidden sm:grid-cols-2 bg-border/40">
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.id}
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
-              className="group flex items-center justify-between gap-4 px-5 py-4 bg-card hover:bg-secondary/50 transition-colors"
+              className="group flex items-center justify-between gap-4 px-5 py-4 bg-card hover:bg-secondary/60 transition-colors duration-300"
             >
               <div className="flex items-center gap-4">
                 <span

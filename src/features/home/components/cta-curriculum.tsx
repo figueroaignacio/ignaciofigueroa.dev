@@ -6,7 +6,7 @@ export function CTACurriculum() {
   const t = useTranslations('components.ctaCv');
 
   return (
-    <section className="p-8 rounded-lg text-center space-y-4">
+    <section className="p-8 rounded-2xl bg-secondary/15 border border-border/50 text-center space-y-4 hover:border-primary/20 transition-all duration-300">
       <h2 className="text-xl font-semibold">{t('cta.title')}</h2>
       <p className="text-muted-foreground max-w-md mx-auto">{t('cta.description')}</p>
       <a href={t('url')} target="_blank" className="btn btn-primary">

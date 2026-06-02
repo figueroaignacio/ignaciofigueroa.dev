@@ -87,7 +87,7 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
             {t.badge}
           </motion.div>
 
-          <h2 className="text-2xl font-bold text-foreground mb-3 leading-tight tracking-tight">
+          <h2 className="text-3xl font-normal text-foreground mb-3 leading-tight tracking-tight">
             {t.title.replace('{count}', count.toString())}
           </h2>
           <p className="text-muted-foreground text-sm max-w-sm mx-auto mb-8 leading-relaxed text-balance">

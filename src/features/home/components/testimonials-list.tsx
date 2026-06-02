@@ -54,7 +54,7 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="p-6 bg-card rounded-lg border border-foreground/10 m-0 group transition-colors duration-300 relative overflow-hidden"
+             className="p-6 bg-card rounded-2xl border border-border/80 m-0 group transition-all duration-300 hover:border-primary/20 hover:-translate-y-[2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-4 opacity-5 transition-opacity">
                 <HugeiconsIcon icon={QuoteUpIcon} className="size-12 rotate-12" />
@@ -68,7 +68,7 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
                 <p>{testimonial.testimonial}</p>
               </blockquote>
               <figcaption className="flex items-center gap-3 relative z-10">
-                <div className="size-8 rounded-full bg-secondary flex items-center justify-center text-[10px] font-bold text-muted-foreground uppercase">
+                <div className="size-8 rounded-full bg-secondary border border-border/60 flex items-center justify-center text-[10px] font-bold text-primary uppercase">
                   {testimonial.name.substring(0, 2)}
                 </div>
                 <div>
