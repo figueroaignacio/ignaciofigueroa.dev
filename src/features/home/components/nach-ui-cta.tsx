@@ -10,7 +10,7 @@ export async function NachUICta() {
   const translations = {
     badge: t('badge'),
     title: t('title', { count }),
-    description: t('description'),
+    description: t('description', { count }),
     actions: {
       viewComponents: t('actions.viewComponents'),
       viewDocumentation: t('actions.viewDocumentation'),

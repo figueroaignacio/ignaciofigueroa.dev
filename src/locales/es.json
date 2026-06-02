@@ -142,7 +142,7 @@
     "mateUiCta": {
       "badge": "Componentes de UI",
       "title": "Construí mi propia librería de componentes de UI para no copiar configuraciones de Tailwind.",
-      "description": "MateUI es una colección de {count} primitivas personalizadas y accesibles. Existe porque quería componentes que se vean bien por defecto y no requieran un ensayo de clases para personalizarlos.",
+      "description": "NachUI es una colección de {count} primitivas personalizadas y accesibles. Existe porque quería componentes que se vean bien por defecto y no requieran un ensayo de clases para personalizarlos.",
       "actions": {
         "viewComponents": "Explorar Componentes",
         "viewDocumentation": "Leer la Documentación"
