@@ -1,7 +1,6 @@
 'use client';
 
 import { AssistantAvatar } from '@/features/assistant/components/ui/assistant-avatar';
-import { Link } from '@/i18n/navigation';
 import { DocumentCodeIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { motion, type Variants } from 'motion/react';
@@ -68,16 +67,15 @@ export function HomeHero() {
         {t('description')}
       </motion.p>
       <motion.div variants={itemVariants} className="flex flex-wrap gap-3 pt-2">
-        <Link
-          href="/assistant"
-          className="btn btn-primary group"
+        <button
           onClick={handleChatClick}
+          className="btn btn-primary group"
         >
           {t('actions.chatAssistant')}
           <div className="transition-transform duration-300 group-hover:scale-110">
             <AssistantAvatar size="sm" />
           </div>
-        </Link>
+        </button>
         <a
           href={tCv('url')}
           target="_blank"
