@@ -4,7 +4,6 @@ import {
   type GithubContributionDay,
   type YearContributionData,
 } from '../api/github-stats';
-import { AnimatedSectionHeader } from './animated-section-header';
 import { GithubStatsClient } from './github-stats-client';
 
 const getFallbackStats = () => {
@@ -80,7 +79,11 @@ export async function GithubStatsSection() {
 
   return (
     <section aria-labelledby="github-stats-title">
-      <AnimatedSectionHeader title={t('title')} description="" />
+      <div>
+        <h2 id="github-stats-title" className="text-xl font-bold tracking-tight text-foreground">
+          {t('title')}
+        </h2>
+      </div>
       <GithubStatsClient
         initialYear={initialYear}
         availableYears={availableYears}

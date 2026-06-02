@@ -3,8 +3,6 @@ import type { Education } from '@/payload-types';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getEducation } from '../api/education';
-import { AnimatedEducationList } from './animated-education-list';
-import { AnimatedSectionHeader } from './animated-section-header';
 import { LinkSquare02Icon, GraduationCap } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
@@ -24,12 +22,17 @@ export async function EducationSection() {
 
   return (
     <section className="space-y-6" aria-labelledby="education-title">
-      <AnimatedSectionHeader title={t('title')} description={t('description')} />
-      <AnimatedEducationList>
+      <div>
+        <h2 id="education-title" className="text-xl font-bold tracking-tight text-foreground">
+          {t('title')}
+        </h2>
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+      </div>
+      <div className="space-y-6">
         {education.map((item) => (
           <EducationItem key={item.id} item={item} locale={locale} />
         ))}
-      </AnimatedEducationList>
+      </div>
     </section>
   );
 }

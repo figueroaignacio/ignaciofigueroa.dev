@@ -1,7 +1,6 @@
 import type { Testimonial } from '@/payload-types';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getTestimonials } from '../api/testimonials';
-import { AnimatedSectionHeader } from './animated-section-header';
 import { TestimonialsList } from './testimonials-list';
 
 export async function Testimonials() {
@@ -11,7 +10,11 @@ export async function Testimonials() {
 
   return (
     <section className="space-y-6" aria-labelledby="testimonials-title">
-      <AnimatedSectionHeader title={t('title')} />
+      <div>
+        <h2 id="testimonials-title" className="text-xl font-bold tracking-tight text-foreground">
+          {t('title')}
+        </h2>
+      </div>
       <TestimonialsList
         testimonials={testimonials.map((t) => ({
           id: t.id,

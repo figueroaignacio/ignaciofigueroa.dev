@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
 
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
-import { AnimatedSectionHeader } from './animated-section-header';
 
 const iconMap: Record<string, IconName> = {
   Vite: 'vite',
@@ -62,11 +61,14 @@ export function TechStack() {
 
   return (
     <section className="space-y-8" aria-labelledby="tech-stack-title">
-      <AnimatedSectionHeader
-        id="tech-stack-title"
-        title={t('stack.title')}
-        description={t('stack.description')}
-      />
+      <div>
+        <h2 id="tech-stack-title" className="text-xl font-bold tracking-tight text-foreground">
+          {t('stack.title')}
+        </h2>
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+          {t('stack.description')}
+        </p>
+      </div>
 
       <div className="space-y-6">
         {techStack.map((section) => (

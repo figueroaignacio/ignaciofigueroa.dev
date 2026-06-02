@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl';
-import { AnimatedSectionHeader } from './animated-section-header';
 
 export function AboutSection() {
   const t = useTranslations('sections.aboutMe.content');
@@ -7,7 +6,12 @@ export function AboutSection() {
 
   return (
     <section id="about" className="space-y-6 scroll-mt-20">
-      <AnimatedSectionHeader title={tSection('title')} description={tSection('description')} />
+      <div>
+        <h2 className="text-xl font-bold tracking-tight text-foreground">{tSection('title')}</h2>
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+          {tSection('description')}
+        </p>
+      </div>
 
       <div className="w-full">
         <div className="grid gap-8 md:gap-12 items-start w-full">

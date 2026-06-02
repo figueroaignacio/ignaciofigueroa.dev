@@ -3,8 +3,6 @@ import type { Experience } from '@/payload-types';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperiences } from '../api/experience';
-import { AnimatedExperienceList } from './animated-experience-list';
-import { AnimatedSectionHeader } from './animated-section-header';
 import { Briefcase01Icon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
@@ -24,11 +22,18 @@ export async function ExperienceSection() {
 
   return (
     <section className="space-y-6" aria-labelledby="experience-title">
-      <AnimatedSectionHeader title={t('title')} description={t('description')} />
+      <div>
+        <h2 id="experience-title" className="text-xl font-bold tracking-tight text-foreground">
+          {t('title')}
+        </h2>
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+      </div>
 
-      <AnimatedExperienceList>
+      <ol className="relative space-y-0">
+        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-linear-to-b from-foreground/50 via-border to-border" />
+
         {experiences.map((experience) => (
-          <div key={experience.id}>
+          <li key={experience.id} className="relative pl-10 pb-8 last:pb-0">
             <div
               className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center z-10 transition-colors duration-500 ${
                 experience.isCurrent ? 'border-primary bg-primary' : 'border-border bg-card'
@@ -113,9 +118,9 @@ export async function ExperienceSection() {
                 </div>
               )}
             </article>
-          </div>
+          </li>
         ))}
-      </AnimatedExperienceList>
+      </ol>
     </section>
   );
 }

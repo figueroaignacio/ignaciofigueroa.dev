@@ -17,7 +17,6 @@ import {
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
-import { AnimatedSectionHeader } from './animated-section-header';
 
 type InterestConfig = {
   key: string;
@@ -47,11 +46,14 @@ export function Interests() {
 
   return (
     <section className="space-y-6" aria-labelledby="interests-title">
-      <AnimatedSectionHeader
-        id="interests-title"
-        title={tSection('title')}
-        description={tSection('description')}
-      />
+      <div>
+        <h2 id="interests-title" className="text-xl font-bold tracking-tight text-foreground">
+          {tSection('title')}
+        </h2>
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+          {tSection('description')}
+        </p>
+      </div>
       <ul className="flex flex-wrap gap-2" role="list">
         {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
           <li key={key} role="listitem">

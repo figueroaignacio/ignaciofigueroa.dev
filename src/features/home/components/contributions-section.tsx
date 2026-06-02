@@ -1,8 +1,6 @@
 import type { Contribution } from '@/payload-types';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getContributions } from '../api/contributions';
-import { AnimatedContributionList } from './animated-contribution-list';
-import { AnimatedSectionHeader } from './animated-section-header';
 import { ContributionCard } from './contribution-card';
 
 export async function ContributionsSection() {
@@ -14,8 +12,13 @@ export async function ContributionsSection() {
 
   return (
     <section id="contributions" className="space-y-6" aria-labelledby="contributions-title">
-      <AnimatedSectionHeader title={t('title')} description={t('description')} />
-      <AnimatedContributionList>
+      <div>
+        <h2 id="contributions-title" className="text-xl font-bold tracking-tight text-foreground">
+          {t('title')}
+        </h2>
+        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+      </div>
+      <div className="grid gap-3">
         {contributions.map((contribution) => (
           <ContributionCard
             key={contribution.id}
@@ -27,7 +30,7 @@ export async function ContributionsSection() {
             pullRequests={contribution.pullRequests}
           />
         ))}
-      </AnimatedContributionList>
+      </div>
     </section>
   );
 }

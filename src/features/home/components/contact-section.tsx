@@ -1,6 +1,5 @@
 'use client';
 
-import { AnimatedSectionHeader } from '@/features/home/components/animated-section-header';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
 import { GitHubIcon } from '@/shared/components/tech-icons';
@@ -54,7 +53,10 @@ export function ContactSection() {
   return (
     <section id="contact" className="space-y-8 scroll-mt-20" aria-labelledby="contact-title">
       <div className="max-w-lg">
-        <AnimatedSectionHeader title={t('title')} description={t('description')} />
+        <div>
+          <h2 className="text-xl font-bold tracking-tight text-foreground">{t('title')}</h2>
+          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+        </div>
       </div>
       <div className="flex justify-start">
         <ContactForm />
