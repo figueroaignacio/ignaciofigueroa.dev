@@ -1,13 +1,17 @@
-import { Geist, JetBrains_Mono, Onest } from 'next/font/google';
+import { JetBrains_Mono } from 'next/font/google';
 
-export const fontHeading = Onest({
+import { DM_Sans, Playfair_Display } from 'next/font/google';
+
+export const fontHeading = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-heading',
   display: 'swap',
+  weight: ['400'],
+  style: ['normal', 'italic'],
   preload: true,
 });
 
-export const fontSans = Geist({
+export const fontSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',

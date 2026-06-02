@@ -4,50 +4,50 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1f1f1f;
-  --card: #ffffff;
-  --card-foreground: #1f1f1f;
+  --foreground: #0a0a0a;
+  --card: #f2f2f2;
+  --card-foreground: #0a0a0a;
   --popover: #ffffff;
-  --popover-foreground: #1f1f1f;
-  --primary: #1a73e8;
+  --popover-foreground: #0a0a0a;
+  --primary: #2563eb;
   --primary-foreground: #ffffff;
-  --secondary: #e9eef6;
-  --secondary-foreground: #1f1f1f;
-  --muted: #f0f4f9;
-  --muted-foreground: #444746;
-  --accent: #dde3ea;
-  --accent-foreground: #1f1f1f;
-  --destructive: #d93025;
+  --secondary: #e5e5e5;
+  --secondary-foreground: #0a0a0a;
+  --muted: #fafafa;
+  --muted-foreground: #737373;
+  --accent: #e5e5e5;
+  --accent-foreground: #2563eb;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e3e3e3;
+  --border: #e5e5e5;
   --input: #ffffff;
-  --ring: #0b57d0;
-  --radius: 1.5rem;
-  --grid-color: rgba(0, 0, 0, 0.02);
+  --ring: #2563eb;
+  --radius: 1.25rem;
+  --grid-color: rgba(10, 10, 10, 0.02);
 }
 
 .dark {
-  --background: oklch(17% 0.005 250);
-  --foreground: #e3e3e3;
-  --card: #1e1f20;
-  --card-foreground: #e3e3e3;
-  --popover: #1e1f20;
-  --popover-foreground: #e3e3e3;
-  --primary: #8ab4f8;
-  --primary-foreground: #000000;
-  --secondary: #2d2f31;
-  --secondary-foreground: #e3e3e3;
-  --muted: #111111;
-  --muted-foreground: #969696;
-  --accent: #2d2f31;
-  --accent-foreground: #8ab4f8;
-  --destructive: oklch(71.061% 0.16614 22.191);
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #1a1a1a;
+  --card-foreground: #fafafa;
+  --popover: #1a1a1a;
+  --popover-foreground: #fafafa;
+  --primary: #60a5fa;
+  --primary-foreground: #0a0a0a;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #121212;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #60a5fa;
+  --destructive: #f87171;
   --destructive-foreground: #ffffff;
-  --border: #1b1b1c;
-  --input: #111111;
-  --ring: #8ab4f8;
-  --grid-color: rgba(255, 255, 255, 0.02);
-  --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.9);
+  --border: #262626;
+  --input: #121212;
+  --ring: #60a5fa;
+  --grid-color: rgba(250, 250, 250, 0.015);
+  --shadow-lg: 0 10px 40px -15px rgba(0, 0, 0, 0.8);
 }
 
 @theme inline {
@@ -70,11 +70,11 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 0.75rem);
-  --radius-md: calc(var(--radius) - 0.5rem);
+  --radius-sm: calc(var(--radius) - 0.5rem);
+  --radius-md: calc(var(--radius) - 0.25rem);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 0.5rem);
-  --radius-2xl: calc(var(--radius) + 1rem);
+  --radius-xl: calc(var(--radius) + 0.25rem);
+  --radius-2xl: calc(var(--radius) + 0.5rem);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --animate-blink: blink 3s infinite;
@@ -86,7 +86,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   h1,
@@ -95,11 +95,11 @@
   h4,
   h5,
   h6 {
-    @apply font-heading;
+    @apply font-heading tracking-tight;
   }
 
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -108,37 +108,37 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--border);
-    border-radius: 5px;
+    border-radius: 9999px;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 border border-border px-5 py-2.5 text-sm font-medium rounded-lg;
+    @apply inline-flex items-center justify-center gap-2 border border-border px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ease-out active:scale-95 cursor-pointer;
   }
 
   .btn-primary {
-    @apply hover:border-muted-foreground/50 transition-colors bg-foreground text-background;
+    @apply bg-foreground text-background border-foreground transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)];
   }
 
   .btn-outline {
-    @apply text-foreground hover:text-foreground transition-colors hover:bg-card hover:border-muted-foreground/50;
+    @apply text-foreground bg-transparent hover:bg-foreground/5 hover:border-foreground/30 transition-all duration-300;
   }
 
   .btn-link {
-    @apply inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors underline;
+    @apply inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300 underline underline-offset-4 decoration-transparent hover:decoration-current;
   }
 
   .btn-ghost {
-    @apply hover:border-muted-foreground transition-colors hover:bg-card hover:text-foreground border-0;
+    @apply hover:bg-foreground/5 text-muted-foreground hover:text-foreground border-0 transition-all duration-300;
   }
 
   .card {
-    @apply block p-6 bg-card rounded-lg border  border-foreground;
+    @apply block p-6 bg-card rounded-2xl border border-border transition-all duration-300 hover:border-foreground/15 hover:shadow-[0_8px_30px_rgba(0,0,0,0.01)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)];
   }
 
   .card-outline {
-    @apply block p-6 bg-transparent rounded-lg border border-border;
+    @apply block p-6 bg-transparent rounded-2xl border border-border transition-all duration-300 hover:border-foreground/20;
   }
 
   .prose {
@@ -175,7 +175,7 @@
   }
 
   .prose code {
-    @apply bg-[#2a2c33] px-1.5 py-0.5 rounded-md text-[13px] font-mono text-white;
+    @apply bg-secondary/80 px-1.5 py-0.5 rounded-md text-[13px] font-mono text-foreground;
   }
 
   .prose li {
