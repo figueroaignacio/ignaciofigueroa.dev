@@ -26,7 +26,7 @@ export async function sendContactEmailAction(fields: {
 
   try {
     const contactEmail = process.env.CONTACT_EMAIL || 'contact@ignaciofigueroa.dev';
-    const fromEmail = 'Portfolio Contact <onboarding@resend.dev>';
+    const fromEmail = 'Portfolio Contact <contact@ignaciofigueroa.dev>';
 
     const data = await resend.emails.send({
       from: fromEmail,
