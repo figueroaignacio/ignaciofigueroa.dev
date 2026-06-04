@@ -281,7 +281,14 @@
         "thinking": "Pensando...",
         "emailSending": "Enviando mensaje...",
         "emailSuccess": "¡Mensaje enviado con éxito!",
-        "emailError": "Error al enviar el mensaje."
+        "emailError": "Error al enviar el mensaje.",
+        "pitchTitle": "Reporte de Compatibilidad",
+        "matchScore": "Puntaje de Match",
+        "matchingSkills": "Requisitos Cumplidos",
+        "gapAnalysis": "Análisis de Brechas",
+        "recommendedProjects": "Proyectos Recomendados",
+        "roleLabel": "Rol",
+        "companyLabel": "Compañía"
       },
       "suggestions": {
         "title": "Prueba con...",

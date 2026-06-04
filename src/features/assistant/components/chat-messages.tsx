@@ -1,12 +1,12 @@
 'use client';
 
+import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { Message } from '../types';
+import { ChatMessage } from './chat-message';
 import { AssistantAvatar } from './ui/assistant-avatar';
 import { ChatLoading } from './ui/chat-loading';
-import { ChatMessage } from './chat-message';
 import { ChatSuggestions } from './ui/chat-suggestions';
-import { motion } from 'motion/react';
 
 interface ChatMessagesProps {
   messages: Message[];
@@ -54,15 +54,15 @@ export function ChatMessages({ messages, isLoading, onSuggestionClick }: ChatMes
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className={`flex ${isAssistant ? 'flex-col gap-2.5' : 'justify-end'}`}
           >
-            {isAssistant && (
+            {/* {isAssistant && (
               <div className="flex items-center gap-2">
                 <AssistantAvatar size="sm" />
                 <span className="text-[10px] font-medium text-muted-foreground/60 tracking-wide uppercase">
                   Assistant
                 </span>
               </div>
-            )}
-            <div className={isAssistant ? 'pl-6' : ''}>
+            )} i'll improve this shit later */}
+            <div className={isAssistant ? '' : ''}>
               <ChatMessage message={msg} />
             </div>
           </motion.div>

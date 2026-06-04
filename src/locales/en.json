@@ -282,7 +282,14 @@
         "thinking": "Thinking...",
         "emailSending": "Sending message...",
         "emailSuccess": "Message sent successfully!",
-        "emailError": "Failed to send message."
+        "emailError": "Failed to send message.",
+        "pitchTitle": "Recruiter Match Report",
+        "matchScore": "Match Score",
+        "matchingSkills": "Matching Requirements",
+        "gapAnalysis": "Gap Analysis",
+        "recommendedProjects": "Recommended Projects",
+        "roleLabel": "Role",
+        "companyLabel": "Company"
       },
       "suggestions": {
         "title": "Try with...",

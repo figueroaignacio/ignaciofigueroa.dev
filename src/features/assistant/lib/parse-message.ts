@@ -37,10 +37,81 @@ export function parseMessageContent(content: string) {
     }
   }
 
+  const showPitch = content.includes('[SHOW_PITCH:');
+  let pitchData: {
+    match_score: number;
+    role: string;
+    company: string;
+    pitch: string;
+  } | null = null;
+
+  let tempContent = content;
+
+  if (showPitch) {
+    const tagStart = content.indexOf('[SHOW_PITCH:');
+    const jsonStart = content.indexOf('{', tagStart);
+
+    if (jsonStart !== -1) {
+      let depth = 0;
+      let jsonEnd = -1;
+      let inString = false;
+      let escape = false;
+
+      for (let i = jsonStart; i < content.length; i++) {
+        const ch = content[i];
+
+        if (escape) {
+          escape = false;
+          continue;
+        }
+        if (ch === '\\' && inString) {
+          escape = true;
+          continue;
+        }
+        if (ch === '"') {
+          inString = !inString;
+          continue;
+        }
+        if (inString) continue;
+
+        if (ch === '{') depth++;
+        else if (ch === '}') {
+          depth--;
+          if (depth === 0) {
+            jsonEnd = i;
+            break;
+          }
+        }
+      }
+
+      if (jsonEnd !== -1) {
+        const rawJson = content.substring(jsonStart, jsonEnd + 1);
+        const tagEnd = content.indexOf(']', jsonEnd);
+        const rawTag =
+          tagEnd !== -1
+            ? content.substring(tagStart, tagEnd + 1)
+            : content.substring(tagStart, jsonEnd + 1);
+
+        try {
+          const sanitizedJson = rawJson
+            .replace(/\\'/g, "'")
+            .replace(/\\(?!(["\\/bfnrt]|u[0-9a-fA-F]{4}))/g, '');
+
+          pitchData = JSON.parse(sanitizedJson);
+        } catch (e) {
+          console.error('Failed to parse pitch data:', e);
+        }
+
+        tempContent = content.replace(rawTag, '');
+      }
+    }
+  }
+
   const cleanTriggerRegex = /\[SEND_EMAIL_TRIGGER\]\{.*\}/g;
   const cleanErrorRegex = /\[EMAIL_ERROR:.*?\]/g;
   const cleanSuccessRegex = /\[EMAIL_SUCCESS:.*?\]/g;
-  let tempContent = content
+
+  tempContent = tempContent
     .replace(cleanTriggerRegex, '')
     .replace(cleanErrorRegex, '')
     .replace(cleanSuccessRegex, '');
@@ -63,6 +134,8 @@ export function parseMessageContent(content: string) {
     emailError,
     emailErrorMessage,
     emailSuccessData,
+    showPitch,
+    pitchData,
     cleanContent,
   };
 }
