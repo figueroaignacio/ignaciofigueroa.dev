@@ -132,10 +132,7 @@ export function ChatInput({
           transition={{ delay: 0.6 }}
         >
           {mounted && (
-            <span
-              key={disclaimerIndex}
-              className="text-[10px] text-muted-foreground/35 text-center px-4 leading-relaxed"
-            >
+            <span key={disclaimerIndex} className="text-xs  text-center px-4 leading-relaxed">
               {disclaimers[disclaimerIndex]}
             </span>
           )}
