@@ -1,8 +1,9 @@
 import { getProjectBySlug, getProjects } from '@/features/projects/api/projects';
 import { ProjectHeaderPage } from '@/features/projects/components/project-header-page';
+import { ProjectSummary } from '@/features/projects/components/project-summary';
 import { ProjectVideo } from '@/features/projects/components/project-video';
-import { BASE_URL } from '@/shared/lib/constants';
 import type { Project } from '@/payload-types';
+import { BASE_URL } from '@/shared/lib/constants';
 import { RichText } from '@payloadcms/richtext-lexical/react';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -19,7 +20,7 @@ interface ProjectPageProps {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const project = await getProjectBySlug(slug);
 
   if (!project) {
@@ -35,6 +36,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         repository={project.repository || ''}
         icon={project.icon as string}
       />
+
+      <div className="animate-fade-in-up delay-300">
+        <ProjectSummary body={project.body} locale={locale} />
+      </div>
 
       <div className="animate-fade-in-up delay-150">
         <ProjectVideo videoUrl={project.videoUrl} />

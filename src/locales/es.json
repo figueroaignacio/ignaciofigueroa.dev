@@ -219,6 +219,12 @@
         "preview": "Sitio web"
       }
     },
+    "projectSummary": {
+      "button": "Resumir con IA",
+      "loading": "Resumiendo...",
+      "error": "No se pudo generar el resumen. Por favor, intentá de nuevo.",
+      "title": "Resumen IA"
+    },
     "footer": {
       "name": "Ignacio Figueroa",
       "role": "Fullstack Developer",

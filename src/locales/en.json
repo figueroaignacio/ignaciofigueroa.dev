@@ -219,6 +219,12 @@
         "preview": "Website"
       }
     },
+    "projectSummary": {
+      "button": "Summarize with AI",
+      "loading": "Summarizing...",
+      "error": "Could not generate summary. Please try again.",
+      "title": "AI Summary"
+    },
     "footer": {
       "name": "Ignacio Figueroa",
       "role": "Fullstack Developer",
