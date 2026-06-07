@@ -37,8 +37,13 @@ export function Dock() {
   }, []);
 
   useEffect(() => {
-    setIsChatOpen(false);
-    setIsChatExpanded(false);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('chat') === 'open') {
+      setIsChatOpen(true);
+    } else {
+      setIsChatOpen(false);
+      setIsChatExpanded(false);
+    }
   }, [pathname]);
 
   useEffect(() => {
