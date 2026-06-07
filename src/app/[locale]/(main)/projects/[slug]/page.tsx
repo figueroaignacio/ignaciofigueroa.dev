@@ -1,6 +1,5 @@
 import { getProjectBySlug, getProjects } from '@/features/projects/api/projects';
 import { ProjectHeaderPage } from '@/features/projects/components/project-header-page';
-import { ProjectSummary } from '@/features/projects/components/project-summary';
 import { ProjectVideo } from '@/features/projects/components/project-video';
 import type { Project } from '@/payload-types';
 import { BASE_URL } from '@/shared/lib/constants';
@@ -20,7 +19,7 @@ interface ProjectPageProps {
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug, locale } = await params;
+  const { slug } = await params;
   const project = await getProjectBySlug(slug);
 
   if (!project) {
@@ -28,28 +27,35 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-8 animate-fade-in-up">
-      <ProjectHeaderPage
-        title={project.title}
-        description={project.description}
-        demo={project.demo || ''}
-        repository={project.repository || ''}
-        icon={project.icon as string}
+    <div className="relative max-w-3xl mx-auto py-8">
+      <div
+        className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-[350px] w-full max-w-[600px] -translate-x-1/2 rounded-full bg-linear-to-tr from-primary/10 via-accent/5 to-transparent opacity-75 blur-[100px] dark:from-primary/15 dark:via-primary/5"
+        aria-hidden="true"
       />
 
-      <div className="animate-fade-in-up delay-300">
-        <ProjectSummary body={project.body} locale={locale} />
+      <div className="animate-fade-in-up">
+        <ProjectHeaderPage
+          title={project.title}
+          description={project.description}
+          demo={project.demo || ''}
+          repository={project.repository || ''}
+          icon={project.icon as string}
+          body={project.body}
+          locale={project.locale}
+        />
       </div>
 
-      <div className="animate-fade-in-up delay-150">
+      <div className="animate-fade-in-up delay-150 mt-4">
         <ProjectVideo videoUrl={project.videoUrl} />
       </div>
 
-      <div className="animate-fade-in-up delay-300 mt-12 mb-20">
-        <RichText
-          data={project.body}
-          className="prose prose-neutral dark:prose-invert max-w-none font-light leading-relaxed"
-        />
+      <div className="animate-fade-in-up delay-300 mt-16 mb-24">
+        <article className="prose prose-neutral dark:prose-invert max-w-none">
+          <RichText
+            data={project.body}
+            className="font-light leading-relaxed text-[16px] md:text-[17px] text-foreground/80 dark:text-foreground/85 prose-headings:font-normal prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-p:mb-5 prose-p:leading-8 prose-li:my-1.5 prose-code:bg-muted/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-[13px] prose-code:before:content-none prose-code:after:content-none"
+          />
+        </article>
       </div>
     </div>
   );
