@@ -1,6 +1,4 @@
-import { CommercialProjectsTab } from '@/features/projects/components/commercial-projects';
 import { PersonalProjectsTab } from '@/features/projects/components/personal-projects';
-import { ProjectsTabs } from '@/features/projects/components/projects-tabs';
 import { getTranslations } from 'next-intl/server';
 
 export async function ProjectsSection() {
@@ -12,7 +10,7 @@ export async function ProjectsSection() {
         <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
       </div>
       <div className="grid gap-4">
-        <ProjectsTabs work={<CommercialProjectsTab />} personal={<PersonalProjectsTab />} />
+        <PersonalProjectsTab />
       </div>
     </section>
   );
