@@ -56,7 +56,8 @@
         "title": "Sobre Mí",
         "subtitle": "Escribo código que funciona, desarrollo en Fedora Linux y automatizo todo lo que puedo.",
         "bio": "Soy desarrollador Fullstack AI y estudiante de la UTN en Argentina. No me gusta agregar librerías para cosas que se resuelven con unas pocas líneas de código limpio, ni creo en wrappers de IA que solo reenvían mensajes. Construyo productos de punta a punta, acoplando el estado del frontend con backends robustos en FastAPI.",
-        "details": "Si buscás un desarrollador que pasó horas configurando su sistema para adaptarlo a su flujo de trabajo, que entiende por qué las malas abstracciones fallan bajo carga y que trata a los LLMs como herramientas estándar en lugar de magia, hablemos."
+        "details": "Si buscás un desarrollador que pasó horas configurando su sistema para adaptarlo a su flujo de trabajo, que entiende por qué las malas abstracciones fallan bajo carga y que trata a los LLMs como herramientas estándar en lugar de magia, hablemos.",
+        "photoLegend": "Ignacio Figueroa, mejor conocido como Nacho"
       }
     },
     "projects": {

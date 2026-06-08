@@ -56,7 +56,8 @@
         "title": "About",
         "subtitle": "I write code that works, build on Fedora Linux, and automate whatever I can.",
         "bio": "I'm a Fullstack AI Developer and UTN student based in Argentina. I don't believe in adding dependencies for things that can be solved with a few lines of clean code, nor do I believe in AI wrappers that just forward user messages. I build products end-to-end, linking frontend state to robust FastAPI backends.",
-        "details": "If you want a developer who spent hours configuring their system to match their exact workflow, understands why bad abstractions fail under load, and treats LLMs as standard tools rather than magic, let's talk."
+        "details": "If you want a developer who spent hours configuring their system to match their exact workflow, understands why bad abstractions fail under load, and treats LLMs as standard tools rather than magic, let's talk.",
+        "photoLegend": "Ignacio Figueroa, also known as Nacho"
       }
     },
     "projects": {
