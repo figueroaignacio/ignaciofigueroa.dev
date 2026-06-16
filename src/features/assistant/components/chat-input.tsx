@@ -68,12 +68,14 @@ export function ChatInput({
     >
       <form
         onSubmit={handleSubmit}
-        className={`relative flex items-end gap-2 rounded-2xl border transition-all duration-300 ${
+        className={`relative flex items-end gap-2 rounded-2xl border transition-all duration-300 ease-out ${
           isFocused
-            ? 'border-foreground/20 bg-card shadow-[0_0_0_4px_rgba(0,0,0,0.04)] dark:shadow-[0_0_0_4px_rgba(255,255,255,0.04)]'
-            : 'border-border/40 bg-card/60 dark:bg-card/30 backdrop-blur-md hover:border-border/80 hover:bg-card'
+            ? 'border-foreground/30 dark:border-white/20 bg-white dark:bg-[#1c1c1e]'
+            : 'border-black/8 dark:border-white/8 bg-white/95 dark:bg-[#222226]/95 hover:border-black/15 dark:hover:border-white/15'
         } ${isHero ? 'min-h-14' : 'min-h-12'} ${isLoading ? 'opacity-70' : ''}`}
       >
+        <div className="flex items-center pl-4 pb-3.5 shrink-0 self-end"></div>
+
         <textarea
           ref={textareaRef}
           value={message}
@@ -84,7 +86,7 @@ export function ChatInput({
           placeholder={t('inputPlaceholder')}
           rows={1}
           disabled={isLoading}
-          className="w-full resize-none bg-transparent focus:ring-0 focus:outline-none pl-8 pr-4 py-3.5 max-h-50 overflow-y-auto text-foreground text-sm placeholder:text-muted-foreground/45 leading-relaxed"
+          className="w-full resize-none bg-transparent focus:ring-0 focus:outline-none pl-1 pr-4 py-3.5 max-h-50 overflow-y-auto text-foreground text-sm placeholder:text-muted-foreground/45 leading-relaxed"
           style={{ minHeight: isHero ? '56px' : '48px' }}
         />
 
@@ -113,7 +115,7 @@ export function ChatInput({
                 disabled={!hasContent}
                 className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-200 ${
                   hasContent
-                    ? 'bg-foreground text-background cursor-pointer shadow-sm hover:opacity-90'
+                    ? 'bg-foreground text-background cursor-pointer shadow-sm hover:opacity-90 active:scale-95'
                     : 'bg-muted-foreground/10 text-muted-foreground/30 cursor-not-allowed'
                 }`}
               >

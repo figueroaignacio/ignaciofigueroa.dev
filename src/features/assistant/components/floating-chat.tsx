@@ -119,7 +119,7 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
         </div>
       </header>
 
-      <div className="flex-1 flex flex-col min-h-0 w-full">
+      <div className="flex-1 flex flex-col min-h-0 w-full relative">
         {showHero ? (
           <div className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4.5">
             <div className="flex-1 flex items-center justify-center">
@@ -137,21 +137,23 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto min-h-0 py-4.5 bg-linear-to-b from-transparent to-muted-foreground/3">
+            <div className="flex-1 overflow-y-auto min-h-0 pt-4 pb-26 bg-linear-to-b from-transparent to-muted-foreground/3">
               <ChatMessages
                 messages={messages}
                 isLoading={isLoading}
                 onSuggestionClick={handleQuickAction}
               />
             </div>
-            <div className="shrink-0 px-0 pb-3 pt-1.5 border-t border-border/30 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md">
-              <ChatInput
-                message={message}
-                isLoading={isLoading}
-                onMessageChange={setMessage}
-                onSubmit={handleSend}
-                isHero={false}
-              />
+            <div className="absolute bottom-0 left-0 right-0 pointer-events-none px-4 pb-5 pt-8 bg-gradient-to-t from-card via-card/95 to-transparent dark:from-[#161718] dark:via-[#161718]/95 dark:to-transparent">
+              <div className="pointer-events-auto">
+                <ChatInput
+                  message={message}
+                  isLoading={isLoading}
+                  onMessageChange={setMessage}
+                  onSubmit={handleSend}
+                  isHero={false}
+                />
+              </div>
             </div>
           </>
         )}
