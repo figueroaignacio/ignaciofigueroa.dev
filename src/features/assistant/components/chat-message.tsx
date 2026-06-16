@@ -61,7 +61,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
       className={`flex w-full min-w-0 ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       {isUser ? (
-        <div className="min-w-0 max-w-[80%] overflow-hidden bg-foreground text-background rounded-2xl rounded-br-xs px-4.5 py-2.5 shadow-sm border border-foreground/10">
+        <div className="max-w-4xl overflow-hidden bg-foreground text-background rounded-2xl rounded-br-xs px-4.5 py-2.5 shadow-sm border border-foreground/10">
           <p className="text-[13px] sm:text-sm font-medium whitespace-pre-wrap wrap-break-word leading-relaxed">
             {cleanContent}
           </p>
