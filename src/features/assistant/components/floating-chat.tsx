@@ -59,7 +59,7 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
 
   return (
     <div className="flex flex-col w-full h-full bg-card/95 dark:bg-[#161718]/90 backdrop-blur-xl overflow-hidden">
-      <header className="flex items-center justify-between w-full px-4.5 py-3.5 shrink-0 border-b border-border/40 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md safe-top relative">
+      <header className="flex items-center justify-between w-full px-4.5 py-3.5 shrink-0 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md safe-top relative">
         <div className="flex items-center gap-2.5">
           <AssistantAvatar size="sm" />
         </div>
@@ -144,7 +144,7 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
                 onSuggestionClick={handleQuickAction}
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none px-4 pb-5 pt-8 bg-gradient-to-t from-card via-card/95 to-transparent dark:from-[#161718] dark:via-[#161718]/95 dark:to-transparent">
+            <div className="absolute bottom-0 left-0 right-0 pointer-events-none px-4 pb-5 pt-8">
               <div className="pointer-events-auto">
                 <ChatInput
                   message={message}
