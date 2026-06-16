@@ -1,9 +1,10 @@
+import { routing } from '@/i18n/routing';
 import { Providers } from '@/shared/components/providers';
 import { SkipLink } from '@/shared/components/ui/skip-link';
 import { TerminalPrompt } from '@/shared/components/ui/terminal-prompt';
-import { routing } from '@/i18n/routing';
 import { BASE_URL } from '@/shared/lib/constants';
 import { fontHeading, fontSans } from '@/shared/lib/fonts';
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
@@ -27,6 +28,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body className={`${fontSans.variable} ${fontHeading.variable} antialiased`}>
         <NextIntlClientProvider>
           <Providers>
+            <Analytics />
             <SkipLink />
             {children}
             <TerminalPrompt />
