@@ -29,7 +29,7 @@ export default function NotFound() {
           className="space-y-6 max-w-sm flex flex-col items-center"
         >
           {/* 404 number */}
-          <span className="text-[8rem] sm:text-[10rem] font-heading font-bold leading-none tracking-tighter text-foreground/[0.06] select-none">
+          <span className="text-[8rem] sm:text-[10rem] font-heading font-bold leading-none tracking-tighter text-foreground/6 select-none">
             404
           </span>
 
