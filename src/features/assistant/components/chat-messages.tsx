@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { Message } from '../types';
 import { ChatMessage } from './chat-message';
-import { AssistantAvatar } from './ui/assistant-avatar';
 import { ChatLoading } from './ui/chat-loading';
 import { ChatSuggestions } from './ui/chat-suggestions';
 
@@ -82,13 +81,7 @@ export function ChatMessages({ messages, isLoading, onSuggestionClick }: ChatMes
 
       {isLoading && (
         <div className="flex flex-col gap-2.5">
-          <div className="flex items-center gap-2">
-            <AssistantAvatar size="sm" />
-            <span className="text-[10px] font-medium text-muted-foreground/60 tracking-wide uppercase">
-              Assistant
-            </span>
-          </div>
-          <div className="pl-6">
+          <div className="">
             <ChatLoading />
           </div>
         </div>
