@@ -51,20 +51,29 @@ export const viewport: Viewport = {
 
 const baseMetadata: Metadata = {
   title: {
-    default: 'Ignacio Figueroa | Fullstack AI Developer',
+    default: 'Ignacio Figueroa · Fullstack Developer',
     template: '%s | Ignacio Figueroa',
   },
   description:
-    'Fullstack Developer building systems in React, FastAPI, and Python. No buzzwords, just clean code and functional AI integrations.',
+    'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.',
   applicationName: 'Ignacio Figueroa',
   keywords: [
     'Fullstack Developer',
     'Ignacio Figueroa',
-    'React Developer',
-    'FastAPI Developer',
-    'Python AI',
-    'Portfolio',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'FastAPI',
+    'Python',
+    'AI Integration',
+    'NachUI',
+    'Component Library',
+    'Open Source',
     'Software Engineer',
+    'Argentina',
+    'Portfolio',
+    'Linux',
+    'Fedora',
   ],
   authors: [{ name: 'Ignacio Figueroa', url: BASE_URL }],
   creator: 'Ignacio Figueroa',
@@ -85,8 +94,9 @@ const baseMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ignacio Figueroa | Full Stack Developer',
-    description: 'Full Stack Developer specializing in React, Next.js, and TypeScript.',
+    title: 'Ignacio Figueroa · Fullstack Developer',
+    description:
+      'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with real-world AI integrations.',
     creator: '@nachofiguer_oa',
   },
   robots: {
@@ -109,6 +119,8 @@ export async function generateMetadata({
 }: Omit<LocaleLayoutProps, 'children'>): Promise<Metadata> {
   const { locale } = await params;
 
+  const isEs = locale === 'es';
+
   return {
     ...baseMetadata,
     metadataBase: new URL(BASE_URL),
@@ -121,17 +133,15 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title:
-        locale === 'es'
-          ? 'Ignacio Figueroa | Desarrollador Fullstack AI'
-          : 'Ignacio Figueroa | Fullstack AI Developer',
-      description:
-        locale === 'es'
-          ? 'Desarrollador Fullstack centrado en React, FastAPI y Python. Código directo sin rodeos ni buzzwords.'
-          : 'Fullstack Developer working with React, FastAPI, and Python. Direct code, no buzzwords.',
+      title: isEs
+        ? 'Ignacio Figueroa · Desarrollador Fullstack'
+        : 'Ignacio Figueroa · Fullstack Developer',
+      description: isEs
+        ? 'Desarrollador fullstack con React, Next.js, FastAPI y Python. Contribuidor open source con más de 6 proyectos en producción e integraciones reales de IA.'
+        : 'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.',
       type: 'website',
-      locale: locale === 'es' ? 'es_ES' : 'en_US',
-      alternateLocale: locale === 'es' ? ['en_US'] : ['es_ES'],
+      locale: isEs ? 'es_ES' : 'en_US',
+      alternateLocale: isEs ? ['en_US'] : ['es_ES'],
       siteName: 'Ignacio Figueroa',
       url: `${BASE_URL}/${locale}`,
       images: [
@@ -139,7 +149,7 @@ export async function generateMetadata({
           url: '/images/og-home.png',
           width: 1200,
           height: 630,
-          alt: 'Ignacio Figueroa | Full Stack Developer',
+          alt: 'Ignacio Figueroa · Fullstack Developer',
         },
       ],
     },

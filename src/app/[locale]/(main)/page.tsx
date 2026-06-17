@@ -24,17 +24,76 @@ export default function HomePage({ params }: HomePageProps) {
   const { locale } = use(params);
   setRequestLocale(locale);
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ProfilePage',
-    mainEntity: {
-      '@type': 'Person',
+  const isEs = locale === 'es';
+
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
       name: 'Ignacio Figueroa',
-      url: `${BASE_URL}/${locale}`,
-      jobTitle: 'Full Stack Developer',
-      sameAs: ['https://github.com/figueroaignacio', 'https://linkedin.com/in/figueroa-ignacio'],
+      url: BASE_URL,
+      inLanguage: [isEs ? 'es-AR' : 'en'],
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${BASE_URL}/${locale}?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
     },
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ProfilePage',
+      mainEntity: {
+        '@type': 'Person',
+        name: 'Ignacio Figueroa',
+        alternateName: 'Nacho',
+        url: `${BASE_URL}/${locale}`,
+        image: `${BASE_URL}/images/profile-photo.png`,
+        jobTitle: isEs ? 'Desarrollador Fullstack' : 'Fullstack Developer',
+        description: isEs
+          ? 'Desarrollador fullstack con React, Next.js, FastAPI y Python. Contribuidor open source con más de 6 proyectos en producción e integraciones reales de IA.'
+          : 'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.',
+        knowsAbout: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Node.js',
+          'FastAPI',
+          'Python',
+          'AI Integration',
+          'LLM',
+          'PostgreSQL',
+          'Linux',
+          'Tailwind CSS',
+        ],
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name: isEs ? 'Universidad Tecnológica Nacional' : 'National Technological University',
+          url: 'https://www.utn.edu.ar',
+        },
+        sameAs: [
+          'https://github.com/figueroaignacio',
+          'https://linkedin.com/in/figueroa-ignacio',
+        ],
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: isEs
+        ? 'Ignacio Figueroa · Desarrollador Fullstack'
+        : 'Ignacio Figueroa · Fullstack Developer',
+      url: `${BASE_URL}/${locale}`,
+      inLanguage: isEs ? 'es-AR' : 'en',
+      isPartOf: {
+        '@type': 'WebSite',
+        url: BASE_URL,
+      },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.space-y-6 > p'],
+      },
+    },
+  ];
 
   return (
     <>
