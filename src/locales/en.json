@@ -193,7 +193,7 @@
       "title": "Page not found",
       "description": "This page doesn't exist or may have been moved. Let's get you back on track.",
       "codeBlockTitle": "terminal",
-      "codeBlockContent": "$ git log --oneline this-page.tsx\nfatal: bad default revision 'HEAD'\n\n$ find . -name 'this-page*'\n[no results]\n\n# looks like this route was never deployed.",
+      "codeBlockContent": "$ git log --oneline {filename}\nfatal: bad default revision 'HEAD'\n\n$ find . -name '{query}*'\n[no results]\n\n# looks like this route was never deployed.",
       "actionBack": "Go Back",
       "actionHome": "Home"
     }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { BackgroundDecorations } from '@/shared/components/background-decorations';
 import { Dock } from '@/shared/components/dock';
 import { Button } from '@/shared/components/ui/button';
@@ -12,6 +12,12 @@ import { useTranslations } from 'next-intl';
 export default function NotFound() {
   const t = useTranslations('pages.notFound');
   const router = useRouter();
+  const pathname = usePathname();
+  const segments = pathname.split('/').filter(Boolean);
+  const lastSegment = segments[segments.length - 1];
+  const cleanSegment = lastSegment ? lastSegment.replace(/[^a-zA-Z0-9-_]/g, '') : '';
+  const query = cleanSegment || 'page';
+  const filename = `${query}.tsx`;
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-x-hidden">
@@ -28,22 +34,18 @@ export default function NotFound() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-6 max-w-sm flex flex-col items-center"
         >
-          {/* 404 number */}
           <span className="text-[8rem] sm:text-[10rem] font-heading font-bold leading-none tracking-tighter text-foreground/6 select-none">
             404
           </span>
 
-          {/* Heading */}
           <h1 className="-mt-16 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
             {t('title')}
           </h1>
 
-          {/* Description */}
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
             {t('description')}
           </p>
 
-          {/* Actions */}
           <div className="flex flex-wrap justify-center gap-3 pt-2">
             <Button
               variant="outline"
@@ -61,7 +63,6 @@ export default function NotFound() {
             </Button>
           </div>
 
-          {/* Terminal easter egg */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,7 +79,7 @@ export default function NotFound() {
                 </span>
               </div>
               <div className="p-4 text-neutral-400 leading-relaxed whitespace-pre-wrap">
-                {t.raw('codeBlockContent')}
+                {t('codeBlockContent', { filename, query })}
               </div>
             </div>
           </motion.div>
