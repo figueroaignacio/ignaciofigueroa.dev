@@ -1,36 +1,36 @@
 {
   "metadata": {
     "home": {
-      "title": "Fullstack AI Developer - Ignacio Figueroa",
-      "description": "Ignacio Figueroa's portfolio. I build fullstack systems in React, FastAPI, Python, and integrate AI to automate workflows. No fluff, just clean architecture.",
-      "keywords": "Web Developer, Fullstack, Frontend, React, Next.js, Argentina, UTN, Software Engineer, Portfolio, Linux, Fedora, AI Developer"
+      "title": "Ignacio Figueroa · Fullstack Developer",
+      "description": "Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.",
+      "keywords": "Fullstack Developer, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, AI Integration, NachUI, Component Library, Open Source, Argentina, Software Engineer, Portfolio, Linux, Fedora"
     },
     "aboutMe": {
       "title": "About - Ignacio Figueroa",
-      "description": "Bio and tech stack of Ignacio Figueroa. A look at how I write code, my UTN studies, and why I use Fedora Linux.",
-      "keywords": "About Me, Developer Bio, Tech Stack, Work Experience, Ignacio Figueroa, Professional Profile, Linux, Fedora"
+      "description": "Background, tech stack, and professional experience of Ignacio Figueroa, a fullstack developer, UTN student, and open source contributor based in Argentina.",
+      "keywords": "About, Developer Bio, Tech Stack, Work Experience, Ignacio Figueroa, Professional Profile, Linux, Fedora, UTN, Argentina"
     },
     "projects": {
       "title": "Projects - Ignacio Figueroa",
-      "description": "A list of things I built. Leading with technical design details and actual impact rather than generic checklists.",
-      "keywords": "Web Projects, Project Portfolio, Case Studies, App Development, React Projects, Open Source"
+      "description": "Open source projects and production applications built with React, Next.js, FastAPI, and AI integrations. Technical details and live demos included.",
+      "keywords": "Web Projects, Project Portfolio, Case Studies, React Projects, Open Source, NachUI, AI Assistant, FastAPI"
     },
     "chat": {
-      "title": "AI Bot - Ignacio Figueroa",
-      "description": "Talk to my AI chatbot to ask about my stack, projects, and work history."
+      "title": "AI Assistant - Ignacio Figueroa",
+      "description": "AI assistant powered by Gemini and FastAPI. Ask about projects, tech stack, experience, and professional background."
     },
     "contact": {
       "title": "Contact - Ignacio Figueroa",
-      "description": "Get in touch. Open to fullstack engineering roles or technical collaborations. Direct email available.",
-      "keywords": "Contact, Hire Developer, Fullstack Engineer, Ignacio Figueroa, React Developer"
+      "description": "Open to fullstack engineering roles and technical collaborations. Get in touch via email, LinkedIn, or GitHub.",
+      "keywords": "Contact, Hire Developer, Fullstack Engineer, Ignacio Figueroa, React Developer, Argentina"
     }
   },
   "sections": {
     "home": {
       "greeting": "I am",
       "name": "Ignacio Figueroa",
-      "title": "I build fullstack systems and write AI integrations that do real work.",
-      "description": "I build fullstack apps with React, FastAPI, and Python, and prefer developing on Fedora Linux. I use AI to write better code faster, not to generate marketing buzzwords.",
+      "title": "Fullstack systems with AI integrations that ship.",
+      "description": "React, Next.js, FastAPI, and Python, developed on Fedora Linux. I build end-to-end products and integrate AI where it solves a real problem.",
       "actions": {
         "viewProjects": "See the code",
         "learnMore": "Read my stack",
@@ -40,29 +40,29 @@
     },
     "aboutMe": {
       "title": "About Me",
-      "description": "UTN student and fullstack builder who enjoys developing on Fedora Linux and prefers clean abstractions over bloated frameworks.",
+      "description": "UTN student and fullstack developer. I work on Fedora Linux and focus on clean architecture over framework churn.",
       "items": [
         {
-          "content": "<b>Fullstack Engineering.</b> I work with React, Next.js, Node.js, and FastAPI. I build complete products from initial DB schema to frontend deployment, keeping the architecture straightforward."
+          "content": "<b>Fullstack Engineering.</b> I work with React, Next.js, Node.js, and FastAPI. I build complete products, covering everything from the database schema to frontend deployment."
         },
         {
-          "content": "<b>Real-World AI.</b> AI shouldn't be a wrapper. I write APIs that connect LLMs to structured data and local agentic workflows, using prompt engineering and serverless backends to solve tangible problems."
+          "content": "<b>AI Integration.</b> I write APIs that connect LLMs to structured data, using prompt engineering, serverless backends, and agentic workflows to solve concrete problems."
         },
         {
-          "content": "<b>Linux & Tooling.</b> I develop on Fedora Linux because a local, tailored environment speeds up my feedback loop. I value clean git history, automated tests, and terminal-centric workflows."
+          "content": "<b>Linux & Tooling.</b> I develop on Fedora Linux. Clean git history, automated tests, and terminal-centric workflows are part of how I work."
         }
       ],
       "content": {
         "title": "About",
-        "subtitle": "I write code that works, build on Fedora Linux, and automate whatever I can.",
-        "bio": "I'm a Fullstack AI Developer and UTN student based in Argentina. I don't believe in adding dependencies for things that can be solved with a few lines of clean code, nor do I believe in AI wrappers that just forward user messages. I build products end-to-end, linking frontend state to robust FastAPI backends.",
-        "details": "If you want a developer who spent hours configuring their system to match their exact workflow, understands why bad abstractions fail under load, and treats LLMs as standard tools rather than magic, let's talk.",
+        "subtitle": "Building software that works, on the tools I trust.",
+        "bio": "Fullstack Developer and UTN student based in Argentina. I build products end-to-end, from the database schema to the frontend deployment. I connect React frontends with FastAPI backends and integrate LLMs as structured tools instead of simple wrappers.",
+        "details": "I value clean git history, automated tests, and local environments tuned for fast feedback. If you need someone to bridge frontend, backend, and AI, let's talk.",
         "photoLegend": "Ignacio Figueroa, also known as Nacho"
       }
     },
     "projects": {
       "title": "Projects",
-      "description": "Stuff I built.",
+      "description": "Things I've built and shipped.",
       "work": {
         "tab": "Work",
         "title": "Work projects",
@@ -87,11 +87,11 @@
     },
     "experience": {
       "title": "Experience",
-      "description": "A summary of my journey as a developer"
+      "description": "Professional experience in fullstack development and team collaboration."
     },
     "education": {
       "title": "Education",
-      "description": "Academic background and certifications"
+      "description": "Formal education and self-directed learning in software engineering."
     },
     "testimonials": {
       "title": "What people say about me.",
@@ -100,7 +100,7 @@
     },
     "contributions": {
       "title": "Open Source Contributions",
-      "description": "Repos I've contributed to — bug fixes, features, and improvements.",
+      "description": "Repositories I have contributed to, focusing on bug fixes, new features, and performance improvements.",
       "viewRepo": "View repository",
       "viewFork": "View fork",
       "pr": "Pull Request"
@@ -142,8 +142,8 @@
     },
     "mateUiCta": {
       "badge": "UI Components",
-      "title": "I built my own UI component library to avoid copying Tailwind setups.",
-      "description": "NachUI is a collection of {count} custom, accessible primitives. It exists because I wanted components that actually look good out of the box and don't require an essay of class names to customize.",
+      "title": "An open-source component library built from scratch.",
+      "description": "NachUI is a collection of {count} accessible, customizable primitives designed to look good by default with minimal configuration.",
       "actions": {
         "viewComponents": "Browse Components",
         "viewDocumentation": "Read the Docs"
@@ -183,8 +183,8 @@
   "pages": {
     "contact": {
       "label": "Contact",
-      "title": "Let's connect. No forms necessary if you prefer email.",
-      "description": "I'm open to fullstack engineering roles or technical collaborations. If you have an interesting codebase, a complex integration, or just want to talk terminal configurations, reach out.",
+      "title": "Let's connect.",
+      "description": "Open to fullstack engineering roles or technical collaborations. If you have an interesting codebase, a complex integration, or just want to talk tech, reach out.",
       "linksTitle": "Find me on",
       "formTitle": "Drop a message",
       "formDescription": "This sends a direct email. I actually read them."
@@ -238,14 +238,14 @@
     "ctaCv": {
       "url": "/pdf/cv_ignacio_figueroa_fullstack_developer.pdf",
       "cta": {
-        "title": "Need the paper version?",
-        "description": "You can download my full work history, technical stacks, and education details in a standard PDF.",
+        "title": "Resume",
+        "description": "Full work history, tech stack, and education in PDF format.",
         "text": "Download PDF Resume"
       }
     },
     "ctaContact": {
       "title": "Available for hire",
-      "description": "Looking for a fullstack developer who actually knows how to debug their build environment and doesn't just copy-paste from AI chat logs? Let's talk."
+      "description": "I'm open to fullstack roles, contract work, or technical collaborations. If you have an interesting project, let's connect."
     },
     "chat": {
       "disclaimers": [
@@ -260,7 +260,7 @@
         " Built while procrastinating on UTN assignments.",
         " The FastAPI server is up. Probably. No promises after 2am.",
         " Trained on Ignacio's codebase. Please lower your expectations accordingly.",
-        " Running on Next.js in the front, Python in the back. A mullet architecture.",
+        " Next.js in the front, Python in the back. Mullet architecture.",
         " I answer quickly so you don't realize Gemini is doing all the heavy lifting.",
         " Caution: May drop unprompted opinions about TypeScript vs Python.",
         " Powered by Gemini, supervised by a guy who really likes dark mode.",
@@ -270,7 +270,7 @@
         " Designed with Tailwind. Or as I call it, 'inline styles but socially acceptable'.",
         " Still learning exactly like Ignacio, but without the UTN exams.",
         " The Python backend has 95% test coverage. The 5% is the part that matters.",
-        " Works best when prompted with a virtual mate and a stable internet connection.",
+        " Works best with a virtual mate and a stable internet connection.",
         " It's not a hallucination, it's Gemini being 'creatively confident'.",
         " Deployed on a Friday. The FastAPI logs are fine. Everything is fine. I think so.",
         " I'm just a React component calling a Python endpoint calling Gemini. Layers."
