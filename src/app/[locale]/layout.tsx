@@ -5,6 +5,7 @@ import { TerminalPrompt } from '@/shared/components/ui/terminal-prompt';
 import { BASE_URL } from '@/shared/lib/constants';
 import { fontHeading, fontSans } from '@/shared/lib/fonts';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import { hasLocale, Locale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
@@ -29,6 +30,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <NextIntlClientProvider>
           <Providers>
             <Analytics />
+            <SpeedInsights />
             <SkipLink />
             {children}
             <TerminalPrompt />
