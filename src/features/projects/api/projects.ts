@@ -18,6 +18,15 @@ export async function getPersonalProjects(locale: Locale): Promise<Project[]> {
   });
 }
 
+export async function getProjectsByCategory(
+  locale: Locale,
+  categorySlug: string,
+): Promise<Project[]> {
+  return findCollection<Project>('projects', locale, {
+    where: { 'category.label': { equals: categorySlug } },
+  });
+}
+
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   return findOneBySlug<Project>('projects', slug);
 }
