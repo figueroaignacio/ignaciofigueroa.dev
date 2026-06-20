@@ -77,6 +77,7 @@ export interface Config {
     'tech-stack': TechStack;
     testimonials: Testimonial;
     users: User;
+    'project-category': ProjectCategory;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +95,7 @@ export interface Config {
     'tech-stack': TechStackSelect<false> | TechStackSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    'project-category': ProjectCategorySelect<false> | ProjectCategorySelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -329,9 +331,20 @@ export interface Project {
    * Used for custom sorting
    */
   order?: number | null;
+  category?: (number | ProjectCategory)[] | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-category".
+ */
+export interface ProjectCategory {
+  id: number;
+  label: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -445,6 +458,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'project-category';
+        value: number | ProjectCategory;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -621,6 +638,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   demo?: T;
   isCommercialProject?: T;
   order?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -683,6 +701,15 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-category_select".
+ */
+export interface ProjectCategorySelect<T extends boolean = true> {
+  label?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

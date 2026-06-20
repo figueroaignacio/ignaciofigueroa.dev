@@ -12,6 +12,7 @@ import * as migration_20260512_224420 from './20260512_224420';
 import * as migration_20260512_224828 from './20260512_224828';
 import * as migration_20260512_232049 from './20260512_232049';
 import * as migration_20260528_195009 from './20260528_195009';
+import * as migration_20260620_221145_add_project_categories from './20260620_221145_add_project_categories';
 
 export const migrations = [
   {
@@ -83,5 +84,10 @@ export const migrations = [
     up: migration_20260528_195009.up,
     down: migration_20260528_195009.down,
     name: '20260528_195009',
+  },
+  {
+    up: migration_20260620_221145_add_project_categories.up,
+    down: migration_20260620_221145_add_project_categories.down,
+    name: '20260620_221145_add_project_categories'
   },
 ];

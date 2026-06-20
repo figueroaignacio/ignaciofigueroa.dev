@@ -2,6 +2,7 @@ import { Contributions } from './contributions';
 import { Education } from './education';
 import { Experience } from './experience';
 import { Media } from './media';
+import { ProjectCategory } from './project-category';
 import { ProjectLabels } from './project-labels';
 import { Projects } from './projects';
 import { TechIcon } from './tech-icons';
@@ -20,4 +21,5 @@ export const collections = [
   TechStack,
   Testimonials,
   Users,
+  ProjectCategory,
 ];

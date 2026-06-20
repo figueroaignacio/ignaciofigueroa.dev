@@ -139,5 +139,13 @@ export const Projects: CollectionConfig = {
         description: 'Used for custom sorting',
       },
     },
+    {
+      name: 'category',
+      label: 'Category',
+      type: 'relationship',
+      relationTo: 'project-category',
+      hasMany: true,
+      required: false,
+    },
   ],
 };
