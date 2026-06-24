@@ -121,6 +121,14 @@
         "more": "More"
       }
     },
+    "whoAmI": {
+      "title": "Who Am I",
+      "description": "A short video introduction — who I am, how I work, and what drives me.",
+      "videoLabel": "Video presentation of Ignacio Figueroa",
+      "play": "Play video",
+      "pause": "Pause video",
+      "videoUrl": "https://res.cloudinary.com/dowusv05c/video/upload/v1782250393/20260623_180433_ekdyx4.mp4"
+    },
     "interests": {
       "title": "Technical Expertise",
       "description": "Core competencies and specialized knowledge applied in every project.",

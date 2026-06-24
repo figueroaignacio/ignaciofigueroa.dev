@@ -121,6 +121,14 @@
         "more": "Más"
       }
     },
+    "whoAmI": {
+      "title": "¿Quién soy?",
+      "description": "Una breve presentación en video: quién soy, cómo trabajo y qué me motiva.",
+      "videoLabel": "Presentación en video de Ignacio Figueroa",
+      "play": "Reproducir video",
+      "pause": "Pausar video",
+      "videoUrl": "https://res.cloudinary.com/dowusv05c/video/upload/v1782250355/20260623_180103_nkqygj.mp4"
+    },
     "interests": {
       "title": "Especialización Técnica",
       "description": "Competencias principales y conocimientos especializados aplicados en cada proyecto.",
