@@ -11,6 +11,7 @@ import { NachUICta } from '@/features/home/components/nach-ui-cta';
 import { ProjectsSection } from '@/features/home/components/projects-section';
 import { TechStack } from '@/features/home/components/tech-stack';
 import { Testimonials } from '@/features/home/components/testimonials';
+import { WhoAmI } from '@/features/home/components/whoami';
 import { BASE_URL } from '@/shared/lib/constants';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -70,10 +71,7 @@ export default function HomePage({ params }: HomePageProps) {
           name: isEs ? 'Universidad Tecnológica Nacional' : 'National Technological University',
           url: 'https://www.utn.edu.ar',
         },
-        sameAs: [
-          'https://github.com/figueroaignacio',
-          'https://linkedin.com/in/figueroa-ignacio',
-        ],
+        sameAs: ['https://github.com/figueroaignacio', 'https://linkedin.com/in/figueroa-ignacio'],
       },
     },
     {
@@ -105,6 +103,7 @@ export default function HomePage({ params }: HomePageProps) {
         <HomeHero />
         <ProjectsSection />
         <AboutSection />
+        <WhoAmI />
         <ContributionsSection />
         <GithubStatsSection />
         <TechStack />
