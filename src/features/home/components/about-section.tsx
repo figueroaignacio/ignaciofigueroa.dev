@@ -1,8 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 
-export function AboutSection() {
-  const t = useTranslations('sections.aboutMe.content');
-  const tSection = useTranslations('sections.aboutMe');
+export async function AboutSection() {
+  const t = await getTranslations('sections.aboutMe.content');
+  const tSection = await getTranslations('sections.aboutMe');
 
   return (
     <section id="about" className="space-y-6 scroll-mt-20">
@@ -18,11 +19,14 @@ export function AboutSection() {
           className="float-right ml-6 mb-4 md:ml-8 md:mb-6 relative group rounded-full"
           style={{ shapeOutside: 'circle(50%)' }}
         >
-          <div className="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden ">
-            <img
-              src="/images/profile-photo.png"
-              alt="Ignacio Figueroa"
-              className="w-full h-full object-cover transition-all duration-700"
+          <div className="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden">
+            <Image
+              src="/images/profile-photo.webp"
+              alt="Ignacio Figueroa — Fullstack Developer"
+              width={192}
+              height={192}
+              priority
+              className="w-full h-full object-cover object-top transition-all duration-700"
             />
             <legend className="p-2 text-xs font-mono text-center">{t('photoLegend')}</legend>
           </div>

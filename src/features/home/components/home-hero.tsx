@@ -1,18 +1,9 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
+import { HeroActions } from './home-hero-actions';
 
-import { AssistantAvatar } from '@/features/assistant/components/ui/assistant-avatar';
-import { DocumentCodeIcon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
-import { useTranslations } from 'next-intl';
-
-export function HomeHero() {
-  const t = useTranslations('sections.home');
-  const tCv = useTranslations('components.ctaCv');
-
-  const handleChatClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    window.dispatchEvent(new Event('open-chat'));
-  };
+export async function HomeHero() {
+  const t = await getTranslations('sections.home');
+  const tCv = await getTranslations('components.ctaCv');
 
   return (
     <section className="space-y-6 mt-10">
@@ -26,23 +17,11 @@ export function HomeHero() {
       <p className="text-muted-foreground leading-relaxed max-w-2xl text-balance">
         {t('description')}
       </p>
-      <div className="flex flex-wrap gap-3 pt-2">
-        <button onClick={handleChatClick} className="btn btn-primary group">
-          {t('actions.chatAssistant')}
-          <div className="transition-transform duration-300 group-hover:scale-110">
-            <AssistantAvatar size="sm" />
-          </div>
-        </button>
-        <a
-          href={tCv('url')}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-outline hover:bg-muted/50 transition-all duration-300"
-        >
-          <HugeiconsIcon icon={DocumentCodeIcon} className="size-4" />
-          {t('actions.viewCv')}
-        </a>
-      </div>
+      <HeroActions
+        chatLabel={t('actions.chatAssistant')}
+        cvLabel={t('actions.viewCv')}
+        cvUrl={tCv('url')}
+      />
     </section>
   );
 }
