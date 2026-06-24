@@ -15,7 +15,7 @@ import { WhoAmI } from '@/features/home/components/whoami';
 import { BASE_URL } from '@/shared/lib/constants';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
+import { Suspense, use } from 'react';
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -104,14 +104,22 @@ export default function HomePage({ params }: HomePageProps) {
         <ProjectsSection />
         <AboutSection />
         <WhoAmI />
-        <ContributionsSection />
-        <GithubStatsSection />
+        <Suspense fallback={null}>
+          <ContributionsSection />
+        </Suspense>
+        <Suspense fallback={null}>
+          <GithubStatsSection />
+        </Suspense>
         <TechStack />
         <Interests />
         <ExperienceSection />
         <NachUICta />
-        <EducationSection />
-        <Testimonials />
+        <Suspense fallback={null}>
+          <EducationSection />
+        </Suspense>
+        <Suspense fallback={null}>
+          <Testimonials />
+        </Suspense>
         <CTACurriculum />
         <ContactSection />
       </div>
