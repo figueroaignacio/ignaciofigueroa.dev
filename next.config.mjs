@@ -2,7 +2,10 @@ import { withPayload } from '@payloadcms/next/withPayload';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const baseConfig = {
+  compress: true,
+  poweredByHeader: false,
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -22,5 +22,5 @@ export const fontCode = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '700'],
-  preload: true,
+  preload: false,
 });
