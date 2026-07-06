@@ -2,67 +2,67 @@
   "metadata": {
     "home": {
       "title": "Ignacio Figueroa · Fullstack Developer",
-      "description": "Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.",
-      "keywords": "Fullstack Developer, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, AI Integration, NachUI, Component Library, Open Source, Argentina, Software Engineer, Portfolio, Linux, Fedora"
+      "description": "I have experience with React, Next.js, FastAPI, and Python. I work on Linux. I love to understand the things under the hood. I build personal projects, an open source component library, and LLM integrations that do more than call an API.",
+      "keywords": "Fullstack Developer, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, AI Integration, LLM, NachUI, Component Library, Open Source, Argentina, Software Engineer, Portfolio, Linux, Fedora"
     },
     "aboutMe": {
       "title": "About - Ignacio Figueroa",
-      "description": "Background, tech stack, and professional experience of Ignacio Figueroa, a fullstack developer, UTN student, and open source contributor based in Argentina.",
+      "description": "Fullstack developer and UTN student from Argentina. Builds complete systems: React frontends, FastAPI backends, and structured LLM integrations.",
       "keywords": "About, Developer Bio, Tech Stack, Work Experience, Ignacio Figueroa, Professional Profile, Linux, Fedora, UTN, Argentina"
     },
     "projects": {
       "title": "Projects - Ignacio Figueroa",
-      "description": "Open source projects and production applications built with React, Next.js, FastAPI, and AI integrations. Technical details and live demos included.",
-      "keywords": "Web Projects, Project Portfolio, Case Studies, React Projects, Open Source, NachUI, AI Assistant, FastAPI"
+      "description": "Production systems and open source tools built with React, Next.js, FastAPI, and real AI integrations. Source code and live demos available.",
+      "keywords": "Web Projects, Project Portfolio, React Projects, Open Source, NachUI, AI Assistant, FastAPI, Fullstack"
     },
     "chat": {
       "title": "AI Assistant - Ignacio Figueroa",
-      "description": "AI assistant powered by Gemini and FastAPI. Ask about projects, tech stack, experience, and professional background."
+      "description": "AI assistant built on Gemini and FastAPI. Ask about projects, stack, experience, or send a message directly."
     },
     "contact": {
       "title": "Contact - Ignacio Figueroa",
-      "description": "Open to fullstack engineering roles and technical collaborations. Get in touch via email, LinkedIn, or GitHub.",
+      "description": "Looking for fullstack engineering roles or technical collaborations. Reach out via email, LinkedIn, or GitHub.",
       "keywords": "Contact, Hire Developer, Fullstack Engineer, Ignacio Figueroa, React Developer, Argentina"
     }
   },
   "sections": {
     "home": {
-      "greeting": "I am",
+      "greeting": "Software Developer · AI Integrations · Fullstack Development",
       "name": "Ignacio Figueroa",
-      "title": "Fullstack systems with AI integrations that ship.",
-      "description": "React, Next.js, FastAPI, and Python, developed on Fedora Linux. I build end-to-end products and integrate AI where it solves a real problem.",
+      "title": "From frontend to backend, infrastructure and criterion, with AI where it earns its place.",
+      "description": "I have experience with React, Next.js, FastAPI, and Python. I work on Linux. I love to understand the things under the hood. I build personal projects, an open source component library, and LLM integrations that do more than call an API.",
       "actions": {
         "viewProjects": "See the code",
         "learnMore": "Read my stack",
         "chatAssistant": "Talk to my bot",
-        "viewCv": "Get the resume"
+        "viewCv": "View resume"
       }
     },
     "aboutMe": {
       "title": "About Me",
-      "description": "UTN student and fullstack developer. I work on Fedora Linux and focus on clean architecture over framework churn.",
+      "description": "Software Developer focused on Fullstack development. I write code that runs in production, not just in demos.",
       "items": [
         {
-          "content": "<b>Fullstack Engineering.</b> I work with React, Next.js, Node.js, and FastAPI. I build complete products, covering everything from the database schema to frontend deployment."
+          "content": "<b>Fullstack Engineering.</b> React, Next.js, Node.js, and FastAPI. I own the full stack — schema design, API contracts, frontend state, and deployment."
         },
         {
-          "content": "<b>AI Integration.</b> I write APIs that connect LLMs to structured data, using prompt engineering, serverless backends, and agentic workflows to solve concrete problems."
+          "content": "<b>AI Integration.</b> I connect LLMs to real data through structured APIs, prompt engineering, and agentic workflows. Not wrappers — tools that solve specific problems."
         },
         {
-          "content": "<b>Linux & Tooling.</b> I develop on Fedora Linux. Clean git history, automated tests, and terminal-centric workflows are part of how I work."
+          "content": "<b>Linux & Workflow.</b> Fedora Linux as my daily driver. I care about reproducible environments, clean git history, and CI/CD pipelines that don't surprise you."
         }
       ],
       "content": {
         "title": "About",
-        "subtitle": "Building software that works, on the tools I trust.",
-        "bio": "Fullstack Developer and UTN student based in Argentina. I build products end-to-end, from the database schema to the frontend deployment. I connect React frontends with FastAPI backends and integrate LLMs as structured tools instead of simple wrappers.",
-        "details": "I value clean git history, automated tests, and local environments tuned for fast feedback. If you need someone to bridge frontend, backend, and AI, let's talk.",
-        "photoLegend": "Ignacio Figueroa, also known as Nacho"
+        "subtitle": "Software that runs in production, not just in demos.",
+        "bio": "Software developer based on Argentina. I handle the full stack: database schema, API design, React frontends, and deployment. On the AI side, I build structured integrations — LLMs connected to real data through well-defined contracts, not just API wrappers.",
+        "details": "I work on Fedora Linux, keep a clean git history, and write tests before things break in production. If you need someone who can own a feature from the first migration to the last deploy, reach out.",
+        "photoLegend": "Ignacio Figueroa, known as Nacho"
       }
     },
     "projects": {
       "title": "Projects",
-      "description": "Things I've built and shipped.",
+      "description": "What I've built and shipped to production.",
       "work": {
         "tab": "Work",
         "title": "Work projects",
@@ -87,14 +87,14 @@
     },
     "experience": {
       "title": "Experience",
-      "description": "Professional experience in fullstack development and team collaboration."
+      "description": "Roles where I shipped features, fixed real bugs, and worked with other engineers."
     },
     "education": {
       "title": "Education",
-      "description": "Formal education and self-directed learning in software engineering."
+      "description": "University and self-directed study. Both matter."
     },
     "testimonials": {
-      "title": "What people say about me.",
+      "title": "What people say.",
       "showMore": "Show more",
       "showLess": "Show less"
     },
@@ -130,8 +130,8 @@
       "videoUrl": "https://res.cloudinary.com/dowusv05c/video/upload/v1782250393/20260623_180433_ekdyx4.mp4"
     },
     "interests": {
-      "title": "Technical Expertise",
-      "description": "Core competencies and specialized knowledge applied in every project.",
+      "title": "Areas of Focus",
+      "description": "Where I spend my time and where I can add real value.",
       "items": {
         "frontend": "Frontend Development",
         "backend": "Backend Architecture",
@@ -149,9 +149,9 @@
       }
     },
     "mateUiCta": {
-      "badge": "UI Components",
-      "title": "An open-source component library built from scratch.",
-      "description": "NachUI is a collection of {count} accessible, customizable primitives designed to look good by default with minimal configuration.",
+      "badge": "Open Source",
+      "title": "I built a component library. {count} components, from scratch.",
+      "description": "NachUI is a set of accessible, unstyled-by-default primitives. Built it to stop copying the same UI patterns across projects.",
       "actions": {
         "viewComponents": "Browse Components",
         "viewDocumentation": "Read the Docs"
@@ -191,11 +191,11 @@
   "pages": {
     "contact": {
       "label": "Contact",
-      "title": "Let's connect.",
-      "description": "Open to fullstack engineering roles or technical collaborations. If you have an interesting codebase, a complex integration, or just want to talk tech, reach out.",
+      "title": "Let's talk.",
+      "description": "Looking for fullstack or AI integration roles. If you have a concrete technical problem, reach out.",
       "linksTitle": "Find me on",
       "formTitle": "Drop a message",
-      "formDescription": "This sends a direct email. I actually read them."
+      "formDescription": "This sends a direct email. I read every message."
     },
     "notFound": {
       "title": "Page not found",
@@ -245,23 +245,23 @@
     "footer": {
       "name": "Ignacio Figueroa",
       "role": "Fullstack Developer",
-      "thanks": "Thanks for visiting my portfolio",
+      "thanks": "Thanks for stopping by",
       "rights": "All rights reserved",
-      "kiss": "I was told to keep it simple. So I didn't add more pages. - Ignacio"
+      "kiss": "Kept it simple on purpose. - Ignacio"
     },
     "error": "An error occurred while loading the data.",
     "loader": "Loading...",
     "ctaCv": {
       "url": "/pdf/cv_ignacio_figueroa_fullstack_developer.pdf",
       "cta": {
-        "title": "Resume",
-        "description": "Full work history, tech stack, and education in PDF format.",
-        "text": "Download PDF Resume"
+        "title": "Resume available",
+        "description": "Work history, stack, and education. One page, no fluff.",
+        "text": "Download Resume"
       }
     },
     "ctaContact": {
-      "title": "Available for hire",
-      "description": "I'm open to fullstack roles, contract work, or technical collaborations. If you have an interesting project, let's connect."
+      "title": "Open to opportunities",
+      "description": "Looking for fullstack or AI integration roles. Contract or full-time. If the problem is interesting, I'm interested."
     },
     "chat": {
       "disclaimers": [
@@ -353,14 +353,14 @@
       "light": "Light"
     },
     "contactForm": {
-      "title": "Let's Connect.",
-      "description": "Currently open to new development opportunities and technical collaborations. Send me a message and I'll get back to you shortly.",
+      "title": "Get in touch.",
+      "description": "Open to fullstack or AI roles, contract work, or just a technical conversation. I read every message.",
       "nameLabel": "Name",
       "namePlaceholder": "Your name",
       "emailLabel": "Email",
       "emailPlaceholder": "your.email@domain.com",
       "messageLabel": "Message",
-      "messagePlaceholder": "What's the project about?",
+      "messagePlaceholder": "What are you working on?",
       "submit": "Send",
       "sending": "Sending...",
       "success": "Message sent. I'll reply soon.",
