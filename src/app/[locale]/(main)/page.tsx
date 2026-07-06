@@ -113,7 +113,6 @@ export default function HomePage({ params }: HomePageProps) {
         </Suspense>
         <TechStack />
         <Interests />
-
         <NachUICta />
         <Suspense fallback={null}>
           <EducationSection />
