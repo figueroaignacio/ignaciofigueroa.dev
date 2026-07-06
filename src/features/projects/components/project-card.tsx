@@ -42,7 +42,7 @@ export function ProjectCard({
       <div className="flex flex-col gap-5">
         <div>
           <div className="flex flex-col items-baseline gap-2 flex-wrap">
-            {labelsList.length > 0 && (
+            {/* {labelsList.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {labelsList.map((label) => (
                   <span
@@ -54,7 +54,7 @@ export function ProjectCard({
                   </span>
                 ))}
               </div>
-            )}
+            )} i'll see what i'll do with this shit later */}
             <h3
               id={`project-title-${title}`}
               className="font-heading text-lg font-normal text-foreground"
@@ -74,7 +74,7 @@ export function ProjectCard({
               return (
                 <Badge
                   key={tech.id}
-                  variant="secondary"
+                  variant="outline"
                   className="rounded-md px-2 py-1 font-normal flex items-center gap-1.5"
                 >
                   {techIcon?.svg && (

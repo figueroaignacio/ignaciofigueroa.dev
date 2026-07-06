@@ -18,7 +18,7 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
 
   return (
     <Tabs defaultValue={defaultValue}>
-      <Tabs.List variant="outline" className="rounded-sm">
+      <Tabs.List variant="outline" className="rounded-sm w-fit">
         {data.map(({ category }) => (
           <Tabs.Trigger key={category} value={category}>
             {category}
