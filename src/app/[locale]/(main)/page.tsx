@@ -101,6 +101,7 @@ export default function HomePage({ params }: HomePageProps) {
       />
       <div className="space-y-14 mb-12">
         <HomeHero />
+        <ExperienceSection />
         <ProjectsSection />
         <AboutSection />
         <WhoAmI />
@@ -112,7 +113,7 @@ export default function HomePage({ params }: HomePageProps) {
         </Suspense>
         <TechStack />
         <Interests />
-        <ExperienceSection />
+
         <NachUICta />
         <Suspense fallback={null}>
           <EducationSection />
