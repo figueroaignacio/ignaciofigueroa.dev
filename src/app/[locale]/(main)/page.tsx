@@ -99,7 +99,7 @@ export default function HomePage({ params }: HomePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="space-y-24 mb-20">
+      <div className="space-y-14 mb-12">
         <HomeHero />
         <ProjectsSection />
         <AboutSection />

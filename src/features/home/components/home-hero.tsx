@@ -6,15 +6,15 @@ export async function HomeHero() {
   const tCv = await getTranslations('components.ctaCv');
 
   return (
-    <section className="space-y-6 mt-10">
-      <p className="text-sm text-muted-foreground">{t('greeting')}</p>
-      <h1 className="text-5xl sm:text-6xl font-normal tracking-tight text-balance leading-[1.05]">
+    <section className="space-y-4 mt-8">
+      <p className="text-xs text-muted-foreground tracking-wide uppercase">{t('greeting')}</p>
+      <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-balance leading-[1.1]">
         {t('name')}
       </h1>
-      <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl text-balance">
+      <p className="text-base text-muted-foreground leading-relaxed max-w-2xl text-balance">
         <span className="text-foreground font-medium">{t('title')}</span>
       </p>
-      <p className="text-muted-foreground leading-relaxed max-w-2xl text-balance">
+      <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl text-balance">
         {t('description')}
       </p>
       <HeroActions

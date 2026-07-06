@@ -75,7 +75,7 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
             {t.badge}
           </div>
 
-          <h2 className="text-3xl font-normal text-foreground mb-3 leading-tight tracking-tight">
+          <h2 className="text-xl font-normal text-foreground mb-3 leading-tight tracking-tight">
             {t.title.replace('{count}', count.toString())}
           </h2>
           <p className="text-muted-foreground text-sm max-w-sm mx-auto mb-8 leading-relaxed text-balance">
@@ -97,11 +97,11 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
             ))}
           </div>
 
-          <div className="flex gap-6 justify-center mt-10 pt-8 border-t border-border/50">
+          <div className="flex gap-6 justify-center mt-6 pt-6 border-t border-border/50">
             {stats.map((stat, index) => (
               <Fragment key={stat.label}>
                 <div className="text-center group/stat">
-                  <p className="text-2xl font-bold text-foreground group-hover/stat:text-primary transition-colors duration-300">
+                  <p className="text-lg font-bold text-foreground group-hover/stat:text-primary transition-colors duration-300">
                     {stat.value}
                   </p>
                   <p className="text-[10px] uppercase tracking-wider font-medium text-muted-foreground mt-1">
