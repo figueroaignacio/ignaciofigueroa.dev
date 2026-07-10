@@ -1,9 +1,5 @@
 'use client';
 
-import { AssistantAvatar } from '@/features/assistant/components/ui/assistant-avatar';
-import { DocumentCodeIcon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
-
 interface HeroActionsProps {
   chatLabel: string;
   cvLabel: string;
@@ -17,22 +13,42 @@ export function HeroActions({ chatLabel, cvLabel, cvUrl }: HeroActionsProps) {
   };
 
   return (
-    <div className="flex flex-wrap gap-3 pt-2">
-      <button onClick={handleChatClick} className="btn btn-primary group">
-        {chatLabel}
-        <div className="transition-transform duration-300 group-hover:scale-110">
-          <AssistantAvatar size="sm" />
-        </div>
-      </button>
+    <div className="flex items-center gap-4 text-xs font-mono">
+      <a
+        href="https://github.com/figueroaignacio"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-muted-foreground hover:text-primary transition-colors"
+        aria-label="GitHub"
+      >
+        github
+      </a>
+      <a
+        href="https://linkedin.com/in/figueroa-ignacio"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-muted-foreground hover:text-primary transition-colors"
+        aria-label="LinkedIn"
+      >
+        linkedin
+      </a>
       <a
         href={cvUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn btn-outline hover:bg-muted/50 transition-all duration-300"
+        className="text-muted-foreground hover:text-primary transition-colors"
+        aria-label={cvLabel}
       >
-        <HugeiconsIcon icon={DocumentCodeIcon} className="size-4" />
-        {cvLabel}
+        resume
       </a>
+      <button
+        onClick={handleChatClick}
+        className="text-muted-foreground hover:text-primary transition-colors cursor-pointer font-mono text-xs"
+        aria-label={chatLabel}
+      >
+        assistant
+      </button>
     </div>
   );
 }
+

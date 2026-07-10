@@ -78,11 +78,12 @@ export async function GithubStatsSection() {
     : availableYears[0]?.toString() || '2026';
 
   return (
-    <section aria-labelledby="github-stats-title">
-      <div>
-        <h2 id="github-stats-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="github" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('title')}
         </h2>
+        <div className="mt-3 h-px bg-rule" />
       </div>
       <GithubStatsClient
         initialYear={initialYear}

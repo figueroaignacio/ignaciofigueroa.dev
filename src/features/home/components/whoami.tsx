@@ -16,15 +16,15 @@ export function WhoAmI() {
   };
 
   return (
-    <section id="whoami" className="space-y-6 scroll-mt-20" aria-labelledby="whoami-title">
-      <div>
-        <h2 id="whoami-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="whoami" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('title')}
         </h2>
-        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+        <div className="mt-3 h-px bg-rule" />
       </div>
 
-      <div className="relative overflow-hidden rounded-lg bg-muted/10 border border-border/50 shadow-sm">
+      <div className="relative overflow-hidden rounded-xl border border-border bg-black/40">
         {!isPlaying && (
           <button
             onClick={handlePlayClick}

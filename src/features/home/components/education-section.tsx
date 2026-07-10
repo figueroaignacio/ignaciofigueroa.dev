@@ -21,89 +21,57 @@ export async function EducationSection() {
   if (!education || education.length === 0) return null;
 
   return (
-    <section className="space-y-6" aria-labelledby="education-title">
-      <div>
-        <h2 id="education-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="education" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('title')}
         </h2>
-        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+        <div className="mt-3 h-px bg-rule" />
       </div>
-      <div className="space-y-6">
+      <ul className="divide-y divide-border">
         {education.map((item) => (
-          <EducationItem key={item.id} item={item} locale={locale} />
+          <li key={item.id} className="py-6 first:pt-0 last:pb-0 group">
+            <article className="space-y-2">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h3 className="text-[19px] md:text-[20px] font-medium text-foreground">
+                  {item.title}{' '}
+                  <span className="text-base font-normal text-muted-foreground">
+                    at {item.institution}
+                  </span>
+                </h3>
+                <span className="shrink-0 text-[11px] font-mono tabular-nums text-muted tracking-wider">
+                  {formatDate(item.startDate, locale)} —{' '}
+                  {item.endDate
+                    ? formatDate(item.endDate, locale)
+                    : locale === 'es'
+                      ? 'presente'
+                      : 'present'}
+                </span>
+              </div>
+
+              {item.description && (
+                <p className="text-sm text-muted-foreground/90 leading-relaxed">
+                  {item.description}
+                </p>
+              )}
+
+              {item.certificateUrl && (
+                <div className="pt-1">
+                  <a
+                    href={item.certificateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono text-muted-foreground hover:text-primary transition-colors underline decoration-border/60 hover:decoration-primary"
+                  >
+                    {locale === 'es' ? 'ver certificado' : 'view certificate'}
+                  </a>
+                </div>
+              )}
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
 
-interface EducationItemProps {
-  item: Education;
-  locale: string;
-}
-
-function EducationItem({ item, locale }: EducationItemProps) {
-  return (
-    <article className="group">
-      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent opacity-0 transition-opacity duration-300" />
-      <div className="space-y-3">
-        <div className="flex items-start gap-3">
-          <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-secondary/50 transition-colors duration-300">
-            <HugeiconsIcon
-              icon={GraduationCap}
-              className="size-4 text-muted-foreground transition-colors duration-300"
-            />
-          </div>
-          <div className="min-w-0 space-y-1">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-semibold text-foreground leading-tight transition-colors duration-300">
-                {item.title}
-              </h3>
-              {item.isCurrent && (
-                <Badge
-                  variant="default"
-                  className="text-[10px] px-1.5 py-0 bg-primary/10 text-primary border-primary/20 transition-colors"
-                >
-                  {locale === 'es' ? 'En curso' : 'In progress'}
-                </Badge>
-              )}
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-              <span className="text-muted-foreground">{item.institution}</span>
-              {item.location && (
-                <>
-                  <span className="text-muted-foreground/40">·</span>
-                  <span className="text-muted-foreground">{item.location}</span>
-                </>
-              )}
-            </div>
-            <p className="text-xs text-muted-foreground/70">
-              {formatDate(item.startDate, locale)} —{' '}
-              {item.endDate
-                ? formatDate(item.endDate, locale)
-                : locale === 'es'
-                  ? 'Presente'
-                  : 'Present'}
-            </p>
-          </div>
-        </div>
-        {item.description && (
-          <p className="text-sm text-muted-foreground leading-relaxed pl-11">{item.description}</p>
-        )}
-        {item.certificateUrl && (
-          <div className="pl-11">
-            <a
-              href={item.certificateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors"
-            >
-              {locale === 'es' ? 'Ver certificado' : 'View certificate'}
-              <HugeiconsIcon icon={LinkSquare02Icon} className="size-3" />
-            </a>
-          </div>
-        )}
-      </div>
-    </article>
-  );
-}

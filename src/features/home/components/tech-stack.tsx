@@ -62,36 +62,23 @@ export function TechStack() {
   ];
 
   return (
-    <section className="space-y-8" aria-labelledby="tech-stack-title">
-      <div>
-        <h2 id="tech-stack-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="stack" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('stack.title')}
         </h2>
-        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-          {t('stack.description')}
-        </p>
+        <div className="mt-3 h-px bg-rule" />
       </div>
 
       <div className="space-y-6">
         {techStack.map((section) => (
-          <div key={section.category} className="space-y-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/70 ml-1">
+          <div key={section.category} className="space-y-2">
+            <h3 className="text-[11px] font-mono uppercase tracking-[0.1em] text-muted-foreground/80">
               {section.category}
             </h3>
-            <ul className="flex flex-wrap gap-2" role="list">
-              {section.items.map((name) => (
-                <li
-                  key={name}
-                  className="flex items-center gap-2 rounded-full border-border border px-3 py-1.5 bg-background/40 backdrop-blur-[2px] hover:-translate-y-0.5 hover:bg-secondary/40 transition-all duration-200 group"
-                  role="listitem"
-                >
-                  <span aria-hidden="true" className="size-4 flex items-center justify-center">
-                    <Icon name={iconMap[name]} />
-                  </span>
-                  <span className="text-xs font-medium">{name}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="text-sm font-mono text-foreground/90 leading-relaxed">
+              {section.items.map((name) => name.toLowerCase()).join(' · ')}
+            </p>
           </div>
         ))}
       </div>

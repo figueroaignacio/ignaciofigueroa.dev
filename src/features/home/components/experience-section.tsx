@@ -1,10 +1,6 @@
-import { Badge } from '@/shared/components/ui/badge';
 import type { Experience } from '@/payload-types';
-
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperiences } from '../api/experience';
-import { Briefcase01Icon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 function formatDate(dateString: string, locale: string): string {
   return new Date(dateString).toLocaleDateString(locale, {
@@ -21,106 +17,66 @@ export async function ExperienceSection() {
   if (!experiences || experiences.length === 0) return null;
 
   return (
-    <section className="space-y-6" aria-labelledby="experience-title">
-      <div>
-        <h2 id="experience-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="experience" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('title')}
         </h2>
-        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+        <div className="mt-3 h-px bg-rule" />
       </div>
 
-      <ol className="relative space-y-0">
-        <div className="absolute left-[11px] top-2 bottom-2 w-px bg-linear-to-b from-foreground/50 via-border to-border" />
-
+      <ul className="divide-y divide-border">
         {experiences.map((experience) => (
-          <li key={experience.id} className="relative pl-10 pb-8 last:pb-0">
-            <div
-              className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center z-10 transition-colors duration-500 ${
-                experience.isCurrent ? 'border-primary bg-primary' : 'border-border bg-card'
-              }`}
-            >
-              <HugeiconsIcon
-                icon={Briefcase01Icon}
-                className={`size-3 ${experience.isCurrent ? 'text-primary-foreground' : 'text-muted-foreground'}`}
-              />
-            </div>
-            <article className="space-y-3 group">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="font-semibold text-foreground transition-colors duration-300">
-                    {experience.title}
-                  </h3>
-                  {experience.isCurrent && (
-                    <Badge
-                      variant="default"
-                      className="text-[10px] px-1.5 py-0 bg-primary/10 text-primary border-primary/20 transition-colors"
-                    >
-                      {locale === 'es' ? 'Actual' : 'Current'}
-                    </Badge>
-                  )}
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  {experience.link ? (
-                    <a
-                      href={experience.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground transition-colors inline-flex items-center gap-1"
-                    >
-                      {experience.company}
-                      <HugeiconsIcon icon={LinkSquare02Icon} className="size-3" />
-                    </a>
-                  ) : (
-                    <span className="text-muted-foreground">{experience.company}</span>
-                  )}
-                  {experience.location && (
-                    <>
-                      <span className="text-muted-foreground/40">·</span>
-                      <span className="text-muted-foreground">{experience.location}</span>
-                    </>
-                  )}
-                </div>
-                <p className="text-xs text-muted-foreground/70">
+          <li key={experience.id} className="py-6 first:pt-0 last:pb-0 group">
+            <article className="space-y-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h3 className="text-[19px] md:text-[20px] font-medium text-foreground">
+                  {experience.title}{' '}
+                  <span className="text-base font-normal text-muted-foreground">
+                    at{' '}
+                    {experience.link ? (
+                      <a
+                        href={experience.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors underline decoration-border hover:decoration-primary"
+                      >
+                        {experience.company}
+                      </a>
+                    ) : (
+                      experience.company
+                    )}
+                  </span>
+                </h3>
+                <span className="shrink-0 text-[11px] font-mono tabular-nums text-muted tracking-wider">
                   {formatDate(experience.startDate, locale)} —{' '}
                   {experience.endDate
                     ? formatDate(experience.endDate, locale)
                     : locale === 'es'
-                      ? 'Presente'
-                      : 'Present'}
-                </p>
+                      ? 'presente'
+                      : 'present'}
+                </span>
               </div>
+
               {experience.tasks && experience.tasks.length > 0 && (
-                <ul className="space-y-1.5">
+                <ul className="pl-4 space-y-1.5 list-disc text-[14px] leading-relaxed text-muted-foreground/90">
                   {experience.tasks.map((task) => (
-                    <li
-                      key={task.id}
-                      className="text-sm text-muted-foreground leading-relaxed flex gap-2"
-                    >
-                      <span className="text-primary/40 mt-0.5 shrink-0 transition-colors duration-300">
-                        ▸
-                      </span>
-                      {task.item}
-                    </li>
+                    <li key={task.id}>{task.item}</li>
                   ))}
                 </ul>
               )}
+
               {experience.technologies && experience.technologies.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {experience.technologies.map((tech) => (
-                    <Badge
-                      key={tech.id}
-                      variant="secondary"
-                      className="text-[10px] bg-secondary/50 border-transparent transition-all"
-                    >
-                      {tech.name}
-                    </Badge>
-                  ))}
+                <div className="pt-1">
+                  <p className="text-[11px] font-mono text-muted tracking-wide">
+                    tech: {experience.technologies.map((tech) => tech.name).join(', ')}
+                  </p>
                 </div>
               )}
             </article>
           </li>
         ))}
-      </ol>
+      </ul>
     </section>
   );
 }

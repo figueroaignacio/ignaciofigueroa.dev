@@ -9,11 +9,12 @@ export async function Testimonials() {
   const testimonials: Testimonial[] = await getTestimonials(locale);
 
   return (
-    <section className="space-y-6" aria-labelledby="testimonials-title">
-      <div>
-        <h2 id="testimonials-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="testimonials" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('title')}
         </h2>
+        <div className="mt-3 h-px bg-rule" />
       </div>
       <TestimonialsList
         testimonials={testimonials.map((t) => ({

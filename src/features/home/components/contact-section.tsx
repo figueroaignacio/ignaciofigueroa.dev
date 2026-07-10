@@ -51,51 +51,37 @@ export function ContactSection() {
   const tPages = useTranslations('pages.contact');
 
   return (
-    <section id="contact" className="space-y-8 scroll-mt-20" aria-labelledby="contact-title">
-      <div className="max-w-lg">
-        <div>
-          <h2 className="text-xl font-bold tracking-tight text-foreground">{t('title')}</h2>
-          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
-        </div>
+    <section id="contact" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
+          {t('title')}
+        </h2>
+        <div className="mt-3 h-px bg-rule" />
       </div>
-      <div className="flex justify-start">
+
+      <div className="max-w-2xl mb-12">
         <ContactForm />
       </div>
 
       <div className="space-y-4 pt-8 border-t border-border">
-        <h3 className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+        <h3 className="text-[11px] font-mono text-muted uppercase tracking-[0.2em]">
           {tPages('linksTitle')}
         </h3>
-        <div className="grid gap-px border border-border/60 rounded-2xl overflow-hidden sm:grid-cols-2 bg-border/40">
+        <div className="divide-y divide-border">
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.id}
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
-              className="group flex items-center justify-between gap-4 px-5 py-4 bg-card hover:bg-secondary/60 transition-colors duration-300"
+              className="group flex items-center justify-between gap-4 py-4 hover:text-primary transition-colors duration-300"
             >
-              <div className="flex items-center gap-4">
-                <span
-                  className="text-muted-foreground group-hover:text-foreground transition-colors"
-                  aria-hidden="true"
-                >
-                  {typeof link.icon === 'function' ? (
-                    <link.icon />
-                  ) : (
-                    <HugeiconsIcon icon={link.icon} className="size-5 shrink-0" />
-                  )}
-                </span>
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">{link.label}</span>
-                  <span className="text-xs text-muted-foreground">{link.handle}</span>
-                </div>
-              </div>
-              <HugeiconsIcon
-                icon={ArrowUpRight01Icon}
-                className="size-4 text-muted-foreground opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
-                aria-hidden="true"
-              />
+              <span className="text-[15px] font-mono text-foreground group-hover:text-primary transition-colors lowercase">
+                {link.label}
+              </span>
+              <span className="text-[13px] font-mono text-muted-foreground group-hover:text-primary/80 transition-colors">
+                {link.handle}
+              </span>
             </a>
           ))}
         </div>

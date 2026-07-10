@@ -6,22 +6,24 @@ export async function HomeHero() {
   const tCv = await getTranslations('components.ctaCv');
 
   return (
-    <section className="space-y-4 mt-8">
-      <p className="text-xs text-muted-foreground tracking-wide uppercase">{t('greeting')}</p>
-      <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-balance leading-[1.1]">
-        {t('name')}
-      </h1>
-      <p className="text-base text-muted-foreground leading-relaxed max-w-2xl text-balance">
-        <span className="text-foreground font-medium">{t('title')}</span>
+    <header className="mb-14 md:mb-16">
+      <div className="flex items-baseline justify-between gap-6 flex-wrap">
+        <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground leading-none lowercase">
+          {t('name')}
+        </h1>
+        <HeroActions
+          chatLabel={t('actions.chatAssistant')}
+          cvLabel={t('actions.viewCv')}
+          cvUrl={tCv('url')}
+        />
+      </div>
+      <p className="mt-5 text-[18px] md:text-[19px] leading-relaxed text-muted-strong font-normal">
+        {t('title')}
       </p>
-      <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl text-balance">
-        {t('description')}
-      </p>
-      <HeroActions
-        chatLabel={t('actions.chatAssistant')}
-        cvLabel={t('actions.viewCv')}
-        cvUrl={tCv('url')}
-      />
-    </section>
+      <div className="prose-reading mt-5">
+        <p>{t('description')}</p>
+      </div>
+    </header>
   );
 }
+

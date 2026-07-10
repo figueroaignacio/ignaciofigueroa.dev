@@ -24,62 +24,33 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
 
   return (
     <div className="relative">
-      <div id="testimonials-grid" className="grid gap-4">
+      <div id="testimonials-grid" className="divide-y divide-border">
         {visible.map((testimonial) => (
           <figure
             key={testimonial.id}
-            className="p-6 bg-card rounded-2xl border border-border/80 m-0 group transition-all duration-300 hover:border-primary/20 hover:-translate-y-[2px] hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)] relative overflow-hidden"
+            className="py-6 first:pt-0 last:pb-0 m-0 group"
           >
-            <div className="absolute top-0 right-0 p-4 opacity-5 transition-opacity">
-              <HugeiconsIcon icon={QuoteUpIcon} className="size-12 rotate-12" />
-            </div>
-            <HugeiconsIcon
-              icon={QuoteUpIcon}
-              className="h-6 w-6 text-muted-foreground/30 mb-4 transition-colors duration-300"
-              aria-hidden="true"
-            />
-            <blockquote className="text-foreground/90 leading-relaxed mb-6 relative z-10">
-              <p>{testimonial.testimonial}</p>
+            <blockquote className="prose-reading italic text-[17px] md:text-[18px] text-foreground/95 mb-3 pl-4 border-l border-border/80">
+              <p>"{testimonial.testimonial}"</p>
             </blockquote>
-            <figcaption className="flex items-center gap-3 relative z-10">
-              <div className="size-8 rounded-full bg-secondary border border-border/60 flex items-center justify-center text-[10px] font-bold text-primary uppercase">
-                {testimonial.name.substring(0, 2)}
-              </div>
-              <div>
-                <p className="text-sm font-medium text-foreground transition-colors duration-300">
-                  {testimonial.name}
-                </p>
-                <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-              </div>
+            <figcaption className="pl-4">
+              <p className="text-xs font-mono text-muted-foreground uppercase tracking-wide">
+                — {testimonial.name}, {testimonial.role.toLowerCase()}
+              </p>
             </figcaption>
           </figure>
         ))}
       </div>
 
-      {hasMore && !expanded && (
-        <div className="relative mt-0">
-          <div className="absolute -top-24 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent pointer-events-none" />
-          <div className="flex justify-center pt-4">
-            <button
-              onClick={() => setExpanded(true)}
-              className="btn btn-outline transition-all"
-              aria-expanded={expanded}
-              aria-controls="testimonials-grid"
-            >
-              {t('showMore')}
-            </button>
-          </div>
-        </div>
-      )}
-      {hasMore && expanded && (
-        <div className="flex justify-center pt-4">
+      {hasMore && (
+        <div className="flex justify-center pt-6">
           <button
-            onClick={() => setExpanded(false)}
-            className={cn('btn btn-outline transition-all')}
+            onClick={() => setExpanded(!expanded)}
+            className="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors cursor-pointer border-0 bg-transparent px-2 py-1 underline decoration-border/60 hover:decoration-foreground"
             aria-expanded={expanded}
             aria-controls="testimonials-grid"
           >
-            {t('showLess')}
+            {expanded ? t('showLess').toLowerCase() : t('showMore').toLowerCase()}
           </button>
         </div>
       )}

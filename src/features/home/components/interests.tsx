@@ -45,36 +45,16 @@ export function Interests() {
   const tSection = useTranslations('sections.interests');
 
   return (
-    <section className="space-y-6" aria-labelledby="interests-title">
-      <div>
-        <h2 id="interests-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="interests" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {tSection('title')}
         </h2>
-        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-          {tSection('description')}
-        </p>
+        <div className="mt-3 h-px bg-rule" />
       </div>
-      <ul className="flex flex-wrap gap-2" role="list">
-        {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
-          <li key={key} role="listitem">
-            <Badge
-              variant="outline"
-              className="space-x-3 py-2 px-4 hover:bg-secondary/50 hover:border-primary/30 transition-all duration-300 cursor-default group"
-            >
-              {typeof Icon === 'function' ? (
-                <Icon className={cn('w-3.5 h-3.5 transition-colors', color)} aria-hidden="true" />
-              ) : (
-                <HugeiconsIcon
-                  icon={Icon}
-                  className={cn('w-3.5 h-3.5 transition-colors', color)}
-                  aria-hidden="true"
-                />
-              )}
-              <span className="text-xs">{t(key)}</span>
-            </Badge>
-          </li>
-        ))}
-      </ul>
+      <p className="text-sm font-mono text-foreground/90 leading-relaxed">
+        {INTERESTS_CONFIG.map(({ key }) => t(key).toLowerCase()).join(' · ')}
+      </p>
     </section>
   );
 }

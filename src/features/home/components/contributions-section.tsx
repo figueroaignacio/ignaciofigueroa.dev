@@ -11,14 +11,14 @@ export async function ContributionsSection() {
   if (!contributions || contributions.length === 0) return null;
 
   return (
-    <section id="contributions" className="space-y-6" aria-labelledby="contributions-title">
-      <div>
-        <h2 id="contributions-title" className="text-xl font-bold tracking-tight text-foreground">
+    <section id="contributions" className="scroll-mt-12">
+      <div className="mb-8">
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
           {t('title')}
         </h2>
-        <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{t('description')}</p>
+        <div className="mt-3 h-px bg-rule" />
       </div>
-      <div className="grid gap-3">
+      <ul className="divide-y divide-border">
         {contributions.map((contribution) => (
           <ContributionCard
             key={contribution.id}
@@ -30,7 +30,7 @@ export async function ContributionsSection() {
             pullRequests={contribution.pullRequests}
           />
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
