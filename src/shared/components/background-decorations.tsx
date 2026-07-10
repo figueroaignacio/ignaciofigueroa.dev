@@ -4,7 +4,6 @@ export function BackgroundDecorations() {
       className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0"
       aria-hidden="true"
     >
-
       <div
         className="absolute inset-0 opacity-[0.18] dark:opacity-[0.12]"
         style={{

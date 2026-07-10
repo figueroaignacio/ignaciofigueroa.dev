@@ -33,15 +33,11 @@ export async function AboutSection() {
 
         <div className="prose-reading">
           <p>{t('bio')}</p>
-          <p className="font-light italic text-muted-foreground">
-            {t('details')}
-          </p>
+          <p className="font-light italic text-muted-foreground">{t('details')}</p>
         </div>
 
         <div className="clear-both flex flex-col space-y-2 pt-6 mt-6 border-t border-border">
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted">
-            Focus
-          </p>
+          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted">Focus</p>
           <p className="text-sm text-muted-foreground leading-relaxed">
             React • Next.js • TypeScript • Node.js • AI Integration • Clean Architecture • Linux •
             Fedora
@@ -51,4 +47,3 @@ export async function AboutSection() {
     </section>
   );
 }
-

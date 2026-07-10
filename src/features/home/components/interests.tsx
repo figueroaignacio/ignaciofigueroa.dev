@@ -1,5 +1,4 @@
 import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
-import { Badge } from '@/shared/components/ui/badge';
 import { cn } from '@/shared/lib/cn';
 import type { Icon } from '@/shared/lib/constants';
 import {
@@ -55,14 +54,19 @@ export function Interests() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
         {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
           <div key={key} className="flex items-center gap-2 group cursor-default" role="listitem">
-            <span aria-hidden="true" className={cn("size-4 flex items-center justify-center shrink-0", color)}>
+            <span
+              aria-hidden="true"
+              className={cn('size-4 flex items-center justify-center shrink-0', color)}
+            >
               {typeof Icon === 'function' ? (
                 <Icon className="size-4" />
               ) : (
                 <HugeiconsIcon icon={Icon} className="size-4" />
               )}
             </span>
-            <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">{t(key)}</span>
+            <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">
+              {t(key)}
+            </span>
           </div>
         ))}
       </div>

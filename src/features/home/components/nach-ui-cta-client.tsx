@@ -1,6 +1,5 @@
 'use client';
 
-import { Fragment } from 'react/jsx-runtime';
 import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
@@ -65,9 +64,7 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
   return (
     <section id="nachui" className="scroll-mt-12">
       <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t.badge}
-        </h2>
+        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">{t.badge}</h2>
         <div className="mt-3 h-px bg-rule" />
       </div>
 

@@ -1,10 +1,6 @@
-import { Badge } from '@/shared/components/ui/badge';
 import type { Education } from '@/payload-types';
-
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getEducation } from '../api/education';
-import { LinkSquare02Icon, GraduationCap } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 function formatDate(dateString: string, locale: string): string {
   return new Date(dateString).toLocaleDateString(locale, {
@@ -74,4 +70,3 @@ export async function EducationSection() {
     </section>
   );
 }
-

@@ -57,9 +57,7 @@ export function ProjectCard({
       </div>
 
       {subtitle && (
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-          {subtitle}
-        </p>
+        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{subtitle}</p>
       )}
 
       {techList.length > 0 && (
@@ -86,4 +84,3 @@ export function ProjectCard({
     </div>
   );
 }
-

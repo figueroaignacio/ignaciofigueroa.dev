@@ -1,6 +1,5 @@
-import { useTranslations } from 'next-intl';
-
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
+import { useTranslations } from 'next-intl';
 
 const iconMap: Record<string, IconName> = {
   Vite: 'vite',
@@ -73,16 +72,25 @@ export function TechStack() {
       <div className="space-y-6">
         {techStack.map((section) => (
           <div key={section.category} className="space-y-2">
-            <h3 className="text-[11px] font-mono uppercase tracking-[0.1em] text-muted-foreground/80">
+            <h3 className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/80">
               {section.category}
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-3">
               {section.items.map((name) => (
-                <div key={name} className="flex items-center gap-2 group cursor-default" role="listitem">
-                  <span aria-hidden="true" className="size-4 flex items-center justify-center shrink-0">
+                <div
+                  key={name}
+                  className="flex items-center gap-2 group cursor-default"
+                  role="listitem"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="size-4 flex items-center justify-center shrink-0"
+                  >
                     <Icon name={iconMap[name]} />
                   </span>
-                  <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">{name}</span>
+                  <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">
+                    {name}
+                  </span>
                 </div>
               ))}
             </div>

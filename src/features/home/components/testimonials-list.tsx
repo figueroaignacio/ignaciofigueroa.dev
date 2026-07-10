@@ -1,10 +1,7 @@
 'use client';
 
-import { cn } from '@/shared/lib/cn';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { QuoteUpIcon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 interface TestimonialData {
   id: number;
@@ -26,10 +23,7 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
     <div className="relative">
       <div id="testimonials-grid" className="divide-y divide-border">
         {visible.map((testimonial) => (
-          <figure
-            key={testimonial.id}
-            className="py-6 first:pt-0 last:pb-0 m-0 group"
-          >
+          <figure key={testimonial.id} className="py-6 first:pt-0 last:pb-0 m-0 group">
             <blockquote className="prose-reading italic text-[17px] md:text-[18px] text-foreground/95 mb-3 pl-4 border-l border-border/80">
               <p>"{testimonial.testimonial}"</p>
             </blockquote>

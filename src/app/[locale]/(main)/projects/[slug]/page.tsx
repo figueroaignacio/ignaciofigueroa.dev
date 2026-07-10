@@ -52,9 +52,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <div className="animate-fade-in-up delay-300 mt-10 mb-24">
         <article className="prose-reading max-w-none">
-          <RichText
-            data={project.body}
-          />
+          <RichText data={project.body} />
         </article>
       </div>
     </div>

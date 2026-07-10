@@ -40,4 +40,3 @@ export const fontLora = Lora({
   style: ['normal', 'italic'],
   preload: true,
 });
-

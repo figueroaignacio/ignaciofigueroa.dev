@@ -88,6 +88,6 @@ export const migrations = [
   {
     up: migration_20260620_221145_add_project_categories.up,
     down: migration_20260620_221145_add_project_categories.down,
-    name: '20260620_221145_add_project_categories'
+    name: '20260620_221145_add_project_categories',
   },
 ];

@@ -26,7 +26,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${fontSans.variable} ${fontHeading.variable} ${fontSerif.variable} ${fontLora.variable} antialiased`}>
+      <body
+        className={`${fontSans.variable} ${fontHeading.variable} ${fontSerif.variable} ${fontLora.variable} antialiased`}
+      >
         <NextIntlClientProvider>
           <Providers>
             <Analytics />

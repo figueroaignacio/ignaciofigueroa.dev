@@ -51,4 +51,3 @@ export function HeroActions({ chatLabel, cvLabel, cvUrl }: HeroActionsProps) {
     </div>
   );
 }
-

@@ -11,7 +11,6 @@ export async function ProjectHeaderPage({
   description,
   demo,
   repository,
-  icon,
   body,
   locale,
   technologies,
@@ -62,12 +61,7 @@ export async function ProjectHeaderPage({
       <div className="mt-6 flex flex-col gap-4 w-full">
         <div className="flex items-center gap-3 text-sm font-medium flex-wrap">
           {demo && (
-            <a
-              href={demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-            >
+            <a href={demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               <span>{t('preview')}</span>
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
             </a>

@@ -1,15 +1,9 @@
 'use client';
 
+import { GitHubIcon } from '@/shared/components/tech-icons';
+import { DiscordIcon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
-import { GitHubIcon } from '@/shared/components/tech-icons';
-import {
-  ArrowUpRight01Icon,
-  DiscordIcon,
-  Linkedin01Icon,
-  Mail01Icon,
-} from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 const SOCIAL_LINKS = [
   {

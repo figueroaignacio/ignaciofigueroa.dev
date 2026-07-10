@@ -1,8 +1,8 @@
 'use client';
 
+import type { Contribution, TechStack } from '@/payload-types';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
-import type { Contribution, TechStack } from '@/payload-types';
 import { useTranslations } from 'next-intl';
 
 type ContributionCardProps = Pick<
@@ -27,7 +27,12 @@ export function ContributionCard({
     <li className="py-6 first:pt-0 last:pb-0 group">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h3 className="text-[19px] md:text-[20px] font-medium text-foreground group-hover:text-primary transition-colors">
-          <a href={repository} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+          <a
+            href={repository}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary transition-colors"
+          >
             {title}
           </a>
         </h3>
@@ -54,9 +59,7 @@ export function ContributionCard({
         </div>
       </div>
 
-      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-        {description}
-      </p>
+      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{description}</p>
 
       {pullRequests && pullRequests.length > 0 && (
         <div className="mt-3 pl-4 space-y-1">
@@ -83,4 +86,3 @@ export function ContributionCard({
     </li>
   );
 }
-
