@@ -42,6 +42,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           icon={project.icon as string}
           body={project.body}
           locale={project.locale}
+          technologies={project.technologies}
         />
       </div>
 
@@ -49,11 +50,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <ProjectVideo videoUrl={project.videoUrl} />
       </div>
 
-      <div className="animate-fade-in-up delay-300 mt-16 mb-24">
-        <article className="prose prose-neutral dark:prose-invert max-w-none">
+      <div className="animate-fade-in-up delay-300 mt-10 mb-24">
+        <article className="prose-reading max-w-none">
           <RichText
             data={project.body}
-            className="font-light leading-relaxed text-[16px] md:text-[17px] text-foreground/80 dark:text-foreground/85 prose-headings:font-normal prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-p:mb-5 prose-p:leading-8 prose-li:my-1.5 prose-code:bg-muted/80 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-[13px] prose-code:before:content-none prose-code:after:content-none"
           />
         </article>
       </div>

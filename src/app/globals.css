@@ -159,6 +159,30 @@
     @apply font-semibold text-foreground;
   }
 
+  .prose-reading h2 {
+    @apply text-xl font-medium font-sans mt-10 mb-4 tracking-tight text-foreground border-b border-border pb-2;
+  }
+
+  .prose-reading h3 {
+    @apply text-lg font-medium font-sans mt-8 mb-3 tracking-tight text-foreground;
+  }
+
+  .prose-reading ul {
+    @apply mb-4 ml-5 list-disc text-foreground/90 space-y-1.5;
+  }
+
+  .prose-reading ol {
+    @apply mb-4 ml-5 list-decimal text-foreground/90 space-y-1.5;
+  }
+
+  .prose-reading li {
+    @apply mb-1 leading-[1.75];
+  }
+
+  .prose-reading code {
+    @apply bg-secondary/80 px-1.5 py-0.5 rounded text-[13px] font-mono text-foreground;
+  }
+
   @media (max-width: 768px) {
     .prose-reading {
       font-size: 18px;

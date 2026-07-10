@@ -22,7 +22,7 @@ export function ProjectVideo({
   return (
     <div
       className={cn(
-        'my-12 overflow-hidden rounded-sm bg-muted/20 border border-border/40 shadow-sm ring-1 ring-border/10',
+        'my-6 md:my-8 overflow-hidden rounded-xl bg-muted/20 border border-border/40 shadow-sm ring-1 ring-border/10',
         className,
       )}
     >
