@@ -26,7 +26,14 @@ export async function GET(req: NextRequest) {
       }}
     >
       {/* Top Bar */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
         <span
           style={{
             fontFamily: 'monospace',
@@ -50,7 +57,15 @@ export async function GET(req: NextRequest) {
       </div>
 
       {/* Main Content Area */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 28, flexGrow: 1, justifyContent: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 28,
+          flexGrow: 1,
+          justifyContent: 'center',
+        }}
+      >
         <h1
           style={{
             fontFamily: 'Georgia, serif',
@@ -85,7 +100,14 @@ export async function GET(req: NextRequest) {
       </div>
 
       {/* Decorative Bottom Line */}
-      <div style={{ display: 'flex', width: '100%', height: 1, background: 'rgba(255, 255, 255, 0.08)' }} />
+      <div
+        style={{
+          display: 'flex',
+          width: '100%',
+          height: 1,
+          background: 'rgba(255, 255, 255, 0.08)',
+        }}
+      />
     </div>,
     { width: 1200, height: 630 },
   );
