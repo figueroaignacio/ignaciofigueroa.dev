@@ -4,22 +4,23 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1f1f1f;
+  --foreground: #111111;
   --card: #ffffff;
-  --card-foreground: #1f1f1f;
+  --card-foreground: #111111;
   --popover: #ffffff;
-  --popover-foreground: #1f1f1f;
+  --popover-foreground: #111111;
   --primary: #1a73e8;
   --primary-foreground: #ffffff;
   --secondary: #e9eef6;
-  --secondary-foreground: #1f1f1f;
-  --muted: #f0f4f9;
-  --muted-foreground: #444746;
+  --secondary-foreground: #111111;
+  --muted: rgba(0, 0, 0, 0.45);
+  --muted-strong: rgba(0, 0, 0, 0.7);
   --accent: #dde3ea;
   --accent-foreground: #1a73e8;
   --destructive: #d93025;
   --destructive-foreground: #ffffff;
-  --border: #e3e3e3;
+  --border: rgba(0, 0, 0, 0.08);
+  --rule: rgba(0, 0, 0, 0.08);
   --input: #ffffff;
   --ring: #0b57d0;
   --radius: 1.25rem;
@@ -27,25 +28,26 @@
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --card: #1a1a1a;
-  --card-foreground: #fafafa;
-  --popover: #1a1a1a;
-  --popover-foreground: #fafafa;
-  --primary: #60a5fa;
-  --primary-foreground: #0a0a0a;
-  --secondary: #262626;
-  --secondary-foreground: #fafafa;
-  --muted: #121212;
-  --muted-foreground: #a3a3a3;
-  --accent: #262626;
-  --accent-foreground: #60a5fa;
+  --background: #000000;
+  --foreground: #e5e5e5;
+  --card: #111111;
+  --card-foreground: #e5e5e5;
+  --popover: #111111;
+  --popover-foreground: #e5e5e5;
+  --primary: #8ab4f8;
+  --primary-foreground: #000000;
+  --secondary: #1a1a1a;
+  --secondary-foreground: #e5e5e5;
+  --muted: rgba(255, 255, 255, 0.45);
+  --muted-strong: rgba(255, 255, 255, 0.7);
+  --accent: #1e1f20;
+  --accent-foreground: #8ab4f8;
   --destructive: #f87171;
   --destructive-foreground: #ffffff;
-  --border: #262626;
-  --input: #121212;
-  --ring: #60a5fa;
+  --border: rgba(255, 255, 255, 0.08);
+  --rule: rgba(255, 255, 255, 0.08);
+  --input: #111111;
+  --ring: #8ab4f8;
   --grid-color: rgba(250, 250, 250, 0.015);
   --shadow-lg: 0 10px 40px -15px rgba(0, 0, 0, 0.8);
 }
@@ -77,6 +79,8 @@
   --radius-2xl: calc(var(--radius) + 0.5rem);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --font-serif: var(--font-serif);
+  --font-lora: var(--font-lora);
   --animate-blink: blink 3s infinite;
 }
 
@@ -139,6 +143,30 @@
 
   .card-outline {
     @apply block p-6 bg-transparent rounded-2xl border border-border transition-all duration-300 hover:border-foreground/20;
+  }
+
+  .prose-reading {
+    font-family: var(--font-serif), Georgia, serif;
+    font-size: 19px;
+    line-height: 1.75;
+  }
+
+  .prose-reading p {
+    @apply mb-4 leading-[1.75] text-justify md:text-left text-foreground/90;
+  }
+
+  .prose-reading strong {
+    @apply font-semibold text-foreground;
+  }
+
+  @media (max-width: 768px) {
+    .prose-reading {
+      font-size: 18px;
+      line-height: 1.68;
+    }
+    .prose-reading p {
+      line-height: 1.68;
+    }
   }
 
   .prose {

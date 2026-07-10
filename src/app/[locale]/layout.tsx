@@ -3,7 +3,7 @@ import { Providers } from '@/shared/components/providers';
 import { SkipLink } from '@/shared/components/ui/skip-link';
 import { TerminalPrompt } from '@/shared/components/ui/terminal-prompt';
 import { BASE_URL } from '@/shared/lib/constants';
-import { fontHeading, fontSans } from '@/shared/lib/fonts';
+import { fontHeading, fontSans, fontSerif, fontLora } from '@/shared/lib/fonts';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
@@ -26,7 +26,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${fontSans.variable} ${fontHeading.variable} antialiased`}>
+      <body className={`${fontSans.variable} ${fontHeading.variable} ${fontSerif.variable} ${fontLora.variable} antialiased`}>
         <NextIntlClientProvider>
           <Providers>
             <Analytics />

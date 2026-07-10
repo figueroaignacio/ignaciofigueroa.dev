@@ -1,6 +1,4 @@
-import { JetBrains_Mono } from 'next/font/google';
-
-import { DM_Sans, Playfair_Display } from 'next/font/google';
+import { JetBrains_Mono, DM_Sans, Playfair_Display, EB_Garamond, Lora } from 'next/font/google';
 
 export const fontHeading = Playfair_Display({
   subsets: ['latin'],
@@ -24,3 +22,22 @@ export const fontCode = JetBrains_Mono({
   weight: ['400', '500', '700'],
   preload: false,
 });
+
+export const fontSerif = EB_Garamond({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  preload: true,
+});
+
+export const fontLora = Lora({
+  subsets: ['latin'],
+  variable: '--font-lora',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  preload: true,
+});
+
