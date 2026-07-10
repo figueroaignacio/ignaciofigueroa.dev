@@ -79,7 +79,7 @@ export function TechStack() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-3">
               {section.items.map((name) => (
                 <div key={name} className="flex items-center gap-2 group cursor-default" role="listitem">
-                  <span aria-hidden="true" className="size-4 flex items-center justify-center grayscale opacity-50 dark:opacity-45 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200 shrink-0">
+                  <span aria-hidden="true" className="size-4 flex items-center justify-center shrink-0">
                     <Icon name={iconMap[name]} />
                   </span>
                   <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">{name}</span>

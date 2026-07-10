@@ -55,7 +55,7 @@ export function Interests() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
         {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
           <div key={key} className="flex items-center gap-2 group cursor-default" role="listitem">
-            <span aria-hidden="true" className={cn("size-4 flex items-center justify-center grayscale opacity-50 dark:opacity-45 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200 shrink-0", color)}>
+            <span aria-hidden="true" className={cn("size-4 flex items-center justify-center shrink-0", color)}>
               {typeof Icon === 'function' ? (
                 <Icon className="size-4" />
               ) : (
