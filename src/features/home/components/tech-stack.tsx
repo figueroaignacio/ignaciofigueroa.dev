@@ -76,9 +76,16 @@ export function TechStack() {
             <h3 className="text-[11px] font-mono uppercase tracking-[0.1em] text-muted-foreground/80">
               {section.category}
             </h3>
-            <p className="text-sm font-mono text-foreground/90 leading-relaxed">
-              {section.items.map((name) => name.toLowerCase()).join(' · ')}
-            </p>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-mono text-foreground/80" role="list">
+              {section.items.map((name) => (
+                <li key={name} className="flex items-center gap-1.5 hover:text-foreground transition-colors group" role="listitem">
+                  <span aria-hidden="true" className="size-3.5 flex items-center justify-center grayscale opacity-60 dark:opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200">
+                    <Icon name={iconMap[name]} />
+                  </span>
+                  <span>{name}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>

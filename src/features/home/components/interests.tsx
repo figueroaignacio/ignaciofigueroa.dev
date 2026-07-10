@@ -52,9 +52,20 @@ export function Interests() {
         </h2>
         <div className="mt-3 h-px bg-rule" />
       </div>
-      <p className="text-sm font-mono text-foreground/90 leading-relaxed">
-        {INTERESTS_CONFIG.map(({ key }) => t(key).toLowerCase()).join(' · ')}
-      </p>
+      <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-mono text-foreground/80" role="list">
+        {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
+          <li key={key} className="flex items-center gap-1.5 hover:text-foreground transition-colors group" role="listitem">
+            <span aria-hidden="true" className={cn("size-3.5 flex items-center justify-center grayscale opacity-60 dark:opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200", color)}>
+              {typeof Icon === 'function' ? (
+                <Icon className="size-3.5" />
+              ) : (
+                <HugeiconsIcon icon={Icon} className="size-3.5" />
+              )}
+            </span>
+            <span>{t(key)}</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
