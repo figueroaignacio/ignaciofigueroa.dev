@@ -52,20 +52,20 @@ export function Interests() {
         </h2>
         <div className="mt-3 h-px bg-rule" />
       </div>
-      <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-mono text-foreground/80" role="list">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
         {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
-          <li key={key} className="flex items-center gap-1.5 hover:text-foreground transition-colors group" role="listitem">
-            <span aria-hidden="true" className={cn("size-3.5 flex items-center justify-center grayscale opacity-60 dark:opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200", color)}>
+          <div key={key} className="flex items-center gap-2 group cursor-default" role="listitem">
+            <span aria-hidden="true" className={cn("size-4 flex items-center justify-center grayscale opacity-50 dark:opacity-45 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200 shrink-0", color)}>
               {typeof Icon === 'function' ? (
-                <Icon className="size-3.5" />
+                <Icon className="size-4" />
               ) : (
-                <HugeiconsIcon icon={Icon} className="size-3.5" />
+                <HugeiconsIcon icon={Icon} className="size-4" />
               )}
             </span>
-            <span>{t(key)}</span>
-          </li>
+            <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">{t(key)}</span>
+          </div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
