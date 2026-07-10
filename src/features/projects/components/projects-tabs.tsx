@@ -17,20 +17,24 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
   const defaultValue = data[0]?.category ?? '';
 
   return (
-    <Tabs defaultValue={defaultValue}>
-      <Tabs.List variant="outline" className="rounded-sm w-fit">
+    <Tabs defaultValue={defaultValue} variant="underline">
+      <Tabs.List className="border-b border-border/40 p-0 mb-6 bg-transparent h-auto flex gap-6">
         {data.map(({ category }) => (
-          <Tabs.Trigger key={category} value={category}>
-            {category}
+          <Tabs.Trigger
+            key={category}
+            value={category}
+            className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground hover:text-foreground data-[state=active]:text-primary transition-colors bg-transparent border-0 cursor-pointer px-1 pb-3"
+          >
+            {category.toLowerCase()}
           </Tabs.Trigger>
         ))}
       </Tabs.List>
       {data.map(({ category, projects }) => (
-        <Tabs.Content key={category} value={category}>
+        <Tabs.Content key={category} value={category} className="mt-0">
           {projects.length === 0 ? (
             <p className="text-sm text-muted-foreground py-6 text-center">No projects yet.</p>
           ) : (
-            <div className="grid gap-4">
+            <div className="divide-y divide-border">
               {projects.map((project) => (
                 <ProjectCard
                   key={project.id}
