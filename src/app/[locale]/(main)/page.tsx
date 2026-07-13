@@ -152,7 +152,7 @@ export async function generateMetadata({ params }: HomePageProps) {
       siteName: 'Ignacio Figueroa',
       images: [
         {
-          url: '/images/og-home.png',
+          url: '/images/og-image.png',
           width: 1200,
           height: 630,
           alt: 'Ignacio Figueroa | Full Stack Developer',
