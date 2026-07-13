@@ -48,7 +48,7 @@ export default function HomePage({ params }: HomePageProps) {
         name: 'Ignacio Figueroa',
         alternateName: 'Nacho',
         url: `${BASE_URL}/${locale}`,
-        image: `${BASE_URL}/images/profile-photo.png`,
+        image: `${BASE_URL}/images/photo-profile.webp`,
         jobTitle: isEs ? 'Desarrollador Fullstack' : 'Fullstack Developer',
         description: isEs
           ? 'Desarrollador fullstack con React, Next.js, FastAPI y Python. Contribuidor open source con más de 6 proyectos en producción e integraciones reales de IA.'

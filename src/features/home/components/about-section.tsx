@@ -21,7 +21,7 @@ export async function AboutSection() {
         >
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-border/40">
             <Image
-              src="/images/profile-photo.webp"
+              src="/images/photo-profile.webp"
               alt="Ignacio Figueroa — Fullstack Developer"
               width={160}
               height={160}
