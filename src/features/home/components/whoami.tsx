@@ -32,7 +32,7 @@ export function WhoAmI() {
             aria-label={t('play')}
           >
             <div className="text-center flex flex-col items-center gap-3">
-              <HugeiconsIcon icon={PlayCircle02Icon} className="w-16 h-16 text-white/90" />
+              <HugeiconsIcon icon={PlayCircle02Icon} className="w-16 h-16 text-white" />
               <p className="text-sm text-white/80">{t('play')}</p>
             </div>
           </button>
