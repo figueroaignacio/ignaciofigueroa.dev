@@ -66,6 +66,38 @@
     "title": "Educación",
     "description": "Universidad y aprendizaje autodirigido. Ambos importan."
   },
+  "certifications": {
+    "title": "Certificaciones",
+    "description": "Credenciales verificadas de programas estructurados que completé.",
+    "cta": "Ver credencial",
+    "skills": "Habilidades",
+    "items": [
+      {
+        "title": "IA para Investigación e Insights",
+        "issuer": "Google",
+        "description": "Cubre cómo aplicar herramientas de IA a flujos de investigación, sintetizar grandes volúmenes de información y extraer insights estructurados de datos no estructurados usando IA generativa.",
+        "skills": ["IA Generativa", "Prompt Engineering", "Automatización de Investigación"],
+        "credentialId": "7GLFN3ZMNDKV",
+        "credentialUrl": "/pdf/certifications/Coursera 7GLFN3ZMNDKV.pdf"
+      },
+      {
+        "title": "IA para Brainstorming y Planificación",
+        "issuer": "Google",
+        "description": "Explora cómo usar IA para acelerar la ideación, estructurar planes complejos y mejorar los procesos de toma de decisiones mediante prompting dirigido y flujos de trabajo colaborativos con IA.",
+        "skills": ["Personalización con IA", "Planificación de Producto", "Diseño de Prompts", "Automatización de Flujos"],
+        "credentialId": "ZS0WIHXCODHR",
+        "credentialUrl": "/pdf/certifications/Coursera ZS0WIHXCODHR.pdf"
+      },
+      {
+        "title": "Fundamentos de IA",
+        "issuer": "Google",
+        "description": "Introduce conceptos fundamentales de IA y aprendizaje automático, el panorama de los modelos generativos y casos de uso prácticos para aplicar IA de manera responsable en tareas profesionales cotidianas.",
+        "skills": ["Machine Learning", "IA Generativa", "IA Responsable"],
+        "credentialId": "IL360KYAAJIM",
+        "credentialUrl": "/pdf/certifications/Coursera IL360KYAAJIM.pdf"
+      }
+    ]
+  },
   "testimonials": {
     "title": "Lo que dicen.",
     "showMore": "Ver más",

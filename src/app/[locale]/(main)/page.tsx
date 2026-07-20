@@ -1,4 +1,5 @@
 import { AboutSection } from '@/features/home/components/about-section';
+import { CertificationsSection } from '@/features/home/components/certifications-section';
 import { ContactSection } from '@/features/home/components/contact-section';
 import { ContributionsSection } from '@/features/home/components/contributions-section';
 import { CTACurriculum } from '@/features/home/components/cta-curriculum';
@@ -117,6 +118,7 @@ export default function HomePage({ params }: HomePageProps) {
         <Suspense fallback={null}>
           <EducationSection />
         </Suspense>
+        <CertificationsSection />
         <Suspense fallback={null}>
           <Testimonials />
         </Suspense>

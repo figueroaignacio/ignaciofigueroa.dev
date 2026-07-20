@@ -66,6 +66,38 @@
     "title": "Education",
     "description": "University and self-directed study. Both matter."
   },
+  "certifications": {
+    "title": "Certifications",
+    "description": "Verified credentials from structured programs I completed.",
+    "cta": "View credential",
+    "skills": "Skills",
+    "items": [
+      {
+        "title": "AI for Research and Insights",
+        "issuer": "Google",
+        "description": "Covers how to apply AI tools to research workflows, synthesize large volumes of information, and extract structured insights from unstructured data using generative AI.",
+        "skills": ["Generative AI", "Prompt Engineering", "Research Automation"],
+        "credentialId": "7GLFN3ZMNDKV",
+        "credentialUrl": "/pdf/certifications/Coursera 7GLFN3ZMNDKV.pdf"
+      },
+      {
+        "title": "AI for Brainstorming and Planning",
+        "issuer": "Google",
+        "description": "Explores how to use AI to accelerate ideation, structure complex plans, and improve decision-making processes through targeted prompting and collaborative AI workflows.",
+        "skills": ["AI Personalization", "Product Planning", "Prompt Design", "Workflow Automation"],
+        "credentialId": "ZS0WIHXCODHR",
+        "credentialUrl": "/pdf/certifications/Coursera ZS0WIHXCODHR.pdf"
+      },
+      {
+        "title": "AI Fundamentals",
+        "issuer": "Google",
+        "description": "Introduces core AI and machine learning concepts, the landscape of generative models, and practical use cases for applying AI responsibly in everyday professional tasks.",
+        "skills": ["Machine Learning", "Generative AI", "Responsible AI"],
+        "credentialId": "IL360KYAAJIM",
+        "credentialUrl": "/pdf/certifications/Coursera IL360KYAAJIM.pdf"
+      }
+    ]
+  },
   "testimonials": {
     "title": "What people say.",
     "showMore": "Show more",
