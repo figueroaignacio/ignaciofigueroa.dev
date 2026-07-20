@@ -2,12 +2,12 @@
   "metadata": {
     "home": {
       "title": "Ignacio Figueroa · Desarrollador Fullstack",
-      "description": "Tengo experiencia en React, Next.js, FastAPI y Python. Trabajo en Linux. Me encanta entender las cosas desde abajo. Construyo proyectos personales, una librería de componentes open source, e integraciones de LLM que hacen más que llamar a una API.",
+      "description": "Desarrollador fullstack con experiencia en React, Next.js, FastAPI y Python. Trabajo en Linux, construyo proyectos open source e integro LLMs en sistemas que ya existen y tienen que seguir funcionando.",
       "keywords": "Desarrollador Fullstack, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, Integración IA, LLM, NachUI, Librería de Componentes, Open Source, Argentina, Desarrollador Software, Portfolio, Linux, Fedora, UTN"
     },
     "aboutMe": {
       "title": "Sobre Mí - Ignacio Figueroa",
-      "description": "Desarrollador fullstack y estudiante de la UTN. Construye sistemas completos: frontends en React, backends en FastAPI e integraciones estructuradas de LLMs.",
+      "description": "Desarrollador fullstack de Argentina. Me hago cargo del stack completo: esquema, API, frontend, deploy. Integro LLMs donde resuelven un problema concreto dentro de un sistema real.",
       "keywords": "Sobre mí, Biografía Developer, Stack Tecnológico, Experiencia Laboral, Ignacio Figueroa, Perfil Profesional, Linux, Fedora, UTN, Argentina"
     },
     "projects": {
@@ -17,20 +17,20 @@
     },
     "chat": {
       "title": "Asistente IA - Ignacio Figueroa",
-      "description": "Asistente de IA construido con Gemini y FastAPI. Preguntá sobre proyectos, stack, experiencia o enviá un mensaje directo."
+      "description": "Asistente construido con Groq y Next.js. Preguntá sobre proyectos, stack, experiencia o enviá un mensaje directo."
     },
     "contact": {
       "title": "Contacto - Ignacio Figueroa",
-      "description": "En búsqueda de roles de ingeniería fullstack o colaboraciones técnicas. Contactó por email, LinkedIn o GitHub.",
+      "description": "En búsqueda de roles fullstack o de integración de IA. Contacto por email, LinkedIn o GitHub.",
       "keywords": "Contacto, Contratar Desarrollador, Ingeniero Fullstack, Ignacio Figueroa, Desarrollador React, Argentina"
     }
   },
   "sections": {
     "home": {
-      "greeting": "Desarrollador de Software · Integración de IA · Desarollo Fullstack",
+      "greeting": "Desarrollador de Software · Integración de IA · Desarrollo Fullstack",
       "name": "Ignacio Figueroa",
       "title": "De frontend a backend, infraestructura y criterio, con IA donde tiene sentido.",
-      "description": "Tengo experiencia en React, Next.js, FastAPI y Python. Trabajo en Linux. Me encanta entender las cosas desde abajo. Construyo proyectos personales, una librería de componentes open source, e integraciones de LLM que hacen más que llamar a una API.",
+      "description": "Trabajo con React, Next.js, FastAPI y Python. Desarrollo en Linux. Me importa entender cómo funcionan las cosas antes de agregar abstracción encima. Construyo proyectos propios, una librería de componentes open source e integraciones de LLM que van más allá de wrappear una API.",
       "actions": {
         "viewProjects": "Ver código",
         "learnMore": "Ver mi stack",
@@ -40,23 +40,23 @@
     },
     "aboutMe": {
       "title": "Sobre mí",
-      "description": "Desarrollador de Software enfocado en desarollo fullstack. Escribo código que funciona en producción, no solo en demos.",
+      "description": "Desarrollador de software enfocado en desarrollo fullstack. Escribo código que funciona en producción, no solo en demos.",
       "items": [
         {
           "content": "<b>Ingeniería Fullstack.</b> React, Next.js, Node.js y FastAPI. Me hago cargo del stack completo: diseño del esquema, contratos de API, estado en frontend y deploy."
         },
         {
-          "content": "<b>Integración de IA.</b> Conecto LLMs a datos reales mediante APIs estructuradas, ingeniería de prompts y flujos agénticos. No wrappers — herramientas que resuelven problemas concretos."
+          "content": "<b>Integración de IA.</b> Conecto LLMs a datos reales mediante APIs estructuradas, diseño de prompts y flujos basados en herramientas. No wrappers — integraciones que resuelven problemas concretos dentro de un sistema existente."
         },
         {
-          "content": "<b>Linux y Entorno.</b> Fedora Linux como máquina de trabajo. Me importan los entornos reproducibles, el historial de git limpio y los pipelines de CI/CD que no te dan sorpresas."
+          "content": "<b>Linux y Entorno.</b> Fedora Linux como máquina de trabajo. Me importan los entornos reproducibles, el historial de git limpio y los pipelines de CI/CD que se comportan igual dos veces."
         }
       ],
       "content": {
         "title": "Sobre Mí",
         "subtitle": "Software que funciona en producción, no solo en demos.",
-        "bio": "Desarrollador de software de Argentina. Me hago cargo del stack completo: esquema de base de datos, diseño de APIs, frontends en React y deploy. En el lado de IA, construyo integraciones estructuradas — LLMs conectados a datos reales mediante contratos bien definidos, no simples wrappers.",
-        "details": "Trabajo en Fedora Linux, mantengo un historial de git limpio y escribo tests antes de que algo falle en producción. Si necesitás a alguien que pueda tomar responsabilidad de una feature desde la primera migración hasta el último deploy, hablemos.",
+        "bio": "Desarrollador de software de Argentina. Me hago cargo del stack completo: esquema de base de datos, diseño de APIs, frontends en React y deploy. En el lado de IA, construyo integraciones donde el modelo tiene acceso a contexto real — no completions genéricas. Me importa la arquitectura antes que el modelo.",
+        "details": "Trabajo en Fedora Linux, mantengo un historial de git limpio y escribo tests antes de que algo falle en producción. Si necesitás a alguien que pueda tomar responsabilidad de una feature desde la primera migración hasta el último deploy, escribime.",
         "photoLegend": "Ignacio Figueroa, conocido como Nacho"
       }
     },
@@ -135,10 +135,10 @@
       "items": {
         "frontend": "Frontend Development",
         "backend": "Backend Architecture",
-        "ai": "Inteligencia Artificial",
+        "ai": "Integración de IA",
         "prompts": "Prompt Engineering",
         "arch": "Arquitectura de Software",
-        "clean": "Buenas Prácticas (Clean Code)",
+        "clean": "Código Mantenible",
         "ui": "Diseño UX/UI",
         "a11y": "Accesibilidad Web",
         "perf": "Performance",
@@ -151,7 +151,7 @@
     "mateUiCta": {
       "badge": "Open Source",
       "title": "Construí una librería de componentes. {count} componentes, desde cero.",
-      "description": "NachUI es un conjunto de primitivas accesibles sin estilos por defecto. La construí para dejar de copiar los mismos patrones de UI en cada proyecto.",
+      "description": "NachUI es un conjunto de primitivas accesibles sin estilos por defecto. El código se copia, no se importa como dependencia. La construí para dejar de duplicar los mismos patrones de UI en cada proyecto.",
       "actions": {
         "viewComponents": "Explorar Componentes",
         "viewDocumentation": "Leer la Documentación"
@@ -168,7 +168,7 @@
     "assistant": {
       "projects": {
         "title": "Proyectos",
-        "description": "Aquí están algunos de los proyectos en los que Ignacio trabaja."
+        "description": "Aquí están algunos de los proyectos en los que Ignacio ha trabajado."
       },
       "experience": {
         "title": "Experiencia Laboral",
@@ -180,11 +180,11 @@
       },
       "education": {
         "title": "Educación",
-        "description": "Aquí están algunas de las instituciones educativas de Ignacio."
+        "description": "Aquí está la formación académica de Ignacio."
       },
       "contact": {
         "title": "Contacto",
-        "description": "Aquí están algunas de las formas de contacto de Ignacio."
+        "description": "Así podés contactar a Ignacio."
       }
     }
   },
@@ -295,18 +295,18 @@
         "title": "Asistente virtual de Ignacio",
         "reset": "Reiniciar chat",
         "newChat": "Nuevo Chat",
-        "resetConfirmTitle": "¿Estás seguro de que quieres reiniciar el chat?",
+        "resetConfirmTitle": "¿Estás seguro de que querés reiniciar el chat?",
         "resetConfirmDescription": "Esto eliminará todos tus mensajes en este chat.",
         "resetConfirmCancel": "Cancelar",
         "resetConfirmAction": "Reiniciar chat"
       },
       "input": {
-        "placeholder": "Escribe un mensaje..."
+        "placeholder": "Escribí un mensaje..."
       },
       "messages": {
-        "initial": "¡Hola! 👋 ¿En qué puedo ayudarte hoy?",
-        "error": "Lo siento, ocurrió un error. Por favor, intenta de nuevo.",
-        "tooltip": "Hey, ¿Que onda?",
+        "initial": "¡Hola! 👋 ¿En qué puedo ayudarte?",
+        "error": "Ocurrió un error. Por favor, intentá de nuevo.",
+        "tooltip": "Preguntame sobre Ignacio",
         "thinking": "Pensando...",
         "emailSending": "Enviando mensaje...",
         "emailSuccess": "¡Mensaje enviado con éxito!",
@@ -320,12 +320,12 @@
         "companyLabel": "Compañía"
       },
       "suggestions": {
-        "title": "Prueba con...",
-        "subtitle": "Haz click en una sugerencia para empezar",
+        "title": "Probá con...",
+        "subtitle": "Hacé click en una sugerencia para empezar",
         "who": "¿Quién es Ignacio?",
         "projects": "¿Qué proyectos tiene?",
         "technologies": "¿Qué tecnologías usa?",
-        "education": "Hablame sobre su educación",
+        "education": "Contame sobre su educación",
         "recruiterMode": "Modo reclutador",
         "contact": "Enviar mensaje"
       },
@@ -333,10 +333,10 @@
         "goodMorning": "¡Buenos días!",
         "goodAfternoon": "¡Buenas tardes!",
         "goodEvening": "¡Buenas noches!",
-        "greeting": "Hola!, ¿Como estas?",
-        "subtitle": "Preguntame lo que quieras sobre Ignacio",
+        "greeting": "¡Hola! ¿Cómo estás?",
+        "subtitle": "Preguntame lo que quieras sobre Ignacio.",
         "role": "Asistente IA",
-        "inputPlaceholder": "¿Cual es tu duda?"
+        "inputPlaceholder": "¿En qué puedo ayudarte?"
       }
     },
     "openToWorkBadge": "Disponible para trabajar",
@@ -346,13 +346,13 @@
     },
     "contactForm": {
       "title": "Hablemos.",
-      "description": "Abierto a roles fullstack, integración de IA, trabajo por contrato, o una charla técnica. Leo todos los mensajes.",
+      "description": "Abierto a roles fullstack, integración de IA, trabajo por contrato o una charla técnica. Leo todos los mensajes.",
       "nameLabel": "Nombre",
       "namePlaceholder": "Tu nombre",
       "emailLabel": "Email",
       "emailPlaceholder": "tu.email@dominio.com",
       "messageLabel": "Mensaje",
-      "messagePlaceholder": "¿en qué estás trabajando?",
+      "messagePlaceholder": "¿En qué estás trabajando?",
       "submit": "Enviar",
       "sending": "Enviando...",
       "success": "Mensaje enviado. Te respondo pronto.",
