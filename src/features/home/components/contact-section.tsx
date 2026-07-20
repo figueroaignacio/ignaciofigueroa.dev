@@ -1,7 +1,5 @@
 'use client';
 
-import { GitHubIcon } from '@/shared/components/tech-icons';
-import { DiscordIcon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
 
@@ -10,7 +8,6 @@ const SOCIAL_LINKS = [
     id: 'email',
     label: 'Email',
     href: 'mailto:contact@ignaciofigueroa.dev',
-    icon: Mail01Icon,
     handle: 'contact@ignaciofigueroa.dev',
     external: false,
   },
@@ -18,7 +15,6 @@ const SOCIAL_LINKS = [
     id: 'linkedin',
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/figueroa-ignacio',
-    icon: Linkedin01Icon,
     handle: '/in/figueroa-ignacio',
     external: true,
   },
@@ -26,24 +22,21 @@ const SOCIAL_LINKS = [
     id: 'github',
     label: 'GitHub',
     href: 'https://github.com/figueroaignacio',
-    icon: GitHubIcon,
     handle: 'github.com/figueroaignacio',
-    external: true,
-  },
-  {
-    id: 'discord',
-    label: 'Discord',
-    href: 'https://discord.com/users/ignaciofigueroa',
-    icon: DiscordIcon,
-    handle: 'ignaciofigueroa',
     external: true,
   },
   {
     id: 'tiktok',
     label: 'TikTok',
     href: 'https://www.tiktok.com/@ignaciofigueroa.dev',
-    icon: DiscordIcon,
-    handle: 'tiktok.com/@ignaciofigueroa.dev',
+    handle: '@ignaciofigueroa.dev',
+    external: true,
+  },
+  {
+    id: 'discord',
+    label: 'Discord',
+    href: 'https://discord.com/users/ignaciofigueroa',
+    handle: 'ignaciofigueroa',
     external: true,
   },
 ];
@@ -76,12 +69,17 @@ export function ContactSection() {
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
-              className="group flex items-center justify-between gap-4 py-4 hover:text-primary transition-colors duration-300"
+              className="group flex items-center justify-between gap-6 py-4 hover:text-primary transition-colors duration-300"
             >
-              <span className="text-[15px] font-mono text-foreground group-hover:text-primary transition-colors lowercase">
-                {link.label}
-              </span>
-              <span className="text-[13px] font-mono text-muted-foreground group-hover:text-primary/80 transition-colors">
+              <div className="min-w-0">
+                <span className="block text-[15px] font-mono text-foreground group-hover:text-primary transition-colors lowercase">
+                  {link.label}
+                </span>
+                <span className="block text-[12px] text-muted-foreground/70 leading-snug mt-0.5">
+                  {tPages(`links.${link.id}`)}
+                </span>
+              </div>
+              <span className="shrink-0 text-[12px] font-mono text-muted group-hover:text-primary/70 transition-colors">
                 {link.handle}
               </span>
             </a>
@@ -91,3 +89,4 @@ export function ContactSection() {
     </section>
   );
 }
+

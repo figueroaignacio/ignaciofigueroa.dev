@@ -5,7 +5,14 @@
     "description": "Looking for fullstack or AI integration roles. If you have a concrete technical problem, write to me.",
     "linksTitle": "Find me on",
     "formTitle": "Drop a message",
-    "formDescription": "This sends a direct email. I read every message."
+    "formDescription": "This sends a direct email. I read every message.",
+    "links": {
+      "email": "Best way to reach me directly.",
+      "linkedin": "Work history, projects, and professional updates.",
+      "github": "Open source work, personal projects, and contributions.",
+      "tiktok": "I create content about AI, software, and dev life.",
+      "discord": "DM me if you prefer async chat."
+    }
   },
   "notFound": {
     "title": "Page not found",

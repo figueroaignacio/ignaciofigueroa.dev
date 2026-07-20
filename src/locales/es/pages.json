@@ -5,7 +5,14 @@
     "description": "En búsqueda de roles fullstack o de integración de IA. Si tenés un problema técnico concreto, escribime.",
     "linksTitle": "Encontrame en",
     "formTitle": "Escribir un mensaje",
-    "formDescription": "Esto manda un mail directo. Leo todos los mensajes."
+    "formDescription": "Esto manda un mail directo. Leo todos los mensajes.",
+    "links": {
+      "email": "La mejor forma de contactarme directamente.",
+      "linkedin": "Historial laboral, proyectos y actualizaciones profesionales.",
+      "github": "Trabajo open source, proyectos personales y contribuciones.",
+      "tiktok": "Creo contenido sobre IA, software y vida de desarrollador.",
+      "discord": "Escribime si preferís chat asíncrono."
+    }
   },
   "notFound": {
     "title": "Página no encontrada",
