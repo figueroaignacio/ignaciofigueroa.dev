@@ -27,7 +27,7 @@ const SOCIAL_LINKS = [
     label: 'GitHub',
     href: 'https://github.com/figueroaignacio',
     icon: GitHubIcon,
-    handle: '@figueroaignacio',
+    handle: 'github.com/figueroaignacio',
     external: true,
   },
   {
@@ -36,6 +36,14 @@ const SOCIAL_LINKS = [
     href: 'https://discord.com/users/ignaciofigueroa',
     icon: DiscordIcon,
     handle: 'ignaciofigueroa',
+    external: true,
+  },
+  {
+    id: 'tiktok',
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@ignaciofigueroa.dev',
+    icon: DiscordIcon,
+    handle: 'tiktok.com/@ignaciofigueroa.dev',
     external: true,
   },
 ];
