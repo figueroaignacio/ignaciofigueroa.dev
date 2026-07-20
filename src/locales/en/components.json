@@ -1,0 +1,139 @@
+{
+  "projectItem": {
+    "actions": {
+      "details": "Learn more",
+      "source": "Repository",
+      "preview": "Website"
+    }
+  },
+  "projectSummary": {
+    "button": "Summarize with AI",
+    "loading": "Summarizing...",
+    "error": "Could not generate summary. Please try again.",
+    "title": "AI Summary"
+  },
+  "footer": {
+    "name": "Ignacio Figueroa",
+    "role": "Fullstack Developer",
+    "thanks": "Thanks for stopping by",
+    "rights": "All rights reserved",
+    "kiss": "Kept it simple on purpose. - Ignacio"
+  },
+  "error": "An error occurred while loading the data.",
+  "loader": "Loading...",
+  "ctaCv": {
+    "url": "/pdf/cv_ignacio_figueroa_fullstack_developer.pdf",
+    "cta": {
+      "title": "Resume available",
+      "description": "Work history, stack, and education. One page, no fluff.",
+      "text": "Download Resume"
+    }
+  },
+  "ctaContact": {
+    "title": "Open to opportunities",
+    "description": "Looking for fullstack or AI integration roles. Contract or full-time. If the problem is interesting, I'm interested."
+  },
+  "chat": {
+    "disclaimers": [
+      " Powered by Gemini. Hallucinations included at no extra charge.",
+      " Built on FastAPI + Python. Or as Ignacio calls it, 'the backend that works on my machine'.",
+      " Any bugs are @figueroaignacio's fault. He knows.",
+      " Gemini writes the responses. Ignacio takes the credit. Fair deal.",
+      " Runs on Python because Ignacio felt adventurous outside the JS ecosystem.",
+      " FastAPI is async. My confidence, however, is not.",
+      " Might invent some facts. Like my confidence writing CSS from scratch.",
+      " Powered by LLMs and a concerning amount of mate.",
+      " Built while procrastinating on UTN assignments.",
+      " The FastAPI server is up. Probably. No promises after 2am.",
+      " Trained on Ignacio's codebase. Please lower your expectations accordingly.",
+      " Next.js in the front, Python in the back. Mullet architecture.",
+      " I answer quickly so you don't realize Gemini is doing all the heavy lifting.",
+      " Caution: May drop unprompted opinions about TypeScript vs Python.",
+      " Powered by Gemini, supervised by a guy who really likes dark mode.",
+      " If I say something wrong, tell Ignacio. He needs something to do.",
+      " So advanced, it only occasionally forgets how to center a div.",
+      " A FastAPI endpoint just to tell you I'm busy right now.",
+      " Designed with Tailwind. Or as I call it, 'inline styles but socially acceptable'.",
+      " Still learning exactly like Ignacio, but without the UTN exams.",
+      " The Python backend has 95% test coverage. The 5% is the part that matters.",
+      " Works best with a virtual mate and a stable internet connection.",
+      " It's not a hallucination, it's Gemini being 'creatively confident'.",
+      " Deployed on a Friday. The FastAPI logs are fine. Everything is fine. I think so.",
+      " I'm just a React component calling a Python endpoint calling Gemini. Layers."
+    ],
+    "header": {
+      "title": "N-bot",
+      "subtitle": "Ignacio's virtual assistant.",
+      "reset": "Reset chat",
+      "newChat": "New Chat",
+      "resetConfirmTitle": "Are you sure you want to reset the chat?",
+      "resetConfirmDescription": "This will delete all your messages in this chat.",
+      "resetConfirmCancel": "Cancel",
+      "resetConfirmAction": "Reset Chat"
+    },
+    "input": {
+      "placeholder": "Type a message..."
+    },
+    "messages": {
+      "initial": "Hi! 👋 How can I help you today?",
+      "error": "I'm sorry, I encountered an error. Please try again.",
+      "tooltip": "Ask me about Ignacio",
+      "thinking": "Thinking...",
+      "emailSending": "Sending message...",
+      "emailSuccess": "Message sent successfully!",
+      "emailError": "Failed to send message.",
+      "pitchTitle": "Recruiter Match Report",
+      "matchScore": "Match Score",
+      "matchingSkills": "Matching Requirements",
+      "gapAnalysis": "Gap Analysis",
+      "recommendedProjects": "Recommended Projects",
+      "roleLabel": "Role",
+      "companyLabel": "Company"
+    },
+    "suggestions": {
+      "title": "Try with...",
+      "subtitle": "Click any suggestion to get started",
+      "who": "Who is Ignacio?",
+      "projects": "What are his projects?",
+      "technologies": "What stack does he use?",
+      "education": "Tell me about his studies",
+      "recruiterMode": "Recruiter Mode",
+      "contact": "Send him a message"
+    },
+    "page": {
+      "goodMorning": "Good morning!",
+      "goodAfternoon": "Good afternoon!",
+      "goodEvening": "Good evening!",
+      "greeting": "Hey, what's up?",
+      "subtitle": "Feel free to ask me anything about him.",
+      "role": "AI Assistant",
+      "inputPlaceholder": "What's your question?",
+      "quickActions": {
+        "me": "Me",
+        "projects": "Projects",
+        "skills": "Skills",
+        "fun": "Fun",
+        "contact": "Contact"
+      }
+    }
+  },
+  "openToWorkBadge": "Open to work",
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "contactForm": {
+    "title": "Get in touch.",
+    "description": "Open to fullstack or AI roles, contract work, or a technical conversation. I read every message.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your.email@domain.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "What are you working on?",
+    "submit": "Send",
+    "sending": "Sending...",
+    "success": "Message sent. I'll reply soon.",
+    "error": "Failed to send. Try again or use direct email."
+  }
+}

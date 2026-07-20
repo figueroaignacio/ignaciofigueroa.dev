@@ -1,0 +1,26 @@
+{
+  "home": {
+    "title": "Ignacio Figueroa · Desarrollador Fullstack",
+    "description": "Desarrollador fullstack con experiencia en React, Next.js, FastAPI y Python. Trabajo en Linux, construyo proyectos open source e integro LLMs en sistemas que ya existen y tienen que seguir funcionando.",
+    "keywords": "Desarrollador Fullstack, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, Integración IA, LLM, NachUI, Librería de Componentes, Open Source, Argentina, Desarrollador Software, Portfolio, Linux, Fedora, UTN"
+  },
+  "aboutMe": {
+    "title": "Sobre Mí - Ignacio Figueroa",
+    "description": "Desarrollador fullstack de Argentina. Me hago cargo del stack completo: esquema, API, frontend, deploy. Integro LLMs donde resuelven un problema concreto dentro de un sistema real.",
+    "keywords": "Sobre mí, Biografía Developer, Stack Tecnológico, Experiencia Laboral, Ignacio Figueroa, Perfil Profesional, Linux, Fedora, UTN, Argentina"
+  },
+  "projects": {
+    "title": "Proyectos - Ignacio Figueroa",
+    "description": "Sistemas en producción y herramientas open source construidas con React, Next.js, FastAPI e integraciones reales de IA. Código fuente y demos disponibles.",
+    "keywords": "Proyectos Web, Portfolio, React Projects, Open Source, NachUI, Asistente IA, FastAPI, Fullstack"
+  },
+  "chat": {
+    "title": "Asistente IA - Ignacio Figueroa",
+    "description": "Asistente construido con Groq y Next.js. Preguntá sobre proyectos, stack, experiencia o enviá un mensaje directo."
+  },
+  "contact": {
+    "title": "Contacto - Ignacio Figueroa",
+    "description": "En búsqueda de roles fullstack o de integración de IA. Contacto por email, LinkedIn o GitHub.",
+    "keywords": "Contacto, Contratar Desarrollador, Ingeniero Fullstack, Ignacio Figueroa, Desarrollador React, Argentina"
+  }
+}

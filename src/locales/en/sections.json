@@ -1,0 +1,163 @@
+{
+  "home": {
+    "greeting": "Software Developer · AI Integrations · Fullstack Development",
+    "name": "Ignacio Figueroa",
+    "title": "From frontend to backend, infrastructure and criterion, with AI where it earns its place.",
+    "description": "I work with React, Next.js, FastAPI, and Python. I build on Linux. I care about understanding how things work before adding abstraction on top. I build personal projects, an open source component library, and LLM integrations that go beyond wrapping an API.",
+    "actions": {
+      "viewProjects": "See the code",
+      "learnMore": "Read my stack",
+      "chatAssistant": "Talk to my bot",
+      "viewCv": "View resume"
+    }
+  },
+  "aboutMe": {
+    "title": "About Me",
+    "description": "Software developer focused on fullstack work. I write code that runs in production, not just in demos.",
+    "items": [
+      {
+        "content": "<b>Fullstack Engineering.</b> React, Next.js, Node.js, and FastAPI. I own the full stack — schema design, API contracts, frontend state, and deployment."
+      },
+      {
+        "content": "<b>AI Integration.</b> I connect LLMs to real data through structured APIs, prompt design, and tool-based workflows. Not wrappers — integrations that solve specific problems inside an existing system."
+      },
+      {
+        "content": "<b>Linux & Workflow.</b> Fedora Linux as my daily driver. I care about reproducible environments, clean git history, and CI/CD pipelines that behave the same way twice."
+      }
+    ],
+    "content": {
+      "title": "About",
+      "subtitle": "Software that runs in production, not just in demos.",
+      "bio": "Software developer based in Argentina. I handle the full stack: database schema, API design, React frontends, and deployment. On the AI side, I build integrations where the model has access to real context — not generic completions. I care about the architecture before I care about the model.",
+      "details": "I work on Fedora Linux, keep a clean git history, and write tests before things break in production. If you need someone who can own a feature from the first migration to the last deploy, reach out.",
+      "photoLegend": "Ignacio Figueroa, known as Nacho"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "What I've built and shipped.",
+    "work": {
+      "tab": "Work",
+      "title": "Work projects",
+      "description": "Work projects"
+    },
+    "personal": {
+      "tab": "Personal",
+      "title": "Personal projects",
+      "description": "Personal projects"
+    }
+  },
+  "stack": {
+    "title": "Stack",
+    "description": "Technologies I work with and focus on the most.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend & Infrastructure",
+      "cms": "CMS & Content",
+      "others": "Tools & extras",
+      "ai": "AI, Copilots & SDKs"
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "description": "Roles where I shipped features, fixed real bugs, and worked with other engineers."
+  },
+  "education": {
+    "title": "Education",
+    "description": "University and self-directed study. Both matter."
+  },
+  "testimonials": {
+    "title": "What people say.",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "contributions": {
+    "title": "Open Source Contributions",
+    "description": "Repositories I've contributed to, including bug fixes, new features, and improvements.",
+    "viewRepo": "View repository",
+    "viewFork": "View fork",
+    "pr": "Pull Request"
+  },
+  "github": {
+    "title": "GitHub Stats & Activity",
+    "description": "Real-time statistics and contributions fetched directly from my GitHub profile.",
+    "stats": {
+      "stars": "Stars",
+      "repos": "Public Repos",
+      "followers": "Followers",
+      "following": "Following",
+      "contributions": "Total Contributions",
+      "topLanguages": "Top Languages"
+    },
+    "grid": {
+      "less": "Less",
+      "more": "More"
+    }
+  },
+  "whoAmI": {
+    "title": "Who Am I",
+    "description": "A short video introduction about who I am.",
+    "videoLabel": "Video presentation of Ignacio Figueroa",
+    "play": "Play video",
+    "pause": "Pause video",
+    "videoUrl": "https://res.cloudinary.com/dowusv05c/video/upload/v1782250393/20260623_180433_ekdyx4.mp4"
+  },
+  "interests": {
+    "title": "Areas of Focus",
+    "description": "Where I spend my time and where I can add real value.",
+    "items": {
+      "frontend": "Frontend Development",
+      "backend": "Backend Architecture",
+      "ai": "AI Integration",
+      "prompts": "Prompt Engineering",
+      "arch": "Software Architecture",
+      "clean": "Maintainable Code",
+      "ui": "UX/UI Design",
+      "a11y": "Web Accessibility",
+      "perf": "Performance",
+      "qa": "Testing & QA",
+      "devops": "DevOps Culture",
+      "opensource": "Open Source",
+      "linux": "Linux"
+    }
+  },
+  "mateUiCta": {
+    "badge": "Open Source",
+    "title": "I built a component library. {count} components, from scratch.",
+    "description": "NachUI is a set of accessible primitives with no default styles. You copy the code, not the dependency. Built it to stop duplicating the same UI patterns across every project.",
+    "actions": {
+      "viewComponents": "Browse Components",
+      "viewDocumentation": "Read the Docs"
+    },
+    "href": {
+      "components": "https://en.nachui.tech/docs/components",
+      "documentation": "https://en.nachui.tech/docs"
+    },
+    "stats": {
+      "components": "components",
+      "openSource": "open source"
+    }
+  },
+  "assistant": {
+    "projects": {
+      "title": "Projects",
+      "description": "Here are some of the projects Ignacio has worked on."
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "Here are some of Ignacio's work experiences."
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "Here are some of Ignacio's skills."
+    },
+    "education": {
+      "title": "Education",
+      "description": "Here are some of Ignacio's educational background."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Here's how to reach Ignacio."
+    }
+  }
+}

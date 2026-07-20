@@ -1,0 +1,18 @@
+{
+  "contact": {
+    "label": "Contacto",
+    "title": "Hablemos.",
+    "description": "En búsqueda de roles fullstack o de integración de IA. Si tenés un problema técnico concreto, escribime.",
+    "linksTitle": "Encontrame en",
+    "formTitle": "Escribir un mensaje",
+    "formDescription": "Esto manda un mail directo. Leo todos los mensajes."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "Esta página no existe o fue movida. Volvamos a donde estabas.",
+    "codeBlockTitle": "terminal",
+    "codeBlockContent": "$ git log --oneline {filename}\nfatal: bad default revision 'HEAD'\n\n$ find . -name '{query}*'\n[sin resultados]\n\n# parece que esta ruta nunca se deployeó.",
+    "actionBack": "Volver",
+    "actionHome": "Inicio"
+  }
+}

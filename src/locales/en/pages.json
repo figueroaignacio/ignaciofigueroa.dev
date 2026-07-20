@@ -1,0 +1,18 @@
+{
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk.",
+    "description": "Looking for fullstack or AI integration roles. If you have a concrete technical problem, write to me.",
+    "linksTitle": "Find me on",
+    "formTitle": "Drop a message",
+    "formDescription": "This sends a direct email. I read every message."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "This page doesn't exist or may have been moved. Let's get you back on track.",
+    "codeBlockTitle": "terminal",
+    "codeBlockContent": "$ git log --oneline {filename}\nfatal: bad default revision 'HEAD'\n\n$ find . -name '{query}*'\n[no results]\n\n# looks like this route was never deployed.",
+    "actionBack": "Go Back",
+    "actionHome": "Home"
+  }
+}
