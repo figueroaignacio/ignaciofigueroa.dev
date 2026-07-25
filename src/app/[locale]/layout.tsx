@@ -1,7 +1,6 @@
 import { routing } from '@/i18n/routing';
 import { Providers } from '@/shared/components/providers';
 import { SkipLink } from '@/shared/components/ui/skip-link';
-import { TerminalPrompt } from '@/shared/components/ui/terminal-prompt';
 import { BASE_URL } from '@/shared/lib/constants';
 import { fontHeading, fontLora, fontSans, fontSerif } from '@/shared/lib/fonts';
 import { Analytics } from '@vercel/analytics/next';
@@ -35,7 +34,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <SpeedInsights />
             <SkipLink />
             {children}
-            <TerminalPrompt />
           </Providers>
         </NextIntlClientProvider>
       </body>
