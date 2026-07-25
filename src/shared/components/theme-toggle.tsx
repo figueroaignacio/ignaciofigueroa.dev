@@ -1,11 +1,11 @@
 'use client';
 
+import { Moon02Icon, Sun03Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
 import { useTheme } from 'nach-themes';
-import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
-  const t = useTranslations('components.theme');
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -14,23 +14,19 @@ export function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="h-4 w-12 animate-pulse rounded bg-muted/50" />;
+    return <div className="h-5 w-5 animate-pulse rounded bg-muted/50" />;
   }
 
   const isDark = resolvedTheme === 'dark';
 
-  const toggleTheme = () => {
-    setTheme(isDark ? 'light' : 'dark');
-  };
-
   return (
     <button
       type="button"
-      onClick={toggleTheme}
-      className="text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 hover:text-muted-foreground focus:outline-hidden hover:underline"
-      aria-label="Toggle theme"
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      className="text-muted-foreground hover:text-foreground transition-colors focus:outline-hidden"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
-      {isDark ? t('light') : t('dark')}
+      <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} className="size-5" strokeWidth={1.5} />
     </button>
   );
 }

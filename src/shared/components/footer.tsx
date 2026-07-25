@@ -1,4 +1,6 @@
 import { useTranslations } from 'next-intl';
+import { LocaleSwitcher } from './locale-switcher';
+import { ThemeToggle } from './theme-toggle';
 
 const footerLinks = [
   {
@@ -38,7 +40,11 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-4"></div>
+      <div className="flex items-center gap-3 text-muted-foreground">
+        <ThemeToggle />
+        <span className="select-none">·</span>
+        <LocaleSwitcher />
+      </div>
     </footer>
   );
 }
