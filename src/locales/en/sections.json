@@ -127,6 +127,15 @@
     "skills": "Skills",
     "items": [
       {
+        "title": "AI for Writing and Communicating",
+        "issuer": "Google",
+        "description": "Explores how to leverage AI tools to improve written communication, draft professional content, refine tone and clarity, and accelerate document workflows using generative AI within Google Workspace.",
+        "skills": ["Google Workspace", "Generative AI", "Technical Writing", "Prompt Engineering"],
+        "credentialId": "Z8IIP9PP38V1",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera Z8IIP9PP38V1.pdf"
+      },
+      {
         "title": "AI for Research and Insights",
         "issuer": "Google",
         "description": "Covers how to apply AI tools to research workflows, synthesize large volumes of information, and extract structured insights from unstructured data using generative AI.",

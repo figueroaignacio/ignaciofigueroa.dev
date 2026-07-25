@@ -128,6 +128,15 @@
     "skills": "Habilidades",
     "items": [
       {
+        "title": "IA para Escritura y Comunicación",
+        "issuer": "Google",
+        "description": "Explora cómo aprovechar herramientas de IA para mejorar la comunicación escrita, redactar contenido profesional, refinar el tono y la claridad, y acelerar los flujos de trabajo de documentos usando IA generativa dentro de Google Workspace.",
+        "skills": ["Google Workspace", "IA Generativa", "Escritura Técnica", "Prompt Engineering"],
+        "credentialId": "Z8IIP9PP38V1",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera Z8IIP9PP38V1.pdf"
+      },
+      {
         "title": "IA para Investigación e Insights",
         "issuer": "Google",
         "description": "Cubre cómo aplicar herramientas de IA a flujos de investigación, sintetizar grandes volúmenes de información y extraer insights estructurados de datos no estructurados usando IA generativa.",
