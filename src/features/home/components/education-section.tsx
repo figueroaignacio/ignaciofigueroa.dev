@@ -48,20 +48,22 @@ export async function EducationSection() {
                   {item.endDate ? formatDate(item.endDate, locale) : t('present')}
                 </span>
               </div>
-
-              {/* Description */}
               {item.description && (
                 <p className="text-sm text-muted-foreground/90 leading-relaxed">
                   {item.description}
                 </p>
               )}
-
-              {/* Skills */}
               {item.skills.length > 0 && (
-                <p className="text-[11px] font-mono text-muted tracking-wide">
-                  {t('skills')}:{' '}
-                  <span className="text-muted-foreground/80">{item.skills.join(', ')}</span>
-                </p>
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {item.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               )}
             </article>
           </li>
