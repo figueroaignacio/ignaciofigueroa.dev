@@ -1,6 +1,13 @@
-import type { Education } from '@/payload-types';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { getEducation } from '../api/education';
+
+interface EducationItem {
+  title: string;
+  institution: string;
+  description: string;
+  skills: string[];
+  startDate: string;
+  endDate: string | null;
+}
 
 function formatDate(dateString: string, locale: string): string {
   return new Date(dateString).toLocaleDateString(locale, {
@@ -12,9 +19,9 @@ function formatDate(dateString: string, locale: string): string {
 export async function EducationSection() {
   const t = await getTranslations('sections.education');
   const locale = await getLocale();
-  const education: Education[] = await getEducation(locale);
+  const items = t.raw('items') as EducationItem[];
 
-  if (!education || education.length === 0) return null;
+  if (!items || items.length === 0) return null;
 
   return (
     <section id="education" className="scroll-mt-12">
@@ -24,44 +31,37 @@ export async function EducationSection() {
         </h2>
         <div className="mt-3 h-px bg-rule" />
       </div>
+
       <ul className="divide-y divide-border">
-        {education.map((item) => (
-          <li key={item.id} className="py-6 first:pt-0 last:pb-0 group">
+        {items.map((item) => (
+          <li key={item.title} className="py-6 first:pt-0 last:pb-0">
             <article className="space-y-2">
               <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                 <h3 className="text-[19px] md:text-[20px] font-medium text-foreground">
                   {item.title}{' '}
                   <span className="text-base font-normal text-muted-foreground">
-                    at {item.institution}
+                    {item.institution}
                   </span>
                 </h3>
                 <span className="shrink-0 text-[11px] font-mono tabular-nums text-muted tracking-wider">
                   {formatDate(item.startDate, locale)} —{' '}
-                  {item.endDate
-                    ? formatDate(item.endDate, locale)
-                    : locale === 'es'
-                      ? 'presente'
-                      : 'present'}
+                  {item.endDate ? formatDate(item.endDate, locale) : t('present')}
                 </span>
               </div>
 
+              {/* Description */}
               {item.description && (
                 <p className="text-sm text-muted-foreground/90 leading-relaxed">
                   {item.description}
                 </p>
               )}
 
-              {item.certificateUrl && (
-                <div className="pt-1">
-                  <a
-                    href={item.certificateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-mono text-muted-foreground hover:text-primary transition-colors underline decoration-border/60 hover:decoration-primary"
-                  >
-                    {locale === 'es' ? 'ver certificado' : 'view certificate'}
-                  </a>
-                </div>
+              {/* Skills */}
+              {item.skills.length > 0 && (
+                <p className="text-[11px] font-mono text-muted tracking-wide">
+                  {t('skills')}:{' '}
+                  <span className="text-muted-foreground/80">{item.skills.join(', ')}</span>
+                </p>
               )}
             </article>
           </li>

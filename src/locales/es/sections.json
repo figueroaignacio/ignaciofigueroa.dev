@@ -64,7 +64,62 @@
   },
   "education": {
     "title": "Educación",
-    "description": "Universidad y aprendizaje autodirigido. Ambos importan."
+    "description": "Universidad y aprendizaje autodirigido. Ambos importan.",
+    "present": "presente",
+    "skills": "Habilidades",
+    "items": [
+      {
+        "title": "Autoformación en Desarrollo de Software",
+        "institution": "En Internet",
+        "description": "Especialización autodidacta en tecnologías web, programación de software, integración de modelos de inteligencia artificial y administración de sistemas Linux. Desarrollo de herramientas de código abierto y aplicaciones web.",
+        "skills": [
+          "React",
+          "Next.js",
+          "FastAPI",
+          "Python",
+          "Linux",
+          "Integración de IA",
+          "IA Aplicada en flujos de trabajo y desarrollo",
+          "Linux",
+          "IA Agentica",
+          "Backend",
+          "Frontend"
+        ],
+        "startDate": "2022-03-01",
+        "endDate": null
+      },
+      {
+        "title": "Tecnicatura Universitaria en Programación y Desarrollo de Software",
+        "institution": "En Universidad Tecnológica Nacional (UTN)",
+        "description": "Carrera orientada a la formación de profesionales en desarrollo de software y soluciones tecnológicas. Cubre programación, diseño de aplicaciones, gestión de bases de datos y resolución de problemas mediante pensamiento lógico y computacional. Perfil técnico-profesional con bases sólidas en desarrollo de software",
+        "skills": [
+          "Programación",
+          "Bases de Datos SQL y NoSQL",
+          "Inglés",
+          "POO (Programación Orientada a Objetos)",
+          "Metodología de Sistemas",
+          "Trabajo en Equipo",
+          "Control de Versiones (Git & GitHub)",
+          "Estructura de Datos",
+          "Java",
+          "Python",
+          "JavaScript",
+          "Frontend",
+          "Backend",
+          "Spring e Springboot",
+          "React",
+          "Testing",
+          "Scrum",
+          "Kanban",
+          "Jira",
+          "Inteligencia Artificial",
+          "Arquitectura de Software",
+          "Linux"
+        ],
+        "startDate": "2025-03-01",
+        "endDate": null
+      }
+    ]
   },
   "certifications": {
     "title": "Certificaciones",
@@ -84,7 +139,12 @@
         "title": "IA para Brainstorming y Planificación",
         "issuer": "Google",
         "description": "Explora cómo usar IA para acelerar la ideación, estructurar planes complejos y mejorar los procesos de toma de decisiones mediante prompting dirigido y flujos de trabajo colaborativos con IA.",
-        "skills": ["Personalización con IA", "Planificación de Producto", "Diseño de Prompts", "Automatización de Flujos"],
+        "skills": [
+          "Personalización con IA",
+          "Planificación de Producto",
+          "Diseño de Prompts",
+          "Automatización de Flujos"
+        ],
         "credentialId": "ZS0WIHXCODHR",
         "credentialUrl": "/pdf/certifications/Coursera ZS0WIHXCODHR.pdf"
       },
