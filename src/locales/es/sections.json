@@ -130,6 +130,7 @@
       {
         "title": "IA para Escritura y Comunicación",
         "issuer": "Google",
+        "icon": "google",
         "description": "Explora cómo aprovechar herramientas de IA para mejorar la comunicación escrita, redactar contenido profesional, refinar el tono y la claridad, y acelerar los flujos de trabajo de documentos usando IA generativa dentro de Google Workspace.",
         "skills": ["Google Workspace", "IA Generativa", "Escritura Técnica", "Prompt Engineering"],
         "credentialId": "Z8IIP9PP38V1",
@@ -139,6 +140,7 @@
       {
         "title": "IA para Investigación e Insights",
         "issuer": "Google",
+        "icon": "google",
         "description": "Cubre cómo aplicar herramientas de IA a flujos de investigación, sintetizar grandes volúmenes de información y extraer insights estructurados de datos no estructurados usando IA generativa.",
         "skills": ["IA Generativa", "Prompt Engineering", "Automatización de Investigación"],
         "credentialId": "7GLFN3ZMNDKV",
@@ -147,6 +149,7 @@
       {
         "title": "IA para Brainstorming y Planificación",
         "issuer": "Google",
+        "icon": "google",
         "description": "Explora cómo usar IA para acelerar la ideación, estructurar planes complejos y mejorar los procesos de toma de decisiones mediante prompting dirigido y flujos de trabajo colaborativos con IA.",
         "skills": [
           "Personalización con IA",
@@ -160,6 +163,7 @@
       {
         "title": "Fundamentos de IA",
         "issuer": "Google",
+        "icon": "google",
         "description": "Introduce conceptos fundamentales de IA y aprendizaje automático, el panorama de los modelos generativos y casos de uso prácticos para aplicar IA de manera responsable en tareas profesionales cotidianas.",
         "skills": ["Machine Learning", "IA Generativa", "IA Responsable"],
         "credentialId": "IL360KYAAJIM",

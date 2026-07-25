@@ -6,6 +6,7 @@ import { GeminiIcon } from './gemini-icon';
 import { GitIcon } from './git-icon';
 import { GitHubIcon } from './github-icon';
 import { GoogleAntigravityIcon } from './google-antigravity-icon';
+import { GoogleIcon } from './google-icon';
 import { GroqAiIcon } from './groq-ai-icon';
 import { HTMLIcon } from './html-icon';
 import { LinuxIcon } from './linux-icon';
@@ -39,6 +40,7 @@ const iconComponents = {
   claudeCode: ClaudeCodeIcon,
   openCode: OpenCodeIcon,
   googleAntigravity: GoogleAntigravityIcon,
+  google: GoogleIcon,
   vercel: VercelIcon,
   gemini: GeminiIcon,
   groq: GroqAiIcon,
@@ -91,6 +93,7 @@ export {
   GitHubIcon,
   GitIcon,
   GoogleAntigravityIcon,
+  GoogleIcon,
   GroqAiIcon,
   HTMLIcon,
   LinuxIcon,
