@@ -29,6 +29,7 @@ export function Footer() {
           <div className="flex flex-col gap-y-4">
             {footerLinks.map((link) => (
               <a
+                key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
