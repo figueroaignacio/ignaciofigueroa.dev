@@ -128,6 +128,25 @@
     "skills": "Habilidades",
     "items": [
       {
+        "title": "IA para Creación de Contenido",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Cubre cómo generar recursos visuales de alta calidad a partir de un concepto creativo usando los modelos de generación de imágenes y video de Gemini, establecer lineamientos de diseño personalizados y evaluar recursos creativos prompting de IA para obtener retroalimentación basada en criterios de diseño.",
+        "skills": [
+          "Diseño Creativo",
+          "Habilitación con IA",
+          "Flujos de IA",
+          "Prompts Multimodales",
+          "Visual Storytelling",
+          "Google Gemini",
+          "IA Generativa",
+          "Google Workspace"
+        ],
+        "credentialId": "HHSMEGXGSTJO",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera HHSMEGXG5TJO.pdf"
+      },
+      {
         "title": "IA para Escritura y Comunicación",
         "issuer": "Google",
         "icon": "google",

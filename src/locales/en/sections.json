@@ -127,6 +127,25 @@
     "skills": "Skills",
     "items": [
       {
+        "title": "AI for Content Creation",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Covers how to generate high-quality visual assets from a creative concept using Gemini's image and video generation models, establish custom design guidelines, and critique creative assets by prompting AI to provide actionable feedback based on design criteria.",
+        "skills": [
+          "Creative Design",
+          "AI Enablement",
+          "AI Workflows",
+          "Multimodal Prompts",
+          "Visual Storytelling",
+          "Google Gemini",
+          "Generative AI",
+          "Google Workspace"
+        ],
+        "credentialId": "HHSMEGXGSTJO",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera HHSMEGXG5TJO.pdf"
+      },
+      {
         "title": "AI for Writing and Communicating",
         "issuer": "Google",
         "icon": "google",
