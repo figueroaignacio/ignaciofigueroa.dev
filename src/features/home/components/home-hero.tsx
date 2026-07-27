@@ -8,7 +8,7 @@ export async function HomeHero() {
   return (
     <header className="mb-14 md:mb-16">
       <div className="flex items-baseline justify-between gap-6 flex-wrap">
-        <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground leading-none lowercase">
+        <h1 className="text-3xl md:text-4xl font-medium tracking-tight text-foreground leading-none">
           {t('name')}
         </h1>
         <HeroActions
