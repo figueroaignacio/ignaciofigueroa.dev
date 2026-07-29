@@ -128,6 +128,25 @@
     "skills": "Habilidades",
     "items": [
       {
+        "title": "Google AI",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Certificado de especialización que agrupa 7 cursos de Google AI completados: Fundamentos de IA, IA para Brainstorming y Planificación, IA para Investigación e Insights, IA para Escritura y Comunicación, IA para Creación de Contenido, IA para Análisis de Datos e IA para Desarrollo de Aplicaciones. Demuestra dominio en la aplicación de IA en flujos de trabajo, creación de contenido, análisis y desarrollo de aplicaciones.",
+        "skills": [
+          "IA Generativa",
+          "Flujos de IA",
+          "Habilitación con IA",
+          "IA Responsable",
+          "Prompt Engineering",
+          "Google Gemini",
+          "Google Workspace",
+          "Personalización con IA"
+        ],
+        "credentialId": "XILLOK51WOYG",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera XILLOK51WOYG.pdf"
+      },
+      {
         "title": "IA para Análisis de Datos",
         "issuer": "Google",
         "icon": "google",

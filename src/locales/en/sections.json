@@ -127,6 +127,25 @@
     "skills": "Skills",
     "items": [
       {
+        "title": "Google AI",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Specialization certificate bundling 7 completed Google AI courses: AI Fundamentals, AI for Brainstorming and Planning, AI for Research and Insights, AI for Writing and Communicating, AI for Content Creation, AI for Data Analysis, and AI for App Building. Demonstrates fluency in applying AI across workflows, content creation, analysis, and app development.",
+        "skills": [
+          "Generative AI",
+          "AI Workflows",
+          "AI Enablement",
+          "Responsible AI",
+          "Prompt Engineering",
+          "Google Gemini",
+          "Google Workspace",
+          "AI Personalization"
+        ],
+        "credentialId": "XILLOK51WOYG",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera XILLOK51WOYG.pdf"
+      },
+      {
         "title": "AI for Data Analysis",
         "issuer": "Google",
         "icon": "google",
