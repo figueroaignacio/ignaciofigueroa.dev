@@ -127,6 +127,45 @@
     "skills": "Skills",
     "items": [
       {
+        "title": "AI for Data Analysis",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Covers how to identify success metrics using AI to analyze business objectives, generate spreadsheet formulas via natural language instructions with Gemini in Google Sheets, clean and structure messy data through effective prompting, and create AI-powered data visualizations to communicate insights.",
+        "skills": [
+          "Business Analytics",
+          "AI Workflows",
+          "Generative AI",
+          "Analytics",
+          "Data Presentation",
+          "AI Enablement",
+          "Responsible AI",
+          "Google Workspace",
+          "Google Gemini"
+        ],
+        "credentialId": "MP34E77Q0Z82",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera MP34E77Q0Z82.pdf"
+      },
+      {
+        "title": "AI for App Building",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Explores how to analyze professional workflows to identify high-impact AI opportunities, construct functional web applications using vibe coding techniques, evaluate technical issues with AI-assisted debugging, and leverage advanced tools like AI Studio to build scalable custom solutions.",
+        "skills": [
+          "AI Workflows",
+          "Artificial Intelligence",
+          "AI Enablement",
+          "AI Personalization",
+          "Responsible AI",
+          "Generative AI",
+          "Google Workspace",
+          "Google Gemini"
+        ],
+        "credentialId": "206W2B2GRZYF",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera 206W2B2GRZYF.pdf"
+      },
+      {
         "title": "AI for Content Creation",
         "issuer": "Google",
         "icon": "google",

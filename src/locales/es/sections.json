@@ -128,6 +128,45 @@
     "skills": "Habilidades",
     "items": [
       {
+        "title": "IA para Análisis de Datos",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Cubre cómo identificar métricas de éxito usando IA para analizar objetivos de negocio, generar fórmulas para hojas de cálculo mediante instrucciones en lenguaje natural con Gemini en Google Sheets, limpiar y estructurar datos desordenados mediante prompting efectivo, y crear visualizaciones de datos con IA para comunicar insights.",
+        "skills": [
+          "Business Analytics",
+          "Flujos de IA",
+          "IA Generativa",
+          "Analítica",
+          "Presentación de Datos",
+          "Habilitación con IA",
+          "IA Responsable",
+          "Google Workspace",
+          "Google Gemini"
+        ],
+        "credentialId": "MP34E77Q0Z82",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera MP34E77Q0Z82.pdf"
+      },
+      {
+        "title": "IA para Desarrollo de Aplicaciones",
+        "issuer": "Google",
+        "icon": "google",
+        "description": "Explora cómo analizar flujos de trabajo profesionales para identificar oportunidades de alto impacto con IA, construir aplicaciones web funcionales usando técnicas de vibe coding, evaluar problemas técnicos con debugging asistido por IA y aprovechar herramientas avanzadas como AI Studio para construir soluciones personalizadas escalables.",
+        "skills": [
+          "Flujos de IA",
+          "Inteligencia Artificial",
+          "Habilitación con IA",
+          "Personalización con IA",
+          "IA Responsable",
+          "IA Generativa",
+          "Google Workspace",
+          "Google Gemini"
+        ],
+        "credentialId": "Z08WZB2GRZYF",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/Coursera 206W2B2GRZYF.pdf"
+      },
+      {
         "title": "IA para Creación de Contenido",
         "issuer": "Google",
         "icon": "google",
