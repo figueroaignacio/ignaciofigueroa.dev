@@ -88,13 +88,12 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       {experience.technologies && experience.technologies.length > 0 && (
         <div className="flex flex-wrap gap-1.5 pt-1">
           {experience.technologies.map((tech) => (
-            <Badge
+            <span
               key={tech.id}
-              variant="secondary"
-              className="text-[10px] px-2 py-0.5 font-medium rounded-md"
+              className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
             >
               {tech.name}
-            </Badge>
+            </span>
           ))}
         </div>
       )}
