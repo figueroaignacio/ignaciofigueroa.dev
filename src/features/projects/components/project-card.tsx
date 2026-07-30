@@ -61,24 +61,25 @@ export function ProjectCard({
       )}
 
       {techList.length > 0 && (
-        <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] font-mono text-muted">
-          <span>tech:</span>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-foreground/80">
-            {techList.map((tech) => {
-              const techIcon = tech.icon && typeof tech.icon === 'object' ? tech.icon : null;
-              return (
-                <div key={tech.id} className="flex items-center gap-1">
-                  {techIcon?.svg && (
-                    <span
-                      className="size-3.5 flex items-center justify-center [&>svg]:size-full shrink-0"
-                      dangerouslySetInnerHTML={{ __html: techIcon.svg }}
-                    />
-                  )}
-                  <span>{tech.name}</span>
-                </div>
-              );
-            })}
-          </div>
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
+          {techList.map((tech) => {
+            const techIcon = tech.icon && typeof tech.icon === 'object' ? tech.icon : null;
+            return (
+              <span
+                key={tech.id}
+                className="inline-flex items-center gap-1.5 bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
+              >
+                {techIcon?.svg && (
+                  <span
+                    aria-hidden="true"
+                    className="size-3 flex items-center justify-center [&>svg]:size-full shrink-0"
+                    dangerouslySetInnerHTML={{ __html: techIcon.svg }}
+                  />
+                )}
+                {tech.name}
+              </span>
+            );
+          })}
         </div>
       )}
     </div>
