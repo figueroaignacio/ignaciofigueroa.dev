@@ -21,13 +21,13 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
 
   return (
     <div className="relative">
-      <div id="testimonials-grid" className="divide-y divide-border">
+      <div id="testimonials-grid" className="flex flex-col gap-y-4">
         {visible.map((testimonial) => (
-          <figure key={testimonial.id} className="py-6 first:pt-0 last:pb-0 m-0 group">
-            <blockquote className="prose-reading italic text-[17px] md:text-[18px] text-foreground/95 mb-3 pl-4 border-l border-border/80">
+          <figure key={testimonial.id} className="m-0 rounded-xl border border-border bg-card">
+            <blockquote className="mx-1.5 mt-1.5 rounded-lg border border-border bg-background p-4 prose-reading italic text-[17px] md:text-[18px] text-foreground/95">
               <p>"{testimonial.testimonial}"</p>
             </blockquote>
-            <figcaption className="pl-4">
+            <figcaption className="px-4 py-3">
               <p className="text-xs font-mono text-muted-foreground uppercase tracking-wide">
                 — {testimonial.name}, {testimonial.role.toLowerCase()}
               </p>
