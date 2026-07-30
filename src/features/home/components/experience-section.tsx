@@ -67,10 +67,15 @@ export async function ExperienceSection() {
               )}
 
               {experience.technologies && experience.technologies.length > 0 && (
-                <div className="pt-1">
-                  <p className="text-[11px] font-mono text-muted tracking-wide">
-                    tech: {experience.technologies.map((tech) => tech.name).join(', ')}
-                  </p>
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {experience.technologies.map((tech) => (
+                    <span
+                      key={tech.id}
+                      className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
+                    >
+                      {tech.name}
+                    </span>
+                  ))}
                 </div>
               )}
             </article>
