@@ -34,7 +34,7 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
           {projects.length === 0 ? (
             <p className="text-sm text-muted-foreground py-6 text-center">No projects yet.</p>
           ) : (
-            <div className="divide-y divide-border">
+            <div className="space-y-4">
               {projects.map((project) => (
                 <ProjectCard
                   key={project.id}
