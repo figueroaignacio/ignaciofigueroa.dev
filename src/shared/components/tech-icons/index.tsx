@@ -1,3 +1,4 @@
+import { AnthropicIcon } from './anthropic-icon';
 import { ClaudeCodeIcon } from './claude-code-icon';
 import { CSSIcon } from './css-icon';
 import { FastAPIIcon } from './fastapi-icon';
@@ -37,6 +38,7 @@ const iconComponents = {
   python: PythonIcon,
   fastapi: FastAPIIcon,
   postgres: PGIcon,
+  anthropic: AnthropicIcon,
   claudeCode: ClaudeCodeIcon,
   openCode: OpenCodeIcon,
   googleAntigravity: GoogleAntigravityIcon,
@@ -85,6 +87,7 @@ export function Icon({ name, width = 20, height = 20, className }: IconProps) {
 }
 
 export {
+  AnthropicIcon,
   ClaudeCodeIcon,
   CSSIcon,
   FastAPIIcon,
