@@ -75,23 +75,18 @@ export function TechStack() {
             <h3 className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/80">
               {section.category}
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-3">
+            <div className="flex flex-wrap gap-1.5">
               {section.items.map((name) => (
-                <div
+                <span
                   key={name}
-                  className="flex items-center gap-2 group cursor-default"
                   role="listitem"
+                  className="inline-flex items-center gap-1.5 bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
                 >
-                  <span
-                    aria-hidden="true"
-                    className="size-4 flex items-center justify-center shrink-0"
-                  >
-                    <Icon name={iconMap[name]} />
+                  <span aria-hidden="true" className="flex items-center justify-center shrink-0">
+                    <Icon name={iconMap[name]} width={12} height={12} />
                   </span>
-                  <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">
-                    {name}
-                  </span>
-                </div>
+                  {name}
+                </span>
               ))}
             </div>
           </div>
