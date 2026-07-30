@@ -18,7 +18,7 @@ export async function ContributionsSection() {
         </h2>
         <div className="mt-3 h-px bg-rule" />
       </div>
-      <ul className="divide-y divide-border">
+      <ul className="space-y-4">
         {contributions.map((contribution) => (
           <ContributionCard
             key={contribution.id}
