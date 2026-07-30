@@ -128,6 +128,22 @@
     "skills": "Habilidades",
     "items": [
       {
+        "title": "Claude 101",
+        "issuer": "Anthropic",
+        "icon": "anthropic",
+        "description": "Certificado de finalización del curso introductorio de Anthropic sobre Claude. Cubre las capacidades de Claude y su familia de modelos, técnicas efectivas de prompting y cómo aplicar Claude en flujos de trabajo cotidianos y profesionales.",
+        "skills": [
+          "Claude",
+          "Prompt Engineering",
+          "IA Generativa",
+          "Flujos de IA",
+          "IA Responsable"
+        ],
+        "credentialId": "CLAUDE-101",
+        "issueDate": "Jul 2026",
+        "credentialUrl": "/pdf/certifications/claude-101.pdf"
+      },
+      {
         "title": "Google AI",
         "issuer": "Google",
         "icon": "google",
