@@ -10,7 +10,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
     <ReactMarkdown
       components={{
         h1: ({ children }) => (
-          <h1 className="text-base font-bold mt-5 mb-2 text-foreground tracking-tight border-b border-border/40 pb-1.5">
+          <h1 className="text-base font-medium mt-5 mb-2 text-foreground tracking-tight border-b border-rule pb-1.5">
             {children}
           </h1>
         ),
@@ -45,18 +45,18 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         }: ComponentProps<'code'> & { inline?: boolean }) => {
           const match = /language-(\w+)/.exec(className || '');
           return !inline ? (
-            <div className="relative my-3 rounded-xl overflow-hidden border border-border/40 bg-card/40 dark:bg-card/20 shadow-xs">
-              <div className="flex items-center justify-between px-3.5 py-2 bg-card/65 dark:bg-card/45 border-b border-border/40 backdrop-blur-md">
+            <div className="relative my-3 rounded-xl overflow-hidden border border-border bg-card">
+              <div className="flex items-center justify-between px-3.5 py-2 border-b border-border">
                 <div className="flex items-center gap-1.5">
                   <span className="size-2 rounded-full bg-muted-foreground/50" />
-                  <span className="text-[10px] font-bold font-mono text-muted-foreground/60 tracking-wider uppercase">
+                  <span className="text-[10px] font-mono text-muted tracking-wider uppercase">
                     {match?.[1] || 'code'}
                   </span>
                 </div>
               </div>
-              <div className="p-4 overflow-x-auto bg-[#1b1b1c]/80 dark:bg-black/40">
+              <div className="m-1.5 mt-0 p-3.5 overflow-x-auto rounded-lg bg-[#1b1b1c] dark:bg-black/60 border border-border/40">
                 <code
-                  className={`block text-[12px] font-mono text-foreground/90 leading-relaxed ${className ?? ''}`}
+                  className={`block text-[12px] font-mono text-[#e3e3e3] leading-relaxed ${className ?? ''}`}
                   {...props}
                 >
                   {children}
@@ -65,7 +65,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             </div>
           ) : (
             <code
-              className="bg-muted/60 dark:bg-muted/40 text-foreground/90 px-1.5 py-0.5 rounded-md text-[12px] font-mono font-medium border border-border/30"
+              className="bg-secondary/60 text-foreground/90 px-1.5 py-0.5 rounded-md text-[12px] font-mono border border-border/40"
               {...props}
             >
               {children}
