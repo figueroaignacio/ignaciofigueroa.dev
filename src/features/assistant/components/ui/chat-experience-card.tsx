@@ -1,4 +1,4 @@
-import { Badge } from '@/shared/components/ui/badge';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { formatDate } from '@/shared/lib/format-date';
 import { Experience } from '@/payload-types';
 import { Briefcase01Icon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
@@ -31,13 +31,13 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
 
       <div className="space-y-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <h3 className="font-semibold text-foreground tracking-tight text-sm sm:text-base">
+          <h3 className="font-medium text-foreground tracking-tight text-sm sm:text-base">
             {experience.title}
           </h3>
           {experience.isCurrent && (
-            <Badge className="text-[10px] px-1.5 py-0 bg-foreground text-background hover:opacity-90 border-none font-medium rounded-md">
-              {locale === 'es' ? 'Actual' : 'Current'}
-            </Badge>
+            <span className="inline-flex items-center rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-mono">
+              {locale === 'es' ? 'actual' : 'current'}
+            </span>
           )}
         </div>
         <div className="flex items-center gap-2 text-xs sm:text-sm">
@@ -61,7 +61,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
             </>
           )}
         </div>
-        <p className="text-[11px] text-muted-foreground/50 font-medium">
+        <p className="text-[11px] font-mono tabular-nums text-muted tracking-wider">
           {formatDate(experience.startDate, locale)} —{' '}
           {experience.endDate
             ? formatDate(experience.endDate, locale)
@@ -86,16 +86,11 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
       )}
 
       {experience.technologies && experience.technologies.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 pt-1">
+        <TechChipGroup className="gap-1.5 pt-1">
           {experience.technologies.map((tech) => (
-            <span
-              key={tech.id}
-              className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
-            >
-              {tech.name}
-            </span>
+            <TechChip key={tech.id}>{tech.name}</TechChip>
           ))}
-        </div>
+        </TechChipGroup>
       )}
     </article>
   );

@@ -40,9 +40,7 @@ export function ChatContactCards() {
 
   return (
     <div className="flex flex-col gap-3.5 mt-2">
-      <h2 className="text-base sm:text-lg font-bold tracking-tight text-foreground">
-        {t('title')}
-      </h2>
+      <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">{t('title')}</h2>
       <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-1">
@@ -54,9 +52,9 @@ export function ChatContactCards() {
               href={contact.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-4 py-3 rounded-xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md hover:bg-card hover:border-border text-muted-foreground hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 shadow-xs hover:shadow-sm"
+              className="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-border bg-card hover:border-foreground/20 text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
-              <div className="size-6 rounded-lg bg-muted-foreground/5 flex items-center justify-center shrink-0">
+              <div className="size-6 rounded-lg bg-secondary/40 border border-border/60 flex items-center justify-center shrink-0">
                 {typeof Icon === 'function' ? (
                   <div className="size-4 shrink-0 flex items-center justify-center">
                     <Icon />
@@ -65,7 +63,7 @@ export function ChatContactCards() {
                   <HugeiconsIcon icon={Icon} className="size-4 shrink-0" />
                 )}
               </div>
-              <span className="text-xs font-semibold tracking-wide">{contact.label}</span>
+              <span className="text-xs font-mono">{contact.label}</span>
             </a>
           );
         })}

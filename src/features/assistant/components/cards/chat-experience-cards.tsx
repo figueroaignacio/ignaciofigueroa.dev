@@ -26,8 +26,8 @@ export function ChatExperienceCards() {
 
   return (
     <div className="mt-4 space-y-3">
-      <h2 className="text-lg font-semibold underline">{t('title')}</h2>
-      <p className="text-sm text-muted-foreground">{t('description')}</p>
+      <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">{t('title')}</h2>
+      <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
       <ol className="relative space-y-0">
         <div className="absolute left-[11px] top-2 bottom-2 w-px bg-border" />
 

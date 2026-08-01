@@ -12,7 +12,7 @@ export function ChatProjectCards() {
     return (
       <div className="flex flex-col gap-3 mt-4">
         {[1, 2].map((i) => (
-          <div key={i} className="h-[76px] rounded-lg bg-card border border-border animate-pulse" />
+          <div key={i} className="h-19 rounded-xl bg-card border border-border animate-pulse" />
         ))}
       </div>
     );
@@ -22,8 +22,8 @@ export function ChatProjectCards() {
 
   return (
     <div className="flex flex-col gap-3 mt-4">
-      <h2 className="text-lg font-semibold underline">{t('title')}</h2>
-      <p className="text-sm text-muted-foreground">{t('description')}</p>
+      <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">{t('title')}</h2>
+      <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
       {projects.map((project) => (
         <ChatProjectCard key={project.id} {...project} />
       ))}

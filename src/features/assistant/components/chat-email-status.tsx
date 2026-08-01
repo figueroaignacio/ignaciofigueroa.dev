@@ -28,7 +28,7 @@ export function ChatEmailStatus({
         key="email-sending"
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden w-full rounded-2xl border border-border/40 bg-card/65 dark:bg-card/35 backdrop-blur-md px-4 py-3.5 shadow-sm mt-2 flex flex-col gap-2.5"
+        className="relative overflow-hidden w-full rounded-xl border border-border bg-card px-4 py-3.5 mt-2 flex flex-col gap-2.5"
       >
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-muted-foreground/10 overflow-hidden">
           <motion.div
@@ -50,7 +50,7 @@ export function ChatEmailStatus({
           </div>
 
           <div className="flex flex-col min-w-0">
-            <span className="text-xs font-semibold text-foreground leading-normal tracking-wide">
+            <span className="text-xs font-medium text-foreground leading-normal tracking-wide">
               {t('emailSending')}
             </span>
             <span className="text-[10px] text-muted-foreground font-mono leading-none mt-1 animate-pulse">
@@ -68,7 +68,7 @@ export function ChatEmailStatus({
         key="email-success"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="relative overflow-hidden w-full max-w-xs sm:max-w-sm rounded-2xl border border-emerald-500/25 dark:border-emerald-500/15 bg-emerald-500/5 dark:bg-emerald-500/2 px-4 py-4.5 shadow-sm mt-2 flex flex-col gap-3.5 animate-in fade-in slide-in-from-top-1"
+        className="relative overflow-hidden w-full max-w-xs sm:max-w-sm rounded-xl border border-emerald-500/25 dark:border-emerald-500/15 bg-emerald-500/5 dark:bg-emerald-500/2 px-4 py-4.5 mt-2 flex flex-col gap-3.5 animate-in fade-in slide-in-from-top-1"
       >
         <div className="flex items-center gap-3">
           <div className="relative flex items-center justify-center size-8 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 shrink-0">
@@ -89,7 +89,7 @@ export function ChatEmailStatus({
           </div>
         </div>
         {emailSuccessData && (
-          <div className="flex flex-col gap-2 rounded-xl bg-card/45 dark:bg-card/25 border border-border/20 p-3 text-[11px] leading-relaxed">
+          <div className="flex flex-col gap-2 rounded-lg bg-background border border-border p-3 text-[11px] leading-relaxed">
             <div className="grid grid-cols-4 gap-1">
               <span className="font-mono text-muted-foreground font-semibold">FROM</span>
               <span className="col-span-3 text-foreground font-medium truncate">
