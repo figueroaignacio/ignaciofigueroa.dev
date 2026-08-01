@@ -66,10 +66,10 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
               y: -2,
             }}
             whileTap={{ scale: 0.97 }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border/40 bg-card/60 dark:bg-card/30 hover:bg-card hover:border-border/80 text-muted-foreground hover:text-foreground transition-all duration-200 cursor-pointer shadow-xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border/40 bg-secondary/30 hover:bg-secondary/60 hover:border-border text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
           >
             <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-80" />
-            <span className="text-[11px] font-medium tracking-wide">{suggestion.text}</span>
+            <span className="text-[11px] font-mono">{suggestion.text}</span>
           </motion.button>
         );
       })}

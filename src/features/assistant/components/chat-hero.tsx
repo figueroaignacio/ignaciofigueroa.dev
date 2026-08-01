@@ -21,7 +21,7 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         className="relative"
       >
         {}
-        <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-primary/15 scale-150 animate-pulse duration-[6000ms]" />
+        <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-primary/15 scale-150 animate-pulse duration-6000" />
 
         <AssistantAvatar size="xl" />
       </motion.div>
@@ -32,7 +32,7 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h1 className="text-3xl font-extrabold tracking-tight text-balance leading-tight text-foreground">
+        <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-balance leading-tight text-foreground">
           {t('greeting')}
         </h1>
         <p className="text-muted-foreground text-sm max-w-sm mx-auto text-balance leading-relaxed">

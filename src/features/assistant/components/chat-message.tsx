@@ -61,8 +61,8 @@ export function ChatMessage({ message }: ChatMessageProps) {
       className={`flex w-full min-w-0 ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       {isUser ? (
-        <div className="max-w-4xl overflow-hidden bg-foreground text-background rounded-2xl rounded-br-xs px-4.5 py-2.5 shadow-sm border border-foreground/10">
-          <p className="text-[13px] sm:text-sm font-medium whitespace-pre-wrap wrap-break-word leading-relaxed">
+        <div className="max-w-[85%] overflow-hidden bg-secondary text-secondary-foreground border border-border/60 rounded-xl rounded-br-sm px-4 py-2.5">
+          <p className="text-[13px] sm:text-sm whitespace-pre-wrap wrap-break-word leading-relaxed">
             {cleanContent}
           </p>
         </div>
@@ -72,7 +72,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
             <Fragment key={index}>
               {block}
               {index < contentBlocks.length - 1 && (
-                <div className="my-2 border-t border-border/20" />
+                <div className="my-2 border-t border-rule/50" />
               )}
             </Fragment>
           ))}

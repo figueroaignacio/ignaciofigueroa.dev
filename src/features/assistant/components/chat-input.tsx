@@ -68,10 +68,8 @@ export function ChatInput({
     >
       <form
         onSubmit={handleSubmit}
-        className={`relative flex items-end gap-2 rounded-2xl border transition-all duration-300 ease-out ${
-          isFocused
-            ? 'border-foreground/30 dark:border-white/20 bg-white dark:bg-[#1c1c1e]'
-            : 'border-black/8 dark:border-white/8 bg-white/95 dark:bg-[#222226]/95 hover:border-black/15 dark:hover:border-white/15'
+        className={`relative flex items-end gap-2 rounded-xl border bg-card transition-all duration-300 ease-out ${
+          isFocused ? 'border-ring/50' : 'border-border hover:border-foreground/20'
         } ${isHero ? 'min-h-14' : 'min-h-12'} ${isLoading ? 'opacity-70' : ''}`}
       >
         <div className="flex items-center pl-4 pb-3.5 shrink-0 self-end"></div>
@@ -86,7 +84,7 @@ export function ChatInput({
           placeholder={t('inputPlaceholder')}
           rows={1}
           disabled={isLoading}
-          className="w-full resize-none bg-transparent focus:ring-0 focus:outline-none pl-1 pr-4 py-3.5 max-h-50 overflow-y-auto text-foreground text-sm placeholder:text-muted-foreground/45 leading-relaxed"
+          className="w-full resize-none bg-transparent focus:ring-0 focus:outline-none pl-1 pr-4 py-3.5 max-h-50 overflow-y-auto text-foreground text-sm placeholder:text-muted-foreground/60 leading-relaxed"
           style={{ minHeight: isHero ? '56px' : '48px' }}
         />
 
@@ -99,7 +97,7 @@ export function ChatInput({
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.85, opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-foreground/10 text-muted-foreground"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary/60 text-muted-foreground"
               >
                 <Spinner />
               </motion.div>
@@ -113,10 +111,10 @@ export function ChatInput({
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: 'spring', damping: 12, stiffness: 200 }}
                 disabled={!hasContent}
-                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-all duration-200 ${
+                className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-all duration-200 ${
                   hasContent
-                    ? 'bg-foreground text-background cursor-pointer shadow-sm hover:opacity-90 active:scale-95'
-                    : 'bg-muted-foreground/10 text-muted-foreground/30 cursor-not-allowed'
+                    ? 'bg-primary text-primary-foreground cursor-pointer hover:opacity-90 active:scale-95'
+                    : 'bg-secondary/60 text-muted-foreground/40 cursor-not-allowed'
                 }`}
               >
                 <HugeiconsIcon icon={ArrowUp01Icon} className="h-4 w-4 stroke-2" />
@@ -134,7 +132,10 @@ export function ChatInput({
           transition={{ delay: 0.6 }}
         >
           {mounted && (
-            <span key={disclaimerIndex} className="text-xs  text-center px-4 leading-relaxed">
+            <span
+              key={disclaimerIndex}
+              className="text-[11px] font-mono text-muted text-center px-4 leading-relaxed"
+            >
               {disclaimers[disclaimerIndex]}
             </span>
           )}
