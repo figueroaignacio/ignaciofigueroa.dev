@@ -58,10 +58,13 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
   const showHero = !hasInteracted && messages.length === 0;
 
   return (
-    <div className="flex flex-col w-full h-full bg-card/95 dark:bg-[#161718]/90 backdrop-blur-xl overflow-hidden">
-      <header className="flex items-center justify-between w-full px-4.5 py-3.5 shrink-0 bg-card/45 dark:bg-[#161718]/45 backdrop-blur-md safe-top relative">
+    <div className="flex flex-col w-full h-full bg-card overflow-hidden">
+      <header className="flex items-center justify-between w-full px-4 py-3 shrink-0 safe-top relative">
         <div className="flex items-center gap-2.5">
           <AssistantAvatar size="sm" />
+          <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
+            {t('header.title')}
+          </span>
         </div>
         <div className="flex items-center gap-1">
           {messages.length > 0 && (
@@ -119,9 +122,9 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
         </div>
       </header>
 
-      <div className="flex-1 flex flex-col min-h-0 w-full relative">
+      <div className="flex-1 flex flex-col min-h-0 mx-1.5 mb-1.5 rounded-lg border border-border bg-background relative overflow-hidden">
         {showHero ? (
-          <div className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4.5">
+          <div className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4">
             <div className="flex-1 flex items-center justify-center">
               <ChatHero onQuickAction={handleQuickAction} />
             </div>
@@ -137,14 +140,14 @@ export function FloatingChat({ onClose, isExpanded = false, onToggleExpand }: Fl
           </div>
         ) : (
           <>
-            <div className="flex-1 overflow-y-auto min-h-0 pt-4 pb-26 bg-linear-to-b from-transparent to-muted-foreground/3">
+            <div className="flex-1 overflow-y-auto min-h-0 pt-4 pb-26">
               <ChatMessages
                 messages={messages}
                 isLoading={isLoading}
                 onSuggestionClick={handleQuickAction}
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none px-4 pb-5 pt-8">
+            <div className="absolute bottom-0 left-0 right-0 pointer-events-none px-4 pb-4 pt-10 bg-linear-to-t from-background via-background/85 to-transparent">
               <div className="pointer-events-auto">
                 <ChatInput
                   message={message}

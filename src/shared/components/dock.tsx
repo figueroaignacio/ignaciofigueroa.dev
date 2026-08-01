@@ -135,7 +135,7 @@ export function Dock() {
                   'fixed inset-0 flex flex-col overflow-hidden bg-card transition-all duration-300 ease-in-out',
                   isChatExpanded
                     ? 'sm:inset-0 sm:bottom-0 sm:left-0 sm:translate-x-0 sm:w-full sm:max-w-full sm:h-full sm:max-h-full sm:rounded-none sm:border-0'
-                    : 'sm:inset-auto sm:bottom-28 sm:left-1/2 sm:-translate-x-1/2 sm:w-160 sm:max-w-[calc(100vw-2rem)] sm:h-200 sm:max-h-[calc(100vh-8rem)] sm:rounded-xl sm:border sm:border-border/40 sm:shadow-[0_32px_80px_-12px_rgba(0,0,0,0.35)] sm:dark:shadow-[0_32px_80px_-12px_rgba(0,0,0,0.8)] sm:ring-1 sm:ring-inset sm:ring-white/5',
+                    : 'sm:inset-auto sm:bottom-28 sm:left-1/2 sm:-translate-x-1/2 sm:w-160 sm:max-w-[calc(100vw-2rem)] sm:h-200 sm:max-h-[calc(100vh-8rem)] sm:rounded-xl sm:border sm:border-border sm:shadow-[0_32px_80px_-12px_rgba(0,0,0,0.25)] sm:dark:shadow-[0_32px_80px_-12px_rgba(0,0,0,0.8)]',
                 )}
               >
                 <FloatingChat
