@@ -12,7 +12,6 @@ import { NachUICta } from '@/features/home/components/nach-ui-cta';
 import { ProjectsSection } from '@/features/home/components/projects-section';
 import { TechStack } from '@/features/home/components/tech-stack';
 import { Testimonials } from '@/features/home/components/testimonials';
-import { WhoAmI } from '@/features/home/components/whoami';
 import { BASE_URL } from '@/shared/lib/constants';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -105,7 +104,7 @@ export default function HomePage({ params }: HomePageProps) {
         <ExperienceSection />
         <ProjectsSection />
         <AboutSection />
-        <WhoAmI />
+        {/* <WhoAmI /> Just by now until i change the video */}
         <Suspense fallback={null}>
           <ContributionsSection />
         </Suspense>
