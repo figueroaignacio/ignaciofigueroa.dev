@@ -1,4 +1,7 @@
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
+import { ItemCard } from '@/shared/components/ui/item-card';
+import { Section } from '@/shared/components/ui/section';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { useTranslations } from 'next-intl';
 
 const iconMap: Record<string, IconName> = {
@@ -61,37 +64,31 @@ export function TechStack() {
   ];
 
   return (
-    <section id="stack" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('stack.title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
-
-      <div className="space-y-6">
+    <Section id="stack" title={t('stack.title')}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {techStack.map((section) => (
-          <div key={section.category} className="space-y-2">
-            <h3 className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/80">
-              {section.category}
-            </h3>
-            <div className="flex flex-wrap gap-1.5">
+          <ItemCard
+            key={section.category}
+            header={
+              <h3 className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/80">
+                {section.category}
+              </h3>
+            }
+          >
+            <TechChipGroup role="list">
               {section.items.map((name) => (
-                <span
+                <TechChip
                   key={name}
                   role="listitem"
-                  className="inline-flex items-center gap-1.5 bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
+                  icon={<Icon name={iconMap[name]} width={12} height={12} />}
                 >
-                  <span aria-hidden="true" className="flex items-center justify-center shrink-0">
-                    <Icon name={iconMap[name]} width={12} height={12} />
-                  </span>
                   {name}
-                </span>
+                </TechChip>
               ))}
-            </div>
-          </div>
+            </TechChipGroup>
+          </ItemCard>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
