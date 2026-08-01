@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #111111;
-  --card: #ffffff;
+  --card: #f7f7f5;
   --card-foreground: #111111;
   --popover: #ffffff;
   --popover-foreground: #111111;
@@ -14,6 +14,7 @@
   --secondary: #e9eef6;
   --secondary-foreground: #111111;
   --muted: rgba(0, 0, 0, 0.45);
+  --muted-foreground: rgba(0, 0, 0, 0.55);
   --muted-strong: rgba(0, 0, 0, 0.7);
   --accent: #dde3ea;
   --accent-foreground: #1a73e8;
@@ -39,6 +40,7 @@
   --secondary: #1a1a1a;
   --secondary-foreground: #e5e5e5;
   --muted: rgba(255, 255, 255, 0.45);
+  --muted-foreground: rgba(255, 255, 255, 0.55);
   --muted-strong: rgba(255, 255, 255, 0.7);
   --accent: #1e1f20;
   --accent-foreground: #8ab4f8;
@@ -65,6 +67,8 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-muted-strong: var(--muted-strong);
+  --color-rule: var(--rule);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -80,6 +84,7 @@
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
   --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
   --animate-blink: blink 3s infinite;
 }
 
@@ -117,7 +122,7 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 border border-border px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ease-out active:scale-95 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 border border-border px-2 py-1 text-sm font-medium rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
   }
 
   .btn-primary {
@@ -128,20 +133,8 @@
     @apply text-foreground bg-transparent hover:bg-foreground/5 hover:border-foreground/30 transition-all duration-300;
   }
 
-  .btn-link {
-    @apply inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-all duration-300 underline underline-offset-4 decoration-transparent hover:decoration-current;
-  }
-
-  .btn-ghost {
-    @apply hover:bg-foreground/5 text-muted-foreground hover:text-foreground border-0 transition-all duration-300;
-  }
-
   .card {
     @apply block p-6 bg-card rounded-2xl border border-border transition-all duration-300 hover:border-foreground/15 hover:shadow-[0_8px_30px_rgba(0,0,0,0.01)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)];
-  }
-
-  .card-outline {
-    @apply block p-6 bg-transparent rounded-2xl border border-border transition-all duration-300 hover:border-foreground/20;
   }
 
   .prose-reading {

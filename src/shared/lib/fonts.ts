@@ -17,6 +17,7 @@ export const fontSans = Archivo({
 
 export const fontCode = JetBrains_Mono({
   subsets: ['latin'],
+  variable: '--font-mono',
   display: 'swap',
   weight: ['400', '500', '700'],
   preload: false,
