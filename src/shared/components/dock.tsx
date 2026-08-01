@@ -29,7 +29,6 @@ export function Dock() {
 
   const [activeSection, setActiveSection] = useState<string>('/');
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [isChatExpanded, setIsChatExpanded] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,12 +37,7 @@ export function Dock() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('chat') === 'open') {
-      setIsChatOpen(true);
-    } else {
-      setIsChatOpen(false);
-      setIsChatExpanded(false);
-    }
+    setIsChatOpen(params.get('chat') === 'open');
   }, [pathname]);
 
   useEffect(() => {
@@ -114,37 +108,17 @@ export function Dock() {
     ? createPortal(
         <AnimatePresence>
           {isChatOpen && (
-            <>
-              <motion.div
-                key="chat-overlay"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsChatOpen(false)}
-                style={{ zIndex: 10999999 }}
-                className="fixed inset-0 bg-background/40  dark:bg-black/50"
-              />
-              <motion.div
-                key="chat-panel"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 24 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-                style={{ zIndex: 11000000 }}
-                className={cn(
-                  'fixed inset-0 flex flex-col overflow-hidden bg-card transition-all duration-300 ease-in-out',
-                  isChatExpanded
-                    ? 'sm:inset-0 sm:bottom-0 sm:left-0 sm:translate-x-0 sm:w-full sm:max-w-full sm:h-full sm:max-h-full sm:rounded-none sm:border-0'
-                    : 'sm:inset-auto sm:bottom-28 sm:left-1/2 sm:-translate-x-1/2 sm:w-160 sm:max-w-[calc(100vw-2rem)] sm:h-200 sm:max-h-[calc(100vh-8rem)] sm:rounded-xl sm:border sm:border-border sm:shadow-[0_32px_80px_-12px_rgba(0,0,0,0.25)] sm:dark:shadow-[0_32px_80px_-12px_rgba(0,0,0,0.8)]',
-                )}
-              >
-                <FloatingChat
-                  onClose={() => setIsChatOpen(false)}
-                  isExpanded={isChatExpanded}
-                  onToggleExpand={() => setIsChatExpanded((prev) => !prev)}
-                />
-              </motion.div>
-            </>
+            <motion.div
+              key="chat-panel"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 24 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+              style={{ zIndex: 11000000 }}
+              className="fixed inset-0 flex flex-col overflow-hidden bg-card"
+            >
+              <FloatingChat onClose={() => setIsChatOpen(false)} />
+            </motion.div>
           )}
         </AnimatePresence>,
         document.body,
