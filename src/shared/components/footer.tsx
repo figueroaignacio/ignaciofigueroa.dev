@@ -17,34 +17,30 @@ export function Footer() {
   const t = useTranslations();
 
   return (
-    <footer className="container w-full mt-24 pb-12 pt-8 border-t border-border text-xs font-mono text-muted-foreground flex items-center justify-between flex-wrap gap-4">
-      <div className="space-y-5">
-        <div className="flex items-center gap-2">
-          <span>{t('components.footer.name').toLowerCase()}</span>
-          <span>·</span>
-          <span>buenos aires, ar</span>
+    <footer className="container w-full mt-24 pb-12 pt-8 border-t border-border text-xs font-mono text-muted-foreground">
+      <div className="flex items-center justify-between flex-wrap gap-x-8 gap-y-6">
+        <div className="space-y-1">
+          <p className="text-foreground/80">{t('components.footer.name').toLowerCase()}</p>
+          <p>buenos aires, ar</p>
         </div>
-        <div className="flex flex-col gap-y-4">
-          <h4 className="text-sm font-bold">more links</h4>
-          <div className="flex flex-col gap-y-4">
-            {footerLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors underline-offset-4 hover:underline"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+        <div className="flex items-center gap-5">
+          {footerLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors underline-offset-4 hover:underline"
+            >
+              {link.label} ↗
+            </a>
+          ))}
         </div>
-      </div>
-      <div className="flex items-center gap-3 text-muted-foreground">
-        <ThemeToggle />
-        <span className="select-none">·</span>
-        <LocaleSwitcher />
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <span className="select-none">·</span>
+          <LocaleSwitcher />
+        </div>
       </div>
     </footer>
   );
