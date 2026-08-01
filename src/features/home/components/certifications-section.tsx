@@ -1,5 +1,7 @@
 import { Icon, type IconName } from '@/shared/components/tech-icons';
 import { ItemCard } from '@/shared/components/ui/item-card';
+import { Section } from '@/shared/components/ui/section';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
 
 interface CertificationItem {
@@ -19,14 +21,7 @@ export async function CertificationsSection() {
   if (!items || items.length === 0) return null;
 
   return (
-    <section id="certifications" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
-
+    <Section id="certifications" title={t('title')}>
       <ul className="space-y-4">
         {items.map((item) => {
           const iconName = item.icon?.toLowerCase() as IconName | undefined;
@@ -54,16 +49,11 @@ export async function CertificationsSection() {
                     {item.description}
                   </p>
                   {item.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-1">
+                    <TechChipGroup className="pt-1">
                       {item.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
-                        >
-                          {skill}
-                        </span>
+                        <TechChip key={skill}>{skill}</TechChip>
                       ))}
-                    </div>
+                    </TechChipGroup>
                   )}
                   <div className="pt-1">
                     <a
@@ -81,6 +71,6 @@ export async function CertificationsSection() {
           );
         })}
       </ul>
-    </section>
+    </Section>
   );
 }
