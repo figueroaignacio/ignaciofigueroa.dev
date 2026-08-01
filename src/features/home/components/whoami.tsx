@@ -1,5 +1,6 @@
 'use client';
 
+import { Section } from '@/shared/components/ui/section';
 import { PlayCircle02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
@@ -16,42 +17,37 @@ export function WhoAmI() {
   };
 
   return (
-    <section id="whoami" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
-
-      <div className="relative overflow-hidden rounded-xl border border-border bg-black/40">
-        {!isPlaying && (
-          <button
-            onClick={handlePlayClick}
-            className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm z-10 hover:bg-black/30 transition-colors duration-200 w-full h-full"
-            aria-label={t('play')}
+    <Section id="whoami" title={t('title')}>
+      <div className="rounded-xl border border-border bg-card p-1.5">
+        <div className="relative overflow-hidden rounded-lg border border-border bg-black">
+          {!isPlaying && (
+            <button
+              onClick={handlePlayClick}
+              className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm z-10 hover:bg-black/30 transition-colors duration-200 w-full h-full"
+              aria-label={t('play')}
+            >
+              <div className="text-center flex flex-col items-center gap-3">
+                <HugeiconsIcon icon={PlayCircle02Icon} className="w-16 h-16 text-white" />
+                <p className="text-sm text-white/80">{t('play')}</p>
+              </div>
+            </button>
+          )}
+          <video
+            ref={videoRef}
+            src={t('videoUrl')}
+            controls
+            className="w-full aspect-video object-cover"
+            preload="metadata"
+            playsInline
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+            onEnded={() => setIsPlaying(false)}
+            aria-label={t('videoLabel')}
           >
-            <div className="text-center flex flex-col items-center gap-3">
-              <HugeiconsIcon icon={PlayCircle02Icon} className="w-16 h-16 text-white" />
-              <p className="text-sm text-white/80">{t('play')}</p>
-            </div>
-          </button>
-        )}
-        <video
-          ref={videoRef}
-          src={t('videoUrl')}
-          controls
-          className="w-full aspect-video object-cover"
-          preload="metadata"
-          playsInline
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-          onEnded={() => setIsPlaying(false)}
-          aria-label={t('videoLabel')}
-        >
-          Your browser does not support the video tag.
-        </video>
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }
