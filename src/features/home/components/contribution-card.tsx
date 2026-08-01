@@ -2,6 +2,7 @@
 
 import type { Contribution, TechStack } from '@/payload-types';
 import { ItemCard } from '@/shared/components/ui/item-card';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
@@ -83,16 +84,11 @@ export function ContributionCard({
         )}
 
         {techList.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-1.5">
+          <TechChipGroup className="mt-3">
             {techList.map((tech) => (
-              <span
-                key={tech.id}
-                className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
-              >
-                {tech.name}
-              </span>
+              <TechChip key={tech.id}>{tech.name}</TechChip>
             ))}
-          </div>
+          </TechChipGroup>
         )}
       </ItemCard>
     </li>

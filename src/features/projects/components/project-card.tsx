@@ -3,6 +3,7 @@
 import { Link } from '@/i18n/navigation';
 import type { Project, TechStack } from '@/payload-types';
 import { ItemCard } from '@/shared/components/ui/item-card';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { useTranslations } from 'next-intl';
 
 export function ProjectCard({
@@ -62,26 +63,26 @@ export function ProjectCard({
       {subtitle && <p className="text-sm leading-relaxed text-muted-foreground">{subtitle}</p>}
 
       {techList.length > 0 && (
-        <div className="mt-2.5 flex flex-wrap gap-1.5 first:mt-0">
+        <TechChipGroup className="mt-2.5 first:mt-0">
           {techList.map((tech) => {
             const techIcon = tech.icon && typeof tech.icon === 'object' ? tech.icon : null;
             return (
-              <span
+              <TechChip
                 key={tech.id}
-                className="inline-flex items-center gap-1.5 bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
+                icon={
+                  techIcon?.svg ? (
+                    <span
+                      className="flex size-full items-center justify-center [&>svg]:size-full"
+                      dangerouslySetInnerHTML={{ __html: techIcon.svg }}
+                    />
+                  ) : undefined
+                }
               >
-                {techIcon?.svg && (
-                  <span
-                    aria-hidden="true"
-                    className="size-3 flex items-center justify-center [&>svg]:size-full shrink-0"
-                    dangerouslySetInnerHTML={{ __html: techIcon.svg }}
-                  />
-                )}
                 {tech.name}
-              </span>
+              </TechChip>
             );
           })}
-        </div>
+        </TechChipGroup>
       )}
     </ItemCard>
   );
