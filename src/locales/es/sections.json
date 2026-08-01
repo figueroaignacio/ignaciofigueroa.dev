@@ -2,50 +2,19 @@
   "home": {
     "greeting": "Desarrollador de Software · Integración de IA · Desarrollo Fullstack",
     "name": "Ignacio Figueroa",
-    "title": "De frontend a backend, infraestructura y criterio, con IA donde tiene sentido.",
-    "description": "Trabajo con React, Next.js, FastAPI y Python. Desarrollo en Linux. Me importa entender cómo funcionan las cosas antes de agregar abstracción encima. Construyo proyectos propios, una librería de componentes open source e integraciones de LLM que van más allá de wrappear una API.",
-    "actions": {
-      "viewProjects": "Ver código",
-      "learnMore": "Ver mi stack",
-      "chatAssistant": "Hablar con el bot",
-      "viewCv": "Ver currículum"
-    }
+    "title": "Desarrollador de Software",
+    "description": "Me importa entender como funcionan las cosas desde el interior. Teniendo criterio propio y utilizando la IA como copilito para productividad, construyo cualquier cosa que se me pase por la cabeza."
   },
   "aboutMe": {
     "title": "Sobre mí",
-    "description": "Desarrollador de software enfocado en desarrollo fullstack. Escribo código que funciona en producción, no solo en demos.",
-    "items": [
-      {
-        "content": "<b>Ingeniería Fullstack.</b> React, Next.js, Node.js y FastAPI. Me hago cargo del stack completo: diseño del esquema, contratos de API, estado en frontend y deploy."
-      },
-      {
-        "content": "<b>Integración de IA.</b> Conecto LLMs a datos reales mediante APIs estructuradas, diseño de prompts y flujos basados en herramientas. No wrappers — integraciones que resuelven problemas concretos dentro de un sistema existente."
-      },
-      {
-        "content": "<b>Linux y Entorno.</b> Fedora Linux como máquina de trabajo. Me importan los entornos reproducibles, el historial de git limpio y los pipelines de CI/CD que se comportan igual dos veces."
-      }
-    ],
     "content": {
-      "title": "Sobre Mí",
-      "subtitle": "Software que funciona en producción, no solo en demos.",
-      "bio": "Desarrollador de software de Argentina. Me hago cargo del stack completo: esquema de base de datos, diseño de APIs, frontends en React y deploy. En el lado de IA, construyo integraciones donde el modelo tiene acceso a contexto real — no completions genéricas. Me importa la arquitectura antes que el modelo.",
-      "details": "Trabajo en Fedora Linux, mantengo un historial de git limpio y escribo tests antes de que algo falle en producción. Si necesitás a alguien que pueda tomar responsabilidad de una feature desde la primera migración hasta el último deploy, escribime.",
+      "bio": "Soy desarrollador de software con experiencia en desarrollo fullstack y una fuerte orientación hacia la integración de inteligencia artificial en flujos de trabajo y aplicaciones para mejorar la productividad y los productos. Me apasiona entender cómo funcionan las cosas desde adentro, aplicando un enfoque con criterio y responsable en cada proyecto que emprendo.",
+      "details": "Me gusta el mundo de Linux, la programación y la inteligencia artificial. Me interesa aprender y aplicar tecnologías que resuelvan problemas de verdad, siempre con un enfoque en la calidad del código y la eficiencia de los procesos.",
       "photoLegend": "Ignacio Figueroa, conocido como Nacho"
     }
   },
   "projects": {
-    "title": "Proyectos",
-    "description": "Lo que construí y puse en producción.",
-    "work": {
-      "tab": "Comerciales",
-      "title": "Proyectos comerciales",
-      "description": "Proyectos comerciales"
-    },
-    "personal": {
-      "tab": "Personales",
-      "title": "Proyectos personales",
-      "description": "Proyectos personales"
-    }
+    "title": "Proyectos"
   },
   "stack": {
     "title": "Stack",
@@ -321,15 +290,15 @@
   },
   "mateUiCta": {
     "badge": "Open Source",
-    "title": "Construí una librería de componentes. {count} componentes, desde cero.",
-    "description": "NachUI es un conjunto de primitivas accesibles sin estilos por defecto. El código se copia, no se importa como dependencia. La construí para dejar de duplicar los mismos patrones de UI en cada proyecto.",
+    "title": "Desarrollé una kit de componentes propios. desde cero.",
+    "description": "NachUI es un conjunto de primitivas accesibles y minimalistas. El código se copia, no se importa como dependencia. La construí por diversión y para aprender, pero también para compartirla con la comunidad.",
     "actions": {
       "viewComponents": "Explorar Componentes",
       "viewDocumentation": "Leer la Documentación"
     },
     "href": {
-      "components": "https://es.nachui.tech/docs/components",
-      "documentation": "https://es.nachui.tech/docs"
+      "components": "https://nachui.tech/es/docs/components",
+      "documentation": "https://nachui.tech/es/docs"
     },
     "stats": {
       "components": "componentes",

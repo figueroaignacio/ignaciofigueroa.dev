@@ -2,50 +2,19 @@
   "home": {
     "greeting": "Software Developer · AI Integrations · Fullstack Development",
     "name": "Ignacio Figueroa",
-    "title": "From frontend to backend, infrastructure and criterion, with AI where it earns its place.",
-    "description": "I work with React, Next.js, FastAPI, and Python. I build on Linux. I care about understanding how things work before adding abstraction on top. I build personal projects, an open source component library, and LLM integrations that go beyond wrapping an API.",
-    "actions": {
-      "viewProjects": "See the code",
-      "learnMore": "Read my stack",
-      "chatAssistant": "Talk to my bot",
-      "viewCv": "View resume"
-    }
+    "title": "Software Developer",
+    "description": "I care about understanding how things work from the inside. With my own judgment, and using AI as a copilot for productivity, I build anything that crosses my mind."
   },
   "aboutMe": {
     "title": "About Me",
-    "description": "Software developer focused on fullstack work. I write code that runs in production, not just in demos.",
-    "items": [
-      {
-        "content": "<b>Fullstack Engineering.</b> React, Next.js, Node.js, and FastAPI. I own the full stack — schema design, API contracts, frontend state, and deployment."
-      },
-      {
-        "content": "<b>AI Integration.</b> I connect LLMs to real data through structured APIs, prompt design, and tool-based workflows. Not wrappers — integrations that solve specific problems inside an existing system."
-      },
-      {
-        "content": "<b>Linux & Workflow.</b> Fedora Linux as my daily driver. I care about reproducible environments, clean git history, and CI/CD pipelines that behave the same way twice."
-      }
-    ],
     "content": {
-      "title": "About",
-      "subtitle": "Software that runs in production, not just in demos.",
-      "bio": "Software developer based in Argentina. I handle the full stack: database schema, API design, React frontends, and deployment. On the AI side, I build integrations where the model has access to real context — not generic completions. I care about the architecture before I care about the model.",
-      "details": "I work on Fedora Linux, keep a clean git history, and write tests before things break in production. If you need someone who can own a feature from the first migration to the last deploy, reach out.",
+      "bio": "I'm a software developer with experience in fullstack development and a strong focus on integrating artificial intelligence into workflows and applications to improve productivity and products. I'm passionate about understanding how things work from the inside, bringing a thoughtful and responsible approach to every project I take on.",
+      "details": "I enjoy the world of Linux, programming, and artificial intelligence. I'm interested in learning and applying technologies that solve real problems, always with a focus on code quality and process efficiency.",
       "photoLegend": "Ignacio Figueroa, known as Nacho"
     }
   },
   "projects": {
-    "title": "Projects",
-    "description": "What I've built and shipped.",
-    "work": {
-      "tab": "Work",
-      "title": "Work projects",
-      "description": "Work projects"
-    },
-    "personal": {
-      "tab": "Personal",
-      "title": "Personal projects",
-      "description": "Personal projects"
-    }
+    "title": "Projects"
   },
   "stack": {
     "title": "Stack",
@@ -320,15 +289,15 @@
   },
   "mateUiCta": {
     "badge": "Open Source",
-    "title": "I built a component library. {count} components, from scratch.",
-    "description": "NachUI is a set of accessible primitives with no default styles. You copy the code, not the dependency. Built it to stop duplicating the same UI patterns across every project.",
+    "title": "I built my own component kit. from scratch.",
+    "description": "NachUI is a set of accessible, minimalist primitives. You copy the code, you don't import it as a dependency. I built it for fun and to learn, but also to share it with the community.",
     "actions": {
       "viewComponents": "Browse Components",
       "viewDocumentation": "Read the Docs"
     },
     "href": {
-      "components": "https://en.nachui.tech/docs/components",
-      "documentation": "https://en.nachui.tech/docs"
+      "components": "https://nachui.tech/en/docs/components",
+      "documentation": "https://nachui.tech/en/docs"
     },
     "stats": {
       "components": "components",
