@@ -1,19 +1,25 @@
+import { Section } from '@/shared/components/ui/section';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
+
+const FOCUS = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'Node.js',
+  'AI Integration',
+  'Clean Architecture',
+  'Linux',
+  'Fedora',
+];
 
 export async function AboutSection() {
   const t = await getTranslations('sections.aboutMe.content');
   const tSection = await getTranslations('sections.aboutMe');
 
   return (
-    <section id="about" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {tSection('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
-
+    <Section id="about" title={tSection('title')}>
       <div className="flow-root w-full">
         <div
           className="float-right ml-6 mb-4 md:ml-8 md:mb-6 relative group rounded-full overflow-hidden"
@@ -36,14 +42,15 @@ export async function AboutSection() {
           <p className="font-light italic text-muted-foreground">{t('details')}</p>
         </div>
 
-        <div className="clear-both flex flex-col space-y-2 pt-6 mt-6 border-t border-border">
+        <div className="clear-both space-y-2.5 pt-6 mt-6 border-t border-border">
           <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted">Focus</p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            React • Next.js • TypeScript • Node.js • AI Integration • Clean Architecture • Linux •
-            Fedora
-          </p>
+          <TechChipGroup>
+            {FOCUS.map((item) => (
+              <TechChip key={item}>{item}</TechChip>
+            ))}
+          </TechChipGroup>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
