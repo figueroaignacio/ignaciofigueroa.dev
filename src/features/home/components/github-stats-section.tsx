@@ -1,3 +1,4 @@
+import { Section } from '@/shared/components/ui/section';
 import { getTranslations } from 'next-intl/server';
 import {
   getGithubStats,
@@ -78,13 +79,7 @@ export async function GithubStatsSection() {
     : availableYears[0]?.toString() || '2026';
 
   return (
-    <section id="github" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
+    <Section id="github" title={t('title')}>
       <GithubStatsClient
         initialYear={initialYear}
         availableYears={availableYears}
@@ -95,6 +90,6 @@ export async function GithubStatsSection() {
         topLanguages={stats.topLanguages}
         years={stats.years}
       />
-    </section>
+    </Section>
   );
 }

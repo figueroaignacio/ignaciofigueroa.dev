@@ -1,4 +1,5 @@
 import type { Contribution } from '@/payload-types';
+import { Section } from '@/shared/components/ui/section';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getContributions } from '../api/contributions';
 import { ContributionCard } from './contribution-card';
@@ -11,13 +12,7 @@ export async function ContributionsSection() {
   if (!contributions || contributions.length === 0) return null;
 
   return (
-    <section id="contributions" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
+    <Section id="contributions" title={t('title')}>
       <ul className="space-y-4">
         {contributions.map((contribution) => (
           <ContributionCard
@@ -31,6 +26,6 @@ export async function ContributionsSection() {
           />
         ))}
       </ul>
-    </section>
+    </Section>
   );
 }

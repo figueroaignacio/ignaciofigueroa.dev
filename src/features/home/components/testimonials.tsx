@@ -1,4 +1,5 @@
 import type { Testimonial } from '@/payload-types';
+import { Section } from '@/shared/components/ui/section';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getTestimonials } from '../api/testimonials';
 import { TestimonialsList } from './testimonials-list';
@@ -9,13 +10,7 @@ export async function Testimonials() {
   const testimonials: Testimonial[] = await getTestimonials(locale);
 
   return (
-    <section id="testimonials" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
+    <Section id="testimonials" title={t('title')}>
       <TestimonialsList
         testimonials={testimonials.map((t) => ({
           id: t.id,
@@ -24,6 +19,6 @@ export async function Testimonials() {
           role: t.role,
         }))}
       />
-    </section>
+    </Section>
   );
 }
