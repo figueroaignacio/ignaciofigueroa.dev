@@ -1,4 +1,6 @@
 import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
+import { Section } from '@/shared/components/ui/section';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { cn } from '@/shared/lib/cn';
 import type { Icon } from '@/shared/lib/constants';
 import {
@@ -44,32 +46,25 @@ export function Interests() {
   const tSection = useTranslations('sections.interests');
 
   return (
-    <section id="interests" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {tSection('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
+    <Section id="interests" title={tSection('title')}>
+      <TechChipGroup role="list">
         {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
-          <div key={key} className="flex items-center gap-2 group cursor-default" role="listitem">
-            <span
-              aria-hidden="true"
-              className={cn('size-4 flex items-center justify-center shrink-0', color)}
-            >
-              {typeof Icon === 'function' ? (
-                <Icon className="size-4" />
+          <TechChip
+            key={key}
+            role="listitem"
+            className="px-2.5 py-1 text-[11px] text-foreground/80 hover:text-foreground transition-colors cursor-default"
+            icon={
+              typeof Icon === 'function' ? (
+                <Icon className={cn('size-full', color)} />
               ) : (
-                <HugeiconsIcon icon={Icon} className="size-4" />
-              )}
-            </span>
-            <span className="text-xs font-mono text-foreground/80 group-hover:text-foreground transition-colors">
-              {t(key)}
-            </span>
-          </div>
+                <HugeiconsIcon icon={Icon} className={cn('size-full', color)} />
+              )
+            }
+          >
+            {t(key)}
+          </TechChip>
         ))}
-      </div>
-    </section>
+      </TechChipGroup>
+    </Section>
   );
 }
