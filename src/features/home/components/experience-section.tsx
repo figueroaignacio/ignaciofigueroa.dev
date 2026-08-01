@@ -1,5 +1,7 @@
 import type { Experience } from '@/payload-types';
 import { ItemCard } from '@/shared/components/ui/item-card';
+import { Section } from '@/shared/components/ui/section';
+import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperiences } from '../api/experience';
 
@@ -18,14 +20,7 @@ export async function ExperienceSection() {
   if (!experiences || experiences.length === 0) return null;
 
   return (
-    <section id="experience" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
-      </div>
-
+    <Section id="experience" title={t('title')}>
       <ul className="space-y-4">
         {experiences.map((experience) => (
           <li key={experience.id}>
@@ -71,22 +66,17 @@ export async function ExperienceSection() {
                 )}
 
                 {experience.technologies && experience.technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 pt-1">
+                  <TechChipGroup className="pt-1">
                     {experience.technologies.map((tech) => (
-                      <span
-                        key={tech.id}
-                        className="inline-flex items-center bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] font-mono text-muted-foreground"
-                      >
-                        {tech.name}
-                      </span>
+                      <TechChip key={tech.id}>{tech.name}</TechChip>
                     ))}
-                  </div>
+                  </TechChipGroup>
                 )}
               </article>
             </ItemCard>
           </li>
         ))}
       </ul>
-    </section>
+    </Section>
   );
 }
