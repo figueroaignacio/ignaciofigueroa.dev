@@ -1,5 +1,7 @@
 'use client';
 
+import { ItemCard } from '@/shared/components/ui/item-card';
+import { Section } from '@/shared/components/ui/section';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
 
@@ -46,22 +48,20 @@ export function ContactSection() {
   const tPages = useTranslations('pages.contact');
 
   return (
-    <section id="contact" className="scroll-mt-12">
-      <div className="mb-8">
-        <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-          {t('title')}
-        </h2>
-        <div className="mt-3 h-px bg-rule" />
+    <Section id="contact" title={t('title')}>
+      <div className="rounded-xl border border-border bg-card p-1.5 mb-8">
+        <div className="rounded-lg border border-border bg-background p-5">
+          <ContactForm />
+        </div>
       </div>
 
-      <div className="max-w-2xl mb-12">
-        <ContactForm />
-      </div>
-
-      <div className="space-y-4 pt-8 border-t border-border">
-        <h3 className="text-[11px] font-mono text-muted uppercase tracking-[0.2em]">
-          {tPages('linksTitle')}
-        </h3>
+      <ItemCard
+        header={
+          <h3 className="text-[11px] font-mono text-muted uppercase tracking-[0.2em]">
+            {tPages('linksTitle')}
+          </h3>
+        }
+      >
         <div className="divide-y divide-border">
           {SOCIAL_LINKS.map((link) => (
             <a
@@ -69,7 +69,7 @@ export function ContactSection() {
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
-              className="group flex items-center justify-between gap-6 py-4 hover:text-primary transition-colors duration-300"
+              className="group flex items-center justify-between gap-6 py-3.5 first:pt-0 last:pb-0 hover:text-primary transition-colors duration-300"
             >
               <div className="min-w-0">
                 <span className="block text-[15px] font-mono text-foreground group-hover:text-primary transition-colors lowercase">
@@ -85,8 +85,7 @@ export function ContactSection() {
             </a>
           ))}
         </div>
-      </div>
-    </section>
+      </ItemCard>
+    </Section>
   );
 }
-
