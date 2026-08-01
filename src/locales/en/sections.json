@@ -38,25 +38,6 @@
     "skills": "Skills",
     "items": [
       {
-        "title": "Self-directed Learning in Software Development",
-        "institution": "At Internet, Online Resources, Communities",
-        "description": "Self-directed specialization in web technologies, software programming, AI model integration, and Linux system administration. Development of open-source tools and web applications.",
-        "skills": [
-          "React",
-          "Next.js",
-          "FastAPI",
-          "Python",
-          "Linux",
-          "AI Integration",
-          "Applied AI in Workflows and Development",
-          "Agentic AI",
-          "Backend",
-          "Frontend"
-        ],
-        "startDate": "2022-03-01",
-        "endDate": null
-      },
-      {
         "title": "Associate Degree in Programming and Software Development",
         "institution": "Universidad Tecnológica Nacional (National Technological University)",
         "description": "Degree focused on training professionals in software development and technological solutions. Covers programming, application design, database management, and problem-solving through logical and computational thinking. Technical-professional profile with solid software development foundations.",
@@ -85,6 +66,25 @@
           "Linux"
         ],
         "startDate": "2025-03-01",
+        "endDate": null
+      },
+      {
+        "title": "Self-directed Learning in Software Development, Programming and AI.",
+        "institution": "At Internet, Online Resources, Communities",
+        "description": "Self-directed specialization in web technologies, software programming, AI model integration, and Linux system administration. Development of open-source tools and web applications.",
+        "skills": [
+          "React",
+          "Next.js",
+          "FastAPI",
+          "Python",
+          "Linux",
+          "AI Integration",
+          "Applied AI in Workflows and Development",
+          "Agentic AI",
+          "Backend",
+          "Frontend"
+        ],
+        "startDate": "2022-03-01",
         "endDate": null
       }
     ]
