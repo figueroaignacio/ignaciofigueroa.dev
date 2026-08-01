@@ -2,107 +2,75 @@
 
 ## 1. Visual Theme & Atmosphere
 
-Airy, minimalist, and content-focused aesthetic. The design embraces generous whitespace with a restrained color palette that prioritizes readability. Dark mode shifts the palette to deep blacks with subtle blue undertones, creating a sophisticated low-light experience. The overall feel is professional yet approachable—suitable for a developer portfolio with focus on clean UI and accessibility.
+Editorial minimal. A single readable column (`max-w-3xl`), generous whitespace, hairline borders, and a quiet, lowercase voice. Depth never comes from shadows — it comes from the **frame + inset panel** card language: an outer frame on `bg-card` holding an inset panel on `bg-background`. Long-form text is serif (Source Serif 4); structure is signaled by tiny uppercase mono labels; the only saturated color is one Google-blue accent.
 
-## 2. Color Palette & Roles
+## 2. Core Card Language
 
-### Light Mode
+Every itemized or contained piece of content uses the same geometry (see `src/shared/components/ui/item-card.tsx`):
 
-| Descriptive Name | Hex Code  | Functional Role                        |
-| ---------------- | --------- | -------------------------------------- |
-| Crisp White      | `#ffffff` | Primary background, cards, inputs      |
-| Charcoal         | `#1f1f1f` | Primary text, borders on cards         |
-| Google Blue      | `#1a73e8` | Primary actions, links, accents        |
-| Cloud White      | `#e9eef6` | Secondary backgrounds, selected states |
-| Frost            | `#f0f4f9` | Muted backgrounds, subtle dividers     |
-| Slate Gray       | `#444746` | Secondary/muted text                   |
-| Mist             | `#dde3ea` | Accent backgrounds, hover states       |
-| Alert Red        | `#d93025` | Destructive actions, errors            |
+```
+┌─ frame: rounded-xl · border-border · bg-card ─┐
+│  header: px-4 py-3 (sits on the frame)        │
+│  ┌─ panel: mx-1.5 mb-1.5 · rounded-lg ─────┐  │
+│  │  border-border · bg-background · p-4    │  │
+│  └──────────────────────────────────────────┘  │
+└────────────────────────────────────────────────┘
+```
 
-### Dark Mode
+- **`ItemCard`** — header above panel. Used by: experience, education, certifications, projects, contributions, GitHub stats, tech stack categories, nach-ui CTA, contact links.
+- **Inverted variant** — panel above, attribution/action row below (`mx-1.5 mt-1.5`). Used by: testimonials, CV CTA.
+- **Bare frame** — `p-1.5` frame around a single panel, no header. Used by: whoami video, contact form.
 
-| Descriptive Name | Hex Code  | Functional Role                              |
-| ---------------- | --------- | -------------------------------------------- |
-| Deep Black       | `#000000` | Primary background                           |
-| Pale Gray        | `#e3e3e3` | Primary text in dark mode                    |
-| Charcoal         | `#1e1f20` | Cards, popovers in dark mode                 |
-| Soft Blue        | `#8ab4f8` | Primary actions in dark mode (high contrast) |
-| Dark Slate       | `#2d2f31` | Secondary backgrounds                        |
-| Void             | `#111111` | Muted backgrounds, input fields              |
-| Dim Gray         | `#969696` | Muted/secondary text                         |
+The light theme makes this read by contrast: page is `#ffffff`, frame is `#f7f7f5`, panel returns to white. Dark mirrors it: page `#000000`, frame `#111111`, panel back to black.
 
-### Semantic Colors
+## 3. Color Tokens (`src/app/globals.css`)
 
-| Name           | Hex/Value             | Role                           |
-| -------------- | --------------------- | ------------------------------ |
-| `--border`     | `#e3e3e3` / `#1b1b1c` | Subtle dividers, input borders |
-| `--ring`       | `#0b57d0` / `#8ab4f8` | Focus ring for accessibility   |
-| `--grid-color` | `rgba(0, 0, 0, 0.02)` | Subtle background grid pattern |
+| Token | Light | Dark | Role |
+| --- | --- | --- | --- |
+| `--background` | `#ffffff` | `#000000` | Page + inset panels |
+| `--card` | `#f7f7f5` | `#111111` | Card frames |
+| `--foreground` | `#111111` | `#e5e5e5` | Primary text |
+| `--primary` | `#1a73e8` | `#8ab4f8` | Links, hover accents |
+| `--secondary` | `#e9eef6` | `#1a1a1a` | Chip fills (used at `/30`) |
+| `--muted` | `rgba(0,0,0,.45)` | `rgba(255,255,255,.45)` | Section labels, dates |
+| `--muted-foreground` | `rgba(0,0,0,.55)` | `rgba(255,255,255,.55)` | Secondary text (most-used) |
+| `--muted-strong` | `rgba(0,0,0,.7)` | `rgba(255,255,255,.7)` | Hero tagline |
+| `--border` / `--rule` | 8% alpha fg | 8% alpha fg | Hairlines everywhere |
+| `--destructive` | `#d93025` | `#f87171` | Form errors |
+| `--ring` | `#0b57d0` | `#8ab4f8` | Focus rings |
 
-## 3. Typography Rules
+`--radius: 1.25rem` overrides Tailwind's scale — `rounded-xl` = 1.5rem (frames), `rounded-lg` = 1.25rem (panels), `rounded-full` for chips.
 
-- **Font Stack**: Uses CSS custom properties `--font-sans` (body) and `--font-heading` (headers)
-- **Body Text**: Clean sans-serif, high legibility
-- **Headings**: Bold weight, distinct from body for hierarchy
-- **Code Blocks**: Monospace font (`font-mono`), dark background (`#2a2c33`), white text
-- **Line Height**: `leading-7` (1.75rem) for comfortable reading
-- **Scroll**: Smooth scrolling enabled globally
+## 4. Typography
 
-## 4. Component Stylings
+Loaded in `src/shared/lib/fonts.ts`, wired as CSS variables on `<body>`:
 
-### Buttons
+- **Archivo** (`--font-sans`) — default UI/body text.
+- **Source Serif 4** (`--font-heading`, `--font-serif`) — all `h1–h6` via base layer, and long-form reading via `.prose-reading` (19px / 1.75, italic for asides and quotes).
+- **JetBrains Mono** (`--font-mono`) — the structural voice: section labels (`text-[11px] tracking-[0.2em] uppercase`), chips (`text-[10px]`), dates (`tabular-nums`), card action links (`text-xs`), footer, attributions.
+- **Lowercase** is deliberate: action links, footer, attributions call `.toLowerCase()`.
 
-- **Shape**: Rounded corners (`rounded-lg`)
-- **Primary Button**: Solid foreground on background, hover lightens border
-- **Outline Button**: Transparent with border, hover fills card background
-- **Ghost Button**: No border, hover reveals border and card background
-- **Link Button**: Underlined, text-sm size
-- **Padding**: `px-5 py-2.5` (horizontal, vertical)
-- **Transition**: `transition-colors` for color-only transitions
+## 5. Primitives (`src/shared/components/ui/`)
 
-### Cards/Containers
+- **`Section`** (`section.tsx`) — `id` + mono label title + rule (a short `w-8` foreground segment fading into a hairline). Wraps every home section; anchors use `scroll-mt-12`.
+- **`ItemCard`** (`item-card.tsx`) — the frame + inset panel described above.
+- **`TechChip` / `TechChipGroup`** (`tech-chip.tsx`) — `rounded-full border-border/40 bg-secondary/30 px-2 py-0.5 text-[10px] font-mono`, optional `size-3` icon slot. Group is `flex flex-wrap gap-1.5`.
+- Buttons: `.btn` + `.btn-primary` / `.btn-outline` component classes (`rounded-xl`, `active:scale-95`).
 
-- **Shape**: Rounded corners (`rounded-lg`)
-- **Outlined Card**: Transparent background, border in `--border` color
-- **Solid Card**: White/dark background, border in foreground color
-- **Padding**: `p-6` (1.5rem)
+## 6. Layout
 
-### Inputs
+- **Container**: `max-w-3xl mx-auto p-4`, body padded `py-16`, sections stacked `space-y-14`.
+- **Nav**: floating bottom `Dock` (`bg-background/80 backdrop-blur-xl rounded-2xl`), no top header.
+- **Footer**: hairline `border-t`, mono, three clusters — identity, external links, theme/locale toggles.
+- **Background**: masked dot/line grid at ~2% alpha (`BackgroundDecorations`).
 
-- **Background**: White (light) / `#111111` (dark)
-- **Border**: Subtle `--border` color
-- **Focus Ring**: Primary ring color (`#0b57d0` or `#8ab4f8`)
+## 7. Motion & Interaction
 
-### Prose (Content Areas)
+- Transitions: `transition-colors`/`transition-all duration-300`; hover states shift text to `--primary` or reveal underlines — never loud.
+- Card hovers (where used, e.g. GitHub stats): `hover:-translate-y-0.5` + near-invisible shadow.
+- Entrances: `.animate-fade-in-up` (700ms, `cubic-bezier(0.16,1,0.3,1)`), staggered by `.delay-150/.delay-300`.
+- Cursor blink keyframes for the AI terminal effect.
 
-- **Paragraph Spacing**: `mb-3 leading-7`
-- **Headers**: `pb-3 mt-6 border-b border-border mb-3`
-- **Blockquote**: Left border accent (`border-l-4`), primary color, italic
-- **Lists**: `ml-5` indent, proper bullet/number spacing
+## 8. Accessibility
 
-## 5. Layout Principles
-
-- **Container**: `max-w-3xl mx-auto p-4 w-full` — centered, readable width
-- **Border Radius**: Generous rounding (`--radius: 1.5rem`) creates pill-like softness
-  - `radius-sm`: 0.75rem smaller
-  - `radius-md`: 0.5rem smaller
-  - `radius-lg`: base 1.5rem
-  - `radius-xl`: 2rem
-  - `radius-2xl`: 2.5rem
-- **Scrollbar**: Thin (5px), rounded, subtle styling
-- **Grid Pattern**: Ultra-subtle background (`rgba(0, 0, 0, 0.02)`)
-
-## 6. Animations
-
-- **Custom Animation**: `animate-fade-in-up` — smooth entrance from below
-- **Timing**: Cubic-bezier easing (`0.16, 1, 0.3, 1`) for natural motion
-- **Duration**: 700ms
-- **Delays**: `delay-150` (150ms), `delay-300` (300ms) for staggered reveals
-- **Blink**: Cursor blink animation for AI terminal effect
-
-## 7. Accessibility Considerations
-
-- Focus rings use `--ring` color for visible keyboard navigation
-- Smooth scroll for preference
-- Dark mode maintains sufficient contrast ratios
-- Semantic HTML structure (proper heading hierarchy)
+- Focus rings via `--ring`; skip link; `scroll-smooth`; semantic `section`/`figure`/`blockquote`; icon-only elements carry `aria-hidden` and labels; theme respects class-based dark mode with `suppressHydrationWarning`.
