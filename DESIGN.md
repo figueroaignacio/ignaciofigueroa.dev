@@ -21,21 +21,24 @@ Every itemized or contained piece of content uses the same geometry (see `src/sh
 - **Inverted variant** — panel above, attribution/action row below (`mx-1.5 mt-1.5`). Used by: testimonials, CV CTA.
 - **Bare frame** — `p-1.5` frame around a single panel, no header. Used by: whoami video, contact form.
 
-The light theme makes this read by contrast: page is `#ffffff`, frame is `#f7f7f5`, panel returns to white. Dark mirrors it: page `#000000`, frame `#111111`, panel back to black.
+The light theme makes this read by contrast: page is `#ffffff`, frame is Google frost `#f0f4f9`, panel returns to white. Dark mirrors it: page `#000000`, frame `#111111`, panel back to black.
 
 ## 3. Color Tokens (`src/app/globals.css`)
+
+The light palette is Google's: frost surfaces, Material blue, and the gray ramp from Google's products.
 
 | Token | Light | Dark | Role |
 | --- | --- | --- | --- |
 | `--background` | `#ffffff` | `#000000` | Page + inset panels |
-| `--card` | `#f7f7f5` | `#111111` | Card frames |
-| `--foreground` | `#111111` | `#e5e5e5` | Primary text |
-| `--primary` | `#1a73e8` | `#8ab4f8` | Links, hover accents |
+| `--card` | `#f0f4f9` | `#111111` | Card frames |
+| `--foreground` | `#1f1f1f` | `#e5e5e5` | Primary text |
+| `--primary` | `#0b57d0` | `#8ab4f8` | Links, hover accents |
 | `--secondary` | `#e9eef6` | `#1a1a1a` | Chip fills (used at `/30`) |
-| `--muted` | `rgba(0,0,0,.45)` | `rgba(255,255,255,.45)` | Section labels, dates |
-| `--muted-foreground` | `rgba(0,0,0,.55)` | `rgba(255,255,255,.55)` | Secondary text (most-used) |
-| `--muted-strong` | `rgba(0,0,0,.7)` | `rgba(255,255,255,.7)` | Hero tagline |
-| `--border` / `--rule` | 8% alpha fg | 8% alpha fg | Hairlines everywhere |
+| `--accent` | `#d3e3fd` | `#1e1f20` | Selected states |
+| `--muted` | `#747775` | `rgba(255,255,255,.45)` | Section labels, dates |
+| `--muted-foreground` | `#5f6368` | `rgba(255,255,255,.55)` | Secondary text (most-used) |
+| `--muted-strong` | `#444746` | `rgba(255,255,255,.7)` | Hero tagline |
+| `--border` / `--rule` | `#dadce0` | 8% alpha fg | Hairlines everywhere |
 | `--destructive` | `#d93025` | `#f87171` | Form errors |
 | `--ring` | `#0b57d0` | `#8ab4f8` | Focus rings |
 
