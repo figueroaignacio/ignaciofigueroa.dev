@@ -35,7 +35,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         ),
         li: ({ children }) => (
           <li className="flex gap-2 items-start text-sm text-foreground/90 leading-relaxed">
-            <span className="mt-[8px] shrink-0 w-1.5 h-1.5 rounded-full bg-muted-foreground/45 block" />
+            <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-muted-foreground/45 block" />
             <span>{children}</span>
           </li>
         ),

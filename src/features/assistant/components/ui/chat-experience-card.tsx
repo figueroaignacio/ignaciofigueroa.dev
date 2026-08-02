@@ -1,6 +1,6 @@
+import { Experience } from '@/payload-types';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { formatDate } from '@/shared/lib/format-date';
-import { Experience } from '@/payload-types';
 import { Briefcase01Icon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 
@@ -14,7 +14,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
     <article className="space-y-3 relative group">
       {}
       <div
-        className={`absolute left-0 top-1.5 size-[23px] rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
+        className={`absolute left-0 top-1.5 size-5.75 rounded-full border-2 flex items-center justify-center transition-colors duration-300 ${
           experience.isCurrent
             ? 'border-foreground bg-foreground'
             : 'border-border/60 bg-muted/40 group-hover:border-foreground/50'
