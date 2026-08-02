@@ -17,9 +17,10 @@ Every itemized or contained piece of content uses the same geometry (see `src/sh
 └────────────────────────────────────────────────┘
 ```
 
-- **`ItemCard`** — header above panel. Used by: experience, education, certifications, projects, contributions, GitHub stats, tech stack categories, nach-ui CTA, contact links.
+- **`ItemCard`** — header above panel. Used by: education, certifications, projects, contributions, GitHub stats, tech stack categories, nach-ui CTA, contact links.
 - **Inverted variant** — panel above, attribution/action row below (`mx-1.5 mt-1.5`). Used by: testimonials, CV CTA.
 - **Bare frame** — `p-1.5` frame around a single panel, no header. Used by: whoami video, contact form.
+- **Exception — experience** is not carded: it renders as a résumé timeline (`border-l` hairline, one dot per entry — filled `bg-foreground` for the current role — `type-meta` date above a `type-item-title` heading, bullets, chips).
 
 The light theme makes this read by contrast: page is `#ffffff`, frame is Google frost `#f0f4f9`, panel returns to white. Dark mirrors it: page `#000000`, frame `#111111`, panel back to black.
 

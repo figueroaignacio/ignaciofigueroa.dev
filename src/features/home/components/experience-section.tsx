@@ -1,5 +1,4 @@
 import type { Experience } from '@/payload-types';
-import { ItemCard } from '@/shared/components/ui/item-card';
 import { Section } from '@/shared/components/ui/section';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getLocale, getTranslations } from 'next-intl/server';
@@ -21,62 +20,66 @@ export async function ExperienceSection() {
 
   return (
     <Section id="experience" title={t('title')}>
-      <ul className="space-y-4">
-        {experiences.map((experience) => (
-          <li key={experience.id}>
-            <ItemCard
-              header={
-                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                  <h3 className="type-item-title text-foreground">
-                    {experience.title}{' '}
-                    <span className="text-base font-normal text-muted-foreground">
-                      at{' '}
-                      {experience.link ? (
-                        <a
-                          href={experience.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-primary transition-colors underline decoration-border hover:decoration-primary"
-                        >
-                          {experience.company}
-                        </a>
-                      ) : (
-                        experience.company
-                      )}
-                    </span>
-                  </h3>
-                  <span className="shrink-0 type-meta text-muted-foreground tracking-wider">
-                    {formatDate(experience.startDate, locale)} —{' '}
-                    {experience.endDate
-                      ? formatDate(experience.endDate, locale)
-                      : locale === 'es'
-                        ? 'presente'
-                        : 'present'}
-                  </span>
-                </div>
-              }
-            >
-              <article className="space-y-3">
-                {experience.tasks && experience.tasks.length > 0 && (
-                  <ul className="pl-4 space-y-1.5 list-disc text-sm leading-relaxed text-muted-foreground/90">
-                    {experience.tasks.map((task) => (
-                      <li key={task.id}>{task.item}</li>
-                    ))}
-                  </ul>
-                )}
+      <ol className="relative ml-1 space-y-10 border-l border-border pl-6">
+        {experiences.map((experience) => {
+          const isCurrent = !experience.endDate;
 
-                {experience.technologies && experience.technologies.length > 0 && (
-                  <TechChipGroup className="pt-1">
-                    {experience.technologies.map((tech) => (
-                      <TechChip key={tech.id}>{tech.name}</TechChip>
-                    ))}
-                  </TechChipGroup>
-                )}
-              </article>
-            </ItemCard>
-          </li>
-        ))}
-      </ul>
+          return (
+            <li key={experience.id} className="relative">
+              <span
+                aria-hidden
+                className={`absolute top-2 left-[-28.5px] size-2 rounded-full border ${
+                  isCurrent ? 'border-foreground bg-foreground' : 'border-border bg-background'
+                }`}
+              />
+
+              <span className="type-meta text-muted-foreground tracking-wider">
+                {formatDate(experience.startDate, locale)} —{' '}
+                {experience.endDate
+                  ? formatDate(experience.endDate, locale)
+                  : locale === 'es'
+                    ? 'presente'
+                    : 'present'}
+              </span>
+
+              <h3 className="type-item-title text-foreground mt-1">
+                {experience.title}{' '}
+                <span className="text-base font-normal text-muted-foreground">
+                  at{' '}
+                  {experience.link ? (
+                    <a
+                      href={experience.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary transition-colors underline decoration-border hover:decoration-primary"
+                    >
+                      {experience.company}
+                    </a>
+                  ) : (
+                    experience.company
+                  )}
+                </span>
+              </h3>
+
+              {experience.tasks && experience.tasks.length > 0 && (
+                <ul className="mt-3 pl-4 space-y-1.5 list-disc text-sm leading-relaxed text-muted-foreground/90">
+                  {experience.tasks.map((task) => (
+                    <li key={task.id}>{task.item}</li>
+                  ))}
+                </ul>
+              )}
+
+              {experience.technologies && experience.technologies.length > 0 && (
+                <TechChipGroup className="mt-3">
+                  {experience.technologies.map((tech) => (
+                    <TechChip key={tech.id}>{tech.name}</TechChip>
+                  ))}
+                </TechChipGroup>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </Section>
   );
 }
