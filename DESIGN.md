@@ -17,7 +17,8 @@ Every itemized or contained piece of content uses the same geometry (see `src/sh
 └────────────────────────────────────────────────┘
 ```
 
-- **`ItemCard`** — header above panel. Used by: education, certifications, projects, contributions, GitHub stats, tech stack categories, nach-ui CTA, contact links.
+- **`ItemCard`** — header above panel. Used by: education, certifications, projects, contributions, GitHub stats, nach-ui CTA, contact links.
+- **Flat card** — single surface, no inset panel (`rounded-xl border-border bg-card p-4`). Used by: tech stack categories.
 - **Inverted variant** — panel above, attribution/action row below (`mx-1.5 mt-1.5`). Used by: testimonials, CV CTA.
 - **Bare frame** — `p-1.5` frame around a single panel, no header. Used by: whoami video, contact form.
 - **Exception — experience** is not carded: it renders as a résumé timeline (`border-l` hairline, one dot per entry — filled `bg-foreground` for the current role — `type-meta` date above a `type-item-title` heading, bullets, chips).

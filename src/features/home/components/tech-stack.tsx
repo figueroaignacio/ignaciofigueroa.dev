@@ -1,5 +1,4 @@
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
-import { ItemCard } from '@/shared/components/ui/item-card';
 import { Section } from '@/shared/components/ui/section';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { useTranslations } from 'next-intl';
@@ -67,11 +66,9 @@ export function TechStack() {
     <Section id="stack" title={t('stack.title')}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {techStack.map((section) => (
-          <ItemCard
-            key={section.category}
-            header={<h3 className="type-label text-muted-foreground/80">{section.category}</h3>}
-          >
-            <TechChipGroup role="list">
+          <div key={section.category} className="rounded-xl border border-border bg-card p-4">
+            <h3 className="type-label text-muted-foreground/80">{section.category}</h3>
+            <TechChipGroup role="list" className="mt-3">
               {section.items.map((name) => (
                 <TechChip
                   key={name}
@@ -82,7 +79,7 @@ export function TechStack() {
                 </TechChip>
               ))}
             </TechChipGroup>
-          </ItemCard>
+          </div>
         ))}
       </div>
     </Section>
