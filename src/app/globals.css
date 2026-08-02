@@ -3,57 +3,92 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #1f1f1f;
-  --card: #f0f4f9;
-  --card-foreground: #1f1f1f;
-  --popover: #ffffff;
-  --popover-foreground: #1f1f1f;
-  --primary: #0b57d0;
-  --primary-foreground: #ffffff;
-  --secondary: #e9eef6;
-  --secondary-foreground: #1f1f1f;
-  --muted: #747775;
-  --muted-foreground: #5f6368;
-  --muted-strong: #444746;
-  --accent: #d3e3fd;
-  --accent-foreground: #0b57d0;
-  --destructive: #d93025;
-  --destructive-foreground: #ffffff;
-  --border: #dadce0;
-  --rule: #dadce0;
-  --input: #ffffff;
-  --ring: #0b57d0;
-  --radius: 1.25rem;
-  --grid-color: rgba(31, 31, 31, 0.025);
+  /* Canvas: Premium Warm Bone */
+  --background: oklch(98.5% 0.004 70);
+  --foreground: oklch(18% 0.003 70);
+
+  /* Surfaces: Slightly darker warm bone */
+  --card: oklch(96.2% 0.004 70);
+  --card-foreground: oklch(18% 0.003 70);
+  --popover: oklch(98.5% 0.004 70);
+  --popover-foreground: oklch(18% 0.003 70);
+
+  /* Interactive: Slate Charcoal */
+  --primary: oklch(18% 0.003 70);
+  --primary-foreground: oklch(98.5% 0.004 70);
+  --secondary: oklch(93.5% 0.005 70);
+  --secondary-foreground: oklch(18% 0.003 70);
+  --muted: oklch(94.5% 0.004 70);
+  --muted-foreground: oklch(48% 0.004 70);
+  --accent: oklch(93.5% 0.005 70);
+  --accent-foreground: oklch(18% 0.003 70);
+
+  /* Feedback (Minimal desaturated feedback tones) */
+  --destructive: oklch(62% 0.16 20);
+  --destructive-foreground: oklch(98.5% 0.004 70);
+  --info: oklch(64% 0.12 240);
+  --info-foreground: oklch(98.5% 0.004 70);
+  --success: oklch(65% 0.11 140);
+  --success-foreground: oklch(98.5% 0.004 70);
+  --warning: oklch(84% 0.11 80);
+  --warning-foreground: oklch(18% 0.003 70);
+
+  /* Structure */
+  --border: oklch(90.5% 0.004 70);
+  --input: oklch(90.5% 0.004 70);
+  --ring: oklch(18% 0.003 70);
+  --radius: 0.75rem;
+  --grid-color: oklch(18% 0.003 70 / 0.03);
+
+  /* Editorial tokens */
+  --rule: oklch(90.5% 0.004 70);
+  --muted-strong: oklch(35% 0.004 70);
+  --surface-muted: oklch(95.5% 0.004 70);
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #e5e5e5;
-  --card: #111111;
-  --card-foreground: #e5e5e5;
-  --popover: #111111;
-  --popover-foreground: #e5e5e5;
-  --primary: #8ab4f8;
-  --primary-foreground: #000000;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #e5e5e5;
-  --muted: rgba(255, 255, 255, 0.45);
-  --muted-foreground: rgba(255, 255, 255, 0.55);
-  --muted-strong: rgba(255, 255, 255, 0.7);
-  --accent: #1e1f20;
-  --accent-foreground: #8ab4f8;
-  --destructive: #f87171;
-  --destructive-foreground: #ffffff;
-  --border: rgba(255, 255, 255, 0.08);
-  --rule: rgba(255, 255, 255, 0.08);
-  --input: #111111;
-  --ring: #8ab4f8;
-  --grid-color: rgba(250, 250, 250, 0.015);
-  --shadow-lg: 0 10px 40px -15px rgba(0, 0, 0, 0.8);
-}
+  /* Canvas: Deep Warm Charcoal/Stone Black */
+  --background: oklch(14% 0.002 70);
+  --foreground: oklch(92% 0.002 70);
 
+  /* Surfaces */
+  --card: oklch(18.5% 0.002 70);
+  --card-foreground: oklch(92% 0.002 70);
+  --popover: oklch(19.5% 0.002 70);
+  --popover-foreground: oklch(92% 0.002 70);
+
+  /* Interactive */
+  --primary: oklch(92% 0.002 70);
+  --primary-foreground: oklch(14% 0.002 70);
+  --secondary: oklch(24% 0.002 70);
+  --secondary-foreground: oklch(92% 0.002 70);
+  --muted: oklch(24% 0.002 70);
+  --muted-foreground: oklch(58% 0.002 70);
+  --accent: oklch(22% 0.002 70);
+  --accent-foreground: oklch(92% 0.002 70);
+
+  /* Feedback */
+  --destructive: oklch(58% 0.14 20);
+  --destructive-foreground: oklch(14% 0.002 70);
+  --info: oklch(62% 0.11 240);
+  --info-foreground: oklch(14% 0.002 70);
+  --success: oklch(63% 0.1 140);
+  --success-foreground: oklch(14% 0.002 70);
+  --warning: oklch(75% 0.1 80);
+  --warning-foreground: oklch(14% 0.002 70);
+
+  /* Structure */
+  --border: oklch(25% 0.002 70);
+  --input: oklch(25% 0.002 70);
+  --ring: oklch(92% 0.002 70);
+  --grid-color: oklch(100% 0 0 / 0.02);
+  --shadow-lg: 0 8px 24px -10px oklch(0% 0 0 / 0.6);
+
+  /* Editorial tokens */
+  --rule: oklch(25% 0.002 70);
+  --muted-strong: oklch(74% 0.002 70);
+  --surface-muted: oklch(20% 0.002 70);
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
