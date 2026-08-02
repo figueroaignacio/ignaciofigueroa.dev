@@ -40,7 +40,7 @@ export function NachUICtaClient({ t, count }: NachUICtaProps) {
     <Section id="nachui" title={t.badge}>
       <ItemCard
         header={
-          <h3 className="text-[19px] md:text-[20px] font-medium text-foreground tracking-tight leading-tight">
+          <h3 className="type-item-title text-foreground">
             {t.title.replace('{count}', count.toString())}
           </h3>
         }

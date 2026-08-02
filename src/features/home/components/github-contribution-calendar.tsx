@@ -33,7 +33,7 @@ function LanguageBadge({ language, count }: TopLanguage) {
     <span className="inline-flex items-center gap-1 bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] text-foreground">
       <span className={cn('size-1.5 rounded-full', getLanguageColorClass(language))} />
       {language}
-      <span className="text-muted-foreground/60 text-[9px]">({count})</span>
+      <span className="text-muted-foreground/60 text-[10px]">({count})</span>
     </span>
   );
 }

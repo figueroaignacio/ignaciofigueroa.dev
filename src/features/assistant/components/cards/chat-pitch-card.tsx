@@ -51,7 +51,7 @@ export function ChatPitchCard({ data }: ChatPitchCardProps) {
             <span className="text-xs font-medium text-foreground truncate leading-tight">
               {role}
             </span>
-            <span className="text-[10px] font-mono text-muted truncate leading-tight mt-0.5">
+            <span className="type-chip text-muted-foreground truncate leading-tight mt-0.5">
               {company}
             </span>
           </div>

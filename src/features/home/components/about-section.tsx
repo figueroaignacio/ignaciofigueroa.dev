@@ -43,7 +43,7 @@ export async function AboutSection() {
         </div>
 
         <div className="clear-both space-y-2.5 pt-6 mt-6 border-t border-border">
-          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted">Focus</p>
+          <p className="type-chip uppercase tracking-[0.2em] text-muted-foreground">Focus</p>
           <TechChipGroup>
             {FOCUS.map((item) => (
               <TechChip key={item}>{item}</TechChip>

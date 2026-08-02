@@ -32,9 +32,7 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
       >
-        <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-balance leading-tight text-foreground">
-          {t('greeting')}
-        </h1>
+        <h1 className="type-page-title text-balance text-foreground">{t('greeting')}</h1>
         <p className="text-muted-foreground text-sm max-w-sm mx-auto text-balance leading-relaxed">
           {t('subtitle')}
         </p>

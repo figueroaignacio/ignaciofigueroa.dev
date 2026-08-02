@@ -27,20 +27,20 @@ The light theme makes this read by contrast: page is `#ffffff`, frame is Google 
 
 The light palette is Google's: frost surfaces, Material blue, and the gray ramp from Google's products.
 
-| Token | Light | Dark | Role |
-| --- | --- | --- | --- |
-| `--background` | `#ffffff` | `#000000` | Page + inset panels |
-| `--card` | `#f0f4f9` | `#111111` | Card frames |
-| `--foreground` | `#1f1f1f` | `#e5e5e5` | Primary text |
-| `--primary` | `#0b57d0` | `#8ab4f8` | Links, hover accents |
-| `--secondary` | `#e9eef6` | `#1a1a1a` | Chip fills (used at `/30`) |
-| `--accent` | `#d3e3fd` | `#1e1f20` | Selected states |
-| `--muted` | `#747775` | `rgba(255,255,255,.45)` | Section labels, dates |
-| `--muted-foreground` | `#5f6368` | `rgba(255,255,255,.55)` | Secondary text (most-used) |
-| `--muted-strong` | `#444746` | `rgba(255,255,255,.7)` | Hero tagline |
-| `--border` / `--rule` | `#dadce0` | 8% alpha fg | Hairlines everywhere |
-| `--destructive` | `#d93025` | `#f87171` | Form errors |
-| `--ring` | `#0b57d0` | `#8ab4f8` | Focus rings |
+| Token                 | Light     | Dark                    | Role                       |
+| --------------------- | --------- | ----------------------- | -------------------------- |
+| `--background`        | `#ffffff` | `#000000`               | Page + inset panels        |
+| `--card`              | `#f0f4f9` | `#111111`               | Card frames                |
+| `--foreground`        | `#1f1f1f` | `#e5e5e5`               | Primary text               |
+| `--primary`           | `#0b57d0` | `#8ab4f8`               | Links, hover accents       |
+| `--secondary`         | `#e9eef6` | `#1a1a1a`               | Chip fills (used at `/30`) |
+| `--accent`            | `#d3e3fd` | `#1e1f20`               | Selected states            |
+| `--muted`             | `#747775` | `rgba(255,255,255,.45)` | Section labels, dates      |
+| `--muted-foreground`  | `#5f6368` | `rgba(255,255,255,.55)` | Secondary text (most-used) |
+| `--muted-strong`      | `#444746` | `rgba(255,255,255,.7)`  | Hero tagline               |
+| `--border` / `--rule` | `#dadce0` | 8% alpha fg             | Hairlines everywhere       |
+| `--destructive`       | `#d93025` | `#f87171`               | Form errors                |
+| `--ring`              | `#0b57d0` | `#8ab4f8`               | Focus rings                |
 
 `--radius: 1.25rem` overrides Tailwind's scale — `rounded-xl` = 1.5rem (frames), `rounded-lg` = 1.25rem (panels), `rounded-full` for chips.
 
@@ -48,10 +48,24 @@ The light palette is Google's: frost surfaces, Material blue, and the gray ramp 
 
 Loaded in `src/shared/lib/fonts.ts`, wired as CSS variables on `<body>`:
 
-- **Archivo** (`--font-sans`) — default UI/body text.
-- **Source Serif 4** (`--font-heading`, `--font-serif`) — all `h1–h6` via base layer, and long-form reading via `.prose-reading` (19px / 1.75, italic for asides and quotes).
-- **JetBrains Mono** (`--font-mono`) — the structural voice: section labels (`text-[11px] tracking-[0.2em] uppercase`), chips (`text-[10px]`), dates (`tabular-nums`), card action links (`text-xs`), footer, attributions.
+- **Bricolage Grotesque** (`--font-sans`) — default UI/body text and all `h1–h6` (`--font-heading` is aliased to `--font-sans` in `globals.css`; only one loader).
+- **Source Serif 4** (`--font-serif`) — long-form reading via `.prose-reading` (19px / 1.75, italic for asides and quotes).
+- **JetBrains Mono** (`--font-mono`) — the structural voice: labels, chips, dates, card action links, footer, attributions.
 - **Lowercase** is deliberate: action links, footer, attributions call `.toLowerCase()`.
+
+### Type scale (`globals.css`, one class per hierarchy level)
+
+| Class              | Spec                                                    | Used for                                        |
+| ------------------ | ------------------------------------------------------- | ----------------------------------------------- |
+| `.type-display`    | `text-3xl md:text-4xl` semibold, tight, `leading-[1.1]` | Home hero `h1`                                  |
+| `.type-page-title` | `text-2xl md:text-3xl` semibold, tight                  | Page `h1` (project detail, chat hero, 404)      |
+| `.type-item-title` | `19px/20px` medium, tight, `leading-snug`               | Card/item `h3` titles                           |
+| body               | `text-base` / `text-sm`                                 | Prose, descriptions                             |
+| `.type-meta`       | mono `text-xs tabular-nums`                             | Dates, ranges                                   |
+| `.type-label`      | mono `text-[11px]` uppercase `tracking-[0.2em]`         | Section labels (color: `text-muted-foreground`) |
+| `.type-chip`       | mono `text-[10px] tracking-wide`                        | Tech chips                                      |
+
+Weight ramp is deliberate: semibold only at `h1` level, medium for item titles, semibold/medium inside prose (`h2`/`h3`). Never `font-bold` in UI chrome.
 
 ## 5. Primitives (`src/shared/components/ui/`)
 

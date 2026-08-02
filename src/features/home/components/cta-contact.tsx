@@ -30,7 +30,7 @@ export function CTAContact() {
   return (
     <section className="space-y-6">
       <div className=" space-y-2">
-        <h2 className="text-xl font-semibold">{t('title')}</h2>
+        <h2 className="type-item-title">{t('title')}</h2>
         <p className="text-muted-foreground">{t('description')}</p>
       </div>
       <div className="flex flex-wrap gap-4">

@@ -27,7 +27,7 @@ export async function ExperienceSection() {
             <ItemCard
               header={
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                  <h3 className="text-[19px] md:text-[20px] font-medium text-foreground">
+                  <h3 className="type-item-title text-foreground">
                     {experience.title}{' '}
                     <span className="text-base font-normal text-muted-foreground">
                       at{' '}
@@ -45,7 +45,7 @@ export async function ExperienceSection() {
                       )}
                     </span>
                   </h3>
-                  <span className="shrink-0 text-[11px] font-mono tabular-nums text-muted tracking-wider">
+                  <span className="shrink-0 type-meta text-muted-foreground tracking-wider">
                     {formatDate(experience.startDate, locale)} —{' '}
                     {experience.endDate
                       ? formatDate(experience.endDate, locale)
@@ -58,7 +58,7 @@ export async function ExperienceSection() {
             >
               <article className="space-y-3">
                 {experience.tasks && experience.tasks.length > 0 && (
-                  <ul className="pl-4 space-y-1.5 list-disc text-[14px] leading-relaxed text-muted-foreground/90">
+                  <ul className="pl-4 space-y-1.5 list-disc text-sm leading-relaxed text-muted-foreground/90">
                     {experience.tasks.map((task) => (
                       <li key={task.id}>{task.item}</li>
                     ))}

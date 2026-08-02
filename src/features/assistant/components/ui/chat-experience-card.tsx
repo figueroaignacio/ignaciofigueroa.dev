@@ -35,7 +35,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
             {experience.title}
           </h3>
           {experience.isCurrent && (
-            <span className="inline-flex items-center rounded-full bg-accent text-accent-foreground px-2 py-0.5 text-[10px] font-mono">
+            <span className="inline-flex items-center rounded-full bg-accent text-accent-foreground px-2 py-0.5 type-chip">
               {locale === 'es' ? 'actual' : 'current'}
             </span>
           )}
@@ -61,7 +61,7 @@ export function ChatExperienceCard({ experience, locale }: ChatExperienceCardPro
             </>
           )}
         </div>
-        <p className="text-[11px] font-mono tabular-nums text-muted tracking-wider">
+        <p className="type-meta text-muted-foreground tracking-wider">
           {formatDate(experience.startDate, locale)} —{' '}
           {experience.endDate
             ? formatDate(experience.endDate, locale)

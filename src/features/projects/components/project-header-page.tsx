@@ -27,9 +27,7 @@ export async function ProjectHeaderPage({
       </div>
       <div className="flex flex-col gap-4 w-full">
         <div className="flex flex-col gap-2">
-          <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-foreground lowercase">
-            {title}
-          </h1>
+          <h1 className="type-page-title text-foreground lowercase">{title}</h1>
         </div>
         {description && (
           <p className="text-base text-muted-strong leading-relaxed max-w-2xl font-normal">
@@ -37,7 +35,7 @@ export async function ProjectHeaderPage({
           </p>
         )}
         {techList.length > 0 && (
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] font-mono text-muted">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] font-mono text-muted-foreground">
             <span>tech:</span>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-foreground/80">
               {techList.map((tech) => {

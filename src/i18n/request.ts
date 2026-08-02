@@ -12,9 +12,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     NAMESPACES.map((ns) => import(`../locales/${locale}/${ns}.json`)),
   );
 
-  const messages = Object.fromEntries(
-    NAMESPACES.map((ns, i) => [ns, namespaceModules[i].default]),
-  );
+  const messages = Object.fromEntries(NAMESPACES.map((ns, i) => [ns, namespaceModules[i].default]));
 
   return { locale, messages };
 });

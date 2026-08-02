@@ -23,7 +23,7 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
           <Tabs.Trigger
             key={category}
             value={category}
-            className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground hover:text-foreground data-[state=active]:text-primary transition-colors bg-transparent border-0 cursor-pointer px-1 pb-3"
+            className="type-label text-muted-foreground hover:text-foreground data-[state=active]:text-primary transition-colors bg-transparent border-0 cursor-pointer px-1 pb-3"
           >
             {category.toLowerCase()}
           </Tabs.Trigger>

@@ -69,11 +69,7 @@ export function TechStack() {
         {techStack.map((section) => (
           <ItemCard
             key={section.category}
-            header={
-              <h3 className="text-[11px] font-mono uppercase tracking-widest text-muted-foreground/80">
-                {section.category}
-              </h3>
-            }
+            header={<h3 className="type-label text-muted-foreground/80">{section.category}</h3>}
           >
             <TechChipGroup role="list">
               {section.items.map((name) => (

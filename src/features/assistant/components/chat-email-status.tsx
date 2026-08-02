@@ -53,7 +53,7 @@ export function ChatEmailStatus({
             <span className="text-xs font-medium text-foreground leading-normal tracking-wide">
               {t('emailSending')}
             </span>
-            <span className="text-[10px] text-muted-foreground font-mono leading-none mt-1 animate-pulse">
+            <span className="type-chip text-muted-foreground leading-none mt-1 animate-pulse">
               &gt; resend.emails.send()
             </span>
           </div>
@@ -83,7 +83,7 @@ export function ChatEmailStatus({
             <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 leading-normal tracking-wide">
               {t('emailSuccess')}
             </span>
-            <span className="text-[10px] text-emerald-600/75 dark:text-emerald-500/70 font-mono leading-none mt-0.5">
+            <span className="type-chip text-emerald-600/75 dark:text-emerald-500/70 leading-none mt-0.5">
               STATUS: 200 DELIVERED
             </span>
           </div>

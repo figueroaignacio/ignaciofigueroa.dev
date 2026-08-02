@@ -10,15 +10,17 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
     <ReactMarkdown
       components={{
         h1: ({ children }) => (
-          <h1 className="text-base font-medium mt-5 mb-2 text-foreground tracking-tight border-b border-rule pb-1.5">
+          <h1 className="text-base font-semibold mt-5 mb-2 text-foreground tracking-tight border-b border-rule pb-1.5">
             {children}
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-sm font-bold mt-4 mb-2 text-foreground tracking-tight">{children}</h2>
+          <h2 className="text-sm font-semibold mt-4 mb-2 text-foreground tracking-tight">
+            {children}
+          </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-sm font-semibold mt-3 mb-1.5 text-foreground/90 tracking-tight">
+          <h3 className="text-sm font-medium mt-3 mb-1.5 text-foreground/90 tracking-tight">
             {children}
           </h3>
         ),
@@ -49,14 +51,14 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
               <div className="flex items-center justify-between px-3.5 py-2 border-b border-border">
                 <div className="flex items-center gap-1.5">
                   <span className="size-2 rounded-full bg-muted-foreground/50" />
-                  <span className="text-[10px] font-mono text-muted tracking-wider uppercase">
+                  <span className="type-chip text-muted-foreground uppercase">
                     {match?.[1] || 'code'}
                   </span>
                 </div>
               </div>
               <div className="m-1.5 mt-0 p-3.5 overflow-x-auto rounded-lg bg-[#1b1b1c] dark:bg-black/60 border border-border/40">
                 <code
-                  className={`block text-[12px] font-mono text-[#e3e3e3] leading-relaxed ${className ?? ''}`}
+                  className={`block text-xs font-mono text-[#e3e3e3] leading-relaxed ${className ?? ''}`}
                   {...props}
                 >
                   {children}
@@ -65,7 +67,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             </div>
           ) : (
             <code
-              className="bg-secondary/60 text-foreground/90 px-1.5 py-0.5 rounded-md text-[12px] font-mono border border-border/40"
+              className="bg-secondary/60 text-foreground/90 px-1.5 py-0.5 rounded-md text-xs font-mono border border-border/40"
               {...props}
             >
               {children}

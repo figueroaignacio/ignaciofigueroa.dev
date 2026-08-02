@@ -134,7 +134,7 @@ export function ChatInput({
           {mounted && (
             <span
               key={disclaimerIndex}
-              className="text-[11px] font-mono text-muted text-center px-4 leading-relaxed"
+              className="text-[11px] font-mono text-muted-foreground text-center px-4 leading-relaxed"
             >
               {disclaimers[disclaimerIndex]}
             </span>

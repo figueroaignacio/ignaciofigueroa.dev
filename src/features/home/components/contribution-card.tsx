@@ -30,7 +30,7 @@ export function ContributionCard({
       <ItemCard
         header={
           <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <h3 className="text-[19px] md:text-[20px] font-medium text-foreground">
+            <h3 className="type-item-title text-foreground">
               <a
                 href={repository}
                 target="_blank"

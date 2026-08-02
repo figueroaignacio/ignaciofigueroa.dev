@@ -117,7 +117,7 @@
   --radius-xl: calc(var(--radius) + 0.25rem);
   --radius-2xl: calc(var(--radius) + 0.5rem);
   --font-sans: var(--font-sans);
-  --font-heading: var(--font-heading);
+  --font-heading: var(--font-sans);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
   --animate-blink: blink 3s infinite;
@@ -156,6 +156,34 @@
 }
 
 @layer components {
+  /*
+   * Type scale — one class per hierarchy level:
+   * display > page-title > item-title > body > meta > label > chip
+   */
+  .type-display {
+    @apply text-3xl md:text-4xl font-semibold tracking-tight leading-[1.1];
+  }
+
+  .type-page-title {
+    @apply text-2xl md:text-3xl font-semibold tracking-tight leading-tight;
+  }
+
+  .type-item-title {
+    @apply text-[19px] md:text-[20px] font-medium tracking-tight leading-snug;
+  }
+
+  .type-label {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em];
+  }
+
+  .type-meta {
+    @apply font-mono text-xs tabular-nums;
+  }
+
+  .type-chip {
+    @apply font-mono text-[10px] tracking-wide;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 border border-border px-2 py-1 text-sm font-medium rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
   }
@@ -234,7 +262,7 @@
   }
 
   .prose h3 {
-    @apply text-lg font-bold pb-3 mt-6 border-b border-border mb-3;
+    @apply text-base font-semibold mt-5 mb-2;
   }
 
   .prose blockquote {

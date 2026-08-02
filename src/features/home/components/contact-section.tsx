@@ -56,11 +56,7 @@ export function ContactSection() {
       </div>
 
       <ItemCard
-        header={
-          <h3 className="text-[11px] font-mono text-muted uppercase tracking-[0.2em]">
-            {tPages('linksTitle')}
-          </h3>
-        }
+        header={<h3 className="type-label text-muted-foreground">{tPages('linksTitle')}</h3>}
       >
         <div className="divide-y divide-border">
           {SOCIAL_LINKS.map((link) => (
@@ -75,11 +71,11 @@ export function ContactSection() {
                 <span className="block text-[15px] font-mono text-foreground group-hover:text-primary transition-colors lowercase">
                   {link.label}
                 </span>
-                <span className="block text-[12px] text-muted-foreground/70 leading-snug mt-0.5">
+                <span className="block text-xs text-muted-foreground/70 leading-snug mt-0.5">
                   {tPages(`links.${link.id}`)}
                 </span>
               </div>
-              <span className="shrink-0 text-[12px] font-mono text-muted group-hover:text-primary/70 transition-colors">
+              <span className="shrink-0 text-xs font-mono text-muted-foreground group-hover:text-primary/70 transition-colors">
                 {link.handle}
               </span>
             </a>

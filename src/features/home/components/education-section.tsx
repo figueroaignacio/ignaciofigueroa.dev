@@ -34,13 +34,13 @@ export async function EducationSection() {
             <ItemCard
               header={
                 <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                  <h3 className="text-[19px] md:text-[20px] font-medium text-foreground">
+                  <h3 className="type-item-title text-foreground">
                     {item.title}{' '}
                     <span className="text-base font-normal text-muted-foreground">
                       {item.institution}
                     </span>
                   </h3>
-                  <span className="shrink-0 text-[11px] font-mono tabular-nums text-muted tracking-wider">
+                  <span className="shrink-0 type-meta text-muted-foreground tracking-wider">
                     {formatDate(item.startDate, locale)} —{' '}
                     {item.endDate ? formatDate(item.endDate, locale) : t('present')}
                   </span>

@@ -55,9 +55,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
       <header className="flex items-center justify-between w-full px-4 py-3 shrink-0 safe-top relative">
         <div className="flex items-center gap-2.5">
           <AssistantAvatar size="sm" />
-          <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">
-            {t('header.title')}
-          </span>
+          <span className="type-label text-muted-foreground">{t('header.title')}</span>
         </div>
         <div className="flex items-center gap-1">
           {messages.length > 0 && (

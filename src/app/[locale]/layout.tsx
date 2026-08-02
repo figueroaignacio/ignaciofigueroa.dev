@@ -2,7 +2,7 @@ import { routing } from '@/i18n/routing';
 import { Providers } from '@/shared/components/providers';
 import { SkipLink } from '@/shared/components/ui/skip-link';
 import { BASE_URL } from '@/shared/lib/constants';
-import { fontCode, fontHeading, fontSans, fontSerif } from '@/shared/lib/fonts';
+import { fontCode, fontSans, fontSerif } from '@/shared/lib/fonts';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
@@ -26,7 +26,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontHeading.variable} ${fontSerif.variable} ${fontCode.variable} antialiased py-16`}
+        className={`${fontSans.variable} ${fontSerif.variable} ${fontCode.variable} antialiased py-16`}
       >
         <NextIntlClientProvider>
           <Providers>

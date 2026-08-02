@@ -71,9 +71,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
           {contentBlocks.map((block, index) => (
             <Fragment key={index}>
               {block}
-              {index < contentBlocks.length - 1 && (
-                <div className="my-2 border-t border-rule/50" />
-              )}
+              {index < contentBlocks.length - 1 && <div className="my-2 border-t border-rule/50" />}
             </Fragment>
           ))}
         </div>

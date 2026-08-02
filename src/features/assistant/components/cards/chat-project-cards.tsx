@@ -22,7 +22,7 @@ export function ChatProjectCards() {
 
   return (
     <div className="flex flex-col gap-3 mt-4">
-      <h2 className="text-[11px] font-mono tracking-[0.2em] uppercase text-muted">{t('title')}</h2>
+      <h2 className="type-label text-muted-foreground">{t('title')}</h2>
       <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
       {projects.map((project) => (
         <ChatProjectCard key={project.id} {...project} />
