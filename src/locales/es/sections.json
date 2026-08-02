@@ -95,6 +95,8 @@
     "description": "Credenciales verificadas de programas estructurados que completé.",
     "cta": "Ver credencial",
     "skills": "Habilidades",
+    "showMore": "Ver más",
+    "showLess": "Ver menos",
     "items": [
       {
         "title": "Claude 101",

@@ -94,6 +94,8 @@
     "description": "Verified credentials from structured programs I completed.",
     "cta": "View credential",
     "skills": "Skills",
+    "showMore": "Show more",
+    "showLess": "Show less",
     "items": [
       {
         "title": "Claude 101",
