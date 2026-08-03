@@ -103,6 +103,12 @@ export default function HomePage({ params }: HomePageProps) {
         <HomeHero />
         <ExperienceSection />
         <ProjectsSection />
+        <Suspense fallback={null}>
+          <EducationSection />
+        </Suspense>
+        <CertificationsSection />
+        <TechStack />
+        <Interests />
         <AboutSection />
         {/* <WhoAmI /> Just by now until i change the video */}
         <Suspense fallback={null}>
@@ -111,13 +117,7 @@ export default function HomePage({ params }: HomePageProps) {
         <Suspense fallback={null}>
           <GithubStatsSection />
         </Suspense>
-        <TechStack />
-        <Interests />
         <NachUICta />
-        <Suspense fallback={null}>
-          <EducationSection />
-        </Suspense>
-        <CertificationsSection />
         <Suspense fallback={null}>
           <Testimonials />
         </Suspense>
