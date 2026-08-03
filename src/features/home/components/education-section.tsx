@@ -1,7 +1,5 @@
 import { Section } from '@/shared/components/ui/section';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
-import { Mortarboard02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { getLocale, getTranslations } from 'next-intl/server';
 
 interface EducationItem {
@@ -37,14 +35,10 @@ export async function EducationSection() {
             <li key={item.title} className="relative">
               <span
                 aria-hidden
-                className={`absolute top-0.5 left-[-34.5px] flex size-5 items-center justify-center rounded-full border bg-background ${
-                  isCurrent
-                    ? 'border-foreground text-foreground'
-                    : 'border-border text-muted-foreground'
+                className={`absolute top-2 left-[-28.5px] size-2 rounded-full border ${
+                  isCurrent ? 'border-foreground bg-foreground' : 'border-border bg-background'
                 }`}
-              >
-                <HugeiconsIcon icon={Mortarboard02Icon} className="size-3" />
-              </span>
+              />
 
               <span className="type-meta text-muted-foreground tracking-wider">
                 {formatDate(item.startDate, locale)} —{' '}
