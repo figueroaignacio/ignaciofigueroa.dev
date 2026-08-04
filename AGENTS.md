@@ -17,9 +17,21 @@ Note: All node commands require `NODE_OPTIONS=--no-deprecation` (set automatical
 
 - **Locale routing**: `[locale]/` route segment — all public pages under `src/app/[locale]/(main)/`
 - **Payload admin**: `/admin` via `(payload)` route group
-- **Collections**: `src/collections/*.ts` — maps to PostgreSQL tables
-- **Components**: `src/components/ui/` for primitives, `src/components/` for domain components
-- **Features**: `src/features/` for feature-specific logic
+- **Collections**: `src/shared/collections/*.ts` — maps to PostgreSQL tables
+- **Shared**: `src/shared/components/ui/` for primitives (Section, Skeleton, TechChip…), `src/shared/components/` for layout chrome (Dock, Footer), `src/shared/lib/` for utilities
+
+### Feature structure (views → containers → widgets → ui)
+
+Each feature under `src/features/<name>/` follows a layered flow:
+
+- **`views/`** — page-level composition. Owns shared page state and arranges containers (wrapped in `<Suspense>` with skeleton fallbacks). A view can have many containers.
+- **`containers/`** — async server components that orchestrate data: fetch via `api/`, transform to widget props. A container can feed many widgets.
+- **`widgets/`** — receive data from a container and pick the UI by state: `undefined` → skeleton UI, `null`/empty → empty UI (section hidden), data → data UI.
+- **`ui/`** — smallest presentational components (lists, cards, skeletons, static sections).
+- **`api/`** — data fetchers (Payload local API via `shared/lib/collection-query`, GitHub, external APIs).
+- **`actions/`**, **`hooks/`**, **`lib/`** — server actions, client hooks, feature utilities.
+
+Routes in `src/app/` stay thin: metadata/SEO + render the feature's view.
 
 ## Tech Stack
 
