@@ -1,6 +1,6 @@
 'use client';
 
-import { ProjectCard } from '@/features/projects/components/project-card';
+import { ProjectCard } from '@/features/projects/ui/project-card';
 import type { Project } from '@/payload-types';
 import { Tabs } from '@/shared/components/ui/tabs';
 

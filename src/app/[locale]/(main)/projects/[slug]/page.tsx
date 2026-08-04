@@ -1,12 +1,9 @@
 import { getProjectBySlug, getProjects } from '@/features/projects/api/projects';
-import { ProjectHeaderPage } from '@/features/projects/components/project-header-page';
-import { ProjectVideo } from '@/features/projects/components/project-video';
+import { ProjectDetailView } from '@/features/projects/views/project-detail-view';
 import type { Project } from '@/payload-types';
 import { BASE_URL } from '@/shared/lib/constants';
-import { RichText } from '@payloadcms/richtext-lexical/react';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
-import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -20,43 +17,8 @@ interface ProjectPageProps {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
 
-  if (!project) {
-    notFound();
-  }
-
-  return (
-    <div className="relative max-w-3xl mx-auto py-8">
-      <div
-        className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-[350px] w-full max-w-[600px] -translate-x-1/2 rounded-full bg-linear-to-tr from-primary/10 via-accent/5 to-transparent opacity-75 blur-[100px] dark:from-primary/15 dark:via-primary/5"
-        aria-hidden="true"
-      />
-
-      <div className="animate-fade-in-up">
-        <ProjectHeaderPage
-          title={project.title}
-          description={project.description}
-          demo={project.demo || ''}
-          repository={project.repository || ''}
-          icon={project.icon as string}
-          body={project.body}
-          locale={project.locale}
-          technologies={project.technologies}
-        />
-      </div>
-
-      <div className="animate-fade-in-up delay-150 mt-4">
-        <ProjectVideo videoUrl={project.videoUrl} />
-      </div>
-
-      <div className="animate-fade-in-up delay-300 mt-10 mb-24">
-        <article className="prose-reading max-w-none">
-          <RichText data={project.body} />
-        </article>
-      </div>
-    </div>
-  );
+  return <ProjectDetailView slug={slug} />;
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
