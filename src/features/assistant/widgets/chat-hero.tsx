@@ -2,8 +2,8 @@
 
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { AssistantAvatar } from './ui/assistant-avatar';
-import { ChatSuggestions } from './ui/chat-suggestions';
+import { AssistantAvatar } from '../ui/assistant-avatar';
+import { ChatSuggestions } from '../ui/chat-suggestions';
 
 interface ChatHeroProps {
   onQuickAction: (text: string) => void;

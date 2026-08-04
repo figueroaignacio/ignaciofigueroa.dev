@@ -1,7 +1,7 @@
 'use client';
 
-import { FloatingChat } from '@/features/assistant/components/floating-chat';
-import { AssistantAvatar } from '@/features/assistant/components/ui/assistant-avatar';
+import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
+import { AssistantAvatar } from '@/features/assistant/ui/assistant-avatar';
 import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/shared/lib/cn';
 

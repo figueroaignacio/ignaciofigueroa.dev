@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useChatExperience } from '../../hooks/use-chat-data';
-import { ChatExperienceCard } from '../ui/chat-experience-card';
+import { ChatExperienceCard } from '../../ui/chat-experience-card';
 
 export function ChatExperienceCards() {
   const locale = useLocale();

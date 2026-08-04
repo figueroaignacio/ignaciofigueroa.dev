@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useChatProjects } from '../../hooks/use-chat-data';
-import { ChatProjectCard } from '../ui/chat-project-card';
+import { ChatProjectCard } from '../../ui/chat-project-card';
 
 export function ChatProjectCards() {
   const { data: projects, isLoading: loading } = useChatProjects();

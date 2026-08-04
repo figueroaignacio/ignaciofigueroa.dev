@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { ChatHero } from './chat-hero';
 import { ChatInput } from './chat-input';
 import { ChatMessages } from './chat-messages';
-import { AssistantAvatar } from './ui/assistant-avatar';
+import { AssistantAvatar } from '../ui/assistant-avatar';
 
 interface FloatingChatProps {
   onClose: () => void;

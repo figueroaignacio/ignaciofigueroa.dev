@@ -8,7 +8,7 @@ import { ChatExperienceCards } from './cards/chat-experience-cards';
 import { ChatPitchCard } from './cards/chat-pitch-card';
 import { ChatProjectCards } from './cards/chat-project-cards';
 import { ChatEmailStatus } from './chat-email-status';
-import { ChatMarkdownContent } from './ui/chat-markdown-content';
+import { ChatMarkdownContent } from '../ui/chat-markdown-content';
 
 interface ChatMessageProps {
   message: Message;

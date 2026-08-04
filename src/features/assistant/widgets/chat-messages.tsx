@@ -4,8 +4,8 @@ import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { Message } from '../types';
 import { ChatMessage } from './chat-message';
-import { ChatLoading } from './ui/chat-loading';
-import { ChatSuggestions } from './ui/chat-suggestions';
+import { ChatLoading } from '../ui/chat-loading';
+import { ChatSuggestions } from '../ui/chat-suggestions';
 
 interface ChatMessagesProps {
   messages: Message[];
