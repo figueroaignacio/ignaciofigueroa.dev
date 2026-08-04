@@ -1,21 +1,8 @@
-import { AboutSection } from '@/features/home/components/about-section';
-import { CertificationsSection } from '@/features/home/components/certifications-section';
-import { ContactSection } from '@/features/home/components/contact-section';
-import { ContributionsSection } from '@/features/home/components/contributions-section';
-import { CTACurriculum } from '@/features/home/components/cta-curriculum';
-import { EducationSection } from '@/features/home/components/education-section';
-import { ExperienceSection } from '@/features/home/components/experience-section';
-import { GithubStatsSection } from '@/features/home/components/github-stats-section';
-import { HomeHero } from '@/features/home/components/home-hero';
-import { Interests } from '@/features/home/components/interests';
-import { NachUICta } from '@/features/home/components/nach-ui-cta';
-import { ProjectsSection } from '@/features/home/components/projects-section';
-import { TechStack } from '@/features/home/components/tech-stack';
-import { Testimonials } from '@/features/home/components/testimonials';
+import { HomeView } from '@/features/home/views/home-view';
 import { BASE_URL } from '@/shared/lib/constants';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Suspense, use } from 'react';
+import { use } from 'react';
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
@@ -99,31 +86,7 @@ export default function HomePage({ params }: HomePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="space-y-14 mb-12">
-        <HomeHero />
-        <ExperienceSection />
-        <ProjectsSection />
-        <Suspense fallback={null}>
-          <EducationSection />
-        </Suspense>
-        <CertificationsSection />
-        <TechStack />
-        <Interests />
-        <AboutSection />
-        {/* <WhoAmI /> Just by now until i change the video */}
-        <Suspense fallback={null}>
-          <ContributionsSection />
-        </Suspense>
-        <Suspense fallback={null}>
-          <GithubStatsSection />
-        </Suspense>
-        <NachUICta />
-        <Suspense fallback={null}>
-          <Testimonials />
-        </Suspense>
-        <CTACurriculum />
-        <ContactSection />
-      </div>
+      <HomeView />
     </>
   );
 }

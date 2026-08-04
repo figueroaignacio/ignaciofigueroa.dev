@@ -1,11 +1,10 @@
-import { Section } from '@/shared/components/ui/section';
 import { getTranslations } from 'next-intl/server';
 import {
   getGithubStats,
   type GithubContributionDay,
   type YearContributionData,
 } from '../api/github-stats';
-import { GithubStatsClient } from './github-stats-client';
+import { GithubStatsWidget, type GithubStatsWidgetData } from '../widgets/github-stats-widget';
 
 const getFallbackStats = () => {
   const startYear = 2024;
@@ -61,13 +60,9 @@ const getFallbackStats = () => {
   };
 };
 
-export async function GithubStatsSection() {
+export async function GithubStatsContainer() {
   const t = await getTranslations('sections.github');
-  let stats = await getGithubStats();
-
-  if (!stats) {
-    stats = getFallbackStats();
-  }
+  const stats = (await getGithubStats()) ?? getFallbackStats();
 
   const availableYears = Object.keys(stats.years)
     .map(Number)
@@ -76,20 +71,9 @@ export async function GithubStatsSection() {
   const currentYear = new Date().getFullYear().toString();
   const initialYear = availableYears.includes(Number(currentYear))
     ? currentYear
-    : availableYears[0]?.toString() || '2026';
+    : (availableYears[0]?.toString() ?? '2026');
 
-  return (
-    <Section id="github" title={t('title')}>
-      <GithubStatsClient
-        initialYear={initialYear}
-        availableYears={availableYears}
-        publicRepos={stats.publicRepos}
-        followers={stats.followers}
-        following={stats.following}
-        totalStars={stats.totalStars}
-        topLanguages={stats.topLanguages}
-        years={stats.years}
-      />
-    </Section>
-  );
+  const data: GithubStatsWidgetData = { ...stats, initialYear, availableYears };
+
+  return <GithubStatsWidget id="github" title={t('title')} stats={data} />;
 }

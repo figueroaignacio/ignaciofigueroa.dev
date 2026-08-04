@@ -1,7 +1,7 @@
 'use server';
 
 import { Resend } from 'resend';
-import { ContactEmail } from '../components/contact-email';
+import { ContactEmail } from '../ui/contact-email';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

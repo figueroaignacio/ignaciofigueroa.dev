@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { getNachUiComponents } from '../api/get-nach-ui-components';
-import { NachUICtaClient } from './nach-ui-cta-client';
+import { NachUiCtaWidget } from '../widgets/nach-ui-cta-widget';
 
-export async function NachUICta() {
+export async function NachUiCtaContainer() {
   const t = await getTranslations('sections.mateUiCta');
   const components = await getNachUiComponents();
   const count = components.length;
@@ -25,5 +25,5 @@ export async function NachUICta() {
     },
   };
 
-  return <NachUICtaClient t={translations} count={count} />;
+  return <NachUiCtaWidget count={count} t={translations} />;
 }

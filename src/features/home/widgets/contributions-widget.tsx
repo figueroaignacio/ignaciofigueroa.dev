@@ -1,18 +1,20 @@
 import type { Contribution } from '@/payload-types';
 import { Section } from '@/shared/components/ui/section';
-import { getLocale, getTranslations } from 'next-intl/server';
-import { getContributions } from '../api/contributions';
-import { ContributionCard } from './contribution-card';
+import { ContributionCard } from '../ui/contribution-card';
+import { ContributionsSkeleton } from '../ui/contributions-skeleton';
 
-export async function ContributionsSection() {
-  const t = await getTranslations('sections.contributions');
-  const locale = await getLocale();
-  const contributions: Contribution[] = await getContributions(locale);
+interface ContributionsWidgetProps {
+  id: string;
+  title?: string;
+  contributions?: Contribution[] | null;
+}
 
-  if (!contributions || contributions.length === 0) return null;
+export function ContributionsWidget({ id, title = '', contributions }: ContributionsWidgetProps) {
+  if (contributions === undefined) return <ContributionsSkeleton />;
+  if (contributions === null || contributions.length === 0) return null;
 
   return (
-    <Section id="contributions" title={t('title')}>
+    <Section id={id} title={title}>
       <ul className="space-y-4">
         {contributions.map((contribution) => (
           <ContributionCard
