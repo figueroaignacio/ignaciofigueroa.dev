@@ -23,6 +23,14 @@
   --accent: oklch(93.5% 0.005 70);
   --accent-foreground: oklch(18% 0.003 70);
 
+  /*
+   * Brand: muted amber — the only saturated hue in the system.
+   * Reserved for link hover, the current timeline dot and the assistant button.
+   * Light value is darkened from #E0A458 to clear 4.5:1 on the bone canvas (5.4:1).
+   */
+  --brand: oklch(52% 0.115 71);
+  --brand-foreground: oklch(98.5% 0.004 70);
+
   /* Feedback (Minimal desaturated feedback tones) */
   --destructive: oklch(62% 0.16 20);
   --destructive-foreground: oklch(98.5% 0.004 70);
@@ -63,9 +71,14 @@
   --secondary: oklch(24% 0.002 70);
   --secondary-foreground: oklch(92% 0.002 70);
   --muted: oklch(24% 0.002 70);
-  --muted-foreground: oklch(58% 0.002 70);
+  /* 6.5:1 on --background — was 58% (4.65:1), which fell to 3.9:1 under the /90 modifiers */
+  --muted-foreground: oklch(66% 0.002 70);
   --accent: oklch(22% 0.002 70);
   --accent-foreground: oklch(92% 0.002 70);
+
+  /* Brand: #E0A458 — 9.1:1 on --background, 8.5:1 on --card */
+  --brand: oklch(76% 0.117 71);
+  --brand-foreground: oklch(14% 0.002 70);
 
   /* Feedback */
   --destructive: oklch(58% 0.14 20);
@@ -86,7 +99,8 @@
 
   /* Editorial tokens */
   --rule: oklch(25% 0.002 70);
-  --muted-strong: oklch(74% 0.002 70);
+  /* Hero tagline — 10.9:1 on --background */
+  --muted-strong: oklch(80% 0.002 70);
   --surface-muted: oklch(20% 0.002 70);
 }
 @theme inline {
@@ -106,6 +120,8 @@
   --color-rule: var(--rule);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -116,20 +132,34 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 0.25rem);
   --radius-2xl: calc(var(--radius) + 0.5rem);
-  --font-sans: var(--font-sans);
-  --font-heading: var(--font-sans);
+  /*
+   * Two families, no more: Source Serif 4 carries every reading surface
+   * (headings + body), JetBrains Mono carries structure (labels, chips, dates,
+   * nav, actions). `font-sans` is kept as an alias so components don't churn.
+   */
+  --font-sans: var(--font-serif);
+  --font-heading: var(--font-serif);
   --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
   --animate-blink: blink 3s infinite;
 }
 
 @layer base {
+  :root {
+    /* Height the floating dock occupies, incl. its bottom offset. */
+    --dock-space: 7.5rem;
+  }
+
   html {
     @apply scroll-smooth;
+    /* Anchor targets never land underneath the floating dock. */
+    scroll-padding-bottom: var(--dock-space);
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased leading-relaxed;
+    /* Nothing can scroll to a resting position behind the dock. */
+    padding-bottom: calc(var(--dock-space) + env(safe-area-inset-bottom));
   }
 
   h1,
@@ -161,7 +191,7 @@
    * display > page-title > item-title > body > meta > label > chip
    */
   .type-display {
-    @apply text-3xl md:text-4xl font-semibold tracking-tight leading-[1.1];
+    @apply text-[2.125rem] md:text-5xl font-semibold tracking-tight leading-[1.05];
   }
 
   .type-page-title {
@@ -185,7 +215,7 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 border border-border px-2 py-1 text-sm font-medium rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 border border-border px-2.5 py-1.5 font-mono text-sm rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
   }
 
   .btn-primary {
@@ -194,6 +224,11 @@
 
   .btn-outline {
     @apply text-foreground bg-transparent hover:bg-foreground/5 hover:border-foreground/30 transition-all duration-300;
+  }
+
+  /* The one place a button wears the brand: the AI assistant entry point. */
+  .btn-accent {
+    @apply text-foreground bg-transparent border-brand/55 hover:border-brand hover:bg-brand/10 transition-all duration-300;
   }
 
   .card {
@@ -207,7 +242,8 @@
   }
 
   .prose-reading p {
-    @apply mb-4 leading-[1.75] text-justify md:text-left text-foreground/90;
+    /* Left-aligned everywhere: justification on a narrow mobile column opens rivers. */
+    @apply mb-4 leading-[1.75] text-left text-foreground/90;
   }
 
   .prose-reading strong {
