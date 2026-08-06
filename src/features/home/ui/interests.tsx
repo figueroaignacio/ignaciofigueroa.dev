@@ -1,7 +1,6 @@
 import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
 import { Section } from '@/shared/components/ui/section';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
-import { cn } from '@/shared/lib/cn';
 import type { Icon } from '@/shared/lib/constants';
 import {
   AiBrain01Icon,
@@ -22,23 +21,26 @@ import { useTranslations } from 'next-intl';
 type InterestConfig = {
   key: string;
   icon: Icon;
-  color: string;
 };
 
+/*
+ * Icons stay monochrome on purpose. Thirteen saturated hues here used to compete
+ * with each other and with the single amber accent; the labels carry the meaning.
+ */
 const INTERESTS_CONFIG: InterestConfig[] = [
-  { key: 'frontend', icon: Layout01Icon, color: 'text-cyan-500' },
-  { key: 'backend', icon: CloudServerIcon, color: 'text-emerald-500' },
-  { key: 'ai', icon: AiBrain01Icon, color: 'text-violet-500' },
-  { key: 'prompts', icon: ComputerTerminal01Icon, color: 'text-amber-500' },
-  { key: 'arch', icon: PuzzleIcon, color: 'text-blue-500' },
-  { key: 'clean', icon: SecurityIcon, color: 'text-rose-500' },
-  { key: 'ui', icon: Layout01Icon, color: 'text-pink-500' },
-  { key: 'a11y', icon: FaceIdIcon, color: 'text-indigo-500' },
-  { key: 'perf', icon: FlashIcon, color: 'text-orange-500' },
-  { key: 'qa', icon: TestTube01Icon, color: 'text-lime-500' },
-  { key: 'devops', icon: FlowCircleIcon, color: 'text-sky-500' },
-  { key: 'opensource', icon: Globe02Icon, color: 'text-green-500' },
-  { key: 'linux', icon: LinuxIcon, color: 'text-foreground' },
+  { key: 'frontend', icon: Layout01Icon },
+  { key: 'backend', icon: CloudServerIcon },
+  { key: 'ai', icon: AiBrain01Icon },
+  { key: 'prompts', icon: ComputerTerminal01Icon },
+  { key: 'arch', icon: PuzzleIcon },
+  { key: 'clean', icon: SecurityIcon },
+  { key: 'ui', icon: Layout01Icon },
+  { key: 'a11y', icon: FaceIdIcon },
+  { key: 'perf', icon: FlashIcon },
+  { key: 'qa', icon: TestTube01Icon },
+  { key: 'devops', icon: FlowCircleIcon },
+  { key: 'opensource', icon: Globe02Icon },
+  { key: 'linux', icon: LinuxIcon },
 ];
 
 export function Interests() {
@@ -48,16 +50,17 @@ export function Interests() {
   return (
     <Section id="interests" title={tSection('title')}>
       <TechChipGroup role="list">
-        {INTERESTS_CONFIG.map(({ key, icon: Icon, color }) => (
+        {INTERESTS_CONFIG.map(({ key, icon: Icon }) => (
           <TechChip
             key={key}
             role="listitem"
-            className="px-2.5 py-1 text-[11px] text-foreground/80 hover:text-foreground transition-colors cursor-default"
+            tone="lead"
+            className="cursor-default transition-colors [&>span]:text-muted-foreground"
             icon={
               typeof Icon === 'function' ? (
-                <Icon className={cn('size-full', color)} />
+                <Icon className="size-full" />
               ) : (
-                <HugeiconsIcon icon={Icon} className={cn('size-full', color)} />
+                <HugeiconsIcon icon={Icon} className="size-full" />
               )
             }
           >

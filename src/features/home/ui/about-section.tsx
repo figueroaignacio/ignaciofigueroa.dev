@@ -3,16 +3,8 @@ import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
-const FOCUS = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Node.js',
-  'AI Integration',
-  'Clean Architecture',
-  'Linux',
-  'Fedora',
-];
+const FOCUS_LEAD = ['React', 'Next.js', 'TypeScript', 'Node.js'];
+const FOCUS_SUPPORT = ['AI Integration', 'Clean Architecture', 'Linux', 'Fedora'];
 
 export async function AboutSection() {
   const t = await getTranslations('sections.aboutMe.content');
@@ -43,9 +35,14 @@ export async function AboutSection() {
         </div>
 
         <div className="clear-both space-y-2.5 pt-6 mt-6 border-t border-border">
-          <p className="type-chip uppercase tracking-[0.2em] text-muted-foreground">Focus</p>
+          <p className="type-label text-muted-foreground">Focus</p>
           <TechChipGroup>
-            {FOCUS.map((item) => (
+            {FOCUS_LEAD.map((item) => (
+              <TechChip key={item} tone="lead">
+                {item}
+              </TechChip>
+            ))}
+            {FOCUS_SUPPORT.map((item) => (
               <TechChip key={item}>{item}</TechChip>
             ))}
           </TechChipGroup>
