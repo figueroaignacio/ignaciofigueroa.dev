@@ -30,9 +30,34 @@ export function Dock() {
   const [activeSection, setActiveSection] = useState<string>('/');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Auto-hide while reading downward, bring it back on the first upward scroll.
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY;
+      const delta = y - lastY;
+      if (Math.abs(delta) < 8) return;
+      lastY = y;
+      setIsHidden(delta > 0 && y > 240);
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
@@ -131,12 +156,21 @@ export function Dock() {
       <nav
         className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 w-max"
         aria-label="Main Navigation"
+        // Keyboard users reaching the dock while it's tucked away bring it straight back.
+        onFocusCapture={() => setIsHidden(false)}
       >
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
+          animate={{ opacity: 1, y: isHidden && !isChatOpen ? 128 : 0, scale: 1 }}
           transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.1 }}
-          className="flex items-center gap-1.5 rounded-2xl border border-border/80 bg-background/80 backdrop-blur-xl px-2 py-2 shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]"
+          className={cn(
+            'flex items-center gap-1.5 rounded-2xl border border-border/80 px-2 py-2',
+            // Opaque by default; only thins out where the blur can actually do its job,
+            // so scrolling text is never legible through the dock.
+            'bg-background/98 supports-[backdrop-filter]:bg-background/88',
+            'backdrop-blur-2xl backdrop-saturate-150',
+            'shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]',
+          )}
         >
           {navigation.map((item) => {
             const isAssistant = item.href === '/assistant';
@@ -167,7 +201,7 @@ export function Dock() {
                     </span>
                   )}
                 </span>
-                <span className="relative z-10 text-[11px] font-medium leading-none">
+                <span className="relative z-10 font-mono text-[11px] leading-none">
                   {item.label}
                 </span>
               </>
@@ -179,9 +213,9 @@ export function Dock() {
               'transition-all duration-150 ease-out',
               'active:scale-95',
               'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
-              active
-                ? 'text-foreground font-semibold'
-                : 'text-muted-foreground hover:text-foreground/80',
+              active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+              // Inset ring instead of a border so the assistant doesn't shift the row by 2px.
+              isAssistant && 'ring-1 ring-inset ring-brand/45 hover:ring-brand',
             );
 
             if (isAssistant) {

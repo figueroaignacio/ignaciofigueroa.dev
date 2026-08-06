@@ -26,8 +26,6 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
         {children}
       </main>
       <Footer />
-      {}
-      <div className="h-32 w-full shrink-0 relative z-10" aria-hidden="true" />
       <Dock />
     </div>
   );
