@@ -2,11 +2,16 @@
 
 import { sendContactEmailAction } from '@/features/home/actions/send-email';
 import { ASSISTANT_API_URL } from '@/shared/lib/constants';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Message } from '../types';
 
 const STORAGE_KEY = 'chat-messages';
+
+// Matches HISTORY_LIMIT on the backend, which keeps the last 20 turns anyway.
+// Sending the whole localStorage transcript wastes bandwidth and trips the
+// backend's 50-entry cap once a conversation gets long enough.
+const HISTORY_LIMIT = 20;
 
 function loadMessages(): Message[] {
   if (typeof window === 'undefined') return [];
@@ -26,6 +31,7 @@ function persistMessages(messages: Message[]): void {
 
 export function useChat() {
   const t = useTranslations('components.chat.messages');
+  const locale = useLocale();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -60,7 +66,8 @@ export function useChat() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             message: trimmed,
-            history: messages,
+            history: messages.slice(-HISTORY_LIMIT),
+            locale,
           }),
           signal: controller.signal,
         });
@@ -161,7 +168,7 @@ export function useChat() {
         abortRef.current = null;
       }
     },
-    [isLoading, t],
+    [isLoading, t, locale],
   );
 
   const resetChat = useCallback(() => {
