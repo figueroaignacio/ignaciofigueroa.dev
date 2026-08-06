@@ -1,9 +1,14 @@
-import { Bricolage_Grotesque, JetBrains_Mono, Source_Serif_4 } from 'next/font/google';
+import { JetBrains_Mono, Source_Serif_4 } from 'next/font/google';
 
-export const fontSans = Bricolage_Grotesque({
+/**
+ * Two families, deliberately. Source Serif 4 reads (headings + body),
+ * JetBrains Mono structures (labels, chips, dates, nav, actions).
+ */
+export const fontSerif = Source_Serif_4({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-serif',
   display: 'swap',
+  style: ['normal', 'italic'],
   preload: true,
 });
 
@@ -13,12 +18,4 @@ export const fontCode = JetBrains_Mono({
   display: 'swap',
   weight: ['400', '500', '700'],
   preload: false,
-});
-
-export const fontSerif = Source_Serif_4({
-  subsets: ['latin'],
-  variable: '--font-serif',
-  display: 'swap',
-  style: ['normal', 'italic'],
-  preload: true,
 });
