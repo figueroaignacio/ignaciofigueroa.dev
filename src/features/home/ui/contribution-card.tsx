@@ -35,7 +35,7 @@ export function ContributionCard({
                 href={repository}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary transition-colors"
+                className="hover:text-brand transition-colors"
               >
                 {title}
               </a>
@@ -46,7 +46,7 @@ export function ContributionCard({
                 href={repository}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-brand transition-colors"
               >
                 {t('viewRepo').toLowerCase()}
               </a>
@@ -55,7 +55,7 @@ export function ContributionCard({
                   href={fork}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-brand transition-colors"
                 >
                   {t('viewFork').toLowerCase()}
                 </a>
@@ -74,7 +74,7 @@ export function ContributionCard({
                 href={pr.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/pr flex items-center justify-between gap-3 text-xs font-mono text-muted-foreground hover:text-primary transition-colors py-1 max-w-md border-b border-border/30 last:border-b-0"
+                className="group/pr flex items-center justify-between gap-3 text-xs font-mono text-muted-foreground hover:text-brand transition-colors py-1 max-w-md border-b border-border/30 last:border-b-0"
               >
                 <span className="truncate">{pr.label || `pr #${index + 1}`}</span>
                 <HugeiconsIcon icon={LinkSquare02Icon} className="size-3 opacity-60 shrink-0" />

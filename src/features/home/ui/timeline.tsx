@@ -21,7 +21,9 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
           <span
             aria-hidden
             className={`absolute top-2 left-[-28.5px] size-2 rounded-full border ${
-              item.current ? 'border-foreground bg-foreground' : 'border-border bg-background'
+              item.current
+                ? 'border-brand bg-brand ring-4 ring-brand/15'
+                : 'border-border bg-background'
             }`}
           />
 
@@ -36,7 +38,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
                   href={item.subtitleHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-primary transition-colors underline decoration-border hover:decoration-primary"
+                  className="hover:text-brand transition-colors underline decoration-border hover:decoration-brand"
                 >
                   {item.subtitle}
                 </a>
@@ -47,23 +49,27 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
           </h3>
 
           {item.description && (
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground/90">
-              {item.description}
-            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
           )}
 
           {item.bullets && item.bullets.length > 0 && (
-            <ul className="mt-3 pl-4 space-y-1.5 list-disc text-sm leading-relaxed text-muted-foreground/90">
+            <ul className="mt-3 pl-4 space-y-2 list-disc text-sm leading-relaxed text-muted-foreground marker:text-border">
               {item.bullets.map((bullet) => (
                 <li key={bullet}>{bullet}</li>
               ))}
             </ul>
           )}
 
+          {/*
+           * Chips read as the role's stack: the first three lead, the tail stays quiet
+           * so a long list doesn't compete with the role title.
+           */}
           {item.chips && item.chips.length > 0 && (
-            <TechChipGroup className="mt-3">
-              {item.chips.map((chip) => (
-                <TechChip key={chip}>{chip}</TechChip>
+            <TechChipGroup className="mt-4">
+              {item.chips.map((chip, index) => (
+                <TechChip key={chip} tone={index < 3 ? 'lead' : 'muted'}>
+                  {chip}
+                </TechChip>
               ))}
             </TechChipGroup>
           )}

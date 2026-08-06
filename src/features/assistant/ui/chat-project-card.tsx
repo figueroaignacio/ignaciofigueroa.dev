@@ -25,7 +25,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('source')}
-              className="text-muted-foreground hover:text-primary transition-colors duration-150"
+              className="text-muted-foreground hover:text-brand transition-colors duration-150"
             >
               <HugeiconsIcon icon={CodeIcon} className="size-4" />
             </a>
@@ -36,7 +36,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('preview')}
-              className="text-muted-foreground hover:text-primary transition-colors duration-150"
+              className="text-muted-foreground hover:text-brand transition-colors duration-150"
             >
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
             </a>
@@ -45,7 +45,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
             <Link
               href={`/projects/${slug}`}
               aria-label={t('details')}
-              className="text-muted-foreground hover:text-primary transition-colors duration-150"
+              className="text-muted-foreground hover:text-brand transition-colors duration-150"
             >
               <HugeiconsIcon icon={InformationCircleIcon} className="size-4" />
             </Link>

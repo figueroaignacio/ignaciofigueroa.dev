@@ -65,17 +65,17 @@ export function ContactSection() {
               href={link.href}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
-              className="group flex items-center justify-between gap-6 py-3.5 first:pt-0 last:pb-0 hover:text-primary transition-colors duration-300"
+              className="group flex items-center justify-between gap-6 py-3.5 first:pt-0 last:pb-0 hover:text-brand transition-colors duration-300"
             >
               <div className="min-w-0">
-                <span className="block text-[15px] font-mono text-foreground group-hover:text-primary transition-colors lowercase">
+                <span className="block text-[15px] font-mono text-foreground group-hover:text-brand transition-colors lowercase">
                   {link.label}
                 </span>
-                <span className="block text-xs text-muted-foreground/70 leading-snug mt-0.5">
+                <span className="block text-xs text-muted-foreground leading-relaxed mt-0.5">
                   {tPages(`links.${link.id}`)}
                 </span>
               </div>
-              <span className="shrink-0 text-xs font-mono text-muted-foreground group-hover:text-primary/70 transition-colors">
+              <span className="shrink-0 text-xs font-mono text-muted-foreground group-hover:text-brand/70 transition-colors">
                 {link.handle}
               </span>
             </a>

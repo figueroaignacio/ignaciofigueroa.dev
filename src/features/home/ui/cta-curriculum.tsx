@@ -17,7 +17,7 @@ export function CTACurriculum() {
             href={t('url')}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-mono text-muted-foreground hover:text-primary transition-colors underline decoration-border/60 hover:decoration-primary"
+            className="text-xs font-mono text-muted-foreground hover:text-brand transition-colors underline decoration-border/60 hover:decoration-brand"
           >
             {t('cta.text').toLowerCase()} ↗
           </a>

@@ -50,7 +50,7 @@ export function CertificationsList({ items }: { items: CertificationItem[] }) {
                 }
               >
                 <article className="space-y-2">
-                  <p className="text-sm text-muted-foreground/90 leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
                   {item.skills.length > 0 && (
@@ -65,7 +65,7 @@ export function CertificationsList({ items }: { items: CertificationItem[] }) {
                       href={item.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs font-mono text-muted-foreground hover:text-primary transition-colors underline decoration-border/60 hover:decoration-primary"
+                      className="text-xs font-mono text-muted-foreground hover:text-brand transition-colors underline decoration-border/60 hover:decoration-brand"
                     >
                       {t('cta')} ↗
                     </a>

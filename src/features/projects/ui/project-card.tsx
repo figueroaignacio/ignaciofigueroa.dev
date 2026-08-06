@@ -24,7 +24,7 @@ export function ProjectCard({
       header={
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h3 className="type-item-title text-foreground">
-            <Link href={`/projects/${slug}`} className="hover:text-primary transition-colors">
+            <Link href={`/projects/${slug}`} className="hover:text-brand transition-colors">
               {title}
             </Link>
           </h3>
@@ -35,7 +35,7 @@ export function ProjectCard({
                 href={demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-brand transition-colors"
               >
                 {t('preview')}
               </a>
@@ -45,14 +45,14 @@ export function ProjectCard({
                 href={repository}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="text-muted-foreground hover:text-brand transition-colors"
               >
                 {t('source')}
               </a>
             )}
             <Link
               href={`/projects/${slug}`}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-brand transition-colors"
             >
               {t('details')}
             </Link>

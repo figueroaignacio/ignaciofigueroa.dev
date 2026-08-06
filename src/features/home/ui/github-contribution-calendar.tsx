@@ -98,7 +98,7 @@ export function GithubContributionCalendar({
           href="https://github.com/figueroaignacio"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-muted-foreground hover:text-primary hover:underline transition-colors flex items-center gap-1 font-medium"
+          className="text-xs text-muted-foreground hover:text-brand hover:underline transition-colors flex items-center gap-1 font-medium"
         >
           github.com/figueroaignacio
         </a>
