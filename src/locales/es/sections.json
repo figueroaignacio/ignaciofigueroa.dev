@@ -3,7 +3,17 @@
     "greeting": "Desarrollador de Software · Integración de IA · Desarrollo Fullstack",
     "name": "Ignacio Figueroa",
     "title": "Desarrollador de Software",
-    "description": "Me importa entender como funcionan las cosas desde el interior. Teniendo criterio propio y utilizando la IA como copilito para productividad, construyo cualquier cosa que se me pase por la cabeza."
+    "description": "Me importa entender como funcionan las cosas desde el interior. Teniendo criterio propio y utilizando la IA como copilito para productividad, construyo cualquier cosa que se me pase por la cabeza.",
+    "status": {
+      "label": "Estado",
+      "working": "Trabajando en Reclee.com",
+      "workingUrl": "https://reclee.com",
+      "motto": "Borrando CSS hasta que el sistema se sostenga solo.",
+      "locationLabel": "Desde",
+      "location": "Buenos Aires, AR — UTC−3",
+      "stackLabel": "Stack actual",
+      "stackAi": "IA"
+    }
   },
   "aboutMe": {
     "title": "Sobre mí",

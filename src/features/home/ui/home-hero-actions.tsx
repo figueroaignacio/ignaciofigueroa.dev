@@ -30,20 +30,20 @@ export function HeroActions({ cvLabel, cvUrl }: HeroActionsProps) {
   ];
 
   return (
-    <div className="flex items-center gap-2 text-xs font-mono">
+    <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
       {heroActions.map((action) => (
         <a
           key={action.label}
           href={action.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-outline"
+          className="btn btn-outline text-xs"
           aria-label={action.ariaLabel}
         >
           {action.label}
         </a>
       ))}
-      <button onClick={handleChatClick} className="btn btn-primary">
+      <button onClick={handleChatClick} className="btn btn-accent text-xs">
         AI Assistant
       </button>
     </div>

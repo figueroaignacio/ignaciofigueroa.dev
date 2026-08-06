@@ -3,7 +3,17 @@
     "greeting": "Software Developer · AI Integrations · Fullstack Development",
     "name": "Ignacio Figueroa",
     "title": "Software Developer",
-    "description": "I care about understanding how things work from the inside. With my own judgment, and using AI as a copilot for productivity, I build anything that crosses my mind."
+    "description": "I care about understanding how things work from the inside. With my own judgment, and using AI as a copilot for productivity, I build anything that crosses my mind.",
+    "status": {
+      "label": "Status",
+      "working": "Working at Reclee.com",
+      "workingUrl": "https://reclee.com",
+      "motto": "Deleting CSS until the system holds on its own.",
+      "locationLabel": "Based in",
+      "location": "Buenos Aires, AR — UTC−3",
+      "stackLabel": "Current stack",
+      "stackAi": "AI"
+    }
   },
   "aboutMe": {
     "title": "About Me",
