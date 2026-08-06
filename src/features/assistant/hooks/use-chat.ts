@@ -4,13 +4,13 @@ import { sendContactEmailAction } from '@/features/home/actions/send-email';
 import { ASSISTANT_API_URL } from '@/shared/lib/constants';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createEventParser, type StreamEvent, type ToolName } from '../lib/parse-stream';
 import type { Message } from '../types';
+
+export type { ToolName };
 
 const STORAGE_KEY = 'chat-messages';
 
-// Matches HISTORY_LIMIT on the backend, which keeps the last 20 turns anyway.
-// Sending the whole localStorage transcript wastes bandwidth and trips the
-// backend's 50-entry cap once a conversation gets long enough.
 const HISTORY_LIMIT = 20;
 
 function loadMessages(): Message[] {
@@ -34,6 +34,7 @@ export function useChat() {
   const locale = useLocale();
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeTool, setActiveTool] = useState<ToolName | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -61,7 +62,7 @@ export function useChat() {
       setIsLoading(true);
 
       try {
-        const response = await fetch(`${ASSISTANT_API_URL}/chat`, {
+        const response = await fetch(`${ASSISTANT_API_URL}/chat?stream=events`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -81,11 +82,13 @@ export function useChat() {
 
         setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
-        while (true) {
-          const { value, done } = await reader.read();
-          if (done) break;
+        const appendText = (delta: string) => {
+          // The first answer token means the tool work is done and the model is
+          // writing. Clearing here rather than on the tool's "end" event avoids
+          // flashing back to the generic loader during the gap between them.
+          if (!streamedText) setActiveTool(null);
 
-          streamedText += decoder.decode(value, { stream: true });
+          streamedText += delta;
           const text = streamedText;
 
           setMessages((prev) => {
@@ -96,7 +99,37 @@ export function useChat() {
             };
             return updated;
           });
+        };
+
+        // The backend keeps the bare token stream as its default and only emits
+        // NDJSON when asked. Branching on the content type means a rolled-back
+        // backend still renders correctly instead of printing raw JSON.
+        const isEventStream = response.headers
+          .get('content-type')
+          ?.includes('application/x-ndjson');
+
+        const parser = createEventParser();
+
+        const applyEvent = (event: StreamEvent) => {
+          if (event.type === 'text') appendText(event.delta);
+          else if (event.type === 'tool' && event.status === 'start') setActiveTool(event.name);
+        };
+
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          const decoded = decoder.decode(value, { stream: true });
+
+          if (!isEventStream) {
+            appendText(decoded);
+            continue;
+          }
+
+          parser.push(decoded).forEach(applyEvent);
         }
+
+        if (isEventStream) parser.flush().forEach(applyEvent);
 
         setMessages((prev) => {
           persistMessages(prev);
@@ -165,6 +198,7 @@ export function useChat() {
         });
       } finally {
         setIsLoading(false);
+        setActiveTool(null);
         abortRef.current = null;
       }
     },
@@ -174,12 +208,14 @@ export function useChat() {
   const resetChat = useCallback(() => {
     abortRef.current?.abort();
     setMessages([]);
+    setActiveTool(null);
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
   return {
     messages,
     isLoading,
+    activeTool,
     sendMessage,
     resetChat,
     isMounted,

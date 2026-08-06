@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
+import type { ToolName } from '../lib/parse-stream';
 import type { Message } from '../types';
 import { ChatMessage } from './chat-message';
 import { ChatLoading } from '../ui/chat-loading';
@@ -10,10 +11,16 @@ import { ChatSuggestions } from '../ui/chat-suggestions';
 interface ChatMessagesProps {
   messages: Message[];
   isLoading: boolean;
+  activeTool?: ToolName | null;
   onSuggestionClick: (text: string) => void;
 }
 
-export function ChatMessages({ messages, isLoading, onSuggestionClick }: ChatMessagesProps) {
+export function ChatMessages({
+  messages,
+  isLoading,
+  activeTool,
+  onSuggestionClick,
+}: ChatMessagesProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,7 +89,7 @@ export function ChatMessages({ messages, isLoading, onSuggestionClick }: ChatMes
       {isLoading && (
         <div className="flex flex-col gap-2.5">
           <div className="">
-            <ChatLoading />
+            <ChatLoading activeTool={activeTool} />
           </div>
         </div>
       )}

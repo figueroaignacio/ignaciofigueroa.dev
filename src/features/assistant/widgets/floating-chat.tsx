@@ -16,7 +16,7 @@ interface FloatingChatProps {
 }
 
 export function FloatingChat({ onClose }: FloatingChatProps) {
-  const { messages, isLoading, sendMessage, resetChat, isMounted } = useChat();
+  const { messages, isLoading, activeTool, sendMessage, resetChat, isMounted } = useChat();
   const [message, setMessage] = useState('');
   const [hasInteracted, setHasInteracted] = useState(false);
   const t = useTranslations('components.chat');
@@ -121,6 +121,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
               <ChatMessages
                 messages={messages}
                 isLoading={isLoading}
+                activeTool={activeTool}
                 onSuggestionClick={handleQuickAction}
               />
             </div>

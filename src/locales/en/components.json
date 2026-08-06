@@ -79,6 +79,12 @@
       "error": "I'm sorry, I encountered an error. Please try again.",
       "tooltip": "Ask me about Ignacio",
       "thinking": "Thinking...",
+      "tools": {
+        "get_projects": "Looking up projects...",
+        "get_experience": "Checking experience...",
+        "send_contact_email": "Preparing your message...",
+        "analyze_job_description": "Analyzing the job description..."
+      },
       "emailSending": "Sending message...",
       "emailSuccess": "Message sent successfully!",
       "emailError": "Failed to send message.",

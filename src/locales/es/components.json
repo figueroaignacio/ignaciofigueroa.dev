@@ -78,6 +78,12 @@
       "error": "Ocurrió un error. Por favor, intentá de nuevo.",
       "tooltip": "Preguntame sobre Ignacio",
       "thinking": "Pensando...",
+      "tools": {
+        "get_projects": "Buscando proyectos...",
+        "get_experience": "Revisando experiencia...",
+        "send_contact_email": "Preparando el mensaje...",
+        "analyze_job_description": "Analizando la búsqueda..."
+      },
       "emailSending": "Enviando mensaje...",
       "emailSuccess": "¡Mensaje enviado con éxito!",
       "emailError": "Error al enviar el mensaje.",
