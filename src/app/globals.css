@@ -148,6 +148,45 @@
   :root {
     /* Height the floating dock occupies, incl. its bottom offset. */
     --dock-space: 7.5rem;
+
+    /*
+     * ── Frame geometry ──────────────────────────────────────────────────
+     * The frame spans the viewport and puts a vertical hairline rail down
+     * each side of the page. The reading column stays centered inside it at
+     * its original measure, so the copy did not get wider or narrower —
+     * only the page around it gained structure.
+     *
+     *   --frame-measure  the centered reading column (unchanged: the old
+     *                    `max-w-3xl` minus its `p-4` = 46rem)
+     *   --frame-gutter   bare canvas outside the rail
+     *   --frame-pad      content inset inside the rail
+     *   --frame-border   the rail itself
+     *   --frame-bleed    frame content box → viewport edge; the distance a
+     *                    rule has to travel to cross the rail and run off
+     *
+     * Rails start at sm on purpose: below that the gutter is 0 and a rail
+     * pinned against the screen edge communicates nothing.
+     */
+    --frame-measure: 46rem;
+    --frame-gutter: 0rem;
+    --frame-pad: 1rem;
+    --frame-border: 0px;
+    --frame-bleed: calc(var(--frame-pad) + var(--frame-gutter) + var(--frame-border));
+  }
+
+  @media (min-width: 40rem) {
+    :root {
+      --frame-gutter: 1.5rem;
+      --frame-pad: 1.5rem;
+      --frame-border: 1px;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --frame-gutter: 2.5rem;
+      --frame-pad: 2rem;
+    }
   }
 
   html {
@@ -187,6 +226,42 @@
 
 @layer components {
   /*
+   * ── The frame ─────────────────────────────────────────────────────────
+   * Applied ONCE, at layout level, so the rails run continuously across
+   * every route instead of restarting per page. The frame is deliberately
+   * open at the top and bottom: the footer's full-width `border-t` is what
+   * closes it, which is why the footer carries no margin-top.
+   */
+  .page-frame-outer {
+    padding-inline: var(--frame-gutter);
+  }
+
+  .page-frame {
+    padding-inline: var(--frame-pad);
+    border-inline: var(--frame-border) solid var(--rule);
+  }
+
+  /*
+   * Same inset as `.page-frame`, minus the rails — for the footer, which
+   * sits below where the rails terminate but still has to line up with
+   * them. Absorbing the border width keeps its content on the same x.
+   */
+  .page-frame-flush {
+    padding-inline: calc(var(--frame-pad) + var(--frame-border));
+  }
+
+  /*
+   * The reading column. The frame is the page; this is the content inside
+   * it. Anything a reader reads goes in one of these, which is why the
+   * rails moved out to the viewport without the copy following them.
+   */
+  .frame-column {
+    width: 100%;
+    max-inline-size: var(--frame-measure);
+    margin-inline: auto;
+  }
+
+  /*
    * Type scale — one class per hierarchy level:
    * display > page-title > item-title > body > meta > label > chip
    */
@@ -218,8 +293,9 @@
     @apply inline-flex items-center justify-center gap-2 border border-border px-2.5 py-1.5 font-mono text-sm rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
   }
 
+  /* Depth comes from the rules, not from shadows. */
   .btn-primary {
-    @apply bg-foreground text-background border-foreground transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)];
+    @apply bg-foreground text-background border-foreground transition-all duration-300 hover:bg-foreground/90;
   }
 
   .btn-outline {
@@ -232,7 +308,7 @@
   }
 
   .card {
-    @apply block p-6 bg-card rounded-2xl border border-border transition-all duration-300 hover:border-foreground/15 hover:shadow-[0_8px_30px_rgba(0,0,0,0.01)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.15)];
+    @apply block p-6 bg-card rounded-2xl border border-border transition-colors duration-300 hover:border-foreground/15;
   }
 
   .prose-reading {
@@ -331,10 +407,6 @@
   }
 }
 
-.container {
-  @apply max-w-3xl mx-auto p-4 w-full;
-}
-
 @keyframes blink {
   0%,
   100% {
@@ -372,6 +444,33 @@
 }
 
 @layer utilities {
+  /*
+   * ── Bleed ─────────────────────────────────────────────────────────────
+   * These two are the whole effect. A separator that stops at the rail
+   * reads as a closed box; one that crosses the rail and runs off the
+   * viewport reads as a single drawn grid.
+   *
+   * Both cancel exactly `--frame-bleed`, so they must sit on a full-width
+   * descendant of `.page-frame` — NOT inside a `.frame-column`, where the
+   * column's own centering would leave them short of the edge.
+   */
+
+  /* Section separator: crosses both rails, dies at the viewport edge. */
+  .rule-bleed {
+    border-block-start: 1px solid var(--rule);
+    margin-inline: calc(-1 * var(--frame-bleed));
+  }
+
+  /*
+   * Full-bleed band: border/background reach the viewport while the content
+   * stays put. Tab bars, table rows, navs.
+   * NEVER inside a grid column — it escapes the track and breaks the layout.
+   */
+  .bleed-x {
+    margin-inline: calc(-1 * var(--frame-bleed));
+    padding-inline: var(--frame-bleed);
+  }
+
   .animate-fade-in-up {
     animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
