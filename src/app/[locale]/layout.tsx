@@ -26,7 +26,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html lang={locale} suppressHydrationWarning>
       {/* Bottom padding lives in globals.css so the floating dock never overlaps content. */}
-      <body className={`${fontSerif.variable} ${fontCode.variable} antialiased pt-16`}>
+      {/* No top padding: the frame's rails have to start at the top of the
+          viewport, so each view owns its own leading space. */}
+      <body className={`${fontSerif.variable} ${fontCode.variable} antialiased`}>
         <NextIntlClientProvider>
           <Providers>
             <Analytics />
