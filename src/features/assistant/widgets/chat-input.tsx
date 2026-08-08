@@ -63,9 +63,10 @@ export function ChatInput({
   const hasContent = message.trim().length > 0;
 
   return (
-    <motion.div
-      className={`relative w-full ${isHero ? 'max-w-3xl mx-auto container' : 'max-w-3xl container mx-auto'}`}
-    >
+    /* The chat overlay sits outside the page frame, so it carries its own
+       measure. Both branches of the old ternary were the same classes in a
+       different order. */
+    <motion.div className="relative mx-auto w-full max-w-3xl p-4">
       <form
         onSubmit={handleSubmit}
         className={`relative flex items-end gap-2 rounded-xl border bg-card transition-all duration-300 ease-out ${
