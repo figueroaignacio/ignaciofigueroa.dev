@@ -7,7 +7,8 @@ export async function HomeHero() {
   const tCv = await getTranslations('components.ctaCv');
 
   return (
-    <header className="mb-14 md:mb-16">
+    /* Top space lives here, not on `body`, so the rails start at y=0. */
+    <header className="frame-column pt-16 pb-14 md:pt-20 md:pb-16">
       <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-10">
         <div className="flex min-w-0 flex-1 flex-col">
           <h1 className="type-display text-foreground">{t('name')}</h1>

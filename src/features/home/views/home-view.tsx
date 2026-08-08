@@ -22,11 +22,12 @@ import { TimelineSkeleton } from '../ui/timeline-skeleton';
 
 export function HomeView() {
   return (
-    <div className="relative space-y-14 mb-12">
-      <div
-        className="pointer-events-none fixed -top-20 left-1/2 -z-10 h-[350px] w-full max-w-[600px] -translate-x-1/2 rounded-full bg-linear-to-tr from-primary/10 via-accent/5 to-transparent opacity-75 blur-[100px] dark:from-primary/15 dark:via-primary/5"
-        aria-hidden="true"
-      />
+    /*
+     * No `space-y` here: every section owns its own rhythm so the rule that
+     * opens it sits flush against the previous section instead of floating in
+     * a gap. Spacing lives in `Section`, in one place.
+     */
+    <div>
       <HomeHero />
       <Suspense fallback={<TimelineSkeleton />}>
         <ExperienceContainer />

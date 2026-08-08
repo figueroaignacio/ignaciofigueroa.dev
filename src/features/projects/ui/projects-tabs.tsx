@@ -18,7 +18,13 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
 
   return (
     <Tabs defaultValue={defaultValue} variant="underline">
-      <Tabs.List className="border-b border-border/40 p-0 mb-6 bg-transparent h-auto flex gap-6">
+      {/*
+       * Deliberately NOT `bleed-x`: this list lives inside the centered
+       * `.frame-column`, where a `--frame-bleed` offset would stop short of
+       * the viewport instead of reaching it. It spans the column and the
+       * section's own `rule-bleed` carries the full-width line.
+       */}
+      <Tabs.List className="border-b border-rule p-0 mb-6 bg-transparent h-auto flex gap-6">
         {data.map(({ category }) => (
           <Tabs.Trigger
             key={category}

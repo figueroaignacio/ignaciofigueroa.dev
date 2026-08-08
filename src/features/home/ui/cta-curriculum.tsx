@@ -5,7 +5,9 @@ export function CTACurriculum() {
 
   return (
     <section id="cv" className="scroll-mt-12">
-      <div className="rounded-xl border border-border bg-card text-center">
+      {/* Not a `Section` (no mono label), but it keeps the same rule rhythm. */}
+      <div className="rule-bleed" aria-hidden="true" />
+      <div className="frame-column mt-10 rounded-xl border border-border bg-card text-center md:mt-12">
         <div className="mx-1.5 mt-1.5 rounded-lg border border-border bg-background px-6 py-8">
           <h2 className="type-label text-muted-foreground mb-3">{t('cta.title')}</h2>
           <p className="text-[17px] font-serif italic text-muted-foreground max-w-md mx-auto leading-relaxed">
@@ -23,6 +25,7 @@ export function CTACurriculum() {
           </a>
         </div>
       </div>
+      <div className="pb-14" />
     </section>
   );
 }
