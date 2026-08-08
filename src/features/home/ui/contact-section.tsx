@@ -1,6 +1,5 @@
 'use client';
 
-import { ItemCard } from '@/shared/components/ui/item-card';
 import { Section } from '@/shared/components/ui/section';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
@@ -49,15 +48,9 @@ export function ContactSection() {
 
   return (
     <Section id="contact" title={t('title')}>
-      <div className="rounded-xl border border-border bg-card p-1.5 mb-8">
-        <div className="rounded-lg border border-border bg-background p-5">
-          <ContactForm />
-        </div>
-      </div>
-
-      <ItemCard
-        header={<h3 className="type-label text-muted-foreground">{tPages('linksTitle')}</h3>}
-      >
+      <ContactForm />
+      <div className="mt-12">
+        <h3 className="type-label text-muted-foreground">{tPages('linksTitle')}</h3>
         <div className="divide-y divide-border">
           {SOCIAL_LINKS.map((link) => (
             <a
@@ -81,7 +74,7 @@ export function ContactSection() {
             </a>
           ))}
         </div>
-      </ItemCard>
+      </div>
     </Section>
   );
 }
