@@ -1,16 +1,15 @@
+import { SectionShell } from '@/shared/components/ui/section';
 import { Skeleton } from '@/shared/components/ui/skeleton';
 
+/**
+ * Borrows `SectionShell` rather than re-stating its markup: a loading section
+ * has to sit on the same column, at the same rhythm, under the same bleeding
+ * rule as the section it stands in for.
+ */
 export function SectionSkeleton({ children }: { children: React.ReactNode }) {
   return (
-    <section aria-hidden aria-busy="true">
-      <div className="mb-8">
-        <Skeleton className="h-4 w-28" />
-        <div className="mt-3 flex h-px" aria-hidden="true">
-          <span className="w-8 bg-foreground/25" />
-          <span className="flex-1 bg-rule" />
-        </div>
-      </div>
+    <SectionShell busy label={<Skeleton className="h-4 w-28" />}>
       {children}
-    </section>
+    </SectionShell>
   );
 }

@@ -4,7 +4,8 @@ import { SectionSkeleton } from './section-skeleton';
 export function ProjectsSkeleton() {
   return (
     <SectionSkeleton>
-      <div className="flex gap-6 border-b border-border/40 pb-3 mb-6">
+      {/* Matches the real tab bar in `projects-tabs.tsx`, `border-rule` and all. */}
+      <div className="flex gap-6 border-b border-rule pb-3 mb-6">
         <Skeleton className="h-4 w-16" />
         <Skeleton className="h-4 w-16" />
         <Skeleton className="h-4 w-12" />
