@@ -3,17 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Canvas: Premium Warm Bone */
   --background: oklch(98.5% 0.004 70);
   --foreground: oklch(18% 0.003 70);
 
-  /* Surfaces: Slightly darker warm bone */
   --card: oklch(96.2% 0.004 70);
   --card-foreground: oklch(18% 0.003 70);
   --popover: oklch(98.5% 0.004 70);
   --popover-foreground: oklch(18% 0.003 70);
 
-  /* Interactive: Slate Charcoal */
   --primary: oklch(18% 0.003 70);
   --primary-foreground: oklch(98.5% 0.004 70);
   --secondary: oklch(93.5% 0.005 70);
