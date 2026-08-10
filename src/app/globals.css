@@ -23,15 +23,9 @@
   --accent: oklch(93.5% 0.005 70);
   --accent-foreground: oklch(18% 0.003 70);
 
-  /*
-   * Brand: muted amber — the only saturated hue in the system.
-   * Reserved for link hover, the current timeline dot and the assistant button.
-   * Light value is darkened from #E0A458 to clear 4.5:1 on the bone canvas (5.4:1).
-   */
   --brand: oklch(52% 0.115 71);
   --brand-foreground: oklch(98.5% 0.004 70);
 
-  /* Feedback (Minimal desaturated feedback tones) */
   --destructive: oklch(62% 0.16 20);
   --destructive-foreground: oklch(98.5% 0.004 70);
   --info: oklch(64% 0.12 240);
@@ -41,46 +35,40 @@
   --warning: oklch(84% 0.11 80);
   --warning-foreground: oklch(18% 0.003 70);
 
-  /* Structure */
   --border: oklch(90.5% 0.004 70);
   --input: oklch(90.5% 0.004 70);
   --ring: oklch(18% 0.003 70);
   --radius: 0.75rem;
   --grid-color: oklch(18% 0.003 70 / 0.03);
 
-  /* Editorial tokens */
   --rule: oklch(90.5% 0.004 70);
   --muted-strong: oklch(35% 0.004 70);
   --surface-muted: oklch(95.5% 0.004 70);
 }
 
 .dark {
-  /* Canvas: Deep Warm Charcoal/Stone Black */
-  --background: oklch(14% 0.002 70);
-  --foreground: oklch(92% 0.002 70);
+  --background: oklch(19.3% 0 0);
+  --foreground: oklch(100% 0 0);
 
-  /* Surfaces */
-  --card: oklch(18.5% 0.002 70);
-  --card-foreground: oklch(92% 0.002 70);
+  --card: oklch(25.4% 0 0);
+  --card-foreground: oklch(100% 0 0);
+
   --popover: oklch(19.5% 0.002 70);
   --popover-foreground: oklch(92% 0.002 70);
 
-  /* Interactive */
   --primary: oklch(92% 0.002 70);
   --primary-foreground: oklch(14% 0.002 70);
   --secondary: oklch(24% 0.002 70);
   --secondary-foreground: oklch(92% 0.002 70);
   --muted: oklch(24% 0.002 70);
-  /* 6.5:1 on --background — was 58% (4.65:1), which fell to 3.9:1 under the /90 modifiers */
+
   --muted-foreground: oklch(66% 0.002 70);
   --accent: oklch(22% 0.002 70);
   --accent-foreground: oklch(92% 0.002 70);
 
-  /* Brand: #E0A458 — 9.1:1 on --background, 8.5:1 on --card */
   --brand: oklch(76% 0.117 71);
   --brand-foreground: oklch(14% 0.002 70);
 
-  /* Feedback */
   --destructive: oklch(58% 0.14 20);
   --destructive-foreground: oklch(14% 0.002 70);
   --info: oklch(62% 0.11 240);
@@ -90,19 +78,18 @@
   --warning: oklch(75% 0.1 80);
   --warning-foreground: oklch(14% 0.002 70);
 
-  /* Structure */
-  --border: oklch(25% 0.002 70);
-  --input: oklch(25% 0.002 70);
+  --border: oklch(34.8% 0 0);
+  --border-interactive: oklch(48.7% 0 0);
+  --input: oklch(48.7% 0 0);
   --ring: oklch(92% 0.002 70);
   --grid-color: oklch(100% 0 0 / 0.02);
   --shadow-lg: 0 8px 24px -10px oklch(0% 0 0 / 0.6);
 
-  /* Editorial tokens */
-  --rule: oklch(25% 0.002 70);
-  /* Hero tagline — 10.9:1 on --background */
+  --rule: oklch(34.8% 0 0);
   --muted-strong: oklch(80% 0.002 70);
   --surface-muted: oklch(20% 0.002 70);
 }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -132,11 +119,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 0.25rem);
   --radius-2xl: calc(var(--radius) + 0.5rem);
-  /*
-   * Two families, no more: Source Serif 4 carries every reading surface
-   * (headings + body), JetBrains Mono carries structure (labels, chips, dates,
-   * nav, actions). `font-sans` is kept as an alias so components don't churn.
-   */
+
   --font-sans: var(--font-serif);
   --font-heading: var(--font-serif);
   --font-serif: var(--font-serif);
@@ -146,27 +129,7 @@
 
 @layer base {
   :root {
-    /* Height the floating dock occupies, incl. its bottom offset. */
     --dock-space: 7.5rem;
-
-    /*
-     * ── Frame geometry ──────────────────────────────────────────────────
-     * The frame spans the viewport and puts a vertical hairline rail down
-     * each side of the page. The reading column stays centered inside it at
-     * its original measure, so the copy did not get wider or narrower —
-     * only the page around it gained structure.
-     *
-     *   --frame-measure  the centered reading column (unchanged: the old
-     *                    `max-w-3xl` minus its `p-4` = 46rem)
-     *   --frame-gutter   bare canvas outside the rail
-     *   --frame-pad      content inset inside the rail
-     *   --frame-border   the rail itself
-     *   --frame-bleed    frame content box → viewport edge; the distance a
-     *                    rule has to travel to cross the rail and run off
-     *
-     * Rails start at sm on purpose: below that the gutter is 0 and a rail
-     * pinned against the screen edge communicates nothing.
-     */
     --frame-measure: 46rem;
     --frame-gutter: 0rem;
     --frame-pad: 1rem;
@@ -191,13 +154,11 @@
 
   html {
     @apply scroll-smooth;
-    /* Anchor targets never land underneath the floating dock. */
     scroll-padding-bottom: var(--dock-space);
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased leading-relaxed;
-    /* Nothing can scroll to a resting position behind the dock. */
     padding-bottom: calc(var(--dock-space) + env(safe-area-inset-bottom));
   }
 
@@ -225,13 +186,6 @@
 }
 
 @layer components {
-  /*
-   * ── The frame ─────────────────────────────────────────────────────────
-   * Applied ONCE, at layout level, so the rails run continuously across
-   * every route instead of restarting per page. The frame is deliberately
-   * open at the top and bottom: the footer's full-width `border-t` is what
-   * closes it, which is why the footer carries no margin-top.
-   */
   .page-frame-outer {
     padding-inline: var(--frame-gutter);
   }
@@ -241,30 +195,16 @@
     border-inline: var(--frame-border) solid var(--rule);
   }
 
-  /*
-   * Same inset as `.page-frame`, minus the rails — for the footer, which
-   * sits below where the rails terminate but still has to line up with
-   * them. Absorbing the border width keeps its content on the same x.
-   */
   .page-frame-flush {
     padding-inline: calc(var(--frame-pad) + var(--frame-border));
   }
 
-  /*
-   * The reading column. The frame is the page; this is the content inside
-   * it. Anything a reader reads goes in one of these, which is why the
-   * rails moved out to the viewport without the copy following them.
-   */
   .frame-column {
     width: 100%;
     max-inline-size: var(--frame-measure);
     margin-inline: auto;
   }
 
-  /*
-   * Type scale — one class per hierarchy level:
-   * display > page-title > item-title > body > meta > label > chip
-   */
   .type-display {
     @apply text-[2.125rem] md:text-5xl font-semibold tracking-tight leading-[1.05];
   }
@@ -293,7 +233,6 @@
     @apply inline-flex items-center justify-center gap-2 border border-border px-2.5 py-1.5 font-mono text-sm rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
   }
 
-  /* Depth comes from the rules, not from shadows. */
   .btn-primary {
     @apply bg-foreground text-background border-foreground transition-all duration-300 hover:bg-foreground/90;
   }
@@ -302,7 +241,6 @@
     @apply text-foreground bg-transparent hover:bg-foreground/5 hover:border-foreground/30 transition-all duration-300;
   }
 
-  /* The one place a button wears the brand: the AI assistant entry point. */
   .btn-accent {
     @apply text-foreground bg-transparent border-brand/55 hover:border-brand hover:bg-brand/10 transition-all duration-300;
   }
@@ -318,7 +256,6 @@
   }
 
   .prose-reading p {
-    /* Left-aligned everywhere: justification on a narrow mobile column opens rivers. */
     @apply mb-4 leading-[1.75] text-left text-foreground/90;
   }
 
@@ -444,28 +381,11 @@
 }
 
 @layer utilities {
-  /*
-   * ── Bleed ─────────────────────────────────────────────────────────────
-   * These two are the whole effect. A separator that stops at the rail
-   * reads as a closed box; one that crosses the rail and runs off the
-   * viewport reads as a single drawn grid.
-   *
-   * Both cancel exactly `--frame-bleed`, so they must sit on a full-width
-   * descendant of `.page-frame` — NOT inside a `.frame-column`, where the
-   * column's own centering would leave them short of the edge.
-   */
-
-  /* Section separator: crosses both rails, dies at the viewport edge. */
   .rule-bleed {
     border-block-start: 1px solid var(--rule);
     margin-inline: calc(-1 * var(--frame-bleed));
   }
 
-  /*
-   * Full-bleed band: border/background reach the viewport while the content
-   * stays put. Tab bars, table rows, navs.
-   * NEVER inside a grid column — it escapes the track and breaks the layout.
-   */
   .bleed-x {
     margin-inline: calc(-1 * var(--frame-bleed));
     padding-inline: var(--frame-bleed);
