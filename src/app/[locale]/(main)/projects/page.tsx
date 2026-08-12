@@ -5,6 +5,7 @@ import { BASE_URL } from '@/shared/lib/constants';
 import {
   buildBreadcrumbNode,
   buildWebPageNode,
+  buildWebSiteNode,
   jsonLdGraph,
   personRef,
   PERSON_ID,
@@ -42,6 +43,7 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
 
   const jsonLd = jsonLdGraph([
     personRef(locale),
+    buildWebSiteNode(locale),
     buildBreadcrumbNode(breadcrumbId, [
       { name: tHome('ogTitle'), url: `${BASE_URL}/${locale}` },
       { name: t('heading'), url },

@@ -22,11 +22,6 @@ import { TimelineSkeleton } from '../ui/timeline-skeleton';
 
 export function HomeView() {
   return (
-    /*
-     * No `space-y` here: every section owns its own rhythm so the rule that
-     * opens it sits flush against the previous section instead of floating in
-     * a gap. Spacing lives in `Section`, in one place.
-     */
     <div>
       <HomeHero />
       <Suspense fallback={<TimelineSkeleton />}>

@@ -5,6 +5,7 @@ import { BASE_URL } from '@/shared/lib/constants';
 import {
   buildBreadcrumbNode,
   buildWebPageNode,
+  buildWebSiteNode,
   jsonLdGraph,
   personRef,
   PERSON_ID,
@@ -50,6 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const jsonLd = jsonLdGraph([
     personRef(locale),
+    buildWebSiteNode(locale),
     buildBreadcrumbNode(breadcrumbId, [
       { name: 'Ignacio Figueroa', url: `${BASE_URL}/${locale}` },
       { name: locale === 'es' ? 'Proyectos' : 'Projects', url: `${BASE_URL}/${locale}/projects` },
