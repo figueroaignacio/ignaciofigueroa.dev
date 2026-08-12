@@ -25,9 +25,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* Bottom padding lives in globals.css so the floating dock never overlaps content. */}
-      {/* No top padding: the frame's rails have to start at the top of the
-          viewport, so each view owns its own leading space. */}
       <body className={`${fontSerif.variable} ${fontCode.variable} antialiased`}>
         <NextIntlClientProvider>
           <Providers>
@@ -55,10 +52,10 @@ export const viewport: Viewport = {
 const baseMetadata: Metadata = {
   title: {
     default: 'Ignacio Figueroa · Fullstack Developer',
-    template: '%s | Ignacio Figueroa',
+    template: '%s · Ignacio Figueroa',
   },
   description:
-    'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.',
+    'Ignacio Figueroa is a fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC since July 2026. He builds NachUI, an open source component system, and integrates LLMs with Python, FastAPI, and Next.js.',
   applicationName: 'Ignacio Figueroa',
   keywords: [
     'Fullstack Developer',
@@ -99,7 +96,7 @@ const baseMetadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ignacio Figueroa · Fullstack Developer',
     description:
-      'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with real-world AI integrations.',
+      'Fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC and author of NachUI, an open source component system.',
     creator: '@nachofiguer_oa',
   },
   robots: {
@@ -114,7 +111,9 @@ const baseMetadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
+  manifest: '/manifest.webmanifest',
 };
 
 export async function generateMetadata({
@@ -140,11 +139,11 @@ export async function generateMetadata({
         ? 'Ignacio Figueroa · Desarrollador Fullstack'
         : 'Ignacio Figueroa · Fullstack Developer',
       description: isEs
-        ? 'Desarrollador fullstack con React, Next.js, FastAPI y Python. Contribuidor open source con más de 6 proyectos en producción e integraciones reales de IA.'
-        : 'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.',
+        ? 'Ignacio Figueroa es desarrollador fullstack en Buenos Aires, Argentina. Desarrollador frontend en Reclee LLC desde julio de 2026 y autor de NachUI, un sistema de componentes open source.'
+        : 'Ignacio Figueroa is a fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC since July 2026 and author of NachUI, an open source component system.',
       type: 'website',
-      locale: isEs ? 'es_ES' : 'en_US',
-      alternateLocale: isEs ? ['en_US'] : ['es_ES'],
+      locale: isEs ? 'es_AR' : 'en_US',
+      alternateLocale: isEs ? ['en_US'] : ['es_AR'],
       siteName: 'Ignacio Figueroa',
       url: `${BASE_URL}/${locale}`,
       images: [

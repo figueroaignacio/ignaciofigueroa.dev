@@ -1,84 +1,61 @@
 import { HomeView } from '@/features/home/views/home-view';
 import { BASE_URL } from '@/shared/lib/constants';
+import { getContentFreshness } from '@/shared/lib/content-freshness';
+import {
+  buildPersonNode,
+  buildWebPageNode,
+  buildWebSiteNode,
+  jsonLdGraph,
+  PERSON_ID,
+  type CredentialInput,
+} from '@/shared/lib/schema';
 import { type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
 
 interface HomePageProps {
   params: Promise<{ locale: Locale }>;
 }
 
-export default function HomePage({ params }: HomePageProps) {
-  const { locale } = use(params);
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = await params;
   setRequestLocale(locale);
 
-  const isEs = locale === 'es';
+  const [tMeta, tSections, freshness] = await Promise.all([
+    getTranslations({ locale, namespace: 'metadata.home' }),
+    getTranslations({ locale, namespace: 'sections' }),
+    getContentFreshness(locale),
+  ]);
 
-  const jsonLd = [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'Ignacio Figueroa',
-      url: BASE_URL,
-      inLanguage: [isEs ? 'es-AR' : 'en'],
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: `${BASE_URL}/${locale}?q={search_term_string}`,
-        'query-input': 'required name=search_term_string',
-      },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'ProfilePage',
-      mainEntity: {
-        '@type': 'Person',
-        name: 'Ignacio Figueroa',
-        alternateName: 'Nacho',
-        url: `${BASE_URL}/${locale}`,
-        image: `${BASE_URL}/images/photo-profile.webp`,
-        jobTitle: isEs ? 'Desarrollador Fullstack' : 'Fullstack Developer',
-        description: isEs
-          ? 'Desarrollador fullstack con React, Next.js, FastAPI y Python. Contribuidor open source con más de 6 proyectos en producción e integraciones reales de IA.'
-          : 'Fullstack developer building production systems with React, Next.js, FastAPI, and Python. Open source contributor with 6+ shipped projects and real-world AI integrations.',
-        knowsAbout: [
-          'React',
-          'Next.js',
-          'TypeScript',
-          'Node.js',
-          'FastAPI',
-          'Python',
-          'AI Integration',
-          'LLM',
-          'PostgreSQL',
-          'Linux',
-          'Tailwind CSS',
-        ],
-        alumniOf: {
-          '@type': 'CollegeOrUniversity',
-          name: isEs ? 'Universidad Tecnológica Nacional' : 'National Technological University',
-          url: 'https://www.utn.edu.ar',
+  const url = `${BASE_URL}/${locale}`;
+  const credentials = tSections.raw('certifications.items') as CredentialInput[];
+  const education = tSections.raw('education.items') as { institution: string }[];
+
+  const jsonLd = jsonLdGraph([
+    buildWebSiteNode(locale),
+    buildPersonNode({
+      locale,
+      jobTitle: tMeta('jobTitle'),
+      description: tMeta('description'),
+      university: education[0]?.institution ?? 'Universidad Tecnológica Nacional',
+      credentials,
+    }),
+    buildWebPageNode({
+      url,
+      name: tMeta('ogTitle'),
+      description: tMeta('description'),
+      locale,
+      type: 'ProfilePage',
+      datePublished: freshness.firstPublished.toISOString(),
+      dateModified: freshness.lastModified.toISOString(),
+      extra: {
+        mainEntity: { '@id': PERSON_ID },
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '.prose-reading > p'],
         },
-        sameAs: ['https://github.com/figueroaignacio', 'https://linkedin.com/in/figueroa-ignacio'],
       },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      name: isEs
-        ? 'Ignacio Figueroa · Desarrollador Fullstack'
-        : 'Ignacio Figueroa · Fullstack Developer',
-      url: `${BASE_URL}/${locale}`,
-      inLanguage: isEs ? 'es-AR' : 'en',
-      isPartOf: {
-        '@type': 'WebSite',
-        url: BASE_URL,
-      },
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', '.space-y-6 > p'],
-      },
-    },
-  ];
+    }),
+  ]);
 
   return (
     <>
@@ -108,10 +85,10 @@ export async function generateMetadata({ params }: HomePageProps) {
       },
     },
     openGraph: {
-      title: t('title'),
+      title: t('ogTitle'),
       description: t('description'),
       url: `/${locale}`,
-      locale: locale === 'en' ? 'en_US' : 'es_ES',
+      locale: locale === 'es' ? 'es_AR' : 'en_US',
       type: 'website',
       siteName: 'Ignacio Figueroa',
       images: [
@@ -119,7 +96,7 @@ export async function generateMetadata({ params }: HomePageProps) {
           url: '/images/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Ignacio Figueroa | Full Stack Developer',
+          alt: t('ogTitle'),
         },
       ],
     },
