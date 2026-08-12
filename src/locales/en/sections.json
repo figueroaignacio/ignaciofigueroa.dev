@@ -18,8 +18,8 @@
   "aboutMe": {
     "title": "About Me",
     "content": {
-      "bio": "I'm a software developer with experience in fullstack development and a strong focus on integrating artificial intelligence into workflows and applications to improve productivity and products. I'm passionate about understanding how things work from the inside, bringing a thoughtful and responsible approach to every project I take on.",
-      "details": "I enjoy the world of Linux, programming, and artificial intelligence. I'm interested in learning and applying technologies that solve real problems, always with a focus on code quality and process efficiency.",
+      "bio": "I'm a fullstack developer based in Buenos Aires, Argentina. Since July 2026 I've been a frontend developer at Reclee LLC, where I moved the internal interface and the landing pages onto a design system built on shadcn/ui and ReUI. Before that, from May 2023 to April 2024, I was a fullstack developer at Pawtrics Software LLC, building React components with Next.js and a CRUD system on Supabase and PostgreSQL.",
+      "details": "I work on Fedora Linux and study Programming and Software Development at Universidad Tecnológica Nacional. Outside of work I maintain NachUI, an open source component system of 37 components with its own CLI and a NestJS registry API, and I build AI assistants with Python, FastAPI, and Google Gemini.",
       "photoLegend": "Ignacio Figueroa, known as Nacho"
     }
   },
@@ -196,7 +196,7 @@
           "Generative AI",
           "Google Workspace"
         ],
-        "credentialId": "HHSMEGXGSTJO",
+        "credentialId": "HHSMEGXG5TJO",
         "issueDate": "Jul 2026",
         "credentialUrl": "/pdf/certifications/Coursera HHSMEGXG5TJO.pdf"
       },
@@ -337,5 +337,42 @@
       "title": "Contact",
       "description": "Here's how to reach Ignacio."
     }
+  },
+  "faq": {
+    "title": "Frequently asked",
+    "items": [
+      {
+        "question": "Who is Ignacio Figueroa?",
+        "answer": "I'm Ignacio Figueroa, a fullstack developer from Buenos Aires, Argentina. I've been a frontend developer at Reclee LLC since July 2026, and before that I was a fullstack developer at Pawtrics Software LLC between May 2023 and April 2024. I'm also the author of NachUI, an open source component system."
+      },
+      {
+        "question": "What tech stack does Ignacio Figueroa use?",
+        "answer": "Day to day I write TypeScript with React, Next.js, and Node.js on the frontend, and Python with FastAPI or NestJS on the backend, with PostgreSQL for persistence. I style with Tailwind CSS and develop on Fedora Linux. For AI work I use Google Gemini, the Vercel AI SDK, LangChain, and Groq."
+      },
+      {
+        "question": "What is NachUI?",
+        "answer": "NachUI is the open source component system I build, published at nachui.tech. It ships 37 accessible React primitives that you copy into your project as source code instead of installing as a dependency. The monorepo also holds a CLI that injects components and OKLCH design tokens, a NestJS registry API, and an AI agent that answers questions from the real source code."
+      },
+      {
+        "question": "Is Ignacio Figueroa available for work?",
+        "answer": "Yes — I'm open to fullstack and AI integration roles, on contract or full-time, working remotely from Buenos Aires. The fastest way to reach me is contact@ignaciofigueroa.dev, and the contact form on this site sends me a direct email."
+      },
+      {
+        "question": "Where does Ignacio Figueroa live and what timezone is he in?",
+        "answer": "I live in Buenos Aires, Argentina, in the UTC−3 timezone. That overlaps with most of the United States business day and with European mornings, and I work remotely."
+      },
+      {
+        "question": "What languages does Ignacio Figueroa work in?",
+        "answer": "Spanish is my first language and I work professionally in English. The documentation, code, and commit messages I write are in English, and this site is published in both languages — you're reading the English version."
+      },
+      {
+        "question": "What has Ignacio Figueroa built with AI?",
+        "answer": "I built Nacho Assistant, a retrieval-augmented assistant on FastAPI, LangChain, and Google Gemini that answers questions about my work using vector search over my own content. I also built NachUI Support AI, a tool-calling agent that reads the real NachUI source code at query time, and Services AI Assistant, a Gemini 2.5 Flash agent that collects contact requests through autonomous function calling."
+      },
+      {
+        "question": "What did Ignacio Figueroa study?",
+        "answer": "I'm studying for an Associate Degree in Programming and Software Development at Universidad Tecnológica Nacional in Argentina, which I started in March 2025. I've been learning software development on my own since March 2022, and I hold certifications from Anthropic (Claude 101) and Google."
+      }
+    ]
   }
 }
