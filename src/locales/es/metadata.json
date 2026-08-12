@@ -1,26 +1,31 @@
 {
   "home": {
-    "title": "Ignacio Figueroa · Desarrollador Fullstack",
-    "description": "Desarrollador fullstack con experiencia en React, Next.js, FastAPI y Python. Trabajo en Linux, construyo proyectos open source e integro LLMs en sistemas que ya existen y tienen que seguir funcionando.",
-    "keywords": "Desarrollador Fullstack, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, Integración IA, LLM, NachUI, Librería de Componentes, Open Source, Argentina, Desarrollador Software, Portfolio, Linux, Fedora, UTN"
+    "title": "Desarrollador de Software en Buenos Aires",
+    "ogTitle": "Ignacio Figueroa · Desarrollador Fullstack",
+    "description": "Ignacio Figueroa es desarrollador fullstack en Buenos Aires, Argentina. Desarrollador frontend en Reclee LLC desde julio de 2026. Construye NachUI, un sistema de componentes open source, e integra LLMs con Python, FastAPI y Next.js.",
+    "keywords": "Desarrollador Fullstack, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, Integración IA, LLM, NachUI, Librería de Componentes, Open Source, Argentina, Desarrollador Software, Portfolio, Linux, Fedora, UTN",
+    "jobTitle": "Desarrollador Fullstack"
   },
   "aboutMe": {
-    "title": "Sobre Mí - Ignacio Figueroa",
-    "description": "Desarrollador fullstack de Argentina. Me hago cargo del stack completo: esquema, API, frontend, deploy. Integro LLMs donde resuelven un problema concreto dentro de un sistema real.",
+    "title": "Sobre mí",
+    "description": "Desarrollador fullstack de Buenos Aires, Argentina. Me hago cargo del stack completo: esquema, API, frontend, deploy. Integro LLMs donde resuelven un problema concreto dentro de un sistema real.",
     "keywords": "Sobre mí, Biografía Developer, Stack Tecnológico, Experiencia Laboral, Ignacio Figueroa, Perfil Profesional, Linux, Fedora, UTN, Argentina"
   },
   "projects": {
-    "title": "Proyectos - Ignacio Figueroa",
-    "description": "Sistemas en producción y herramientas open source construidas con React, Next.js, FastAPI e integraciones reales de IA. Código fuente y demos disponibles.",
-    "keywords": "Proyectos Web, Portfolio, React Projects, Open Source, NachUI, Asistente IA, FastAPI, Fullstack"
+    "title": "Proyectos",
+    "ogTitle": "Proyectos de Ignacio Figueroa",
+    "description": "Todos los proyectos que construyó Ignacio Figueroa: NachUI (un sistema de componentes open source con CLI y una API de registro en NestJS), Nacho Assistant (un asistente con FastAPI y Gemini) y Services AI Assistant. Cada uno con su código fuente y demo.",
+    "keywords": "Proyectos Web, Portfolio, React Projects, Open Source, NachUI, Asistente IA, FastAPI, Fullstack",
+    "heading": "Proyectos",
+    "intro": "Todo lo que construí y mantengo funcionando, empezando por lo más reciente. Cada proyecto enlaza a su código fuente y, cuando existe, a una demo en vivo."
   },
   "chat": {
-    "title": "Asistente IA - Ignacio Figueroa",
-    "description": "Asistente construido con Groq y Next.js. Preguntá sobre proyectos, stack, experiencia o enviá un mensaje directo."
+    "title": "Asistente IA",
+    "description": "Asistente construido con Google Gemini, LangChain y FastAPI. Preguntá sobre proyectos, stack, experiencia o enviá un mensaje directo."
   },
   "contact": {
-    "title": "Contacto - Ignacio Figueroa",
-    "description": "En búsqueda de roles fullstack o de integración de IA. Contacto por email, LinkedIn o GitHub.",
+    "title": "Contacto",
+    "description": "Ignacio Figueroa está disponible para roles fullstack o de integración de IA, por contrato o full-time, en remoto desde Buenos Aires (UTC−3). Escribile a contact@ignaciofigueroa.dev, por LinkedIn o por GitHub.",
     "keywords": "Contacto, Contratar Desarrollador, Ingeniero Fullstack, Ignacio Figueroa, Desarrollador React, Argentina"
   }
 }
