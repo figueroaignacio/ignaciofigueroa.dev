@@ -6,10 +6,10 @@ import { Cancel01Icon, Message01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import { AssistantAvatar } from '../ui/assistant-avatar';
 import { ChatHero } from './chat-hero';
 import { ChatInput } from './chat-input';
 import { ChatMessages } from './chat-messages';
-import { AssistantAvatar } from '../ui/assistant-avatar';
 
 interface FloatingChatProps {
   onClose: () => void;
@@ -53,9 +53,8 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
   return (
     <div className="flex flex-col w-full h-full bg-card overflow-hidden">
       <header className="flex items-center justify-between w-full px-4 py-3 shrink-0 safe-top relative">
-        <div className="flex items-center gap-2.5">
+        <div>
           <AssistantAvatar size="sm" />
-          <span className="type-label text-muted-foreground">{t('header.title')}</span>
         </div>
         <div className="flex items-center gap-1">
           {messages.length > 0 && (
