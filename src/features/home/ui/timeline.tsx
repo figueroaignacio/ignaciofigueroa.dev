@@ -15,12 +15,13 @@ export interface TimelineItem {
 
 export function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <ol className="relative ml-1 space-y-10 border-l border-border pl-6">
+    <ol className="timeline-spine relative ml-1 space-y-10 border-l border-border pl-6">
       {items.map((item) => (
         <li key={item.key} className="relative">
           <span
             aria-hidden
-            className={`absolute top-2 left-[-28.5px] size-2 rounded-full border ${
+            data-current={item.current || undefined}
+            className={`timeline-dot absolute top-2 left-[-28.5px] size-2 rounded-full border ${
               item.current
                 ? 'border-brand bg-brand ring-4 ring-brand/15'
                 : 'border-border bg-background'

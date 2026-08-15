@@ -180,6 +180,22 @@
     background: var(--border);
     border-radius: 9999px;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-timeline: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer components {
@@ -200,6 +216,109 @@
     width: 100%;
     max-inline-size: var(--frame-measure);
     margin-inline: auto;
+  }
+
+  .assistant-eye {
+    animation: blink 3s infinite;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .assistant-eyes {
+    animation: glance 9s infinite;
+  }
+
+  [data-expression='asleep'] .assistant-eye {
+    animation: none;
+    transform: scaleY(0.14);
+  }
+
+  [data-expression='asleep'] .assistant-eyes {
+    animation: none;
+    translate: 0 0;
+  }
+
+  [data-expression='dazzled'] .assistant-eye {
+    animation: none;
+    transform: scaleY(0.4);
+  }
+
+  [data-expression='startled'] .assistant-eye {
+    animation: none;
+    transform: scaleY(1.3);
+  }
+
+  [data-expression='dazzled'],
+  [data-expression='startled'] {
+    animation: startle 420ms ease-out;
+  }
+
+  .rail-bot-slot {
+    --rail-bot-hidden: 22px;
+
+    display: none;
+    position: absolute;
+    inset-block-end: 1.5rem;
+    inset-inline-end: 0.5rem;
+    z-index: 10;
+    overflow: clip;
+    pointer-events: none;
+  }
+
+  @media (min-width: 64rem) {
+    .rail-bot-slot {
+      display: block;
+    }
+  }
+
+  .rail-bot-slot:has(:focus-visible) {
+    overflow: visible;
+  }
+
+  .rail-bot-riser {
+    translate: 0 var(--rail-bot-hidden);
+  }
+
+  .rail-bot {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: translate 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rail-bot-slot:hover .rail-bot,
+  .rail-bot:focus-visible {
+    translate: 0 calc(-1 * var(--rail-bot-hidden));
+  }
+
+  .rail-bot:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+    border-radius: 0.5rem;
+  }
+
+  .rail-bot-tooltip {
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 0.3rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.2;
+    color: var(--muted-strong);
+    white-space: nowrap;
+    opacity: 0;
+    translate: 0.5rem 0;
+    transition:
+      opacity 200ms ease-out,
+      translate 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rail-bot-slot:hover .rail-bot-tooltip,
+  .rail-bot:focus-visible .rail-bot-tooltip {
+    opacity: 1;
+    translate: 0 0;
   }
 
   .type-display {
@@ -366,6 +485,40 @@
   }
 }
 
+@keyframes glance {
+  0%,
+  60%,
+  100% {
+    translate: 0 0;
+  }
+  64%,
+  70% {
+    translate: 1.4px 0;
+  }
+  76%,
+  82% {
+    translate: -1.4px 0;
+  }
+  88% {
+    translate: 0 0;
+  }
+}
+
+@keyframes startle {
+  0% {
+    translate: 0 0;
+  }
+  30% {
+    translate: 0 -2px;
+  }
+  60% {
+    translate: 0 1px;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -374,6 +527,86 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes draw-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fill-rail {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes rise-from-edge {
+  from {
+    translate: 0 130%;
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  to {
+    translate: 0 var(--rail-bot-hidden);
+    opacity: 1;
+  }
+}
+
+@keyframes light-dot {
+  from {
+    border-color: var(--border);
+  }
+  to {
+    border-color: var(--muted-foreground);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .rule-bleed {
+    transform-origin: center;
+    animation: draw-rule linear both;
+    animation-timeline: view();
+    animation-range: cover 15% cover 40%;
+  }
+
+  .timeline-spine::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: -1px;
+    inline-size: 1px;
+    background: var(--muted-foreground);
+    transform-origin: top;
+    pointer-events: none;
+    animation: fill-rail linear both;
+    animation-timeline: view();
+    animation-range: cover 15% cover 70%;
+  }
+
+  .timeline-dot:not([data-current]) {
+    animation: light-dot linear both;
+    animation-timeline: view();
+    animation-range: cover 35% cover 52%;
+  }
+
+  .rail-bot-riser {
+    animation: rise-from-edge linear both;
+    animation-timeline: view();
+    animation-range: cover 20% cover 48%;
+  }
+
+  .rail-bot-slot:has(:focus-visible) .rail-bot-riser {
+    animation-name: none;
   }
 }
 
