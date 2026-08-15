@@ -113,6 +113,10 @@
       "subtitle": "Preguntame lo que quieras sobre Ignacio.",
       "role": "Asistente IA",
       "inputPlaceholder": "¿En qué puedo ayudarte?"
+    },
+    "railBot": {
+      "tooltip": "psst. yo ya me leí todo esto",
+      "label": "Abrir el asistente de IA"
     }
   },
   "openToWorkBadge": "Disponible para trabajar",
@@ -133,5 +137,10 @@
     "sending": "Enviando...",
     "success": "Mensaje enviado. Te respondo pronto.",
     "error": "Error al enviar. Intentá de nuevo o mandá mail directo."
+  },
+  "console": {
+    "greeting": "Abriste devtools. Respeto.",
+    "cta": "Si estás buscando gente, o simplemente querés hablar de código:",
+    "hint": "Todo el sitio en texto plano, para vos o para tu modelo favorito:"
   }
 }

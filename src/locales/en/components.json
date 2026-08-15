@@ -121,6 +121,10 @@
         "fun": "Fun",
         "contact": "Contact"
       }
+    },
+    "railBot": {
+      "tooltip": "psst. i already read all of this",
+      "label": "Open the AI assistant"
     }
   },
   "openToWorkBadge": "Open to work",
@@ -141,5 +145,10 @@
     "sending": "Sending...",
     "success": "Message sent. I'll reply soon.",
     "error": "Failed to send. Try again or use direct email."
+  },
+  "console": {
+    "greeting": "You opened devtools. Respect.",
+    "cta": "If you're hiring, or just want to talk shop:",
+    "hint": "The whole site as plain text, for you or your favourite model:"
   }
 }
