@@ -1,3 +1,5 @@
+import { PixelMate } from '@/shared/components/pixel-mate';
+import { AskAiLinks } from './ask-ai-links';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
 
@@ -9,6 +11,7 @@ const CURRENT_STACK = ['TypeScript', 'React', 'Next.js', 'Node.js', 'Python', 'F
 
 export async function HeroStatus() {
   const t = await getTranslations('sections.home.status');
+  const tAskAi = await getTranslations('sections.askAi');
 
   return (
     <aside
@@ -37,7 +40,10 @@ export async function HeroStatus() {
 
       <div>
         <p className="type-label text-muted-foreground">{t('locationLabel')}</p>
-        <p className="mt-1.5 font-mono text-xs leading-relaxed text-foreground">{t('location')}</p>
+        <p className="mt-1.5 flex items-center gap-1.5 font-mono text-xs leading-relaxed text-foreground">
+          <PixelMate className="text-muted-foreground" />
+          {t('location')}
+        </p>
       </div>
 
       <div>
@@ -49,6 +55,13 @@ export async function HeroStatus() {
             </TechChip>
           ))}
         </TechChipGroup>
+      </div>
+
+      <div>
+        <p className="type-label text-muted-foreground">{tAskAi('heroLabel')}</p>
+        {/* Stacked, not in a row: the rail is 224px and three labelled links
+            wrap into a ragged block at that width. */}
+        <AskAiLinks className="mt-2.5 flex-col items-start gap-y-2" />
       </div>
     </aside>
   );

@@ -7,6 +7,7 @@ import { NachUiCtaContainer } from '../containers/nach-ui-cta-container';
 import { ProjectsContainer } from '../containers/projects-container';
 import { TestimonialsContainer } from '../containers/testimonials-container';
 import { AboutSection } from '../ui/about-section';
+import { AskAiSection } from '../ui/ask-ai-section';
 import { CertificationsSection } from '../ui/certifications-section';
 import { ContactSection } from '../ui/contact-section';
 import { ContributionsSkeleton } from '../ui/contributions-skeleton';
@@ -50,6 +51,7 @@ export function HomeView() {
         <TestimonialsContainer />
       </Suspense>
       <CTACurriculum />
+      <AskAiSection />
       <ContactSection />
     </div>
   );

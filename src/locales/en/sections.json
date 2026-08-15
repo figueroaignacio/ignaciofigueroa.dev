@@ -6,7 +6,7 @@
     "description": "I care about understanding how things work from the inside. With my own judgment, and using AI as a copilot for productivity, I build anything that crosses my mind.",
     "status": {
       "label": "Status",
-      "working": "Working at Reclee.com",
+      "working": "Working at reclee.com",
       "workingUrl": "https://reclee.com",
       "motto": "Deleting CSS until the system holds on its own.",
       "locationLabel": "Based in",
@@ -374,5 +374,11 @@
         "answer": "I'm studying for an Associate Degree in Programming and Software Development at Universidad Tecnológica Nacional in Argentina, which I started in March 2025. I've been learning software development on my own since March 2022, and I hold certifications from Anthropic (Claude 101) and Google."
       }
     ]
+  },
+  "askAi": {
+    "title": "Ask an AI",
+    "description": "Don't take my word for it. This site publishes everything about me as plain text at /llms.txt — hand that to any assistant and ask. The answer comes from my own content, not from whatever a model happens to remember about someone with my name.",
+    "prompt": "Read {url} and tell me who Ignacio Figueroa is, what he has built, and what his tech stack is.",
+    "heroLabel": "Ask an AI about me"
   }
 }
