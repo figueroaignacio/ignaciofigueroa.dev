@@ -1,5 +1,6 @@
 'use client';
 
+import { AssistantAvatar } from '@/features/assistant/ui/assistant-avatar';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { Dock } from '@/shared/components/dock';
 import { Button } from '@/shared/components/ui/button';
@@ -53,13 +54,12 @@ export default function NotFound() {
               </Button>
             </div>
 
-            {/*
-             * Same surfaces as the rest of the site — the old panel hardcoded
-             * neutral-900/950 plus macOS traffic lights, which is chrome that
-             * says nothing and ignores the token system.
-             */}
-            <div className="w-full pt-4">
-              <div className="w-full overflow-hidden rounded-sm border border-border bg-card font-mono text-[11px] text-left">
+            <div className="relative w-full pt-4">
+              <div className="pointer-events-none absolute right-5 -top-2 z-0" aria-hidden="true">
+                <AssistantAvatar size="lg" />
+              </div>
+
+              <div className="relative z-10 w-full overflow-hidden rounded-sm border border-border bg-card font-mono text-[11px] text-left">
                 <div className="border-b border-rule px-4 py-2.5">
                   <span className="type-label text-muted-foreground select-none">
                     {t('codeBlockTitle')}
