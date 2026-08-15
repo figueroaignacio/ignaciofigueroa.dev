@@ -1,7 +1,7 @@
 'use client';
 
+import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
-import { AssistantAvatar } from '@/features/assistant/ui/assistant-avatar';
 import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/shared/lib/cn';
 
@@ -16,7 +16,7 @@ const ICON_MAP: Record<string, ReactNode> = {
   '/': <HugeiconsIcon icon={Home01Icon} className="size-5" strokeWidth={1.5} />,
   '/#about': <HugeiconsIcon icon={UserIcon} className="size-5" strokeWidth={1.5} />,
   '/#contact': <HugeiconsIcon icon={Mail01Icon} className="size-5" strokeWidth={1.5} />,
-  '/assistant': <AssistantAvatar size="sm" className="scale-110" />,
+  '/assistant': <DockBotIcon />,
 };
 
 export function Dock() {
@@ -36,7 +36,6 @@ export function Dock() {
     setMounted(true);
   }, []);
 
-  // Auto-hide while reading downward, bring it back on the first upward scroll.
   useEffect(() => {
     let lastY = window.scrollY;
     let ticking = false;
@@ -156,7 +155,6 @@ export function Dock() {
       <nav
         className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 w-max"
         aria-label="Main Navigation"
-        // Keyboard users reaching the dock while it's tucked away bring it straight back.
         onFocusCapture={() => setIsHidden(false)}
       >
         <motion.div
@@ -165,9 +163,7 @@ export function Dock() {
           transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.1 }}
           className={cn(
             'flex items-center gap-1.5 rounded-2xl border border-border/80 px-2 py-2',
-            // Opaque by default; only thins out where the blur can actually do its job,
-            // so scrolling text is never legible through the dock.
-            'bg-background/98 supports-[backdrop-filter]:bg-background/88',
+            'bg-background/98 supports-backdrop-filter:bg-background/88',
             'backdrop-blur-2xl backdrop-saturate-150',
             'shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]',
           )}
