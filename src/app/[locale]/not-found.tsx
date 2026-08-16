@@ -19,7 +19,7 @@ export default function NotFound() {
   const filename = `${query}.tsx`;
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-clip">
       <div className="page-frame-outer flex flex-1 flex-col">
         <main
           id="main-content"

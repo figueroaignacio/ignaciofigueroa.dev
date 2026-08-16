@@ -82,7 +82,7 @@ export function TechStack() {
 
   return (
     <Section id="stack" title={t('stack.title')}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="scroll-stagger grid grid-cols-1 sm:grid-cols-2 gap-4">
         {techStack.map((section) => (
           <div key={section.category} className="rounded-xl border border-border bg-card p-4">
             <h3 className="type-label text-muted-foreground">{section.category}</h3>

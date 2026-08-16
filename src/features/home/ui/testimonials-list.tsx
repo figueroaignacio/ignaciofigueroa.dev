@@ -21,7 +21,7 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
 
   return (
     <div className="relative">
-      <div id="testimonials-grid" className="flex flex-col gap-y-4">
+      <div id="testimonials-grid" className="scroll-stagger flex flex-col gap-y-4">
         {visible.map((testimonial) => (
           <figure key={testimonial.id} className="m-0 rounded-xl border border-border bg-card">
             <blockquote className="mx-1.5 mt-1.5 rounded-lg border border-border bg-background p-4 prose-reading italic text-[17px] md:text-[18px] text-foreground/95">

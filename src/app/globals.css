@@ -571,6 +571,44 @@
   }
 }
 
+@keyframes blur-rise {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    translate: 0 1.5rem;
+    scale: 0.99;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes blur-focus-label {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    /* resolves to the .type-label tracking below — keep the two in sync */
+    letter-spacing: 0.45em;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 0.2em;
+  }
+}
+
+@keyframes blur-away {
+  to {
+    opacity: 0.3;
+    filter: blur(8px);
+    translate: 0 -1rem;
+    scale: 0.985;
+  }
+}
+
 @supports (animation-timeline: view()) {
   .rule-bleed {
     transform-origin: center;
@@ -607,6 +645,53 @@
 
   .rail-bot-slot:has(:focus-visible) .rail-bot-riser {
     animation-name: none;
+  }
+
+  /*
+   * Blur reveals.
+   *
+   * Ranges are `cover`-based, not `entry`-based, on purpose. `entry` is scaled
+   * by the element's own height, so it makes a short section snap (~50px of
+   * scroll) while a tall one drifts — the reveal speed changes section to
+   * section. `cover` spans elementHeight + viewportHeight, which the viewport
+   * dominates, holding every section's reveal to a consistent ~175-300px of
+   * scroll regardless of how tall it is.
+   *
+   * Two things silently kill all of this, both learned the hard way:
+   *   - An ancestor with `overflow-x: hidden` computes overflow-y to `auto`,
+   *     becoming a scroll container that steals the `view()` timeline from the
+   *     viewport. Use `overflow-x: clip` instead (see the (main) layout).
+   *   - `filter` makes the element a containing block for absolute/fixed
+   *     descendants — never put one of these classes on a wrapper whose
+   *     absolute children anchor outside it (see .rail-bot-slot).
+   */
+  .scroll-blur-in {
+    animation: blur-rise cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 35%;
+  }
+
+  .scroll-blur-label {
+    animation: blur-focus-label cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 30%;
+  }
+
+  .scroll-blur-out {
+    animation: blur-away linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 85%;
+  }
+
+  .scroll-stagger > * {
+    animation: blur-rise cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 32%;
+  }
+
+  /* Offset ranges give side-by-side grid items a diagonal wave. */
+  .scroll-stagger > :nth-child(2n) {
+    animation-range: cover 8% cover 42%;
   }
 }
 

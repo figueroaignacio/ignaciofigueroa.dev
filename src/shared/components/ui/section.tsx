@@ -7,6 +7,13 @@ interface SectionShellProps {
   id?: string;
   className?: string;
   busy?: boolean;
+  /**
+   * Absolutely-positioned chrome (e.g. the rail bot) anchored to the section
+   * itself. Must render outside the blur-reveal wrapper: the wrapper's
+   * `filter` would otherwise become the accessory's containing block and pull
+   * it off the section edge.
+   */
+  accessory?: React.ReactNode;
 }
 
 /**
@@ -25,7 +32,14 @@ interface SectionShellProps {
  * layout shift when the content arrives. Duplicating this markup is how the
  * skeletons previously drifted into spanning the whole frame.
  */
-export function SectionShell({ children, label, id, className, busy }: SectionShellProps) {
+export function SectionShell({
+  children,
+  label,
+  id,
+  className,
+  busy,
+  accessory,
+}: SectionShellProps) {
   return (
     <section
       id={id}
@@ -36,8 +50,9 @@ export function SectionShell({ children, label, id, className, busy }: SectionSh
       <div className="rule-bleed" aria-hidden="true" />
       <div className="frame-column pt-10 pb-14 md:pt-12">
         {label}
-        <div className="mt-6">{children}</div>
+        <div className="mt-6 scroll-blur-in">{children}</div>
       </div>
+      {accessory}
     </section>
   );
 }
@@ -47,14 +62,16 @@ interface SectionProps {
   title: string;
   children: React.ReactNode;
   className?: string;
+  accessory?: React.ReactNode;
 }
 
-export function Section({ id, title, children, className }: SectionProps) {
+export function Section({ id, title, children, className, accessory }: SectionProps) {
   return (
     <SectionShell
       id={id}
       className={className}
-      label={<h2 className="type-label text-muted-foreground">{title}</h2>}
+      accessory={accessory}
+      label={<h2 className="type-label scroll-blur-label text-muted-foreground">{title}</h2>}
     >
       {children}
     </SectionShell>

@@ -27,7 +27,7 @@ export function CertificationsList({ items }: { items: CertificationItem[] }) {
 
   return (
     <div className="relative">
-      <ul id="certifications-list" className="space-y-4">
+      <ul id="certifications-list" className="scroll-stagger space-y-4">
         {visible.map((item) => {
           const iconName = item.icon?.toLowerCase() as IconName | undefined;
 

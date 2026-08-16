@@ -19,8 +19,14 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
 
   setRequestLocale(locale);
 
+  /*
+   * overflow-x-clip, not -hidden: `hidden` computes overflow-y to `auto`, which
+   * makes this a scroll container and steals `view()` timelines away from the
+   * viewport — silently killing every scroll-driven animation on the page.
+   * `clip` suppresses horizontal overflow without creating a scrollport.
+   */
   return (
-    <div className="min-h-screen flex flex-col overflow-x-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-clip">
       <div className="page-frame-outer flex flex-1 flex-col">
         <main id="main-content" className="page-frame flex-1" tabIndex={-1}>
           {children}

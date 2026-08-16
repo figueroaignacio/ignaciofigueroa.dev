@@ -14,9 +14,13 @@ export function TimelineWidget({ id, title = '', items, accessory }: TimelineWid
   if (items === null || items.length === 0) return null;
 
   return (
-    <Section id={id} title={title} className={accessory ? 'relative' : undefined}>
+    <Section
+      id={id}
+      title={title}
+      className={accessory ? 'relative' : undefined}
+      accessory={accessory}
+    >
       <Timeline items={items} />
-      {accessory}
     </Section>
   );
 }
