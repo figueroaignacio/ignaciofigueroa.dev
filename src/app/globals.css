@@ -321,6 +321,30 @@
     translate: 0 0;
   }
 
+  /*
+   * The "I made that landing" aside: a draughtsman's brace under the link.
+   * It assembles in the order you'd draw it — the span opens outward from the
+   * centre, the stem drops, then the note lands — so it reads as an annotation
+   * being made rather than a panel fading in. Delays start after the hero copy
+   * has settled.
+   */
+  .hero-brace {
+    transform-origin: center;
+    animation: draw-rule 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 620ms;
+  }
+
+  .hero-brace-stem {
+    transform-origin: top;
+    animation: fill-rail 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 1100ms;
+  }
+
+  .hero-note {
+    animation: note-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 1280ms;
+  }
+
   .type-display {
     @apply text-[2.125rem] md:text-5xl font-semibold tracking-tight leading-[1.05];
   }
@@ -568,6 +592,17 @@
   }
   to {
     border-color: var(--muted-foreground);
+  }
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    translate: 0 0.3rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
 
