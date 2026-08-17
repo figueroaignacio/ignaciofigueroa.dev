@@ -132,6 +132,22 @@
     --frame-pad: 1rem;
     --frame-border: 0px;
     --frame-bleed: calc(var(--frame-pad) + var(--frame-gutter) + var(--frame-border));
+    --frame-bleed-end: var(--frame-bleed);
+    --chat-panel-width: 26rem;
+    --chat-inset: 0px;
+  }
+
+  @media (min-width: 64rem) {
+    html[data-chat-docked='true'] {
+      --chat-inset: var(--chat-panel-width);
+      --frame-bleed-end: calc(var(--frame-pad) + var(--frame-border));
+    }
+  }
+
+  @media (min-width: 96rem) {
+    :root {
+      --chat-panel-width: 30rem;
+    }
   }
 
   @media (min-width: 40rem) {
@@ -157,6 +173,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased leading-relaxed;
     padding-bottom: calc(var(--dock-space) + env(safe-area-inset-bottom));
+    padding-right: var(--chat-inset);
+    transition: padding-right 380ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   h1,
@@ -201,6 +219,7 @@
 @layer components {
   .page-frame-outer {
     padding-inline: var(--frame-gutter);
+    transition: padding-inline-end 380ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .page-frame {
@@ -210,6 +229,16 @@
 
   .page-frame-flush {
     padding-inline: calc(var(--frame-pad) + var(--frame-border));
+  }
+
+  @media (min-width: 64rem) {
+    html[data-chat-docked='true'] .page-frame-outer {
+      padding-inline-end: 0;
+    }
+
+    html[data-chat-docked='true'] .page-frame {
+      border-inline-end-color: transparent;
+    }
   }
 
   .frame-column {
@@ -733,12 +762,15 @@
 @layer utilities {
   .rule-bleed {
     border-block-start: 1px solid var(--rule);
-    margin-inline: calc(-1 * var(--frame-bleed));
+    margin-inline-start: calc(-1 * var(--frame-bleed));
+    margin-inline-end: calc(-1 * var(--frame-bleed-end));
   }
 
   .bleed-x {
-    margin-inline: calc(-1 * var(--frame-bleed));
-    padding-inline: var(--frame-bleed);
+    margin-inline-start: calc(-1 * var(--frame-bleed));
+    margin-inline-end: calc(-1 * var(--frame-bleed-end));
+    padding-inline-start: var(--frame-bleed);
+    padding-inline-end: var(--frame-bleed-end);
   }
 
   .animate-fade-in-up {

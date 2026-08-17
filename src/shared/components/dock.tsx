@@ -31,9 +31,19 @@ export function Dock() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  // Matches the breakpoint that opens up --chat-inset in globals.css.
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 64rem)');
+    const sync = () => setIsDesktop(query.matches);
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
   }, []);
 
   useEffect(() => {
@@ -75,9 +85,24 @@ export function Dock() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = isChatOpen ? 'hidden' : '';
+    // Docked, the page stays scrollable next to the rail; only the mobile
+    // sheet, which covers everything, locks the body.
+    const lockScroll = isChatOpen && !isDesktop;
+    document.body.style.overflow = lockScroll ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
+    };
+  }, [isChatOpen, isDesktop]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isChatOpen) {
+      root.dataset.chatDocked = 'true';
+    } else {
+      delete root.dataset.chatDocked;
+    }
+    return () => {
+      delete root.dataset.chatDocked;
     };
   }, [isChatOpen]);
 
@@ -134,12 +159,18 @@ export function Dock() {
           {isChatOpen && (
             <motion.div
               key="chat-panel"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 24 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+              initial={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
+              animate={isDesktop ? { x: 0 } : { opacity: 1, y: 0 }}
+              exit={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
+              transition={{ type: 'spring', damping: 30, stiffness: 320 }}
               style={{ zIndex: 11000000 }}
-              className="fixed inset-0 flex flex-col overflow-hidden bg-card"
+              className={cn(
+                'fixed inset-0 flex flex-col overflow-hidden bg-background',
+                // Docked: a full-height rail flush with the viewport edge, its
+                // left border sitting directly against the pushed-over page.
+                'lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[var(--chat-panel-width)]',
+                'lg:border-l lg:border-border',
+              )}
             >
               <FloatingChat onClose={() => setIsChatOpen(false)} />
             </motion.div>
@@ -153,7 +184,10 @@ export function Dock() {
     <>
       {chatPanel}
       <nav
-        className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 w-max"
+        className="fixed bottom-6 z-50 -translate-x-1/2 w-max transition-[left] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        /* Stays centered on the page, not the viewport, once the rail claims
+           its slice. --chat-inset is 0 whenever the rail isn't docked. */
+        style={{ left: 'calc(50% - var(--chat-inset) / 2)' }}
         aria-label="Main Navigation"
         onFocusCapture={() => setIsHidden(false)}
       >
