@@ -27,17 +27,18 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         p: ({ children }) => (
           <p className="mb-3 last:mb-0 text-sm text-foreground/90 leading-relaxed">{children}</p>
         ),
-        ul: ({ children }) => <ul className="list-none ml-0 mb-3.5 space-y-1.5">{children}</ul>,
+        /* Lists mirror the experience timeline's bullets — real markers with a
+           hairline color, not hand-built dots on a flex row. */
+        ul: ({ children }) => (
+          <ul className="mb-3.5 ml-4 list-disc space-y-1.5 marker:text-border">{children}</ul>
+        ),
         ol: ({ children }) => (
-          <ol className="list-decimal list-outside ml-4 mb-3.5 space-y-1.5 text-sm text-foreground/90 marker:text-muted-foreground/50 marker:text-xs">
+          <ol className="mb-3.5 ml-4 list-outside list-decimal space-y-1.5 marker:text-xs marker:text-muted-foreground/50">
             {children}
           </ol>
         ),
         li: ({ children }) => (
-          <li className="flex gap-2 items-start text-sm text-foreground/90 leading-relaxed">
-            <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-muted-foreground/45 block" />
-            <span>{children}</span>
-          </li>
+          <li className="text-sm leading-relaxed text-foreground/90">{children}</li>
         ),
         code: ({
           inline,
@@ -47,18 +48,17 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         }: ComponentProps<'code'> & { inline?: boolean }) => {
           const match = /language-(\w+)/.exec(className || '');
           return !inline ? (
-            <div className="relative my-3 rounded-xl overflow-hidden border border-border bg-card">
-              <div className="flex items-center justify-between px-3.5 py-2 border-b border-border">
-                <div className="flex items-center gap-1.5">
-                  <span className="size-2 rounded-full bg-muted-foreground/50" />
-                  <span className="type-chip text-muted-foreground uppercase">
-                    {match?.[1] || 'code'}
-                  </span>
-                </div>
+            /* One box, one rule, theme tokens throughout — the old inner panel
+               hardcoded a near-black fill that stayed dark in light mode. */
+            <div className="my-3 overflow-hidden rounded-sm border border-border bg-card">
+              <div className="border-b border-border px-3 py-1.5">
+                <span className="type-chip uppercase text-muted-foreground">
+                  {match?.[1] || 'code'}
+                </span>
               </div>
-              <div className="m-1.5 mt-0 p-3.5 overflow-x-auto rounded-lg bg-[#1b1b1c] dark:bg-black/60 border border-border/40">
+              <div className="overflow-x-auto bg-surface-muted p-3.5">
                 <code
-                  className={`block text-xs font-mono text-[#e3e3e3] leading-relaxed ${className ?? ''}`}
+                  className={`block font-mono text-xs leading-relaxed text-foreground/90 ${className ?? ''}`}
                   {...props}
                 >
                   {children}
@@ -79,7 +79,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-foreground hover:text-brand underline underline-offset-3 decoration-border hover:decoration-brand font-medium transition-colors text-[13px]"
+            className="font-medium text-foreground underline decoration-border underline-offset-3 transition-colors hover:text-brand hover:decoration-brand"
           >
             {children}
           </a>
@@ -89,7 +89,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
             {children}
           </blockquote>
         ),
-        hr: () => <hr className="my-4 border-border/30" />,
+        hr: () => <hr className="my-4 border-rule" />,
         strong: ({ children }) => (
           <strong className="font-semibold text-foreground">{children}</strong>
         ),

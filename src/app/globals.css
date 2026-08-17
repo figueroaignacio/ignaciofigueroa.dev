@@ -102,6 +102,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-muted-strong: var(--muted-strong);
   --color-rule: var(--rule);
+  --color-surface-muted: var(--surface-muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-brand: var(--brand);

@@ -45,31 +45,23 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
   ];
 
   return (
-    <div className="flex flex-wrap max-w-sm justify-center gap-1.5">
+    <div className="flex max-w-sm flex-wrap justify-center gap-1.5">
       {suggestions.map((suggestion, index) => {
         const Icon = suggestion.icon;
         return (
+          /* Same shape and mono voice as the hero's GitHub / LinkedIn / Resume
+             row — the site states its options, it doesn't bounce them. */
           <motion.button
             type="button"
             key={index}
             onClick={() => onSuggestionClick(suggestion.text)}
-            initial={{ opacity: 0, y: 8, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              type: 'spring',
-              damping: 15,
-              stiffness: 200,
-              delay: index * 0.04,
-            }}
-            whileHover={{
-              scale: 1.03,
-              y: -2,
-            }}
-            whileTap={{ scale: 0.97 }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border/40 bg-secondary/30 hover:bg-secondary/60 hover:border-border text-muted-foreground hover:text-foreground transition-colors duration-200 cursor-pointer"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
+            className="btn btn-outline gap-1.5 px-2.5 py-1 text-[11px] text-muted-foreground hover:text-foreground"
           >
-            <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-80" />
-            <span className="text-[11px] font-mono">{suggestion.text}</span>
+            <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-70" />
+            <span>{suggestion.text}</span>
           </motion.button>
         );
       })}
