@@ -94,7 +94,16 @@
       "gapAnalysis": "Gap Analysis",
       "recommendedProjects": "Recommended Projects",
       "roleLabel": "Role",
-      "companyLabel": "Company"
+      "companyLabel": "Company",
+      "trace": {
+        "title": "Process",
+        "reading": "Reading your question",
+        "writing": "Writing the answer",
+        "get_projects": "Looking up projects",
+        "get_experience": "Checking experience",
+        "send_contact_email": "Preparing your message",
+        "analyze_job_description": "Analyzing the job description"
+      }
     },
     "suggestions": {
       "title": "Try with...",

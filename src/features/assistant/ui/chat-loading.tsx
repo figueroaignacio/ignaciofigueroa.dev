@@ -1,35 +1,82 @@
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 import type { ToolName } from '../lib/parse-stream';
 
 interface ChatLoadingProps {
   activeTool?: ToolName | null;
 }
 
-export function ChatLoading({ activeTool }: ChatLoadingProps) {
-  const t = useTranslations('components.chat.messages');
+/** Every step the trace can show: the two bookends plus one per backend tool. */
+type TraceStep = 'reading' | 'writing' | ToolName;
 
-  const label = activeTool ? t(`tools.${activeTool}`) : t('thinking');
+/**
+ * The wait, shown as the work it actually is.
+ *
+ * A spinner says "something is happening"; this says what. Steps accumulate as
+ * the stream reports tools, so a tool call that takes three seconds reads as
+ * progress instead of a stall. Geometry is the page's timeline — a hairline
+ * spine with dots — so the assistant explains itself in the site's own voice.
+ */
+export function ChatLoading({ activeTool }: ChatLoadingProps) {
+  const t = useTranslations('components.chat.messages.trace');
+  const [toolsUsed, setToolsUsed] = useState<ToolName[]>([]);
+
+  useEffect(() => {
+    if (!activeTool) return;
+    setToolsUsed((prev) => (prev.includes(activeTool) ? prev : [...prev, activeTool]));
+  }, [activeTool]);
+
+  /*
+   * `reading` opens every trace; `writing` closes it once the tools are done
+   * and text is on its way. The last entry is always the step in flight.
+   */
+  const steps: TraceStep[] = ['reading', ...toolsUsed];
+  if (!activeTool && toolsUsed.length > 0) steps.push('writing');
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 4 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex items-center gap-2.5 py-1.5 pl-1.5 type-chip text-muted-foreground select-none"
+      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      className="select-none"
+      aria-live="polite"
     >
-      <span className="relative flex h-1.5 w-1.5">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground/35 opacity-75" />
-        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-foreground/60" />
-      </span>
-      <motion.span
-        key={label}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="tracking-widest uppercase"
-      >
-        {label}
-      </motion.span>
+      <span className="type-label text-muted-foreground/70">{t('title')}</span>
+
+      <ol className="relative mt-3 ml-1 space-y-2 border-l border-border pl-4">
+        <AnimatePresence initial={false}>
+          {steps.map((step, index) => {
+            const isCurrent = index === steps.length - 1;
+
+            return (
+              <motion.li
+                key={step}
+                initial={{ opacity: 0, x: -4 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="relative"
+              >
+                <span
+                  aria-hidden
+                  className={`absolute top-[5px] left-[-20.5px] size-[7px] rounded-full border ${
+                    isCurrent
+                      ? 'animate-pulse border-brand bg-brand ring-4 ring-brand/15'
+                      : 'border-border bg-background'
+                  }`}
+                />
+                <span
+                  className={`font-mono text-[11px] leading-relaxed tracking-wide ${
+                    isCurrent ? 'text-foreground' : 'text-muted-foreground/60'
+                  }`}
+                >
+                  {t(step)}
+                </span>
+              </motion.li>
+            );
+          })}
+        </AnimatePresence>
+      </ol>
     </motion.div>
   );
 }

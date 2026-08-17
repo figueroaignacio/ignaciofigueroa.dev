@@ -93,7 +93,16 @@
       "gapAnalysis": "Análisis de Brechas",
       "recommendedProjects": "Proyectos Recomendados",
       "roleLabel": "Rol",
-      "companyLabel": "Compañía"
+      "companyLabel": "Compañía",
+      "trace": {
+        "title": "Proceso",
+        "reading": "Leyendo tu consulta",
+        "writing": "Redactando la respuesta",
+        "get_projects": "Buscando proyectos",
+        "get_experience": "Revisando experiencia",
+        "send_contact_email": "Preparando el mensaje",
+        "analyze_job_description": "Analizando la búsqueda"
+      }
     },
     "suggestions": {
       "title": "Probá con...",
