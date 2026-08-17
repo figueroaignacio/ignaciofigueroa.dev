@@ -380,5 +380,8 @@
     "description": "Don't take my word for it. This site publishes everything about me as plain text at /llms.txt — hand that to any assistant and ask. The answer comes from my own content, not from whatever a model happens to remember about someone with my name.",
     "prompt": "Read {url} and tell me who Ignacio Figueroa is, what he has built, and what his tech stack is.",
     "heroLabel": "Ask an AI about me"
+  },
+  "mark": {
+    "title": "The mark"
   }
 }

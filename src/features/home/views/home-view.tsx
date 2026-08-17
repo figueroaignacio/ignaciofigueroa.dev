@@ -14,6 +14,7 @@ import { ContributionsSkeleton } from '../ui/contributions-skeleton';
 import { CTACurriculum } from '../ui/cta-curriculum';
 import { GithubStatsSkeleton } from '../ui/github-stats-skeleton';
 import { HomeHero } from '../ui/home-hero';
+import { MarkSection } from '../ui/mark-section';
 import { Interests } from '../ui/interests';
 import { NachUiCtaSkeleton } from '../ui/nach-ui-cta-skeleton';
 import { ProjectsSkeleton } from '../ui/projects-skeleton';
@@ -50,6 +51,7 @@ export function HomeView() {
       <Suspense fallback={<TestimonialsSkeleton />}>
         <TestimonialsContainer />
       </Suspense>
+      <MarkSection />
       <CTACurriculum />
       <AskAiSection />
       <ContactSection />
