@@ -682,6 +682,10 @@
     animation-range: cover 15% cover 40%;
   }
 
+  #main-content > * > section:first-of-type > .rule-bleed {
+    animation: none;
+  }
+
   .timeline-spine::before {
     content: '';
     position: absolute;
