@@ -3,12 +3,12 @@ import { useTranslations } from 'next-intl';
 import { Fragment } from 'react';
 import { parseMessageContent } from '../lib/parse-message';
 import type { Message } from '../types';
+import { ChatMarkdownContent } from '../ui/chat-markdown-content';
 import { ChatContactCards } from './cards/chat-contact-cards';
 import { ChatExperienceCards } from './cards/chat-experience-cards';
 import { ChatPitchCard } from './cards/chat-pitch-card';
 import { ChatProjectCards } from './cards/chat-project-cards';
 import { ChatEmailStatus } from './chat-email-status';
-import { ChatMarkdownContent } from '../ui/chat-markdown-content';
 
 interface ChatMessageProps {
   message: Message;
@@ -61,17 +61,17 @@ export function ChatMessage({ message }: ChatMessageProps) {
       className={`flex w-full min-w-0 ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       {isUser ? (
-        <div className="max-w-[85%] overflow-hidden bg-secondary text-secondary-foreground border border-border/60 rounded-xl rounded-br-sm px-4 py-2.5">
-          <p className="text-[13px] sm:text-sm whitespace-pre-wrap wrap-break-word leading-relaxed">
+        <div className="min-w-0 max-w-[88%] overflow-hidden rounded-sm border border-border bg-secondary/40 px-3.5 py-2">
+          <p className="whitespace-pre-wrap wrap-break-word text-[13px] leading-relaxed text-foreground/90">
             {cleanContent}
           </p>
         </div>
       ) : (
-        <div className="max-w-full flex flex-col space-y-8 text-sm">
+        <div className="flex w-full min-w-0 flex-col space-y-6 text-sm">
           {contentBlocks.map((block, index) => (
             <Fragment key={index}>
               {block}
-              {index < contentBlocks.length - 1 && <div className="my-2 border-t border-rule/50" />}
+              {index < contentBlocks.length - 1 && <div className="border-t border-rule" />}
             </Fragment>
           ))}
         </div>

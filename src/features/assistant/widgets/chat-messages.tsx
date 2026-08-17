@@ -4,9 +4,9 @@ import { motion } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import type { ToolName } from '../lib/parse-stream';
 import type { Message } from '../types';
-import { ChatMessage } from './chat-message';
 import { ChatLoading } from '../ui/chat-loading';
 import { ChatSuggestions } from '../ui/chat-suggestions';
+import { ChatMessage } from './chat-message';
 
 interface ChatMessagesProps {
   messages: Message[];
@@ -49,7 +49,7 @@ export function ChatMessages({
   const showSuggestions = messages.length === 1 && messages[0].role === 'assistant';
 
   return (
-    <div className="flex flex-col gap-6 container">
+    <div className="flex w-full min-w-0 flex-col gap-7 px-4">
       {messages.map((msg, idx) => {
         const isAssistant = msg.role === 'assistant';
         return (
@@ -58,19 +58,9 @@ export function ChatMessages({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className={`flex ${isAssistant ? 'flex-col gap-2.5' : 'justify-end'}`}
+            className={`flex min-w-0 ${isAssistant ? 'flex-col gap-2.5' : 'justify-end'}`}
           >
-            {/* {isAssistant && (
-              <div className="flex items-center gap-2">
-                <AssistantAvatar size="sm" />
-                <span className="text-[10px] font-medium text-muted-foreground/60 tracking-wide uppercase">
-                  Assistant
-                </span>
-              </div>
-            )} i'll improve this shit later */}
-            <div className={isAssistant ? '' : ''}>
-              <ChatMessage message={msg} />
-            </div>
+            <ChatMessage message={msg} />
           </motion.div>
         );
       })}
@@ -80,7 +70,6 @@ export function ChatMessages({
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: 0.1 }}
-          className="pl-6"
         >
           <ChatSuggestions onSuggestionClick={onSuggestionClick} />
         </motion.div>
