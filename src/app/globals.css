@@ -248,6 +248,16 @@
     margin-inline: auto;
   }
 
+  /* The dot floats one stroke above the stem; on hover it floats a little
+     further. One property, one easing — the same curve as everything else. */
+  .logo-mark .logo-dot {
+    transition: translate 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .group:hover .logo-mark .logo-dot {
+    translate: 0 -2px;
+  }
+
   .assistant-eye {
     animation: blink 3s infinite;
     transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);

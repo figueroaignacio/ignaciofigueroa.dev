@@ -151,5 +151,8 @@
     "greeting": "Abriste devtools. Respeto.",
     "cta": "Si estás buscando gente, o simplemente querés hablar de código:",
     "hint": "Todo el sitio en texto plano, para vos o para tu modelo favorito:"
+  },
+  "logo": {
+    "tagline": "if — mis iniciales, y la primera condición que escribiste."
   }
 }

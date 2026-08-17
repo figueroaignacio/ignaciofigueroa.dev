@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { LocaleSwitcher } from './locale-switcher';
+import { LogoMark } from './logo';
 import { ThemeToggle } from './theme-toggle';
 
 const footerLinks = [
@@ -26,7 +27,7 @@ export function Footer() {
     <footer className="w-full border-t border-rule text-xs font-mono text-muted-foreground">
       <div className="page-frame-outer">
         <div className="page-frame-flush">
-          <div className="frame-column flex flex-wrap items-center justify-between gap-x-8 gap-y-6 pt-8 pb-12">
+          <div className="frame-column flex flex-wrap items-center justify-between gap-x-8 gap-y-6 pt-8 pb-6">
             {/*
              * The same pixel portrait the favicon uses, as a sign-off. Grayscale
              * at rest so it reads as part of the mono footer, in colour on hover
@@ -64,6 +65,13 @@ export function Footer() {
               <span className="select-none">·</span>
               <LocaleSwitcher />
             </div>
+          </div>
+
+          {/* The mark, explained once, quietly — the corner logo's hover says
+              the same thing to whoever has a pointer. */}
+          <div className="frame-column flex items-center gap-2.5 pb-12 text-muted-foreground/70">
+            <LogoMark size={14} className="shrink-0" />
+            <p>{t('components.logo.tagline')}</p>
           </div>
         </div>
       </div>

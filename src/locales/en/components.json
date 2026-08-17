@@ -159,5 +159,8 @@
     "greeting": "You opened devtools. Respect.",
     "cta": "If you're hiring, or just want to talk shop:",
     "hint": "The whole site as plain text, for you or your favourite model:"
+  },
+  "logo": {
+    "tagline": "if — my initials, and the first condition you ever wrote."
   }
 }
