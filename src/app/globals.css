@@ -259,6 +259,8 @@
   }
 
   .assistant-eye {
+    transform-box: fill-box;
+    transform-origin: center;
     animation: blink 3s infinite;
     transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -292,15 +294,197 @@
     animation: startle 420ms ease-out;
   }
 
-  .rail-bot-slot {
-    --rail-bot-hidden: 22px;
+  .assistant-scene {
+    --assistant-cue: 0ms;
+  }
 
+  /*
+   * The coding scene: an intro that plays once and then work that loops.
+   *
+   * The demo version looped the whole thing, which reads as a fidget; here the
+   * laptop opens once and stays open for as long as the wait lasts. Every intro
+   * step is `both`, so under reduced motion — where the base layer collapses
+   * durations to nothing — each one lands on its final frame and you get the
+   * finished picture, open and lit, with no motion at all.
+   */
+  .assistant-laptop {
+    animation: laptop-in 600ms cubic-bezier(0.25, 0.9, 0.35, 1) var(--assistant-cue) both;
+  }
+
+  .assistant-lid {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: lid-open 450ms ease-out calc(var(--assistant-cue) + 500ms) both;
+  }
+
+  .assistant-screen {
+    animation: screen-on 400ms steps(1, end) calc(var(--assistant-cue) + 950ms) both;
+  }
+
+  .assistant-glow {
+    opacity: 0;
+    animation: face-lit 900ms ease-out calc(var(--assistant-cue) + 950ms) both;
+  }
+
+  .assistant-glint {
+    opacity: 0;
+    animation: glint-on 300ms steps(1, end) calc(var(--assistant-cue) + 950ms) both;
+  }
+
+  .assistant-lean {
+    animation: lean-in 500ms ease-out calc(var(--assistant-cue) + 900ms) both;
+  }
+
+  .assistant-hands {
+    opacity: 0;
+    animation: hands-in 350ms ease-out calc(var(--assistant-cue) + 1100ms) both;
+  }
+
+  .assistant-code {
+    opacity: 0;
+    animation: code-in 200ms steps(1, end) calc(var(--assistant-cue) + 1300ms) both;
+  }
+
+  .assistant-breathe {
+    animation: breathe 3.6s ease-in-out infinite;
+  }
+
+  [data-expression='coding'] .assistant-eyes {
+    animation: read-code 3.4s steps(1, end) var(--assistant-cue) infinite;
+  }
+
+  .assistant-hand {
+    animation: key-tap 300ms steps(2, end) infinite;
+  }
+
+  .assistant-hand:nth-child(2) {
+    animation-delay: 150ms;
+  }
+
+  .assistant-code-line {
+    transform-box: fill-box;
+    transform-origin: left center;
+    animation: type-line 2.2s steps(7, end) infinite;
+  }
+
+  .assistant-code-line:nth-child(2) {
+    animation-delay: 380ms;
+  }
+
+  .assistant-code-line:nth-child(3) {
+    animation-delay: 760ms;
+  }
+
+  .assistant-caret {
+    animation: caret-blink 700ms steps(1, end) infinite;
+  }
+
+  /*
+   * The patrol.
+   *
+   * The bot never leaves and never settles: it walks a stretch of the rule,
+   * sits down on it to work, gets up and walks the next stretch. Four stretches
+   * — right to middle, middle to left, and back again — put it over the whole
+   * section and land it exactly where it started, which is what lets the loop
+   * close without a jump.
+   *
+   * Because those four stretches are identical in shape, everything except the
+   * position runs on one of them, `--assistant-leg`, and simply repeats. Only
+   * the walking itself needs the full cycle, since only it cares which stretch
+   * this is. Every keyframe below is therefore a percentage of one stretch:
+   * walking until 40%, seated and working until 93%, back on its feet by 98%.
+   */
+  .assistant-walker {
+    overflow: visible;
+  }
+
+  .assistant-walker .assistant-sit {
+    animation: patrol-sit var(--assistant-leg) ease-out infinite;
+  }
+
+  /*
+   * The bob cannot simply be held flat while seated: a second animation on the
+   * same property would win for its whole run, not for a slice of it. So the
+   * stretch animates the bob's *amplitude* instead — a different property,
+   * flipped in steps — and the bob itself keeps running against it.
+   */
+  .assistant-walker .assistant-gait {
+    animation:
+      gait-bob 480ms steps(1, end) infinite,
+      patrol-bob var(--assistant-leg) steps(1, end) infinite;
+  }
+
+  .assistant-walker .assistant-legs-walk {
+    animation: patrol-legs-walk var(--assistant-leg) steps(1, end) infinite;
+  }
+
+  .assistant-walker .assistant-legs-sit {
+    animation: patrol-legs-sit var(--assistant-leg) steps(1, end) infinite;
+  }
+
+  .assistant-leg-frame {
+    animation: frame-toggle 480ms steps(1, end) infinite;
+  }
+
+  .assistant-leg-frame:nth-child(2) {
+    animation-delay: 240ms;
+  }
+
+  .assistant-leg-dangle {
+    animation: leg-swing 2.4s ease-in-out infinite;
+  }
+
+  .assistant-leg-dangle:nth-child(2) {
+    animation-delay: 320ms;
+  }
+
+  /* The laptop and the light it throws, on the same stretch: out and lit while
+     it is sitting, packed away before it stands up. */
+  .assistant-walker .assistant-laptop {
+    animation: patrol-laptop var(--assistant-leg) ease-out infinite;
+  }
+
+  .assistant-walker .assistant-lid {
+    animation: patrol-lid var(--assistant-leg) ease-out infinite;
+  }
+
+  .assistant-walker .assistant-screen {
+    animation: patrol-screen var(--assistant-leg) steps(1, end) infinite;
+  }
+
+  .assistant-walker .assistant-glow {
+    animation: patrol-glow var(--assistant-leg) ease-out infinite;
+  }
+
+  .assistant-walker .assistant-glint {
+    animation: patrol-glint var(--assistant-leg) steps(1, end) infinite;
+  }
+
+  .assistant-walker .assistant-lean {
+    animation: patrol-lean var(--assistant-leg) ease-out infinite;
+  }
+
+  .assistant-walker .assistant-hands {
+    animation: patrol-hands var(--assistant-leg) ease-out infinite;
+  }
+
+  .assistant-walker .assistant-code {
+    animation: patrol-code var(--assistant-leg) steps(1, end) infinite;
+  }
+
+  /*
+   * The strip the bot walks along: it spans the section and sits on the rule
+   * that closes it. Open downwards so its legs can hang over the line, and
+   * clipped sideways so nothing it does can widen the page.
+   */
+  .rail-bot-slot {
     display: none;
     position: absolute;
-    inset-block-end: 1.5rem;
-    inset-inline-end: 0.5rem;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: 4rem;
     z-index: 10;
-    overflow: clip;
+    overflow: clip visible;
     pointer-events: none;
   }
 
@@ -310,26 +494,64 @@
     }
   }
 
-  .rail-bot-slot:has(:focus-visible) {
-    overflow: visible;
-  }
-
-  .rail-bot-riser {
-    translate: 0 var(--rail-bot-hidden);
-  }
-
+  /*
+   * One stretch takes twelve seconds, so a full round trip of the section takes
+   * just under a minute. The middle seat is the midpoint of the other two on
+   * purpose: it makes all four stretches the same distance, and therefore the
+   * same walking pace, without measuring anything.
+   */
   .rail-bot {
+    --assistant-leg: 12s;
+
+    position: absolute;
+    inset-block-end: 0;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: flex-end;
     cursor: pointer;
     pointer-events: auto;
-    transition: translate 260ms cubic-bezier(0.16, 1, 0.3, 1);
+    animation:
+      patrol calc(var(--assistant-leg) * 4) linear infinite,
+      arrive 400ms ease-out both;
   }
 
-  .rail-bot-slot:hover .rail-bot,
-  .rail-bot:focus-visible {
-    translate: 0 calc(-1 * var(--rail-bot-hidden));
+  .rail-bot .assistant-walker {
+    inline-size: 4rem;
+    block-size: auto;
+  }
+
+  /* With reduced motion nothing above runs, and every one of those animations
+     is a loop rather than a one-shot, so none of them leave a final frame to
+     rest on. This is that frame, stated outright: sat down, mid-section. */
+  @media (prefers-reduced-motion: reduce) {
+    .rail-bot {
+      inset-inline-start: calc(50% - 2rem);
+    }
+
+    .assistant-walker .assistant-sit {
+      translate: 0 4px;
+    }
+
+    .assistant-walker .assistant-lean {
+      translate: 0 0.55px;
+    }
+
+    .assistant-walker .assistant-legs-walk {
+      opacity: 0;
+    }
+
+    .assistant-walker .assistant-screen {
+      fill: #16333a;
+    }
+
+    .assistant-walker .assistant-glow {
+      opacity: 0.16;
+    }
+
+    .assistant-walker .assistant-glint,
+    .assistant-walker .assistant-hands,
+    .assistant-walker .assistant-code {
+      opacity: 1;
+    }
   }
 
   .rail-bot:focus-visible {
@@ -338,7 +560,13 @@
     border-radius: 0.5rem;
   }
 
+  /* Out of flow on purpose: as a flex item its width became part of the
+     button, leaving an invisible click target beside the bot. */
   .rail-bot-tooltip {
+    position: absolute;
+    inset-inline-end: 100%;
+    inset-block-end: 0.75rem;
+    margin-inline-end: 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid var(--border);
     background: var(--card);
@@ -355,7 +583,7 @@
       translate 260ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .rail-bot-slot:hover .rail-bot-tooltip,
+  .rail-bot:hover .rail-bot-tooltip,
   .rail-bot:focus-visible .rail-bot-tooltip {
     opacity: 1;
     translate: 0 0;
@@ -524,9 +752,11 @@
   }
 }
 
+/* Held open until 80%: without those hold frames the eyes interpolate shut
+   across the whole cycle, which is a slow squint rather than a blink. */
 @keyframes blink {
   0%,
-  100% {
+  80% {
     transform: scaleY(1);
   }
 
@@ -535,7 +765,8 @@
     transform: scaleY(0);
   }
 
-  86% {
+  86%,
+  88% {
     transform: scaleY(1);
   }
 
@@ -544,7 +775,8 @@
     transform: scaleY(0);
   }
 
-  94% {
+  94%,
+  100% {
     transform: scaleY(1);
   }
 }
@@ -583,6 +815,438 @@
   }
 }
 
+@keyframes laptop-in {
+  from {
+    translate: 0 15px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    translate: 0 -0.8px;
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes lid-open {
+  from {
+    scale: 1 0;
+  }
+  70% {
+    scale: 1 1.12;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+/* Dark, one frame of flash as it wakes, then the steady glow it works by. */
+@keyframes screen-on {
+  from {
+    fill: #14201f;
+  }
+  20% {
+    fill: #d8f5ec;
+  }
+  45% {
+    fill: #16333a;
+  }
+  to {
+    fill: #16333a;
+  }
+}
+
+@keyframes face-lit {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  55% {
+    opacity: 0.16;
+  }
+  to {
+    opacity: 0.16;
+  }
+}
+
+@keyframes glint-on {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lean-in {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: 0 0.55px;
+  }
+}
+
+@keyframes hands-in {
+  from {
+    opacity: 0;
+    translate: 0 3px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes code-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 0.22px;
+  }
+}
+
+/* Down at the screen, then back and forth across it — reading, not glancing. */
+@keyframes read-code {
+  0% {
+    translate: 0 1.2px;
+  }
+  15% {
+    translate: -1.4px 1.2px;
+  }
+  35% {
+    translate: 1.4px 1.2px;
+  }
+  55% {
+    translate: -1.4px 1.2px;
+  }
+  75% {
+    translate: 1.1px 1.2px;
+  }
+  90% {
+    translate: -1.4px 1.2px;
+  }
+  100% {
+    translate: 0 1.2px;
+  }
+}
+
+@keyframes key-tap {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -1px;
+  }
+}
+
+@keyframes type-line {
+  0% {
+    scale: 0 1;
+  }
+  45%,
+  90% {
+    scale: 1 1;
+  }
+  93%,
+  100% {
+    scale: 0 1;
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gait-bob {
+  0% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 var(--bob, -1px);
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+
+@keyframes frame-toggle {
+  0% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes leg-swing {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -0.6px;
+  }
+}
+
+/* Right seat, middle, left, middle, and home — the middle one twice, so the
+   loop retraces its steps instead of jumping back. */
+@keyframes patrol {
+  0% {
+    inset-inline-start: calc(100% - 8rem);
+  }
+  10%,
+  25% {
+    inset-inline-start: calc(50% - 2rem);
+  }
+  35%,
+  50% {
+    inset-inline-start: 4rem;
+  }
+  60%,
+  75% {
+    inset-inline-start: calc(50% - 2rem);
+  }
+  85%,
+  100% {
+    inset-inline-start: calc(100% - 8rem);
+  }
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes patrol-sit {
+  0%,
+  40% {
+    translate: 0 0;
+  }
+  46%,
+  93% {
+    translate: 0 4px;
+  }
+  98%,
+  100% {
+    translate: 0 0;
+  }
+}
+
+@keyframes patrol-bob {
+  0%,
+  39% {
+    --bob: -1px;
+  }
+  40%,
+  96% {
+    --bob: 0px;
+  }
+  97%,
+  100% {
+    --bob: -1px;
+  }
+}
+
+@keyframes patrol-legs-walk {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  41%,
+  92% {
+    opacity: 0;
+  }
+  93%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes patrol-legs-sit {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  41%,
+  92% {
+    opacity: 1;
+  }
+  93%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes patrol-laptop {
+  0%,
+  44% {
+    translate: 0 15px;
+    opacity: 0;
+  }
+  47% {
+    translate: 0 -0.8px;
+    opacity: 1;
+  }
+  49%,
+  88% {
+    translate: 0 0;
+    opacity: 1;
+  }
+  92%,
+  100% {
+    translate: 0 15px;
+    opacity: 0;
+  }
+}
+
+@keyframes patrol-lid {
+  0%,
+  50% {
+    scale: 1 0;
+  }
+  55% {
+    scale: 1 1.12;
+  }
+  57%,
+  89% {
+    scale: 1 1;
+  }
+  91%,
+  100% {
+    scale: 1 0;
+  }
+}
+
+@keyframes patrol-screen {
+  0%,
+  54% {
+    fill: #14201f;
+  }
+  55% {
+    fill: #d8f5ec;
+  }
+  57%,
+  89% {
+    fill: #16333a;
+  }
+  90%,
+  100% {
+    fill: #14201f;
+  }
+}
+
+@keyframes patrol-glow {
+  0%,
+  54% {
+    opacity: 0;
+  }
+  56% {
+    opacity: 0.5;
+  }
+  60%,
+  88% {
+    opacity: 0.16;
+  }
+  91%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes patrol-glint {
+  0%,
+  54% {
+    opacity: 0;
+  }
+  55%,
+  89% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes patrol-lean {
+  0%,
+  46% {
+    translate: 0 0;
+  }
+  54%,
+  88% {
+    translate: 0 0.55px;
+  }
+  93%,
+  100% {
+    translate: 0 0;
+  }
+}
+
+@keyframes patrol-hands {
+  0%,
+  56% {
+    opacity: 0;
+    translate: 0 3px;
+  }
+  59%,
+  88% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  91%,
+  100% {
+    opacity: 0;
+    translate: 0 3px;
+  }
+}
+
+@keyframes patrol-code {
+  0%,
+  58% {
+    opacity: 0;
+  }
+  59%,
+  88% {
+    opacity: 1;
+  }
+  89%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -609,20 +1273,6 @@
   }
   to {
     transform: scaleY(1);
-  }
-}
-
-@keyframes rise-from-edge {
-  from {
-    translate: 0 130%;
-    opacity: 0;
-  }
-  35% {
-    opacity: 1;
-  }
-  to {
-    translate: 0 var(--rail-bot-hidden);
-    opacity: 1;
   }
 }
 
@@ -695,6 +1345,19 @@
     animation: none;
   }
 
+  /*
+   * The rule the rail bot stands on is the one that opens the section *after*
+   * the one it lives in, and a line drawing itself out from the centre under
+   * the bot's feet reads as the bot floating. So that one stays put — but only
+   * where the bot is: below this width it is not rendered at all, and the line
+   * can draw itself like every other. Move the bot and this moves with it.
+   */
+  @media (min-width: 64rem) {
+    #experience + section > .rule-bleed {
+      animation: none;
+    }
+  }
+
   .timeline-spine::before {
     content: '';
     position: absolute;
@@ -713,16 +1376,6 @@
     animation: light-dot linear both;
     animation-timeline: view();
     animation-range: cover 35% cover 52%;
-  }
-
-  .rail-bot-riser {
-    animation: rise-from-edge linear both;
-    animation-timeline: view();
-    animation-range: cover 20% cover 48%;
-  }
-
-  .rail-bot-slot:has(:focus-visible) .rail-bot-riser {
-    animation-name: none;
   }
 
   .scroll-blur-in {

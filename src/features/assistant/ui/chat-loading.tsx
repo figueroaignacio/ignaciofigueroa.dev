@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import type { ToolName } from '../lib/parse-stream';
+import { AssistantCoding } from './assistant-coding';
 
 interface ChatLoadingProps {
   activeTool?: ToolName | null;
@@ -13,9 +14,10 @@ type TraceStep = 'reading' | 'writing' | ToolName;
 /**
  * The wait, shown as the work it actually is.
  *
- * A spinner says "something is happening"; this says what. Steps accumulate as
- * the stream reports tools, so a tool call that takes three seconds reads as
- * progress instead of a stall. Geometry is the page's timeline — a hairline
+ * A spinner says "something is happening"; this says what. The bot opens a
+ * laptop and gets to work, and under it the steps accumulate as the stream
+ * reports tools, so a tool call that takes three seconds reads as progress
+ * instead of a stall. Geometry is the page's timeline — a hairline
  * spine with dots — so the assistant explains itself in the site's own voice.
  */
 export function ChatLoading({ activeTool }: ChatLoadingProps) {
@@ -42,6 +44,8 @@ export function ChatLoading({ activeTool }: ChatLoadingProps) {
       className="select-none"
       aria-live="polite"
     >
+      <AssistantCoding className="mb-3 ml-px h-auto w-16" />
+
       <span className="type-label text-muted-foreground/70">{t('title')}</span>
 
       <ol className="relative mt-3 ml-1 space-y-2 border-l border-border pl-4">
