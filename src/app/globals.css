@@ -519,6 +519,32 @@
     block-size: auto;
   }
 
+  /*
+   * Hovering catches it: the walk stops where it is, the whole stretch it was
+   * playing stops with it, and the sprite hops once to say it noticed. Only the
+   * blink is let through — a bot frozen down to its eyes reads as a broken
+   * animation rather than one that stopped.
+   *
+   * The hop has to live on the sprite rather than on the button, because the
+   * button is the thing being paused and a paused element cannot also animate.
+   */
+  .rail-bot:hover,
+  .rail-bot:focus-visible,
+  .rail-bot:hover .assistant-walker *,
+  .rail-bot:focus-visible .assistant-walker * {
+    animation-play-state: paused;
+  }
+
+  .rail-bot:hover .assistant-eye,
+  .rail-bot:focus-visible .assistant-eye {
+    animation-play-state: running;
+  }
+
+  .rail-bot:hover .assistant-walker,
+  .rail-bot:focus-visible .assistant-walker {
+    animation: hop 480ms steps(1, end);
+  }
+
   /* With reduced motion nothing above runs, and every one of those animations
      is a loop rather than a one-shot, so none of them leave a final frame to
      rest on. This is that frame, stated outright: sat down, mid-section. */
@@ -1045,6 +1071,39 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* Six pixels up and back down in discrete steps, with a small second bounce on
+   the landing — the same currency as everything else it does. */
+@keyframes hop {
+  0%,
+  9% {
+    translate: 0 0;
+  }
+  10%,
+  19% {
+    translate: 0 -3px;
+  }
+  20%,
+  44% {
+    translate: 0 -6px;
+  }
+  45%,
+  59% {
+    translate: 0 -3px;
+  }
+  60%,
+  71% {
+    translate: 0 0;
+  }
+  72%,
+  81% {
+    translate: 0 -1px;
+  }
+  82%,
+  100% {
+    translate: 0 0;
   }
 }
 
