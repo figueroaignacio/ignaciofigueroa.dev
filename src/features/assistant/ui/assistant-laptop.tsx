@@ -1,8 +1,3 @@
-/**
- * The laptop, its screen, and the hands on it — drawn once for every scene the
- * bot works in. It sits on a 32-wide grid with the keyboard at y25, so a body
- * whose shoulders end there gets it right on the lap.
- */
 export function AssistantLaptop() {
   return (
     <g className="assistant-laptop">

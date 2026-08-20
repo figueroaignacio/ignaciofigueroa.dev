@@ -1,12 +1,7 @@
 type AssistantFaceProps = {
-  /** Screen light on the face: the glow wash plus the reflection in each eye. */
   lit?: boolean;
 };
 
-/**
- * The bot itself, drawn on a 24x24 grid. Every scene it appears in — the plain
- * avatar, the coding one — draws it from here, so there is one face to change.
- */
 export function AssistantFace({ lit = false }: AssistantFaceProps) {
   return (
     <>
@@ -16,14 +11,13 @@ export function AssistantFace({ lit = false }: AssistantFaceProps) {
       <path fill="#E8845A" d="M9 18h6v2H9Z" />
       <path fill="#F5F0E8" d="M3 20h18v4H3ZM1 21h2v3H1Zm20 0h2v3h-2Z" />
 
-      {/* Clipped to the exact rectangle of the face, so the light stops where the skin does. */}
       {lit && <rect className="assistant-glow" x="3" y="4" width="18" height="14" fill="#A8E6D7" />}
 
       {/*
        * The eyes move on two axes owned by two elements: the group slides them
-       * around (the glance, the reading), each eye squashes vertically (the
-       * blink). One element doing both would put two animations on `transform`,
-       * where the last one declared simply wins and the other never runs.
+       * side to side (the glance), each rect squashes vertically (the blink).
+       * One element doing both would put two animations on `transform`, where
+       * the last one declared simply wins and the other never runs.
        */}
       <g className="assistant-eyes">
         <g className="assistant-eye">

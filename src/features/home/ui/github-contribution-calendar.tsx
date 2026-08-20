@@ -119,11 +119,6 @@ export function GithubContributionCalendar({
           className="contribution-field min-w-180 pt-10 pb-1"
           style={{ '--cols': contributions.length } as React.CSSProperties}
         >
-          {/*
-            The bot walks the top of the year and the week under its feet lifts
-            as it passes. It is a wave rather than a light: the colours here are
-            data, and a flourish has no business editing them.
-          */}
           <div className="contribution-track" aria-hidden="true">
             <AssistantStroll className="contribution-walker" />
           </div>

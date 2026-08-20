@@ -1,14 +1,5 @@
-/**
- * Two frames of walk and one of sit, all three drawn, only one shown at a time.
- *
- * A walk cycle is cheap at this size: legs apart, legs together, and a body
- * that bobs a pixel between them. Swapping whole frames — rather than animating
- * a rect's x — is what keeps it pixel art instead of a rubber band.
- */
 type AssistantLegsProps = {
-  /** The walking frames. A bot perched on an edge has no use for them. */
   walk?: boolean;
-  /** The seated pose. A bot that never sits down has no use for it. */
   dangle?: boolean;
 };
 
@@ -32,7 +23,6 @@ export function AssistantLegs({ walk = true, dangle = true }: AssistantLegsProps
         </g>
       )}
 
-      {/* Hanging off the rule, one shoe swinging a pixel behind the other. */}
       {dangle && (
         <g className="assistant-legs-sit">
           <g className="assistant-leg-dangle">

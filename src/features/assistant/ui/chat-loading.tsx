@@ -14,10 +14,9 @@ type TraceStep = 'reading' | 'writing' | ToolName;
 /**
  * The wait, shown as the work it actually is.
  *
- * A spinner says "something is happening"; this says what. The bot opens a
- * laptop and gets to work, and under it the steps accumulate as the stream
- * reports tools, so a tool call that takes three seconds reads as progress
- * instead of a stall. Geometry is the page's timeline — a hairline
+ * A spinner says "something is happening"; this says what. Steps accumulate as
+ * the stream reports tools, so a tool call that takes three seconds reads as
+ * progress instead of a stall. Geometry is the page's timeline — a hairline
  * spine with dots — so the assistant explains itself in the site's own voice.
  */
 export function ChatLoading({ activeTool }: ChatLoadingProps) {

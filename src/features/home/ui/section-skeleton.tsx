@@ -6,11 +6,6 @@ import { Skeleton } from '@/shared/components/ui/skeleton';
  * Borrows `SectionShell` rather than re-stating its markup: a loading section
  * has to sit on the same column, at the same rhythm, under the same bleeding
  * rule as the section it stands in for.
- *
- * The bot fetching it goes in as an accessory, which is the one slot here that
- * is positioned out of flow — anything in the flow would change the height the
- * skeleton exists to reserve, and the section would jump when the data lands.
- * It sits in the bottom padding, where the bars never reach.
  */
 export function SectionSkeleton({ children }: { children: React.ReactNode }) {
   return (

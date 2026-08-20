@@ -26,11 +26,6 @@ export function Footer() {
      * rule spans the viewport; only the content sits on the column.
      */
     <footer className="relative w-full border-t border-rule text-xs font-mono text-muted-foreground">
-      {/*
-       * Asleep on the line that closes the frame: the page is over, and so is
-       * its day. Asleep rather than awake on purpose — the sign-off below is
-       * already a face, and a second one looking at you would be a crowd.
-       */}
       <AssistantPerch className="footer-perch" expression="asleep" />
       <div className="page-frame-outer">
         <div className="page-frame-flush">

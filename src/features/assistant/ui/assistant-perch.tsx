@@ -8,14 +8,6 @@ type AssistantPerchProps = {
   expression?: AssistantExpression;
 };
 
-/**
- * The bot sitting on the edge of something, legs over the side.
- *
- * The grid stops at its hips, so the element's bottom edge is the edge it is
- * sitting on: put it at the top of a box or the bottom of a section and it
- * lands on that line with nothing to nudge. The legs hang past the grid, which
- * is what the visible overflow is for.
- */
 export function AssistantPerch({ className, expression = 'awake' }: AssistantPerchProps) {
   return (
     <svg

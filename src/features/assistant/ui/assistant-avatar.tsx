@@ -18,10 +18,6 @@ type AssistantAvatarProps = {
   size?: keyof typeof SIZES;
   className?: string;
   expression?: AssistantExpression;
-  /**
-   * Follow the pointer with its eyes. Worth it on the big ones; at `sm` the
-   * eyes are four pixels wide and the whole effect lands under a pixel.
-   */
   follow?: boolean;
 };
 

@@ -299,15 +299,6 @@
     --assistant-cue: 0ms;
   }
 
-  /*
-   * The coding scene: an intro that plays once and then work that loops.
-   *
-   * The demo version looped the whole thing, which reads as a fidget; here the
-   * laptop opens once and stays open for as long as the wait lasts. Every intro
-   * step is `both`, so under reduced motion — where the base layer collapses
-   * durations to nothing — each one lands on its final frame and you get the
-   * finished picture, open and lit, with no motion at all.
-   */
   .assistant-laptop {
     animation: laptop-in 600ms cubic-bezier(0.25, 0.9, 0.35, 1) var(--assistant-cue) both;
   }
@@ -380,21 +371,6 @@
     animation: caret-blink 700ms steps(1, end) infinite;
   }
 
-  /*
-   * The patrol.
-   *
-   * The bot never leaves and never settles: it walks a stretch of the rule,
-   * sits down on it to work, gets up and walks the next stretch. Four stretches
-   * — right to middle, middle to left, and back again — put it over the whole
-   * section and land it exactly where it started, which is what lets the loop
-   * close without a jump.
-   *
-   * Because those four stretches are identical in shape, everything except the
-   * position runs on one of them, `--assistant-leg`, and simply repeats. Only
-   * the walking itself needs the full cycle, since only it cares which stretch
-   * this is. Every keyframe below is therefore a percentage of one stretch:
-   * walking until 40%, seated and working until 93%, back on its feet by 98%.
-   */
   .assistant-walker {
     overflow: visible;
   }
@@ -403,12 +379,6 @@
     animation: patrol-sit var(--assistant-leg) ease-out infinite;
   }
 
-  /*
-   * The bob cannot simply be held flat while seated: a second animation on the
-   * same property would win for its whole run, not for a slice of it. So the
-   * stretch animates the bob's *amplitude* instead — a different property,
-   * flipped in steps — and the bob itself keeps running against it.
-   */
   .assistant-walker .assistant-gait {
     animation:
       gait-bob 480ms steps(1, end) infinite,
@@ -439,8 +409,6 @@
     animation-delay: 320ms;
   }
 
-  /* The laptop and the light it throws, on the same stretch: out and lit while
-     it is sitting, packed away before it stands up. */
   .assistant-walker .assistant-laptop {
     animation: patrol-laptop var(--assistant-leg) ease-out infinite;
   }
@@ -473,11 +441,6 @@
     animation: patrol-code var(--assistant-leg) steps(1, end) infinite;
   }
 
-  /*
-   * The strip the bot walks along: it spans the section and sits on the rule
-   * that closes it. Open downwards so its legs can hang over the line, and
-   * clipped sideways so nothing it does can widen the page.
-   */
   .rail-bot-slot {
     position: absolute;
     inset-inline: 0;
@@ -488,12 +451,6 @@
     pointer-events: none;
   }
 
-  /*
-   * One stretch takes twelve seconds, so a full round trip of the section takes
-   * just under a minute. The middle seat is the midpoint of the other two on
-   * purpose: it makes all four stretches the same distance, and therefore the
-   * same walking pace, without measuring anything.
-   */
   .rail-bot {
     --assistant-leg: 12s;
 
@@ -513,16 +470,6 @@
     block-size: auto;
   }
 
-  /*
-   * On a phone: same bot, same rule, smaller and quicker.
-   *
-   * The pace has to come off its stride, not off the width of the screen.
-   * Spending the same twelve seconds crossing a phone works out at a fifth of
-   * the speed with the legs going at the same rate, which is a moonwalk. Two
-   * seats instead of four for the same reason — three stops inside two hundred
-   * pixels is a cage, not a patrol — and the seats move in by the same amount
-   * the sprite shrinks, since those offsets are all measured in bot widths.
-   */
   @media (max-width: 63.999rem) {
     .rail-bot {
       --assistant-leg: 9s;
@@ -537,15 +484,6 @@
     }
   }
 
-  /*
-   * Hovering catches it: the walk stops where it is, the whole stretch it was
-   * playing stops with it, and the sprite hops once to say it noticed. Only the
-   * blink is let through — a bot frozen down to its eyes reads as a broken
-   * animation rather than one that stopped.
-   *
-   * The hop has to live on the sprite rather than on the button, because the
-   * button is the thing being paused and a paused element cannot also animate.
-   */
   .rail-bot:hover,
   .rail-bot:focus-visible,
   .rail-bot:hover .assistant-walker *,
@@ -563,9 +501,6 @@
     animation: hop 480ms steps(1, end);
   }
 
-  /* With reduced motion nothing above runs, and every one of those animations
-     is a loop rather than a one-shot, so none of them leave a final frame to
-     rest on. This is that frame, stated outright: sat down, mid-section. */
   @media (prefers-reduced-motion: reduce) {
     .rail-bot {
       inset-inline-start: calc(50% - 2rem);
@@ -598,8 +533,6 @@
     }
   }
 
-  /* Reading: eyes down on the line and narrowed. The squint survives being
-     looked up from, which is why it is a separate rule from the aim. */
   [data-expression='reading'] .assistant-eyes {
     animation: none;
     translate: 0 1.3px;
@@ -610,20 +543,11 @@
     transform: scaleY(0.68);
   }
 
-  /*
-   * The pointer, when it gets close enough to be worth looking at. This comes
-   * after every other rule that moves the eyes so it can take them over from
-   * any of them — walking, reading, glancing around — and it hands them
-   * straight back, since there is no state left behind once `data-gaze` goes.
-   * It only takes the aim: a bot reading something keeps its narrowed eyes
-   * while it looks up at you.
-   */
   [data-gaze='true'] .assistant-eyes {
     animation: none;
     translate: calc(var(--gaze-x, 0) * 1.5px) calc(var(--gaze-y, 0) * 1.1px);
   }
 
-  /* Nothing to sit down for, so this one's walk never stops. */
   .assistant-strolling .assistant-gait {
     animation: gait-bob 480ms steps(1, end) infinite;
   }
@@ -632,15 +556,10 @@
     overflow: visible;
   }
 
-  /* A dozing bot does not swing its feet. */
   [data-expression='asleep'] .assistant-leg-dangle {
     animation: none;
   }
 
-  /*
-   * The bot fetching a section, parked in the bottom padding of its skeleton
-   * where the bars never reach — so it costs the reserved height nothing.
-   */
   .skeleton-bot {
     position: absolute;
     inset-block-end: 1.25rem;
@@ -654,12 +573,6 @@
     block-size: auto;
   }
 
-  /*
-   * The message being walked off the page: one crossing, then gone. `both`
-   * holds it off the right edge rather than letting it reappear at the left,
-   * because the point is that it left — and the crossing is slow because the
-   * pace still has to come off the stride, not off how wide the form is.
-   */
   .courier-track {
     position: relative;
     block-size: 2.25rem;
@@ -675,7 +588,6 @@
     animation: courier-off 8s linear both;
   }
 
-  /* Sitting on the line that closes the frame, off to one side of the sign-off. */
   .footer-perch {
     position: absolute;
     inset-block-end: 100%;
@@ -685,7 +597,6 @@
     pointer-events: none;
   }
 
-  /* On the rim of the specimen box, over to one side of the glyph. */
   .mark-perch {
     position: absolute;
     inset-block-end: 100%;
@@ -695,19 +606,7 @@
     pointer-events: none;
   }
 
-  /*
-   * The bot walking the top of the contribution year, and the week under its
-   * feet lifting as it passes.
-   *
-   * The lift is a wave rather than a light on purpose: those colours are the
-   * data, and a flourish has no business editing them. Each cell knows which
-   * column it is in, so its delay is just its share of the crossing — the wave
-   * is not following the bot, the two are reading the same clock.
-   */
   .contribution-field {
-    /* Paced off the stride, not off the year: at 480ms a step, this puts about
-       a third of its own width under each one, the same as the bot on the rule.
-       Crossing faster with the same short legs reads as a sprint. */
     --sweep: 28s;
 
     position: relative;
@@ -741,8 +640,6 @@
     border-radius: 0.5rem;
   }
 
-  /* Out of flow on purpose: as a flex item its width became part of the
-     button, leaving an invisible click target beside the bot. */
   .rail-bot-tooltip {
     position: absolute;
     inset-inline-end: 100%;
@@ -933,8 +830,6 @@
   }
 }
 
-/* Held open until 80%: without those hold frames the eyes interpolate shut
-   across the whole cycle, which is a slow squint rather than a blink. */
 @keyframes blink {
   0%,
   80% {
@@ -1025,7 +920,6 @@
   }
 }
 
-/* Dark, one frame of flash as it wakes, then the steady glow it works by. */
 @keyframes screen-on {
   from {
     fill: #14201f;
@@ -1104,7 +998,6 @@
   }
 }
 
-/* Down at the screen, then back and forth across it — reading, not glancing. */
 @keyframes read-code {
   0% {
     translate: 0 1.2px;
@@ -1196,10 +1089,6 @@
   }
 }
 
-/* Right seat, middle, left, middle, and home — the middle one twice, so the
-   loop retraces its steps instead of jumping back. */
-/* Across the year and back, and the return trip is the bot's own business —
-   only the outbound leg has a wave under it. */
 @keyframes sweep-walk {
   0% {
     inset-inline-start: 0;
@@ -1249,9 +1138,6 @@
   }
 }
 
-/* The short round trip: out and back, arriving at 40% of each stretch just
-   like the long one, which is what keeps the body's own loop in step. */
-/* In from off the left, out past the right, once. */
 @keyframes courier-off {
   from {
     inset-inline-start: -3rem;
@@ -1284,8 +1170,6 @@
   }
 }
 
-/* Six pixels up and back down in discrete steps, with a small second bounce on
-   the landing — the same currency as everything else it does. */
 @keyframes hop {
   0%,
   9% {
@@ -1614,13 +1498,6 @@
     animation: none;
   }
 
-  /*
-   * The rule the rail bot stands on is the one that opens the section *after*
-   * the one it lives in, and a line drawing itself out from the centre under
-   * the bot's feet reads as the bot floating. So that one stays put, at every
-   * width — the bot walks it on a phone too. Move the bot and this moves with
-   * it.
-   */
   #experience + section > .rule-bleed {
     animation: none;
   }

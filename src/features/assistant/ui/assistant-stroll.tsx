@@ -4,16 +4,9 @@ import { AssistantLegs } from './assistant-legs';
 
 type AssistantStrollProps = {
   className?: string;
-  /** An envelope at its side, for when it is walking something somewhere. */
   carrying?: boolean;
 };
 
-/**
- * The bot with nowhere to sit: it just walks, on whatever it has been put on
- * top of. Same grid and same walk cycle as the one that paces the section rule,
- * minus the laptop and the seated pose — where this one goes it is passing
- * through, not settling in.
- */
 export function AssistantStroll({ className, carrying = false }: AssistantStrollProps) {
   return (
     <svg
@@ -31,7 +24,6 @@ export function AssistantStroll({ className, carrying = false }: AssistantStroll
         </g>
         <AssistantLegs dangle={false} />
 
-        {/* Inside the gait group so it bobs along with the body it belongs to. */}
         {carrying && (
           <g>
             <rect x="21" y="19" width="7" height="5" fill="#F5F0E8" />

@@ -80,8 +80,6 @@ export function ContactForm() {
             className="w-full px-4 py-3 bg-secondary/30 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground/50 resize-none overflow-hidden disabled:opacity-50"
           />
         </div>
-        {/* Once the message is away, the bot walks it off the page. It crosses
-            once and leaves: a confirmation that repeats is an animation. */}
         {state.success && (
           <div className="courier-track" aria-hidden="true">
             <AssistantStroll className="courier" carrying />
