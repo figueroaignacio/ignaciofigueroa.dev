@@ -1,3 +1,4 @@
+import { AssistantStroll } from '@/features/assistant/ui/assistant-stroll';
 import { cn } from '@/shared/lib/cn';
 import { GithubContributionDay, TopLanguage } from './github-stats-types';
 
@@ -11,12 +12,21 @@ interface GithubContributionCalendarProps {
   moreLabel: string;
 }
 
-function ContributionCell({ day, id }: { day: GithubContributionDay; id: string }) {
+function ContributionCell({
+  day,
+  id,
+  column,
+}: {
+  day: GithubContributionDay;
+  id: string;
+  column: number;
+}) {
   return (
     <div
       key={id}
+      style={{ '--col': column } as React.CSSProperties}
       className={cn(
-        'w-2.5 h-2.5 rounded-xs transition-all duration-200 hover:scale-125 hover:z-10 relative group/cell cursor-pointer',
+        'contribution-cell w-2.5 h-2.5 rounded-xs transition-all duration-200 hover:scale-125 hover:z-10 relative group/cell cursor-pointer',
         getCellColorClass(day.contributionLevel),
       )}
     >
@@ -105,7 +115,19 @@ export function GithubContributionCalendar({
       </div>
 
       <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-border/60 scrollbar-track-transparent">
-        <div className="min-w-180 py-1">
+        <div
+          className="contribution-field min-w-180 pt-10 pb-1"
+          style={{ '--cols': contributions.length } as React.CSSProperties}
+        >
+          {/*
+            The bot walks the top of the year and the week under its feet lifts
+            as it passes. It is a wave rather than a light: the colours here are
+            data, and a flourish has no business editing them.
+          */}
+          <div className="contribution-track" aria-hidden="true">
+            <AssistantStroll className="contribution-walker" />
+          </div>
+
           <div className="grid grid-flow-col grid-rows-7 gap-0.75 auto-cols-max">
             {contributions.flatMap((week, wIndex) =>
               week.map((day, dIndex) => (
@@ -113,6 +135,7 @@ export function GithubContributionCalendar({
                   key={`${activeYear}-${wIndex}-${dIndex}`}
                   id={`${activeYear}-${wIndex}-${dIndex}`}
                   day={day}
+                  column={wIndex}
                 />
               )),
             )}

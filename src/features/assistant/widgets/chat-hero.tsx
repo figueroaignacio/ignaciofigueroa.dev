@@ -7,9 +7,20 @@ import { ChatSuggestions } from '../ui/chat-suggestions';
 
 interface ChatHeroProps {
   onQuickAction: (text: string) => void;
+  /** Whether there is something in the input right now. */
+  typing?: boolean;
 }
 
-export function ChatHero({ onQuickAction }: ChatHeroProps) {
+/**
+ * The empty state, and the bot waiting in it.
+ *
+ * It reads over your shoulder while you type — eyes down on the input sitting
+ * right below it, narrowed the way you look at a line of text rather than at a
+ * person — and goes back to looking around when the box is empty again. Sending
+ * hands it over to the waiting state, where it opens the laptop and gets to
+ * work, so the whole exchange is one bot doing one thing after another.
+ */
+export function ChatHero({ onQuickAction, typing = false }: ChatHeroProps) {
   const t = useTranslations('components.chat.page');
 
   return (
@@ -23,7 +34,7 @@ export function ChatHero({ onQuickAction }: ChatHeroProps) {
         {}
         <div className="absolute inset-0 -z-10 rounded-full blur-3xl bg-primary/15 scale-150 animate-pulse duration-6000" />
 
-        <AssistantAvatar size="xl" />
+        <AssistantAvatar size="xl" follow expression={typing ? 'reading' : 'awake'} />
       </motion.div>
 
       <motion.div

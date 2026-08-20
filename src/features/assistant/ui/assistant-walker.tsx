@@ -1,4 +1,8 @@
+'use client';
+
 import clsx from 'clsx';
+import { useRef } from 'react';
+import { useGaze } from '../hooks/use-gaze';
 import { AssistantFace } from './assistant-face';
 import { AssistantLaptop } from './assistant-laptop';
 import { AssistantLegs } from './assistant-legs';
@@ -9,7 +13,8 @@ type AssistantWalkerProps = {
 
 /**
  * The bot pacing a rule: walking it, sitting down on it to work, and getting
- * back up to walk some more.
+ * back up to walk some more — and looking up at your pointer when it comes
+ * near, which is what makes stopping it on hover feel like being noticed.
  *
  * The grid ends at y28 — where its feet are — so the element's bottom edge is
  * the line it walks on and nothing has to be nudged into place by hand. Sitting
@@ -23,8 +28,12 @@ type AssistantWalkerProps = {
  * playing once, and that loop is timed by the `.rail-bot` around it.
  */
 export function AssistantWalker({ className }: AssistantWalkerProps) {
+  const ref = useRef<SVGSVGElement>(null);
+  useGaze(ref);
+
   return (
     <svg
+      ref={ref}
       viewBox="0 0 32 28"
       xmlns="http://www.w3.org/2000/svg"
       shapeRendering="crispEdges"

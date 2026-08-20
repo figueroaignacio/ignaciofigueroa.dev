@@ -56,7 +56,7 @@ export default function NotFound() {
 
             <div className="relative w-full pt-4">
               <div className="pointer-events-none absolute right-5 -top-2 z-0" aria-hidden="true">
-                <AssistantAvatar size="lg" />
+                <AssistantAvatar size="lg" follow />
               </div>
 
               <div className="relative z-10 w-full overflow-hidden rounded-sm border border-border bg-card font-mono text-[11px] text-left">

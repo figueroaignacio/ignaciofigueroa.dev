@@ -101,7 +101,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
         {showHero ? (
           <div className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4">
             <div className="flex-1 flex items-center justify-center">
-              <ChatHero onQuickAction={handleQuickAction} />
+              <ChatHero onQuickAction={handleQuickAction} typing={message.trim().length > 0} />
             </div>
             <div className="w-full mt-4 shrink-0 pb-safe">
               <ChatInput

@@ -267,6 +267,7 @@
 
   .assistant-eyes {
     animation: glance 9s infinite;
+    transition: translate 160ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   [data-expression='asleep'] .assistant-eye {
@@ -578,6 +579,73 @@
     .assistant-walker .assistant-code {
       opacity: 1;
     }
+  }
+
+  /*
+   * The pointer, when it gets close enough to be worth looking at. This comes
+   * after every other rule that moves the eyes so it can take them over from
+   * any of them — walking, reading code, glancing around — and it hands them
+   * straight back, since there is no state left behind once `data-gaze` goes.
+   */
+  [data-gaze='true'] .assistant-eyes {
+    animation: none;
+    translate: calc(var(--gaze-x, 0) * 1.5px) calc(var(--gaze-y, 0) * 1.1px);
+  }
+
+  /* Reading wins over looking: while you are typing at it, you are the text. */
+  [data-expression='reading'] .assistant-eyes {
+    animation: none;
+    translate: 0 1.3px;
+  }
+
+  [data-expression='reading'] .assistant-eye {
+    animation: none;
+    transform: scaleY(0.68);
+  }
+
+  /* Nothing to sit down for, so this one's walk never stops. */
+  .assistant-strolling .assistant-gait {
+    animation: gait-bob 480ms steps(1, end) infinite;
+  }
+
+  /*
+   * The bot walking the top of the contribution year, and the week under its
+   * feet lifting as it passes.
+   *
+   * The lift is a wave rather than a light on purpose: those colours are the
+   * data, and a flourish has no business editing them. Each cell knows which
+   * column it is in, so its delay is just its share of the crossing — the wave
+   * is not following the bot, the two are reading the same clock.
+   */
+  .contribution-field {
+    /* Paced off the stride, not off the year: at 480ms a step, this puts about
+       a third of its own width under each one, the same as the bot on the rule.
+       Crossing faster with the same short legs reads as a sprint. */
+    --sweep: 28s;
+
+    position: relative;
+  }
+
+  .contribution-track {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 2.5rem;
+    pointer-events: none;
+  }
+
+  .contribution-walker {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inline-size: 2.5rem;
+    block-size: auto;
+    animation: sweep-walk var(--sweep) linear infinite;
+  }
+
+  .contribution-cell {
+    animation: cell-sweep var(--sweep) ease-out infinite;
+    animation-delay: calc(var(--sweep) * 0.45 * var(--col, 0) / var(--cols, 53));
   }
 
   .rail-bot:focus-visible {
@@ -1043,6 +1111,35 @@
 
 /* Right seat, middle, left, middle, and home — the middle one twice, so the
    loop retraces its steps instead of jumping back. */
+/* Across the year and back, and the return trip is the bot's own business —
+   only the outbound leg has a wave under it. */
+@keyframes sweep-walk {
+  0% {
+    inset-inline-start: 0;
+  }
+  45%,
+  50% {
+    inset-inline-start: calc(100% - 2.5rem);
+  }
+  95%,
+  100% {
+    inset-inline-start: 0;
+  }
+}
+
+@keyframes cell-sweep {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  0.7% {
+    translate: 0 -3px;
+  }
+  3% {
+    translate: 0 0;
+  }
+}
+
 @keyframes patrol {
   0% {
     inset-inline-start: calc(100% - 8rem);
