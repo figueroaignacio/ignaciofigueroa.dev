@@ -13,12 +13,6 @@ export function AssistantFace({ lit = false }: AssistantFaceProps) {
 
       {lit && <rect className="assistant-glow" x="3" y="4" width="18" height="14" fill="#A8E6D7" />}
 
-      {/*
-       * The eyes move on two axes owned by two elements: the group slides them
-       * side to side (the glance), each rect squashes vertically (the blink).
-       * One element doing both would put two animations on `transform`, where
-       * the last one declared simply wins and the other never runs.
-       */}
       <g className="assistant-eyes">
         <g className="assistant-eye">
           <rect x="5" y="8" width="5" height="5" fill="#2C1810" />

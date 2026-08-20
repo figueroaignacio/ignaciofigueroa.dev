@@ -49,8 +49,6 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
       {suggestions.map((suggestion, index) => {
         const Icon = suggestion.icon;
         return (
-          /* Same shape and mono voice as the hero's GitHub / LinkedIn / Resume
-             row — the site states its options, it doesn't bounce them. */
           <motion.button
             type="button"
             key={index}

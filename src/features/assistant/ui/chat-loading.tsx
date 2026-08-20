@@ -8,17 +8,8 @@ interface ChatLoadingProps {
   activeTool?: ToolName | null;
 }
 
-/** Every step the trace can show: the two bookends plus one per backend tool. */
 type TraceStep = 'reading' | 'writing' | ToolName;
 
-/**
- * The wait, shown as the work it actually is.
- *
- * A spinner says "something is happening"; this says what. Steps accumulate as
- * the stream reports tools, so a tool call that takes three seconds reads as
- * progress instead of a stall. Geometry is the page's timeline — a hairline
- * spine with dots — so the assistant explains itself in the site's own voice.
- */
 export function ChatLoading({ activeTool }: ChatLoadingProps) {
   const t = useTranslations('components.chat.messages.trace');
   const [toolsUsed, setToolsUsed] = useState<ToolName[]>([]);
@@ -28,10 +19,6 @@ export function ChatLoading({ activeTool }: ChatLoadingProps) {
     setToolsUsed((prev) => (prev.includes(activeTool) ? prev : [...prev, activeTool]));
   }, [activeTool]);
 
-  /*
-   * `reading` opens every trace; `writing` closes it once the tools are done
-   * and text is on its way. The last entry is always the step in flight.
-   */
   const steps: TraceStep[] = ['reading', ...toolsUsed];
   if (!activeTool && toolsUsed.length > 0) steps.push('writing');
 
@@ -62,7 +49,7 @@ export function ChatLoading({ activeTool }: ChatLoadingProps) {
               >
                 <span
                   aria-hidden
-                  className={`absolute top-[5px] left-[-20.5px] size-[7px] rounded-full border ${
+                  className={`absolute top-1.25 left-[-20.5px] size-1.75 rounded-full border ${
                     isCurrent
                       ? 'animate-pulse border-brand bg-brand ring-4 ring-brand/15'
                       : 'border-border bg-background'

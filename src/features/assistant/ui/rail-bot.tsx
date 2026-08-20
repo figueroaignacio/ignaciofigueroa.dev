@@ -12,7 +12,6 @@ export function RailBot() {
 
   return (
     <div className="rail-bot-slot" ref={track}>
-      {/* The tooltip is a joke; the button still has to say what it does. */}
       {onScreen && (
         <button
           type="button"
