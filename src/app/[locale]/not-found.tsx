@@ -55,8 +55,10 @@ export default function NotFound() {
             </div>
 
             <div className="relative w-full pt-4">
+              {/* Reading the block it is hiding behind — the one that says the
+                  page you asked for is not there. It looks up if you come near. */}
               <div className="pointer-events-none absolute right-5 -top-2 z-0" aria-hidden="true">
-                <AssistantAvatar size="lg" follow />
+                <AssistantAvatar size="lg" follow expression="reading" />
               </div>
 
               <div className="relative z-10 w-full overflow-hidden rounded-sm border border-border bg-card font-mono text-[11px] text-left">

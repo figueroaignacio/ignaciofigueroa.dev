@@ -598,18 +598,8 @@
     }
   }
 
-  /*
-   * The pointer, when it gets close enough to be worth looking at. This comes
-   * after every other rule that moves the eyes so it can take them over from
-   * any of them — walking, reading code, glancing around — and it hands them
-   * straight back, since there is no state left behind once `data-gaze` goes.
-   */
-  [data-gaze='true'] .assistant-eyes {
-    animation: none;
-    translate: calc(var(--gaze-x, 0) * 1.5px) calc(var(--gaze-y, 0) * 1.1px);
-  }
-
-  /* Reading wins over looking: while you are typing at it, you are the text. */
+  /* Reading: eyes down on the line and narrowed. The squint survives being
+     looked up from, which is why it is a separate rule from the aim. */
   [data-expression='reading'] .assistant-eyes {
     animation: none;
     translate: 0 1.3px;
@@ -620,9 +610,89 @@
     transform: scaleY(0.68);
   }
 
+  /*
+   * The pointer, when it gets close enough to be worth looking at. This comes
+   * after every other rule that moves the eyes so it can take them over from
+   * any of them — walking, reading, glancing around — and it hands them
+   * straight back, since there is no state left behind once `data-gaze` goes.
+   * It only takes the aim: a bot reading something keeps its narrowed eyes
+   * while it looks up at you.
+   */
+  [data-gaze='true'] .assistant-eyes {
+    animation: none;
+    translate: calc(var(--gaze-x, 0) * 1.5px) calc(var(--gaze-y, 0) * 1.1px);
+  }
+
   /* Nothing to sit down for, so this one's walk never stops. */
   .assistant-strolling .assistant-gait {
     animation: gait-bob 480ms steps(1, end) infinite;
+  }
+
+  .assistant-perch {
+    overflow: visible;
+  }
+
+  /* A dozing bot does not swing its feet. */
+  [data-expression='asleep'] .assistant-leg-dangle {
+    animation: none;
+  }
+
+  /*
+   * The bot fetching a section, parked in the bottom padding of its skeleton
+   * where the bars never reach — so it costs the reserved height nothing.
+   */
+  .skeleton-bot {
+    position: absolute;
+    inset-block-end: 1.25rem;
+    inset-inline-end: 0;
+    inline-size: 2.75rem;
+    pointer-events: none;
+  }
+
+  .skeleton-bot svg {
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  /*
+   * The message being walked off the page: one crossing, then gone. `both`
+   * holds it off the right edge rather than letting it reappear at the left,
+   * because the point is that it left — and the crossing is slow because the
+   * pace still has to come off the stride, not off how wide the form is.
+   */
+  .courier-track {
+    position: relative;
+    block-size: 2.25rem;
+    overflow: clip visible;
+    pointer-events: none;
+  }
+
+  .courier {
+    position: absolute;
+    inset-block-end: 0;
+    inline-size: 2.25rem;
+    block-size: auto;
+    animation: courier-off 8s linear both;
+  }
+
+  /* Sitting on the line that closes the frame, off to one side of the sign-off. */
+  .footer-perch {
+    position: absolute;
+    inset-block-end: 100%;
+    inset-inline-end: 12%;
+    inline-size: 2.75rem;
+    block-size: auto;
+    pointer-events: none;
+  }
+
+  /* On the rim of the specimen box, over to one side of the glyph. */
+  .mark-perch {
+    position: absolute;
+    inset-block-end: 100%;
+    inset-inline-start: 55%;
+    inline-size: 2.25rem;
+    block-size: auto;
+    pointer-events: none;
   }
 
   /*
@@ -1181,6 +1251,16 @@
 
 /* The short round trip: out and back, arriving at 40% of each stretch just
    like the long one, which is what keeps the body's own loop in step. */
+/* In from off the left, out past the right, once. */
+@keyframes courier-off {
+  from {
+    inset-inline-start: -3rem;
+  }
+  to {
+    inset-inline-start: 100%;
+  }
+}
+
 @keyframes patrol-short {
   0% {
     inset-inline-start: calc(100% - 5rem);
