@@ -479,7 +479,6 @@
    * clipped sideways so nothing it does can widen the page.
    */
   .rail-bot-slot {
-    display: none;
     position: absolute;
     inset-inline: 0;
     inset-block-end: 0;
@@ -487,12 +486,6 @@
     z-index: 10;
     overflow: clip visible;
     pointer-events: none;
-  }
-
-  @media (min-width: 64rem) {
-    .rail-bot-slot {
-      display: block;
-    }
   }
 
   /*
@@ -518,6 +511,30 @@
   .rail-bot .assistant-walker {
     inline-size: 4rem;
     block-size: auto;
+  }
+
+  /*
+   * On a phone: same bot, same rule, smaller and quicker.
+   *
+   * The pace has to come off its stride, not off the width of the screen.
+   * Spending the same twelve seconds crossing a phone works out at a fifth of
+   * the speed with the legs going at the same rate, which is a moonwalk. Two
+   * seats instead of four for the same reason — three stops inside two hundred
+   * pixels is a cage, not a patrol — and the seats move in by the same amount
+   * the sprite shrinks, since those offsets are all measured in bot widths.
+   */
+  @media (max-width: 63.999rem) {
+    .rail-bot {
+      --assistant-leg: 9s;
+
+      animation:
+        patrol-short calc(var(--assistant-leg) * 2) linear infinite,
+        arrive 400ms ease-out both;
+    }
+
+    .rail-bot .assistant-walker {
+      inline-size: 2.5rem;
+    }
   }
 
   /*
@@ -1162,6 +1179,22 @@
   }
 }
 
+/* The short round trip: out and back, arriving at 40% of each stretch just
+   like the long one, which is what keeps the body's own loop in step. */
+@keyframes patrol-short {
+  0% {
+    inset-inline-start: calc(100% - 5rem);
+  }
+  20%,
+  50% {
+    inset-inline-start: 2.5rem;
+  }
+  70%,
+  100% {
+    inset-inline-start: calc(100% - 5rem);
+  }
+}
+
 @keyframes arrive {
   from {
     opacity: 0;
@@ -1504,14 +1537,12 @@
   /*
    * The rule the rail bot stands on is the one that opens the section *after*
    * the one it lives in, and a line drawing itself out from the centre under
-   * the bot's feet reads as the bot floating. So that one stays put — but only
-   * where the bot is: below this width it is not rendered at all, and the line
-   * can draw itself like every other. Move the bot and this moves with it.
+   * the bot's feet reads as the bot floating. So that one stays put, at every
+   * width — the bot walks it on a phone too. Move the bot and this moves with
+   * it.
    */
-  @media (min-width: 64rem) {
-    #experience + section > .rule-bleed {
-      animation: none;
-    }
+  #experience + section > .rule-bleed {
+    animation: none;
   }
 
   .timeline-spine::before {
