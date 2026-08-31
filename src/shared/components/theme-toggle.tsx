@@ -23,7 +23,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className="text-muted-foreground hover:text-foreground transition-colors focus:outline-hidden"
+      className="rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} className="size-5" strokeWidth={1.5} />

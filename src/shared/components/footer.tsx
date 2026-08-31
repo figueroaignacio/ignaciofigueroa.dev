@@ -1,4 +1,5 @@
 import { AssistantPerch } from '@/features/assistant/ui/assistant-perch';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { LocaleSwitcher } from './locale-switcher';
@@ -50,6 +51,12 @@ export function Footer() {
               </div>
             </div>
             <div className="flex items-center gap-5">
+              <Link
+                href="/projects"
+                className="hover:text-foreground transition-colors underline-offset-4 hover:underline"
+              >
+                projects
+              </Link>
               {footerLinks.map((link) => (
                 <a
                   key={link.href}

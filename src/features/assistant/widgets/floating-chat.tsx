@@ -13,9 +13,10 @@ import { ChatMessages } from './chat-messages';
 
 interface FloatingChatProps {
   onClose: () => void;
+  autoFocusInput?: boolean;
 }
 
-export function FloatingChat({ onClose }: FloatingChatProps) {
+export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatProps) {
   const { messages, isLoading, activeTool, sendMessage, resetChat, isMounted } = useChat();
   const [message, setMessage] = useState('');
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -64,6 +65,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
                   type="button"
                   className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/5 transition-all duration-200"
                   title={t('header.reset')}
+                  aria-label={t('header.reset')}
                 >
                   <HugeiconsIcon icon={Message01Icon} className="size-4" />
                 </button>
@@ -110,6 +112,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
                 onMessageChange={setMessage}
                 onSubmit={handleSend}
                 isHero={true}
+                autoFocus={autoFocusInput}
               />
             </div>
           </div>
@@ -131,6 +134,7 @@ export function FloatingChat({ onClose }: FloatingChatProps) {
                   onMessageChange={setMessage}
                   onSubmit={handleSend}
                   isHero={false}
+                  autoFocus={autoFocusInput}
                 />
               </div>
             </div>

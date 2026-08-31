@@ -69,7 +69,8 @@
       "resetConfirmTitle": "Are you sure you want to reset the chat?",
       "resetConfirmDescription": "This will delete all your messages in this chat.",
       "resetConfirmCancel": "Cancel",
-      "resetConfirmAction": "Reset Chat"
+      "resetConfirmAction": "Reset Chat",
+      "panelLabel": "Chat with the assistant"
     },
     "input": {
       "placeholder": "Type a message..."

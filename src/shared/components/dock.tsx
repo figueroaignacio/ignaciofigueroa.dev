@@ -9,7 +9,7 @@ import { Home01Icon, Mail01Icon, UserIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 const ICON_MAP: Record<string, ReactNode> = {
@@ -22,6 +22,7 @@ const ICON_MAP: Record<string, ReactNode> = {
 export function Dock() {
   const pathname = usePathname();
   const t = useTranslations('ui');
+  const tChat = useTranslations('components.chat.header');
   const navigation = useMemo(
     () => t.raw('navigation') as Array<{ label: string; href: string }>,
     [t],
@@ -33,6 +34,9 @@ export function Dock() {
   const [isHidden, setIsHidden] = useState(false);
   // Matches the breakpoint that opens up --chat-inset in globals.css.
   const [isDesktop, setIsDesktop] = useState(false);
+  const assistantButtonRef = useRef<HTMLButtonElement>(null);
+  const chatPanelRef = useRef<HTMLDivElement>(null);
+  const chatWasOpen = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -88,9 +92,41 @@ export function Dock() {
     // Docked, the page stays scrollable next to the rail; only the mobile
     // sheet, which covers everything, locks the body.
     const lockScroll = isChatOpen && !isDesktop;
+    const shell = document.getElementById('app-shell');
     document.body.style.overflow = lockScroll ? 'hidden' : '';
+    shell?.toggleAttribute('inert', lockScroll);
     return () => {
       document.body.style.overflow = '';
+      shell?.removeAttribute('inert');
+    };
+  }, [isChatOpen, isDesktop]);
+
+  useEffect(() => {
+    if (!isChatOpen) {
+      if (chatWasOpen.current) {
+        chatWasOpen.current = false;
+        assistantButtonRef.current?.focus();
+      }
+      return;
+    }
+
+    chatWasOpen.current = true;
+
+    const frame = requestAnimationFrame(() => {
+      if (!isDesktop) chatPanelRef.current?.focus();
+    });
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      const dialogs = document.querySelectorAll('[role="dialog"]');
+      if (dialogs[dialogs.length - 1] !== chatPanelRef.current) return;
+      setIsChatOpen(false);
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener('keydown', onKeyDown);
     };
   }, [isChatOpen, isDesktop]);
 
@@ -159,20 +195,25 @@ export function Dock() {
           {isChatOpen && (
             <motion.div
               key="chat-panel"
+              ref={chatPanelRef}
+              role="dialog"
+              aria-modal={!isDesktop}
+              aria-label={tChat('panelLabel')}
+              tabIndex={-1}
               initial={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
               animate={isDesktop ? { x: 0 } : { opacity: 1, y: 0 }}
               exit={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
               transition={{ type: 'spring', damping: 30, stiffness: 320 }}
               style={{ zIndex: 11000000 }}
               className={cn(
-                'fixed inset-0 flex flex-col overflow-hidden bg-background',
+                'fixed inset-0 flex flex-col overflow-hidden bg-background focus:outline-none',
                 // Docked: a full-height rail flush with the viewport edge, its
                 // left border sitting directly against the pushed-over page.
                 'lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[var(--chat-panel-width)]',
                 'lg:border-l lg:border-border',
               )}
             >
-              <FloatingChat onClose={() => setIsChatOpen(false)} />
+              <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
             </motion.div>
           )}
         </AnimatePresence>,
@@ -252,6 +293,7 @@ export function Dock() {
               return (
                 <button
                   key={item.href}
+                  ref={assistantButtonRef}
                   type="button"
                   onClick={() => setIsChatOpen((prev) => !prev)}
                   aria-current={active ? 'page' : undefined}

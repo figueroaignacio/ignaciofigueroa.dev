@@ -68,7 +68,8 @@
       "resetConfirmTitle": "¿Estás seguro de que querés reiniciar el chat?",
       "resetConfirmDescription": "Esto eliminará todos tus mensajes en este chat.",
       "resetConfirmCancel": "Cancelar",
-      "resetConfirmAction": "Reiniciar chat"
+      "resetConfirmAction": "Reiniciar chat",
+      "panelLabel": "Chat con el asistente"
     },
     "input": {
       "placeholder": "Escribí un mensaje..."

@@ -24,7 +24,8 @@
     }
   },
   "projects": {
-    "title": "Proyectos"
+    "title": "Proyectos",
+    "viewAll": "Todos los proyectos"
   },
   "stack": {
     "title": "Stack",
@@ -79,7 +80,7 @@
         "endDate": null
       },
       {
-        "title": "Autoformación en Desarrollo de Software, Programación e Inteligencia Artificial",
+        "title": "Autoformación en Desarrollo / Ingenieria de Software, Programación e Inteligencia Artificial",
         "institution": "En Internet",
         "description": "Especialización autodidacta en tecnologías web, programación de software, integración de modelos de inteligencia artificial y administración de sistemas Linux. Desarrollo de herramientas de código abierto y aplicaciones web.",
         "skills": [

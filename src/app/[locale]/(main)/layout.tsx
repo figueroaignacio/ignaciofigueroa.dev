@@ -22,18 +22,10 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
   const t = await getTranslations();
 
   return (
-    <div className="min-h-screen flex flex-col overflow-x-clip">
+    <div id="app-shell" className="min-h-screen flex flex-col overflow-x-clip">
       <div className="page-frame-outer flex flex-1 flex-col">
         <main id="main-content" className="page-frame relative flex-1" tabIndex={-1}>
-          {/*
-           * Corner mark, not a header: it's absolute, so it scrolls away with
-           * the top of the page. Offset by --frame-pad so it lines up with the
-           * frame's inner edge — including when the docked chat moves that edge.
-           * Desktop only: on a phone the frame has no spare corner, and the
-           * hover that explains it doesn't exist. The footer carries the same
-           * line for everyone else.
-           */}
-          <div className="group absolute top-8 left-[var(--frame-pad)] hidden items-center gap-3 lg:flex">
+          <div className="group absolute top-8 left-(--frame-pad) hidden items-center gap-3 lg:flex">
             <LogoMark
               size={26}
               className="logo-mark shrink-0 text-foreground/70 transition-colors duration-300 group-hover:text-foreground"

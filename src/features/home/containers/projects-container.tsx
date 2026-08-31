@@ -16,5 +16,7 @@ export async function ProjectsContainer() {
     }),
   );
 
-  return <ProjectsWidget id="projects" title={t('title')} data={data} />;
+  return (
+    <ProjectsWidget id="projects" title={t('title')} viewAllLabel={t('viewAll')} data={data} />
+  );
 }

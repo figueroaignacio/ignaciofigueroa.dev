@@ -13,6 +13,7 @@ interface ChatInputProps {
   onMessageChange: (value: string) => void;
   onSubmit: (e?: React.FormEvent) => void;
   isHero?: boolean;
+  autoFocus?: boolean;
 }
 
 export function ChatInput({
@@ -21,6 +22,7 @@ export function ChatInput({
   onMessageChange,
   onSubmit,
   isHero = false,
+  autoFocus = false,
 }: ChatInputProps) {
   const t = useTranslations('components.chat.page');
   const tChat = useTranslations('components.chat');
@@ -41,6 +43,12 @@ export function ChatInput({
       textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 200)}px`;
     }
   }, [message]);
+
+  useEffect(() => {
+    if (!autoFocus) return;
+    const frame = requestAnimationFrame(() => textareaRef.current?.focus());
+    return () => cancelAnimationFrame(frame);
+  }, [autoFocus]);
 
   const handleKeyDown = React.useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

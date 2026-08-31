@@ -35,7 +35,7 @@ export function LocaleSwitcher() {
             className={
               locale === localeOption
                 ? 'text-foreground cursor-default'
-                : 'text-muted-foreground hover:text-foreground transition-colors focus:outline-hidden'
+                : 'rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
             }
             aria-label={`Switch to ${localeOption}`}
           >

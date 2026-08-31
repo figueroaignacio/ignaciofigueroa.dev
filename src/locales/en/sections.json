@@ -24,7 +24,8 @@
     }
   },
   "projects": {
-    "title": "Projects"
+    "title": "Projects",
+    "viewAll": "All projects"
   },
   "stack": {
     "title": "Stack",
@@ -79,7 +80,7 @@
         "endDate": null
       },
       {
-        "title": "Self-directed Learning in Software Development, Programming and AI.",
+        "title": "Self-directed Learning in Software Development / Engineering, Programming and AI.",
         "institution": "At Internet, Online Resources, Communities",
         "description": "Self-directed specialization in web technologies, software programming, AI model integration, and Linux system administration. Development of open-source tools and web applications.",
         "skills": [
