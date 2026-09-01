@@ -5,14 +5,9 @@
     "title": "Desarrollador de Software",
     "description": "Me importa entender como funcionan las cosas desde el interior. Teniendo criterio propio y utilizando la IA como copilito para productividad, construyo cualquier cosa que se me pase por la cabeza.",
     "status": {
-      "label": "Estado",
       "working": "Trabajando en reclee.com",
       "workingUrl": "https://reclee.com",
-      "madeThat": "Esa landing la hice yo",
-      "locationLabel": "Desde",
-      "location": "Buenos Aires, AR — UTC−3",
-      "stackLabel": "Stack actual",
-      "stackAi": "IA"
+      "madeThat": "Esa landing la hice yo"
     }
   },
   "aboutMe": {
@@ -380,8 +375,7 @@
   "askAi": {
     "title": "Preguntale a una IA",
     "description": "No me creas a mí. Este sitio publica todo sobre mí como texto plano en /llms.txt — pasáselo a cualquier asistente y preguntá. La respuesta sale de mi propio contenido, no de lo que el modelo recuerde sobre alguien con mi nombre.",
-    "prompt": "Leé {url} y contame quién es Ignacio Figueroa, qué construyó y cuál es su stack.",
-    "heroLabel": "Preguntale a una IA sobre mí"
+    "prompt": "Leé {url} y contame quién es Ignacio Figueroa, qué construyó y cuál es su stack."
   },
   "mark": {
     "title": "La marca"

@@ -7,10 +7,10 @@ export async function ProjectsIndexView() {
   const t = await getTranslations('metadata.projects');
 
   return (
-    <div className="frame-column pt-16 pb-14 md:pt-20">
-      <header className="mb-10">
+    <div className="frame-column pt-12 pb-10 md:pt-16">
+      <header className="mb-8">
         <h1 className="type-display text-foreground">{t('heading')}</h1>
-        <div className="prose-reading mt-5">
+        <div className="prose-reading mt-4">
           <p>{t('intro')}</p>
         </div>
       </header>

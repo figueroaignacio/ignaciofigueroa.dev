@@ -194,7 +194,7 @@
 @layer base {
   :root {
     --dock-space: 7.5rem;
-    --frame-measure: 46rem;
+    --frame-measure: 44rem;
     --frame-gutter: 0rem;
     --frame-pad: 1rem;
     --frame-border: 0px;
@@ -758,15 +758,15 @@
   }
 
   .type-display {
-    @apply text-[2.125rem] md:text-5xl font-semibold tracking-tight leading-[1.05];
+    @apply text-[1.875rem] md:text-[2.5rem] font-semibold tracking-tight leading-[1.08];
   }
 
   .type-page-title {
-    @apply text-2xl md:text-3xl font-semibold tracking-tight leading-tight;
+    @apply text-xl md:text-[1.625rem] font-semibold tracking-tight leading-tight;
   }
 
   .type-item-title {
-    @apply text-[19px] md:text-[20px] font-medium tracking-tight leading-snug;
+    @apply text-[16px] md:text-[17px] font-medium tracking-tight leading-snug;
   }
 
   .type-label {
@@ -804,12 +804,12 @@
 
   .prose-reading {
     font-family: var(--font-serif), Georgia, serif;
-    font-size: 19px;
-    line-height: 1.75;
+    font-size: 17px;
+    line-height: 1.7;
   }
 
   .prose-reading p {
-    @apply mb-4 leading-[1.75] text-left text-foreground/90;
+    @apply mb-3.5 leading-[1.7] text-left text-foreground/90;
   }
 
   .prose-reading strong {
@@ -817,11 +817,11 @@
   }
 
   .prose-reading h2 {
-    @apply text-xl font-medium font-sans mt-10 mb-4 tracking-tight text-foreground border-b border-border pb-2;
+    @apply text-lg font-medium font-sans mt-8 mb-3 tracking-tight text-foreground border-b border-border pb-2;
   }
 
   .prose-reading h3 {
-    @apply text-lg font-medium font-sans mt-8 mb-3 tracking-tight text-foreground;
+    @apply text-base font-medium font-sans mt-6 mb-2.5 tracking-tight text-foreground;
   }
 
   .prose-reading ul {
@@ -842,11 +842,11 @@
 
   @media (max-width: 768px) {
     .prose-reading {
-      font-size: 18px;
-      line-height: 1.68;
+      font-size: 16px;
+      line-height: 1.65;
     }
     .prose-reading p {
-      line-height: 1.68;
+      line-height: 1.65;
     }
   }
 

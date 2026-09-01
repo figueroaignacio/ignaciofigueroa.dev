@@ -5,7 +5,7 @@ import { ProjectDetailSkeleton } from '../ui/project-detail-skeleton';
 export function ProjectDetailView({ slug }: { slug: string }) {
   return (
     /* Same measure as before, now expressed by the frame's column token. */
-    <div className="frame-column pt-16 pb-14 md:pt-20">
+    <div className="frame-column pt-12 pb-10 md:pt-16">
       <Suspense fallback={<ProjectDetailSkeleton />}>
         <ProjectDetailContainer slug={slug} />
       </Suspense>

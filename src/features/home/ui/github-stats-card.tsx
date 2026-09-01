@@ -22,7 +22,7 @@ export function GithubStatsCard({ title, value, icon, subtitle }: GithubStatsCar
         </div>
       }
     >
-      <span className="text-2xl font-semibold tracking-tight">{value}</span>
+      <span className="text-xl font-semibold tracking-tight">{value}</span>
       {subtitle ? (
         <div className="text-[10px] text-muted-foreground font-normal mt-1">{subtitle}</div>
       ) : null}

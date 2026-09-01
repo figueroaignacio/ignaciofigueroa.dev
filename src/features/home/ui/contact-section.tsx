@@ -61,7 +61,7 @@ export function ContactSection() {
               className="group flex items-center justify-between gap-6 py-3.5 first:pt-0 last:pb-0 hover:text-brand transition-colors duration-300"
             >
               <div className="min-w-0">
-                <span className="block text-[15px] font-mono text-foreground group-hover:text-brand transition-colors lowercase">
+                <span className="block text-[14px] font-mono text-foreground group-hover:text-brand transition-colors lowercase">
                   {link.label}
                 </span>
                 <span className="block text-xs text-muted-foreground leading-relaxed mt-0.5">

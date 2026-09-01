@@ -48,9 +48,9 @@ export function SectionShell({
       aria-busy={busy || undefined}
     >
       <div className="rule-bleed" aria-hidden="true" />
-      <div className="frame-column pt-10 pb-14 md:pt-12">
+      <div className="frame-column pt-8 pb-10 md:pt-10">
         {label}
-        <div className="mt-6 scroll-blur-in">{children}</div>
+        <div className="mt-5 scroll-blur-in">{children}</div>
       </div>
       {accessory}
     </section>

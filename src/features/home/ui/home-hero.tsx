@@ -8,20 +8,17 @@ export async function HomeHero() {
 
   return (
     /* Top space lives here, not on `body`, so the rails start at y=0. */
-    <header className="scroll-blur-out frame-column pt-16 pb-14 md:pt-20 md:pb-16">
-      <div className="flex flex-col gap-8 md:flex-row md:items-start md:gap-10">
-        <div className="flex min-w-0 flex-1 flex-col">
-          <h1 className="type-display text-foreground">{t('name')}</h1>
-          <p className="mt-4 text-[19px] leading-relaxed text-muted-strong md:text-[21px]">
-            {t('title')}
-          </p>
-          <div className="prose-reading mt-5">
-            <p>{t('description')}</p>
-          </div>
-          <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
+    <header className="scroll-blur-out frame-column pt-12 pb-10 md:pt-16 md:pb-12">
+      <div className="flex min-w-0 flex-col">
+        <h1 className="type-display text-foreground">{t('name')}</h1>
+        <p className="mt-3 text-[16px] leading-relaxed text-muted-strong md:text-[17px]">
+          {t('title')}
+        </p>
+        <div className="prose-reading mt-4">
+          <p>{t('description')}</p>
         </div>
-
         <HeroStatus />
+        <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
       </div>
     </header>
   );
