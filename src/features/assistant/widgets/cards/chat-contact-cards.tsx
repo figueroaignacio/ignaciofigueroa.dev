@@ -1,4 +1,6 @@
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
+import { Card } from '@/shared/components/ui/card';
+import { IconTile } from '@/shared/components/ui/icon-tile';
 import { File01Icon, Linkedin01Icon, Mail01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
@@ -39,11 +41,11 @@ export function ChatContactCards() {
   ];
 
   return (
-    <div className="flex flex-col gap-3.5 mt-2">
+    <div className="mt-2 flex flex-col gap-3.5">
       <h2 className="type-label text-muted-foreground">{t('title')}</h2>
-      <p className="text-[13px] text-muted-foreground leading-relaxed">{t('description')}</p>
+      <p className="text-[13px] leading-relaxed text-muted-foreground">{t('description')}</p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-1">
+      <div className="mt-1 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
         {contacts.map((contact) => {
           const Icon = contact.icon;
           return (
@@ -52,18 +54,14 @@ export function ChatContactCards() {
               href={contact.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-border bg-card hover:border-foreground/20 text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="group block text-muted-foreground transition-colors duration-200 hover:text-foreground"
             >
-              <div className="size-6 rounded-lg bg-secondary/40 border border-border/60 flex items-center justify-center shrink-0">
-                {typeof Icon === 'function' ? (
-                  <div className="size-4 shrink-0 flex items-center justify-center">
-                    <Icon />
-                  </div>
-                ) : (
-                  <HugeiconsIcon icon={Icon} className="size-4 shrink-0" />
-                )}
-              </div>
-              <span className="text-xs font-mono">{contact.label}</span>
+              <Card className="flex-row items-center gap-3 rounded-xl px-3.5 py-3 group-hover:border-foreground/20">
+                <IconTile variant="outline" tone="muted" size="xs" className="bg-secondary/40">
+                  {typeof Icon === 'function' ? <Icon /> : <HugeiconsIcon icon={Icon} />}
+                </IconTile>
+                <span className="font-mono text-xs">{contact.label}</span>
+              </Card>
             </a>
           );
         })}

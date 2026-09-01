@@ -73,7 +73,10 @@
       "panelLabel": "Chat with the assistant"
     },
     "input": {
-      "placeholder": "Type a message..."
+      "placeholder": "Type a message...",
+      "send": "Send message",
+      "sendHint": "to send",
+      "newlineHint": "for a new line"
     },
     "messages": {
       "initial": "Hi! 👋 How can I help you today?",

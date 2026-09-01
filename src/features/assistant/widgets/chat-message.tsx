@@ -1,8 +1,11 @@
+import { Bubble } from '@/shared/components/ui/bubble';
+import { Message as MessageRow } from '@/shared/components/ui/message';
+import { Separator } from '@/shared/components/ui/separator';
 import { motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
 import { Fragment } from 'react';
 import { parseMessageContent } from '../lib/parse-message';
 import type { Message } from '../types';
+import { AssistantAvatar } from '../ui/assistant-avatar';
 import { ChatMarkdownContent } from '../ui/chat-markdown-content';
 import { ChatContactCards } from './cards/chat-contact-cards';
 import { ChatExperienceCards } from './cards/chat-experience-cards';
@@ -14,14 +17,11 @@ interface ChatMessageProps {
   message: Message;
 }
 
-const MOTION_VARIANTS = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
-};
+const ENTER_INITIAL = { opacity: 0, y: 8 } as const;
+const ENTER_ANIMATE = { opacity: 1, y: 0 } as const;
+const ENTER_TRANSITION = { duration: 0.3, ease: [0.16, 1, 0.3, 1] } as const;
 
 export function ChatMessage({ message }: ChatMessageProps) {
-  const t = useTranslations('components.chat.messages');
   const isUser = message.role === 'user';
   const {
     showProjects,
@@ -36,6 +36,22 @@ export function ChatMessage({ message }: ChatMessageProps) {
     pitchData,
     cleanContent,
   } = parseMessageContent(message.content);
+
+  if (isUser) {
+    return (
+      <motion.div initial={ENTER_INITIAL} animate={ENTER_ANIMATE} transition={ENTER_TRANSITION}>
+        <MessageRow align="end">
+          <MessageRow.Content className="max-w-[88%]">
+            <Bubble variant="secondary" align="end" className="rounded-sm border border-border">
+              <Bubble.Content className="text-[13px] text-foreground/90">
+                {cleanContent}
+              </Bubble.Content>
+            </Bubble>
+          </MessageRow.Content>
+        </MessageRow>
+      </motion.div>
+    );
+  }
 
   const contentBlocks = [
     cleanContent ? <ChatMarkdownContent key="text" content={cleanContent} /> : null,
@@ -56,26 +72,24 @@ export function ChatMessage({ message }: ChatMessageProps) {
   ].filter(Boolean);
 
   return (
-    <motion.div
-      variants={MOTION_VARIANTS}
-      className={`flex w-full min-w-0 ${isUser ? 'justify-end' : 'justify-start'}`}
-    >
-      {isUser ? (
-        <div className="min-w-0 max-w-[88%] overflow-hidden rounded-sm border border-border bg-secondary/40 px-3.5 py-2">
-          <p className="whitespace-pre-wrap wrap-break-word text-[13px] leading-relaxed text-foreground/90">
-            {cleanContent}
-          </p>
-        </div>
-      ) : (
-        <div className="flex w-full min-w-0 flex-col space-y-6 text-sm">
-          {contentBlocks.map((block, index) => (
-            <Fragment key={index}>
-              {block}
-              {index < contentBlocks.length - 1 && <div className="border-t border-rule" />}
-            </Fragment>
-          ))}
-        </div>
-      )}
+    <motion.div initial={ENTER_INITIAL} animate={ENTER_ANIMATE} transition={ENTER_TRANSITION}>
+      <MessageRow align="start" className="items-start">
+        <MessageRow.Avatar className="self-start pt-1">
+          <AssistantAvatar size="md" />
+        </MessageRow.Avatar>
+        <MessageRow.Content className="w-full max-w-full">
+          <Bubble.Group className="gap-6">
+            {contentBlocks.map((block, index) => (
+              <Fragment key={index}>
+                <Bubble variant="ghost" className="w-full">
+                  <Bubble.Content className="whitespace-normal px-0 py-0">{block}</Bubble.Content>
+                </Bubble>
+                {index < contentBlocks.length - 1 && <Separator className="bg-rule" />}
+              </Fragment>
+            ))}
+          </Bubble.Group>
+        </MessageRow.Content>
+      </MessageRow>
     </motion.div>
   );
 }

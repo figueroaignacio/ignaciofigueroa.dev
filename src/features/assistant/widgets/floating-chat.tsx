@@ -1,6 +1,7 @@
 'use client';
 
 import { useChat } from '@/features/assistant/hooks/use-chat';
+import { Button } from '@/shared/components/ui/button';
 import { Dialog } from '@/shared/components/ui/dialog';
 import { Cancel01Icon, Message01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -77,13 +78,9 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
                 </Dialog.Header>
                 <Dialog.Footer>
                   <Dialog.Close asChild>
-                    <button className="btn btn-outline text-center">
-                      {t('header.resetConfirmCancel')}
-                    </button>
+                    <Button variant="outline">{t('header.resetConfirmCancel')}</Button>
                   </Dialog.Close>
-                  <button className="btn btn-primary text-center" onClick={handleReset}>
-                    {t('header.resetConfirmAction')}
-                  </button>
+                  <Button onClick={handleReset}>{t('header.resetConfirmAction')}</Button>
                 </Dialog.Footer>
               </Dialog.Content>
             </Dialog>

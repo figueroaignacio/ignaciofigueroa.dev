@@ -1,4 +1,5 @@
-import { AnimatePresence, motion } from 'motion/react';
+import { Timeline } from '@/shared/components/ui/timeline';
+import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import type { ToolName } from '../lib/parse-stream';
@@ -9,6 +10,8 @@ interface ChatLoadingProps {
 }
 
 type TraceStep = 'reading' | 'writing' | ToolName;
+
+const STEP_TRANSITION = { duration: 0.25, ease: [0.16, 1, 0.3, 1] } as const;
 
 export function ChatLoading({ activeTool }: ChatLoadingProps) {
   const t = useTranslations('components.chat.messages.trace');
@@ -26,7 +29,7 @@ export function ChatLoading({ activeTool }: ChatLoadingProps) {
     <motion.div
       initial={{ opacity: 0, y: 4 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      transition={STEP_TRANSITION}
       className="select-none"
       aria-live="polite"
     >
@@ -34,39 +37,33 @@ export function ChatLoading({ activeTool }: ChatLoadingProps) {
 
       <span className="type-label text-muted-foreground/70">{t('title')}</span>
 
-      <ol className="relative mt-3 ml-1 space-y-2 border-l border-border pl-4">
-        <AnimatePresence initial={false}>
-          {steps.map((step, index) => {
-            const isCurrent = index === steps.length - 1;
+      <Timeline value={steps.length} className="mt-3">
+        {steps.map((step, index) => {
+          const isCurrent = index === steps.length - 1;
 
-            return (
-              <motion.li
-                key={step}
+          return (
+            <Timeline.Item key={step} step={index + 1} className="ps-6 pb-2 last:pb-0">
+              <Timeline.Indicator
+                className={`size-2.5 border ${isCurrent ? 'animate-pulse ring-4 ring-primary/15' : ''}`}
+              />
+              <Timeline.Separator />
+              <motion.div
                 initial={{ opacity: 0, x: -4 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
+                transition={STEP_TRANSITION}
               >
-                <span
-                  aria-hidden
-                  className={`absolute top-1.25 left-[-20.5px] size-1.75 rounded-full border ${
-                    isCurrent
-                      ? 'animate-pulse border-brand bg-brand ring-4 ring-brand/15'
-                      : 'border-border bg-background'
-                  }`}
-                />
-                <span
+                <Timeline.Content
                   className={`font-mono text-[11px] leading-relaxed tracking-wide ${
                     isCurrent ? 'text-foreground' : 'text-muted-foreground/60'
                   }`}
                 >
                   {t(step)}
-                </span>
-              </motion.li>
-            );
-          })}
-        </AnimatePresence>
-      </ol>
+                </Timeline.Content>
+              </motion.div>
+            </Timeline.Item>
+          );
+        })}
+      </Timeline>
     </motion.div>
   );
 }

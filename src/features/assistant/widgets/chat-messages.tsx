@@ -55,20 +55,9 @@ export function ChatMessages({
       aria-relevant="additions text"
       className="flex w-full min-w-0 flex-col gap-7 px-4"
     >
-      {messages.map((msg, idx) => {
-        const isAssistant = msg.role === 'assistant';
-        return (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className={`flex min-w-0 ${isAssistant ? 'flex-col gap-2.5' : 'justify-end'}`}
-          >
-            <ChatMessage message={msg} />
-          </motion.div>
-        );
-      })}
+      {messages.map((msg, idx) => (
+        <ChatMessage key={idx} message={msg} />
+      ))}
 
       {showSuggestions && !isLoading && (
         <motion.div
@@ -80,13 +69,7 @@ export function ChatMessages({
         </motion.div>
       )}
 
-      {isLoading && (
-        <div className="flex flex-col gap-2.5">
-          <div className="">
-            <ChatLoading activeTool={activeTool} />
-          </div>
-        </div>
-      )}
+      {isLoading && <ChatLoading activeTool={activeTool} />}
 
       <div ref={messagesEndRef} />
     </div>

@@ -1,5 +1,8 @@
 'use client';
 
+import { Badge } from '@/shared/components/ui/badge';
+import { Frame } from '@/shared/components/ui/frame';
+import { IconTile } from '@/shared/components/ui/icon-tile';
 import { Briefcase01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'motion/react';
@@ -15,58 +18,43 @@ interface ChatPitchCardProps {
   data: PitchData;
 }
 
+function scoreVariant(score: number) {
+  if (score >= 85) return 'success' as const;
+  if (score >= 65) return 'warning' as const;
+  return 'destructive' as const;
+}
+
 export function ChatPitchCard({ data }: ChatPitchCardProps) {
   const { match_score, role, company, pitch } = data;
-
-  const scoreColor =
-    match_score >= 85
-      ? 'text-emerald-500 dark:text-emerald-400'
-      : match_score >= 65
-        ? 'text-amber-500 dark:text-amber-400'
-        : 'text-rose-500 dark:text-rose-400';
-
-  const scoreBorder =
-    match_score >= 85
-      ? 'border-emerald-500/20'
-      : match_score >= 65
-        ? 'border-amber-500/20'
-        : 'border-rose-500/20';
-
-  const scoreBg =
-    match_score >= 85 ? 'bg-emerald-500/8' : match_score >= 65 ? 'bg-amber-500/8' : 'bg-rose-500/8';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="w-full rounded-xl border border-border bg-card overflow-hidden mt-3"
+      className="mt-3 w-full"
     >
-      <div className="flex items-center justify-between px-3.5 py-2.5">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="flex items-center justify-center size-7 rounded-lg bg-primary/10 text-primary shrink-0">
-            <HugeiconsIcon icon={Briefcase01Icon} className="size-3.5" />
+      <Frame>
+        <Frame.Header className="flex-row items-center justify-between gap-3 py-2">
+          <div className="flex min-w-0 items-center gap-2.5">
+            <IconTile variant="soft" tone="primary" size="xs">
+              <HugeiconsIcon icon={Briefcase01Icon} />
+            </IconTile>
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <Frame.Title className="truncate text-xs leading-tight">{role}</Frame.Title>
+              <Frame.Description className="type-chip truncate leading-tight">
+                {company}
+              </Frame.Description>
+            </div>
           </div>
-          <div className="flex flex-col min-w-0">
-            <span className="text-xs font-medium text-foreground truncate leading-tight">
-              {role}
-            </span>
-            <span className="type-chip text-muted-foreground truncate leading-tight mt-0.5">
-              {company}
-            </span>
-          </div>
-        </div>
-
-        <div
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-full border text-xs font-mono font-medium shrink-0 ml-3 ${scoreColor} ${scoreBorder} ${scoreBg}`}
-        >
-          {match_score}%
-        </div>
-      </div>
-
-      <div className="mx-1.5 mb-1.5 rounded-lg border border-border bg-background px-3.5 py-3">
-        <p className="text-sm text-foreground/80 leading-relaxed">{pitch}</p>
-      </div>
+          <Badge variant={scoreVariant(match_score)} className="shrink-0 font-mono">
+            {match_score}%
+          </Badge>
+        </Frame.Header>
+        <Frame.Panel className="px-3.5 py-3">
+          <p className="text-sm leading-relaxed text-foreground/80">{pitch}</p>
+        </Frame.Panel>
+      </Frame>
     </motion.div>
   );
 }

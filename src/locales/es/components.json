@@ -72,7 +72,10 @@
       "panelLabel": "Chat con el asistente"
     },
     "input": {
-      "placeholder": "Escribí un mensaje..."
+      "placeholder": "Escribí un mensaje...",
+      "send": "Enviar mensaje",
+      "sendHint": "para enviar",
+      "newlineHint": "para un salto de línea"
     },
     "messages": {
       "initial": "¡Hola! 👋 ¿En qué puedo ayudarte?",
