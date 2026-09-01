@@ -1,3 +1,5 @@
+import { buttonVariants } from '@/shared/components/ui/button-variants';
+import { cn } from '@/shared/lib/cn';
 import { useTranslations } from 'next-intl';
 
 export function SkipLink() {
@@ -6,7 +8,10 @@ export function SkipLink() {
   return (
     <a
       href="#main-content"
-      className="absolute left-4 top-4 z-100 -translate-y-20 px-4 py-2 transition-transform focus:translate-y-0 btn btn-primary"
+      className={cn(
+        buttonVariants({ variant: 'default' }),
+        'absolute left-4 top-4 z-100 -translate-y-20 transition-transform focus:translate-y-0',
+      )}
     >
       {t('skipToContent')}
     </a>

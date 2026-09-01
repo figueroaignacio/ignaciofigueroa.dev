@@ -1,6 +1,5 @@
 'use client';
 
-import { cn } from '@/shared/lib/cn';
 import {
   Alert02Icon,
   AlertCircleIcon,
@@ -10,9 +9,10 @@ import {
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import * as React from 'react';
 import { createPortal } from 'react-dom';
+import { cn } from '@/shared/lib/cn';
 
 type ToastPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
@@ -37,23 +37,29 @@ const TOAST_EXIT_BY_POSITION: Record<ToastPosition, Record<string, number | stri
 
 const TOAST_TRANSITION = {
   type: 'spring',
-  damping: 25,
-  stiffness: 350,
-  mass: 0.5,
+  damping: 30,
+  stiffness: 400,
+  mass: 0.4,
 } as const;
 
 const TOAST_EXIT_TRANSITION = { duration: 0.2, ease: 'easeIn' } as const;
+const REDUCED_MOTION_PROPS = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+  transition: { duration: 0.12 },
+} as const;
 
 const toastVariants = cva(
-  'pointer-events-auto relative flex w-full items-center gap-3 overflow-hidden rounded-lg border p-4 bg-background',
+  'pointer-events-auto relative flex w-full items-center gap-3 overflow-hidden rounded-md border p-3.5 bg-background',
   {
     variants: {
       variant: {
         default: 'text-foreground border-border',
-        success: 'text-success border-success/20',
-        error: 'text-destructive border-destructive/20',
-        info: 'text-info border-info/20',
-        warning: 'text-warning border-warning/20',
+        success: 'text-success-text border-success-border',
+        error: 'text-destructive-text border-destructive-border',
+        info: 'text-info-text border-info-border',
+        warning: 'text-warning-text border-warning-border',
       },
     },
     defaultVariants: {
@@ -74,8 +80,8 @@ const VARIANT_ICONS: Record<string, typeof CheckmarkCircle01Icon | undefined> = 
 
 interface ToastData {
   id: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
+  title: string;
+  description?: string;
   variant?: ToastVariant;
   duration?: number;
   action?: {
@@ -108,26 +114,40 @@ interface ToastItemProps {
 }
 
 function ToastItem({ toast: t, onDismiss, position }: ToastItemProps) {
+  const [paused, setPaused] = React.useState(false);
+  const isUrgent = t.variant === 'error' || t.variant === 'warning';
+  const shouldReduceMotion = useReducedMotion();
+
   React.useEffect(() => {
     const duration = t.duration ?? 5000;
-    if (duration <= 0) return;
+    if (duration <= 0 || paused) return;
 
     const timer = setTimeout(() => {
       onDismiss(t.id);
     }, duration);
 
     return () => clearTimeout(timer);
-  }, [t.id, t.duration, onDismiss]);
+  }, [t.id, t.duration, onDismiss, paused]);
 
   const variantIcon = VARIANT_ICONS[t.variant ?? 'default'];
 
   return (
     <motion.div
       layout
-      initial={TOAST_ENTER.initial}
-      animate={TOAST_ENTER.animate}
-      exit={{ ...TOAST_EXIT_BY_POSITION[position], transition: TOAST_EXIT_TRANSITION }}
-      transition={TOAST_TRANSITION}
+      initial={shouldReduceMotion ? REDUCED_MOTION_PROPS.initial : TOAST_ENTER.initial}
+      animate={shouldReduceMotion ? REDUCED_MOTION_PROPS.animate : TOAST_ENTER.animate}
+      exit={
+        shouldReduceMotion
+          ? REDUCED_MOTION_PROPS.exit
+          : { ...TOAST_EXIT_BY_POSITION[position], transition: TOAST_EXIT_TRANSITION }
+      }
+      transition={shouldReduceMotion ? REDUCED_MOTION_PROPS.transition : TOAST_TRANSITION}
+      role={isUrgent ? 'alert' : 'status'}
+      aria-live={isUrgent ? 'assertive' : 'polite'}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
       className={cn(toastVariants({ variant: t.variant }), 'flex-col')}
     >
       <div className="flex w-full items-center gap-2">
@@ -135,11 +155,11 @@ function ToastItem({ toast: t, onDismiss, position }: ToastItemProps) {
         <p className="flex-1 text-sm font-semibold">{t.title}</p>
         <button
           type="button"
+          aria-label="Dismiss notification"
           onClick={() => onDismiss(t.id)}
-          className="shrink-0 opacity-50 transition-opacity hover:opacity-100"
+          className="focus-visible:ring-ring shrink-0 rounded-sm opacity-50 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:outline-none"
         >
-          <HugeiconsIcon icon={Cancel01Icon} size={14} />
-          <span className="sr-only">Close</span>
+          <HugeiconsIcon icon={Cancel01Icon} size={14} aria-hidden="true" />
         </button>
       </div>
       {(t.description || t.action) && (
@@ -153,7 +173,7 @@ function ToastItem({ toast: t, onDismiss, position }: ToastItemProps) {
                   t.action?.onClick();
                   onDismiss(t.id);
                 }}
-                className="mt-2 shrink-0 rounded-md border px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white/10"
+                className="hover:bg-muted focus-visible:ring-ring mt-2 shrink-0 rounded-md border px-3 py-1.5 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none"
               >
                 {t.action.label}
               </button>
@@ -191,7 +211,10 @@ function ToastProvider({
 
   const toast = React.useCallback(
     (options: ToastOptions): string => {
-      const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+      const id =
+        typeof crypto !== 'undefined' && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `toast-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
       const newToast: ToastData = { ...options, id };
 
       setToasts((prev) => {
@@ -215,9 +238,8 @@ function ToastProvider({
       {mounted &&
         createPortal(
           <div
-            role="status"
-            aria-live="polite"
-            aria-relevant="additions"
+            role="region"
+            aria-label="Notifications"
             className={cn(
               'pointer-events-none fixed z-9999 flex max-h-screen gap-2 p-4',
               POSITION_CLASSES[position],
