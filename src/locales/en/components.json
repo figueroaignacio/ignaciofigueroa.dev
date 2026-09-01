@@ -10,6 +10,8 @@
     "button": "Summarize with AI",
     "loading": "Summarizing...",
     "error": "Could not generate summary. Please try again.",
+    "retry": "Retry",
+    "dismiss": "Dismiss summary",
     "title": "AI Summary"
   },
   "footer": {

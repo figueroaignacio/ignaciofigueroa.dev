@@ -10,6 +10,8 @@
     "button": "Resumir con IA",
     "loading": "Resumiendo...",
     "error": "No se pudo generar el resumen. Por favor, intentá de nuevo.",
+    "retry": "Reintentar",
+    "dismiss": "Cerrar resumen",
     "title": "Resumen IA"
   },
   "footer": {

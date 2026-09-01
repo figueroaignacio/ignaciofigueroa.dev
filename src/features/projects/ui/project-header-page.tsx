@@ -1,6 +1,7 @@
 import type { Project, TechStack } from '@/payload-types';
 import { BackLink } from '@/shared/components/back-link';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
+import { buttonVariants } from '@/shared/components/ui/button-variants';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { getTranslations } from 'next-intl/server';
@@ -66,7 +67,12 @@ export async function ProjectHeaderPage({
       <div className="mt-6 flex flex-col gap-4 w-full">
         <div className="flex items-center gap-3 text-sm font-medium flex-wrap">
           {demo && (
-            <a href={demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a
+              href={demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ variant: 'default' })}
+            >
               <span>{t('preview')}</span>
               <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
             </a>
@@ -76,7 +82,7 @@ export async function ProjectHeaderPage({
               href={repository}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-outline"
+              className={buttonVariants({ variant: 'outline' })}
             >
               <GitHubIcon />
               <span>{t('source')}</span>

@@ -20,7 +20,11 @@
   },
   "projects": {
     "title": "Proyectos",
-    "viewAll": "Todos los proyectos"
+    "viewAll": "Todos los proyectos",
+    "empty": {
+      "title": "Sin proyectos todavía",
+      "description": "No hay nada publicado en esta categoría por ahora."
+    }
   },
   "stack": {
     "title": "Stack",

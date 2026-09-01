@@ -815,27 +815,6 @@
     @apply font-mono text-[10px] tracking-wide;
   }
 
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 border border-border px-2.5 py-1.5 font-mono text-sm rounded-sm transition-all duration-300 ease-out active:scale-95 cursor-pointer;
-    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
-  }
-
-  .btn-primary {
-    @apply bg-foreground text-background border-foreground transition-all duration-300 hover:bg-foreground/90;
-  }
-
-  .btn-outline {
-    @apply text-foreground bg-transparent hover:bg-foreground/5 hover:border-foreground/30 transition-all duration-300;
-  }
-
-  .btn-accent {
-    @apply text-foreground bg-transparent border-brand/55 hover:border-brand hover:bg-brand/10 transition-all duration-300;
-  }
-
-  .card {
-    @apply block p-6 bg-card rounded-2xl border border-border transition-colors duration-300 hover:border-foreground/15;
-  }
-
   .prose-reading {
     font-family: var(--font-serif), Georgia, serif;
     font-size: 17px;

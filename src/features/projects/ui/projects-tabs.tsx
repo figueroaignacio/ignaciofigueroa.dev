@@ -2,7 +2,11 @@
 
 import { ProjectCard } from '@/features/projects/ui/project-card';
 import type { Project } from '@/payload-types';
+import { Empty } from '@/shared/components/ui/empty';
 import { Tabs } from '@/shared/components/ui/tabs';
+import { Folder01Icon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { useTranslations } from 'next-intl';
 
 export type CategoryProjects = {
   category: string;
@@ -14,16 +18,11 @@ interface ProjectsTabsProps {
 }
 
 export function ProjectsTabs({ data }: ProjectsTabsProps) {
+  const t = useTranslations('sections.projects');
   const defaultValue = data[0]?.category ?? '';
 
   return (
     <Tabs defaultValue={defaultValue} variant="underline">
-      {/*
-       * Deliberately NOT `bleed-x`: this list lives inside the centered
-       * `.frame-column`, where a `--frame-bleed` offset would stop short of
-       * the viewport instead of reaching it. It spans the column and the
-       * section's own `rule-bleed` carries the full-width line.
-       */}
       <Tabs.List className="border-b border-rule p-0 mb-6 bg-transparent h-auto flex gap-6">
         {data.map(({ category }) => (
           <Tabs.Trigger
@@ -38,7 +37,15 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
       {data.map(({ category, projects }) => (
         <Tabs.Content key={category} value={category} className="mt-0">
           {projects.length === 0 ? (
-            <p className="text-sm text-muted-foreground py-6 text-center">No projects yet.</p>
+            <Empty variant="outline">
+              <Empty.Header>
+                <Empty.Media variant="icon">
+                  <HugeiconsIcon icon={Folder01Icon} strokeWidth={1.5} />
+                </Empty.Media>
+                <Empty.Title>{t('empty.title')}</Empty.Title>
+                <Empty.Description>{t('empty.description')}</Empty.Description>
+              </Empty.Header>
+            </Empty>
           ) : (
             <div className="space-y-4">
               {projects.map((project) => (

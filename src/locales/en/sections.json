@@ -20,7 +20,11 @@
   },
   "projects": {
     "title": "Projects",
-    "viewAll": "All projects"
+    "viewAll": "All projects",
+    "empty": {
+      "title": "No projects yet",
+      "description": "Nothing published in this category for now."
+    }
   },
   "stack": {
     "title": "Stack",

@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
+import { Button } from '@/shared/components/ui/button';
 import type { Locale } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { useTransition } from 'react';
@@ -28,19 +29,21 @@ export function LocaleSwitcher() {
       {locales.map((localeOption, index) => (
         <span key={localeOption} className="flex items-center gap-1">
           {index > 0 && <span className="text-border select-none">/</span>}
-          <button
-            type="button"
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => handleLocaleChange(localeOption as Locale)}
             disabled={isPending || locale === localeOption}
+            aria-current={locale === localeOption ? 'true' : undefined}
+            aria-label={`Switch to ${localeOption}`}
             className={
               locale === localeOption
-                ? 'text-foreground cursor-default'
-                : 'rounded-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
+                ? 'h-auto px-1.5 py-0.5 font-mono text-xs text-foreground disabled:opacity-100'
+                : 'h-auto px-1.5 py-0.5 font-mono text-xs text-muted-foreground hover:text-foreground'
             }
-            aria-label={`Switch to ${localeOption}`}
           >
             {LOCALE_LABELS[localeOption] ?? localeOption.toUpperCase()}
-          </button>
+          </Button>
         </span>
       ))}
     </div>
