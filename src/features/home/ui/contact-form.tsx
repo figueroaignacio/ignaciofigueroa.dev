@@ -1,10 +1,10 @@
 'use client';
 
 import { AssistantStroll } from '@/features/assistant/ui/assistant-stroll';
-import { Loading02Icon, MailSend02Icon, Tick01Icon } from '@hugeicons/core-free-icons';
+import { Loading02Icon, MailSend02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
-import { useActionState, useRef } from 'react';
+import { useActionState, useRef, useState } from 'react';
 import { sendEmail } from '../actions/send-email';
 
 type ContactFormState = {
@@ -18,6 +18,12 @@ const initialState: ContactFormState = {
 };
 
 export function ContactForm() {
+  const [attempt, setAttempt] = useState(0);
+
+  return <ContactFormFields key={attempt} onReset={() => setAttempt((n) => n + 1)} />;
+}
+
+function ContactFormFields({ onReset }: { onReset: () => void }) {
   const t = useTranslations('components.contactForm');
   const [state, formAction, isPending] = useActionState(sendEmail, initialState);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -28,6 +34,9 @@ export function ContactForm() {
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   };
+
+  const fieldClassName =
+    'w-full px-4 py-2.5 bg-secondary/30 border border-border rounded-md transition-all placeholder:text-muted-foreground/50 disabled:opacity-50 focus:outline-none focus:border-ring focus:ring-2 focus:ring-ring/30';
 
   return (
     <div className="w-full">
@@ -42,9 +51,10 @@ export function ContactForm() {
               name="name"
               type="text"
               required
+              autoComplete="name"
               disabled={isPending || state.success}
               placeholder={t('namePlaceholder')}
-              className="w-full px-4 py-2.5 bg-secondary/30 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground/50 disabled:opacity-50"
+              className={fieldClassName}
             />
           </div>
 
@@ -57,9 +67,10 @@ export function ContactForm() {
               name="email"
               type="email"
               required
+              autoComplete="email"
               disabled={isPending || state.success}
               placeholder={t('emailPlaceholder')}
-              className="w-full px-4 py-2.5 bg-secondary/30 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground/50 disabled:opacity-50"
+              className={fieldClassName}
             />
           </div>
         </div>
@@ -77,7 +88,7 @@ export function ContactForm() {
             placeholder={t('messagePlaceholder')}
             rows={3}
             onInput={handleInput}
-            className="w-full px-4 py-3 bg-secondary/30 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-muted-foreground/50 resize-none overflow-hidden disabled:opacity-50"
+            className={`${fieldClassName} py-3 resize-none overflow-hidden`}
           />
         </div>
         {state.success && (
@@ -87,42 +98,37 @@ export function ContactForm() {
         )}
 
         <div className="flex items-center justify-between gap-4">
-          <div className="flex-1">
+          <div className="flex-1" aria-live="polite">
             {state.error && (
-              <p
-                className="text-sm text-destructive font-medium animate-in fade-in slide-in-from-top-1"
-                role="alert"
-              >
+              <p className="text-sm text-destructive font-medium animate-in fade-in slide-in-from-top-1">
                 {state.error === 'Missing fields' || state.error === 'Internal Server Error'
                   ? t('error')
                   : state.error}
               </p>
             )}
             {state.success && (
-              <p
-                className="text-sm font-medium animate-in fade-in slide-in-from-top-1"
-                role="alert"
-              >
+              <p className="text-sm font-medium text-(--success-text) animate-in fade-in slide-in-from-top-1">
                 {t('success')}
               </p>
             )}
           </div>
-          <button
-            type="submit"
-            disabled={state.success}
-            className="btn btn-primary gap-2 flex items-center"
-          >
-            {isPending && t('sending')}
-            {!isPending && state.success && <HugeiconsIcon icon={Tick01Icon} className="size-4" />}
-            {!isPending && !state.success && t('submit')}
-
-            {!state.success &&
-              (isPending ? (
-                <HugeiconsIcon icon={Loading02Icon} className="size-4 animate-spin" />
-              ) : (
-                <HugeiconsIcon icon={MailSend02Icon} className="size-4" />
-              ))}
-          </button>
+          {state.success ? (
+            <button type="button" onClick={onReset} className="btn btn-outline">
+              {t('sendAnother')}
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={isPending}
+              className="btn btn-primary gap-2 flex items-center"
+            >
+              {isPending ? t('sending') : t('submit')}
+              <HugeiconsIcon
+                icon={isPending ? Loading02Icon : MailSend02Icon}
+                className={`size-4${isPending ? ' animate-spin' : ''}`}
+              />
+            </button>
+          )}
         </div>
       </form>
     </div>

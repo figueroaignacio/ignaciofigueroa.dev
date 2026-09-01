@@ -154,7 +154,8 @@
     "submit": "Send",
     "sending": "Sending...",
     "success": "Message sent. I'll reply soon.",
-    "error": "Failed to send. Try again or use direct email."
+    "error": "Failed to send. Try again or use direct email.",
+    "sendAnother": "Send another"
   },
   "console": {
     "greeting": "You opened devtools. Respect.",

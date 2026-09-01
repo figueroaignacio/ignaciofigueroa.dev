@@ -146,7 +146,8 @@
     "submit": "Enviar",
     "sending": "Enviando...",
     "success": "Mensaje enviado. Te respondo pronto.",
-    "error": "Error al enviar. Intentá de nuevo o mandá mail directo."
+    "error": "Error al enviar. Intentá de nuevo o mandá mail directo.",
+    "sendAnother": "Enviar otro"
   },
   "console": {
     "greeting": "Abriste devtools. Respeto.",

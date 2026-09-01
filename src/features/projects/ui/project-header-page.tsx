@@ -1,5 +1,5 @@
 import type { Project, TechStack } from '@/payload-types';
-import { BackButton } from '@/shared/components/back-button';
+import { BackLink } from '@/shared/components/back-link';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -15,7 +15,10 @@ export async function ProjectHeaderPage({
   locale,
   technologies,
 }: Partial<Project> & { locale?: string }) {
-  const t = await getTranslations('components.projectItem.actions');
+  const [t, tProjects] = await Promise.all([
+    getTranslations('components.projectItem.actions'),
+    getTranslations('sections.projects'),
+  ]);
 
   const techList =
     technologies?.filter((tech): tech is TechStack => typeof tech === 'object') ?? [];
@@ -23,7 +26,11 @@ export async function ProjectHeaderPage({
   return (
     <header className="mb-8 flex flex-col items-start pt-2 pb-6 border-b border-border/40 w-full">
       <div className="mb-6">
-        <BackButton className="text-muted-foreground hover:text-foreground transition-colors opacity-70 hover:opacity-100" />
+        <BackLink
+          href="/projects"
+          label={tProjects('viewAll')}
+          className="text-muted-foreground hover:text-foreground"
+        />
       </div>
       <div className="flex flex-col gap-4 w-full">
         <div className="flex flex-col gap-2">

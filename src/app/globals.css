@@ -308,6 +308,14 @@
     }
   }
 
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   .frame-column {
     width: 100%;
     max-inline-size: var(--frame-measure);

@@ -7,25 +7,23 @@ import * as React from 'react';
 
 const TABS_INDICATOR_TRANSITION = { type: 'spring', bounce: 0.2, duration: 0.6 } as const;
 
-const tabsListVariants = cva(
-  'inline-flex rounded-xl p-1 text-muted-foreground w-full sm:w-auto overflow-hidden',
-  {
-    variants: {
-      variant: {
-        default: 'bg-secondary/45 border border-border/60 backdrop-blur-sm',
-        outline: 'border border-border/60 bg-transparent',
-        underline: 'bg-transparent border-b border-border rounded-none p-0 justify-start w-full',
-        ghost: 'bg-transparent p-0 gap-2',
-        unstyled: '',
-      },
-      size: {
-        default: 'h-10',
-        sm: 'h-9',
-        lg: 'h-12',
-      },
+const tabsListVariants = cva('inline-flex rounded-xl p-1 text-muted-foreground w-full sm:w-auto', {
+  variants: {
+    variant: {
+      default: 'overflow-hidden bg-secondary/45 border border-border/60 backdrop-blur-sm',
+      outline: 'overflow-hidden border border-border/60 bg-transparent',
+      underline:
+        'overflow-x-auto scrollbar-none bg-transparent border-b border-border rounded-none p-0 justify-start w-full',
+      ghost: 'overflow-hidden bg-transparent p-0 gap-2',
+      unstyled: 'overflow-hidden',
+    },
+    size: {
+      default: 'h-10',
+      sm: 'h-9',
+      lg: 'h-12',
     },
   },
-);
+});
 
 const tabsTriggerVariants = cva(
   'relative inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 z-10 cursor-pointer',

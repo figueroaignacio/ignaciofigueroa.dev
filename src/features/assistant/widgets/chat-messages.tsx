@@ -49,7 +49,12 @@ export function ChatMessages({
   const showSuggestions = messages.length === 1 && messages[0].role === 'assistant';
 
   return (
-    <div className="flex w-full min-w-0 flex-col gap-7 px-4">
+    <div
+      role="log"
+      aria-live="polite"
+      aria-relevant="additions text"
+      className="flex w-full min-w-0 flex-col gap-7 px-4"
+    >
       {messages.map((msg, idx) => {
         const isAssistant = msg.role === 'assistant';
         return (
