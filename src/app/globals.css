@@ -1509,15 +1509,6 @@
   }
 }
 
-@keyframes light-dot {
-  from {
-    border-color: var(--border);
-  }
-  to {
-    border-color: var(--muted-foreground);
-  }
-}
-
 @keyframes note-in {
   from {
     opacity: 0;
@@ -1580,26 +1571,6 @@
 
   #experience + section > .rule-bleed {
     animation: none;
-  }
-
-  .timeline-spine::before {
-    content: '';
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: -1px;
-    inline-size: 1px;
-    background: var(--muted-foreground);
-    transform-origin: top;
-    pointer-events: none;
-    animation: fill-rail linear both;
-    animation-timeline: view();
-    animation-range: cover 15% cover 70%;
-  }
-
-  .timeline-dot:not([data-current]) {
-    animation: light-dot linear both;
-    animation-timeline: view();
-    animation-range: cover 35% cover 52%;
   }
 
   .scroll-blur-in {
