@@ -1,7 +1,8 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avatar';
 import { Section } from '@/shared/components/ui/section';
+import { Separator } from '@/shared/components/ui/separator';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
-import Image from 'next/image';
 
 const FOCUS_LEAD = ['React', 'Next.js', 'TypeScript', 'Node.js'];
 const FOCUS_SUPPORT = ['AI Integration', 'Clean Architecture', 'Linux', 'Fedora'];
@@ -14,19 +15,20 @@ export async function AboutSection() {
     <Section id="about" title={tSection('title')}>
       <div className="flow-root w-full">
         <div
-          className="float-right ml-6 mb-4 md:ml-8 md:mb-6 relative group rounded-full overflow-hidden"
+          className="float-right ml-6 mb-4 md:ml-8 md:mb-6 rounded-full overflow-hidden"
           style={{ shapeOutside: 'circle(50%)' }}
         >
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border border-border/40">
-            <Image
+          <Avatar size="lg" className="w-32 h-32 md:w-40 md:h-40 border border-border/40">
+            <AvatarImage
               src="/images/profile-photo.webp"
               alt="Ignacio Figueroa — Fullstack Developer"
               width={160}
               height={160}
-              priority
-              className="w-full h-full object-cover object-top transition-all duration-700"
+              fetchPriority="high"
+              className="object-top"
             />
-          </div>
+            <AvatarFallback className="text-xl">IF</AvatarFallback>
+          </Avatar>
         </div>
 
         <div className="prose-reading">
@@ -34,18 +36,21 @@ export async function AboutSection() {
           <p className="font-light italic text-muted-foreground">{t('details')}</p>
         </div>
 
-        <div className="clear-both space-y-2.5 pt-6 mt-6 border-t border-border">
-          <p className="type-label text-muted-foreground">Focus</p>
-          <TechChipGroup>
-            {FOCUS_LEAD.map((item) => (
-              <TechChip key={item} tone="lead">
-                {item}
-              </TechChip>
-            ))}
-            {FOCUS_SUPPORT.map((item) => (
-              <TechChip key={item}>{item}</TechChip>
-            ))}
-          </TechChipGroup>
+        <div className="clear-both pt-6 mt-6">
+          <Separator className="mb-6" />
+          <div className="space-y-2.5">
+            <p className="type-label text-muted-foreground">Focus</p>
+            <TechChipGroup>
+              {FOCUS_LEAD.map((item) => (
+                <TechChip key={item} tone="lead">
+                  {item}
+                </TechChip>
+              ))}
+              {FOCUS_SUPPORT.map((item) => (
+                <TechChip key={item}>{item}</TechChip>
+              ))}
+            </TechChipGroup>
+          </div>
         </div>
       </div>
     </Section>

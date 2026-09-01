@@ -1,4 +1,7 @@
 import { AssistantStroll } from '@/features/assistant/ui/assistant-stroll';
+import { Badge } from '@/shared/components/ui/badge';
+import { Separator } from '@/shared/components/ui/separator';
+import { Tooltip } from '@/shared/components/ui/tooltip';
 import { cn } from '@/shared/lib/cn';
 import { GithubContributionDay, TopLanguage } from './github-stats-types';
 
@@ -12,81 +15,62 @@ interface GithubContributionCalendarProps {
   moreLabel: string;
 }
 
-function ContributionCell({
-  day,
-  id,
-  column,
-}: {
-  day: GithubContributionDay;
-  id: string;
-  column: number;
-}) {
+const CELL_LEVELS = [
+  { level: 'NONE', className: 'bg-secondary/40 dark:bg-secondary/15 border border-border/10' },
+  { level: 'FIRST_QUARTILE', className: 'bg-primary/20 border border-primary/10' },
+  { level: 'SECOND_QUARTILE', className: 'bg-primary/45 border border-primary/25' },
+  { level: 'THIRD_QUARTILE', className: 'bg-primary/70 border border-primary/40' },
+  { level: 'FOURTH_QUARTILE', className: 'bg-primary border border-primary/60' },
+];
+
+function getCellColorClass(level: string) {
+  return (CELL_LEVELS.find((entry) => entry.level === level) ?? CELL_LEVELS[0]).className;
+}
+
+const LANGUAGE_COLORS: Record<string, string> = {
+  typescript: 'bg-blue-500',
+  javascript: 'bg-yellow-500',
+  python: 'bg-green-500',
+  css: 'bg-purple-500',
+  html: 'bg-orange-500',
+  java: 'bg-amber-600',
+  'c++': 'bg-rose-500',
+  cpp: 'bg-rose-500',
+  c: 'bg-gray-500',
+  astro: 'bg-indigo-500',
+};
+
+function getLanguageColorClass(lang: string) {
+  return LANGUAGE_COLORS[lang.toLowerCase()] ?? 'bg-primary';
+}
+
+function ContributionCell({ day, column }: { day: GithubContributionDay; column: number }) {
   return (
-    <div
-      key={id}
-      style={{ '--col': column } as React.CSSProperties}
-      className={cn(
-        'contribution-cell w-2.5 h-2.5 rounded-xs transition-all duration-200 hover:scale-125 hover:z-10 relative group/cell cursor-pointer',
-        getCellColorClass(day.contributionLevel),
-      )}
-    >
-      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover/cell:block bg-card text-card-foreground text-[10px] px-2 py-1 rounded-md border border-border shadow-lg whitespace-nowrap z-20 pointer-events-none transition-all">
-        <span className="font-semibold text-primary">{day.contributionCount}</span> contributions on{' '}
-        {day.date}
-      </div>
-    </div>
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <div
+          style={{ '--col': column } as React.CSSProperties}
+          className={cn(
+            'contribution-cell w-2.5 h-2.5 rounded-xs transition-all duration-200 hover:scale-125 hover:z-10 cursor-pointer',
+            getCellColorClass(day.contributionLevel),
+          )}
+        />
+      </Tooltip.Trigger>
+      <Tooltip.Content className="text-[10px]">
+        <span className="font-semibold">{day.contributionCount}</span> contributions on {day.date}
+      </Tooltip.Content>
+    </Tooltip>
   );
 }
 
 function LanguageBadge({ language, count }: TopLanguage) {
   return (
-    <span className="inline-flex items-center gap-1 bg-secondary/30 border border-border/40 px-2 py-0.5 rounded-full text-[10px] text-foreground">
+    <Badge variant="outline" className="rounded-full bg-secondary/30 text-[10px] font-normal">
       <span className={cn('size-1.5 rounded-full', getLanguageColorClass(language))} />
       {language}
-      <span className="text-muted-foreground/60 text-[10px]">({count})</span>
-    </span>
+      <span className="text-muted-foreground/60">({count})</span>
+    </Badge>
   );
-}
-
-function getCellColorClass(level: string) {
-  switch (level) {
-    case 'FIRST_QUARTILE':
-      return 'bg-primary/20 border border-primary/10 text-primary';
-    case 'SECOND_QUARTILE':
-      return 'bg-primary/45 border border-primary/25 text-primary';
-    case 'THIRD_QUARTILE':
-      return 'bg-primary/70 border border-primary/40 text-primary-foreground';
-    case 'FOURTH_QUARTILE':
-      return 'bg-primary border border-primary/60 text-primary-foreground';
-    default:
-      return 'bg-secondary/40 dark:bg-secondary/15 border border-border/10';
-  }
-}
-
-function getLanguageColorClass(lang: string) {
-  switch (lang.toLowerCase()) {
-    case 'typescript':
-      return 'bg-blue-500';
-    case 'javascript':
-      return 'bg-yellow-500';
-    case 'python':
-      return 'bg-green-500';
-    case 'css':
-      return 'bg-purple-500';
-    case 'html':
-      return 'bg-orange-500';
-    case 'java':
-      return 'bg-amber-600';
-    case 'c++':
-    case 'cpp':
-      return 'bg-rose-500';
-    case 'c':
-      return 'bg-gray-500';
-    case 'astro':
-      return 'bg-indigo-500';
-    default:
-      return 'bg-primary';
-  }
 }
 
 export function GithubContributionCalendar({
@@ -128,7 +112,6 @@ export function GithubContributionCalendar({
               week.map((day, dIndex) => (
                 <ContributionCell
                   key={`${activeYear}-${wIndex}-${dIndex}`}
-                  id={`${activeYear}-${wIndex}-${dIndex}`}
                   day={day}
                   column={wIndex}
                 />
@@ -138,7 +121,9 @@ export function GithubContributionCalendar({
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-border/40 text-xs text-muted-foreground">
+      <Separator className="bg-border/40" />
+
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-muted-foreground">
         <div className="flex items-center gap-1.5 flex-wrap">
           <span className="font-medium text-foreground">{topLanguagesLabel}:</span>
           {topLanguages.map((lang) => (
@@ -148,11 +133,9 @@ export function GithubContributionCalendar({
 
         <div className="flex items-center gap-1.5 self-end sm:self-auto text-[10px]">
           <span>{lessLabel}</span>
-          <div className="size-2.5 rounded-xs bg-secondary/40 dark:bg-secondary/15 border border-border/10" />
-          <div className="size-2.5 rounded-xs bg-primary/20 border border-primary/10" />
-          <div className="size-2.5 rounded-xs bg-primary/45 border border-primary/25" />
-          <div className="size-2.5 rounded-xs bg-primary/70 border border-primary/40" />
-          <div className="size-2.5 rounded-xs bg-primary border border-primary/60" />
+          {CELL_LEVELS.map((entry) => (
+            <div key={entry.level} className={cn('size-2.5 rounded-xs', entry.className)} />
+          ))}
           <span>{moreLabel}</span>
         </div>
       </div>

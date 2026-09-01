@@ -1,5 +1,9 @@
 'use client';
 
+import { Button } from '@/shared/components/ui/button';
+import { buttonVariants } from '@/shared/components/ui/button-variants';
+import { cn } from '@/shared/lib/cn';
+
 interface HeroActionsProps {
   cvLabel: string;
   cvUrl: string;
@@ -30,22 +34,27 @@ export function HeroActions({ cvLabel, cvUrl }: HeroActionsProps) {
   ];
 
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
+    <div className="mt-4 flex flex-wrap items-center gap-2">
       {heroActions.map((action) => (
         <a
           key={action.label}
           href={action.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-outline text-xs"
+          className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'font-mono')}
           aria-label={action.ariaLabel}
         >
           {action.label}
         </a>
       ))}
-      <button onClick={handleChatClick} className="btn btn-accent text-xs">
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleChatClick}
+        className="font-mono border-brand/55 hover:border-brand hover:bg-brand/10"
+      >
         AI Assistant
-      </button>
+      </Button>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { ProjectsTabs, type CategoryProjects } from '@/features/projects/ui/projects-tabs';
 import { Link } from '@/i18n/navigation';
 import { Section } from '@/shared/components/ui/section';
+import { Separator } from '@/shared/components/ui/separator';
 import { ProjectsSkeleton } from '../ui/projects-skeleton';
 
 interface ProjectsWidgetProps {
@@ -18,13 +19,16 @@ export function ProjectsWidget({ id, title = '', viewAllLabel, data }: ProjectsW
     <Section id={id} title={title}>
       <ProjectsTabs data={data} />
       {viewAllLabel && (
-        <div className="mt-8 flex justify-end border-t border-border pt-4">
-          <Link
-            href="/projects"
-            className="rounded-sm font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            {viewAllLabel} →
-          </Link>
+        <div className="mt-8">
+          <Separator className="mb-4" />
+          <div className="flex justify-end">
+            <Link
+              href="/projects"
+              className="rounded-sm font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            >
+              {viewAllLabel} →
+            </Link>
+          </div>
         </div>
       )}
     </Section>
