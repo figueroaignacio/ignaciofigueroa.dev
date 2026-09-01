@@ -300,23 +300,6 @@
       "linux": "Linux"
     }
   },
-  "mateUiCta": {
-    "badge": "Open Source",
-    "title": "Desarrollé una kit de componentes propios. desde cero.",
-    "description": "NachUI es un conjunto de primitivas accesibles y minimalistas. El código se copia, no se importa como dependencia. La construí por diversión y para aprender, pero también para compartirla con la comunidad.",
-    "actions": {
-      "viewComponents": "Explorar Componentes",
-      "viewDocumentation": "Leer la Documentación"
-    },
-    "href": {
-      "components": "https://nachui.tech/es/docs/components",
-      "documentation": "https://nachui.tech/es/docs"
-    },
-    "stats": {
-      "components": "componentes",
-      "openSource": "open source"
-    }
-  },
   "assistant": {
     "projects": {
       "title": "Proyectos",

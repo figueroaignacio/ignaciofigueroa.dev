@@ -3,7 +3,6 @@ import { ContributionsContainer } from '../containers/contributions-container';
 import { EducationContainer } from '../containers/education-container';
 import { ExperienceContainer } from '../containers/experience-container';
 import { GithubStatsContainer } from '../containers/github-stats-container';
-import { NachUiCtaContainer } from '../containers/nach-ui-cta-container';
 import { ProjectsContainer } from '../containers/projects-container';
 import { TestimonialsContainer } from '../containers/testimonials-container';
 import { AboutSection } from '../ui/about-section';
@@ -16,7 +15,6 @@ import { GithubStatsSkeleton } from '../ui/github-stats-skeleton';
 import { HomeHero } from '../ui/home-hero';
 import { MarkSection } from '../ui/mark-section';
 import { Interests } from '../ui/interests';
-import { NachUiCtaSkeleton } from '../ui/nach-ui-cta-skeleton';
 import { ProjectsSkeleton } from '../ui/projects-skeleton';
 import { TechStack } from '../ui/tech-stack';
 import { TestimonialsSkeleton } from '../ui/testimonials-skeleton';
@@ -44,9 +42,6 @@ export function HomeView() {
       </Suspense>
       <Suspense fallback={<GithubStatsSkeleton />}>
         <GithubStatsContainer />
-      </Suspense>
-      <Suspense fallback={<NachUiCtaSkeleton />}>
-        <NachUiCtaContainer />
       </Suspense>
       <Suspense fallback={<TestimonialsSkeleton />}>
         <TestimonialsContainer />

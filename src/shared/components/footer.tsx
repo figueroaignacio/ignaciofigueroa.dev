@@ -78,9 +78,31 @@ export function Footer() {
 
           {/* The mark, explained once, quietly — the corner logo's hover says
               the same thing to whoever has a pointer. */}
-          <div className="frame-column flex items-center gap-2.5 pb-12 text-muted-foreground/70">
-            <LogoMark size={14} className="shrink-0" />
-            <p>{t('components.logo.tagline')}</p>
+          <div className="frame-column flex flex-wrap items-center justify-between gap-x-8 gap-y-3 pb-12 text-muted-foreground/70">
+            <div className="flex items-center gap-2.5">
+              <LogoMark size={14} className="shrink-0" />
+              <p>{t('components.logo.tagline')}</p>
+            </div>
+            <p className="flex items-center gap-1.5">
+              <span>powered by</span>
+              <a
+                href="https://nachui.tech"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground/80 hover:text-foreground transition-colors underline-offset-4 hover:underline"
+              >
+                NachUI
+              </a>
+              <span className="select-none">·</span>
+              <a
+                href="https://github.com/figueroaignacio/ui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors underline-offset-4 hover:underline"
+              >
+                github ↗
+              </a>
+            </p>
           </div>
         </div>
       </div>
