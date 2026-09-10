@@ -7,16 +7,14 @@ export async function HomeHero() {
   const tCv = await getTranslations('components.ctaCv');
 
   return (
-    <header className="scroll-blur-out frame-column pt-12 pb-8 md:pt-16 md:pb-10">
-      <div className="flex min-w-0 flex-col">
-        <h1 className="type-display text-foreground">{t('name')}</h1>
-        <p className="mt-2 text-[15px] leading-relaxed text-muted-strong">{t('title')}</p>
-        <div className="prose-reading mt-3">
-          <p>{t('description')}</p>
-        </div>
-        <HeroStatus />
-        <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
+    <header className="flex min-w-0 flex-1 flex-col justify-center py-10 lg:py-0">
+      <h1 className="type-display text-foreground lg:text-[2.5rem] xl:text-[3rem]">{t('name')}</h1>
+      <p className="mt-2 text-[15px] leading-relaxed text-muted-strong">{t('title')}</p>
+      <div className="prose-reading mt-4 max-w-md">
+        <p>{t('description')}</p>
       </div>
+      <HeroStatus />
+      <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
     </header>
   );
 }

@@ -341,6 +341,61 @@
     margin-inline: auto;
   }
 
+  .split-shell {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .split-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem var(--frame-pad) 0;
+  }
+
+  .split-main {
+    min-inline-size: 0;
+  }
+
+  @media (min-width: 64rem) {
+    .split-shell {
+      display: grid;
+      grid-template-columns: minmax(18rem, 24rem) minmax(0, 1fr);
+      column-gap: 2rem;
+      align-items: start;
+    }
+
+    .split-aside {
+      position: sticky;
+      top: 0;
+      block-size: 100dvh;
+      padding-block: 2rem calc(var(--dock-space) + 1rem);
+      border-inline-end: 1px solid var(--rule);
+      padding-inline-end: 2rem;
+    }
+
+    .split-main {
+      --frame-bleed: var(--frame-pad);
+      --frame-bleed-end: var(--frame-pad);
+    }
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.45;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 240px 240px;
+  }
+
+  .dark .grain {
+    mix-blend-mode: screen;
+    opacity: 0.35;
+  }
+
   /* The dot floats one stroke above the stem; on hover it floats a little
      further. One property, one easing — the same curve as everything else. */
   .logo-mark .logo-dot {
@@ -1600,6 +1655,12 @@
     border-block-start: 1px solid var(--rule);
     margin-inline-start: calc(-1 * var(--frame-bleed));
     margin-inline-end: calc(-1 * var(--frame-bleed-end));
+  }
+
+  @media (min-width: 64rem) {
+    .split-main > * > section:first-of-type > .rule-bleed {
+      border-block-start-width: 0;
+    }
   }
 
   .bleed-x {

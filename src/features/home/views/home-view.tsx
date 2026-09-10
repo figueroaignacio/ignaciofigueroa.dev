@@ -12,7 +12,6 @@ import { ContactSection } from '../ui/contact-section';
 import { ContributionsSkeleton } from '../ui/contributions-skeleton';
 import { CTACurriculum } from '../ui/cta-curriculum';
 import { GithubStatsSkeleton } from '../ui/github-stats-skeleton';
-import { HomeHero } from '../ui/home-hero';
 import { MarkSection } from '../ui/mark-section';
 import { Interests } from '../ui/interests';
 import { ProjectsSkeleton } from '../ui/projects-skeleton';
@@ -23,7 +22,6 @@ import { TimelineSkeleton } from '../ui/timeline-skeleton';
 export function HomeView() {
   return (
     <div>
-      <HomeHero />
       <Suspense fallback={<TimelineSkeleton />}>
         <ExperienceContainer />
       </Suspense>
