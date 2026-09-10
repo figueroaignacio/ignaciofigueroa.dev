@@ -3,6 +3,7 @@
 import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname } from '@/i18n/navigation';
+import { Grain } from '@/shared/components/grain';
 import { cn } from '@/shared/lib/cn';
 
 import { Home01Icon, Mail01Icon, UserIcon } from '@hugeicons/core-free-icons';
@@ -214,6 +215,7 @@ export function Dock() {
               )}
             >
               <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
+              <Grain className="grain-inset" />
             </motion.div>
           )}
         </AnimatePresence>,
