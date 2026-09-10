@@ -19,7 +19,7 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialData }) {
     <figure className="m-0">
       <Frame>
         <Frame.Panel className="bg-background">
-          <blockquote className="prose-reading italic text-[15px] md:text-[16px] text-foreground/95">
+          <blockquote className="prose-reading italic text-foreground/95">
             <p>"{testimonial.testimonial}"</p>
           </blockquote>
         </Frame.Panel>

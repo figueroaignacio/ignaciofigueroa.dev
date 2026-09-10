@@ -38,7 +38,7 @@ export async function ProjectHeaderPage({
           <h1 className="type-page-title text-foreground lowercase">{title}</h1>
         </div>
         {description && (
-          <p className="text-base text-muted-strong leading-relaxed max-w-2xl font-normal">
+          <p className="text-[15px] text-muted-strong leading-relaxed max-w-2xl font-normal">
             {description}
           </p>
         )}

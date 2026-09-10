@@ -1,18 +1,13 @@
-import { JetBrains_Mono, Source_Serif_4 } from 'next/font/google';
+import { Geist, Geist_Mono } from 'next/font/google';
 
-/**
- * Two families, deliberately. Source Serif 4 reads (headings + body),
- * JetBrains Mono structures (labels, chips, dates, nav, actions).
- */
-export const fontSerif = Source_Serif_4({
+export const fontSans = Geist({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-geist-sans',
   display: 'swap',
-  style: ['normal', 'italic'],
   preload: true,
 });
 
-export const fontCode = JetBrains_Mono({
+export const fontCode = Geist_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',

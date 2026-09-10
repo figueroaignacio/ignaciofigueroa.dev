@@ -10,7 +10,7 @@ export function CTACurriculum() {
       <Frame className="frame-column mt-10 text-center md:mt-12">
         <Frame.Panel className="bg-background px-6 py-8">
           <h2 className="type-label text-muted-foreground mb-3">{t('cta.title')}</h2>
-          <p className="text-[15px] font-serif italic text-muted-foreground max-w-md mx-auto leading-relaxed">
+          <p className="text-[15px] italic text-muted-foreground max-w-md mx-auto leading-relaxed">
             {t('cta.description')}
           </p>
         </Frame.Panel>

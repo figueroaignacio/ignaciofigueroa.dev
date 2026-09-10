@@ -21,11 +21,6 @@ export function Footer() {
   const t = useTranslations();
 
   return (
-    /*
-     * No margin-top: this border is what closes the frame, so the rails have
-     * to die on this exact line rather than trail off into empty space. The
-     * rule spans the viewport; only the content sits on the column.
-     */
     <footer className="relative w-full border-t border-rule text-xs font-mono text-muted-foreground">
       <AssistantPerch className="footer-perch" expression="asleep" />
       <div className="page-frame-outer">

@@ -24,7 +24,7 @@ export async function HeroStatus() {
           <div className="hero-brace-stem mx-auto h-1.5 w-px bg-brand/50 transition-colors duration-300 group-hover:bg-brand" />
         </div>
 
-        <p className="hero-note mt-1 text-center font-serif text-[13px] leading-snug text-muted-strong italic">
+        <p className="hero-note mt-1 text-center text-[13px] leading-snug text-muted-strong italic">
           {t('madeThat')}
         </p>
       </div>

@@ -210,17 +210,16 @@
   --radius-xl: calc(var(--radius) + 0.25rem);
   --radius-2xl: calc(var(--radius) + 0.5rem);
 
-  --font-sans: var(--font-serif);
-  --font-heading: var(--font-serif);
-  --font-serif: var(--font-serif);
-  --font-mono: var(--font-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+  --font-mono: var(--font-mono), ui-monospace, monospace;
   --animate-blink: blink 3s infinite;
 }
 
 @layer base {
   :root {
     --dock-space: 7.5rem;
-    --frame-measure: 44rem;
+    --frame-measure: 40rem;
     --frame-gutter: 0rem;
     --frame-pad: 1rem;
     --frame-border: 0px;
@@ -247,7 +246,6 @@
     :root {
       --frame-gutter: 1.5rem;
       --frame-pad: 1.5rem;
-      --frame-border: 1px;
     }
   }
 
@@ -317,7 +315,6 @@
 
   .page-frame {
     padding-inline: var(--frame-pad);
-    border-inline: var(--frame-border) solid var(--rule);
   }
 
   .page-frame-flush {
@@ -327,10 +324,6 @@
   @media (min-width: 64rem) {
     html[data-chat-docked='true'] .page-frame-outer {
       padding-inline-end: 0;
-    }
-
-    html[data-chat-docked='true'] .page-frame {
-      border-inline-end-color: transparent;
     }
   }
 
@@ -792,23 +785,23 @@
   }
 
   .type-display {
-    @apply text-[1.875rem] md:text-[2.5rem] font-semibold tracking-tight leading-[1.08];
+    @apply text-[1.5rem] md:text-[1.875rem] font-semibold tracking-tight leading-[1.15];
   }
 
   .type-page-title {
-    @apply text-xl md:text-[1.625rem] font-semibold tracking-tight leading-tight;
+    @apply text-lg md:text-[1.375rem] font-semibold tracking-tight leading-tight;
   }
 
   .type-item-title {
-    @apply text-[16px] md:text-[17px] font-medium tracking-tight leading-snug;
+    @apply text-[15px] font-medium tracking-tight leading-snug;
   }
 
   .type-label {
-    @apply font-mono text-[11px] uppercase tracking-[0.2em];
+    @apply font-mono text-[10px] uppercase tracking-[0.2em];
   }
 
   .type-meta {
-    @apply font-mono text-xs tabular-nums;
+    @apply font-mono text-[11px] tabular-nums;
   }
 
   .type-chip {
@@ -816,13 +809,12 @@
   }
 
   .prose-reading {
-    font-family: var(--font-serif), Georgia, serif;
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   .prose-reading p {
-    @apply mb-3.5 leading-[1.7] text-left text-foreground/90;
+    @apply mb-3 leading-[1.65] text-left text-foreground/90;
   }
 
   .prose-reading strong {
@@ -830,11 +822,11 @@
   }
 
   .prose-reading h2 {
-    @apply text-lg font-medium font-sans mt-8 mb-3 tracking-tight text-foreground border-b border-border pb-2;
+    @apply text-base font-medium mt-8 mb-3 tracking-tight text-foreground border-b border-border pb-2;
   }
 
   .prose-reading h3 {
-    @apply text-base font-medium font-sans mt-6 mb-2.5 tracking-tight text-foreground;
+    @apply text-[15px] font-medium mt-6 mb-2.5 tracking-tight text-foreground;
   }
 
   .prose-reading ul {
@@ -855,29 +847,30 @@
 
   @media (max-width: 768px) {
     .prose-reading {
-      font-size: 16px;
-      line-height: 1.65;
+      font-size: 14px;
+      line-height: 1.6;
     }
     .prose-reading p {
-      line-height: 1.65;
+      line-height: 1.6;
     }
   }
 
   .prose {
     box-sizing: border-box;
     overflow-wrap: anywhere;
+    font-size: 15px;
   }
 
   .prose p {
-    @apply mb-3 leading-7;
+    @apply mb-3 leading-relaxed;
   }
 
   .prose h2 {
-    @apply text-lg pb-3 mt-6 border-b border-border mb-3 font-semibold;
+    @apply text-base pb-2 mt-6 border-b border-border mb-3 font-semibold;
   }
 
   .prose h3 {
-    @apply text-base font-semibold mt-5 mb-2;
+    @apply text-[15px] font-semibold mt-5 mb-2;
   }
 
   .prose blockquote {
@@ -901,7 +894,7 @@
   }
 
   .prose li {
-    @apply mb-2 leading-7;
+    @apply mb-1.5 leading-relaxed;
   }
 
   .prose * {

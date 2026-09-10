@@ -26,9 +26,9 @@ function CertificationCard({ item, cta }: { item: CertificationItem; cta: string
     <Frame>
       <Frame.Header className="flex-row flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
         <Frame.Title className="flex items-center gap-2 type-item-title text-foreground">
-          {iconName && <Icon name={iconName} width={20} height={20} />}
+          {iconName && <Icon name={iconName} width={16} height={16} />}
           {item.title}{' '}
-          <span className="text-base font-normal text-muted-foreground">· {item.issuer}</span>
+          <span className="text-[14px] font-normal text-muted-foreground">· {item.issuer}</span>
         </Frame.Title>
         <span className="shrink-0 type-meta text-muted-foreground tracking-wider">
           {item.credentialId}

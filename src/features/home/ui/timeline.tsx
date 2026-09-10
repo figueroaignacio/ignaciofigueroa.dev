@@ -33,7 +33,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
         <TimelineRootItem
           key={item.key}
           step={items.length - index}
-          className="ps-6 pb-10 last:pb-0"
+          className="ps-6 pb-8 last:pb-0"
         >
           <TimelineIndicator
             data-current={item.current || undefined}
@@ -46,7 +46,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
             </TimelineDate>
             <TimelineTitle className="type-item-title text-foreground mt-1">
               {item.title}{' '}
-              <span className="text-base font-normal text-muted-foreground">
+              <span className="text-[14px] font-normal text-muted-foreground">
                 {item.connector ? `${item.connector} ` : ''}
                 {item.subtitleHref ? (
                   <a
@@ -64,7 +64,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
             </TimelineTitle>
           </TimelineHeader>
 
-          <TimelineContent className="leading-relaxed">
+          <TimelineContent className="text-sm leading-relaxed">
             {item.description && <p className="mt-3">{item.description}</p>}
 
             {item.bullets && item.bullets.length > 0 && (

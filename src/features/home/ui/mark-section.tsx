@@ -15,7 +15,7 @@ export function MarkSection() {
 
   return (
     <Section id="mark" title={t('sections.mark.title')}>
-      <div className="group flex items-center gap-5 sm:gap-6">
+      <div className="group mt-8 flex items-center gap-5 sm:gap-6">
         {/* Same hairline square the rest of the page is built from, so the
             glyph reads as a specimen rather than a decoration. */}
         <div className="relative flex size-20 shrink-0 items-center justify-center rounded-sm border border-border bg-card sm:size-24">

@@ -19,7 +19,7 @@ export function ProjectsWidget({ id, title = '', viewAllLabel, data }: ProjectsW
     <Section id={id} title={title}>
       <ProjectsTabs data={data} />
       {viewAllLabel && (
-        <div className="mt-8">
+        <div className="mt-6">
           <Separator className="mb-4" />
           <div className="flex justify-end">
             <Link
