@@ -1,3 +1,4 @@
+import { ContactSection } from '@/features/home/ui/contact-section';
 import { HomeHero } from '@/features/home/ui/home-hero';
 import { routing } from '@/i18n/routing';
 import { ConsoleGreeting } from '@/shared/components/console-greeting';
@@ -26,7 +27,7 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
   return (
     <div id="app-shell" className="min-h-screen flex flex-col overflow-x-clip">
       <Grain />
-      <div className="page-frame-outer flex flex-1 flex-col">
+      <div className="page-frame-outer reveal-cover flex flex-1 flex-col">
         <div className="split-shell flex-1">
           <aside className="split-aside">
             <div className="hero-waves" aria-hidden="true">
@@ -50,7 +51,10 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
           </main>
         </div>
       </div>
-      <Footer />
+      <div className="reveal">
+        <ContactSection />
+        <Footer />
+      </div>
       <Dock />
       <ConsoleGreeting />
     </div>

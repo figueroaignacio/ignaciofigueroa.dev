@@ -465,10 +465,40 @@
     }
   }
 
+  .reveal-cover {
+    position: relative;
+    z-index: 1;
+    background: var(--background);
+    border-end-start-radius: var(--radius-2xl);
+    border-end-end-radius: var(--radius-2xl);
+    box-shadow: 0 24px 48px -24px oklch(0% 0 0 / 0.45);
+  }
+
+  .reveal {
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .contact-stage {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-block-size: 100dvh;
+    padding: 6rem var(--frame-pad) 5rem;
+    background: var(--wave-base);
+  }
+
+  .contact-stage .hero-waves {
+    inset: -20%;
+  }
+
   .grain {
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     pointer-events: none;
     opacity: 0.45;
     mix-blend-mode: multiply;

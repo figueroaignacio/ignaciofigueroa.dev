@@ -8,7 +8,6 @@ import { TestimonialsContainer } from '../containers/testimonials-container';
 import { AboutSection } from '../ui/about-section';
 import { AskAiSection } from '../ui/ask-ai-section';
 import { CertificationsSection } from '../ui/certifications-section';
-import { ContactSection } from '../ui/contact-section';
 import { ContributionsSkeleton } from '../ui/contributions-skeleton';
 import { CTACurriculum } from '../ui/cta-curriculum';
 import { GithubStatsSkeleton } from '../ui/github-stats-skeleton';
@@ -47,7 +46,6 @@ export function HomeView() {
       <MarkSection />
       <CTACurriculum />
       <AskAiSection />
-      <ContactSection />
     </div>
   );
 }
