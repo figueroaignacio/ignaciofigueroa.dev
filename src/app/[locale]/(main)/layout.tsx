@@ -5,7 +5,9 @@ import { ConsoleGreeting } from '@/shared/components/console-greeting';
 import { Dock } from '@/shared/components/dock';
 import { Footer } from '@/shared/components/footer';
 import { Grain } from '@/shared/components/grain';
+import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
+import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { hasLocale, type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -35,14 +37,21 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               <span />
               <span />
             </div>
-            <div className="group relative flex items-center gap-3">
-              <LogoMark
-                size={26}
-                className="logo-mark shrink-0 text-foreground/70 transition-colors duration-300 group-hover:text-foreground"
-              />
-              <span className="inline-block max-w-0 overflow-hidden font-mono text-[11px] whitespace-nowrap text-muted-foreground opacity-0 transition-all duration-500 ease-out group-hover:max-w-md group-hover:opacity-100">
-                {t('components.logo.tagline')}
-              </span>
+            <div className="flex items-center justify-between gap-4">
+              <div className="group flex min-w-0 items-center gap-3">
+                <LogoMark
+                  size={26}
+                  className="logo-mark shrink-0 text-foreground/70 transition-colors duration-300 group-hover:text-foreground"
+                />
+                <span className="inline-block max-w-0 overflow-hidden font-mono text-[11px] whitespace-nowrap text-muted-foreground opacity-0 transition-all duration-500 ease-out group-hover:max-w-md group-hover:opacity-100">
+                  {t('components.logo.tagline')}
+                </span>
+              </div>
+              <div className="flex shrink-0 items-center gap-3 font-mono text-xs text-muted-foreground">
+                <ThemeToggle />
+                <span className="select-none">·</span>
+                <LocaleSwitcher />
+              </div>
             </div>
             <HomeHero />
           </aside>
