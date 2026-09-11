@@ -274,6 +274,18 @@
     scroll-padding-bottom: var(--dock-space);
   }
 
+  html.lenis {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased leading-relaxed;
     padding-bottom: calc(var(--dock-space) + env(safe-area-inset-bottom));
