@@ -1,0 +1,23 @@
+@layer utilities {
+  .rule-bleed {
+    margin-inline-start: calc(-1 * var(--frame-bleed));
+    margin-inline-end: calc(-1 * var(--frame-bleed-end));
+  }
+
+  .bleed-x {
+    margin-inline-start: calc(-1 * var(--frame-bleed));
+    margin-inline-end: calc(-1 * var(--frame-bleed-end));
+    padding-inline-start: var(--frame-bleed);
+    padding-inline-end: var(--frame-bleed-end);
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .delay-150 {
+    animation-delay: 150ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+}

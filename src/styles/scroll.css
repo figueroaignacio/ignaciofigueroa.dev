@@ -1,0 +1,77 @@
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blur-rise {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    translate: 0 1.5rem;
+    scale: 0.99;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes blur-focus-label {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    letter-spacing: 0.45em;
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 0.2em;
+  }
+}
+
+@keyframes blur-away {
+  to {
+    opacity: 0.3;
+    filter: blur(8px);
+    translate: 0 -1rem;
+    scale: 0.985;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-blur-in {
+    animation: blur-rise cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 35%;
+  }
+
+  .scroll-blur-label {
+    animation: blur-focus-label cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 30%;
+  }
+
+  .scroll-blur-out {
+    animation: blur-away linear both;
+    animation-timeline: view();
+    animation-range: exit 0% exit 85%;
+  }
+
+  .scroll-stagger > * {
+    animation: blur-rise cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 32%;
+  }
+
+  .scroll-stagger > :nth-child(2n) {
+    animation-range: cover 8% cover 42%;
+  }
+}
