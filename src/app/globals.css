@@ -671,7 +671,7 @@
     position: absolute;
     inset-inline: 0;
     inset-block-end: 0;
-    block-size: 4rem;
+    block-size: 2.5rem;
     z-index: 10;
     overflow: clip visible;
     pointer-events: none;
@@ -692,7 +692,7 @@
   }
 
   .rail-bot .assistant-walker {
-    inline-size: 4rem;
+    inline-size: 2.5rem;
     block-size: auto;
   }
 
@@ -706,7 +706,7 @@
     }
 
     .rail-bot .assistant-walker {
-      inline-size: 2.5rem;
+      inline-size: 1.75rem;
     }
   }
 
@@ -729,7 +729,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .rail-bot {
-      inset-inline-start: calc(50% - 2rem);
+      inset-inline-start: calc(50% - 1.25rem);
     }
 
     .assistant-walker .assistant-sit {
@@ -1324,23 +1324,23 @@
 
 @keyframes patrol {
   0% {
-    inset-inline-start: calc(100% - 8rem);
+    inset-inline-start: calc(100% - 5rem);
   }
   10%,
   25% {
-    inset-inline-start: calc(50% - 2rem);
+    inset-inline-start: calc(50% - 1.25rem);
   }
   35%,
   50% {
-    inset-inline-start: 4rem;
+    inset-inline-start: 2.5rem;
   }
   60%,
   75% {
-    inset-inline-start: calc(50% - 2rem);
+    inset-inline-start: calc(50% - 1.25rem);
   }
   85%,
   100% {
-    inset-inline-start: calc(100% - 8rem);
+    inset-inline-start: calc(100% - 5rem);
   }
 }
 
@@ -1355,15 +1355,15 @@
 
 @keyframes patrol-short {
   0% {
-    inset-inline-start: calc(100% - 5rem);
+    inset-inline-start: calc(100% - 3.5rem);
   }
   20%,
   50% {
-    inset-inline-start: 2.5rem;
+    inset-inline-start: 1.75rem;
   }
   70%,
   100% {
-    inset-inline-start: calc(100% - 5rem);
+    inset-inline-start: calc(100% - 3.5rem);
   }
 }
 
@@ -1702,21 +1702,6 @@
 }
 
 @supports (animation-timeline: view()) {
-  .rule-bleed {
-    transform-origin: center;
-    animation: draw-rule linear both;
-    animation-timeline: view();
-    animation-range: cover 15% cover 40%;
-  }
-
-  #main-content > * > section:first-of-type > .rule-bleed {
-    animation: none;
-  }
-
-  #experience + section > .rule-bleed {
-    animation: none;
-  }
-
   .scroll-blur-in {
     animation: blur-rise cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-timeline: view();
@@ -1748,15 +1733,8 @@
 
 @layer utilities {
   .rule-bleed {
-    border-block-start: 1px solid var(--rule);
     margin-inline-start: calc(-1 * var(--frame-bleed));
     margin-inline-end: calc(-1 * var(--frame-bleed-end));
-  }
-
-  @media (min-width: 64rem) {
-    .split-main > * > section:first-of-type > .rule-bleed {
-      border-block-start-width: 0;
-    }
   }
 
   .bleed-x {
