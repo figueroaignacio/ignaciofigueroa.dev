@@ -6,6 +6,7 @@ import type { Project, ProjectLabel, TechStack } from '@/payload-types';
 import { Badge } from '@/shared/components/ui/badge';
 import { Frame } from '@/shared/components/ui/frame';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
+import { useTilt } from '@/shared/hooks/use-tilt';
 import { useTranslations } from 'next-intl';
 
 export function ProjectCard({
@@ -18,6 +19,7 @@ export function ProjectCard({
   labels,
 }: Partial<Project>) {
   const t = useTranslations('components.projectItem.actions');
+  const tilt = useTilt<HTMLDivElement>();
 
   const techList =
     technologies?.filter((tech): tech is TechStack => typeof tech === 'object') ?? [];
@@ -26,7 +28,7 @@ export function ProjectCard({
     labels?.filter((label): label is ProjectLabel => typeof label === 'object') ?? [];
 
   return (
-    <Frame className="bg-card">
+    <Frame className="tilt-card bg-card" {...tilt}>
       <Frame.Header className="px-2.5 py-2 flex-row flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <div className="flex min-w-0 flex-wrap items-baseline gap-x-2.5 gap-y-1.5">
           <h3 className="type-item-title text-foreground">

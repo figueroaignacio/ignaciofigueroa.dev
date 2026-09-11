@@ -7,7 +7,10 @@
     "status": {
       "working": "Trabajando en reclee.com",
       "workingUrl": "https://reclee.com",
-      "madeThat": "Esa landing la hice yo"
+      "madeThat": "Esa landing la hice yo",
+      "localTime": "hora local en Buenos Aires",
+      "workingHours": "en horario laboral",
+      "offHours": "fuera de horario"
     }
   },
   "aboutMe": {

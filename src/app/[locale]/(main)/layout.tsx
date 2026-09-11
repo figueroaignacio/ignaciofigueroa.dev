@@ -7,6 +7,8 @@ import { Footer } from '@/shared/components/footer';
 import { Grain } from '@/shared/components/grain';
 import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
+import { PanelNav, type PanelNavItem } from '@/shared/components/panel-nav';
+import { SilkParallax } from '@/shared/components/silk-parallax';
 import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { hasLocale, type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -25,6 +27,18 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
 
   setRequestLocale(locale);
   const t = await getTranslations();
+  const navItems: PanelNavItem[] = (
+    [
+      'experience',
+      'projects',
+      'education',
+      'stack',
+      'about',
+      'github',
+      'testimonials',
+      'contact',
+    ] as const
+  ).map((id) => ({ id, label: t(`ui.sectionIndex.${id}`) }));
 
   return (
     <div id="app-shell" className="min-h-screen flex flex-col overflow-x-clip">
@@ -37,6 +51,7 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               <span />
               <span />
             </div>
+            <SilkParallax />
             <div className="flex items-center justify-between gap-4">
               <div className="group flex min-w-0 items-center gap-3">
                 <LogoMark
@@ -54,6 +69,7 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               </div>
             </div>
             <HomeHero />
+            <PanelNav items={navItems} />
           </aside>
           <main id="main-content" className="split-main page-frame relative" tabIndex={-1}>
             {children}

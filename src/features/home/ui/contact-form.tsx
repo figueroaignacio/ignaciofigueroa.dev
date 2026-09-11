@@ -8,7 +8,7 @@ import { cn } from '@/shared/lib/cn';
 import { MailSend02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
-import { useActionState, useRef, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { sendEmail } from '../actions/send-email';
 
 type ContactFormState = {
@@ -32,6 +32,13 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
   const [state, formAction, isPending] = useActionState(sendEmail, initialState);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const locked = isPending || state.success;
+
+  useEffect(() => {
+    const stage = document.getElementById('contact');
+    if (!stage) return;
+    stage.toggleAttribute('data-sent', state.success);
+    return () => stage.removeAttribute('data-sent');
+  }, [state.success]);
 
   const handleInput = () => {
     if (textareaRef.current) {

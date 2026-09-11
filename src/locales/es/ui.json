@@ -17,5 +17,15 @@
       "label": "Asistente",
       "href": "/assistant"
     }
-  ]
+  ],
+  "sectionIndex": {
+    "experience": "experiencia",
+    "projects": "proyectos",
+    "education": "educación",
+    "stack": "stack",
+    "about": "sobre mí",
+    "github": "github",
+    "testimonials": "testimonios",
+    "contact": "contacto"
+  }
 }

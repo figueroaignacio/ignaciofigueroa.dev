@@ -43,6 +43,9 @@
   --wave-glow: oklch(78% 0.11 75 / 0.5);
   --wave-scrim: oklch(99.1% 0.003 85 / 0.55);
 
+  --brand: oklch(62% 0.13 70);
+  --brand-foreground: oklch(98.5% 0.002 85);
+
   --destructive: oklch(53% 0.16 27.3);
   --destructive-foreground: oklch(98.5% 0.002 85);
   --destructive-text: oklch(48% 0.15 27.3);
@@ -123,6 +126,9 @@
   --wave-deep: oklch(34% 0.006 80);
   --wave-glow: oklch(70% 0.12 75 / 0.35);
   --wave-scrim: oklch(10% 0 0 / 0.45);
+
+  --brand: oklch(78% 0.12 75);
+  --brand-foreground: oklch(14.5% 0 0);
 
   --destructive: oklch(71.1% 0.166 22.2);
   --destructive-foreground: oklch(14.5% 0 0);
@@ -392,6 +398,8 @@
     z-index: -1;
     filter: blur(48px);
     pointer-events: none;
+    translate: calc(var(--silk-x, 0) * -22px) calc(var(--silk-y, 0) * -16px);
+    transition: translate 900ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .hero-waves::after {
@@ -494,6 +502,61 @@
   .contact-stage .hero-waves {
     inset: -20%;
     filter: blur(40px);
+  }
+
+  .contact-stage::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(60% 50% at 50% 45%, var(--wave-glow), transparent 70%);
+  }
+
+  .contact-stage[data-sent]::before {
+    animation: silk-pulse 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .panel-nav {
+    position: relative;
+    display: none;
+    margin-block-start: auto;
+    padding-block-start: 2.5rem;
+  }
+
+  .panel-nav-bot {
+    position: absolute;
+    inset-block-end: calc(100% - 2.25rem);
+    inset-inline-end: 0;
+    inline-size: 2.25rem;
+    block-size: auto;
+    pointer-events: none;
+  }
+
+  @media (min-width: 64rem) {
+    .panel-nav {
+      display: block;
+    }
+  }
+
+  .tilt-card {
+    position: relative;
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition:
+      transform 260ms ease-out,
+      border-color 200ms ease-out;
+    background-image: radial-gradient(
+      220px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklch, var(--brand) 22%, transparent),
+      transparent 65%
+    );
+    background-repeat: no-repeat;
+    will-change: transform;
+  }
+
+  .tilt-card:hover {
+    border-color: color-mix(in oklch, var(--brand) 45%, var(--border));
   }
 
   .contact-stage .hero-waves span:nth-child(3) {
@@ -1650,6 +1713,20 @@
   89%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes silk-pulse {
+  0% {
+    opacity: 0;
+    scale: 0.6;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1.6;
   }
 }
 
