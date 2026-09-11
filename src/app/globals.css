@@ -38,9 +38,9 @@
   --grid-color: oklch(14.5% 0.004 75 / 0.035);
 
   --wave-base: oklch(97% 0.004 85);
-  --wave-fold: oklch(90% 0.008 85);
-  --wave-deep: oklch(84% 0.012 80);
-  --wave-glow: oklch(80% 0.09 75 / 0.35);
+  --wave-fold: oklch(88% 0.01 85);
+  --wave-deep: oklch(78% 0.016 80);
+  --wave-glow: oklch(78% 0.11 75 / 0.5);
   --wave-scrim: oklch(99.1% 0.003 85 / 0.55);
 
   --destructive: oklch(53% 0.16 27.3);
@@ -119,9 +119,9 @@
   --grid-color: oklch(98.5% 0 0 / 0.015);
 
   --wave-base: oklch(12% 0 0);
-  --wave-fold: oklch(20% 0 0);
-  --wave-deep: oklch(27% 0.004 80);
-  --wave-glow: oklch(70% 0.1 75 / 0.22);
+  --wave-fold: oklch(23% 0 0);
+  --wave-deep: oklch(34% 0.006 80);
+  --wave-glow: oklch(70% 0.12 75 / 0.35);
   --wave-scrim: oklch(10% 0 0 / 0.45);
 
   --destructive: oklch(71.1% 0.166 22.2);
@@ -379,7 +379,7 @@
     position: absolute;
     inset: -35%;
     z-index: -1;
-    filter: blur(70px);
+    filter: blur(48px);
     pointer-events: none;
   }
 
@@ -395,7 +395,7 @@
     inset: 0;
     border-radius: 45%;
     mix-blend-mode: normal;
-    animation: wave-drift 48s ease-in-out infinite alternate;
+    animation: wave-drift 22s ease-in-out infinite alternate;
   }
 
   .hero-waves span:nth-child(1) {
@@ -416,15 +416,15 @@
       var(--wave-fold) 45%,
       transparent 75%
     );
-    animation-duration: 64s;
-    animation-delay: -20s;
+    animation-duration: 30s;
+    animation-delay: -12s;
     animation-direction: alternate-reverse;
   }
 
   .hero-waves span:nth-child(3) {
     background: radial-gradient(35% 30% at 65% 30%, var(--wave-glow), transparent 70%);
-    animation-duration: 38s;
-    animation-delay: -9s;
+    animation-duration: 17s;
+    animation-delay: -5s;
   }
 
   .split-main {
@@ -1608,19 +1608,19 @@
 
 @keyframes wave-drift {
   0% {
-    translate: -6% -4%;
-    rotate: -8deg;
+    translate: -14% -10%;
+    rotate: -18deg;
     scale: 1;
   }
   50% {
-    translate: 4% 6%;
-    rotate: 6deg;
-    scale: 1.08;
+    translate: 10% 14%;
+    rotate: 10deg;
+    scale: 1.18;
   }
   100% {
-    translate: 7% -5%;
-    rotate: 14deg;
-    scale: 1.02;
+    translate: 16% -12%;
+    rotate: 28deg;
+    scale: 1.04;
   }
 }
 
