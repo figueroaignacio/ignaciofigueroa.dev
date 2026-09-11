@@ -37,6 +37,12 @@
   --radius: 0.75rem;
   --grid-color: oklch(14.5% 0.004 75 / 0.035);
 
+  --wave-base: oklch(97% 0.004 85);
+  --wave-fold: oklch(90% 0.008 85);
+  --wave-deep: oklch(84% 0.012 80);
+  --wave-glow: oklch(80% 0.09 75 / 0.35);
+  --wave-scrim: oklch(99.1% 0.003 85 / 0.55);
+
   --destructive: oklch(53% 0.16 27.3);
   --destructive-foreground: oklch(98.5% 0.002 85);
   --destructive-text: oklch(48% 0.15 27.3);
@@ -111,6 +117,12 @@
   --rule: oklch(22% 0 0);
 
   --grid-color: oklch(98.5% 0 0 / 0.015);
+
+  --wave-base: oklch(12% 0 0);
+  --wave-fold: oklch(20% 0 0);
+  --wave-deep: oklch(27% 0.004 80);
+  --wave-glow: oklch(70% 0.1 75 / 0.22);
+  --wave-scrim: oklch(10% 0 0 / 0.45);
 
   --destructive: oklch(71.1% 0.166 22.2);
   --destructive-foreground: oklch(14.5% 0 0);
@@ -349,10 +361,70 @@
   }
 
   .split-aside {
+    position: relative;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding: 2rem var(--frame-pad) 0;
+    overflow: hidden;
+    padding: 2rem var(--frame-pad) 2.5rem;
+    background: var(--wave-base);
+  }
+
+  .split-aside > * {
+    position: relative;
+  }
+
+  .hero-waves {
+    position: absolute;
+    inset: -35%;
+    z-index: -1;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+
+  .hero-waves::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 20%, var(--wave-scrim) 55%, transparent 90%);
+  }
+
+  .hero-waves span {
+    position: absolute;
+    inset: 0;
+    border-radius: 45%;
+    mix-blend-mode: normal;
+    animation: wave-drift 48s ease-in-out infinite alternate;
+  }
+
+  .hero-waves span:nth-child(1) {
+    background: conic-gradient(
+      from 210deg at 30% 40%,
+      var(--wave-base),
+      var(--wave-fold) 25%,
+      var(--wave-base) 45%,
+      var(--wave-deep) 70%,
+      var(--wave-base)
+    );
+  }
+
+  .hero-waves span:nth-child(2) {
+    background: radial-gradient(
+      60% 45% at 70% 60%,
+      var(--wave-deep),
+      var(--wave-fold) 45%,
+      transparent 75%
+    );
+    animation-duration: 64s;
+    animation-delay: -20s;
+    animation-direction: alternate-reverse;
+  }
+
+  .hero-waves span:nth-child(3) {
+    background: radial-gradient(35% 30% at 65% 30%, var(--wave-glow), transparent 70%);
+    animation-duration: 38s;
+    animation-delay: -9s;
   }
 
   .split-main {
@@ -369,9 +441,10 @@
 
     .split-aside {
       position: sticky;
-      top: 0;
-      block-size: 100dvh;
-      padding-block: 2rem calc(var(--dock-space) + 1rem);
+      top: 1rem;
+      block-size: calc(100dvh - 2rem);
+      padding: 2.5rem 2.5rem calc(var(--dock-space) + 1rem);
+      border-radius: var(--radius-2xl);
     }
 
     .split-main {
@@ -1530,6 +1603,24 @@
   89%,
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes wave-drift {
+  0% {
+    translate: -6% -4%;
+    rotate: -8deg;
+    scale: 1;
+  }
+  50% {
+    translate: 4% 6%;
+    rotate: 6deg;
+    scale: 1.08;
+  }
+  100% {
+    translate: 7% -5%;
+    rotate: 14deg;
+    scale: 1.02;
   }
 }
 

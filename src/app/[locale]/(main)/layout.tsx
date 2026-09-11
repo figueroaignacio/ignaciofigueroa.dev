@@ -29,7 +29,12 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
       <div className="page-frame-outer flex flex-1 flex-col">
         <div className="split-shell flex-1">
           <aside className="split-aside">
-            <div className="group flex items-center gap-3">
+            <div className="hero-waves" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="group relative flex items-center gap-3">
               <LogoMark
                 size={26}
                 className="logo-mark shrink-0 text-foreground/70 transition-colors duration-300 group-hover:text-foreground"
