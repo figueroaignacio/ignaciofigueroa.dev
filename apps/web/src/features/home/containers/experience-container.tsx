@@ -1,0 +1,40 @@
+import { RailBot } from '@/features/assistant/ui/rail-bot';
+import type { Experience } from '@/shared/lib/content-types';
+import { formatDate } from '@/shared/lib/format-date';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { getExperiences } from '../api/experience';
+import type { TimelineItem } from '../ui/timeline';
+import { TimelineWidget } from '../widgets/timeline-widget';
+
+function toTimelineItems(experiences: Experience[], locale: string): TimelineItem[] {
+  const presentLabel = locale === 'es' ? 'presente' : 'present';
+
+  return experiences.map((experience) => ({
+    key: String(experience.id),
+    title: experience.title,
+    subtitle: experience.company,
+    subtitleHref: experience.link,
+    connector: 'at',
+    period: `${formatDate(experience.startDate, locale)} — ${
+      experience.endDate ? formatDate(experience.endDate, locale) : presentLabel
+    }`,
+    current: !experience.endDate,
+    bullets: experience.tasks,
+    chips: experience.technologies ?? [],
+  }));
+}
+
+export async function ExperienceContainer() {
+  const t = await getTranslations('sections.experience');
+  const locale = await getLocale();
+  const experiences = await getExperiences(locale);
+
+  return (
+    <TimelineWidget
+      id="experience"
+      title={t('title')}
+      items={toTimelineItems(experiences, locale)}
+      accessory={<RailBot />}
+    />
+  );
+}

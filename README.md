@@ -1,50 +1,59 @@
-<div>
-<img src="https://ignaciofigueroa.dev/images/og-image.png" alt="Ignacio Figueroa Portfolio" />
-<br />
+# ignaciofigueroa.dev
 
-<!-- README-I18N:START -->
+Personal site and the CMS behind it, in one monorepo.
 
-**English** | [Español](./README.es.md)
+| workspace             | what it is                                                        |
+| --------------------- | ----------------------------------------------------------------- |
+| `apps/web`            | Next.js site (public pages) plus the `/admin` panel                |
+| `apps/api`            | NestJS content API, auth, media, GitHub sync and an MCP server     |
+| `packages/contracts`  | zod schemas and DTO types shared by both sides                     |
+| `packages/db`         | Drizzle schema, migrations, seed and the Payload import script     |
+| `packages/typescript-config` | shared tsconfig bases                                      |
 
-<!-- README-I18N:END -->
-</div>
+Postgres and file storage are Supabase. The site reads the API over HTTP and
+caches it in the Next data cache; the panel writes through the same API with a
+JWT in an httpOnly cookie.
 
-# Ignacio Figueroa's Portfolio
+## Getting started
 
-The personal site of Ignacio Figueroa, a fullstack developer in Buenos Aires, Argentina. Built with Next.js (App Router), Tailwind CSS, Payload CMS, and PostgreSQL.
+```bash
+pnpm install
+cp apps/api/.env.example apps/api/.env
+cp apps/web/.env.example apps/web/.env.local
+cp packages/db/.env.example packages/db/.env
 
-It features a custom AI chatbot that integrates with a FastAPI backend to let visitors explore my stack and experience interactively.
-
-## Tech Stack
-
-- **Frontend:** Next.js 16, React 19, Tailwind CSS 4, Motion
-- **Backend & CMS:** Payload CMS 3.0, PostgreSQL (Vercel/Neon)
-- **AI Backend:** FastAPI with LangChain and Google Gemini ([github.com/figueroaignacio/assistant](https://github.com/figueroaignacio/assistant))
-- **Tooling:** pnpm, ESLint, Prettier, Husky
-
-## 🏗️ Project Structure
-
-```txt
-.
-├── public/               # Static assets
-└── src/
-    ├── app/              # App Router routes (dynamic routing & Payload backend)
-    │   ├── [locale]/     # Internationalized main pages
-    │   ├── (payload)/    # Payload CMS admin interface
-    │   └── api/          # Internal route handlers
-    ├── features/         # Modular feature groups (home, projects, assistant)
-    ├── locales/          # Translation dictionaries (JSON)
-    ├── migrations/       # Vercel/Neon DB DDL migrations
-    ├── shared/           # Collections, layout chrome, UI primitives, libs
-    └── payload.config.ts # CMS configuration
+pnpm db:migrate   # create the schema
+pnpm db:seed      # create the single admin user
+pnpm dev          # api on :4000, web on :3000
 ```
 
-## AI Assistant
+The admin panel lives at `http://localhost:3000/admin`. OpenAPI docs are at
+`http://localhost:4000/docs`.
 
-A standard AI chatbot is usually a simple wrapper forwarding user queries. This assistant uses FastAPI, LangChain, and Google Gemini to answer questions about my stack, projects, and education directly inside the UI. It functions as both a helper chatbot and a technical demo of client-to-agent integration.
+A local Postgres plus a production build of the API is one command away:
 
-## 💬 Contact
+```bash
+docker compose up --build
+```
 
-- Email: contact@ignaciofigueroa.dev
-- LinkedIn: [linkedin.com/in/figueroa-ignacio](https://www.linkedin.com/in/figueroa-ignacio)
-- GitHub: [github.com/figueroaignacio](https://github.com/figueroaignacio)
+## Content model
+
+Ten collections: projects, experiences, education, testimonials, contributions,
+media, technologies, tech icons, project categories and project labels. Every
+editorial collection carries a `locale` (`en` / `es`) and a `status`
+(`draft` / `published`); public endpoints only ever return published rows.
+
+Project bodies are markdown, written with Tiptap in the panel and rendered with
+react-markdown on the site.
+
+## Migrating from Payload
+
+The old Payload database can be copied over once:
+
+```bash
+PAYLOAD_DATABASE_URL="postgres://..." pnpm db:import
+```
+
+It maps every collection, converts Lexical rich text to markdown and keeps the
+relations. Media rows are imported as `legacy` links; re-upload them from the
+panel to move the files into Supabase Storage.

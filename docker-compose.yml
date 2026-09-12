@@ -1,0 +1,42 @@
+# Local stack: Postgres for the CMS plus the API itself.
+# The web app stays on the host (`pnpm dev --filter web`) for fast refresh.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio_cms
+    ports:
+      - '54329:5432'
+    volumes:
+      - cms-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d portfolio_cms']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/portfolio_cms
+      JWT_SECRET: ${JWT_SECRET:-local-development-secret-at-least-32-characters}
+      COOKIE_NAME: portfolio_admin
+      FRONTEND_URL: http://localhost:3000
+      SUPABASE_URL: ${SUPABASE_URL:-}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:-}
+      SUPABASE_STORAGE_BUCKET: ${SUPABASE_STORAGE_BUCKET:-media}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+    ports:
+      - '4000:4000'
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  cms-data:

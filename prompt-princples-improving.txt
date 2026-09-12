@@ -1,0 +1,109 @@
+# Prompt para Claude Code — Refactor con DRY y SOLID
+
+> Copiá todo lo que sigue (desde "CONTEXTO") y pegalo en Claude Code parado en la raíz del repo.
+
+---
+
+## CONTEXTO
+
+Estás trabajando sobre mi portfolio personal: Next.js 16 (App Router), React 19, Tailwind CSS 4, Payload CMS 3 con PostgreSQL, i18n por `[locale]`, y un chatbot que consume un backend externo en FastAPI. Estructura actual:
+
+```
+src/
+├── app/              # rutas App Router: [locale]/, (payload)/, api/
+├── collections/      # schemas de Payload
+├── components/       # layout y componentes core
+├── features/         # módulos por feature (about, assistant, contact)
+├── locales/          # diccionarios JSON
+├── migrations/       # DDL
+└── payload.config.ts
+```
+
+## OBJETIVO
+
+Mejorar la **calidad interna** del código (legibilidad, bajo acoplamiento, alta cohesión, testabilidad) sin alterar la **calidad externa**: la app debe verse y comportarse exactamente igual para el usuario final. Rutas, textos, estilos, SEO/metadata, i18n y las respuestas del asistente no cambian.
+
+El criterio de éxito es de mantenibilidad: que el sistema sea más fácil de **entenderse, modificarse, extenderse y corregirse**, y que baje la deuda técnica acumulada.
+
+## RESTRICCIONES
+
+1. **Cero cambios de comportamiento observable.** Si un refactor implica un cambio funcional, no lo hagas: anotalo como propuesta aparte.
+2. **No sobre-abstraer.** Aplicá la regla de tres: abstraé recién cuando la duplicación aparece 3 veces o cuando las dos ocurrencias comparten la *misma razón de cambio*. Duplicación accidental (dos cosas parecidas hoy que evolucionan distinto) se deja como está y se justifica por qué.
+3. **No introducir dependencias nuevas** salvo que lo justifiques y me lo consultes antes.
+4. **Refactor incremental.** Un commit por refactor atómico, con mensaje convencional (`refactor: ...`) respetando commitlint. Nada de reescrituras masivas en un solo commit.
+5. Respetá los límites de **Server Components / Client Components**: no muevas lógica de servidor a un módulo que termine importándose desde un `"use client"`, ni agregues `"use client"` para "hacer que compile".
+6. No toques `migrations/` ni el schema de Payload si eso implica una migración de base de datos.
+7. Leé `AGENTS.md`, `DESIGN.md` y `eslint.config.mjs` antes de empezar y respetá las convenciones que ya existan ahí.
+
+## FASE 1 — Auditoría (no escribas código todavía)
+
+Recorré `src/` y generá un informe en `REFACTOR_AUDIT.md` con los code smells encontrados. Para cada hallazgo:
+
+| Campo | Detalle |
+|---|---|
+| Ubicación | `ruta/archivo.tsx:línea` |
+| Smell | nombre del smell |
+| Principio violado | DRY / SRP / OCP / LSP / ISP / DIP |
+| Por qué duele | qué cambio futuro se vuelve caro por esto |
+| Refactor propuesto | técnica concreta (extract function, parameter object, strategy/map, etc.) |
+| Impacto / Esfuerzo | alto-medio-bajo cada uno |
+| Riesgo de regresión | alto / medio / bajo |
+
+Buscá específicamente estos smells:
+
+- **Código duplicado (DRY):** fetchers a Payload repetidos, `generateMetadata` casi idéntico entre rutas, manejo de `params.locale` copiado, clases de Tailwind repetidas que en realidad son un componente o variante, mapeos de datos duplicados entre features, y helpers de fetch al backend del asistente escritos más de una vez.
+- **Método largo:** componentes que fetchean, transforman datos, manejan estado y renderizan todo junto; `useEffect` que hacen tres cosas; route handlers en `app/api/` con validación + llamada externa + mapeo + manejo de errores en un solo bloque.
+- **Componente/archivo gigante (SRP):** componentes de más de ~150 líneas o con más de una razón de cambio. Separá presentación (UI tonta) de obtención de datos y de lógica de dominio.
+- **Obsesión por primitivos:** `locale`, `slug`, ids y URLs pasados como `string` suelto en vez de tipos/tipos literales del dominio; objetos de contenido tipados como `any` o inferidos a mano en vez de usar los tipos generados por Payload.
+- **Lista larga de parámetros:** funciones y props con 5+ argumentos → aplicar *Parameter Object*.
+- **Condicionales encadenados:** `if/else` o `switch` sobre tipo de contenido, tipo de sección, idioma o variante → reemplazar por un **mapa de estrategias / registry** (`Record<Tipo, Handler>`), que es el patrón que hace el módulo abierto a extensión y cerrado a modificación.
+- **Strings/números mágicos:** rutas, locales soportados, límites, endpoints, keys de revalidación hardcodeados y esparcidos.
+- **Acoplamiento a detalles concretos (DIP):** componentes de UI que importan directamente el cliente de Payload o hacen `fetch` a la URL del backend de IA. Deberían depender de una interfaz/puerto (`ContentRepository`, `AssistantClient`) definida en el dominio, con la implementación concreta inyectada o resuelta en el borde (route handler / server component de la página).
+
+Ordená el informe por impacto/esfuerzo y proponé un plan en 4 o 5 tandas. **Pará acá y mostrame el plan antes de tocar código.**
+
+## FASE 2 — Ejecución (después de que apruebe el plan)
+
+Por cada tanda aprobada:
+
+1. Hacé el cambio con el mínimo alcance posible.
+2. Verificá que sigue todo en pie: `pnpm lint`, `pnpm build` (y los tests si existen).
+3. Commit atómico.
+4. Mostrame un diff resumido y qué smell cerraste antes de seguir con la siguiente tanda.
+
+### Guía de aplicación de SOLID en este stack
+
+Traducí los principios al idioma de React/Next, no fuerces clases donde no hacen falta:
+
+- **SRP:** un archivo = una razón de cambio. Componente de presentación ≠ hook de datos ≠ función de mapeo ≠ acceso a datos. Los `features/*` deberían quedar con una forma consistente: `ui/`, `hooks/`, `lib/` (o `services/`), `types.ts`, `index.ts` como única superficie pública.
+- **OCP:** agregar un tipo de bloque de contenido, una sección nueva o un idioma nuevo no debería obligar a editar un `switch` existente, sino a registrar una entrada en un mapa.
+- **LSP:** las variantes de un componente deben ser intercambiables sin que el consumidor tenga que saber cuál le tocó. Nada de props que solo funcionan "si es la variante X".
+- **ISP:** props e interfaces chicas y específicas. Si un componente recibe un objeto enorme y usa 2 campos, que reciba esos 2 campos (o un tipo derivado con `Pick`).
+- **DIP:** el dominio define el contrato, la infraestructura lo implementa. Payload y el backend FastAPI son detalles reemplazables.
+
+### DRY con criterio
+
+- Centralizá lo que tiene una única fuente de verdad real: config de locales, rutas, endpoints, wrappers de fetch con manejo de errores, generación de metadata, formateo de fechas.
+- Para Tailwind, extraé variantes reales de componente (helper de `cn` + variantes), no un batiburrillo de strings globales.
+- **No** unifiques dos bloques solo porque hoy se parecen. Si tienen razones de cambio distintas, dejalos separados y decilo en el informe.
+
+## ENTREGABLES
+
+1. `REFACTOR_AUDIT.md` — informe de la Fase 1.
+2. Los commits del refactor.
+3. `REFACTOR_REPORT.md` final con:
+   - tabla antes/después por smell corregido;
+   - métricas simples: nº de archivos > 150 líneas, nº de props de 5+ parámetros, bloques duplicados detectados, `any` restantes;
+   - qué deuda técnica quedó pendiente a propósito y por qué;
+   - una sección explícita de "calidad externa: sin cambios" listando qué verificaste (build, lint, rutas renderizando, i18n en ambos idiomas, asistente respondiendo).
+
+## CHECKLIST DE ACEPTACIÓN
+
+- [ ] `pnpm build` y `pnpm lint` pasan.
+- [ ] Ningún cambio en el output visible ni en las rutas.
+- [ ] Cada commit es atómico, reversible y explica el smell que cierra.
+- [ ] Ninguna abstracción nueva sin al menos 3 usos reales o una razón de cambio compartida y explicada.
+- [ ] Los `switch`/`if-else` por tipo fueron reemplazados por registries donde correspondía.
+- [ ] La UI no importa directamente Payload ni la URL del backend de IA.
+
+Empezá por la Fase 1.

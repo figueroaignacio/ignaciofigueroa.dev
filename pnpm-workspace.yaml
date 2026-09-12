@@ -1,6 +1,11 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
 allowBuilds:
+  '@scarf/scarf': false
   '@parcel/watcher': true
   '@swc/core': true
+  '@nestjs/core': true
   bufferutil: true
   esbuild: true
   sharp: true
