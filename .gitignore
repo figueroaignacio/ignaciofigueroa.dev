@@ -30,3 +30,7 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Local scratch notes
+mejoras-xd.txt
+prompt-princples-improving.txt
