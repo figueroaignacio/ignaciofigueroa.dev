@@ -25,10 +25,6 @@ interface SimpleEntityPanelProps {
   onDelete: (id: string) => Promise<unknown>;
 }
 
-/**
- * Categories, labels and technologies are single-field records, so they get one
- * panel instead of a page each: add at the top, rename in place, delete on the row.
- */
 export function SimpleEntityPanel({
   title,
   description,

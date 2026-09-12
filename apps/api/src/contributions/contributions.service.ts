@@ -142,11 +142,6 @@ export class ContributionsService {
     return contribution;
   }
 
-  /**
-   * GitHub is the source of truth for the pull request list, but a failed or
-   * rate-limited call must not block the save, so a null result falls back to
-   * whatever the caller sent and, failing that, leaves the row untouched.
-   */
   private async resolvePullRequests(
     repository: string | undefined,
     shouldSync: boolean,

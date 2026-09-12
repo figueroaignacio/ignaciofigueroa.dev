@@ -13,8 +13,6 @@ export async function toApiError(response: Response) {
     const body = (await response.json()) as { message?: string | string[] };
     if (Array.isArray(body.message)) message = body.message.join('. ');
     else if (body.message) message = body.message;
-  } catch {
-    // The API always answers JSON, but a proxy or a network error may not.
-  }
+  } catch {}
   return new ApiError(response.status, message);
 }

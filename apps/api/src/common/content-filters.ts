@@ -6,7 +6,6 @@ export interface LocaleContentColumns {
   status: PgColumn;
 }
 
-/** Builds the locale/status predicate every locale-scoped collection shares. */
 export function contentWhere(
   columns: LocaleContentColumns,
   filters: { locale?: Locale; status?: ContentStatus },

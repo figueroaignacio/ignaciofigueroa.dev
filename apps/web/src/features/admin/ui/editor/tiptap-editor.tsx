@@ -25,11 +25,6 @@ export function TiptapEditorSkeleton() {
   );
 }
 
-/**
- * The editor is uncontrolled on purpose: Tiptap owns the document and reports
- * markdown upward, so the parent never feeds content back and the cursor stays
- * put while typing.
- */
 export function TiptapEditor({ initialContent, placeholder, onChange }: TiptapEditorProps) {
   const editor = useEditor({
     immediatelyRender: false,

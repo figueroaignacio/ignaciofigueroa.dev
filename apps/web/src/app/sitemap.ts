@@ -4,8 +4,6 @@ import { BASE_URL } from '@/shared/lib/constants';
 import { getContentFreshness } from '@/shared/lib/content-freshness';
 import type { MetadataRoute } from 'next';
 
-// Built per request so a deploy with the API briefly unreachable cannot ship a
-// sitemap missing every project URL.
 export const dynamic = 'force-dynamic';
 
 const staticRoutes = ['', '/projects'];

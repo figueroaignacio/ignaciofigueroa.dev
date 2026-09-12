@@ -13,11 +13,6 @@ interface UseEntityFormOptions<TInput, TResult> {
   redirectTo: (result: TResult) => string | null;
 }
 
-/**
- * Every admin form shares the same lifecycle: validate on the server, toast the
- * outcome, then either navigate to the created record or refresh the current
- * route so server components re-read the API.
- */
 export function useEntityForm<TInput, TResult>({
   create,
   update,

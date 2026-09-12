@@ -14,10 +14,6 @@ async function request<T>(path: string, init: RequestInit): Promise<T> {
   return (await response.json()) as T;
 }
 
-/**
- * Public reads never touch cookies: they run during static generation too
- * (generateStaticParams, sitemap, llms.txt), where no request exists.
- */
 export function apiPublic<T>(path: string, options: PublicReadOptions = {}): Promise<T> {
   const { revalidate = 300, tags } = options;
   return request<T>(path, {
@@ -28,7 +24,6 @@ export function apiPublic<T>(path: string, options: PublicReadOptions = {}): Pro
   });
 }
 
-/** Admin reads forward the session cookie and are never cached. */
 export async function apiAdmin<T>(path: string, init: RequestInit = {}): Promise<T> {
   const cookieStore = await cookies();
   const token = cookieStore.get(env.authCookieName)?.value;

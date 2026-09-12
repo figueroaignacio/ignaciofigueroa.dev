@@ -13,8 +13,6 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-// Rendered per request: the CMS data itself is cached for five minutes and the
-// admin panel drops that cache on save, so a build never depends on the API.
 export const dynamic = 'force-dynamic';
 
 interface ProjectsPageProps {

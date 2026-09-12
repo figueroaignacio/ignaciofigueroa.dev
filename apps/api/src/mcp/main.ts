@@ -4,11 +4,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../app.module';
 import { mcpTools } from './tools';
 
-/**
- * The MCP server reuses the API's own services through a standalone Nest
- * context: same validation and same database access as the HTTP layer, without
- * opening a port. Stdout belongs to the protocol, so logs go to stderr.
- */
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule, { logger: false });
   const server = new McpServer({ name: 'portfolio-cms-mcp', version: '1.0.0' });

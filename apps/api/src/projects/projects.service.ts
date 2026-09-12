@@ -173,8 +173,6 @@ export class ProjectsService {
       ...(becomesDraft ? { publishedAt: null } : {}),
     };
 
-    // A patch that only moves relations leaves no column to write, and Drizzle
-    // rejects an empty `set`, so the timestamp carries the change instead.
     await this.db
       .update(projects)
       .set(Object.keys(values).length ? values : { updatedAt: new Date() })

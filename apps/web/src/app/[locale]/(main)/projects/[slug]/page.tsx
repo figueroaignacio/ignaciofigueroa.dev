@@ -14,7 +14,6 @@ import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
 import { permanentRedirect } from 'next/navigation';
 
-// Rendered per request; see the projects index for why.
 export const dynamic = 'force-dynamic';
 
 interface ProjectPageProps {

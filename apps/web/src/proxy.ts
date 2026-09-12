@@ -8,7 +8,6 @@ const intlMiddleware = createMiddleware(routing);
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // The admin panel is single-language and lives outside the locale segment.
   if (pathname.startsWith('/admin')) {
     const hasSession = request.cookies.has(env.authCookieName);
     if (pathname !== '/admin/login' && !hasSession) {
