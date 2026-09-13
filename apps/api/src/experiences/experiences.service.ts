@@ -5,12 +5,12 @@ import type {
   Locale,
   UpdateExperienceInput,
 } from '@repo/contracts';
-import { asc, type Database, eq, experiences, sql } from '@repo/db';
+import { asc, type Database, desc, eq, experiences, sql } from '@repo/db';
 import { contentWhere } from '../common/content-filters';
 import { offset, paginate } from '../common/paginate';
 import { InjectDb } from '../db/inject-db.decorator';
 
-const ORDER = [asc(experiences.order), asc(experiences.startDate)];
+const ORDER = [asc(experiences.order), desc(experiences.startDate)];
 
 @Injectable()
 export class ExperiencesService {

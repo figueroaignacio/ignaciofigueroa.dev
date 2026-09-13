@@ -5,12 +5,12 @@ import type {
   Locale,
   UpdateEducationInput,
 } from '@repo/contracts';
-import { asc, type Database, education, eq, sql } from '@repo/db';
+import { asc, type Database, desc, education, eq, sql } from '@repo/db';
 import { contentWhere } from '../common/content-filters';
 import { offset, paginate } from '../common/paginate';
 import { InjectDb } from '../db/inject-db.decorator';
 
-const ORDER = [asc(education.order), asc(education.startDate)];
+const ORDER = [asc(education.order), desc(education.startDate)];
 
 @Injectable()
 export class EducationService {
