@@ -10,7 +10,7 @@ export default async function AdminTestimonialsPage() {
   const testimonials = await getAdminTestimonials();
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
       <AdminPageHeader
         title="testimonials"
         meta={`${testimonials.total} entries`}

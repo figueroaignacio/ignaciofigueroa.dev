@@ -10,7 +10,7 @@ export default async function AdminContributionsPage() {
   const contributions = await getAdminContributions();
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
       <AdminPageHeader
         title="contributions"
         meta={`${contributions.total} entries`}

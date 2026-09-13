@@ -10,7 +10,7 @@ export default async function AdminEducationPage() {
   const education = await getAdminEducation();
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
       <AdminPageHeader
         title="education"
         meta={`${education.total} entries`}

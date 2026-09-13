@@ -10,8 +10,9 @@ export default async function AdminProjectsPage() {
   const published = projects.items.filter((project) => project.status === 'published').length;
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
       <AdminPageHeader
+        eyebrow="content"
         title="projects"
         meta={`${projects.total} total · ${published} published`}
         newHref="/admin/projects/new"

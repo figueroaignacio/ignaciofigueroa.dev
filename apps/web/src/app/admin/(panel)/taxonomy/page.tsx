@@ -19,8 +19,9 @@ export default async function AdminTaxonomyPage() {
   ]);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
       <AdminPageHeader
+        eyebrow="library"
         title="taxonomy"
         meta={`${categories.length} categories · ${technologies.length} technologies`}
       />

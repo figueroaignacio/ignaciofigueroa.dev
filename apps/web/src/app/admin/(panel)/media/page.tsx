@@ -9,8 +9,8 @@ export default async function AdminMediaPage() {
   const media = await getAdminMedia();
 
   return (
-    <div className="flex flex-col gap-5">
-      <AdminPageHeader title="media" meta={`${media.length} files`} />
+    <div className="flex flex-col gap-8">
+      <AdminPageHeader eyebrow="library" title="media" meta={`${media.length} files`} />
       <MediaLibrary media={media} />
     </div>
   );

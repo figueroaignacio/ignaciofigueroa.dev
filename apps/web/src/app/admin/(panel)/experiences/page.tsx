@@ -10,7 +10,7 @@ export default async function AdminExperiencesPage() {
   const experiences = await getAdminExperiences();
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-8">
       <AdminPageHeader
         title="experience"
         meta={`${experiences.total} entries`}
