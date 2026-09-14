@@ -201,7 +201,6 @@ export function Dock() {
               aria-modal={!isDesktop}
               aria-label={tChat('panelLabel')}
               tabIndex={-1}
-              data-lenis-prevent
               initial={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
               animate={isDesktop ? { x: 0 } : { opacity: 1, y: 0 }}
               exit={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
