@@ -1,11 +1,8 @@
 @layer components {
-  .dock-magnet {
+  .dock-icon {
     display: block;
     transform-origin: center bottom;
-    scale: var(--dock-scale, 1);
-    transition:
-      scale 170ms cubic-bezier(0.16, 1, 0.3, 1),
-      opacity 150ms ease-out;
+    transition: scale 170ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .assistant-eye {
