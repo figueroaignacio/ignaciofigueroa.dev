@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 const GLYPHS = '&$#@%*+=<>/\\[]{}0123456789ABCDEF';
 const RADIUS = 56;
@@ -15,31 +15,12 @@ interface ScrambleTextProps {
   mode?: 'pointer' | 'in-view';
 }
 
-function toWords(value: string) {
-  const words: Array<Array<{ char: string; index: number }>> = [];
-  let current: Array<{ char: string; index: number }> = [];
-
-  value.split('').forEach((char, index) => {
-    if (char === ' ') {
-      words.push(current);
-      current = [];
-      return;
-    }
-    current.push({ char, index });
-  });
-  words.push(current);
-  return words;
-}
-
 export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const centers = useRef<number[]>([]);
-  const width = useRef(0);
   const hovering = useRef(false);
   const [rendered, setRendered] = useState(text);
-  const [widths, setWidths] = useState<number[]>([]);
-
-  const words = useMemo(() => toWords(rendered), [rendered]);
+  const [minWidth, setMinWidth] = useState<number>();
 
   useEffect(() => setRendered(text), [text]);
 
@@ -65,28 +46,75 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
     if (!host) return;
 
     const measure = () => {
-      const chars = Array.from(host.querySelectorAll<HTMLElement>('[data-index]'));
+      const node = host.firstChild;
+      if (!node || node.nodeType !== Node.TEXT_NODE) return;
+      if ((node.textContent ?? '') !== text) return;
+
       const box = host.getBoundingClientRect();
-      const nextCenters: number[] = [];
-      const nextWidths: number[] = [];
+      const range = document.createRange();
+      const next: number[] = [];
 
-      chars.forEach((char) => {
-        const index = Number(char.dataset.index);
-        const rect = char.getBoundingClientRect();
-        nextCenters[index] = rect.left - box.left + rect.width / 2;
-        nextWidths[index] = rect.width;
-      });
+      for (let index = 0; index < text.length; index += 1) {
+        range.setStart(node, index);
+        range.setEnd(node, index + 1);
+        const rect = range.getBoundingClientRect();
+        next[index] = rect.left - box.left + rect.width / 2;
+      }
 
-      centers.current = nextCenters;
-      width.current = box.width;
-      if (widths.length === 0) setWidths(nextWidths);
+      centers.current = next;
+      setMinWidth(box.width);
     };
 
     measure();
+    void document.fonts?.ready.then(measure);
+
+    let frame = 0;
+    const remeasure = () => {
+      setMinWidth(undefined);
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    };
+
     const observer = new ResizeObserver(measure);
     observer.observe(host);
-    return () => observer.disconnect();
-  }, [text, widths.length]);
+    window.addEventListener('resize', remeasure);
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener('resize', remeasure);
+    };
+  }, [text]);
+
+  const sweep = useCallback(() => {
+    const host = ref.current;
+    if (!host) return;
+
+    const start = performance.now();
+    const from = -RADIUS;
+    const to = host.getBoundingClientRect().width + RADIUS;
+    let lastTick = 0;
+    let frame = 0;
+
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / SWEEP_MS, 1);
+      if (hovering.current) {
+        setRendered(text);
+        return;
+      }
+      if (now - lastTick >= TICK_MS) {
+        lastTick = now;
+        scrambleAt(from + (to - from) * progress);
+      }
+      if (progress < 1) {
+        frame = requestAnimationFrame(step);
+        return;
+      }
+      setRendered(text);
+    };
+
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [scrambleAt, text]);
 
   useEffect(() => {
     const host = ref.current;
@@ -121,34 +149,6 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
       host.removeEventListener('pointerleave', onLeave);
     };
   }, [mode, scrambleAt, text]);
-
-  const sweep = useCallback(() => {
-    const start = performance.now();
-    const from = -RADIUS;
-    const to = width.current + RADIUS;
-    let lastTick = 0;
-    let frame = 0;
-
-    const step = (now: number) => {
-      const progress = Math.min((now - start) / SWEEP_MS, 1);
-      if (hovering.current) {
-        setRendered(text);
-        return;
-      }
-      if (now - lastTick >= TICK_MS) {
-        lastTick = now;
-        scrambleAt(from + (to - from) * progress);
-      }
-      if (progress < 1) {
-        frame = requestAnimationFrame(step);
-        return;
-      }
-      setRendered(text);
-    };
-
-    frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
-  }, [scrambleAt, text]);
 
   useEffect(() => {
     const host = ref.current;
@@ -199,23 +199,13 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
   }, [mode, sweep]);
 
   return (
-    <span ref={ref} className={className} aria-label={text}>
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block whitespace-nowrap">
-          {wordIndex > 0 ? <span aria-hidden="true">&nbsp;</span> : null}
-          {word.map(({ char, index }) => (
-            <span
-              key={index}
-              data-index={index}
-              aria-hidden="true"
-              className="inline-block text-center"
-              style={widths[index] ? { width: widths[index] } : undefined}
-            >
-              {char}
-            </span>
-          ))}
-        </span>
-      ))}
+    <span
+      ref={ref}
+      className={className}
+      style={minWidth ? { display: 'inline-block', minWidth } : undefined}
+      aria-label={text}
+    >
+      {rendered}
     </span>
   );
 }
