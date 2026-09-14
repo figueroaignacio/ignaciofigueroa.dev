@@ -264,17 +264,18 @@ export function Dock() {
               aria-modal={!isDesktop}
               aria-label={tChat('panelLabel')}
               tabIndex={-1}
-              initial={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
+              initial={isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
               animate={isDesktop ? { x: 0 } : { opacity: 1, y: 0 }}
-              exit={isDesktop ? { x: '100%' } : { opacity: 0, y: 24 }}
+              exit={isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
               transition={{ type: 'spring', damping: 30, stiffness: 320 }}
               style={{ zIndex: 11000000 }}
               className={cn(
                 'fixed inset-0 flex flex-col overflow-hidden bg-background focus:outline-none',
-                // Docked: a full-height rail flush with the viewport edge, its
-                // left border sitting directly against the pushed-over page.
-                'lg:inset-y-0 lg:right-0 lg:left-auto lg:w-[var(--chat-panel-width)]',
-                'lg:border-l lg:border-border',
+                // Docked: a floating column that mirrors the hero panel on the
+                // left, same inset, same radius, same surface.
+                'lg:inset-y-4 lg:right-4 lg:left-auto',
+                'lg:w-[calc(var(--chat-panel-width)-2rem)]',
+                'lg:rounded-2xl lg:border lg:border-border/60 lg:bg-[var(--wave-base)]',
               )}
             >
               <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
