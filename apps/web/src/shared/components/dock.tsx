@@ -290,10 +290,7 @@ export function Dock() {
     <>
       {chatPanel}
       <nav
-        className="fixed bottom-6 z-50 flex w-max -translate-x-1/2 items-center gap-2 transition-[left] duration-[380ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-        /* Stays centered on the page, not the viewport, once the rail claims
-           its slice. --chat-inset is 0 whenever the rail isn't docked. */
-        style={{ left: 'calc(50% - var(--chat-inset) / 2)' }}
+        className="dock-nav"
         aria-label="Main Navigation"
         onFocusCapture={() => setIsHidden(false)}
       >
@@ -302,7 +299,7 @@ export function Dock() {
           animate={{ opacity: 1, y: isHidden && !isChatOpen ? 128 : 0, scale: 1 }}
           transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.1 }}
           className={cn(
-            'flex max-w-[calc(100vw-5.5rem)] items-center gap-0.5',
+            'flex min-w-0 items-center gap-0.5',
             'overflow-x-auto scrollbar-none sm:overflow-x-visible',
             'rounded-2xl border border-border/80 px-1.5 py-1.5',
             'bg-background/98 supports-backdrop-filter:bg-background/88',
