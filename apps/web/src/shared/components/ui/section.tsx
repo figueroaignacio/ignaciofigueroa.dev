@@ -1,3 +1,4 @@
+import { ScrambleText } from '@/shared/components/scramble-text';
 import { cn } from '@/shared/lib/cn';
 
 interface SectionShellProps {
@@ -55,7 +56,14 @@ export function Section({ id, title, children, className, accessory }: SectionPr
       id={id}
       className={className}
       accessory={accessory}
-      label={<h2 className="type-label scroll-blur-label text-muted-foreground">{title}</h2>}
+      label={
+        <h2 className="type-label scroll-blur-label text-muted-foreground">
+          <span aria-hidden="true" className="text-muted-foreground/60">
+            ./
+          </span>
+          <ScrambleText text={title} mode="in-view" />
+        </h2>
+      }
     >
       {children}
     </SectionShell>

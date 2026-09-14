@@ -6,6 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { Grain } from '@/shared/components/grain';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { Tooltip } from '@/shared/components/ui/tooltip';
+import { useMagnetic } from '@/shared/hooks/use-magnetic';
 import { cn } from '@/shared/lib/cn';
 
 import {
@@ -61,8 +62,8 @@ const itemClass = cn(
 );
 
 const iconClass = cn(
-  'relative z-10 transition-transform duration-200 ease-out',
-  'group-hover:-translate-y-0.5 group-hover:scale-115 group-active:scale-90',
+  'dock-magnet relative z-10 transition-transform duration-200 ease-out',
+  'group-hover:scale-115 group-active:scale-90',
 );
 
 const ENTRY_SPRING = { type: 'spring' as const, damping: 26, stiffness: 360 };
@@ -106,6 +107,9 @@ export function Dock() {
   // Matches the breakpoint that opens up --chat-inset in globals.css.
   const [isDesktop, setIsDesktop] = useState(false);
   const assistantButtonRef = useRef<HTMLButtonElement>(null);
+  const magnetRef = useRef<HTMLElement>(null);
+
+  useMagnetic(magnetRef);
   const chatPanelRef = useRef<HTMLDivElement>(null);
   const chatWasOpen = useRef(false);
 
@@ -298,6 +302,7 @@ export function Dock() {
            its slice. --chat-inset is 0 whenever the rail isn't docked. */
         style={{ left: 'calc(50% - var(--chat-inset) / 2)' }}
         aria-label="Main Navigation"
+        ref={magnetRef}
         onFocusCapture={() => setIsHidden(false)}
       >
         <motion.div
@@ -341,7 +346,7 @@ export function Dock() {
                           aria-hidden="true"
                         />
                       )}
-                      <span className={iconClass} aria-hidden="true">
+                      <span className={iconClass} data-magnet aria-hidden="true">
                         {item.icon}
                       </span>
                     </Link>
@@ -384,7 +389,7 @@ export function Dock() {
                     aria-hidden="true"
                   />
                 )}
-                <span className={iconClass} aria-hidden="true">
+                <span className={iconClass} data-magnet aria-hidden="true">
                   <DockBotIcon />
                 </span>
               </button>

@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { HeroStatus } from './hero-status';
-import { ScrambleText } from './scramble-text';
+import { ScrambleText } from '@/shared/components/scramble-text';
 import { HeroActions } from './home-hero-actions';
 
 export async function HomeHero() {

@@ -11,6 +11,8 @@ const SWEEP_EVERY_MS = 9000;
 interface ScrambleTextProps {
   text: string;
   className?: string;
+  /** `pointer` follows the cursor and sweeps on a timer; `in-view` sweeps once. */
+  mode?: 'pointer' | 'in-view';
 }
 
 function toWords(value: string) {
@@ -29,7 +31,7 @@ function toWords(value: string) {
   return words;
 }
 
-export function ScrambleText({ text, className }: ScrambleTextProps) {
+export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const centers = useRef<number[]>([]);
   const width = useRef(0);
@@ -89,6 +91,7 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
   useEffect(() => {
     const host = ref.current;
     if (!host) return;
+    if (mode !== 'pointer') return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!window.matchMedia('(hover: hover)').matches) return;
 
@@ -117,6 +120,34 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
       host.removeEventListener('pointermove', onMove);
       host.removeEventListener('pointerleave', onLeave);
     };
+  }, [mode, scrambleAt, text]);
+
+  const sweep = useCallback(() => {
+    const start = performance.now();
+    const from = -RADIUS;
+    const to = width.current + RADIUS;
+    let lastTick = 0;
+    let frame = 0;
+
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / SWEEP_MS, 1);
+      if (hovering.current) {
+        setRendered(text);
+        return;
+      }
+      if (now - lastTick >= TICK_MS) {
+        lastTick = now;
+        scrambleAt(from + (to - from) * progress);
+      }
+      if (progress < 1) {
+        frame = requestAnimationFrame(step);
+        return;
+      }
+      setRendered(text);
+    };
+
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
   }, [scrambleAt, text]);
 
   useEffect(() => {
@@ -124,8 +155,23 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
     if (!host) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+    if (mode === 'in-view') {
+      let done = false;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (done || !entry?.isIntersecting) return;
+          done = true;
+          observer.disconnect();
+          sweep();
+        },
+        { threshold: 0.6 },
+      );
+      observer.observe(host);
+      return () => observer.disconnect();
+    }
+
     let onScreen = true;
-    let frame = 0;
+    let stopSweep: (() => void) | undefined;
     let sweepTimer: ReturnType<typeof setTimeout> | null = null;
 
     const visibility = new IntersectionObserver(
@@ -136,35 +182,9 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
     );
     visibility.observe(host);
 
-    const sweep = () => {
-      const start = performance.now();
-      const from = -RADIUS;
-      const to = width.current + RADIUS;
-      let lastTick = 0;
-
-      const step = (now: number) => {
-        const progress = Math.min((now - start) / SWEEP_MS, 1);
-        if (hovering.current) {
-          setRendered(text);
-          return;
-        }
-        if (now - lastTick >= TICK_MS) {
-          lastTick = now;
-          scrambleAt(from + (to - from) * progress);
-        }
-        if (progress < 1) {
-          frame = requestAnimationFrame(step);
-          return;
-        }
-        setRendered(text);
-      };
-
-      frame = requestAnimationFrame(step);
-    };
-
     const schedule = () => {
       sweepTimer = setTimeout(() => {
-        if (onScreen && !hovering.current && !document.hidden) sweep();
+        if (onScreen && !hovering.current && !document.hidden) stopSweep = sweep();
         schedule();
       }, SWEEP_EVERY_MS);
     };
@@ -173,10 +193,10 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
 
     return () => {
       visibility.disconnect();
-      cancelAnimationFrame(frame);
+      stopSweep?.();
       if (sweepTimer) clearTimeout(sweepTimer);
     };
-  }, [scrambleAt, text]);
+  }, [mode, sweep]);
 
   return (
     <span ref={ref} className={className} aria-label={text}>

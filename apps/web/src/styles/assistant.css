@@ -1,4 +1,11 @@
 @layer components {
+  .dock-magnet {
+    translate: var(--magnet-x, 0px) var(--magnet-y, 0px);
+    transition:
+      translate 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 200ms ease-out;
+  }
+
   .assistant-eye {
     transform-box: fill-box;
     transform-origin: center;

@@ -1,5 +1,6 @@
 'use client';
 
+import { ScrambleText } from '@/shared/components/scramble-text';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
 
@@ -57,7 +58,12 @@ export function ContactSection() {
 
       <div className="relative mx-auto grid w-full max-w-5xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <p className="type-label text-muted-foreground">{tPages('label')}</p>
+          <p className="type-label text-muted-foreground">
+            <span aria-hidden="true" className="text-muted-foreground/60">
+              ./
+            </span>
+            <ScrambleText text={tPages('label')} mode="in-view" />
+          </p>
           <h2 className="type-display mt-4 text-foreground lg:text-[3rem] xl:text-[3.5rem]">
             {t('title')}
           </h2>
