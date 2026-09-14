@@ -7,7 +7,7 @@ import { Footer } from '@/shared/components/footer';
 import { Grain } from '@/shared/components/grain';
 import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
-import { PanelBot } from '@/features/assistant/ui/panel-bot';
+import { PanelShow } from '@/features/assistant/ui/panel-show';
 import { SilkParallax } from '@/shared/components/silk-parallax';
 import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { hasLocale, type Locale } from 'next-intl';
@@ -57,8 +57,8 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               </div>
             </div>
             <HomeHero />
-            <div className="panel-perch">
-              <PanelBot className="panel-perch-bot" />
+            <div className="panel-stage">
+              <PanelShow />
             </div>
           </aside>
           <main id="main-content" className="split-main page-frame relative" tabIndex={-1}>

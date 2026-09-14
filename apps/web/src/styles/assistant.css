@@ -112,28 +112,6 @@
     animation: caret-blink 700ms steps(1, end) infinite;
   }
 
-  .assistant-walker {
-    overflow: visible;
-  }
-
-  .assistant-walker .assistant-sit {
-    animation: patrol-sit var(--assistant-leg) ease-out infinite;
-  }
-
-  .assistant-walker .assistant-gait {
-    animation:
-      gait-bob 480ms steps(1, end) infinite,
-      patrol-bob var(--assistant-leg) steps(1, end) infinite;
-  }
-
-  .assistant-walker .assistant-legs-walk {
-    animation: patrol-legs-walk var(--assistant-leg) steps(1, end) infinite;
-  }
-
-  .assistant-walker .assistant-legs-sit {
-    animation: patrol-legs-sit var(--assistant-leg) steps(1, end) infinite;
-  }
-
   .assistant-leg-frame {
     animation: frame-toggle 480ms steps(1, end) infinite;
   }
@@ -150,127 +128,113 @@
     animation-delay: 320ms;
   }
 
-  .assistant-walker .assistant-laptop {
-    animation: patrol-laptop var(--assistant-leg) ease-out infinite;
-  }
-
-  .assistant-walker .assistant-lid {
-    animation: patrol-lid var(--assistant-leg) ease-out infinite;
-  }
-
-  .assistant-walker .assistant-screen {
-    animation: patrol-screen var(--assistant-leg) steps(1, end) infinite;
-  }
-
-  .assistant-walker .assistant-glow {
-    animation: patrol-glow var(--assistant-leg) ease-out infinite;
-  }
-
-  .assistant-walker .assistant-glint {
-    animation: patrol-glint var(--assistant-leg) steps(1, end) infinite;
-  }
-
-  .assistant-walker .assistant-lean {
-    animation: patrol-lean var(--assistant-leg) ease-out infinite;
-  }
-
-  .assistant-walker .assistant-hands {
-    animation: patrol-hands var(--assistant-leg) ease-out infinite;
-  }
-
-  .assistant-walker .assistant-code {
-    animation: patrol-code var(--assistant-leg) steps(1, end) infinite;
-  }
-
-  .rail-bot-slot {
-    position: absolute;
-    inset-inline: 0;
-    inset-block-end: 0;
-    block-size: 2.5rem;
-    z-index: 10;
-    overflow: clip visible;
-    pointer-events: none;
-  }
-
-  .rail-bot {
-    --assistant-leg: 12s;
-
+  .panel-show {
     position: absolute;
     inset-block-end: 0;
-    display: flex;
-    align-items: flex-end;
-    cursor: pointer;
-    pointer-events: auto;
-    animation:
-      patrol calc(var(--assistant-leg) * 4) linear infinite,
-      arrive 400ms ease-out both;
-  }
-
-  .rail-bot .assistant-walker {
+    inset-inline-end: 0;
     inline-size: 2.5rem;
+    translate: 0 130%;
+    transition:
+      translate 2600ms linear,
+      opacity 400ms ease-out;
+  }
+
+  .panel-show[data-phase='climb'] {
+    translate: 0 0;
+    transition-duration: 1800ms;
+    transition-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+  }
+
+  .panel-show[data-phase='walk'],
+  .panel-show[data-phase='sit'],
+  .panel-show[data-phase='code'],
+  .panel-show[data-phase='wave'],
+  .panel-show[data-phase='stand'] {
+    translate: -5.5rem 0;
+  }
+
+  .panel-show[data-phase='back'] {
+    translate: 0 0;
+  }
+
+  .panel-show[data-phase='sit'],
+  .panel-show[data-phase='code'],
+  .panel-show[data-phase='wave'],
+  .panel-show[data-phase='stand'] {
+    transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .panel-show-bot {
+    inline-size: 100%;
     block-size: auto;
+    overflow: visible;
   }
 
-  @media (max-width: 63.999rem) {
-    .rail-bot {
-      --assistant-leg: 9s;
-
-      animation:
-        patrol-short calc(var(--assistant-leg) * 2) linear infinite,
-        arrive 400ms ease-out both;
-    }
-
-    .rail-bot .assistant-walker {
-      inline-size: 1.75rem;
-    }
+  .panel-show-body {
+    transition: translate 500ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .rail-bot:hover,
-  .rail-bot:focus-visible,
-  .rail-bot:hover .assistant-walker *,
-  .rail-bot:focus-visible .assistant-walker * {
-    animation-play-state: paused;
+  .panel-show[data-phase='climb'] .panel-show-body {
+    animation: climb-strain 520ms ease-in-out infinite;
   }
 
-  .rail-bot:hover .assistant-eye,
-  .rail-bot:focus-visible .assistant-eye {
-    animation-play-state: running;
+  .panel-show[data-phase='sit'] .panel-show-body,
+  .panel-show[data-phase='code'] .panel-show-body,
+  .panel-show[data-phase='wave'] .panel-show-body {
+    translate: 0 3px;
   }
 
-  .rail-bot:hover .assistant-walker,
-  .rail-bot:focus-visible .assistant-walker {
-    animation: hop 480ms steps(1, end);
+  .panel-show[data-phase='walk'] .panel-show-body,
+  .panel-show[data-phase='back'] .panel-show-body {
+    animation: gait-bob 480ms steps(1, end) infinite;
+  }
+
+  .panel-show[data-phase='back'] .panel-show-body {
+    scale: -1 1;
+    transform-origin: center;
+  }
+
+  .panel-show-laptop {
+    opacity: 0;
+    translate: 0 6px;
+    transition:
+      opacity 320ms ease-out,
+      translate 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .panel-show[data-phase='code'] .panel-show-laptop {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .panel-show-arm {
+    transform-box: fill-box;
+    transform-origin: 50% 90%;
+    opacity: 0;
+  }
+
+  .panel-show[data-phase='wave'] .panel-show-arm {
+    opacity: 1;
+    animation: arm-wave 620ms ease-in-out 3;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rail-bot {
-      inset-inline-start: calc(50% - 1.25rem);
+    .panel-show {
+      translate: -5.5rem 0;
+      transition: none;
     }
 
-    .assistant-walker .assistant-sit {
-      translate: 0 4px;
+    .panel-show .panel-show-body,
+    .panel-show .panel-show-arm,
+    .panel-show .panel-show-laptop {
+      animation: none;
     }
 
-    .assistant-walker .assistant-lean {
-      translate: 0 0.55px;
-    }
-
-    .assistant-walker .assistant-legs-walk {
-      opacity: 0;
-    }
-
-    .assistant-walker .assistant-screen {
-      fill: #16333a;
-    }
-
-    .assistant-walker .assistant-glow {
-      opacity: 0.16;
-    }
-
-    .assistant-walker .assistant-glint,
-    .assistant-walker .assistant-hands,
-    .assistant-walker .assistant-code {
+    .panel-show-laptop {
       opacity: 1;
+      translate: 0 0;
+      transition: none;
     }
   }
 
@@ -695,60 +659,6 @@
   }
 }
 
-@keyframes patrol {
-  0% {
-    inset-inline-start: calc(100% - 5rem);
-  }
-  10%,
-  25% {
-    inset-inline-start: calc(50% - 1.25rem);
-  }
-  35%,
-  50% {
-    inset-inline-start: 2.5rem;
-  }
-  60%,
-  75% {
-    inset-inline-start: calc(50% - 1.25rem);
-  }
-  85%,
-  100% {
-    inset-inline-start: calc(100% - 5rem);
-  }
-}
-
-@keyframes courier-off {
-  from {
-    inset-inline-start: -3rem;
-  }
-  to {
-    inset-inline-start: 100%;
-  }
-}
-
-@keyframes patrol-short {
-  0% {
-    inset-inline-start: calc(100% - 3.5rem);
-  }
-  20%,
-  50% {
-    inset-inline-start: 1.75rem;
-  }
-  70%,
-  100% {
-    inset-inline-start: calc(100% - 3.5rem);
-  }
-}
-
-@keyframes arrive {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes hop {
   0%,
   9% {
@@ -780,201 +690,26 @@
   }
 }
 
-@keyframes patrol-sit {
+@keyframes climb-strain {
   0%,
-  40% {
-    translate: 0 0;
-  }
-  46%,
-  93% {
-    translate: 0 4px;
-  }
-  98%,
   100% {
     translate: 0 0;
+    rotate: -2deg;
   }
-}
 
-@keyframes patrol-bob {
-  0%,
-  39% {
-    --bob: -1px;
-  }
-  40%,
-  96% {
-    --bob: 0px;
-  }
-  97%,
-  100% {
-    --bob: -1px;
-  }
-}
-
-@keyframes patrol-legs-walk {
-  0%,
-  40% {
-    opacity: 1;
-  }
-  41%,
-  92% {
-    opacity: 0;
-  }
-  93%,
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes patrol-legs-sit {
-  0%,
-  40% {
-    opacity: 0;
-  }
-  41%,
-  92% {
-    opacity: 1;
-  }
-  93%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes patrol-laptop {
-  0%,
-  44% {
-    translate: 0 15px;
-    opacity: 0;
-  }
-  47% {
-    translate: 0 -0.8px;
-    opacity: 1;
-  }
-  49%,
-  88% {
-    translate: 0 0;
-    opacity: 1;
-  }
-  92%,
-  100% {
-    translate: 0 15px;
-    opacity: 0;
-  }
-}
-
-@keyframes patrol-lid {
-  0%,
   50% {
-    scale: 1 0;
-  }
-  55% {
-    scale: 1 1.12;
-  }
-  57%,
-  89% {
-    scale: 1 1;
-  }
-  91%,
-  100% {
-    scale: 1 0;
+    translate: 0 -1px;
+    rotate: 2deg;
   }
 }
 
-@keyframes patrol-screen {
+@keyframes arm-wave {
   0%,
-  54% {
-    fill: #14201f;
-  }
-  55% {
-    fill: #d8f5ec;
-  }
-  57%,
-  89% {
-    fill: #16333a;
-  }
-  90%,
   100% {
-    fill: #14201f;
+    rotate: -8deg;
   }
-}
 
-@keyframes patrol-glow {
-  0%,
-  54% {
-    opacity: 0;
-  }
-  56% {
-    opacity: 0.5;
-  }
-  60%,
-  88% {
-    opacity: 0.16;
-  }
-  91%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes patrol-glint {
-  0%,
-  54% {
-    opacity: 0;
-  }
-  55%,
-  89% {
-    opacity: 1;
-  }
-  90%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes patrol-lean {
-  0%,
-  46% {
-    translate: 0 0;
-  }
-  54%,
-  88% {
-    translate: 0 0.55px;
-  }
-  93%,
-  100% {
-    translate: 0 0;
-  }
-}
-
-@keyframes patrol-hands {
-  0%,
-  56% {
-    opacity: 0;
-    translate: 0 3px;
-  }
-  59%,
-  88% {
-    opacity: 1;
-    translate: 0 0;
-  }
-  91%,
-  100% {
-    opacity: 0;
-    translate: 0 3px;
-  }
-}
-
-@keyframes patrol-code {
-  0%,
-  58% {
-    opacity: 0;
-  }
-  59%,
-  88% {
-    opacity: 1;
-  }
-  89%,
-  100% {
-    opacity: 0;
+  50% {
+    rotate: 24deg;
   }
 }

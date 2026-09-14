@@ -179,24 +179,17 @@
     animation: silk-pulse 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  .panel-perch {
+  .panel-stage {
     position: relative;
     display: none;
     margin-block-start: auto;
-    block-size: 2.25rem;
-  }
-
-  .panel-perch-bot {
-    position: absolute;
-    inset-block-end: 0;
-    inset-inline-end: 0;
-    inline-size: 2.25rem;
-    block-size: auto;
+    block-size: 2.75rem;
+    overflow: clip visible;
     pointer-events: none;
   }
 
   @media (min-width: 64rem) {
-    .panel-perch {
+    .panel-stage {
       display: block;
     }
   }

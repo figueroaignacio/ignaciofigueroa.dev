@@ -1,4 +1,3 @@
-import { RailBot } from '@/features/assistant/ui/rail-bot';
 import type { Experience } from '@/shared/lib/content-types';
 import { formatDate } from '@/shared/lib/format-date';
 import { getLocale, getTranslations } from 'next-intl/server';
@@ -34,7 +33,6 @@ export async function ExperienceContainer() {
       id="experience"
       title={t('title')}
       items={toTimelineItems(experiences, locale)}
-      accessory={<RailBot />}
     />
   );
 }
