@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avatar';
 import { Section } from '@/shared/components/ui/section';
 import { Separator } from '@/shared/components/ui/separator';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
@@ -13,24 +12,7 @@ export async function AboutSection() {
 
   return (
     <Section id="about" title={tSection('title')}>
-      <div className="flow-root w-full">
-        <div
-          className="float-right ml-6 mb-4 md:ml-8 md:mb-6 rounded-full overflow-hidden"
-          style={{ shapeOutside: 'circle(50%)' }}
-        >
-          <Avatar size="lg" className="w-32 h-32 md:w-40 md:h-40 border border-border/40">
-            <AvatarImage
-              src="/images/profile-photo.webp"
-              alt="Ignacio Figueroa — Fullstack Developer"
-              width={160}
-              height={160}
-              fetchPriority="high"
-              className="object-top"
-            />
-            <AvatarFallback className="text-xl">IF</AvatarFallback>
-          </Avatar>
-        </div>
-
+      <div className="w-full">
         <div className="prose-reading">
           <p>{t('bio')}</p>
           <p className="font-light italic text-muted-foreground">{t('details')}</p>
