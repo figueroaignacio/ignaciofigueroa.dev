@@ -6,7 +6,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { Grain } from '@/shared/components/grain';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { Tooltip } from '@/shared/components/ui/tooltip';
-import { useMagnetic } from '@/shared/hooks/use-magnetic';
+import { useDockMagnify } from '@/shared/hooks/use-dock-magnify';
 import { cn } from '@/shared/lib/cn';
 
 import {
@@ -61,10 +61,7 @@ const itemClass = cn(
   'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
 );
 
-const iconClass = cn(
-  'dock-magnet relative z-10 transition-transform duration-200 ease-out',
-  'group-hover:scale-115 group-active:scale-90',
-);
+const iconClass = 'dock-magnet relative z-10 group-active:opacity-70';
 
 const ENTRY_SPRING = { type: 'spring' as const, damping: 26, stiffness: 360 };
 
@@ -109,7 +106,7 @@ export function Dock() {
   const assistantButtonRef = useRef<HTMLButtonElement>(null);
   const magnetRef = useRef<HTMLElement>(null);
 
-  useMagnetic(magnetRef);
+  useDockMagnify(magnetRef);
   const chatPanelRef = useRef<HTMLDivElement>(null);
   const chatWasOpen = useRef(false);
 
