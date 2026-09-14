@@ -4,11 +4,11 @@ import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Grain } from '@/shared/components/grain';
-import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { Tooltip } from '@/shared/components/ui/tooltip';
 import { cn } from '@/shared/lib/cn';
 
 import {
+  Analytics01Icon,
   Briefcase01Icon,
   Folder01Icon,
   Home01Icon,
@@ -41,7 +41,7 @@ const SECTION_ICONS: Record<string, ReactNode> = {
   education: <HugeiconsIcon icon={MortarboardIcon} className="size-[18px]" strokeWidth={1.5} />,
   stack: <HugeiconsIcon icon={LayersIcon} className="size-[18px]" strokeWidth={1.5} />,
   about: <HugeiconsIcon icon={UserIcon} className="size-[18px]" strokeWidth={1.5} />,
-  github: <GitHubIcon />,
+  github: <HugeiconsIcon icon={Analytics01Icon} className="size-[18px]" strokeWidth={1.5} />,
   testimonials: <HugeiconsIcon icon={QuoteDownIcon} className="size-[18px]" strokeWidth={1.5} />,
   contact: <HugeiconsIcon icon={Mail01Icon} className="size-[18px]" strokeWidth={1.5} />,
 };
