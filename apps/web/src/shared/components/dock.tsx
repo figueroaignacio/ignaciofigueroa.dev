@@ -267,7 +267,12 @@ export function Dock() {
               initial={isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
               animate={isDesktop ? { x: 0 } : { opacity: 1, y: 0 }}
               exit={isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
-              transition={{ type: 'spring', damping: 30, stiffness: 320 }}
+              transition={{
+                type: 'spring',
+                damping: 30,
+                stiffness: 320,
+                delay: isDesktop ? 0.12 : 0,
+              }}
               style={{ zIndex: 11000000 }}
               className={cn(
                 'chat-rail fixed inset-0 flex flex-col overflow-hidden bg-background focus:outline-none',
