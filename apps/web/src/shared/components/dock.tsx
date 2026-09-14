@@ -357,7 +357,7 @@ export function Dock() {
           animate={{ opacity: 1, y: isHidden && !isChatOpen ? 128 : 0, scale: 1 }}
           transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.18 }}
           className={cn(
-            'flex shrink-0 items-center rounded-2xl border border-brand/40 p-1.5',
+            'flex shrink-0 items-center rounded-2xl border border-border/80 p-1.5',
             'bg-background/98 supports-backdrop-filter:bg-background/88',
             'backdrop-blur-2xl backdrop-saturate-150',
             'shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]',
@@ -379,7 +379,7 @@ export function Dock() {
                 {isChatOpen && (
                   <motion.span
                     layoutId="assistant-indicator"
-                    className="absolute inset-0 rounded-lg border border-brand/40 bg-secondary/85"
+                    className="absolute inset-0 rounded-lg border border-border/50 bg-secondary/85"
                     transition={{ type: 'spring', damping: 25, stiffness: 300 }}
                     aria-hidden="true"
                   />

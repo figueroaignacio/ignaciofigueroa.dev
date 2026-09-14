@@ -1,14 +1,21 @@
 'use client';
 
+import { cn } from '@/shared/lib/cn';
 import { AnimatePresence, type HTMLMotionProps, motion, useReducedMotion } from 'motion/react';
 import * as React from 'react';
-import { cn } from '@/shared/lib/cn';
 
 const TOOLTIP_POSITION_CLASSES = {
   top: 'bottom-full left-1/2 -translate-x-1/2 mb-2',
   bottom: 'top-full left-1/2 -translate-x-1/2 mt-2',
   left: 'right-full top-1/2 -translate-y-1/2 mr-2',
   right: 'left-full top-1/2 -translate-y-1/2 ml-2',
+} as const;
+
+const TOOLTIP_ARROW_CLASSES = {
+  top: '-bottom-1 left-1/2 -translate-x-1/2',
+  bottom: '-top-1 left-1/2 -translate-x-1/2',
+  left: '-right-1 top-1/2 -translate-y-1/2',
+  right: '-left-1 top-1/2 -translate-y-1/2',
 } as const;
 
 const TOOLTIP_ANIMATION_VARIANTS = {
@@ -173,6 +180,7 @@ function TooltipTrigger({ children, asChild = false, className, ...props }: Tool
   return (
     <div
       aria-describedby={open ? id : undefined}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex -- the wrapper must be focusable so keyboard users can summon the tooltip when the child isn't interactive
       tabIndex={0}
       className={cn('cursor-pointer', className)}
       onMouseEnter={handleMouseEnter}
@@ -243,7 +251,14 @@ const TooltipContent = ({
           )}
           {...props}
         >
-          {children}
+          <span
+            aria-hidden="true"
+            className={cn(
+              'bg-foreground absolute size-2 rotate-45 rounded-[1px]',
+              TOOLTIP_ARROW_CLASSES[side],
+            )}
+          />
+          {children as React.ReactNode}
         </motion.div>
       )}
     </AnimatePresence>
