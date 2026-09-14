@@ -7,7 +7,7 @@ import { Footer } from '@/shared/components/footer';
 import { Grain } from '@/shared/components/grain';
 import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
-import { PanelNav, type PanelNavItem } from '@/shared/components/panel-nav';
+import { PanelBot } from '@/features/assistant/ui/panel-bot';
 import { SilkParallax } from '@/shared/components/silk-parallax';
 import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { hasLocale, type Locale } from 'next-intl';
@@ -27,18 +27,6 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
 
   setRequestLocale(locale);
   const t = await getTranslations();
-  const navItems: PanelNavItem[] = (
-    [
-      'experience',
-      'projects',
-      'education',
-      'stack',
-      'about',
-      'github',
-      'testimonials',
-      'contact',
-    ] as const
-  ).map((id) => ({ id, label: t(`ui.sectionIndex.${id}`) }));
 
   return (
     <div id="app-shell" className="min-h-screen flex flex-col overflow-x-clip">
@@ -69,7 +57,9 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               </div>
             </div>
             <HomeHero />
-            <PanelNav items={navItems} />
+            <div className="panel-perch">
+              <PanelBot className="panel-perch-bot" />
+            </div>
           </aside>
           <main id="main-content" className="split-main page-frame relative" tabIndex={-1}>
             {children}
