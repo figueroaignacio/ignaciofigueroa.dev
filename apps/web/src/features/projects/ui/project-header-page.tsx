@@ -1,5 +1,5 @@
 import type { Project } from '@/shared/lib/content-types';
-import { BackLink } from '@/shared/components/back-link';
+import { BackButton } from '@/shared/components/back-button';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { buttonVariants } from '@/shared/components/ui/button-variants';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
@@ -16,9 +16,9 @@ export async function ProjectHeaderPage({
   locale,
   technologies,
 }: Partial<Project> & { locale?: string }) {
-  const [t, tProjects] = await Promise.all([
+  const [t, tUi] = await Promise.all([
     getTranslations('components.projectItem.actions'),
-    getTranslations('sections.projects'),
+    getTranslations('ui'),
   ]);
 
   const techList = technologies ?? [];
@@ -26,9 +26,9 @@ export async function ProjectHeaderPage({
   return (
     <header className="mb-8 flex flex-col items-start pt-2 pb-6 border-b border-border/40 w-full">
       <div className="mb-6">
-        <BackLink
-          href="/projects"
-          label={tProjects('viewAll')}
+        <BackButton
+          label={tUi('back')}
+          fallbackHref="/projects"
           className="text-muted-foreground hover:text-foreground"
         />
       </div>
