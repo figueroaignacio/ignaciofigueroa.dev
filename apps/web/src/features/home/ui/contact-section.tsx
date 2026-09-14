@@ -58,7 +58,7 @@ export function ContactSection() {
 
       <div className="relative mx-auto grid w-full max-w-5xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <p className="type-label text-muted-foreground">
+          <p className="type-label lowercase text-muted-foreground">
             <span aria-hidden="true" className="text-muted-foreground/60">
               ./
             </span>

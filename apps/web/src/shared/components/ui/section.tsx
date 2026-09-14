@@ -57,7 +57,7 @@ export function Section({ id, title, children, className, accessory }: SectionPr
       className={className}
       accessory={accessory}
       label={
-        <h2 className="type-label scroll-blur-label text-muted-foreground">
+        <h2 className="type-label scroll-blur-label lowercase text-muted-foreground">
           <span aria-hidden="true" className="text-muted-foreground/60">
             ./
           </span>
