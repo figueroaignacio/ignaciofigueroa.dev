@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 const GLYPHS = '&$#@%*+=<>/\\[]{}0123456789ABCDEF';
 const RADIUS = 56;
 const TICK_MS = 55;
+const SWEEP_MS = 1200;
+const SWEEP_EVERY_MS = 9000;
 
 interface ScrambleTextProps {
   text: string;
@@ -30,13 +32,31 @@ function toWords(value: string) {
 export function ScrambleText({ text, className }: ScrambleTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const centers = useRef<number[]>([]);
-  const pointerX = useRef<number | null>(null);
+  const width = useRef(0);
+  const hovering = useRef(false);
   const [rendered, setRendered] = useState(text);
   const [widths, setWidths] = useState<number[]>([]);
 
   const words = useMemo(() => toWords(rendered), [rendered]);
 
   useEffect(() => setRendered(text), [text]);
+
+  const scrambleAt = useCallback(
+    (x: number) => {
+      setRendered(
+        text
+          .split('')
+          .map((char, index) => {
+            if (char === ' ') return char;
+            const center = centers.current[index];
+            if (center === undefined || Math.abs(center - x) > RADIUS) return char;
+            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)] ?? char;
+          })
+          .join(''),
+      );
+    },
+    [text],
+  );
 
   useEffect(() => {
     const host = ref.current;
@@ -56,6 +76,7 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
       });
 
       centers.current = nextCenters;
+      width.current = box.width;
       if (widths.length === 0) setWidths(nextWidths);
     };
 
@@ -72,32 +93,18 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
     if (!window.matchMedia('(hover: hover)').matches) return;
 
     let timer: ReturnType<typeof setInterval> | null = null;
-
-    const scramble = () => {
-      const x = pointerX.current;
-      if (x === null) return;
-      setRendered(
-        text
-          .split('')
-          .map((char, index) => {
-            if (char === ' ') return char;
-            const center = centers.current[index];
-            if (center === undefined || Math.abs(center - x) > RADIUS) return char;
-            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)] ?? char;
-          })
-          .join(''),
-      );
-    };
+    let x = 0;
 
     const onMove = (event: PointerEvent) => {
-      pointerX.current = event.clientX - host.getBoundingClientRect().left;
+      hovering.current = true;
+      x = event.clientX - host.getBoundingClientRect().left;
       if (timer) return;
-      timer = setInterval(scramble, TICK_MS);
-      scramble();
+      timer = setInterval(() => scrambleAt(x), TICK_MS);
+      scrambleAt(x);
     };
 
     const onLeave = () => {
-      pointerX.current = null;
+      hovering.current = false;
       if (timer) clearInterval(timer);
       timer = null;
       setRendered(text);
@@ -110,7 +117,66 @@ export function ScrambleText({ text, className }: ScrambleTextProps) {
       host.removeEventListener('pointermove', onMove);
       host.removeEventListener('pointerleave', onLeave);
     };
-  }, [text]);
+  }, [scrambleAt, text]);
+
+  useEffect(() => {
+    const host = ref.current;
+    if (!host) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let onScreen = true;
+    let frame = 0;
+    let sweepTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const visibility = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry?.isIntersecting ?? true;
+      },
+      { threshold: 0 },
+    );
+    visibility.observe(host);
+
+    const sweep = () => {
+      const start = performance.now();
+      const from = -RADIUS;
+      const to = width.current + RADIUS;
+      let lastTick = 0;
+
+      const step = (now: number) => {
+        const progress = Math.min((now - start) / SWEEP_MS, 1);
+        if (hovering.current) {
+          setRendered(text);
+          return;
+        }
+        if (now - lastTick >= TICK_MS) {
+          lastTick = now;
+          scrambleAt(from + (to - from) * progress);
+        }
+        if (progress < 1) {
+          frame = requestAnimationFrame(step);
+          return;
+        }
+        setRendered(text);
+      };
+
+      frame = requestAnimationFrame(step);
+    };
+
+    const schedule = () => {
+      sweepTimer = setTimeout(() => {
+        if (onScreen && !hovering.current && !document.hidden) sweep();
+        schedule();
+      }, SWEEP_EVERY_MS);
+    };
+
+    schedule();
+
+    return () => {
+      visibility.disconnect();
+      cancelAnimationFrame(frame);
+      if (sweepTimer) clearTimeout(sweepTimer);
+    };
+  }, [scrambleAt, text]);
 
   return (
     <span ref={ref} className={className} aria-label={text}>
