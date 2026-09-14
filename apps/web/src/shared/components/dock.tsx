@@ -270,14 +270,17 @@ export function Dock() {
               transition={{ type: 'spring', damping: 30, stiffness: 320 }}
               style={{ zIndex: 11000000 }}
               className={cn(
-                'fixed inset-0 flex flex-col overflow-hidden bg-background focus:outline-none',
-                // Docked: a floating column that mirrors the hero panel on the
-                // left, same inset, same radius, same surface.
+                'chat-rail fixed inset-0 flex flex-col overflow-hidden bg-background focus:outline-none',
+                // Docked: the same floating panel as the hero, mirrored.
                 'lg:inset-y-4 lg:right-4 lg:left-auto',
                 'lg:w-[calc(var(--chat-panel-width)-2rem)]',
-                'lg:rounded-2xl lg:border lg:border-border/60 lg:bg-[var(--wave-base)]',
               )}
             >
+              <div className="hero-waves chat-rail-waves" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
               <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
               <Grain className="grain-inset" />
             </motion.div>

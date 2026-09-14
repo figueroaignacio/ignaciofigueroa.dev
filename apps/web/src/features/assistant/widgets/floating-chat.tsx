@@ -53,7 +53,7 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
   const showHero = !hasInteracted && messages.length === 0;
 
   return (
-    <div className="flex flex-col w-full h-full bg-background overflow-hidden">
+    <div className="chat-surface flex flex-col w-full h-full bg-background overflow-hidden">
       <header className="flex items-center justify-between w-full px-4 py-3 shrink-0 safe-top relative border-b border-border">
         <div>
           <AssistantAvatar size="sm" />
@@ -96,7 +96,7 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
           </button>
         </div>
       </header>
-      <div className="flex-1 flex flex-col min-h-0 bg-background relative overflow-hidden">
+      <div className="chat-surface flex-1 flex flex-col min-h-0 bg-background relative overflow-hidden">
         {showHero ? (
           <div className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4">
             <div className="flex-1 flex items-center justify-center">
