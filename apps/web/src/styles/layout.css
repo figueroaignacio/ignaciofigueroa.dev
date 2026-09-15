@@ -107,30 +107,6 @@
     animation-delay: -5s;
   }
 
-  .chat-rail-waves {
-    display: none;
-  }
-
-  @media (min-width: 64rem) {
-    .chat-rail {
-      isolation: isolate;
-      border-radius: var(--radius-2xl);
-      background: var(--wave-base);
-    }
-
-    .chat-rail > *:not(.chat-rail-waves) {
-      position: relative;
-    }
-
-    .chat-rail-waves {
-      display: block;
-    }
-
-    .chat-rail .chat-surface {
-      background: transparent;
-    }
-  }
-
   .split-main {
     min-inline-size: 0;
   }
@@ -331,6 +307,34 @@
     translate: 16% -12%;
     rotate: 28deg;
     scale: 1.04;
+  }
+}
+
+.chat-rail {
+  background: var(--background);
+}
+
+.chat-rail-waves {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  .chat-rail {
+    isolation: isolate;
+    border-radius: var(--radius-2xl);
+    background: var(--wave-base);
+  }
+
+  .chat-rail > *:not(.chat-rail-waves) {
+    position: relative;
+  }
+
+  .chat-rail-waves {
+    display: block;
+  }
+
+  .chat-rail .chat-surface {
+    background: transparent;
   }
 }
 

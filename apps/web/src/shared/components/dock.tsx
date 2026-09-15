@@ -276,7 +276,7 @@ export function Dock() {
               }}
               style={{ zIndex: 11000000 }}
               className={cn(
-                'chat-rail fixed inset-0 flex flex-col overflow-hidden bg-background focus:outline-none',
+                'chat-rail fixed inset-0 flex flex-col overflow-hidden focus:outline-none',
                 // Docked: the same floating panel as the hero, mirrored.
                 'lg:inset-y-4 lg:right-4 lg:left-auto',
                 'lg:w-[calc(var(--chat-panel-width)-2rem)]',
