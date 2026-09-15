@@ -18,6 +18,8 @@ interface ScrambleTextProps {
 export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const centers = useRef<number[]>([]);
+  const vertical = useRef(false);
+  const span = useRef(0);
   const hovering = useRef(false);
   const [rendered, setRendered] = useState(text);
   const [minWidth, setMinWidth] = useState<number>();
@@ -50,6 +52,7 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
       if (!node || node.nodeType !== Node.TEXT_NODE) return;
       if ((node.textContent ?? '') !== text) return;
 
+      const isVertical = getComputedStyle(host).writingMode.startsWith('vertical');
       const box = host.getBoundingClientRect();
       const range = document.createRange();
       const next: number[] = [];
@@ -58,11 +61,15 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
         range.setStart(node, index);
         range.setEnd(node, index + 1);
         const rect = range.getBoundingClientRect();
-        next[index] = rect.left - box.left + rect.width / 2;
+        next[index] = isVertical
+          ? rect.top - box.top + rect.height / 2
+          : rect.left - box.left + rect.width / 2;
       }
 
       centers.current = next;
-      setMinWidth(box.width);
+      vertical.current = isVertical;
+      span.current = isVertical ? box.height : box.width;
+      if (!isVertical) setMinWidth(box.width);
     };
 
     measure();
@@ -91,7 +98,7 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
 
     const start = performance.now();
     const from = -RADIUS;
-    const to = host.getBoundingClientRect().width + RADIUS;
+    const to = span.current + RADIUS;
     let lastTick = 0;
     let frame = 0;
 
@@ -128,7 +135,8 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
 
     const onMove = (event: PointerEvent) => {
       hovering.current = true;
-      x = event.clientX - host.getBoundingClientRect().left;
+      const box = host.getBoundingClientRect();
+      x = vertical.current ? event.clientY - box.top : event.clientX - box.left;
       if (timer) return;
       timer = setInterval(() => scrambleAt(x), TICK_MS);
       scrambleAt(x);

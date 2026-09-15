@@ -4,6 +4,7 @@ import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Grain } from '@/shared/components/grain';
+import { SilkParallax } from '@/shared/components/silk-parallax';
 import { Tooltip } from '@/shared/components/ui/tooltip';
 import { cn } from '@/shared/lib/cn';
 
@@ -286,6 +287,7 @@ export function Dock() {
                 <span />
                 <span />
               </div>
+              <SilkParallax />
               <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
               <Grain className="grain-inset" />
             </motion.div>
