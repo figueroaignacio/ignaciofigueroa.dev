@@ -36,33 +36,6 @@
     "description": "Looking for fullstack or AI integration roles. Contract or full-time. If the problem is interesting, I'm interested."
   },
   "chat": {
-    "disclaimers": [
-      " Powered by Gemini. Hallucinations included at no extra charge.",
-      " Built on FastAPI + Python. Or as Ignacio calls it, 'the backend that works on my machine'.",
-      " Any bugs are @figueroaignacio's fault. He knows.",
-      " Gemini writes the responses. Ignacio takes the credit. Fair deal.",
-      " Runs on Python because Ignacio felt adventurous outside the JS ecosystem.",
-      " FastAPI is async. My confidence, however, is not.",
-      " Might invent some facts. Like my confidence writing CSS from scratch.",
-      " Powered by LLMs and a concerning amount of mate.",
-      " Built while procrastinating on UTN assignments.",
-      " The FastAPI server is up. Probably. No promises after 2am.",
-      " Trained on Ignacio's codebase. Please lower your expectations accordingly.",
-      " Next.js in the front, Python in the back. Mullet architecture.",
-      " I answer quickly so you don't realize Gemini is doing all the heavy lifting.",
-      " Caution: May drop unprompted opinions about TypeScript vs Python.",
-      " Powered by Gemini, supervised by a guy who really likes dark mode.",
-      " If I say something wrong, tell Ignacio. He needs something to do.",
-      " So advanced, it only occasionally forgets how to center a div.",
-      " A FastAPI endpoint just to tell you I'm busy right now.",
-      " Designed with Tailwind. Or as I call it, 'inline styles but socially acceptable'.",
-      " Still learning exactly like Ignacio, but without the UTN exams.",
-      " The Python backend has 95% test coverage. The 5% is the part that matters.",
-      " Works best with a virtual mate and a stable internet connection.",
-      " It's not a hallucination, it's Gemini being 'creatively confident'.",
-      " Deployed on a Friday. The FastAPI logs are fine. Everything is fine. I think so.",
-      " I'm just a React component calling a Python endpoint calling Gemini. Layers."
-    ],
     "header": {
       "title": "N-bot",
       "subtitle": "Ignacio's virtual assistant.",

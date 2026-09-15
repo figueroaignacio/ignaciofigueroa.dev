@@ -36,33 +36,6 @@
     "description": "Busco roles fullstack o de integración de IA. Full-time o contrato. Si el problema es interesante, me interesa."
   },
   "chat": {
-    "disclaimers": [
-      " Impulsado por Gemini. Alucinaciones incluidas sin costo adicional.",
-      " Construido con FastAPI + Python. O como dice Ignacio: 'el backend que anda en mi máquina'.",
-      " Cualquier bug es culpa de @figueroaignacio. Él lo sabe.",
-      " Gemini escribe las respuestas. Ignacio se lleva el crédito. Trato justo.",
-      " Corre en Python porque Ignacio se animó a salir del ecosistema JS.",
-      " FastAPI es async. Mi confianza, en cambio, no lo es.",
-      " Puede que invente un poco. Como mi confianza escribiendo CSS desde cero.",
-      " Impulsado por LLMs y una cantidad preocupante de mate.",
-      " Creado mientras procrastinaba trabajos prácticos de la UTN.",
-      " El servidor FastAPI está activo. Probablemente. Sin garantías después de las 2am.",
-      " Entrenado con el código de Ignacio. Por favor, bajen sus expectativas.",
-      " Next.js al frente, Python atrás. Arquitectura de mullet.",
-      " Respondo rápido para que no te des cuenta de que Gemini hace todo el trabajo.",
-      " Cuidado: Puedo opinar sin que me pidan sobre TypeScript vs Python.",
-      " Potenciado por Gemini, supervisado por alguien que ama el dark mode.",
-      " Si digo algo mal, avisale a Ignacio. Necesita algo que hacer.",
-      " Soy tan avanzado que solo a veces me olvido cómo centrar un div.",
-      " Un endpoint de FastAPI para decirte que estoy ocupado ahora mismo.",
-      " Diseñado con Tailwind: 'estilos en línea pero aceptados socialmente'.",
-      " Sigo aprendiendo igual que Ignacio, pero sin rendir finales en la UTN.",
-      " El backend en Python tiene 95% de cobertura de tests. El 5% es lo que importa.",
-      " Funciono mejor con un mate virtual y buena señal de WiFi.",
-      " No es una alucinación, es Gemini siendo 'creativamente confiado'.",
-      " Deployeado un viernes a la tarde. Los logs de FastAPI están bien. Todo está bien. Creo.",
-      " Soy solo un componente de React llamando a un endpoint de Python llamando a Gemini. Capas."
-    ],
     "header": {
       "title": "Asistente virtual de Ignacio",
       "reset": "Reiniciar chat",

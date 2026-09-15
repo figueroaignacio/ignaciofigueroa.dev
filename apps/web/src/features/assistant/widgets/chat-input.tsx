@@ -27,18 +27,9 @@ export function ChatInput({
   autoFocus = false,
 }: ChatInputProps) {
   const t = useTranslations('components.chat.page');
-  const tChat = useTranslations('components.chat');
   const tInput = useTranslations('components.chat.input');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const disclaimers = tChat.raw('disclaimers') as string[];
-  const [disclaimerIndex, setDisclaimerIndex] = useState<number>(0);
-  const [mounted, setMounted] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    setDisclaimerIndex(Math.floor(Math.random() * disclaimers.length));
-  }, [disclaimers.length]);
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -149,24 +140,6 @@ export function ChatInput({
           {tInput('newlineHint')}
         </span>
       </div>
-
-      {isHero && (
-        <motion.div
-          className="mt-3 flex justify-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          {mounted && (
-            <span
-              key={disclaimerIndex}
-              className="text-[11px] font-mono text-muted-foreground text-center px-4 leading-relaxed"
-            >
-              {disclaimers[disclaimerIndex]}
-            </span>
-          )}
-        </motion.div>
-      )}
     </motion.div>
   );
 }
