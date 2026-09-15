@@ -40,6 +40,9 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               <span />
             </div>
             <SilkParallax />
+            <span className="aside-vertical-name" aria-hidden="true">
+              {t('sections.home.name')}
+            </span>
             <div className="aside-head flex items-center justify-between gap-4">
               <div className="aside-brand group flex min-w-0 items-center gap-3">
                 <LogoMark

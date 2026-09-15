@@ -168,7 +168,6 @@
     }
 
     html[data-chat-docked='true'] .aside-head {
-      flex: 1;
       flex-direction: column;
       gap: 1.25rem;
     }
@@ -176,14 +175,6 @@
     html[data-chat-docked='true'] .aside-controls {
       flex-direction: column;
       gap: 0.75rem;
-      margin-block-start: auto;
-    }
-
-    html[data-chat-docked='true'] .aside-controls > span,
-    html[data-chat-docked='true'] .aside-tagline,
-    html[data-chat-docked='true'] .split-aside > header,
-    html[data-chat-docked='true'] .panel-stage {
-      display: none;
     }
   }
 
@@ -340,5 +331,30 @@
     translate: 16% -12%;
     rotate: 28deg;
     scale: 1.04;
+  }
+}
+
+.aside-vertical-name {
+  display: none;
+}
+
+@media (min-width: 64rem) {
+  html[data-chat-docked='true'] .aside-brand,
+  html[data-chat-docked='true'] .aside-controls > span,
+  html[data-chat-docked='true'] .split-aside > header,
+  html[data-chat-docked='true'] .panel-stage {
+    display: none;
+  }
+
+  html[data-chat-docked='true'] .aside-vertical-name {
+    display: block;
+    margin-block: auto;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: var(--foreground);
+    writing-mode: vertical-rl;
+    rotate: 180deg;
   }
 }
