@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import type { ToolName } from '../lib/parse-stream';
-import { AssistantCoding } from './assistant-coding';
 
 interface ChatLoadingProps {
   activeTool?: ToolName | null;
@@ -33,8 +32,6 @@ export function ChatLoading({ activeTool }: ChatLoadingProps) {
       className="select-none"
       aria-live="polite"
     >
-      <AssistantCoding className="mb-3 ml-px h-auto w-16" />
-
       <span className="type-label text-muted-foreground/70">{t('title')}</span>
 
       <Timeline value={steps.length} className="mt-3">

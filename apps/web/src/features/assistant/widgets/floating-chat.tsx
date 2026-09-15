@@ -8,6 +8,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { AssistantAvatar } from '../ui/assistant-avatar';
+import { AssistantCoding } from '../ui/assistant-coding';
 import { ChatHero } from './chat-hero';
 import { ChatInput } from './chat-input';
 import { ChatMessages } from './chat-messages';
@@ -55,8 +56,8 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
   return (
     <div className="chat-surface flex flex-col w-full h-full bg-background overflow-hidden">
       <header className="flex items-center justify-between w-full px-4 py-3 shrink-0 safe-top relative border-b border-border">
-        <div>
-          <AssistantAvatar size="sm" />
+        <div className="flex h-8 w-10 items-end">
+          {isLoading ? <AssistantCoding className="h-auto w-10" /> : <AssistantAvatar size="sm" />}
         </div>
         <div className="flex items-center gap-1">
           {messages.length > 0 && (
@@ -100,7 +101,7 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
         {showHero ? (
           <div className="flex-1 overflow-y-auto flex flex-col min-h-0 p-4">
             <div className="flex-1 flex items-center justify-center">
-              <ChatHero onQuickAction={handleQuickAction} typing={message.trim().length > 0} />
+              <ChatHero onQuickAction={handleQuickAction} />
             </div>
             <div className="w-full mt-4 shrink-0 pb-safe">
               <ChatInput
