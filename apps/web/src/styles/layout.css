@@ -339,19 +339,19 @@
 }
 
 @media (min-width: 64rem) {
-  html[data-chat-docked='true'] .aside-brand,
-  html[data-chat-docked='true'] .aside-controls > span,
+  html[data-chat-docked='true'] .aside-head,
   html[data-chat-docked='true'] .split-aside > header,
   html[data-chat-docked='true'] .panel-stage {
     display: none;
   }
 
   html[data-chat-docked='true'] .aside-vertical-name {
-    display: block;
-    margin-block: auto;
-    font-size: 1.125rem;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    font-size: clamp(1.05rem, 2.1vh, 1.5rem);
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.06em;
     white-space: nowrap;
     color: var(--foreground);
     writing-mode: vertical-rl;
