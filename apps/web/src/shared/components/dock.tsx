@@ -9,14 +9,10 @@ import { Tooltip } from '@/shared/components/ui/tooltip';
 import { cn } from '@/shared/lib/cn';
 
 import {
-  Analytics01Icon,
   Briefcase01Icon,
   Folder01Icon,
   Home01Icon,
-  LayersIcon,
   Mail01Icon,
-  MortarboardIcon,
-  QuoteDownIcon,
   UserIcon,
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -25,25 +21,12 @@ import { useTranslations } from 'next-intl';
 import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-const SECTION_IDS = [
-  'experience',
-  'projects',
-  'education',
-  'stack',
-  'about',
-  'github',
-  'testimonials',
-  'contact',
-] as const;
+const SECTION_IDS = ['experience', 'projects', 'about', 'contact'] as const;
 
 const SECTION_ICONS: Record<string, ReactNode> = {
   experience: <HugeiconsIcon icon={Briefcase01Icon} className="size-[18px]" strokeWidth={1.5} />,
   projects: <HugeiconsIcon icon={Folder01Icon} className="size-[18px]" strokeWidth={1.5} />,
-  education: <HugeiconsIcon icon={MortarboardIcon} className="size-[18px]" strokeWidth={1.5} />,
-  stack: <HugeiconsIcon icon={LayersIcon} className="size-[18px]" strokeWidth={1.5} />,
   about: <HugeiconsIcon icon={UserIcon} className="size-[18px]" strokeWidth={1.5} />,
-  github: <HugeiconsIcon icon={Analytics01Icon} className="size-[18px]" strokeWidth={1.5} />,
-  testimonials: <HugeiconsIcon icon={QuoteDownIcon} className="size-[18px]" strokeWidth={1.5} />,
   contact: <HugeiconsIcon icon={Mail01Icon} className="size-[18px]" strokeWidth={1.5} />,
 };
 
