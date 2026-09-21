@@ -2,6 +2,7 @@ export * from './common';
 export * from './contributions';
 export * from './education';
 export * from './experiences';
+export * from './knowledge';
 export * from './media';
 export * from './projects';
 export * from './taxonomies';

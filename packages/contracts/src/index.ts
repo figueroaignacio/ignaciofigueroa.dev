@@ -1,3 +1,4 @@
+export * from './assistant.js';
 export * from './auth.js';
 export * from './common.js';
 export * from './contributions.js';

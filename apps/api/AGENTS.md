@@ -8,6 +8,7 @@ pnpm --filter api build
 pnpm --filter api test
 pnpm --filter api check-types
 pnpm --filter api mcp        # MCP server over stdio (needs a build first)
+pnpm --filter api ingest     # rebuild the assistant's RAG table from published content
 ```
 
 ## Architecture
@@ -25,6 +26,8 @@ Drizzle client; there is no repository layer because Drizzle already is one.
   swapped without touching the media module.
 - `github/` syncs pull requests for contributions; a failed call never blocks a save.
 - `mcp/` reuses the same services through a standalone Nest context.
+- `assistant/` is the chat: Gemini via the Vercel AI SDK, tools over the content services,
+  RAG on `portfolio_knowledge`. Env: `GEMINI_API_KEY`, `GEMINI_MODEL`, `HF_TOKEN`.
 
 ## Conventions
 

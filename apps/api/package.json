@@ -11,9 +11,11 @@
     "test": "jest",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "check-types": "tsc --noEmit -p tsconfig.json",
-    "mcp": "node dist/mcp/main.js"
+    "mcp": "node dist/mcp/main.js",
+    "ingest": "node dist/scripts/ingest-knowledge.js"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.76",
     "@modelcontextprotocol/sdk": "^1.30.0",
     "@nestjs/common": "^11.1.6",
     "@nestjs/config": "^4.0.2",
@@ -25,6 +27,7 @@
     "@repo/contracts": "workspace:*",
     "@repo/db": "workspace:*",
     "@supabase/supabase-js": "^2.58.0",
+    "ai": "^7.0.107",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "multer": "^2.0.2",

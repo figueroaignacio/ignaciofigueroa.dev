@@ -14,6 +14,9 @@ export const envSchema = z.object({
   SUPABASE_STORAGE_BUCKET: z.string().default('media'),
   GITHUB_TOKEN: z.string().optional(),
   GITHUB_USERNAME: z.string().default('figueroaignacio'),
+  GEMINI_API_KEY: z.string().optional(),
+  GEMINI_MODEL: z.string().default('gemini-2.5-flash'),
+  HF_TOKEN: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;

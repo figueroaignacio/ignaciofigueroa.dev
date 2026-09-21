@@ -32,3 +32,12 @@ OpenAPI is served at `/docs`.
 cp .env.example .env
 pnpm --filter api dev
 ```
+
+## Assistant
+
+`assistant/` holds the portfolio chat: Gemini through the Vercel AI SDK, tools
+that call the content services directly, and RAG over `portfolio_knowledge`
+(pgvector, MiniLM embeddings from HuggingFace). `POST /chat?stream=events`
+streams NDJSON tool and text events; `/portfolio/*` serves the chat cards and
+the project summary. `pnpm ingest` rebuilds the knowledge base from the
+published content.

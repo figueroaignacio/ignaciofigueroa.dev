@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER, APP_GUARD, APP_PIPE } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ZodValidationPipe } from 'nestjs-zod';
+import { AssistantModule } from './assistant/assistant.module';
 import { AuthModule } from './auth/auth.module';
 import { HttpExceptionFilter } from './common/http-exception.filter';
 import { validateEnv } from './config/env';
@@ -39,6 +40,7 @@ import { TestimonialsModule } from './testimonials/testimonials.module';
     EducationModule,
     TestimonialsModule,
     ContributionsModule,
+    AssistantModule,
   ],
   controllers: [HealthController],
   providers: [

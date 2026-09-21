@@ -8,6 +8,8 @@ export const SITE_URL =
     : process.env.NEXT_PUBLIC_API_URL_DEV;
 
 export const ASSISTANT_API_URL =
-  process.env.NEXT_PUBLIC_ASSISTANT_API_URL || 'http://localhost:8000';
+  process.env.NEXT_PUBLIC_ASSISTANT_API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  'http://localhost:4000';
 
 export type Icon = React.FC<React.SVGAttributes<SVGAElement>> | IconSvgElement;

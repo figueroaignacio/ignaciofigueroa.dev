@@ -1,5 +1,9 @@
 import {
   adminListQuerySchema,
+  chatRequestSchema,
+  chatStreamQuerySchema,
+  localeOnlyQuerySchema,
+  summarizeRequestSchema,
   createContributionSchema,
   createEducationSchema,
   createExperienceSchema,
@@ -56,3 +60,8 @@ export class CreateContributionDto extends createZodDto(createContributionSchema
 export class UpdateContributionDto extends createZodDto(updateContributionSchema) {}
 
 export class UpdateMediaDto extends createZodDto(updateMediaSchema) {}
+
+export class ChatRequestDto extends createZodDto(chatRequestSchema) {}
+export class ChatStreamQueryDto extends createZodDto(chatStreamQuerySchema) {}
+export class SummarizeRequestDto extends createZodDto(summarizeRequestSchema) {}
+export class LocaleOnlyQueryDto extends createZodDto(localeOnlyQuerySchema) {}
