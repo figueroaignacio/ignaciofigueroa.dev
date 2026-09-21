@@ -5,7 +5,7 @@ import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Grain } from '@/shared/components/grain';
 import { SilkParallax } from '@/shared/components/silk-parallax';
-import { Tooltip } from '@/shared/components/ui/tooltip';
+import { Dock as DockBar, useDockAutoHide } from '@/shared/components/ui/dock';
 import { cn } from '@/shared/lib/cn';
 
 import {
@@ -24,10 +24,10 @@ import { createPortal } from 'react-dom';
 const SECTION_IDS = ['experience', 'projects', 'about', 'contact'] as const;
 
 const SECTION_ICONS: Record<string, ReactNode> = {
-  experience: <HugeiconsIcon icon={Briefcase01Icon} className="size-[18px]" strokeWidth={1.5} />,
-  projects: <HugeiconsIcon icon={Folder01Icon} className="size-[18px]" strokeWidth={1.5} />,
-  about: <HugeiconsIcon icon={UserIcon} className="size-[18px]" strokeWidth={1.5} />,
-  contact: <HugeiconsIcon icon={Mail01Icon} className="size-[18px]" strokeWidth={1.5} />,
+  experience: <HugeiconsIcon icon={Briefcase01Icon} strokeWidth={1.5} />,
+  projects: <HugeiconsIcon icon={Folder01Icon} strokeWidth={1.5} />,
+  about: <HugeiconsIcon icon={UserIcon} strokeWidth={1.5} />,
+  contact: <HugeiconsIcon icon={Mail01Icon} strokeWidth={1.5} />,
 };
 
 interface DockItem {
@@ -37,16 +37,6 @@ interface DockItem {
   href?: string;
   sectionId?: string;
 }
-
-const itemClass = cn(
-  'group relative flex size-8 shrink-0 items-center justify-center rounded-lg sm:size-9',
-  'transition-colors duration-150 ease-out',
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
-);
-
-const iconClass = 'dock-icon relative z-10 group-hover:scale-125 group-active:scale-95';
-
-const ENTRY_SPRING = { type: 'spring' as const, damping: 26, stiffness: 360 };
 
 export function Dock() {
   const pathname = usePathname();
@@ -65,7 +55,7 @@ export function Dock() {
         key: 'home',
         label: home?.label ?? 'home',
         href: '/',
-        icon: <HugeiconsIcon icon={Home01Icon} className="size-[18px]" strokeWidth={1.5} />,
+        icon: <HugeiconsIcon icon={Home01Icon} strokeWidth={1.5} />,
       },
       ...SECTION_IDS.map((id) => ({
         key: id,
@@ -83,7 +73,7 @@ export function Dock() {
   const [activeSection, setActiveSection] = useState<string>('/');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
+  const autoHidden = useDockAutoHide();
   // Matches the breakpoint that opens up --chat-inset in globals.css.
   const [isDesktop, setIsDesktop] = useState(false);
   const assistantButtonRef = useRef<HTMLButtonElement>(null);
@@ -100,29 +90,6 @@ export function Dock() {
     sync();
     query.addEventListener('change', sync);
     return () => query.removeEventListener('change', sync);
-  }, []);
-
-  useEffect(() => {
-    let lastY = window.scrollY;
-    let ticking = false;
-
-    const update = () => {
-      ticking = false;
-      const y = window.scrollY;
-      const delta = y - lastY;
-      if (Math.abs(delta) < 8) return;
-      lastY = y;
-      setIsHidden(delta > 0 && y > 240);
-    };
-
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
@@ -283,104 +250,30 @@ export function Dock() {
   return (
     <>
       {chatPanel}
-      <nav
-        className="dock-nav"
-        aria-label="Main Navigation"
-        onFocusCapture={() => setIsHidden(false)}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: isHidden && !isChatOpen ? 128 : 0, scale: 1 }}
-          transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.1 }}
-          className={cn(
-            'flex min-w-0 items-center gap-0.5',
-            'overflow-x-auto scrollbar-none sm:overflow-x-visible',
-            'rounded-2xl border border-border/80 px-1.5 py-1.5',
-            'bg-background/98 supports-backdrop-filter:bg-background/88',
-            'backdrop-blur-2xl backdrop-saturate-150',
-            'shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]',
-          )}
-        >
-          {items.map((item, index) => {
-            const active = activeSection === item.href;
-            return (
-              <motion.div
-                key={item.key}
-                initial={{ opacity: 0, y: 14, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ ...ENTRY_SPRING, delay: 0.15 + index * 0.035 }}
-              >
-                <Tooltip delayDuration={120}>
-                  <Tooltip.Trigger asChild>
-                    <Link
-                      href={item.href ?? '/'}
-                      aria-label={item.label}
-                      aria-current={active ? 'page' : undefined}
-                      className={cn(
-                        itemClass,
-                        active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
-                      )}
-                    >
-                      {active && (
-                        <motion.span
-                          layoutId="dock-indicator"
-                          className="absolute inset-0 rounded-lg border border-border/50 bg-secondary/85"
-                          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                          aria-hidden="true"
-                        />
-                      )}
-                      <span className={iconClass} aria-hidden="true">
-                        {item.icon}
-                      </span>
-                    </Link>
-                  </Tooltip.Trigger>
-                  <Tooltip.Content className="font-mono text-[11px]">{item.label}</Tooltip.Content>
-                </Tooltip>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.9 }}
-          animate={{ opacity: 1, y: isHidden && !isChatOpen ? 128 : 0, scale: 1 }}
-          transition={{ type: 'spring', damping: 28, stiffness: 340, delay: 0.18 }}
-          className={cn(
-            'flex shrink-0 items-center rounded-2xl border border-border/80 p-1.5',
-            'bg-background/98 supports-backdrop-filter:bg-background/88',
-            'backdrop-blur-2xl backdrop-saturate-150',
-            'shadow-[0_24px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_50px_rgba(0,0,0,0.5)]',
-          )}
-        >
-          <Tooltip delayDuration={120}>
-            <Tooltip.Trigger asChild>
-              <button
-                ref={assistantButtonRef}
-                type="button"
-                onClick={() => setIsChatOpen((prev) => !prev)}
-                aria-label={assistantLabel}
-                aria-pressed={isChatOpen}
-                className={cn(
-                  itemClass,
-                  isChatOpen ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
-                )}
-              >
-                {isChatOpen && (
-                  <motion.span
-                    layoutId="assistant-indicator"
-                    className="absolute inset-0 rounded-lg border border-border/50 bg-secondary/85"
-                    transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                    aria-hidden="true"
-                  />
-                )}
-                <span className={iconClass} aria-hidden="true">
-                  <DockBotIcon />
-                </span>
-              </button>
-            </Tooltip.Trigger>
-            <Tooltip.Content className="font-mono text-[11px]">{assistantLabel}</Tooltip.Content>
-          </Tooltip>
-        </motion.div>
-      </nav>
+      <div className="dock-nav">
+        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label="Main Navigation">
+          {items.map((item) => (
+            <DockBar.Item
+              key={item.key}
+              label={item.label}
+              active={activeSection === item.href}
+              asChild
+            >
+              <Link href={item.href ?? '/'}>{item.icon}</Link>
+            </DockBar.Item>
+          ))}
+        </DockBar>
+        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label={assistantLabel}>
+          <DockBar.Item
+            ref={assistantButtonRef}
+            label={assistantLabel}
+            active={isChatOpen}
+            onClick={() => setIsChatOpen((prev) => !prev)}
+          >
+            <DockBotIcon />
+          </DockBar.Item>
+        </DockBar>
+      </div>
     </>
   );
 }

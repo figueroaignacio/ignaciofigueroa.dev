@@ -20,12 +20,6 @@
     }
   }
 
-  .dock-icon {
-    display: block;
-    transform-origin: center bottom;
-    transition: scale 170ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
   .assistant-eye {
     transform-box: fill-box;
     transform-origin: center;
