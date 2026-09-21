@@ -8,7 +8,7 @@ export const MEDIA_MIME_TYPES = [
   'image/svg+xml',
   'image/avif',
 ] as const;
-export const MEDIA_MAX_BYTES = 8 * 1024 * 1024;
+export const MEDIA_MAX_BYTES = 4 * 1024 * 1024;
 
 export const updateMediaSchema = z.object({
   alt: z.string().max(300),

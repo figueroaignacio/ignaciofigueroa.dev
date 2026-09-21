@@ -37,7 +37,7 @@ export class MediaService {
       throw new BadRequestException(`Unsupported file type ${file.mimetype}`);
     }
     if (file.size > MEDIA_MAX_BYTES) {
-      throw new BadRequestException('File is larger than 8MB');
+      throw new BadRequestException('File is larger than 4MB');
     }
 
     const dimensions = await this.readDimensions(file);
