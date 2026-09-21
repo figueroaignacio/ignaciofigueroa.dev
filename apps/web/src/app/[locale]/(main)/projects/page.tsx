@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: ProjectsPageProps): Promise<M
       siteName: 'Ignacio Figueroa',
       images: [
         {
-          url: '/images/og-image.png',
+          url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
           alt: t('ogTitle'),

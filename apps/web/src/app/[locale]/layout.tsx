@@ -148,7 +148,7 @@ export async function generateMetadata({
       url: `${BASE_URL}/${locale}`,
       images: [
         {
-          url: '/images/og-image.png',
+          url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
           alt: 'Ignacio Figueroa · Fullstack Developer',
