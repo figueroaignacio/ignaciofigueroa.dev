@@ -2,12 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "buildCommand": "cd ../.. && pnpm turbo run build --filter=api",
-  "framework": null,
-  "functions": {
-    "api/index.ts": {
-      "includeFiles": "dist/**",
-      "maxDuration": 30
-    }
-  },
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  "framework": "nestjs"
 }
