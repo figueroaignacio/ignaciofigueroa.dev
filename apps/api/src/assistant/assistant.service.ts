@@ -1,8 +1,7 @@
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { Injectable, Logger, ServiceUnavailableException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import type { ChatRequestInput, ChatStreamEvent, SuitabilityReport } from '@repo/contracts';
-import { generateText, type ModelMessage, Output, stepCountIs, streamText, tool } from 'ai';
+import type { LanguageModel, ModelMessage } from 'ai';
 import { z } from 'zod';
 import type { Env } from '../config/env';
 import { ExperiencesService } from '../experiences/experiences.service';
@@ -11,6 +10,9 @@ import { KnowledgeService } from './knowledge.service';
 import { ANALYSIS_SYSTEM_PROMPT, CHAT_SYSTEM_PROMPT, SUMMARIZE_SYSTEM_PROMPT } from './prompts';
 
 const HISTORY_LIMIT = 20;
+
+type AiSdk = typeof import('ai');
+type GoogleSdk = typeof import('@ai-sdk/google');
 
 const suitabilitySchema = z.object({
   match_score: z.number().int().min(0).max(100),
@@ -22,6 +24,7 @@ const suitabilitySchema = z.object({
 @Injectable()
 export class AssistantService {
   private readonly logger = new Logger(AssistantService.name);
+  private sdk?: Promise<{ ai: AiSdk; google: GoogleSdk }>;
 
   constructor(
     private readonly config: ConfigService<Env, true>,
@@ -30,10 +33,20 @@ export class AssistantService {
     private readonly experiences: ExperiencesService,
   ) {}
 
-  private model() {
+  private loadSdk() {
+    this.sdk ??= Promise.all([import('ai'), import('@ai-sdk/google')]).then(([ai, google]) => ({
+      ai,
+      google,
+    }));
+    return this.sdk;
+  }
+
+  private async model(): Promise<{ ai: AiSdk; model: LanguageModel }> {
     const apiKey = this.config.get('GEMINI_API_KEY', { infer: true });
     if (!apiKey) throw new ServiceUnavailableException('GEMINI_API_KEY is not configured');
-    return createGoogleGenerativeAI({ apiKey })(this.config.get('GEMINI_MODEL', { infer: true }));
+    const { ai, google } = await this.loadSdk();
+    const provider = google.createGoogleGenerativeAI({ apiKey });
+    return { ai, model: provider(this.config.get('GEMINI_MODEL', { infer: true })) };
   }
 
   publicProjects(locale: string) {
@@ -44,7 +57,7 @@ export class AssistantService {
     return this.experiences.findPublic(locale === 'es' ? 'es' : 'en');
   }
 
-  private tools() {
+  private tools(tool: AiSdk['tool']) {
     const toolLocale = z.string().default('en').describe("The language locale, 'en' or 'es'.");
     return {
       get_projects: tool({
@@ -131,10 +144,11 @@ export class AssistantService {
     }
 
     try {
-      const { output } = await generateText({
-        model: this.model(),
+      const { ai, model } = await this.model();
+      const { output } = await ai.generateText({
+        model,
         system: ANALYSIS_SYSTEM_PROMPT(locale),
-        output: Output.object({ schema: suitabilitySchema }),
+        output: ai.Output.object({ schema: suitabilitySchema }),
         temperature: 0,
         prompt: `Here is Nacho's portfolio data:
 - Projects: ${JSON.stringify(projects)}
@@ -152,8 +166,9 @@ ${jobDescription}`,
 
   async summarize(body: string, locale: string): Promise<string> {
     const plain = body.replace(/\s+/g, ' ').trim();
-    const { text } = await generateText({
-      model: this.model(),
+    const { ai, model } = await this.model();
+    const { text } = await ai.generateText({
+      model,
       system: SUMMARIZE_SYSTEM_PROMPT(locale),
       prompt: plain,
       temperature: 0.3,
@@ -169,12 +184,13 @@ ${jobDescription}`,
       .filter((item) => item.role === 'user' || item.role === 'assistant')
       .map((item) => ({ role: item.role as 'user' | 'assistant', content: item.content }));
 
-    const result = streamText({
-      model: this.model(),
+    const { ai, model } = await this.model();
+    const result = ai.streamText({
+      model,
       system: `${CHAT_SYSTEM_PROMPT}\n\nContext:\n${context}\n\nLocale: ${input.locale} — use this locale when calling any tool that accepts a locale argument.`,
       messages: [...history, { role: 'user', content: input.message }],
-      tools: this.tools(),
-      stopWhen: stepCountIs(3),
+      tools: this.tools(ai.tool),
+      stopWhen: ai.stepCountIs(3),
       temperature: 0,
     });
 
