@@ -3,6 +3,12 @@ import { ConfigService } from '@nestjs/config';
 import type { PullRequestDto } from '@repo/contracts';
 import type { Env } from '../config/env';
 
+interface FetchResult {
+  ok: boolean;
+  status: number;
+  json(): Promise<unknown>;
+}
+
 interface SearchResponse {
   items?: Array<{
     state: string;
@@ -29,13 +35,13 @@ export class GithubService {
     const url = `https://api.github.com/search/issues?q=${encodeURIComponent(query)}&per_page=100`;
 
     try {
-      const response = await fetch(url, {
+      const response = (await fetch(url, {
         headers: {
           Accept: 'application/vnd.github+json',
           'User-Agent': 'ignaciofigueroa.dev-api',
           ...(token ? { Authorization: `Bearer ${token}` } : {}),
         },
-      });
+      })) as unknown as FetchResult;
       if (!response.ok) {
         this.logger.warn(`GitHub search failed for ${repo}: ${response.status}`);
         return null;
