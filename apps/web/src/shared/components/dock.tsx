@@ -79,6 +79,7 @@ export function Dock() {
   const assistantButtonRef = useRef<HTMLButtonElement>(null);
   const chatPanelRef = useRef<HTMLDivElement>(null);
   const chatWasOpen = useRef(false);
+  const urlSynced = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -95,7 +96,19 @@ export function Dock() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setIsChatOpen(params.get('chat') === 'open');
+    urlSynced.current = true;
   }, [pathname]);
+
+  useEffect(() => {
+    if (!urlSynced.current) return;
+    const url = new URL(window.location.href);
+    if (isChatOpen) {
+      url.searchParams.set('chat', 'open');
+    } else {
+      url.searchParams.delete('chat');
+    }
+    window.history.replaceState(window.history.state, '', url);
+  }, [isChatOpen]);
 
   useEffect(() => {
     const handleOpenChat = () => {
