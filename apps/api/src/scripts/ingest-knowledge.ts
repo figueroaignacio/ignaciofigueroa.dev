@@ -7,22 +7,23 @@ import { ProjectsService } from '../projects/projects.service';
 
 async function main() {
   const app = await NestFactory.createApplicationContext(AppModule, { logger: ['error', 'warn'] });
-  const chunks: Array<{ content: string; category: string }> = [];
+  const chunks: Array<{ content: string; category: string; locale: string }> = [];
 
   for (const locale of ['en', 'es'] as const) {
     for (const project of await app.get(ProjectsService).findPublic({ locale })) {
       const content = project.description || project.body;
-      if (content.trim()) chunks.push({ content, category: 'projects' });
+      if (content.trim()) chunks.push({ content, category: 'projects', locale });
     }
     for (const item of await app.get(ExperiencesService).findPublic(locale)) {
       chunks.push({
         content: `${item.title} at ${item.company}. Location: ${item.location ?? ''}. Tasks: ${item.tasks.join(' ')}. Technologies: ${item.technologies.join(', ')}.`,
         category: 'experience',
+        locale,
       });
     }
     for (const item of await app.get(EducationService).findPublic(locale)) {
       const content = item.description ?? `${item.title} at ${item.institution}`;
-      if (content.trim()) chunks.push({ content, category: 'education' });
+      if (content.trim()) chunks.push({ content, category: 'education', locale });
     }
   }
 

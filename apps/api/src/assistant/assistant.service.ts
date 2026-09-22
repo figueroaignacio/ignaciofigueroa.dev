@@ -177,7 +177,7 @@ ${jobDescription}`,
   }
 
   async *chat(input: ChatRequestInput): AsyncGenerator<ChatStreamEvent> {
-    const context = await this.knowledge.contextFor(input.message);
+    const context = await this.knowledge.contextFor(input.message, input.locale);
 
     const history: ModelMessage[] = input.history
       .slice(-HISTORY_LIMIT)
@@ -187,7 +187,7 @@ ${jobDescription}`,
     const { ai, model } = await this.model();
     const result = ai.streamText({
       model,
-      system: `${CHAT_SYSTEM_PROMPT}\n\nContext:\n${context}\n\nLocale: ${input.locale} — use this locale when calling any tool that accepts a locale argument.`,
+      system: `${CHAT_SYSTEM_PROMPT}\n\nContext:\n${context}\n\nLocale: ${input.locale} — use this locale when calling any tool that accepts a locale argument.\n\nREPLY LANGUAGE: decide it only from the user's latest message. If they write in English, answer in English even when the context, the tool results or the locale are in Spanish; translate what you use. If they write in Spanish, answer in rioplatense Spanish. Never let the context's language leak into the reply.`,
       messages: [...history, { role: 'user', content: input.message }],
       tools: this.tools(ai.tool),
       stopWhen: ai.stepCountIs(3),
