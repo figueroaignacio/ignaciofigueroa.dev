@@ -1,11 +1,11 @@
 import { PanelShow } from '@/features/assistant/ui/panel-show';
 import { ScrambleText } from '@/shared/components/scramble-text';
 import { ContactSection } from '@/features/home/ui/contact-section';
+import { HeroCredits } from '@/features/home/ui/hero-credits';
 import { HomeHero } from '@/features/home/ui/home-hero';
 import { routing } from '@/i18n/routing';
 import { ConsoleGreeting } from '@/shared/components/console-greeting';
 import { Dock } from '@/shared/components/dock';
-import { Footer } from '@/shared/components/footer';
 import { Grain } from '@/shared/components/grain';
 import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
@@ -64,6 +64,7 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
             <div className="panel-stage">
               <PanelShow />
             </div>
+            <HeroCredits />
           </aside>
           <main id="main-content" className="split-main page-frame relative" tabIndex={-1}>
             {children}
@@ -72,7 +73,6 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
       </div>
       <div className="reveal">
         <ContactSection />
-        <Footer />
       </div>
       <Dock />
       <ConsoleGreeting />

@@ -1,6 +1,5 @@
 import { routing } from '@/i18n/routing';
 import { Dock } from '@/shared/components/dock';
-import { Footer } from '@/shared/components/footer';
 import { Grain } from '@/shared/components/grain';
 import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
@@ -50,7 +49,6 @@ export default async function ArticleLayout({ children, params }: ArticleLayoutP
           {children}
         </main>
       </div>
-      <Footer />
       <Dock />
     </div>
   );

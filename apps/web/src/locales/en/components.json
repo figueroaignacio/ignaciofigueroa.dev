@@ -14,13 +14,6 @@
     "dismiss": "Dismiss summary",
     "title": "AI Summary"
   },
-  "footer": {
-    "name": "Ignacio Figueroa",
-    "role": "Fullstack Developer",
-    "thanks": "Thanks for stopping by",
-    "rights": "All rights reserved",
-    "kiss": "Kept it simple on purpose. - Ignacio"
-  },
   "error": "An error occurred while loading the data.",
   "loader": "Loading...",
   "ctaCv": {

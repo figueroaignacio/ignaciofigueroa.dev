@@ -14,13 +14,6 @@
     "dismiss": "Cerrar resumen",
     "title": "Resumen IA"
   },
-  "footer": {
-    "name": "Ignacio Figueroa",
-    "role": "Fullstack Developer",
-    "thanks": "Gracias por pasar por acá",
-    "rights": "Todos los derechos reservados",
-    "kiss": "Simple a propósito. - Ignacio"
-  },
   "error": "Ha ocurrido un error al cargar los datos.",
   "loader": "Cargando...",
   "ctaCv": {

@@ -314,15 +314,6 @@
     animation: courier-off 8s linear both;
   }
 
-  .footer-perch {
-    position: absolute;
-    inset-block-end: 100%;
-    inset-inline-end: 12%;
-    inline-size: 2.75rem;
-    block-size: auto;
-    pointer-events: none;
-  }
-
   .mark-perch {
     position: absolute;
     inset-block-end: 100%;
