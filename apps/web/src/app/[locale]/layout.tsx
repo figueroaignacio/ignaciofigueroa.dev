@@ -51,29 +51,29 @@ export const viewport: Viewport = {
 
 const baseMetadata: Metadata = {
   title: {
-    default: 'Ignacio Figueroa · Fullstack Developer',
+    default: 'Ignacio Figueroa · Frontend Engineer',
     template: '%s · Ignacio Figueroa',
   },
   description:
-    'Ignacio Figueroa is a fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC since July 2026. He builds NachUI, an open source component system, and integrates LLMs with Python, FastAPI, and Next.js.',
+    'Ignacio Figueroa is a frontend engineer in Buenos Aires, Argentina, working at Reclee, a B2B recruiting SaaS. He builds design systems with React and Next.js, writes his own backends in NestJS and maintains NachUI, an open source component system.',
   applicationName: 'Ignacio Figueroa',
   keywords: [
-    'Fullstack Developer',
+    'Frontend Engineer',
     'Ignacio Figueroa',
     'React',
     'Next.js',
     'TypeScript',
-    'FastAPI',
-    'Python',
+    'Design Systems',
+    'NestJS',
+    'PostgreSQL',
     'AI Integration',
+    'Vercel AI SDK',
     'NachUI',
     'Component Library',
     'Open Source',
-    'Software Engineer',
+    'Buenos Aires',
     'Argentina',
-    'Portfolio',
-    'Linux',
-    'Fedora',
+    'Reclee',
   ],
   authors: [{ name: 'Ignacio Figueroa', url: BASE_URL }],
   creator: 'Ignacio Figueroa',
@@ -94,9 +94,9 @@ const baseMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ignacio Figueroa · Fullstack Developer',
+    title: 'Ignacio Figueroa · Frontend Engineer',
     description:
-      'Fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC and author of NachUI, an open source component system.',
+      'Frontend engineer in Buenos Aires, Argentina. Design systems at Reclee and author of NachUI, an open source component system.',
     creator: '@nachofiguer_oa',
   },
   robots: {
@@ -135,12 +135,10 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: isEs
-        ? 'Ignacio Figueroa · Desarrollador Fullstack'
-        : 'Ignacio Figueroa · Fullstack Developer',
+      title: 'Ignacio Figueroa · Frontend Engineer',
       description: isEs
-        ? 'Ignacio Figueroa es desarrollador fullstack en Buenos Aires, Argentina. Desarrollador frontend en Reclee LLC desde julio de 2026 y autor de NachUI, un sistema de componentes open source.'
-        : 'Ignacio Figueroa is a fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC since July 2026 and author of NachUI, an open source component system.',
+        ? 'Ignacio Figueroa es frontend engineer en Buenos Aires, Argentina. Trabaja en Reclee, un SaaS B2B de reclutamiento, y es autor de NachUI, un sistema de componentes open source.'
+        : 'Ignacio Figueroa is a frontend engineer in Buenos Aires, Argentina. He works at Reclee, a B2B recruiting SaaS, and is the author of NachUI, an open source component system.',
       type: 'website',
       locale: isEs ? 'es_AR' : 'en_US',
       alternateLocale: isEs ? ['en_US'] : ['es_AR'],
@@ -151,7 +149,7 @@ export async function generateMetadata({
           url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'Ignacio Figueroa · Fullstack Developer',
+          alt: 'Ignacio Figueroa · Frontend Engineer',
         },
       ],
     },

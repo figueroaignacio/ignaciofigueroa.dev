@@ -1,31 +1,31 @@
 {
   "home": {
-    "title": "Software Developer in Buenos Aires",
-    "ogTitle": "Ignacio Figueroa · Fullstack Developer",
-    "description": "Ignacio Figueroa is a fullstack developer in Buenos Aires, Argentina. Frontend developer at Reclee LLC since July 2026. He builds NachUI, an open source component system, and integrates LLMs with Python, FastAPI, and Next.js.",
-    "keywords": "Fullstack Developer, Ignacio Figueroa, React, Next.js, TypeScript, FastAPI, Python, AI Integration, LLM, NachUI, Component Library, Open Source, Argentina, Software Engineer, Portfolio, Linux, Fedora",
-    "jobTitle": "Fullstack Developer"
+    "title": "Frontend Engineer in Buenos Aires",
+    "ogTitle": "Ignacio Figueroa · Frontend Engineer",
+    "description": "Ignacio Figueroa is a frontend engineer in Buenos Aires, Argentina, working at Reclee, a B2B recruiting SaaS. He builds design systems with React and Next.js, writes his own backends in NestJS and maintains NachUI, an open source component system.",
+    "keywords": "Frontend Engineer, Ignacio Figueroa, React, Next.js, TypeScript, Design Systems, NestJS, PostgreSQL, AI Integration, Vercel AI SDK, Gemini, NachUI, Component Library, Open Source, Buenos Aires, Argentina, Reclee",
+    "jobTitle": "Frontend Engineer"
   },
   "aboutMe": {
     "title": "About",
-    "description": "Fullstack developer from Buenos Aires, Argentina. I handle the full stack — schema, API, frontend, deploy. I integrate LLMs where they solve a concrete problem, not as a feature.",
+    "description": "Frontend engineer in Buenos Aires. Design systems, Next.js, and enough NestJS and Postgres to ship the whole thing. Currently at Reclee.",
     "keywords": "About, Developer Bio, Tech Stack, Work Experience, Ignacio Figueroa, Professional Profile, Linux, Fedora, UTN, Argentina"
   },
   "projects": {
     "title": "Projects",
     "ogTitle": "Projects by Ignacio Figueroa",
-    "description": "Every project Ignacio Figueroa has shipped: NachUI (an open source component system with a CLI and a NestJS registry API), Nacho Assistant (a FastAPI + Gemini assistant), and Services AI Assistant. Source code and live demos for each one.",
-    "keywords": "Web Projects, Project Portfolio, React Projects, Open Source, NachUI, AI Assistant, FastAPI, Fullstack",
+    "description": "Every project Ignacio Figueroa has shipped: NachUI, an open source component system with a CLI and a NestJS registry API; this portfolio, with its own NestJS CMS and a Gemini assistant with vector search; and Services AI Assistant. Source code and live demos for each one.",
+    "keywords": "Web Projects, Project Portfolio, React Projects, Open Source, NachUI, Design System, NestJS, AI Assistant, Gemini, Frontend Engineer",
     "heading": "Projects",
     "intro": "Everything I've shipped and kept running, newest work first. Each project links to its source code and, where there is one, a live demo."
   },
   "chat": {
     "title": "AI Assistant",
-    "description": "AI assistant built with Google Gemini, LangChain, and FastAPI. Ask about projects, stack, experience, or send a direct message."
+    "description": "Ask about Ignacio Figueroa's work, stack and experience. The assistant runs on Google Gemini through the Vercel AI SDK inside a NestJS API, with vector search over this site's content."
   },
   "contact": {
     "title": "Contact",
-    "description": "Ignacio Figueroa is open to fullstack and AI integration roles, contract or full-time, remote from Buenos Aires (UTC−3). Reach him at contact@ignaciofigueroa.dev, on LinkedIn, or on GitHub.",
-    "keywords": "Contact, Hire Developer, Fullstack Engineer, Ignacio Figueroa, React Developer, Argentina"
+    "description": "Ignacio Figueroa is a frontend engineer in Buenos Aires (UTC−3), open to frontend and AI integration roles, remote, contract or full-time. Reach him at contact@ignaciofigueroa.dev, on LinkedIn, or on GitHub.",
+    "keywords": "Contact, Hire Frontend Engineer, React Developer, Next.js Developer, Ignacio Figueroa, Buenos Aires, Argentina, Remote"
   }
 }

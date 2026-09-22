@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Ignacio Figueroa · Fullstack Developer',
+    name: 'Ignacio Figueroa · Frontend Engineer',
     short_name: 'Ignacio Figueroa',
     description:
-      'Portfolio of Ignacio Figueroa, a fullstack developer in Buenos Aires, Argentina working with React, Next.js, Python, and FastAPI.',
+      'Portfolio of Ignacio Figueroa, a frontend engineer in Buenos Aires, Argentina, working with React, Next.js, design systems and NestJS.',
     start_url: '/en',
     scope: '/',
     display: 'standalone',

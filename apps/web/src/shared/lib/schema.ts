@@ -19,16 +19,18 @@ export const KNOWS_ABOUT = [
   'React',
   'Next.js',
   'TypeScript',
+  'Design Systems',
+  'Tailwind CSS',
   'Node.js',
   'NestJS',
-  'FastAPI',
-  'Python',
+  'PostgreSQL',
+  'Supabase',
   'AI Integration',
   'Large Language Models',
-  'Design Systems',
-  'PostgreSQL',
+  'Retrieval-Augmented Generation',
+  'Vercel AI SDK',
+  'Python',
   'Linux',
-  'Tailwind CSS',
 ];
 
 type JsonLdNode = Record<string, unknown>;
@@ -113,6 +115,12 @@ export function buildPersonNode({
     image: `${BASE_URL}/images/profile-photo.webp`,
     jobTitle,
     description,
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: jobTitle,
+      occupationLocation: { '@type': 'City', name: 'Buenos Aires' },
+      skills: KNOWS_ABOUT.slice(0, 6).join(', '),
+    },
     email: `mailto:${CONTACT_EMAIL}`,
     knowsLanguage: ['es', 'en'],
     knowsAbout: KNOWS_ABOUT,
@@ -125,8 +133,10 @@ export function buildPersonNode({
     worksFor: {
       '@type': 'Organization',
       '@id': RECLEE_ID,
-      name: 'Reclee LLC',
+      name: 'Reclee',
+      legalName: 'Reclee LLC',
       url: 'https://reclee.com',
+      description: 'B2B recruiting SaaS',
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',

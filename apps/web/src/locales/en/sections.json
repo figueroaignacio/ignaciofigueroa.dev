@@ -1,9 +1,9 @@
 {
   "home": {
-    "greeting": "Software Developer · AI Integrations · Fullstack Development",
+    "greeting": "Frontend Engineer · Backend when it's needed · Buenos Aires",
     "name": "Ignacio Figueroa",
-    "title": "Software Developer",
-    "description": "I care about understanding how things work from the inside. With my own judgment, and using AI as a copilot for productivity, I build anything that crosses my mind.",
+    "title": "Frontend Engineer",
+    "description": "I build the part of the product people actually touch, and enough of what's behind it to ship without waiting on anyone. I use AI every day. The judgment is still mine.",
     "status": {
       "working": "Working at reclee.com",
       "workingUrl": "https://reclee.com",
@@ -16,8 +16,8 @@
   "aboutMe": {
     "title": "About Me",
     "content": {
-      "bio": "I'm a fullstack developer based in Buenos Aires, Argentina. Since July 2026 I've been a frontend developer at Reclee LLC, where I moved the internal interface and the landing pages onto a design system built on shadcn/ui and ReUI. Before that, from May 2023 to April 2024, I was a fullstack developer at Pawtrics Software LLC, building React components with Next.js and a CRUD system on Supabase and PostgreSQL.",
-      "details": "I work on Fedora Linux and study Programming and Software Development at Universidad Tecnológica Nacional. Outside of work I maintain NachUI, an open source component system of 37 components with its own CLI and a NestJS registry API, and I build AI assistants with Python, FastAPI, and Google Gemini.",
+      "bio": "I'm a frontend engineer in Buenos Aires. Since July 2026 I work at Reclee, a B2B SaaS that helps companies recruit faster. I own the frontend there: I set up the design system on shadcn/ui and ReUI, rebuilt the layouts mobile-first, organized the code by feature so business logic stays out of the components, and built the landing you see at reclee.com. Before that I spent a year at Pawtrics Software building a practice management system for veterinary clinics, fullstack with Next.js, Supabase and PostgreSQL.",
+      "details": "I work T-shaped: deep on frontend, and I keep backend and infrastructure current enough to ship the whole thing. I use AI every day and I integrate it into products: this site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components. I maintain NachUI, an open source component system with its own CLI and registry, and right now I'm adding AI Elements to it, the pieces a chat interface needs: messages, streaming, tool calls. I study Programming at UTN and work on Fedora.",
       "photoLegend": "Ignacio Figueroa, known as Nacho"
     }
   },
@@ -329,19 +329,27 @@
     "items": [
       {
         "question": "Who is Ignacio Figueroa?",
-        "answer": "I'm Ignacio Figueroa, a fullstack developer from Buenos Aires, Argentina. I've been a frontend developer at Reclee LLC since July 2026, and before that I was a fullstack developer at Pawtrics Software LLC between May 2023 and April 2024. I'm also the author of NachUI, an open source component system."
+        "answer": "I'm Ignacio Figueroa, a frontend engineer from Buenos Aires, Argentina. Since July 2026 I work at Reclee, a B2B SaaS that helps companies recruit faster, where I own the frontend and the design system. Before that I spent a year at Pawtrics Software building a practice management system for veterinary clinics. I'm also the author of NachUI, an open source component system."
+      },
+      {
+        "question": "Is Ignacio Figueroa a frontend or a fullstack developer?",
+        "answer": "Frontend engineer, T-shaped. My depth is in React, Next.js and design systems, and I keep backend and infrastructure current enough to ship a product end to end: this site runs on a NestJS API and PostgreSQL that I wrote myself, deployed on Vercel and Supabase."
+      },
+      {
+        "question": "What does Ignacio Figueroa do at Reclee?",
+        "answer": "At Reclee I set up the design system on shadcn/ui and ReUI, rebuilt the application layouts mobile-first, organized the frontend by feature so business logic stays out of the components, and built the public landing at reclee.com. I ship tickets from Linear through GitHub code reviews."
       },
       {
         "question": "What tech stack does Ignacio Figueroa use?",
-        "answer": "Day to day I write TypeScript with React, Next.js, and Node.js on the frontend, and Python with FastAPI or NestJS on the backend, with PostgreSQL for persistence. I style with Tailwind CSS and develop on Fedora Linux. For AI work I use Google Gemini, the Vercel AI SDK, LangChain, and Groq."
+        "answer": "Day to day I write TypeScript with React, Next.js and Tailwind CSS. On the backend I use NestJS with PostgreSQL, Drizzle and Supabase, and Python with FastAPI when a project calls for it. For AI work I use Google Gemini through the Vercel AI SDK, with pgvector for retrieval. I develop on Fedora Linux and use AI agents like Claude Code every day."
       },
       {
         "question": "What is NachUI?",
-        "answer": "NachUI is the open source component system I build, published at nachui.tech. It ships 37 accessible React primitives that you copy into your project as source code instead of installing as a dependency. The monorepo also holds a CLI that injects components and OKLCH design tokens, a NestJS registry API, and an AI agent that answers questions from the real source code."
+        "answer": "NachUI is the open source component system I build, published at nachui.tech. It ships accessible React primitives that you copy into your project as source code instead of installing as a dependency. The monorepo also holds a CLI that injects components and OKLCH design tokens, a NestJS registry API, and an AI agent that answers questions from the real source code. Right now I'm adding AI Elements: the pieces a chat interface needs, like messages, streaming and tool calls."
       },
       {
         "question": "Is Ignacio Figueroa available for work?",
-        "answer": "Yes — I'm open to fullstack and AI integration roles, on contract or full-time, working remotely from Buenos Aires. The fastest way to reach me is contact@ignaciofigueroa.dev, and the contact form on this site sends me a direct email."
+        "answer": "Yes. I'm open to frontend and AI integration roles on product teams, on contract or full-time, working remotely from Buenos Aires. The fastest way to reach me is contact@ignaciofigueroa.dev, and the contact form on this site sends me a direct email."
       },
       {
         "question": "Where does Ignacio Figueroa live and what timezone is he in?",
@@ -349,11 +357,11 @@
       },
       {
         "question": "What languages does Ignacio Figueroa work in?",
-        "answer": "Spanish is my first language and I work professionally in English. The documentation, code, and commit messages I write are in English, and this site is published in both languages — you're reading the English version."
+        "answer": "Spanish is my first language and I work professionally in English. The documentation, code, and commit messages I write are in English, and this site is published in both languages. You're reading the English version."
       },
       {
         "question": "What has Ignacio Figueroa built with AI?",
-        "answer": "I built Nacho Assistant, a retrieval-augmented assistant on FastAPI, LangChain, and Google Gemini that answers questions about my work using vector search over my own content. I also built NachUI Support AI, a tool-calling agent that reads the real NachUI source code at query time, and Services AI Assistant, a Gemini 2.5 Flash agent that collects contact requests through autonomous function calling."
+        "answer": "The assistant on this site: a NestJS service on Google Gemini and the Vercel AI SDK that answers questions about my work with vector search over my own content, calls tools to show projects and experience, and can analyze a job description against my profile. I also built NachUI Support AI, a tool-calling agent that reads the real NachUI source code at query time, and Services AI Assistant, a Gemini agent that collects contact requests through function calling."
       },
       {
         "question": "What did Ignacio Figueroa study?",

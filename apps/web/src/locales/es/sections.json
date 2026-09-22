@@ -1,9 +1,9 @@
 {
   "home": {
-    "greeting": "Desarrollador de Software · Integración de IA · Desarrollo Fullstack",
+    "greeting": "Frontend Engineer · Backend cuando hace falta · Buenos Aires",
     "name": "Ignacio Figueroa",
-    "title": "Desarrollador de Software",
-    "description": "Me importa entender como funcionan las cosas desde el interior. Teniendo criterio propio y utilizando la IA como copilito para productividad, construyo cualquier cosa que se me pase por la cabeza.",
+    "title": "Frontend Engineer",
+    "description": "Construyo la parte del producto que la gente toca, y lo suficiente de lo que hay detrás como para no depender de nadie para salir a producción. Uso IA todos los días. El criterio sigue siendo mío.",
     "status": {
       "working": "Trabajando en reclee.com",
       "workingUrl": "https://reclee.com",
@@ -16,8 +16,8 @@
   "aboutMe": {
     "title": "Sobre mí",
     "content": {
-      "bio": "Soy desarrollador fullstack radicado en Buenos Aires, Argentina. Desde julio de 2026 soy desarrollador frontend en Reclee LLC, donde pasé la interfaz interna y las landing pages a un design system construido sobre shadcn/ui y ReUI. Antes, entre mayo de 2023 y abril de 2024, fui desarrollador fullstack en Pawtrics Software LLC, donde construí componentes React con Next.js y un sistema CRUD sobre Supabase y PostgreSQL.",
-      "details": "Trabajo sobre Fedora Linux y estudio la Tecnicatura en Programación y Desarrollo de Software en la Universidad Tecnológica Nacional. Fuera del trabajo mantengo NachUI, un sistema de componentes open source de 37 componentes con su propio CLI y una API de registro en NestJS, y construyo asistentes de IA con Python, FastAPI y Google Gemini.",
+      "bio": "Soy frontend engineer en Buenos Aires. Desde julio de 2026 trabajo en Reclee, un SaaS B2B que ayuda a las empresas a reclutar más rápido. Ahí me hago cargo del frontend: armé el design system sobre shadcn/ui y ReUI, rehice los layouts mobile-first, organicé el código por feature para que la lógica de negocio no viva en los componentes, e hice la landing que ves en reclee.com. Antes pasé un año en Pawtrics Software construyendo un sistema de gestión para clínicas veterinarias, fullstack con Next.js, Supabase y PostgreSQL.",
+      "details": "Trabajo en forma de T: profundidad en frontend, y backend e infraestructura lo suficientemente al día como para sacar el producto entero. Uso IA todos los días y la integro en productos: este sitio corre sobre un CMS en NestJS que escribí de cero, con Postgres, un panel de admin y un asistente sobre Gemini con búsqueda vectorial. Lo que más disfruto es desarrollar componentes. Mantengo NachUI, un sistema de componentes open source con su propio CLI y registry, y ahora mismo le estoy sumando AI Elements, las piezas que necesita una interfaz de chat: mensajes, streaming, tool calls. Estudio Programación en la UTN y trabajo sobre Fedora.",
       "photoLegend": "Ignacio Figueroa, conocido como Nacho"
     }
   },
@@ -330,19 +330,27 @@
     "items": [
       {
         "question": "¿Quién es Ignacio Figueroa?",
-        "answer": "Soy Ignacio Figueroa, desarrollador fullstack de Buenos Aires, Argentina. Soy desarrollador frontend en Reclee LLC desde julio de 2026, y antes fui desarrollador fullstack en Pawtrics Software LLC, entre mayo de 2023 y abril de 2024. También soy el autor de NachUI, un sistema de componentes open source."
+        "answer": "Soy Ignacio Figueroa, frontend engineer de Buenos Aires, Argentina. Desde julio de 2026 trabajo en Reclee, un SaaS B2B que ayuda a las empresas a reclutar más rápido, donde me hago cargo del frontend y del design system. Antes pasé un año en Pawtrics Software construyendo un sistema de gestión para clínicas veterinarias. También soy el autor de NachUI, un sistema de componentes open source."
+      },
+      {
+        "question": "¿Ignacio Figueroa es desarrollador frontend o fullstack?",
+        "answer": "Frontend engineer, en forma de T. Mi profundidad está en React, Next.js y design systems, y mantengo backend e infraestructura lo suficientemente al día como para sacar un producto de punta a punta: este sitio corre sobre una API en NestJS y PostgreSQL que escribí yo, desplegada en Vercel y Supabase."
+      },
+      {
+        "question": "¿Qué hace Ignacio Figueroa en Reclee?",
+        "answer": "En Reclee armé el design system sobre shadcn/ui y ReUI, rehice los layouts de la aplicación mobile-first, organicé el frontend por feature para que la lógica de negocio no viva en los componentes, e hice la landing pública de reclee.com. Entrego tickets de Linear pasando por code reviews en GitHub."
       },
       {
         "question": "¿Qué stack usa Ignacio Figueroa?",
-        "answer": "Todos los días escribo TypeScript con React, Next.js y Node.js en el frontend, y Python sobre FastAPI o NestJS en el backend, con PostgreSQL para persistencia. Estilo con Tailwind CSS y desarrollo sobre Fedora Linux. Para trabajo con IA uso Google Gemini, el Vercel AI SDK, LangChain y Groq."
+        "answer": "Todos los días escribo TypeScript con React, Next.js y Tailwind CSS. En el backend uso NestJS con PostgreSQL, Drizzle y Supabase, y Python con FastAPI cuando el proyecto lo pide. Para IA uso Google Gemini a través del Vercel AI SDK, con pgvector para retrieval. Desarrollo sobre Fedora Linux y uso agentes de IA como Claude Code todos los días."
       },
       {
         "question": "¿Qué es NachUI?",
-        "answer": "NachUI es el sistema de componentes open source que construyo, publicado en nachui.tech. Incluye 37 primitivas accesibles de React que se copian al proyecto como código fuente en vez de instalarse como dependencia. El monorepo también tiene un CLI que inyecta componentes y design tokens en OKLCH, una API de registro en NestJS y un agente de IA que responde leyendo el código fuente real."
+        "answer": "NachUI es el sistema de componentes open source que construyo, publicado en nachui.tech. Incluye primitivas accesibles de React que se copian al proyecto como código fuente en vez de instalarse como dependencia. El monorepo también tiene un CLI que inyecta componentes y design tokens en OKLCH, una API de registro en NestJS y un agente de IA que responde leyendo el código fuente real. Ahora mismo le estoy sumando AI Elements: las piezas que necesita una interfaz de chat, como mensajes, streaming y tool calls."
       },
       {
         "question": "¿Ignacio Figueroa está disponible para trabajar?",
-        "answer": "Sí — estoy abierto a roles fullstack y de integración de IA, por contrato o full-time, en remoto desde Buenos Aires. La forma más rápida de contactarme es contact@ignaciofigueroa.dev, y el formulario de contacto de este sitio me envía un email directo."
+        "answer": "Sí. Estoy abierto a roles frontend y de integración de IA en equipos de producto, por contrato o full-time, en remoto desde Buenos Aires. La forma más rápida de contactarme es contact@ignaciofigueroa.dev, y el formulario de contacto de este sitio me envía un email directo."
       },
       {
         "question": "¿Dónde vive Ignacio Figueroa y en qué zona horaria está?",
@@ -350,11 +358,11 @@
       },
       {
         "question": "¿En qué idiomas trabaja Ignacio Figueroa?",
-        "answer": "El español es mi lengua materna y trabajo profesionalmente en inglés. La documentación, el código y los mensajes de commit que escribo están en inglés, y este sitio se publica en los dos idiomas — estás leyendo la versión en español."
+        "answer": "El español es mi lengua materna y trabajo profesionalmente en inglés. La documentación, el código y los mensajes de commit que escribo están en inglés, y este sitio se publica en los dos idiomas. Estás leyendo la versión en español."
       },
       {
         "question": "¿Qué construyó Ignacio Figueroa con IA?",
-        "answer": "Construí Nacho Assistant, un asistente con retrieval-augmented generation sobre FastAPI, LangChain y Google Gemini que responde preguntas sobre mi trabajo usando búsqueda vectorial sobre mi propio contenido. También construí NachUI Support AI, un agente con tool calling que lee el código fuente real de NachUI en tiempo de consulta, y Services AI Assistant, un agente con Gemini 2.5 Flash que recolecta pedidos de contacto mediante function calling autónomo."
+        "answer": "El asistente de este sitio: un servicio en NestJS sobre Google Gemini y el Vercel AI SDK que responde preguntas sobre mi trabajo con búsqueda vectorial sobre mi propio contenido, llama herramientas para mostrar proyectos y experiencia, y puede analizar una descripción de puesto contra mi perfil. También construí NachUI Support AI, un agente con tool calling que lee el código fuente real de NachUI en tiempo de consulta, y Services AI Assistant, un agente sobre Gemini que recolecta pedidos de contacto mediante function calling."
       },
       {
         "question": "¿Qué estudió Ignacio Figueroa?",
