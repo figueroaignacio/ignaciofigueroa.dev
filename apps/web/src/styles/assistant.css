@@ -335,6 +335,7 @@
     inset-inline: 0;
     block-size: 2.5rem;
     pointer-events: none;
+    container-type: inline-size;
   }
 
   .contribution-walker {
@@ -349,6 +350,12 @@
   .contribution-cell {
     animation: cell-sweep var(--sweep) ease-out infinite;
     animation-delay: calc(var(--sweep) * 0.45 * var(--col, 0) / var(--cols, 53));
+  }
+
+  @media (max-width: 63.999rem) {
+    .contribution-cell {
+      animation: none;
+    }
   }
 
   .rail-bot:focus-visible {
@@ -646,15 +653,15 @@
 
 @keyframes sweep-walk {
   0% {
-    inset-inline-start: 0;
+    translate: 0 0;
   }
   45%,
   50% {
-    inset-inline-start: calc(100% - 2.5rem);
+    translate: calc(100cqi - 2.5rem) 0;
   }
   95%,
   100% {
-    inset-inline-start: 0;
+    translate: 0 0;
   }
 }
 
