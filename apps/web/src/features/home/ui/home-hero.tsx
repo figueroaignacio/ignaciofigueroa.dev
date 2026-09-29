@@ -1,38 +1,58 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avatar';
+import { ScrambleText } from '@/shared/components/scramble-text';
 import { getTranslations } from 'next-intl/server';
 import { HeroStatus } from './hero-status';
-import { ScrambleText } from '@/shared/components/scramble-text';
 import { HeroActions } from './home-hero-actions';
 
 export async function HomeHero() {
   const t = await getTranslations('sections.home');
   const tCv = await getTranslations('components.ctaCv');
+  const [firstName = '', ...rest] = t('name').split(' ');
+  const lastName = rest.join(' ');
+  const [role = '', ...roleRest] = t('title').split(' ');
+  const roleTail = roleRest.join(' ');
 
   return (
-    <header className="flex min-w-0 flex-1 flex-col justify-center py-10 lg:py-0">
-      <Avatar
-        size="lg"
-        className="hero-avatar mb-5 size-16 border border-border/60 shadow-[0_12px_32px_-16px_oklch(0%_0_0/0.6)] lg:size-20"
-      >
-        <AvatarImage
-          src="/images/profile-photo.webp"
-          alt="Ignacio Figueroa"
-          width={160}
-          height={160}
-          fetchPriority="high"
-          className="object-cover object-top"
-        />
-        <AvatarFallback className="font-mono text-sm">IF</AvatarFallback>
-      </Avatar>
-      <h1 className="type-display text-foreground lg:text-[2.5rem] xl:text-[3rem]">
-        <ScrambleText text={t('name')} />
+    <header className="flex min-h-0 min-w-0 flex-1 flex-col justify-end gap-7 py-8 lg:gap-9 lg:py-0 lg:pb-4">
+      <h1 className="max-w-[9em] text-[clamp(3rem,min(13vw,10vh),8.5rem)] leading-[0.82] font-black tracking-[-0.075em] uppercase">
+        <span className="mr-[0.22em] inline-block">
+          <ScrambleText text={firstName} />
+        </span>
+        <span className="mr-[0.22em] inline-block">
+          <ScrambleText text={lastName} />
+        </span>
+        <span className="mr-[0.22em] inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
+          {role}
+        </span>
+        {roleTail ? (
+          <span className="inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
+            {roleTail}
+          </span>
+        ) : null}
       </h1>
-      <p className="mt-2 text-[15px] leading-relaxed text-muted-strong">{t('title')}</p>
-      <div className="prose-reading mt-4 max-w-md">
-        <p>{t('description')}</p>
+
+      <div className="flex flex-col gap-6 border-t-2 border-foreground pt-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+        <div className="flex max-w-[36rem] flex-col gap-4">
+          <p className="text-lg leading-tight font-bold tracking-[-0.03em] text-pretty text-foreground sm:text-xl">
+            {t('description')}
+          </p>
+          <div className="flex items-center gap-3">
+            <Avatar size="sm" className="hero-avatar shrink-0 border border-border/60">
+              <AvatarImage
+                src="/images/profile-photo.webp"
+                alt="Ignacio Figueroa"
+                width={64}
+                height={64}
+                fetchPriority="high"
+                className="object-cover object-top"
+              />
+              <AvatarFallback className="font-mono text-[10px]">IF</AvatarFallback>
+            </Avatar>
+            <HeroStatus />
+          </div>
+        </div>
+        <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
       </div>
-      <HeroStatus />
-      <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
     </header>
   );
 }

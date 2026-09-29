@@ -34,7 +34,7 @@ export function HeroActions({ cvLabel, cvUrl }: HeroActionsProps) {
   ];
 
   return (
-    <div className="mt-4 flex flex-wrap items-center gap-2">
+    <div className="flex shrink-0 flex-wrap items-center gap-2 lg:justify-end">
       {heroActions.map((action) => (
         <a
           key={action.label}
