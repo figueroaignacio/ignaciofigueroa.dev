@@ -1,8 +1,10 @@
+'use client';
+
 import { AssistantStroll } from '@/features/assistant/ui/assistant-stroll';
 import { Badge } from '@/shared/components/ui/badge';
 import { Separator } from '@/shared/components/ui/separator';
-import { Tooltip } from '@/shared/components/ui/tooltip';
 import { cn } from '@/shared/lib/cn';
+import { useRef, useState } from 'react';
 import { GithubContributionDay, TopLanguage } from './github-stats-types';
 
 interface GithubContributionCalendarProps {
@@ -44,23 +46,32 @@ function getLanguageColorClass(lang: string) {
   return LANGUAGE_COLORS[lang.toLowerCase()] ?? 'bg-primary';
 }
 
-function ContributionCell({ day, column }: { day: GithubContributionDay; column: number }) {
+function ContributionCell({
+  day,
+  column,
+  row,
+}: {
+  day: GithubContributionDay;
+  column: number;
+  row: number;
+}) {
   return (
-    <Tooltip>
-      <Tooltip.Trigger asChild>
-        <div
-          style={{ '--col': column } as React.CSSProperties}
-          className={cn(
-            'contribution-cell w-2.5 h-2.5 rounded-xs transition-all duration-200 hover:scale-125 hover:z-10 cursor-pointer',
-            getCellColorClass(day.contributionLevel),
-          )}
-        />
-      </Tooltip.Trigger>
-      <Tooltip.Content className="text-[10px]">
-        <span className="font-semibold">{day.contributionCount}</span> contributions on {day.date}
-      </Tooltip.Content>
-    </Tooltip>
+    <div
+      data-week={column}
+      data-day={row}
+      style={{ '--col': column } as React.CSSProperties}
+      className={cn(
+        'contribution-cell w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer',
+        getCellColorClass(day.contributionLevel),
+      )}
+    />
   );
+}
+
+interface ActiveCell {
+  day: GithubContributionDay;
+  x: number;
+  y: number;
 }
 
 function LanguageBadge({ language, count }: TopLanguage) {
@@ -82,6 +93,25 @@ export function GithubContributionCalendar({
   lessLabel,
   moreLabel,
 }: GithubContributionCalendarProps) {
+  const field = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState<ActiveCell | null>(null);
+  const showCell = (event: React.PointerEvent<HTMLDivElement>) => {
+    const cell = (event.target as HTMLElement).closest<HTMLElement>('[data-week]');
+    const host = field.current;
+    const day = cell
+      ? contributions[Number(cell.dataset.week)]?.[Number(cell.dataset.day)]
+      : undefined;
+    if (!cell || !host || !day) return;
+    if (active?.day === day) return;
+    const box = cell.getBoundingClientRect();
+    const origin = host.getBoundingClientRect();
+    setActive({
+      day,
+      x: box.left - origin.left + box.width / 2,
+      y: box.top - origin.top,
+    });
+  };
+
   return (
     <div className="border border-border/50 bg-secondary/10 rounded-xl p-5 space-y-4">
       <div className="flex items-center justify-between">
@@ -100,6 +130,7 @@ export function GithubContributionCalendar({
 
       <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-border/60 scrollbar-track-transparent">
         <div
+          ref={field}
           className="contribution-field min-w-180 pt-10 pb-1"
           style={{ '--cols': contributions.length } as React.CSSProperties}
         >
@@ -107,17 +138,39 @@ export function GithubContributionCalendar({
             <AssistantStroll className="contribution-walker" />
           </div>
 
-          <div className="grid grid-flow-col grid-rows-7 gap-0.75 auto-cols-max">
+          <div
+            className="grid grid-flow-col grid-rows-7 gap-0.75 auto-cols-max"
+            onPointerOver={showCell}
+            onPointerLeave={() => setActive(null)}
+          >
             {contributions.flatMap((week, wIndex) =>
               week.map((day, dIndex) => (
                 <ContributionCell
                   key={`${activeYear}-${wIndex}-${dIndex}`}
                   day={day}
                   column={wIndex}
+                  row={dIndex}
                 />
               )),
             )}
           </div>
+
+          {active && (
+            <div
+              role="tooltip"
+              className="pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-sm bg-foreground px-2.5 py-1 text-[10px] whitespace-nowrap text-background"
+              style={{ left: active.x, top: active.y - 6 }}
+            >
+              <span
+                aria-hidden="true"
+                className="absolute -bottom-1 left-1/2 size-2 -translate-x-1/2 rotate-45 rounded-[1px] bg-foreground"
+              />
+              <span className="relative">
+                <span className="font-semibold">{active.day.contributionCount}</span> contributions
+                on {active.day.date}
+              </span>
+            </div>
+          )}
         </div>
       </div>
 
