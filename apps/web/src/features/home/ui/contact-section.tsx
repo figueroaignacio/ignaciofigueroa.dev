@@ -56,47 +56,52 @@ export function ContactSection() {
         <span />
       </div>
 
-      <div className="relative mx-auto grid w-full max-w-5xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <p className="type-label lowercase text-muted-foreground">
-            <span aria-hidden="true" className="text-muted-foreground/60">
-              ./
-            </span>
-            <ScrambleText text={tPages('label')} mode="in-view" />
-          </p>
-          <h2 className="type-display mt-4 text-foreground lg:text-[3rem] xl:text-[3.5rem]">
+      <div className="relative flex w-full flex-col gap-7 lg:gap-9">
+        <p className="type-label lowercase text-muted-foreground">
+          <span aria-hidden="true" className="text-muted-foreground/60">
+            ./
+          </span>
+          <ScrambleText text={tPages('label')} mode="in-view" />
+        </p>
+        <h2 className="max-w-[9em] text-[clamp(3rem,min(13vw,10vh),8.5rem)] leading-[0.82] font-black tracking-[-0.075em] uppercase text-foreground">
+          <span className="inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
             {t('title')}
-          </h2>
-          <p className="prose-reading mt-4 max-w-md text-muted-foreground">
-            {tPages('description')}
-          </p>
+          </span>
+        </h2>
 
-          <a
-            href={email.href}
-            className="mt-8 font-mono text-base text-foreground underline decoration-border underline-offset-8 transition-colors hover:text-brand hover:decoration-brand md:text-lg"
-          >
-            {email.handle}
-          </a>
+        <div className="flex flex-col gap-8 border-t-2 border-foreground pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+          <div className="flex max-w-[36rem] flex-col">
+            <p className="text-lg leading-tight font-bold tracking-[-0.03em] text-pretty text-foreground sm:text-xl">
+              {tPages('description')}
+            </p>
 
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 lg:justify-start">
-            {socials.map((link) => (
-              <li key={link.id}>
-                <a
-                  href={link.href}
-                  target={link.external ? '_blank' : undefined}
-                  rel={link.external ? 'noopener noreferrer' : undefined}
-                  className="font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
-                >
-                  {link.label.toLowerCase()} ↗
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+            <a
+              href={email.href}
+              className="mt-6 font-mono text-base text-foreground underline decoration-border underline-offset-8 transition-colors hover:text-brand hover:decoration-brand md:text-lg"
+            >
+              {email.handle}
+            </a>
 
-        <div className="w-full max-w-lg justify-self-center text-left lg:justify-self-end">
-          <p className="type-label mb-4 text-muted-foreground">{tPages('formTitle')}</p>
-          <ContactForm />
+            <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+              {socials.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    className="font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                  >
+                    {link.label.toLowerCase()} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="w-full max-w-lg shrink-0 text-left">
+            <p className="type-label mb-4 text-muted-foreground">{tPages('formTitle')}</p>
+            <ContactForm />
+          </div>
         </div>
       </div>
     </section>
