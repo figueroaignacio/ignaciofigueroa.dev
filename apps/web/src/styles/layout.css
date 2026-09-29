@@ -182,13 +182,9 @@
     background: var(--background);
     border-end-start-radius: var(--radius-2xl);
     border-end-end-radius: var(--radius-2xl);
-    box-shadow: 0 24px 48px -24px oklch(0% 0 0 / 0.45);
   }
 
   .reveal {
-    position: sticky;
-    bottom: 0;
-    z-index: 0;
     display: flex;
     flex-direction: column;
   }
