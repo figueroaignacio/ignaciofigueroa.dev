@@ -303,7 +303,6 @@ export function Dock() {
           >
             {nextLocale.toUpperCase()}
           </DockBar.Item>
-          <DockBar.Separator />
           <DockBar.Item
             ref={assistantButtonRef}
             label={assistantLabel}
