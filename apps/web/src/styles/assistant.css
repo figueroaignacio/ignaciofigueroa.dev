@@ -5,6 +5,7 @@
     inset-inline: 1rem;
     inset-block-end: 1.5rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -312,15 +313,6 @@
     inline-size: 2.25rem;
     block-size: auto;
     animation: courier-off 8s linear both;
-  }
-
-  .mark-perch {
-    position: absolute;
-    inset-block-end: 100%;
-    inset-inline-start: 55%;
-    inline-size: 2.25rem;
-    block-size: auto;
-    pointer-events: none;
   }
 
   .contribution-field {

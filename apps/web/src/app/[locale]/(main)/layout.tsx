@@ -7,7 +7,6 @@ import { ConsoleGreeting } from '@/shared/components/console-greeting';
 import { Dock } from '@/shared/components/dock';
 import { Grain } from '@/shared/components/grain';
 import { LocaleSwitcher } from '@/shared/components/locale-switcher';
-import { LogoMark } from '@/shared/components/logo';
 import { SilkParallax } from '@/shared/components/silk-parallax';
 import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { hasLocale, type Locale } from 'next-intl';
@@ -40,16 +39,7 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               <span />
             </div>
             <SilkParallax />
-            <div className="aside-head flex items-center justify-between gap-4">
-              <div className="aside-brand group flex min-w-0 items-center gap-3">
-                <LogoMark
-                  size={26}
-                  className="logo-mark shrink-0 text-foreground/70 transition-colors duration-300 group-hover:text-foreground"
-                />
-                <span className="aside-tagline inline-block max-w-0 overflow-hidden font-mono text-[11px] whitespace-nowrap text-muted-foreground opacity-0 transition-all duration-500 ease-out group-hover:max-w-md group-hover:opacity-100">
-                  {t('components.logo.tagline')}
-                </span>
-              </div>
+            <div className="aside-head flex items-center justify-end gap-4">
               <div className="aside-controls flex shrink-0 items-center gap-3 font-mono text-xs text-muted-foreground">
                 <ThemeToggle />
                 <span className="select-none">·</span>

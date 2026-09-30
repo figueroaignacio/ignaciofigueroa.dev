@@ -10,8 +10,11 @@ import { cn } from '@/shared/lib/cn';
 
 import {
   Briefcase01Icon,
+  File01Icon,
   Folder01Icon,
+  Github01Icon,
   Home01Icon,
+  Linkedin01Icon,
   Mail01Icon,
   UserIcon,
 } from '@hugeicons/core-free-icons';
@@ -42,6 +45,7 @@ export function Dock() {
   const pathname = usePathname();
   const t = useTranslations('ui');
   const tChat = useTranslations('components.chat.header');
+  const tCv = useTranslations('components.ctaCv');
   const sectionLabels = useMemo(() => t.raw('sectionIndex') as Record<string, string>, [t]);
   const navigation = useMemo(
     () => t.raw('navigation') as Array<{ label: string; href: string }>,
@@ -66,6 +70,27 @@ export function Dock() {
       })),
     ];
   }, [navigation, sectionLabels]);
+
+  const links = [
+    {
+      key: 'github',
+      label: 'GitHub',
+      href: 'https://github.com/figueroaignacio',
+      icon: <HugeiconsIcon icon={Github01Icon} strokeWidth={1.5} />,
+    },
+    {
+      key: 'linkedin',
+      label: 'LinkedIn',
+      href: 'https://linkedin.com/in/figueroa-ignacio',
+      icon: <HugeiconsIcon icon={Linkedin01Icon} strokeWidth={1.5} />,
+    },
+    {
+      key: 'resume',
+      label: tCv('cta.text'),
+      href: tCv('url'),
+      icon: <HugeiconsIcon icon={File01Icon} strokeWidth={1.5} />,
+    },
+  ];
 
   const assistantLabel =
     navigation.find((item) => item.href === '/assistant')?.label ?? 'assistant';
@@ -273,6 +298,15 @@ export function Dock() {
               asChild
             >
               <Link href={item.href ?? '/'}>{item.icon}</Link>
+            </DockBar.Item>
+          ))}
+        </DockBar>
+        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label="Links">
+          {links.map((link) => (
+            <DockBar.Item key={link.key} label={link.label} asChild>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.icon}
+              </a>
             </DockBar.Item>
           ))}
         </DockBar>
