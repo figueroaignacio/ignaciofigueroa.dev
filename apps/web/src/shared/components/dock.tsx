@@ -4,8 +4,6 @@ import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
-import { Grain } from '@/shared/components/grain';
-import { SilkParallax } from '@/shared/components/silk-parallax';
 import { Dock as DockBar, useDockAutoHide } from '@/shared/components/ui/dock';
 import { cn } from '@/shared/lib/cn';
 
@@ -256,14 +254,7 @@ export function Dock() {
                 'lg:w-[calc(var(--chat-panel-width)-2rem)]',
               )}
             >
-              <div className="hero-waves chat-rail-waves" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </div>
-              <SilkParallax />
               <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
-              <Grain className="grain-inset" />
             </motion.div>
           )}
         </AnimatePresence>,
