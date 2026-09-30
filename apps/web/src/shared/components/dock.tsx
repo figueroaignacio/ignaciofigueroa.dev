@@ -2,7 +2,8 @@
 
 import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
-import { Link, usePathname } from '@/i18n/navigation';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { locales } from '@/i18n/routing';
 import { Grain } from '@/shared/components/grain';
 import { SilkParallax } from '@/shared/components/silk-parallax';
 import { Dock as DockBar, useDockAutoHide } from '@/shared/components/ui/dock';
@@ -10,18 +11,18 @@ import { cn } from '@/shared/lib/cn';
 
 import {
   Briefcase01Icon,
-  File01Icon,
   Folder01Icon,
-  Github01Icon,
   Home01Icon,
-  Linkedin01Icon,
   Mail01Icon,
+  Moon02Icon,
+  Sun03Icon,
   UserIcon,
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
-import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
+import { type Locale, useLocale, useTranslations } from 'next-intl';
+import { useTheme } from 'nach-themes';
+import { type ReactNode, useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import { createPortal } from 'react-dom';
 
 const SECTION_IDS = ['experience', 'projects', 'about', 'contact'] as const;
@@ -45,7 +46,10 @@ export function Dock() {
   const pathname = usePathname();
   const t = useTranslations('ui');
   const tChat = useTranslations('components.chat.header');
-  const tCv = useTranslations('components.ctaCv');
+  const router = useRouter();
+  const locale = useLocale();
+  const [isLocalePending, startLocaleTransition] = useTransition();
+  const { setTheme, resolvedTheme } = useTheme();
   const sectionLabels = useMemo(() => t.raw('sectionIndex') as Record<string, string>, [t]);
   const navigation = useMemo(
     () => t.raw('navigation') as Array<{ label: string; href: string }>,
@@ -71,33 +75,15 @@ export function Dock() {
     ];
   }, [navigation, sectionLabels]);
 
-  const links = [
-    {
-      key: 'github',
-      label: 'GitHub',
-      href: 'https://github.com/figueroaignacio',
-      icon: <HugeiconsIcon icon={Github01Icon} strokeWidth={1.5} />,
-    },
-    {
-      key: 'linkedin',
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/figueroa-ignacio',
-      icon: <HugeiconsIcon icon={Linkedin01Icon} strokeWidth={1.5} />,
-    },
-    {
-      key: 'resume',
-      label: tCv('cta.text'),
-      href: tCv('url'),
-      icon: <HugeiconsIcon icon={File01Icon} strokeWidth={1.5} />,
-    },
-  ];
-
   const assistantLabel =
     navigation.find((item) => item.href === '/assistant')?.label ?? 'assistant';
 
   const [activeSection, setActiveSection] = useState<string>('/');
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const nextLocale = (locales.find((option) => option !== locale) ?? locale) as Locale;
+  const isDark = mounted && resolvedTheme === 'dark';
+  const themeLabel = isDark ? 'Switch to light mode' : 'Switch to dark mode';
   const autoHidden = useDockAutoHide();
   // Matches the breakpoint that opens up --chat-inset in globals.css.
   const [isDesktop, setIsDesktop] = useState(false);
@@ -301,14 +287,22 @@ export function Dock() {
             </DockBar.Item>
           ))}
         </DockBar>
-        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label="Links">
-          {links.map((link) => (
-            <DockBar.Item key={link.key} label={link.label} asChild>
-              <a href={link.href} target="_blank" rel="noopener noreferrer">
-                {link.icon}
-              </a>
-            </DockBar.Item>
-          ))}
+        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label="Preferences">
+          <DockBar.Item label={themeLabel} onClick={(e) => setTheme(isDark ? 'light' : 'dark', e)}>
+            <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} strokeWidth={1.5} />
+          </DockBar.Item>
+          <DockBar.Item
+            label={`Switch to ${nextLocale}`}
+            disabled={isLocalePending}
+            onClick={() =>
+              startLocaleTransition(() => {
+                router.replace({ pathname }, { locale: nextLocale });
+              })
+            }
+            className="font-mono text-xs"
+          >
+            {nextLocale.toUpperCase()}
+          </DockBar.Item>
         </DockBar>
         <DockBar floating={false} hidden={autoHidden && !isChatOpen} label={assistantLabel}>
           <DockBar.Item

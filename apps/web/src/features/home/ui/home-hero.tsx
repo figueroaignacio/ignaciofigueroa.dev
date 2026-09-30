@@ -2,9 +2,11 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avat
 import { ScrambleText } from '@/shared/components/scramble-text';
 import { getTranslations } from 'next-intl/server';
 import { HeroStatus } from './hero-status';
+import { HeroActions } from './home-hero-actions';
 
 export async function HomeHero() {
   const t = await getTranslations('sections.home');
+  const tCv = await getTranslations('components.ctaCv');
   const [firstName = '', ...rest] = t('name').split(' ');
   const lastName = rest.join(' ');
   const [role = '', ...roleRest] = t('title').split(' ');
@@ -29,7 +31,7 @@ export async function HomeHero() {
         ) : null}
       </h1>
 
-      <div className="flex flex-col gap-6 border-t-2 border-foreground pt-6">
+      <div className="flex flex-col gap-6 border-t-2 border-foreground pt-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
         <div className="flex max-w-[36rem] flex-col gap-4">
           <p className="text-lg leading-tight font-bold tracking-[-0.03em] text-pretty text-foreground sm:text-xl">
             {t('description')}
@@ -49,6 +51,7 @@ export async function HomeHero() {
             <HeroStatus />
           </div>
         </div>
+        <HeroActions cvLabel={tCv('cta.text')} cvUrl={tCv('url')} />
       </div>
     </header>
   );

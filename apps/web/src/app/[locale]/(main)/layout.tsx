@@ -6,9 +6,7 @@ import { routing } from '@/i18n/routing';
 import { ConsoleGreeting } from '@/shared/components/console-greeting';
 import { Dock } from '@/shared/components/dock';
 import { Grain } from '@/shared/components/grain';
-import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { SilkParallax } from '@/shared/components/silk-parallax';
-import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { hasLocale, type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -39,13 +37,6 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
               <span />
             </div>
             <SilkParallax />
-            <div className="aside-head flex items-center justify-end gap-4">
-              <div className="aside-controls flex shrink-0 items-center gap-3 font-mono text-xs text-muted-foreground">
-                <ThemeToggle />
-                <span className="select-none">·</span>
-                <LocaleSwitcher />
-              </div>
-            </div>
             <HomeHero />
             <div className="panel-stage">
               <PanelShow />

@@ -1,9 +1,7 @@
 import { routing } from '@/i18n/routing';
 import { Dock } from '@/shared/components/dock';
 import { Grain } from '@/shared/components/grain';
-import { LocaleSwitcher } from '@/shared/components/locale-switcher';
 import { LogoMark } from '@/shared/components/logo';
-import { ThemeToggle } from '@/shared/components/theme-toggle';
 import { Link } from '@/i18n/navigation';
 import { hasLocale, type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -38,11 +36,6 @@ export default async function ArticleLayout({ children, params }: ArticleLayoutP
                 {t('components.logo.tagline')}
               </span>
             </Link>
-            <div className="flex shrink-0 items-center gap-3 font-mono text-xs text-muted-foreground">
-              <ThemeToggle />
-              <span className="select-none">·</span>
-              <LocaleSwitcher />
-            </div>
           </div>
         </header>
         <main id="main-content" className="page-frame flex flex-1 flex-col" tabIndex={-1}>
