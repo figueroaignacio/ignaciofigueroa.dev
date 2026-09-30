@@ -14,23 +14,26 @@ export async function HomeHero() {
   const roleTail = roleRest.join(' ');
 
   return (
-    <header className="flex min-h-0 min-w-0 flex-1 flex-col justify-end gap-7 py-8 lg:gap-9 lg:py-0 lg:pb-4">
-      <h1 className="max-w-[9em] text-[clamp(3rem,min(13vw,10vh),8.5rem)] leading-[0.82] font-black tracking-[-0.075em] uppercase">
-        <span className="mr-[0.22em] inline-block">
-          <ScrambleText text={firstName} />
-        </span>
-        <span className="mr-[0.22em] inline-block">
-          <ScrambleText text={lastName} />
-        </span>
-        <span className="mr-[0.22em] inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
-          {role}
-        </span>
-        {roleTail ? (
-          <span className="inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
-            {roleTail}
+    <header className="flex min-h-0 min-w-0 flex-1 flex-col justify-end gap-7 py-8 lg:gap-14 lg:py-0 lg:pb-4">
+      <div className="flex flex-col gap-4">
+        <h1 className="max-w-[9em] text-[clamp(3rem,min(13vw,10vh),8.5rem)] leading-[0.82] font-black tracking-[-0.075em] uppercase">
+          <span className="mr-[0.22em] inline-block">
+            <ScrambleText text={firstName} />
           </span>
-        ) : null}
-      </h1>
+          <span className="mr-[0.22em] inline-block">
+            <ScrambleText text={lastName} />
+          </span>
+          <span className="mr-[0.22em] inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
+            {role}
+          </span>
+          {roleTail ? (
+            <span className="inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
+              {roleTail}
+            </span>
+          ) : null}
+        </h1>
+        <p className="font-mono text-sm text-muted-foreground">{t('roleNote')}</p>
+      </div>
 
       <div className="relative flex flex-col gap-6 border-t-2 border-foreground pt-6 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
         <div className="panel-stage">
