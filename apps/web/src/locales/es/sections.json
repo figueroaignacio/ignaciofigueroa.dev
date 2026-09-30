@@ -3,7 +3,7 @@
     "greeting": "Frontend Engineer · Backend cuando hace falta · Buenos Aires",
     "name": "Ignacio Figueroa",
     "title": "Frontend Engineer",
-    "roleNote": "Frontend de profesión. Backend cuando nadie mira.",
+    "roleNote": "Frontend de profesión. <mark>Backend cuando nadie mira.</mark>",
     "description": "Construyo la parte del producto que la gente toca, y lo suficiente de lo que hay detrás como para no depender de nadie para salir a producción. Uso IA todos los días. El criterio sigue siendo mío.",
     "status": {
       "working": "Trabajando en reclee.com",
