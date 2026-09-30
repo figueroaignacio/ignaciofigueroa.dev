@@ -157,7 +157,7 @@
     inline-size: 2.5rem;
     translate: 0 130%;
     transition:
-      translate 2600ms linear,
+      translate 4200ms linear,
       opacity 400ms ease-out;
   }
 
@@ -172,7 +172,7 @@
   .panel-show[data-phase='code'],
   .panel-show[data-phase='wave'],
   .panel-show[data-phase='stand'] {
-    translate: -5.5rem 0;
+    translate: calc(2.5rem - 100cqi) 0;
   }
 
   .panel-show[data-phase='back'] {
@@ -243,7 +243,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .panel-show {
-      translate: -5.5rem 0;
+      translate: 0 0;
       transition: none;
     }
 

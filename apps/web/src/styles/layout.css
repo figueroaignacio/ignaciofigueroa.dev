@@ -166,13 +166,6 @@
       padding-inline: 2.5rem;
       border-radius: var(--radius-2xl);
     }
-
-    .panel-stage {
-      position: absolute;
-      inset-block-end: var(--dock-space);
-      inset-inline: 2.5rem;
-      margin: 0;
-    }
   }
 
   .reveal-cover {
@@ -235,11 +228,13 @@
   }
 
   .panel-stage {
-    position: relative;
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: calc(100% + 2px);
     display: none;
-    margin-block-start: auto;
-    block-size: 2.75rem;
-    overflow: clip visible;
+    block-size: 3rem;
+    overflow: clip;
+    container-type: inline-size;
     pointer-events: none;
   }
 

@@ -1,4 +1,3 @@
-import { PanelShow } from '@/features/assistant/ui/panel-show';
 import { ContactSection } from '@/features/home/ui/contact-section';
 import { HeroCredits } from '@/features/home/ui/hero-credits';
 import { HomeHero } from '@/features/home/ui/home-hero';
@@ -38,9 +37,6 @@ export default async function MainLayout({ children, params }: LocaleLayoutProps
             </div>
             <SilkParallax />
             <HomeHero />
-            <div className="panel-stage">
-              <PanelShow />
-            </div>
             <HeroCredits />
           </aside>
           <main id="main-content" className="split-main page-frame relative" tabIndex={-1}>
