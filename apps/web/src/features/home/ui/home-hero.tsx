@@ -35,7 +35,9 @@ export async function HomeHero() {
         <p className="text-[clamp(1.25rem,min(3vw,3vh),2rem)] leading-[1.05] font-black tracking-[-0.05em] uppercase">
           {t.rich('roleNote', {
             mark: (chunks) => (
-              <mark className="box-decoration-clone bg-foreground px-[0.12em] text-background">{chunks}</mark>
+              <mark className="box-decoration-clone bg-foreground px-[0.12em] text-background">
+                {chunks}
+              </mark>
             ),
           })}
         </p>
