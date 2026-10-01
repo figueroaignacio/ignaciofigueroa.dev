@@ -12,7 +12,7 @@ export function SectionSkeleton({ children }: { children: React.ReactNode }) {
     <SectionShell
       busy
       className="relative"
-      label={<Skeleton className="h-4 w-28" />}
+      label={<Skeleton className="h-[clamp(1.7rem,4.25vw,2.75rem)] w-48" />}
       accessory={
         <div className="skeleton-bot" aria-hidden="true">
           <AssistantCoding />

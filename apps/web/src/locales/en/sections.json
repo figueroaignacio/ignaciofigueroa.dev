@@ -11,7 +11,16 @@
       "madeThat": "I made that landing",
       "localTime": "local time in Buenos Aires",
       "workingHours": "within working hours",
-      "offHours": "outside working hours"
+      "offHours": "outside working hours",
+      "company": "reclee.com",
+      "city": "Buenos Aires"
+    },
+    "labels": {
+      "now": "Now",
+      "links": "Links",
+      "ask": "Ask",
+      "assistant": "My assistant",
+      "resume": "Resume"
     }
   },
   "aboutMe": {

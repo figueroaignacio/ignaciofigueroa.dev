@@ -11,7 +11,16 @@
       "madeThat": "Esa landing la hice yo",
       "localTime": "hora local en Buenos Aires",
       "workingHours": "en horario laboral",
-      "offHours": "fuera de horario"
+      "offHours": "fuera de horario",
+      "company": "reclee.com",
+      "city": "Buenos Aires"
+    },
+    "labels": {
+      "now": "Ahora",
+      "links": "Links",
+      "ask": "Preguntale",
+      "assistant": "Mi asistente",
+      "resume": "CV"
     }
   },
   "aboutMe": {
