@@ -57,8 +57,10 @@ export function Section({ id, title, children, className, accessory }: SectionPr
       className={className}
       accessory={accessory}
       label={
-        <h2 className="scroll-blur-label text-[clamp(2rem,5vw,3.25rem)] leading-[0.85] font-black tracking-[-0.06em] uppercase">
-          <ScrambleText text={title} mode="in-view" />
+        <h2 className="scroll-blur-label text-[clamp(1.5rem,3.5vw,2.25rem)] leading-[0.88] font-black tracking-[-0.06em] uppercase">
+          <span className="inline-block bg-brand px-[0.14em] pt-[0.08em] text-brand-foreground">
+            <ScrambleText text={title} mode="in-view" />
+          </span>
         </h2>
       }
     >
