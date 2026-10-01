@@ -35,7 +35,7 @@ export function SectionShell({
       <div className="rule-bleed" aria-hidden="true" />
       <div className="frame-column pt-7 pb-8 md:pt-8 md:pb-9">
         {label}
-        <div className="mt-4 scroll-blur-in">{children}</div>
+        <div className="mt-6 scroll-blur-in">{children}</div>
       </div>
       {accessory}
     </section>
@@ -57,10 +57,7 @@ export function Section({ id, title, children, className, accessory }: SectionPr
       className={className}
       accessory={accessory}
       label={
-        <h2 className="type-label scroll-blur-label lowercase text-muted-foreground">
-          <span aria-hidden="true" className="text-muted-foreground/60">
-            ./
-          </span>
+        <h2 className="scroll-blur-label text-[clamp(2rem,5vw,3.25rem)] leading-[0.85] font-black tracking-[-0.06em] uppercase">
           <ScrambleText text={title} mode="in-view" />
         </h2>
       }
