@@ -85,6 +85,7 @@ export function Dock() {
   const autoHidden = useDockAutoHide();
   // Matches the breakpoint that opens up --chat-inset in globals.css.
   const [isDesktop, setIsDesktop] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
   const assistantButtonRef = useRef<HTMLButtonElement>(null);
   const chatPanelRef = useRef<HTMLDivElement>(null);
   const chatWasOpen = useRef(false);
@@ -92,6 +93,14 @@ export function Dock() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 39.999rem)');
+    const sync = () => setIsCompact(query.matches);
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
   }, []);
 
   useEffect(() => {
@@ -266,7 +275,13 @@ export function Dock() {
     <>
       {chatPanel}
       <div className="dock-nav">
-        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label="Main Navigation">
+        <DockBar
+          floating={false}
+          hidden={autoHidden && !isChatOpen}
+          label="Main Navigation"
+          itemSize={isCompact ? 34 : 40}
+          className={cn(isCompact && 'gap-0.5')}
+        >
           {items.map((item) => (
             <DockBar.Item
               key={item.key}
@@ -278,7 +293,13 @@ export function Dock() {
             </DockBar.Item>
           ))}
         </DockBar>
-        <DockBar floating={false} hidden={autoHidden && !isChatOpen} label="Preferences">
+        <DockBar
+          floating={false}
+          hidden={autoHidden && !isChatOpen}
+          label="Preferences"
+          itemSize={isCompact ? 34 : 40}
+          className={cn(isCompact && 'gap-0.5')}
+        >
           <DockBar.Item label={themeLabel} onClick={(e) => setTheme(isDark ? 'light' : 'dark', e)}>
             <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} strokeWidth={1.5} />
           </DockBar.Item>
