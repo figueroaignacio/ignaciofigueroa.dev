@@ -157,7 +157,7 @@
     inline-size: 2.5rem;
     translate: 0 130%;
     transition:
-      translate 4200ms linear,
+      translate 9000ms linear,
       opacity 400ms ease-out;
   }
 
@@ -209,7 +209,7 @@
 
   .panel-show[data-phase='walk'] .panel-show-body,
   .panel-show[data-phase='back'] .panel-show-body {
-    animation: gait-bob 480ms steps(1, end) infinite;
+    animation: gait-bob 680ms steps(1, end) infinite;
   }
 
   .panel-show[data-phase='back'] .panel-show-body {

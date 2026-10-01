@@ -11,12 +11,12 @@ type Phase = 'climb' | 'walk' | 'sit' | 'code' | 'wave' | 'stand' | 'back';
 
 const SCRIPT: Array<{ phase: Phase; ms: number }> = [
   { phase: 'climb', ms: 1800 },
-  { phase: 'walk', ms: 4200 },
+  { phase: 'walk', ms: 9000 },
   { phase: 'sit', ms: 900 },
   { phase: 'code', ms: 9000 },
   { phase: 'wave', ms: 2000 },
   { phase: 'stand', ms: 900 },
-  { phase: 'back', ms: 4200 },
+  { phase: 'back', ms: 9000 },
 ];
 
 const LOOP_FROM = 1;
