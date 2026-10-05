@@ -31,14 +31,14 @@ export async function HomeHero() {
             <br />
             <ScrambleText text={lastName} />
           </span>
-          <span className="bg-brand px-[0.14em] pt-[0.08em] text-[clamp(1.25rem,6vw,1.75rem)] leading-[0.88] tracking-[-0.06em] text-brand-foreground lg:text-[clamp(1.5rem,2.6vw,2.75rem)]">
+          <span className="bg-brand px-[0.14em] pt-[0.08em] text-[clamp(1.25rem,6vw,1.75rem)] leading-[0.88] tracking-[-0.06em] [word-spacing:0.18em] text-brand-foreground lg:text-[clamp(1.5rem,2.6vw,2.75rem)]">
             {t('title')}
           </span>
         </h1>
 
         <div className="mt-6 flex flex-col gap-4 lg:mt-10 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
-          <p className="text-base font-medium lg:text-[17px]">
-            <span className="text-muted-foreground">{t('labels.now')} </span>
+          <p className="flex flex-wrap items-baseline gap-x-1.5 text-base font-medium lg:text-[17px]">
+            <span className="text-muted-foreground">{t('labels.now')}</span>
             <HeroWorkingLink
               href={t('status.workingUrl')}
               label={t('status.company')}
@@ -64,7 +64,10 @@ export async function HomeHero() {
             ))}
             <HeroAskButton
               label={t('labels.ask')}
-              className={cn(linkRow, 'text-brand lg:hover:text-foreground')}
+              className={cn(
+                linkRow,
+                'text-[color-mix(in_oklch,var(--brand),black_28%)] dark:text-brand lg:hover:text-foreground',
+              )}
             />
           </nav>
         </div>
