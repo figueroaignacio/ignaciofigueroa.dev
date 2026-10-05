@@ -3,7 +3,6 @@ import { Link } from '@/i18n/navigation';
 const externalLinks = [
   { label: 'pics', href: 'https://pics.ignaciofigueroa.dev' },
   { label: 'links', href: 'https://links.ignaciofigueroa.dev' },
-  { label: 'github', href: 'https://github.com/figueroaignacio' },
 ];
 
 const linkClassName = 'hover:text-foreground transition-colors underline-offset-4 hover:underline';

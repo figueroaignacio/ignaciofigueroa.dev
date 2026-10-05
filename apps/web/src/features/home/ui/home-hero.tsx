@@ -3,7 +3,6 @@ import { cn } from '@/shared/lib/cn';
 import { getTranslations } from 'next-intl/server';
 import { HeroAskButton } from './hero-ask-button';
 import { HeroWorkingLink } from './hero-working-link';
-import { LocalClock } from './local-clock';
 
 const nameSize =
   'text-[clamp(3.25rem,min(15.5vw,8.5vh),5rem)] lg:text-[clamp(5rem,min(12.5vw,22vh),13.5rem)]';
@@ -27,22 +26,6 @@ export async function HomeHero() {
 
   return (
     <header className="flex min-h-0 min-w-0 flex-1 flex-col gap-8 lg:pb-4">
-      <div className="flex items-center justify-between gap-4 font-mono text-[11px] text-muted-foreground lg:text-xs">
-        <span className="hidden sm:inline">ignaciofigueroa.dev</span>
-        <span className="flex items-center gap-2">
-          <span
-            aria-hidden="true"
-            className="size-1.5 shrink-0 rounded-full bg-brand ring-4 ring-brand/15"
-          />
-          <span>{t('status.city')}</span>
-          <LocalClock
-            label={t('status.localTime')}
-            workingLabel={t('status.workingHours')}
-            offLabel={t('status.offHours')}
-          />
-        </span>
-      </div>
-
       <div className="flex flex-1 flex-col justify-end gap-4 lg:gap-5">
         <h1 className="flex flex-col gap-3 leading-[0.8] font-black tracking-[-0.075em] uppercase lg:gap-0">
           <span className={cn('block', nameSize)}>
