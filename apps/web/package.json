@@ -11,8 +11,6 @@
     "test": "echo \"no tests\""
   },
   "dependencies": {
-    "@hugeicons/core-free-icons": "^4.2.3",
-    "@hugeicons/react": "^1.1.9",
     "@repo/contracts": "workspace:*",
     "@tailwindcss/postcss": "^4.3.3",
     "@tiptap/extension-link": "^3.31.3",

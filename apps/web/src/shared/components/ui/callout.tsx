@@ -1,10 +1,9 @@
 import {
-  Alert02Icon,
   AlertCircleIcon,
-  CheckmarkCircle01Icon,
-  InformationCircleIcon,
-} from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+  AlertTriangleIcon,
+  CheckCircleIcon,
+  InfoIcon,
+} from '@/shared/components/icons';
 import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { cn } from '@/shared/lib/cn';
@@ -35,13 +34,13 @@ type CalloutVariant = NonNullable<CalloutProps['variant']>;
 const getDefaultIcon = (variant: CalloutVariant) => {
   switch (variant) {
     case 'info':
-      return <HugeiconsIcon icon={InformationCircleIcon} size={18} />;
+      return <InfoIcon size={18} />;
     case 'warning':
-      return <HugeiconsIcon icon={Alert02Icon} size={18} />;
+      return <AlertTriangleIcon size={18} />;
     case 'danger':
-      return <HugeiconsIcon icon={AlertCircleIcon} size={18} />;
+      return <AlertCircleIcon size={18} />;
     case 'success':
-      return <HugeiconsIcon icon={CheckmarkCircle01Icon} size={18} />;
+      return <CheckCircleIcon size={18} />;
     default:
       return null;
   }

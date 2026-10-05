@@ -1,10 +1,9 @@
 'use client';
 
+import { ExternalLinkIcon } from '@/shared/components/icons';
 import type { Contribution } from '@/shared/lib/content-types';
 import { Frame } from '@/shared/components/ui/frame';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
-import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 
 type ContributionCardProps = Pick<
@@ -74,7 +73,7 @@ export function ContributionCard({
                   className="group/pr flex items-center justify-between gap-3 text-xs font-mono text-muted-foreground hover:text-brand transition-colors py-1 max-w-md border-b border-border/30 last:border-b-0"
                 >
                   <span className="truncate">{pr.label || `pr #${index + 1}`}</span>
-                  <HugeiconsIcon icon={LinkSquare02Icon} className="size-3 opacity-60 shrink-0" />
+                  <ExternalLinkIcon className="size-3 opacity-60 shrink-0" />
                 </a>
               ))}
             </div>

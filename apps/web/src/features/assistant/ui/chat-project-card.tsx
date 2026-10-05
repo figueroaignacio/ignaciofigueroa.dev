@@ -1,11 +1,10 @@
 'use client';
 
+import { CodeIcon, ExternalLinkIcon, InfoIcon } from '@/shared/components/icons';
 import { Link } from '@/i18n/navigation';
 import type { Project } from '@/shared/lib/content-types';
 import { Frame } from '@/shared/components/ui/frame';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
-import { CodeIcon, InformationCircleIcon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 
 export function ChatProjectCard({ slug, title, demo, repository, technologies }: Partial<Project>) {
@@ -26,7 +25,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               aria-label={t('source')}
               className="text-muted-foreground transition-colors duration-150 hover:text-brand"
             >
-              <HugeiconsIcon icon={CodeIcon} className="size-4" />
+              <CodeIcon className="size-4" />
             </a>
           )}
           {demo && (
@@ -37,7 +36,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               aria-label={t('preview')}
               className="text-muted-foreground transition-colors duration-150 hover:text-brand"
             >
-              <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
+              <ExternalLinkIcon className="size-4" />
             </a>
           )}
           {slug && (
@@ -46,7 +45,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               aria-label={t('details')}
               className="text-muted-foreground transition-colors duration-150 hover:text-brand"
             >
-              <HugeiconsIcon icon={InformationCircleIcon} className="size-4" />
+              <InfoIcon className="size-4" />
             </Link>
           )}
         </div>

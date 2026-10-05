@@ -1,11 +1,10 @@
 'use client';
 
+import { ChevronLeftIcon, HomeIcon } from '@/shared/components/icons';
 import { AssistantAvatar } from '@/features/assistant/ui/assistant-avatar';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { Dock } from '@/shared/components/dock';
 import { Button } from '@/shared/components/ui/button';
-import { ArrowLeft01Icon, Home01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
@@ -40,14 +39,14 @@ export default function NotFound() {
             <div className="flex flex-wrap justify-center gap-3 pt-2">
               <Button
                 variant="outline"
-                leftIcon={<HugeiconsIcon icon={ArrowLeft01Icon} className="size-4" />}
+                leftIcon={<ChevronLeftIcon className="size-4" />}
                 onClick={() => router.back()}
               >
                 {t('actionBack')}
               </Button>
               <Button
                 variant="default"
-                leftIcon={<HugeiconsIcon icon={Home01Icon} className="size-4" />}
+                leftIcon={<HomeIcon className="size-4" />}
                 onClick={() => router.push('/')}
               >
                 {t('actionHome')}

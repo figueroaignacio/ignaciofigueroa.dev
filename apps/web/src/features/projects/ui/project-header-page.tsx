@@ -1,9 +1,8 @@
+import { ExternalLinkIcon } from '@/shared/components/icons';
 import type { Project } from '@/shared/lib/content-types';
 import { BackButton } from '@/shared/components/back-button';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { buttonVariants } from '@/shared/components/ui/button-variants';
-import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { getTranslations } from 'next-intl/server';
 import { ProjectSummary } from './project-summary';
 
@@ -73,7 +72,7 @@ export async function ProjectHeaderPage({
               className={buttonVariants({ variant: 'default' })}
             >
               <span>{t('preview')}</span>
-              <HugeiconsIcon icon={LinkSquare02Icon} className="size-4" />
+              <ExternalLinkIcon className="size-4" />
             </a>
           )}
           {repository && (

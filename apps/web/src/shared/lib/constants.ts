@@ -1,4 +1,4 @@
-import { type IconSvgElement } from '@hugeicons/react';
+import { type IconComponent } from '@/shared/components/icons';
 
 export const BASE_URL = 'https://ignaciofigueroa.dev';
 
@@ -12,4 +12,4 @@ export const ASSISTANT_API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
   'http://localhost:4000';
 
-export type Icon = React.FC<React.SVGAttributes<SVGAElement>> | IconSvgElement;
+export type Icon = IconComponent;

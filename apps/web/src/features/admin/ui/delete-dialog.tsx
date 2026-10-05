@@ -1,10 +1,9 @@
 'use client';
 
+import { TrashIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Dialog } from '@/shared/components/ui/dialog';
 import { useToast } from '@/shared/components/ui/toast';
-import { Delete02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -52,14 +51,14 @@ export function DeleteDialog({
       <Dialog.Trigger>
         {variant === 'icon' ? (
           <Button variant="ghost" size="icon" aria-label={`delete ${name}`}>
-            <HugeiconsIcon icon={Delete02Icon} size={16} />
+            <TrashIcon size={16} />
           </Button>
         ) : (
           <Button
             variant="outline"
             fullWidth
             className="text-muted-foreground"
-            leftIcon={<HugeiconsIcon icon={Delete02Icon} size={14} />}
+            leftIcon={<TrashIcon size={14} />}
           >
             delete
           </Button>

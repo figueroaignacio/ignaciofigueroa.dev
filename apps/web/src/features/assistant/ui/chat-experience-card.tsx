@@ -1,10 +1,9 @@
+import { BriefcaseIcon, ExternalLinkIcon } from '@/shared/components/icons';
 import { Experience } from '@/shared/lib/content-types';
 import { Badge } from '@/shared/components/ui/badge';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { Timeline } from '@/shared/components/ui/timeline';
 import { formatDate } from '@/shared/lib/format-date';
-import { Briefcase01Icon, LinkSquare02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 interface ChatExperienceCardProps {
   experience: Experience;
@@ -26,7 +25,7 @@ export function ChatExperienceCard({ experience, locale, step }: ChatExperienceC
         {experience.isCurrent && (
           <span className="absolute inset-0 animate-ping rounded-full bg-primary opacity-30" />
         )}
-        <HugeiconsIcon icon={Briefcase01Icon} />
+        <BriefcaseIcon />
       </Timeline.Indicator>
       <Timeline.Separator />
 
@@ -48,7 +47,7 @@ export function ChatExperienceCard({ experience, locale, step }: ChatExperienceC
               className="inline-flex items-center gap-1 font-medium text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
             >
               {experience.company}
-              <HugeiconsIcon icon={LinkSquare02Icon} className="size-3" />
+              <ExternalLinkIcon className="size-3" />
             </a>
           ) : (
             <span className="font-medium text-muted-foreground">{experience.company}</span>

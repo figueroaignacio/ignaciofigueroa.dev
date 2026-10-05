@@ -1,12 +1,11 @@
 'use client';
 
+import { SendIcon } from '@/shared/components/icons';
 import { AssistantStroll } from '@/features/assistant/ui/assistant-stroll';
 import { Button } from '@/shared/components/ui/button';
 import { Callout } from '@/shared/components/ui/callout';
 import { Input, inputVariants } from '@/shared/components/ui/input';
 import { cn } from '@/shared/lib/cn';
-import { MailSend02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { sendEmail } from '../actions/send-email';
@@ -117,11 +116,7 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
               {t('sendAnother')}
             </Button>
           ) : (
-            <Button
-              type="submit"
-              loading={isPending}
-              rightIcon={<HugeiconsIcon icon={MailSend02Icon} className="size-4" />}
-            >
+            <Button type="submit" loading={isPending} rightIcon={<SendIcon className="size-4" />}>
               {isPending ? t('sending') : t('submit')}
             </Button>
           )}

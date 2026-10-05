@@ -1,11 +1,10 @@
 'use client';
 
+import { FolderIcon } from '@/shared/components/icons';
 import { ProjectCard } from '@/features/projects/ui/project-card';
 import type { Project } from '@/shared/lib/content-types';
 import { Empty } from '@/shared/components/ui/empty';
 import { Tabs } from '@/shared/components/ui/tabs';
-import { Folder01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 
 export type CategoryProjects = {
@@ -40,7 +39,7 @@ export function ProjectsTabs({ data }: ProjectsTabsProps) {
             <Empty variant="outline">
               <Empty.Header>
                 <Empty.Media variant="icon">
-                  <HugeiconsIcon icon={Folder01Icon} strokeWidth={1.5} />
+                  <FolderIcon strokeWidth={1.5} />
                 </Empty.Media>
                 <Empty.Title>{t('empty.title')}</Empty.Title>
                 <Empty.Description>{t('empty.description')}</Empty.Description>

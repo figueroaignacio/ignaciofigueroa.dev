@@ -1,6 +1,6 @@
 'use client';
 
-import { ActivityIcon } from '@hugeicons/core-free-icons';
+import { BarChartIcon } from '@/shared/components/icons';
 import { useTranslations } from 'next-intl';
 import * as React from 'react';
 import { GithubContributionCalendar } from './github-contribution-calendar';
@@ -32,7 +32,7 @@ export function GithubStatsClient({
         <GithubStatsCard
           title={`${t('stats.contributions')} (${activeYear})`}
           value={currentYearData.totalContributions.toLocaleString()}
-          icon={ActivityIcon}
+          icon={BarChartIcon}
         />
       </div>
       <div>

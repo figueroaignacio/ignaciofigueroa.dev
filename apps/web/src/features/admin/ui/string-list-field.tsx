@@ -1,10 +1,9 @@
 'use client';
 
+import { PlusIcon, TrashIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
-import { Add01Icon, Delete02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 
 interface StringListFieldProps {
   label: string;
@@ -45,7 +44,7 @@ export function StringListField({
             aria-label={`remove item ${index + 1}`}
             onClick={() => onChange(value.filter((_, current) => current !== index))}
           >
-            <HugeiconsIcon icon={Delete02Icon} size={16} />
+            <TrashIcon size={16} />
           </Button>
         </div>
       ))}
@@ -54,7 +53,7 @@ export function StringListField({
         variant="outline"
         size="sm"
         className="self-start"
-        leftIcon={<HugeiconsIcon icon={Add01Icon} size={14} />}
+        leftIcon={<PlusIcon size={14} />}
         onClick={() => onChange([...value, ''])}
       >
         add

@@ -1,9 +1,8 @@
 'use client';
 
+import { ArrowLeftIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Kbd, KbdGroup } from '@/shared/components/ui/kbd';
-import { ArrowLeft02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import Link from 'next/link';
 
 interface SaveBarProps {
@@ -22,7 +21,7 @@ export function SaveBar({ backHref, backLabel, savedAt, saving, onSave, extra }:
         href={backHref}
         className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-[13px] font-medium transition-colors"
       >
-        <HugeiconsIcon icon={ArrowLeft02Icon} size={16} />
+        <ArrowLeftIcon size={16} />
         {backLabel}
       </Link>
       <div className="flex flex-wrap items-center gap-3">

@@ -1,6 +1,5 @@
+import { PlusIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
-import { Add01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import Link from 'next/link';
 
 interface AdminPageHeaderProps {
@@ -31,7 +30,7 @@ export function AdminPageHeader({
         {actions}
         {newHref ? (
           <Link href={newHref}>
-            <Button leftIcon={<HugeiconsIcon icon={Add01Icon} size={14} />} tabIndex={-1}>
+            <Button leftIcon={<PlusIcon size={14} />} tabIndex={-1}>
               {newLabel ?? 'new'}
             </Button>
           </Link>

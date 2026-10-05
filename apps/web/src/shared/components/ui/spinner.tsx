@@ -1,5 +1,4 @@
-import { Loading03Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+import { LoaderIcon } from '@/shared/components/icons';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 import { cn } from '@/shared/lib/cn';
@@ -46,7 +45,7 @@ function Spinner({
       className={cn(spinnerVariants({ size, variant }), className)}
       {...props}
     >
-      <HugeiconsIcon icon={Loading03Icon} className="h-full w-full" />
+      <LoaderIcon className="h-full w-full" />
     </div>
   );
 }

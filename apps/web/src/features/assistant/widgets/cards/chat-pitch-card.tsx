@@ -1,10 +1,9 @@
 'use client';
 
+import { BriefcaseIcon } from '@/shared/components/icons';
 import { Badge } from '@/shared/components/ui/badge';
 import { Frame } from '@/shared/components/ui/frame';
 import { IconTile } from '@/shared/components/ui/icon-tile';
-import { Briefcase01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'motion/react';
 
 interface PitchData {
@@ -38,7 +37,7 @@ export function ChatPitchCard({ data }: ChatPitchCardProps) {
         <Frame.Header className="flex-row items-center justify-between gap-3 py-2">
           <div className="flex min-w-0 items-center gap-2.5">
             <IconTile variant="soft" tone="primary" size="xs">
-              <HugeiconsIcon icon={Briefcase01Icon} />
+              <BriefcaseIcon />
             </IconTile>
             <div className="flex min-w-0 flex-col gap-0.5">
               <Frame.Title className="truncate text-xs leading-tight">{role}</Frame.Title>

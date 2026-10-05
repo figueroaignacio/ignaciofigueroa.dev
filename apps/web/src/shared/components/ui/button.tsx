@@ -1,7 +1,6 @@
 'use client';
 
-import { Loading02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+import { LoaderIcon } from '@/shared/components/icons';
 import { type VariantProps } from 'class-variance-authority';
 import { AnimatePresence, HTMLMotionProps, motion, useReducedMotion } from 'motion/react';
 import React from 'react';
@@ -75,9 +74,7 @@ const ButtonRoot = ({
             className="absolute flex items-center justify-center"
             aria-hidden="true"
           >
-            {loader ?? (
-              <HugeiconsIcon icon={Loading02Icon} className="size-4 animate-spin" size={16} />
-            )}
+            {loader ?? <LoaderIcon className="size-4 animate-spin" size={16} />}
           </motion.span>
         ) : (
           <motion.div

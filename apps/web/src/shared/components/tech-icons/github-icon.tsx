@@ -1,6 +1,8 @@
-export function GitHubIcon() {
+import type * as React from 'react';
+
+export function GitHubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width={16} height={16}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width={16} height={16} {...props}>
       <g fill="currentColor">
         <path
           fillRule="evenodd"

@@ -1,7 +1,6 @@
 'use client';
 
-import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+import { ChevronDownIcon } from '@/shared/components/icons';
 import { cva } from 'class-variance-authority';
 import { AnimatePresence, HTMLMotionProps, motion, useReducedMotion } from 'motion/react';
 import * as React from 'react';
@@ -202,9 +201,7 @@ const CollapsibleTrigger = ({
     [disabled, isOpen, setIsOpen, onClick],
   );
 
-  const chevron = chevronIcon ?? (
-    <HugeiconsIcon icon={ArrowDown01Icon} className="h-4 w-4 shrink-0" size={16} />
-  );
+  const chevron = chevronIcon ?? <ChevronDownIcon className="h-4 w-4 shrink-0" size={16} />;
 
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(children, {

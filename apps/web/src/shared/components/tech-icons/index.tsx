@@ -10,6 +10,7 @@ import { GoogleAntigravityIcon } from './google-antigravity-icon';
 import { GoogleIcon } from './google-icon';
 import { GroqAiIcon } from './groq-ai-icon';
 import { HTMLIcon } from './html-icon';
+import { LinkedInIcon } from './linkedin-icon';
 import { LinuxIcon } from './linux-icon';
 import { NestJsIcon } from './nestjs-icon';
 import { NextJSIcon } from './nextjs-icon';
@@ -99,6 +100,7 @@ export {
   GoogleIcon,
   GroqAiIcon,
   HTMLIcon,
+  LinkedInIcon,
   LinuxIcon,
   NestJsIcon,
   NextJSIcon,

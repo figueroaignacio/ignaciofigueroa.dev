@@ -1,19 +1,19 @@
 'use client';
 
+import {
+  BookIcon,
+  BriefcaseIcon,
+  FolderIcon,
+  GitMergeIcon,
+  GlobeIcon,
+  ImageIcon,
+  QuoteIcon,
+  TagIcon,
+  type IconComponent,
+} from '@/shared/components/icons';
 import { LogoutButton } from '@/features/auth/ui/logout-button';
 import { LogoMark } from '@/shared/components/logo';
 import { cn } from '@/shared/lib/cn';
-import {
-  Briefcase01Icon,
-  Folder01Icon,
-  GitPullRequestIcon,
-  GlobeIcon,
-  Image01Icon,
-  MortarboardIcon,
-  QuoteDownIcon,
-  Tag01Icon,
-} from '@hugeicons/core-free-icons';
-import { HugeiconsIcon, type IconSvgElement } from '@hugeicons/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -37,7 +37,7 @@ const itemClass =
 interface NavItem {
   href: string;
   label: string;
-  icon: IconSvgElement;
+  icon: IconComponent;
   count?: number;
   exact?: boolean;
 }
@@ -46,39 +46,39 @@ export function AdminSidebar({ email, counts }: AdminSidebarProps) {
   const pathname = usePathname();
 
   const content: NavItem[] = [
-    { href: '/admin', label: 'projects', icon: Folder01Icon, count: counts.projects, exact: true },
+    { href: '/admin', label: 'projects', icon: FolderIcon, count: counts.projects, exact: true },
     {
       href: '/admin/experiences',
       label: 'experience',
-      icon: Briefcase01Icon,
+      icon: BriefcaseIcon,
       count: counts.experiences,
     },
     {
       href: '/admin/education',
       label: 'education',
-      icon: MortarboardIcon,
+      icon: BookIcon,
       count: counts.education,
     },
     {
       href: '/admin/testimonials',
       label: 'testimonials',
-      icon: QuoteDownIcon,
+      icon: QuoteIcon,
       count: counts.testimonials,
     },
     {
       href: '/admin/contributions',
       label: 'contributions',
-      icon: GitPullRequestIcon,
+      icon: GitMergeIcon,
       count: counts.contributions,
     },
   ];
 
   const library: NavItem[] = [
-    { href: '/admin/media', label: 'media', icon: Image01Icon, count: counts.media },
-    { href: '/admin/taxonomy', label: 'taxonomy', icon: Tag01Icon },
+    { href: '/admin/media', label: 'media', icon: ImageIcon, count: counts.media },
+    { href: '/admin/taxonomy', label: 'taxonomy', icon: TagIcon },
   ];
 
-  function renderItem({ href, label, icon, count, exact }: NavItem) {
+  function renderItem({ href, label, icon: Icon, count, exact }: NavItem) {
     const active = exact ? pathname === href : pathname.startsWith(href);
     return (
       <li key={href}>
@@ -88,7 +88,7 @@ export function AdminSidebar({ email, counts }: AdminSidebarProps) {
           className={cn(itemClass, 'justify-between')}
         >
           <span className="flex min-w-0 items-center gap-2.5">
-            <HugeiconsIcon icon={icon} size={15} strokeWidth={1.5} />
+            <Icon size={15} strokeWidth={1.5} />
             <span className="truncate">{label}</span>
           </span>
           {count === undefined ? null : (
@@ -124,7 +124,7 @@ export function AdminSidebar({ email, counts }: AdminSidebarProps) {
 
       <div className="border-border flex flex-col gap-3 border-t pt-4">
         <Link href="/" className={itemClass}>
-          <HugeiconsIcon icon={GlobeIcon} size={15} strokeWidth={1.5} />
+          <GlobeIcon size={15} strokeWidth={1.5} />
           view site
         </Link>
         <div className="flex items-center justify-between gap-2">

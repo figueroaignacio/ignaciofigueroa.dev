@@ -1,7 +1,6 @@
 'use client';
 
-import { CheckmarkCircleIcon, CopyIcon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+import { CheckCircleIcon, CopyIcon } from '@/shared/components/icons';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import * as React from 'react';
 import { cn } from '@/shared/lib/cn';
@@ -112,7 +111,7 @@ export const Command = ({
               className="flex"
               aria-hidden="true"
             >
-              <HugeiconsIcon icon={CheckmarkCircleIcon} size={16} className="size-4" />
+              <CheckCircleIcon size={16} className="size-4" />
             </motion.span>
           ) : (
             <motion.span
@@ -124,7 +123,7 @@ export const Command = ({
               className="flex"
               aria-hidden="true"
             >
-              <HugeiconsIcon icon={CopyIcon} size={16} className="size-4" />
+              <CopyIcon size={16} className="size-4" />
             </motion.span>
           )}
         </AnimatePresence>

@@ -1,14 +1,13 @@
+import {
+  CodeIcon,
+  FolderIcon,
+  MailIcon,
+  MessageCircleIcon,
+  SparklesIcon,
+  ZapIcon,
+} from '@/shared/components/icons';
 import { buttonVariants } from '@/shared/components/ui/button-variants';
 import { cn } from '@/shared/lib/cn';
-import {
-  BulbIcon,
-  CodeIcon,
-  Folder01Icon,
-  Mail01Icon,
-  Message01Icon,
-  SparklesIcon,
-} from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
@@ -21,11 +20,11 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
 
   const suggestions = [
     {
-      icon: Message01Icon,
+      icon: MessageCircleIcon,
       text: t('who'),
     },
     {
-      icon: Folder01Icon,
+      icon: FolderIcon,
       text: t('projects'),
     },
     {
@@ -37,11 +36,11 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
       text: t('education'),
     },
     {
-      icon: BulbIcon,
+      icon: ZapIcon,
       text: t('recruiterMode'),
     },
     {
-      icon: Mail01Icon,
+      icon: MailIcon,
       text: t('contact'),
     },
   ];
@@ -63,7 +62,7 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
               'h-auto gap-1.5 px-2.5 py-1 font-mono text-[11px] text-muted-foreground hover:text-foreground',
             )}
           >
-            <HugeiconsIcon icon={Icon} className="size-3 shrink-0 opacity-70" />
+            <Icon className="size-3 shrink-0 opacity-70" />
             <span>{suggestion.text}</span>
           </motion.button>
         );

@@ -1,12 +1,11 @@
 'use client';
 
+import { ImagePlusIcon, TrashIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
 import { useToast } from '@/shared/components/ui/toast';
 import { cn } from '@/shared/lib/cn';
 import type { MediaDto } from '@repo/contracts';
-import { Delete02Icon, ImageUpload01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useRef, useState } from 'react';
 import { mediaApi } from '../api/admin.client';
 
@@ -53,7 +52,7 @@ export function MediaPicker({ label, media, value, onChange }: MediaPickerProps)
             aria-label="clear image"
             onClick={() => onChange(null)}
           >
-            <HugeiconsIcon icon={Delete02Icon} size={14} />
+            <TrashIcon size={14} />
           </Button>
         ) : null}
       </div>
@@ -93,7 +92,7 @@ export function MediaPicker({ label, media, value, onChange }: MediaPickerProps)
         size="sm"
         loading={uploading}
         className="self-start"
-        leftIcon={<HugeiconsIcon icon={ImageUpload01Icon} size={14} />}
+        leftIcon={<ImagePlusIcon size={14} />}
         onClick={() => inputRef.current?.click()}
       >
         upload image

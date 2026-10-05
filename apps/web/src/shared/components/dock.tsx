@@ -1,5 +1,14 @@
 'use client';
 
+import {
+  BriefcaseIcon,
+  FolderIcon,
+  HomeIcon,
+  MailIcon,
+  MoonIcon,
+  SunIcon,
+  UserIcon,
+} from '@/shared/components/icons';
 import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
 import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
@@ -7,16 +16,6 @@ import { locales } from '@/i18n/routing';
 import { Dock as DockBar, useDockAutoHide } from '@/shared/components/ui/dock';
 import { cn } from '@/shared/lib/cn';
 
-import {
-  Briefcase01Icon,
-  Folder01Icon,
-  Home01Icon,
-  Mail01Icon,
-  Moon02Icon,
-  Sun03Icon,
-  UserIcon,
-} from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { AnimatePresence, motion } from 'motion/react';
 import { type Locale, useLocale, useTranslations } from 'next-intl';
 import { useTheme } from 'nach-themes';
@@ -26,10 +25,10 @@ import { createPortal } from 'react-dom';
 const SECTION_IDS = ['experience', 'projects', 'about', 'contact'] as const;
 
 const SECTION_ICONS: Record<string, ReactNode> = {
-  experience: <HugeiconsIcon icon={Briefcase01Icon} strokeWidth={1.5} />,
-  projects: <HugeiconsIcon icon={Folder01Icon} strokeWidth={1.5} />,
-  about: <HugeiconsIcon icon={UserIcon} strokeWidth={1.5} />,
-  contact: <HugeiconsIcon icon={Mail01Icon} strokeWidth={1.5} />,
+  experience: <BriefcaseIcon strokeWidth={1.5} />,
+  projects: <FolderIcon strokeWidth={1.5} />,
+  about: <UserIcon strokeWidth={1.5} />,
+  contact: <MailIcon strokeWidth={1.5} />,
 };
 
 interface DockItem {
@@ -61,7 +60,7 @@ export function Dock() {
         key: 'home',
         label: home?.label ?? 'home',
         href: '/',
-        icon: <HugeiconsIcon icon={Home01Icon} strokeWidth={1.5} />,
+        icon: <HomeIcon strokeWidth={1.5} />,
       },
       ...SECTION_IDS.map((id) => ({
         key: id,
@@ -301,7 +300,7 @@ export function Dock() {
           className={cn(isCompact && 'gap-0.5')}
         >
           <DockBar.Item label={themeLabel} onClick={(e) => setTheme(isDark ? 'light' : 'dark', e)}>
-            <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} strokeWidth={1.5} />
+            {isDark ? <SunIcon /> : <MoonIcon />}
           </DockBar.Item>
           <DockBar.Item
             label={`Switch to ${nextLocale}`}

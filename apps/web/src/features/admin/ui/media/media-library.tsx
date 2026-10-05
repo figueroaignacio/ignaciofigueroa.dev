@@ -1,13 +1,12 @@
 'use client';
 
+import { ImagePlusIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Empty } from '@/shared/components/ui/empty';
 import { Frame } from '@/shared/components/ui/frame';
 import { Input } from '@/shared/components/ui/input';
 import { useToast } from '@/shared/components/ui/toast';
 import type { MediaDto } from '@repo/contracts';
-import { ImageUpload01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { mediaApi } from '../../api/admin.client';
@@ -52,7 +51,7 @@ export function MediaLibrary({ media }: { media: MediaDto[] }) {
         />
         <Button
           loading={uploading}
-          leftIcon={<HugeiconsIcon icon={ImageUpload01Icon} size={14} />}
+          leftIcon={<ImagePlusIcon size={14} />}
           onClick={() => inputRef.current?.click()}
         >
           upload image

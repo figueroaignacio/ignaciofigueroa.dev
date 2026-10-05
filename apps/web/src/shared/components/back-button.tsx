@@ -1,9 +1,8 @@
 'use client';
 
+import { ChevronLeftIcon } from '@/shared/components/icons';
 import { Link, useRouter } from '@/i18n/navigation';
 import { cn } from '@/shared/lib/cn';
-import { ArrowLeft01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useEffect, useState } from 'react';
 
 interface BackButtonProps {
@@ -36,7 +35,7 @@ export function BackButton({ label, fallbackHref, className }: BackButtonProps) 
         className,
       )}
     >
-      <HugeiconsIcon icon={ArrowLeft01Icon} className="size-4" aria-hidden="true" />
+      <ChevronLeftIcon className="size-4" aria-hidden="true" />
       {label}
     </Link>
   );

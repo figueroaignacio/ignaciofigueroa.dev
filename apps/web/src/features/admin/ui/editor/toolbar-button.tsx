@@ -1,18 +1,24 @@
 'use client';
 
+import { type IconComponent } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { cn } from '@/shared/lib/cn';
-import { HugeiconsIcon, type IconSvgElement } from '@hugeicons/react';
 
 interface ToolbarButtonProps {
-  icon: IconSvgElement;
+  icon: IconComponent;
   label: string;
   active?: boolean;
   disabled?: boolean;
   onClick: () => void;
 }
 
-export function ToolbarButton({ icon, label, active, disabled, onClick }: ToolbarButtonProps) {
+export function ToolbarButton({
+  icon: Icon,
+  label,
+  active,
+  disabled,
+  onClick,
+}: ToolbarButtonProps) {
   return (
     <Button
       type="button"
@@ -25,7 +31,7 @@ export function ToolbarButton({ icon, label, active, disabled, onClick }: Toolba
       onClick={onClick}
       className={cn('size-8 rounded-sm', active && 'bg-muted text-foreground')}
     >
-      <HugeiconsIcon icon={icon} size={16} />
+      <Icon size={16} />
     </Button>
   );
 }

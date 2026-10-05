@@ -1,8 +1,7 @@
 'use client';
 
+import { LogOutIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
-import { Logout02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { logout } from '../api/auth';
@@ -24,7 +23,7 @@ export function LogoutButton() {
       size="sm"
       loading={loading}
       onClick={handleLogout}
-      leftIcon={<HugeiconsIcon icon={Logout02Icon} size={14} />}
+      leftIcon={<LogOutIcon size={14} />}
     >
       log out
     </Button>

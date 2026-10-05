@@ -1,7 +1,6 @@
 'use client';
 
-import { ArrowDown01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+import { CheckIcon, ChevronDownIcon } from '@/shared/components/icons';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { motion, useReducedMotion } from 'motion/react';
 import * as React from 'react';
@@ -374,7 +373,7 @@ const SelectTrigger = ({
         style={ICON_STYLE}
         className="text-muted-foreground flex shrink-0"
       >
-        <HugeiconsIcon icon={ArrowDown01Icon} size={16} className="size-4" />
+        <ChevronDownIcon size={16} className="size-4" />
       </motion.span>
     </button>
   );
@@ -533,7 +532,7 @@ const SelectItem = ({
       <span className="flex-1 truncate">{children}</span>
       {isSelected && (
         <span className="absolute right-2 flex items-center" aria-hidden="true">
-          <HugeiconsIcon icon={Tick02Icon} size={16} className="size-4" />
+          <CheckIcon size={16} className="size-4" />
         </span>
       )}
     </div>

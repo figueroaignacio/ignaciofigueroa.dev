@@ -1,10 +1,9 @@
 'use client';
 
+import { ChevronUpIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Kbd, KbdGroup } from '@/shared/components/ui/kbd';
 import { Spinner } from '@/shared/components/ui/spinner';
-import { ArrowUp01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import React, { useEffect, useRef, useState } from 'react';
@@ -115,7 +114,7 @@ export function ChatInput({
                   aria-label={tInput('send')}
                   className="rounded-lg"
                 >
-                  <HugeiconsIcon icon={ArrowUp01Icon} className="size-4 stroke-2" />
+                  <ChevronUpIcon className="size-4 stroke-2" />
                 </Button>
               </motion.div>
             )}

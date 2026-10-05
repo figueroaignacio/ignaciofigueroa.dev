@@ -1,8 +1,7 @@
 'use client';
 
+import { XIcon } from '@/shared/components/icons';
 import { cn } from '@/shared/lib/cn';
-import { Cancel01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { AnimatePresence, HTMLMotionProps, motion } from 'motion/react';
 import * as React from 'react';
 import { cloneElement } from 'react';
@@ -289,7 +288,7 @@ const DialogContent = ({
           >
             {children}
             <DialogClose className="ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
-              <HugeiconsIcon icon={Cancel01Icon} className="h-4 w-4" size={16} />
+              <XIcon className="h-4 w-4" size={16} />
               <span className="sr-only">Close</span>
             </DialogClose>
           </motion.div>

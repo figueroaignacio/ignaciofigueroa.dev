@@ -1,22 +1,22 @@
+import { type IconComponent } from '@/shared/components/icons';
 import { Frame } from '@/shared/components/ui/frame';
 import { IconTile } from '@/shared/components/ui/icon-tile';
-import { HugeiconsIcon, IconSvgElement } from '@hugeicons/react';
 import * as React from 'react';
 
 interface GithubStatsCardProps {
   title: string;
   value: number | string;
-  icon: IconSvgElement;
+  icon: IconComponent;
   subtitle?: React.ReactNode;
 }
 
-export function GithubStatsCard({ title, value, icon, subtitle }: GithubStatsCardProps) {
+export function GithubStatsCard({ title, value, icon: Icon, subtitle }: GithubStatsCardProps) {
   return (
     <Frame className="transition-all duration-300 hover:border-primary/20 hover:-translate-y-0.5 hover:shadow-sm">
       <Frame.Header className="flex-row items-center justify-between gap-2">
         <span className="text-xs text-muted-foreground font-medium">{title}</span>
         <IconTile size="xs" tone="muted" className="bg-secondary/40 border-border/60">
-          <HugeiconsIcon icon={icon} />
+          <Icon />
         </IconTile>
       </Frame.Header>
       <Frame.Panel className="bg-background">

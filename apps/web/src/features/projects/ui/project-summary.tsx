@@ -1,11 +1,10 @@
 'use client';
 
+import { WandIcon, XIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Callout } from '@/shared/components/ui/callout';
 import { Card } from '@/shared/components/ui/card';
 import { ASSISTANT_API_URL } from '@/shared/lib/constants';
-import { AiBeautifyIcon, Cancel01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
@@ -57,11 +56,7 @@ export function ProjectSummary({ body, locale }: ProjectSummaryProps) {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-foreground/30 duration-1000" />
               <span className="relative inline-flex size-1.5 rounded-full bg-foreground/50" />
             </span>
-            <HugeiconsIcon
-              icon={AiBeautifyIcon}
-              className="size-3.5 text-muted-foreground"
-              strokeWidth={1.5}
-            />
+            <WandIcon className="size-3.5 text-muted-foreground" strokeWidth={1.5} />
             <Card.Title as="h2" className="type-label text-muted-foreground">
               {t('title')}
             </Card.Title>
@@ -73,7 +68,7 @@ export function ProjectSummary({ body, locale }: ProjectSummaryProps) {
             aria-label={t('dismiss')}
             className="size-6 rounded-full text-muted-foreground/40 hover:text-muted-foreground"
           >
-            <HugeiconsIcon icon={Cancel01Icon} className="size-3" strokeWidth={2} />
+            <XIcon className="size-3" strokeWidth={2} />
           </Button>
         </Card.Header>
         <Card.Content compact>
@@ -103,7 +98,7 @@ export function ProjectSummary({ body, locale }: ProjectSummaryProps) {
       loading={status === 'loading'}
       onClick={handleSummarize}
       className="border-dashed text-muted-foreground hover:text-foreground"
-      leftIcon={<HugeiconsIcon icon={AiBeautifyIcon} className="size-3.5" strokeWidth={1.5} />}
+      leftIcon={<WandIcon className="size-3.5" strokeWidth={1.5} />}
     >
       {status === 'loading' ? t('loading') : t('button')}
     </Button>

@@ -1,7 +1,6 @@
 'use client';
 
-import { Cancel01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
+import { XIcon } from '@/shared/components/icons';
 import { cva, type VariantProps } from 'class-variance-authority';
 import {
   AnimatePresence,
@@ -380,7 +379,7 @@ const DrawerContent = ({
                   className="hover:bg-muted rounded-full p-2 transition-colors"
                   aria-label="Close"
                 >
-                  <HugeiconsIcon icon={Cancel01Icon} className="h-4 w-4" size={16} />
+                  <XIcon className="h-4 w-4" size={16} />
                 </motion.button>
               </div>
 

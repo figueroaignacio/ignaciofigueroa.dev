@@ -1,10 +1,9 @@
 'use client';
 
+import { MessageCircleIcon, XIcon } from '@/shared/components/icons';
 import { useChat } from '@/features/assistant/hooks/use-chat';
 import { Button } from '@/shared/components/ui/button';
 import { Dialog } from '@/shared/components/ui/dialog';
-import { Cancel01Icon, Message01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { AssistantAvatar } from '../ui/assistant-avatar';
@@ -69,7 +68,7 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
                   title={t('header.reset')}
                   aria-label={t('header.reset')}
                 >
-                  <HugeiconsIcon icon={Message01Icon} className="size-4" />
+                  <MessageCircleIcon className="size-4" />
                 </button>
               </Dialog.Trigger>
               <Dialog.Content className="bg-card" zIndex={11000050}>
@@ -93,7 +92,7 @@ export function FloatingChat({ onClose, autoFocusInput = false }: FloatingChatPr
             className="flex items-center justify-center size-8 rounded-xl text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all duration-200 cursor-pointer"
             aria-label="Close chat"
           >
-            <HugeiconsIcon icon={Cancel01Icon} className="size-4" />
+            <XIcon className="size-4" />
           </button>
         </div>
       </header>

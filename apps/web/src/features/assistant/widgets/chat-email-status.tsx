@@ -1,11 +1,10 @@
 'use client';
 
+import { CheckIcon, LoaderIcon } from '@/shared/components/icons';
 import { Callout } from '@/shared/components/ui/callout';
 import { IconTile } from '@/shared/components/ui/icon-tile';
 import { Progress } from '@/shared/components/ui/progress';
 import { Separator } from '@/shared/components/ui/separator';
-import { Loading02Icon, Tick01Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
@@ -39,7 +38,7 @@ export function ChatEmailStatus({
           aria-busy="true"
           icon={
             <IconTile variant="soft" tone="info" size="sm">
-              <HugeiconsIcon icon={Loading02Icon} className="animate-spin" />
+              <LoaderIcon className="animate-spin" />
             </IconTile>
           }
         >
@@ -65,7 +64,7 @@ export function ChatEmailStatus({
           variant="success"
           icon={
             <IconTile variant="soft" tone="success" size="sm">
-              <HugeiconsIcon icon={Tick01Icon} className="stroke-[2.5]" />
+              <CheckIcon className="stroke-[2.5]" />
             </IconTile>
           }
         >

@@ -1,9 +1,8 @@
 'use client';
 
+import { MoonIcon, SunIcon } from '@/shared/components/icons';
 import { Button } from '@/shared/components/ui/button';
 import { Skeleton } from '@/shared/components/ui/skeleton';
-import { Moon02Icon, Sun03Icon } from '@hugeicons/core-free-icons';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { useTheme } from 'nach-themes';
 import { useEffect, useState } from 'react';
 
@@ -29,7 +28,7 @@ export function ThemeToggle() {
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       className="text-muted-foreground hover:text-foreground"
     >
-      <HugeiconsIcon icon={isDark ? Sun03Icon : Moon02Icon} className="size-5" strokeWidth={1.5} />
+      {isDark ? <SunIcon className="size-5" /> : <MoonIcon className="size-5" />}
     </Button>
   );
 }

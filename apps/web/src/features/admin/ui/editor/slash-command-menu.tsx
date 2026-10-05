@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from '@/shared/lib/cn';
-import { HugeiconsIcon } from '@hugeicons/react';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import type { SlashCommandItem } from './slash-command-items';
 
@@ -62,7 +61,7 @@ export const SlashCommandMenu = forwardRef<SlashCommandMenuHandle, SlashCommandM
             )}
           >
             <span className="bg-muted text-muted-foreground flex size-8 shrink-0 items-center justify-center rounded-sm">
-              <HugeiconsIcon icon={item.icon} size={16} />
+              <item.icon size={16} />
             </span>
             <span className="flex flex-col">
               <span>{item.title}</span>

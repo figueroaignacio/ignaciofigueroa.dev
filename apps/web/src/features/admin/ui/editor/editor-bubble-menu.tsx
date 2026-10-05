@@ -1,12 +1,12 @@
 'use client';
 
 import {
-  Link01Icon,
-  SourceCodeIcon,
-  TextBoldIcon,
-  TextItalicIcon,
-  TextStrikethroughIcon,
-} from '@hugeicons/core-free-icons';
+  BoldIcon,
+  CodeIcon,
+  ItalicIcon,
+  LinkIcon,
+  StrikethroughIcon,
+} from '@/shared/components/icons';
 import type { Editor } from '@tiptap/react';
 import { useEditorState } from '@tiptap/react';
 import { BubbleMenu } from '@tiptap/react/menus';
@@ -35,31 +35,31 @@ export function EditorBubbleMenu({ editor }: { editor: Editor }) {
       className="bg-card border-border flex items-center gap-0.5 rounded-md border p-1 shadow-md"
     >
       <ToolbarButton
-        icon={TextBoldIcon}
+        icon={BoldIcon}
         label="bold"
         active={state.bold}
         onClick={() => editor.chain().focus().toggleBold().run()}
       />
       <ToolbarButton
-        icon={TextItalicIcon}
+        icon={ItalicIcon}
         label="italic"
         active={state.italic}
         onClick={() => editor.chain().focus().toggleItalic().run()}
       />
       <ToolbarButton
-        icon={TextStrikethroughIcon}
+        icon={StrikethroughIcon}
         label="strikethrough"
         active={state.strike}
         onClick={() => editor.chain().focus().toggleStrike().run()}
       />
       <ToolbarButton
-        icon={SourceCodeIcon}
+        icon={CodeIcon}
         label="code"
         active={state.code}
         onClick={() => editor.chain().focus().toggleCode().run()}
       />
       <ToolbarButton
-        icon={Link01Icon}
+        icon={LinkIcon}
         label="link"
         active={state.link}
         onClick={() => promptForLink(editor)}
