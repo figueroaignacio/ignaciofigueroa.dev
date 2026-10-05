@@ -10,7 +10,6 @@ import {
   UserIcon,
 } from '@/shared/components/icons';
 import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
-import { FloatingChat } from '@/features/assistant/widgets/floating-chat';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
 import { Dock as DockBar, useDockAutoHide } from '@/shared/components/ui/dock';
@@ -19,8 +18,14 @@ import { cn } from '@/shared/lib/cn';
 import { AnimatePresence, motion } from 'motion/react';
 import { type Locale, useLocale, useTranslations } from 'next-intl';
 import { useTheme } from 'nach-themes';
+import dynamic from 'next/dynamic';
 import { type ReactNode, useEffect, useMemo, useRef, useState, useTransition } from 'react';
 import { createPortal } from 'react-dom';
+
+const loadFloatingChat = () =>
+  import('@/features/assistant/widgets/floating-chat').then((mod) => mod.FloatingChat);
+
+const FloatingChat = dynamic(loadFloatingChat, { ssr: false });
 
 const SECTION_IDS = ['experience', 'projects', 'about', 'contact'] as const;
 
@@ -77,6 +82,16 @@ export function Dock() {
 
   const [activeSection, setActiveSection] = useState<string>('/');
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  useEffect(() => {
+    const preload = () => void loadFloatingChat();
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(preload, { timeout: 4000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const timer = setTimeout(preload, 2000);
+    return () => clearTimeout(timer);
+  }, []);
   const [mounted, setMounted] = useState(false);
   const nextLocale = (locales.find((option) => option !== locale) ?? locale) as Locale;
   const isDark = mounted && resolvedTheme === 'dark';

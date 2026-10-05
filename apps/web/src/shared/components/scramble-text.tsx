@@ -207,13 +207,15 @@ export function ScrambleText({ text, className, mode = 'pointer' }: ScrambleText
   }, [mode, sweep]);
 
   return (
-    <span
-      ref={ref}
-      className={className}
-      style={minWidth ? { display: 'inline-block', minWidth } : undefined}
-      aria-label={text}
-    >
-      {rendered}
+    <span className={className}>
+      <span className="sr-only">{text}</span>
+      <span
+        ref={ref}
+        aria-hidden="true"
+        style={minWidth ? { display: 'inline-block', minWidth } : undefined}
+      >
+        {rendered}
+      </span>
     </span>
   );
 }
