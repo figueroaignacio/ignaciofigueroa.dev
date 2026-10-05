@@ -14,7 +14,8 @@ export function HeroAskButton({ label, className }: HeroAskButtonProps) {
       onClick={() => window.dispatchEvent(new Event('open-chat'))}
       className={cn('cursor-pointer', className)}
     >
-      {label} →
+      {label}
+      <span aria-hidden="true">→</span>
     </button>
   );
 }
