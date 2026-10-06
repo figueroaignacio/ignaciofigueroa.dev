@@ -1,6 +1,8 @@
 import { ScrambleText } from '@/shared/components/scramble-text';
 import { cn } from '@/shared/lib/cn';
 import { getTranslations } from 'next-intl/server';
+import { FOCUS_LEAD } from './about-section';
+import { DevBadge } from './dev-badge';
 import { HeroAskButton } from './hero-ask-button';
 import { HeroWorkingLink } from './hero-working-link';
 
@@ -36,40 +38,56 @@ export async function HomeHero() {
           </span>
         </h1>
 
-        <div className="mt-6 flex flex-col gap-4 lg:mt-10 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
-          <p className="flex flex-wrap items-baseline gap-x-1.5 text-base font-medium lg:text-[17px]">
-            <span className="text-muted-foreground">{t('labels.now')}</span>
-            <HeroWorkingLink
-              href={t('status.workingUrl')}
-              label={t('status.company')}
-              note={t('status.madeThat')}
-            />
-          </p>
+        <div className="mt-6 flex items-end gap-5 lg:mt-10 lg:block">
+          <div className="flex min-w-0 flex-1 flex-col gap-4 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
+            <p className="flex flex-wrap items-baseline gap-x-1.5 text-base font-medium lg:text-[17px]">
+              <span className="text-muted-foreground">{t('labels.now')}</span>
+              <HeroWorkingLink
+                href={t('status.workingUrl')}
+                label={t('status.company')}
+                note={t('status.madeThat')}
+              />
+            </p>
 
-          <nav
-            aria-label={t('labels.links')}
-            className="flex flex-col text-base font-medium lg:flex-row lg:gap-8 lg:text-[17px]"
-          >
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={linkRow}
-              >
-                {link.label}
-                <span aria-hidden="true">{link.icon}</span>
-              </a>
-            ))}
-            <HeroAskButton
-              label={t('labels.ask')}
-              className={cn(
-                linkRow,
-                'text-[color-mix(in_oklch,var(--brand),black_28%)] dark:text-brand lg:hover:text-foreground',
-              )}
-            />
-          </nav>
+            <nav
+              aria-label={t('labels.links')}
+              className="flex flex-col text-base font-medium lg:flex-row lg:gap-8 lg:text-[17px]"
+            >
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkRow}
+                >
+                  {link.label}
+                  <span aria-hidden="true">{link.icon}</span>
+                </a>
+              ))}
+              <HeroAskButton
+                label={t('labels.ask')}
+                className={cn(
+                  linkRow,
+                  'text-[color-mix(in_oklch,var(--brand),black_28%)] dark:text-brand lg:hover:text-foreground',
+                )}
+              />
+            </nav>
+          </div>
+          <DevBadge
+            company={t('status.company')}
+            city={t('status.city')}
+            stack={FOCUS_LEAD}
+            labels={{
+              id: t('badge.id'),
+              now: t('badge.now'),
+              base: t('badge.base'),
+              stack: t('badge.stack'),
+              found: t('badge.found'),
+              flip: t('badge.flip'),
+            }}
+            className="mb-1 shrink-0 text-[min(1.7vw,0.5rem)] lg:absolute lg:top-[7.5em] lg:right-[10%] lg:text-[clamp(10px,calc((100dvh-280px)/36.5),16px)]"
+          />
         </div>
       </div>
     </header>

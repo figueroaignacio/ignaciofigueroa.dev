@@ -21,14 +21,6 @@
       "ask": "Ask",
       "assistant": "My assistant",
       "resume": "Resume"
-    }
-  },
-  "aboutMe": {
-    "title": "About Me",
-    "content": {
-      "bio": "I'm a frontend engineer in Buenos Aires. Since July 2026 I work at Reclee, a B2B SaaS that helps companies recruit faster. I own the frontend there: I set up the design system on shadcn/ui and ReUI, rebuilt the layouts mobile-first, organized the code by feature so business logic stays out of the components, and built the landing you see at reclee.com. Before that I spent a year at Pawtrics Software building a practice management system for veterinary clinics, fullstack with Next.js, Supabase and PostgreSQL.",
-      "details": "I work T-shaped: deep on frontend, and I keep backend and infrastructure current enough to ship the whole thing. I use AI every day and I integrate it into products: this site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components. I maintain NachUI, an open source component system with its own CLI and registry, and right now I'm adding AI Elements to it, the pieces a chat interface needs: messages, streaming, tool calls. I study Programming at UTN and work on Fedora.",
-      "photoLegend": "Ignacio Figueroa, known as Nacho"
     },
     "badge": {
       "id": "Dev ID",
@@ -37,6 +29,14 @@
       "stack": "Stack",
       "found": "If found, return to",
       "flip": "Flip the badge"
+    }
+  },
+  "aboutMe": {
+    "title": "About Me",
+    "content": {
+      "bio": "I'm a frontend engineer in Buenos Aires. Since July 2026 I work at Reclee, a B2B SaaS that helps companies recruit faster. I own the frontend there: I set up the design system on shadcn/ui and ReUI, rebuilt the layouts mobile-first, organized the code by feature so business logic stays out of the components, and built the landing you see at reclee.com. Before that I spent a year at Pawtrics Software building a practice management system for veterinary clinics, fullstack with Next.js, Supabase and PostgreSQL.",
+      "details": "I work T-shaped: deep on frontend, and I keep backend and infrastructure current enough to ship the whole thing. I use AI every day and I integrate it into products: this site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components. I maintain NachUI, an open source component system with its own CLI and registry, and right now I'm adding AI Elements to it, the pieces a chat interface needs: messages, streaming, tool calls. I study Programming at UTN and work on Fedora.",
+      "photoLegend": "Ignacio Figueroa, known as Nacho"
     }
   },
   "projects": {
