@@ -5,7 +5,11 @@ import { getExperiences } from '../api/experience';
 import type { TimelineItem } from '../ui/timeline';
 import { TimelineWidget } from '../widgets/timeline-widget';
 
-function toTimelineItems(experiences: Experience[], locale: string): TimelineItem[] {
+function toTimelineItems(
+  experiences: Experience[],
+  locale: string,
+  connector: string,
+): TimelineItem[] {
   const presentLabel = locale === 'es' ? 'presente' : 'present';
 
   return experiences.map((experience) => ({
@@ -13,7 +17,7 @@ function toTimelineItems(experiences: Experience[], locale: string): TimelineIte
     title: experience.title,
     subtitle: experience.company,
     subtitleHref: experience.link,
-    connector: 'at',
+    connector,
     period: `${formatDate(experience.startDate, locale)} — ${
       experience.endDate ? formatDate(experience.endDate, locale) : presentLabel
     }`,
@@ -32,7 +36,7 @@ export async function ExperienceContainer() {
     <TimelineWidget
       id="experience"
       title={t('title')}
-      items={toTimelineItems(experiences, locale)}
+      items={toTimelineItems(experiences, locale, t('connector'))}
     />
   );
 }

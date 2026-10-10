@@ -25,12 +25,12 @@ export function HomeView() {
       <Suspense fallback={<ProjectsSkeleton />}>
         <ProjectsContainer />
       </Suspense>
+      <AboutSection />
       <Suspense fallback={<TimelineSkeleton />}>
         <EducationContainer />
       </Suspense>
       <CertificationsSection />
       <TechStack />
-      <AboutSection />
       <Suspense fallback={<ContributionsSkeleton />}>
         <ContributionsContainer />
       </Suspense>

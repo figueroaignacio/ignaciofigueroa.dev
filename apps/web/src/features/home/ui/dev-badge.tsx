@@ -12,7 +12,7 @@ import {
   useVelocity,
 } from 'motion/react';
 import Image from 'next/image';
-import { useRef, useState, type PointerEvent } from 'react';
+import { useEffect, useRef, useState, type PointerEvent } from 'react';
 
 const BARS = [3, 1, 1, 2, 4, 1, 2, 1, 1, 3, 1, 2, 2, 1, 4, 1, 1, 2, 3, 1, 2, 1];
 
@@ -82,8 +82,16 @@ export function DevBadge({
   const pull = useMotionValue(0);
   const { scrollY } = useScroll();
   const velocity = useVelocity(scrollY);
-  const target = useTransform(() => clamp(velocity.get() / 400, 5) + clamp(pull.get() / 10, 14));
+  const motionOn = useMotionValue(1);
+  const target = useTransform(
+    () => motionOn.get() * (clamp(velocity.get() / 400, 5) + clamp(pull.get() / 10, 14)),
+  );
   const rotate = useSpring(target, { stiffness: 120, damping: 7, mass: 0.8 });
+
+  useEffect(() => {
+    motionOn.set(reduce ? 0 : 1);
+    if (reduce) rotate.jump(0);
+  }, [reduce, motionOn, rotate]);
 
   const tiltX = useSpring(0, { stiffness: 220, damping: 22 });
   const tiltY = useSpring(0, { stiffness: 220, damping: 22 });
@@ -124,7 +132,7 @@ export function DevBadge({
       </span>
       <motion.div
         className="flex flex-col items-center perspective-[1400px]"
-        style={{ rotate: reduce ? 0 : rotate, transformOrigin: '50% 0' }}
+        style={{ rotate, transformOrigin: '50% 0' }}
         viewport={{ once: true, amount: 0.4 }}
         onViewportEnter={() => {
           if (reduce) return;

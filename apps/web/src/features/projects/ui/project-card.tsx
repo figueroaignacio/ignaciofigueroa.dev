@@ -1,6 +1,5 @@
 'use client';
 
-import { getLabelColor } from '@/features/projects/lib/get-label-color';
 import { Link } from '@/i18n/navigation';
 import type { Project } from '@/shared/lib/content-types';
 import { Badge } from '@/shared/components/ui/badge';
@@ -43,8 +42,7 @@ export function ProjectCard({
                 >
                   <span
                     aria-hidden="true"
-                    className="size-1.5 shrink-0 rounded-full"
-                    style={{ backgroundColor: getLabelColor(label.label) }}
+                    className="size-1.5 shrink-0 rounded-full bg-current opacity-50"
                   />
                   {label.label}
                 </Badge>

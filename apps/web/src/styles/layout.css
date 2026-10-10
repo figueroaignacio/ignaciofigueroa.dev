@@ -250,17 +250,17 @@
     transition:
       transform 260ms ease-out,
       border-color 200ms ease-out;
-    background-image: radial-gradient(
-      220px circle at var(--mx, 50%) var(--my, 50%),
-      color-mix(in oklch, var(--brand) 22%, transparent),
-      transparent 65%
-    );
     background-repeat: no-repeat;
     will-change: transform;
   }
 
   .tilt-card:hover {
     border-color: color-mix(in oklch, var(--brand) 45%, var(--border));
+    background-image: radial-gradient(
+      220px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklch, var(--brand) 22%, transparent),
+      transparent 65%
+    );
   }
 
   .contact-stage .hero-waves span:nth-child(3) {

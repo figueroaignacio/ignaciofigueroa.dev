@@ -59,9 +59,6 @@
       },
       "focus": {
         "label": "focus"
-      },
-      "stack": {
-        "label": "stack"
       }
     }
   },
@@ -86,7 +83,8 @@
   },
   "experience": {
     "title": "Experiencia",
-    "description": "Roles donde entregué features, fixé bugs reales y trabajé con otros desarrolladores."
+    "description": "Roles donde entregué features, fixé bugs reales y trabajé con otros desarrolladores.",
+    "connector": "en"
   },
   "education": {
     "title": "Educación",
@@ -96,7 +94,7 @@
     "items": [
       {
         "title": "Tecnicatura Universitaria en Programación y Desarrollo de Software",
-        "institution": "En Universidad Tecnológica Nacional (UTN)",
+        "institution": "Universidad Tecnológica Nacional (UTN)",
         "description": "Carrera orientada a la formación de profesionales en desarrollo de software y soluciones tecnológicas. Cubre programación, diseño de aplicaciones, gestión de bases de datos y resolución de problemas mediante pensamiento lógico y computacional. Perfil técnico-profesional con bases sólidas en desarrollo de software",
         "skills": [
           "Programación",
@@ -127,7 +125,7 @@
       },
       {
         "title": "Autoformación en Desarrollo / Ingenieria de Software, Programación e Inteligencia Artificial",
-        "institution": "En Internet",
+        "institution": "Internet",
         "description": "Especialización autodidacta en tecnologías web, programación de software, integración de modelos de inteligencia artificial y administración de sistemas Linux. Desarrollo de herramientas de código abierto y aplicaciones web.",
         "skills": [
           "React",
@@ -145,7 +143,8 @@
         "startDate": "2022-03-01",
         "endDate": null
       }
-    ]
+    ],
+    "connector": "en"
   },
   "certifications": {
     "title": "Certificaciones",

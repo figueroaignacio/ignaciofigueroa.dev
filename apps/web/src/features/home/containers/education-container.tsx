@@ -21,6 +21,7 @@ export async function EducationContainer() {
     key: item.title,
     title: item.title,
     subtitle: item.institution,
+    connector: t('connector'),
     period: `${formatDate(item.startDate, locale)} — ${
       item.endDate ? formatDate(item.endDate, locale) : t('present')
     }`,

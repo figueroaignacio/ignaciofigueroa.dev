@@ -54,14 +54,14 @@ export async function HomeHero() {
         </h1>
 
         <div className="mt-6 flex flex-col gap-4 lg:mt-10 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
-          <p className="flex flex-wrap items-baseline gap-x-1.5 text-base font-medium lg:text-[17px]">
+          <div className="flex flex-wrap items-baseline gap-x-1.5 text-base font-medium lg:text-[17px]">
             <span className="text-muted-foreground">{t('labels.now')}</span>
             <HeroWorkingLink
               href={t('status.workingUrl')}
               label={t('status.company')}
               note={t('status.madeThat')}
             />
-          </p>
+          </div>
 
           <nav
             aria-label={t('labels.links')}
