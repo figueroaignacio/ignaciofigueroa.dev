@@ -187,7 +187,7 @@ export function DevBadge({
                   </span>
                 </span>
                 <span className="flex-1" />
-                <span className="text-[2.6em] leading-[0.82] font-black tracking-[-0.075em] uppercase">
+                <span className="text-[2.2em] leading-[0.88] font-extrabold tracking-[-0.055em] uppercase">
                   {firstName}
                   <br />
                   {lastName}
@@ -213,7 +213,7 @@ export function DevBadge({
             <span className={cn(face, 'rotate-y-180')}>
               <Band left={labels.stack} right={String(stack.length).padStart(2, '0')} />
               <span className="flex flex-1 flex-col p-[1.25em]">
-                <span className="mt-[0.5em] flex flex-col gap-[0.08em] text-[1.9em] leading-[0.9] font-black tracking-[-0.06em] uppercase">
+                <span className="mt-[0.5em] flex flex-col gap-[0.08em] text-[1.6em] leading-[0.95] font-extrabold tracking-[-0.045em] uppercase">
                   {stack.map((item, index) => (
                     <span key={item} className={cn(index === stack.length - 1 && accent)}>
                       {item}

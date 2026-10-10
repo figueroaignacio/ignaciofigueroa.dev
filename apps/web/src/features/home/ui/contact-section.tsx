@@ -63,10 +63,8 @@ export function ContactSection() {
           </span>
           <ScrambleText text={tPages('label')} mode="in-view" />
         </p>
-        <h2 className="max-w-[9em] text-[clamp(3rem,min(13vw,10vh),8.5rem)] leading-[0.82] font-black tracking-[-0.075em] uppercase text-foreground">
-          <span className="inline-block bg-brand px-[0.06em] pt-[0.06em] text-brand-foreground">
-            {t('title')}
-          </span>
+        <h2 className="max-w-[9em] text-[clamp(2.5rem,min(9vw,8vh),5.5rem)] leading-[0.88] font-extrabold tracking-[-0.055em] uppercase text-foreground">
+          {t('title')}
         </h2>
 
         <div className="flex flex-col gap-8 border-t-2 border-foreground pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16">

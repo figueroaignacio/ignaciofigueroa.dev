@@ -8,7 +8,7 @@ import { HeroAskButton } from './hero-ask-button';
 import { HeroWorkingLink } from './hero-working-link';
 
 const nameSize =
-  'text-[clamp(2.75rem,min(13vw,7vh),4.25rem)] lg:text-[clamp(4rem,min(10vw,18vh),11rem)]';
+  'text-[clamp(2.5rem,min(11vw,6.5vh),3.5rem)] lg:text-[clamp(3.5rem,min(6.5vw,12vh),6rem)]';
 
 const linkRow =
   'flex min-h-11 flex-row-reverse items-center justify-between border-t border-foreground/12 transition-colors lg:min-h-0 lg:flex-row lg:justify-start lg:gap-2 lg:border-0 lg:hover:text-brand';
@@ -30,13 +30,25 @@ export async function HomeHero() {
   return (
     <header className="flex min-h-0 min-w-0 flex-1 flex-col gap-8 lg:pb-4">
       <div className="flex flex-1 flex-col justify-end gap-4 lg:gap-5">
-        <h1 className="flex flex-col items-start gap-4 leading-[0.8] font-black tracking-[-0.075em] uppercase lg:gap-6">
-          <span className={cn('block', nameSize)}>
+        <p className="type-label lowercase text-muted-foreground">
+          <span aria-hidden="true" className="text-muted-foreground/60">
+            ./
+          </span>
+          {t('status.city')}
+        </p>
+        <h1 className="flex flex-col items-start gap-4 lg:gap-5">
+          <span
+            className={cn(
+              nameSize,
+              'block leading-[0.88] font-extrabold tracking-[-0.055em] uppercase',
+            )}
+          >
             <ScrambleText text={firstName} />
             <br />
             <ScrambleText text={lastName} />
+            <span aria-hidden="true" className="ml-[0.06em] inline-block size-[0.16em] bg-brand" />
           </span>
-          <span className="bg-brand px-[0.14em] pt-[0.08em] text-[clamp(1.25rem,6vw,1.75rem)] leading-[0.88] tracking-[-0.06em] [word-spacing:0.18em] text-brand-foreground lg:text-[clamp(1.5rem,2.6vw,2.75rem)]">
+          <span className="text-base font-semibold tracking-[-0.02em] text-muted-strong uppercase lg:text-lg">
             {t('title')}
           </span>
         </h1>
