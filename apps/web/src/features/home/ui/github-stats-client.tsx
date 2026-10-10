@@ -1,8 +1,8 @@
 'use client';
 
 import { BarChartIcon } from '@/shared/components/icons';
+import { useQueryTab } from '@/shared/hooks/use-query-tab';
 import { useTranslations } from 'next-intl';
-import * as React from 'react';
 import { GithubContributionCalendar } from './github-contribution-calendar';
 import { GithubStatsCard } from './github-stats-card';
 import { GithubStatsClientProps } from './github-stats-types';
@@ -15,7 +15,7 @@ export function GithubStatsClient({
   years,
 }: GithubStatsClientProps) {
   const t = useTranslations('sections.github');
-  const [activeYear, setActiveYear] = React.useState<string>(initialYear);
+  const [activeYear, setActiveYear] = useQueryTab('year', availableYears.map(String), initialYear);
   const currentYearData = years[Number(activeYear)] || { totalContributions: 0, contributions: [] };
 
   return (
