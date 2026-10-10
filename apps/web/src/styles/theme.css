@@ -55,8 +55,8 @@
   --radius-xl: calc(var(--radius) + 0.25rem);
   --radius-2xl: calc(var(--radius) + 0.5rem);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-schibsted), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-sans);
-  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
   --animate-blink: blink 3s infinite;
 }
