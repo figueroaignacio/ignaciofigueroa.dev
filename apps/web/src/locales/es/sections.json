@@ -21,14 +21,6 @@
       "ask": "Preguntale",
       "assistant": "Mi asistente",
       "resume": "CV"
-    },
-    "badge": {
-      "id": "Dev ID",
-      "now": "Ahora",
-      "base": "Base",
-      "stack": "Stack",
-      "found": "Si lo encontrás, devolver a",
-      "flip": "Dar vuelta el gafete"
     }
   },
   "aboutMe": {
@@ -37,6 +29,14 @@
       "bio": "Soy frontend engineer en Buenos Aires. Desde julio de 2026 trabajo en Reclee, un SaaS B2B que ayuda a las empresas a reclutar más rápido. Ahí me hago cargo del frontend: armé el design system sobre shadcn/ui y ReUI, rehice los layouts mobile-first, organicé el código por feature para que la lógica de negocio no viva en los componentes, e hice la landing que ves en reclee.com. Antes pasé un año en Pawtrics Software construyendo un sistema de gestión para clínicas veterinarias, fullstack con Next.js, Supabase y PostgreSQL.",
       "details": "Trabajo en forma de T: profundidad en frontend, y backend e infraestructura lo suficientemente al día como para sacar el producto entero. Uso IA todos los días y la integro en productos: este sitio corre sobre un CMS en NestJS que escribí de cero, con Postgres, un panel de admin y un asistente sobre Gemini con búsqueda vectorial. Lo que más disfruto es desarrollar componentes. Mantengo NachUI, un sistema de componentes open source con su propio CLI y registry, y ahora mismo le estoy sumando AI Elements, las piezas que necesita una interfaz de chat: mensajes, streaming, tool calls. Estudio Programación en la UTN y trabajo sobre Fedora.",
       "photoLegend": "Ignacio Figueroa, conocido como Nacho"
+    },
+    "badge": {
+      "id": "Dev ID",
+      "now": "Ahora",
+      "base": "Base",
+      "stack": "Stack",
+      "found": "Si lo encontrás, devolver a",
+      "flip": "Dar vuelta el gafete"
     }
   },
   "projects": {

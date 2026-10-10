@@ -4,8 +4,6 @@ import { LinkedInIcon } from '@/shared/components/tech-icons';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { cn } from '@/shared/lib/cn';
 import { getTranslations } from 'next-intl/server';
-import { FOCUS_LEAD } from './about-section';
-import { DevBadge } from './dev-badge';
 import { HeroAskButton } from './hero-ask-button';
 import { HeroWorkingLink } from './hero-working-link';
 
@@ -31,20 +29,6 @@ export async function HomeHero() {
 
   return (
     <header className="flex min-h-0 min-w-0 flex-1 flex-col gap-8 lg:pb-4">
-      <DevBadge
-        company={t('status.company')}
-        city={t('status.city')}
-        stack={FOCUS_LEAD}
-        labels={{
-          id: t('badge.id'),
-          now: t('badge.now'),
-          base: t('badge.base'),
-          stack: t('badge.stack'),
-          found: t('badge.found'),
-          flip: t('badge.flip'),
-        }}
-        className="absolute -top-5 right-0 z-10 text-[clamp(5px,calc((100dvh-510px)/27.5),8px)] lg:top-[7.5em] lg:right-[10%] lg:text-[clamp(10px,calc((100dvh-280px)/36.5),16px)]"
-      />
       <div className="flex flex-1 flex-col justify-end gap-4 lg:gap-5">
         <h1 className="flex flex-col items-start gap-4 leading-[0.8] font-black tracking-[-0.075em] uppercase lg:gap-6">
           <span className={cn('block', nameSize)}>
