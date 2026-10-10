@@ -10,6 +10,9 @@ import { useTranslations } from 'next-intl';
 import { useActionState, useEffect, useRef, useState } from 'react';
 import { sendEmail } from '../actions/send-email';
 
+const field =
+  'rounded-none border-0 border-b border-foreground/15 bg-transparent px-0 shadow-none transition-colors focus-visible:border-foreground/60 focus-visible:ring-0 dark:bg-transparent';
+
 type ContactFormState = {
   error: string | null;
   success: boolean;
@@ -54,7 +57,7 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
   return (
     <div className="w-full">
       <form action={formAction} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
           <Input
             id="name"
             name="name"
@@ -64,6 +67,7 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
             disabled={locked}
             label={t('nameLabel')}
             placeholder={t('namePlaceholder')}
+            className={field}
           />
           <Input
             id="email"
@@ -74,6 +78,7 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
             disabled={locked}
             label={t('emailLabel')}
             placeholder={t('emailPlaceholder')}
+            className={field}
           />
         </div>
 
@@ -88,7 +93,11 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
             placeholder={t('messagePlaceholder')}
             rows={3}
             onInput={handleInput}
-            className={cn(inputVariants(), 'h-auto min-h-24 py-3 resize-none overflow-hidden')}
+            className={cn(
+              inputVariants(),
+              field,
+              'h-auto min-h-20 py-2 resize-none overflow-hidden',
+            )}
           />
         </Input.Wrapper>
 

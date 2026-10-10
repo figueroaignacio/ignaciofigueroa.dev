@@ -67,7 +67,7 @@ export function ContactSection() {
           {t('title')}
         </h2>
 
-        <div className="flex flex-col gap-8 border-t-2 border-foreground pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+        <div className="flex flex-col gap-8 border-t border-foreground/15 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
           <div className="flex max-w-[36rem] flex-col">
             <p className="text-lg leading-tight font-bold tracking-[-0.03em] text-pretty text-foreground sm:text-xl">
               {tPages('description')}
