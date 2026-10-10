@@ -57,8 +57,7 @@ export function Section({ id, title, children, className, accessory }: SectionPr
       className={className}
       accessory={accessory}
       label={
-        <h2 className="scroll-blur-label flex items-center gap-[0.4em] text-[clamp(1.375rem,2.6vw,1.625rem)] leading-none font-extrabold tracking-[-0.045em] uppercase">
-          <span aria-hidden="true" className="size-[0.38em] shrink-0 bg-brand" />
+        <h2 className="scroll-blur-label text-xl leading-tight font-semibold tracking-[-0.025em]">
           <ScrambleText text={title} mode="in-view" />
         </h2>
       }
