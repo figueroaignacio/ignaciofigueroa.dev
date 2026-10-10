@@ -11,7 +11,6 @@ import { CertificationsSection } from '../ui/certifications-section';
 import { ContributionsSkeleton } from '../ui/contributions-skeleton';
 import { CTACurriculum } from '../ui/cta-curriculum';
 import { GithubStatsSkeleton } from '../ui/github-stats-skeleton';
-import { Interests } from '../ui/interests';
 import { ProjectsSkeleton } from '../ui/projects-skeleton';
 import { TechStack } from '../ui/tech-stack';
 import { TestimonialsSkeleton } from '../ui/testimonials-skeleton';
@@ -31,7 +30,6 @@ export function HomeView() {
       </Suspense>
       <CertificationsSection />
       <TechStack />
-      <Interests />
       <AboutSection />
       <Suspense fallback={<ContributionsSkeleton />}>
         <ContributionsContainer />

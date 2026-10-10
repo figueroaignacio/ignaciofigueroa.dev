@@ -3,6 +3,7 @@ import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
 import { Fragment } from 'react';
 import { DevBadge } from './dev-badge';
+import { FocusAreas } from './interests';
 
 export const FOCUS_LEAD = ['React', 'Next.js', 'TypeScript', 'Node.js'];
 const FOCUS_SUPPORT = ['AI Integration', 'Clean Architecture', 'Linux', 'Fedora'];
@@ -61,6 +62,10 @@ export async function AboutSection() {
               </Fragment>
             ))}
             <FactLabel label={tSection('facts.focus.label')} />
+            <dd className="border-t border-rule py-2.5">
+              <FocusAreas />
+            </dd>
+            <FactLabel label={tSection('facts.stack.label')} />
             <dd className="border-t border-rule py-2.5">
               <TechChipGroup>
                 {FOCUS_LEAD.map((item) => (

@@ -7,7 +7,6 @@ import {
   SparklesIcon,
 } from '@/shared/components/icons';
 import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
-import { Section } from '@/shared/components/ui/section';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import type { Icon } from '@/shared/lib/constants';
 import { useTranslations } from 'next-intl';
@@ -31,25 +30,22 @@ const INTERESTS_CONFIG: InterestConfig[] = [
   { key: 'aiOrchestration', icon: SparklesIcon },
 ];
 
-export function Interests() {
+export function FocusAreas() {
   const t = useTranslations('sections.interests.items');
-  const tSection = useTranslations('sections.interests');
 
   return (
-    <Section id="interests" title={tSection('title')}>
-      <TechChipGroup role="list">
-        {INTERESTS_CONFIG.map(({ key, icon: Icon }) => (
-          <TechChip
-            key={key}
-            role="listitem"
-            tone="lead"
-            className="cursor-default transition-colors [&>span]:text-muted-foreground"
-            icon={<Icon className="size-full" />}
-          >
-            {t(key)}
-          </TechChip>
-        ))}
-      </TechChipGroup>
-    </Section>
+    <TechChipGroup role="list">
+      {INTERESTS_CONFIG.map(({ key, icon: Icon }) => (
+        <TechChip
+          key={key}
+          role="listitem"
+          tone="lead"
+          className="cursor-default transition-colors [&>span]:text-muted-foreground"
+          icon={<Icon className="size-full" />}
+        >
+          {t(key)}
+        </TechChip>
+      ))}
+    </TechChipGroup>
   );
 }
