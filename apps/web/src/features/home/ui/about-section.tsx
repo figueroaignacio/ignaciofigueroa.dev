@@ -1,11 +1,27 @@
 import { Section } from '@/shared/components/ui/section';
-import { Separator } from '@/shared/components/ui/separator';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { getTranslations } from 'next-intl/server';
+import { Fragment } from 'react';
 import { DevBadge } from './dev-badge';
 
 export const FOCUS_LEAD = ['React', 'Next.js', 'TypeScript', 'Node.js'];
 const FOCUS_SUPPORT = ['AI Integration', 'Clean Architecture', 'Linux', 'Fedora'];
+
+const FACTS = ['now', 'before', 'maintain', 'study'] as const;
+
+const factLabel = 'border-t border-rule py-3 font-mono text-xs text-muted-foreground';
+const factValue = 'border-t border-rule py-3';
+
+function FactLabel({ label }: { label: string }) {
+  return (
+    <dt className={factLabel}>
+      <span aria-hidden="true" className="text-muted-foreground/60">
+        ./
+      </span>
+      {label}
+    </dt>
+  );
+}
 
 export async function AboutSection() {
   const t = await getTranslations('sections.aboutMe.content');
@@ -13,11 +29,8 @@ export async function AboutSection() {
   const tHome = await getTranslations('sections.home');
 
   return (
-    <Section
-      id="about"
-      title={tSection('title')}
-      className="relative"
-      accessory={
+    <Section id="about" title={tSection('title')}>
+      <div className="grid gap-10 sm:grid-cols-[15.3rem_minmax(0,1fr)] sm:gap-x-12">
         <DevBadge
           name={tHome('name')}
           role={tHome('title')}
@@ -32,37 +45,41 @@ export async function AboutSection() {
             found: tSection('badge.found'),
             flip: tSection('badge.flip'),
           }}
-          strapClassName="h-16 sm:h-24"
-          className="mx-auto mb-10 text-[0.875rem] sm:absolute sm:top-0 sm:right-[calc((100%-min(100%,var(--frame-measure)))/2)] sm:mb-0"
+          strapClassName="h-10"
+          className="mx-auto text-[0.875rem] sm:mx-0"
         />
-      }
-    >
-      <div className="w-full">
-        <div
-          aria-hidden="true"
-          className="float-right ml-10 hidden h-[25.5rem] w-[15.5rem] sm:block"
-        />
-        <div className="prose-reading">
-          <p>{t('bio')}</p>
-          <p className="font-light italic text-muted-foreground">{t('details')}</p>
-        </div>
 
-        <div className="clear-both pt-6 mt-6">
-          <Separator className="mb-6" />
-          <div className="space-y-2.5">
-            <p className="type-label text-muted-foreground">Focus</p>
-            <TechChipGroup>
-              {FOCUS_LEAD.map((item) => (
-                <TechChip key={item} tone="lead">
-                  {item}
-                </TechChip>
-              ))}
-              {FOCUS_SUPPORT.map((item) => (
-                <TechChip key={item}>{item}</TechChip>
-              ))}
-            </TechChipGroup>
-          </div>
+        <div className="flex min-w-0 flex-col gap-7 sm:pt-14">
+          <p className="text-xl leading-snug font-medium tracking-[-0.02em] text-pretty text-foreground">
+            {t('lead')}
+          </p>
+          <dl className="grid grid-cols-[6.5rem_minmax(0,1fr)] text-sm">
+            {FACTS.map((fact) => (
+              <Fragment key={fact}>
+                <FactLabel label={tSection(`facts.${fact}.label`)} />
+                <dd className={factValue}>{tSection(`facts.${fact}.value`)}</dd>
+              </Fragment>
+            ))}
+            <FactLabel label={tSection('facts.focus.label')} />
+            <dd className="border-t border-rule py-2.5">
+              <TechChipGroup>
+                {FOCUS_LEAD.map((item) => (
+                  <TechChip key={item} tone="lead">
+                    {item}
+                  </TechChip>
+                ))}
+                {FOCUS_SUPPORT.map((item) => (
+                  <TechChip key={item}>{item}</TechChip>
+                ))}
+              </TechChipGroup>
+            </dd>
+          </dl>
         </div>
+      </div>
+
+      <div className="prose-reading mt-12">
+        <p>{t('bio')}</p>
+        <p className="text-muted-foreground">{t('more')}</p>
       </div>
     </Section>
   );

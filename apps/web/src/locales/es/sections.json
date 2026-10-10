@@ -28,7 +28,9 @@
     "content": {
       "bio": "Soy frontend engineer en Buenos Aires. Desde julio de 2026 trabajo en Reclee, un SaaS B2B que ayuda a las empresas a reclutar más rápido. Ahí me hago cargo del frontend: armé el design system sobre shadcn/ui y ReUI, rehice los layouts mobile-first, organicé el código por feature para que la lógica de negocio no viva en los componentes, e hice la landing que ves en reclee.com. Antes pasé un año en Pawtrics Software construyendo un sistema de gestión para clínicas veterinarias, fullstack con Next.js, Supabase y PostgreSQL.",
       "details": "Trabajo en forma de T: profundidad en frontend, y backend e infraestructura lo suficientemente al día como para sacar el producto entero. Uso IA todos los días y la integro en productos: este sitio corre sobre un CMS en NestJS que escribí de cero, con Postgres, un panel de admin y un asistente sobre Gemini con búsqueda vectorial. Lo que más disfruto es desarrollar componentes. Mantengo NachUI, un sistema de componentes open source con su propio CLI y registry, y ahora mismo le estoy sumando AI Elements, las piezas que necesita una interfaz de chat: mensajes, streaming, tool calls. Estudio Programación en la UTN y trabajo sobre Fedora.",
-      "photoLegend": "Ignacio Figueroa, conocido como Nacho"
+      "photoLegend": "Ignacio Figueroa, conocido como Nacho",
+      "lead": "Trabajo en forma de T: profundidad en frontend, y backend e infraestructura lo suficientemente al día como para sacar el producto entero.",
+      "more": "Uso IA todos los días y la integro en productos: este sitio corre sobre un CMS en NestJS que escribí de cero, con Postgres, un panel de admin y un asistente sobre Gemini con búsqueda vectorial. Lo que más disfruto es desarrollar componentes. Mantengo NachUI, un sistema de componentes open source con su propio CLI y registry, y ahora mismo le estoy sumando AI Elements, las piezas que necesita una interfaz de chat: mensajes, streaming, tool calls. Estudio Programación en la UTN y trabajo sobre Fedora."
     },
     "badge": {
       "id": "Dev ID",
@@ -37,6 +39,27 @@
       "stack": "Stack",
       "found": "Si lo encontrás, devolver a",
       "flip": "Dar vuelta el gafete"
+    },
+    "facts": {
+      "now": {
+        "label": "ahora",
+        "value": "Frontend en Reclee, SaaS B2B de reclutamiento"
+      },
+      "before": {
+        "label": "antes",
+        "value": "Fullstack en Pawtrics Software, un año"
+      },
+      "maintain": {
+        "label": "mantengo",
+        "value": "NachUI, componentes open source con CLI y registry"
+      },
+      "study": {
+        "label": "estudio",
+        "value": "Programación en la UTN"
+      },
+      "focus": {
+        "label": "focus"
+      }
     }
   },
   "projects": {
@@ -306,19 +329,13 @@
     "title": "Áreas de Enfoque",
     "description": "Dónde invierto el tiempo y dónde puedo aportar valor real.",
     "items": {
-      "frontend": "Frontend Development",
-      "backend": "Backend Architecture",
-      "ai": "Integración de IA",
-      "prompts": "Prompt Engineering",
-      "arch": "Arquitectura de Software",
-      "clean": "Código Mantenible",
-      "ui": "Diseño UX/UI",
-      "a11y": "Accesibilidad Web",
-      "perf": "Performance",
-      "qa": "Testing & QA",
-      "devops": "DevOps Culture",
-      "opensource": "Open Source",
-      "linux": "Linux"
+      "frontend": "Ingeniería Frontend",
+      "software": "Ingeniería de Software",
+      "programming": "Programación",
+      "linux": "Linux",
+      "uxui": "UX/UI",
+      "sdd": "Spec Driven Development",
+      "aiOrchestration": "Orquestación de modelos de IA"
     }
   },
   "assistant": {

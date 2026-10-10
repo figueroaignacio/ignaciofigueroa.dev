@@ -1,15 +1,10 @@
 import {
-  CheckSquareIcon,
+  CodeIcon,
   EyeIcon,
-  GlobeIcon,
   LayoutIcon,
+  ListIcon,
   PuzzleIcon,
-  RouteIcon,
-  ServerIcon,
-  ShieldIcon,
   SparklesIcon,
-  TerminalIcon,
-  ZapIcon,
 } from '@/shared/components/icons';
 import { LinuxIcon } from '@/shared/components/tech-icons/linux-icon';
 import { Section } from '@/shared/components/ui/section';
@@ -28,18 +23,12 @@ type InterestConfig = {
  */
 const INTERESTS_CONFIG: InterestConfig[] = [
   { key: 'frontend', icon: LayoutIcon },
-  { key: 'backend', icon: ServerIcon },
-  { key: 'ai', icon: SparklesIcon },
-  { key: 'prompts', icon: TerminalIcon },
-  { key: 'arch', icon: PuzzleIcon },
-  { key: 'clean', icon: ShieldIcon },
-  { key: 'ui', icon: LayoutIcon },
-  { key: 'a11y', icon: EyeIcon },
-  { key: 'perf', icon: ZapIcon },
-  { key: 'qa', icon: CheckSquareIcon },
-  { key: 'devops', icon: RouteIcon },
-  { key: 'opensource', icon: GlobeIcon },
+  { key: 'software', icon: PuzzleIcon },
+  { key: 'programming', icon: CodeIcon },
   { key: 'linux', icon: LinuxIcon },
+  { key: 'uxui', icon: EyeIcon },
+  { key: 'sdd', icon: ListIcon },
+  { key: 'aiOrchestration', icon: SparklesIcon },
 ];
 
 export function Interests() {

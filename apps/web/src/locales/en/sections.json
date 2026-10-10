@@ -28,7 +28,9 @@
     "content": {
       "bio": "I'm a frontend engineer in Buenos Aires. Since July 2026 I work at Reclee, a B2B SaaS that helps companies recruit faster. I own the frontend there: I set up the design system on shadcn/ui and ReUI, rebuilt the layouts mobile-first, organized the code by feature so business logic stays out of the components, and built the landing you see at reclee.com. Before that I spent a year at Pawtrics Software building a practice management system for veterinary clinics, fullstack with Next.js, Supabase and PostgreSQL.",
       "details": "I work T-shaped: deep on frontend, and I keep backend and infrastructure current enough to ship the whole thing. I use AI every day and I integrate it into products: this site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components. I maintain NachUI, an open source component system with its own CLI and registry, and right now I'm adding AI Elements to it, the pieces a chat interface needs: messages, streaming, tool calls. I study Programming at UTN and work on Fedora.",
-      "photoLegend": "Ignacio Figueroa, known as Nacho"
+      "photoLegend": "Ignacio Figueroa, known as Nacho",
+      "lead": "I work T-shaped: deep on frontend, and I keep backend and infrastructure current enough to ship the whole thing.",
+      "more": "I use AI every day and I integrate it into products: this site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components. I maintain NachUI, an open source component system with its own CLI and registry, and right now I'm adding AI Elements to it, the pieces a chat interface needs: messages, streaming, tool calls. I study Programming at UTN and work on Fedora."
     },
     "badge": {
       "id": "Dev ID",
@@ -37,6 +39,27 @@
       "stack": "Stack",
       "found": "If found, return to",
       "flip": "Flip the badge"
+    },
+    "facts": {
+      "now": {
+        "label": "now",
+        "value": "Frontend at Reclee, a B2B recruiting SaaS"
+      },
+      "before": {
+        "label": "before",
+        "value": "Fullstack at Pawtrics Software, one year"
+      },
+      "maintain": {
+        "label": "maintain",
+        "value": "NachUI, open source components with a CLI and registry"
+      },
+      "study": {
+        "label": "study",
+        "value": "Programming at UTN"
+      },
+      "focus": {
+        "label": "focus"
+      }
     }
   },
   "projects": {
@@ -305,19 +328,13 @@
     "title": "Areas of Focus",
     "description": "Where I spend my time and where I can add real value.",
     "items": {
-      "frontend": "Frontend Development",
-      "backend": "Backend Architecture",
-      "ai": "AI Integration",
-      "prompts": "Prompt Engineering",
-      "arch": "Software Architecture",
-      "clean": "Maintainable Code",
-      "ui": "UX/UI Design",
-      "a11y": "Web Accessibility",
-      "perf": "Performance",
-      "qa": "Testing & QA",
-      "devops": "DevOps Culture",
-      "opensource": "Open Source",
-      "linux": "Linux"
+      "frontend": "Frontend Engineering",
+      "software": "Software Engineering",
+      "programming": "Programming",
+      "linux": "Linux",
+      "uxui": "UX/UI",
+      "sdd": "Spec-Driven Development",
+      "aiOrchestration": "AI Model Orchestration"
     }
   },
   "assistant": {
