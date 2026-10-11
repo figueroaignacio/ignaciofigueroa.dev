@@ -20,7 +20,9 @@
       "links": "Links",
       "ask": "Ask",
       "assistant": "My assistant",
-      "resume": "Resume"
+      "resume": "Resume",
+      "commits": "commits",
+      "commitsAria": "{count} GitHub contributions over the last weeks"
     }
   },
   "aboutMe": {
