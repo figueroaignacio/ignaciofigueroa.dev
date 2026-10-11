@@ -1,5 +1,6 @@
 'use client';
 
+import { Link } from '@/i18n/navigation';
 import { ScrambleText } from '@/shared/components/scramble-text';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
@@ -41,6 +42,14 @@ const SOCIAL_LINKS = [
     external: true,
   },
 ];
+
+const SITE_LINKS = [
+  { label: 'pics', href: 'https://pics.ignaciofigueroa.dev' },
+  { label: 'links', href: 'https://links.ignaciofigueroa.dev' },
+];
+
+const minorLink =
+  'font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline';
 
 export function ContactSection() {
   const t = useTranslations('components.contactForm');
@@ -87,9 +96,29 @@ export function ContactSection() {
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                    className={minorLink}
                   >
                     {link.label.toLowerCase()} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <ul className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+              <li>
+                <Link href="/projects" className={minorLink}>
+                  projects
+                </Link>
+              </li>
+              {SITE_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={minorLink}
+                  >
+                    {link.label} ↗
                   </a>
                 </li>
               ))}
