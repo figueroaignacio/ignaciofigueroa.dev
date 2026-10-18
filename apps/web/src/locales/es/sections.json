@@ -20,9 +20,7 @@
       "links": "Links",
       "ask": "Preguntale",
       "assistant": "Mi asistente",
-      "resume": "CV",
-      "commits": "commits",
-      "commitsAria": "{count} contribuciones en GitHub en las últimas semanas"
+      "resume": "CV"
     }
   },
   "aboutMe": {

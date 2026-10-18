@@ -4,9 +4,7 @@ import { LinkedInIcon } from '@/shared/components/tech-icons';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
 import { cn } from '@/shared/lib/cn';
 import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
 import { HeroAskButton } from './hero-ask-button';
-import { HeroCommits } from './hero-commits';
 import { HeroWorkingLink } from './hero-working-link';
 
 const nameSize =
@@ -30,11 +28,7 @@ export async function HomeHero() {
   ];
 
   return (
-    <header className="mx-auto flex min-h-0 w-full max-w-(--frame-measure) min-w-0 flex-1 flex-col justify-end gap-7">
-      <Suspense fallback={null}>
-        <HeroCommits />
-      </Suspense>
-
+    <header className="mx-auto flex min-h-0 w-full max-w-(--frame-measure) min-w-0 flex-1 flex-col justify-center gap-7">
       <div className="flex flex-col gap-4">
         <p className="type-label lowercase text-muted-foreground">
           <span aria-hidden="true" className="text-muted-foreground/60">
