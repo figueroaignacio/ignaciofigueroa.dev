@@ -1,8 +1,7 @@
 'use client';
 
-import { ExternalLinkIcon } from '@/shared/components/icons';
+import { ExternalLinkIcon, GitMergeIcon } from '@/shared/components/icons';
 import type { Contribution } from '@/shared/lib/content-types';
-import { Frame } from '@/shared/components/ui/frame';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { useTranslations } from 'next-intl';
 
@@ -24,70 +23,70 @@ export function ContributionCard({
   const techList = technologies ?? [];
 
   return (
-    <li>
-      <Frame>
-        <Frame.Header className="flex-row flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-          <Frame.Title className="type-item-title text-foreground">
+    <li className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <h3 className="text-lg leading-snug font-semibold tracking-[-0.02em]">
+          <a
+            href={repository}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-brand"
+          >
+            {title}
+          </a>
+        </h3>
+        <div className="flex items-center gap-5 text-[15px]">
+          <a
+            href={repository}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+          >
+            {t('viewRepo')} ↗
+          </a>
+          {fork && (
             <a
-              href={repository}
+              href={fork}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand transition-colors"
+              className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
             >
-              {title}
+              {t('viewFork')} ↗
             </a>
-          </Frame.Title>
+          )}
+        </div>
+      </div>
 
-          <div className="flex items-center gap-4 text-xs font-mono">
-            <a
-              href={repository}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-brand transition-colors"
-            >
-              {t('viewRepo').toLowerCase()}
-            </a>
-            {fork && (
+      <p className="text-[15px] leading-relaxed">{description}</p>
+
+      {pullRequests && pullRequests.length > 0 && (
+        <ul className="flex flex-col gap-1 rounded-xl bg-(--stage) p-2">
+          {pullRequests.map((pr, index) => (
+            <li key={index}>
               <a
-                href={fork}
+                href={pr.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-brand transition-colors"
+                className="group/pr flex min-h-11 items-center justify-between gap-3 rounded-lg px-3 text-[15px] transition-colors hover:bg-background"
               >
-                {t('viewFork').toLowerCase()}
+                <span className="flex min-w-0 items-center gap-2.5">
+                  <GitMergeIcon className="size-4 shrink-0 text-muted-foreground" />
+                  <span className="truncate">{pr.label || `PR #${index + 1}`}</span>
+                </span>
+                <ExternalLinkIcon className="size-4 shrink-0 text-muted-foreground transition-transform group-hover/pr:translate-x-0.5 group-hover/pr:-translate-y-0.5" />
               </a>
-            )}
-          </div>
-        </Frame.Header>
-        <Frame.Panel className="bg-background">
-          <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
+            </li>
+          ))}
+        </ul>
+      )}
 
-          {pullRequests && pullRequests.length > 0 && (
-            <div className="mt-3 pl-4 space-y-1">
-              {pullRequests.map((pr, index) => (
-                <a
-                  key={index}
-                  href={pr.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/pr flex items-center justify-between gap-3 text-xs font-mono text-muted-foreground hover:text-brand transition-colors py-1 max-w-md border-b border-border/30 last:border-b-0"
-                >
-                  <span className="truncate">{pr.label || `pr #${index + 1}`}</span>
-                  <ExternalLinkIcon className="size-3 opacity-60 shrink-0" />
-                </a>
-              ))}
-            </div>
-          )}
-
-          {techList.length > 0 && (
-            <TechChipGroup className="mt-3">
-              {techList.map((tech) => (
-                <TechChip key={tech.id}>{tech.name}</TechChip>
-              ))}
-            </TechChipGroup>
-          )}
-        </Frame.Panel>
-      </Frame>
+      {techList.length > 0 && (
+        <TechChipGroup>
+          {techList.map((tech) => (
+            <TechChip key={tech.id}>{tech.name}</TechChip>
+          ))}
+        </TechChipGroup>
+      )}
     </li>
   );
 }

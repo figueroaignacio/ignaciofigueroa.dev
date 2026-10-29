@@ -7,15 +7,15 @@ import { cn } from '@/shared/lib/cn';
 export type TechChipTone = 'lead' | 'muted';
 
 const toneStyles: Record<TechChipTone, string> = {
-  lead: 'border-border bg-secondary/70 px-2.5 py-1 text-[11px] text-foreground',
-  muted: 'border-border/40 bg-secondary/25 px-2 py-0.5 text-[10px] text-muted-foreground',
+  lead: 'bg-secondary text-foreground font-medium',
+  muted: 'bg-secondary/55 text-muted-foreground',
 };
 
 /* Lead icons keep their brand colors; the tail is desaturated so a long list
  * doesn't turn into a rainbow competing with the amber accent. */
 const toneIconStyles: Record<TechChipTone, string> = {
   lead: 'size-3.5',
-  muted: 'size-3 grayscale opacity-70',
+  muted: 'size-3.5 grayscale opacity-70',
 };
 
 interface TechChipProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -27,7 +27,7 @@ export function TechChip({ children, icon, tone = 'muted', className, ...props }
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border font-mono tracking-wide',
+        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.8125rem] leading-tight',
         toneStyles[tone],
         className,
       )}

@@ -17,7 +17,11 @@ export function GithubYearTabs({ activeYear, availableYears, onChange }: GithubY
     >
       <Tabs.List>
         {availableYears.map((year) => (
-          <Tabs.Trigger key={year} value={year.toString()} className="px-4 py-1.5 text-xs">
+          <Tabs.Trigger
+            key={year}
+            value={year.toString()}
+            className="min-h-11 rounded-full px-4 text-[15px] hover:bg-transparent data-[state=active]:bg-secondary [&>div]:hidden"
+          >
             {year}
           </Tabs.Trigger>
         ))}

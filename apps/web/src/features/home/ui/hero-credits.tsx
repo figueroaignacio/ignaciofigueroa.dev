@@ -1,12 +1,15 @@
 export function HeroCredits() {
   return (
-    <p className="aside-credits flex items-center justify-center gap-1.5 font-mono text-[11px] text-muted-foreground">
+    <p
+      style={{ '--d': '480ms' } as React.CSSProperties}
+      className="hero-rise flex items-center gap-1.5 text-[0.8125rem] text-muted-foreground"
+    >
       <span>powered by</span>
       <a
         href="https://nachui.tech"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-foreground/80 underline-offset-4 transition-colors hover:text-foreground hover:underline"
+        className="font-medium text-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
       >
         NachUI
       </a>

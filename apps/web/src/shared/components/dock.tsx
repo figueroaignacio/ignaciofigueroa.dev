@@ -325,7 +325,7 @@ export function Dock() {
                 router.replace({ pathname }, { locale: nextLocale });
               })
             }
-            className="font-mono text-xs"
+            className="text-[0.8125rem] font-medium"
           >
             {nextLocale.toUpperCase()}
           </DockBar.Item>

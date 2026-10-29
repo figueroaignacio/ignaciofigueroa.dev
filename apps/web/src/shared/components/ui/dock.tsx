@@ -81,7 +81,7 @@ const DockRoot = ({
         }}
         style={{ height: itemSize + 12 }}
         className={cn(
-          'border-border/60 bg-background/80 text-foreground flex items-end gap-1 rounded-full border px-1.5 pb-1.5 shadow-lg backdrop-blur-md',
+          'bg-background text-foreground flex items-end gap-1 rounded-full px-1.5 pb-1.5 shadow-lg',
           hidden && 'pointer-events-none',
           className,
         )}

@@ -2,7 +2,6 @@
 
 import { AssistantStroll } from '@/features/assistant/ui/assistant-stroll';
 import { Badge } from '@/shared/components/ui/badge';
-import { Separator } from '@/shared/components/ui/separator';
 import { cn } from '@/shared/lib/cn';
 import { useRef, useState } from 'react';
 import { GithubContributionDay, TopLanguage } from './github-stats-types';
@@ -18,11 +17,11 @@ interface GithubContributionCalendarProps {
 }
 
 const CELL_LEVELS = [
-  { level: 'NONE', className: 'bg-secondary/40 dark:bg-secondary/15 border border-border/10' },
-  { level: 'FIRST_QUARTILE', className: 'bg-primary/20 border border-primary/10' },
-  { level: 'SECOND_QUARTILE', className: 'bg-primary/45 border border-primary/25' },
-  { level: 'THIRD_QUARTILE', className: 'bg-primary/70 border border-primary/40' },
-  { level: 'FOURTH_QUARTILE', className: 'bg-primary border border-primary/60' },
+  { level: 'NONE', className: 'bg-foreground/[0.07]' },
+  { level: 'FIRST_QUARTILE', className: 'bg-foreground/25' },
+  { level: 'SECOND_QUARTILE', className: 'bg-foreground/45' },
+  { level: 'THIRD_QUARTILE', className: 'bg-foreground/70' },
+  { level: 'FOURTH_QUARTILE', className: 'bg-foreground' },
 ];
 
 function getCellColorClass(level: string) {
@@ -61,7 +60,7 @@ function ContributionCell({
       data-day={row}
       style={{ '--col': column } as React.CSSProperties}
       className={cn(
-        'contribution-cell w-2.5 h-2.5 rounded-xs transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer',
+        'contribution-cell aspect-square w-full rounded-[2px] transition-transform duration-200 hover:scale-125 hover:z-10 cursor-pointer',
         getCellColorClass(day.contributionLevel),
       )}
     />
@@ -76,10 +75,10 @@ interface ActiveCell {
 
 function LanguageBadge({ language, count }: TopLanguage) {
   return (
-    <Badge variant="outline" className="rounded-full bg-secondary/30 text-[10px] font-normal">
+    <Badge variant="secondary" className="rounded-full border-0 text-[0.8125rem] font-normal">
       <span className={cn('size-1.5 rounded-full', getLanguageColorClass(language))} />
       {language}
-      <span className="text-muted-foreground/60">({count})</span>
+      <span className="text-muted-foreground">({count})</span>
     </Badge>
   );
 }
@@ -113,25 +112,25 @@ export function GithubContributionCalendar({
   };
 
   return (
-    <div className="border border-border/50 bg-secondary/10 rounded-xl p-5 space-y-4">
-      <div className="flex items-center justify-between">
-        <span className="text-sm font-medium">
+    <div data-ui className="space-y-5 rounded-xl bg-(--stage) p-4 sm:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[15px]">
+        <span className="font-medium">
           {titleText} — {activeYear}
         </span>
         <a
           href="https://github.com/figueroaignacio"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-muted-foreground hover:text-brand hover:underline transition-colors flex items-center gap-1 font-medium"
+          className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
         >
-          github.com/figueroaignacio
+          github.com/figueroaignacio ↗
         </a>
       </div>
 
-      <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-border/60 scrollbar-track-transparent">
+      <div>
         <div
           ref={field}
-          className="contribution-field min-w-180 pt-10 pb-1"
+          className="contribution-field pt-10 pb-1"
           style={{ '--cols': contributions.length } as React.CSSProperties}
         >
           <div className="contribution-track" aria-hidden="true">
@@ -139,7 +138,7 @@ export function GithubContributionCalendar({
           </div>
 
           <div
-            className="grid grid-flow-col grid-rows-7 gap-0.75 auto-cols-max"
+            className="grid grid-flow-col grid-rows-7 auto-cols-fr gap-[2px] sm:gap-[3px]"
             onPointerOver={showCell}
             onPointerLeave={() => setActive(null)}
           >
@@ -158,7 +157,7 @@ export function GithubContributionCalendar({
           {active && (
             <div
               role="tooltip"
-              className="pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-sm bg-foreground px-2.5 py-1 text-[10px] whitespace-nowrap text-background"
+              className="pointer-events-none absolute z-50 -translate-x-1/2 -translate-y-full rounded-sm bg-foreground px-2.5 py-1 text-[0.8125rem] whitespace-nowrap text-background"
               style={{ left: active.x, top: active.y - 6 }}
             >
               <span
@@ -174,9 +173,7 @@ export function GithubContributionCalendar({
         </div>
       </div>
 
-      <Separator className="bg-border/40" />
-
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-muted-foreground">
+      <div className="flex flex-col justify-between gap-3 text-[0.8125rem] text-muted-foreground sm:flex-row sm:items-center">
         <div className="flex items-center gap-1.5 flex-wrap">
           <span className="font-medium text-foreground">{topLanguagesLabel}:</span>
           {topLanguages.map((lang) => (
@@ -184,10 +181,10 @@ export function GithubContributionCalendar({
           ))}
         </div>
 
-        <div className="flex items-center gap-1.5 self-end sm:self-auto text-[10px]">
+        <div className="flex items-center gap-1.5 self-end sm:self-auto">
           <span>{lessLabel}</span>
           {CELL_LEVELS.map((entry) => (
-            <div key={entry.level} className={cn('size-2.5 rounded-xs', entry.className)} />
+            <div key={entry.level} className={cn('size-2.5 rounded-[2px]', entry.className)} />
           ))}
           <span>{moreLabel}</span>
         </div>

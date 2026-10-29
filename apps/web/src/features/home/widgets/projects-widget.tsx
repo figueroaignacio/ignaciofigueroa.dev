@@ -1,7 +1,7 @@
-import { ProjectsTabs, type CategoryProjects } from '@/features/projects/ui/projects-tabs';
+import type { CategoryProjects } from '@/features/projects/ui/projects-tabs';
 import { Link } from '@/i18n/navigation';
 import { Section } from '@/shared/components/ui/section';
-import { Separator } from '@/shared/components/ui/separator';
+import { ProjectIndex } from '../ui/project-index';
 import { ProjectsSkeleton } from '../ui/projects-skeleton';
 
 interface ProjectsWidgetProps {
@@ -17,19 +17,17 @@ export function ProjectsWidget({ id, title = '', viewAllLabel, data }: ProjectsW
 
   return (
     <Section id={id} title={title}>
-      <ProjectsTabs data={data} />
+      <ProjectIndex data={data} />
       {viewAllLabel && (
-        <div className="mt-6">
-          <Separator className="mb-4" />
-          <div className="flex justify-end">
-            <Link
-              href="/projects"
-              className="rounded-sm font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-            >
-              {viewAllLabel} →
-            </Link>
-          </div>
-        </div>
+        <Link
+          href="/projects"
+          className="group mt-6 inline-flex min-h-11 items-center gap-2 text-[15px] font-medium transition-colors hover:text-brand"
+        >
+          {viewAllLabel}
+          <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+            →
+          </span>
+        </Link>
       )}
     </Section>
   );

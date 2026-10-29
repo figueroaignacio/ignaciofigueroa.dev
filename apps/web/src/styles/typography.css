@@ -1,4 +1,12 @@
 @layer components {
+  .type-hero {
+    @apply text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.92] font-bold tracking-[-0.045em] uppercase;
+  }
+
+  .type-section {
+    @apply text-2xl leading-[1.1] font-semibold tracking-[-0.025em];
+  }
+
   .type-display {
     @apply text-[1.5rem] md:text-[1.875rem] font-semibold tracking-tight leading-[1.15];
   }
@@ -25,11 +33,11 @@
 
   .prose-reading {
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   .prose-reading p {
-    @apply mb-3 leading-[1.65] text-left text-foreground/90;
+    @apply mb-4 leading-[1.6] text-left text-foreground;
   }
 
   .prose-reading strong {
@@ -58,16 +66,6 @@
 
   .prose-reading code {
     @apply bg-secondary/80 px-1.5 py-0.5 rounded text-[13px] font-mono text-foreground;
-  }
-
-  @media (max-width: 768px) {
-    .prose-reading {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .prose-reading p {
-      line-height: 1.6;
-    }
   }
 
   .prose {

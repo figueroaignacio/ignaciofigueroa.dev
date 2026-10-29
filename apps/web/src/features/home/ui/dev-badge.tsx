@@ -3,7 +3,6 @@
 import { cn } from '@/shared/lib/cn';
 import {
   motion,
-  useMotionTemplate,
   useMotionValue,
   useReducedMotion,
   useScroll,
@@ -39,20 +38,20 @@ interface DevBadgeProps {
 }
 
 const face =
-  'absolute inset-0 flex flex-col overflow-hidden rounded-[0.75em] bg-foreground text-left text-background backface-hidden';
-const micro = 'font-mono text-[0.6875em]';
-const label = cn(micro, 'tracking-[0.08em] text-background/55 uppercase');
+  'absolute inset-0 flex flex-col overflow-hidden rounded-[0.75em] bg-foreground text-left text-background backface-hidden transition-[visibility] delay-150 duration-0';
+const micro = 'text-[0.75em] font-medium';
+const label = cn(micro, 'text-background/60');
 const accent = 'text-brand dark:text-[color-mix(in_oklch,var(--brand),black_40%)]';
 
 function Band({ left, right }: { left: string; right: string }) {
   return (
-    <span className="relative flex h-[3.25em] shrink-0 items-end justify-between bg-brand px-[1.25em] pb-[0.55em] text-brand-foreground">
+    <span className="relative flex h-[3.25em] shrink-0 items-end justify-between bg-brand px-[1.25em] pb-[0.55em] text-[oklch(14.5%_0.004_75)]">
       <span
         aria-hidden="true"
         className="absolute top-[0.7em] left-1/2 h-[0.45em] w-[2.75em] -translate-x-1/2 rounded-full bg-background"
       />
-      <span className={cn(micro, 'tracking-[0.08em] uppercase')}>{left}</span>
-      <span className={cn(micro, 'tracking-[0.08em] uppercase')}>{right}</span>
+      <span className={micro}>{left}</span>
+      <span className={micro}>{right}</span>
     </span>
   );
 }
@@ -78,6 +77,7 @@ export function DevBadge({
 }: DevBadgeProps) {
   const reduce = useReducedMotion();
   const [flipped, setFlipped] = useState(false);
+
   const panned = useRef(false);
   const pull = useMotionValue(0);
   const { scrollY } = useScroll();
@@ -95,8 +95,6 @@ export function DevBadge({
 
   const tiltX = useSpring(0, { stiffness: 220, damping: 22 });
   const tiltY = useSpring(0, { stiffness: 220, damping: 22 });
-  const shine = useSpring(50, { stiffness: 220, damping: 30 });
-  const shinePosition = useMotionTemplate`${shine}% 50%`;
 
   const [firstName = '', ...rest] = name.split(' ');
   const lastName = rest.join(' ');
@@ -108,25 +106,23 @@ export function DevBadge({
     const y = (event.clientY - box.top) / box.height;
     tiltY.set((x - 0.5) * 16);
     tiltX.set((0.5 - y) * 10);
-    shine.set(100 - x * 100);
   };
 
   const settle = () => {
     tiltX.set(0);
     tiltY.set(0);
-    shine.set(50);
   };
 
   return (
-    <div className={cn('relative flex w-[17.5em] flex-col items-center', className)}>
+    <div data-ui className={cn('relative flex w-[17.5em] flex-col items-center', className)}>
       <span
         aria-hidden="true"
         className={cn(
-          'flex h-24 w-[2.1em] justify-center overflow-hidden bg-brand text-brand-foreground',
+          'flex h-24 w-[2.1em] justify-center overflow-hidden bg-brand text-[oklch(14.5%_0.004_75)]',
           strapClassName,
         )}
       >
-        <span className="pt-[0.6em] font-mono text-[0.62em] leading-none font-medium tracking-[0.28em] whitespace-nowrap uppercase [writing-mode:vertical-rl]">
+        <span className="pt-[0.6em] text-[0.75em] leading-none font-semibold tracking-[0.06em] whitespace-nowrap [writing-mode:vertical-rl]">
           {'ignaciofigueroa.dev · '.repeat(8)}
         </span>
       </span>
@@ -177,7 +173,7 @@ export function DevBadge({
             animate={{ rotateY: flipped ? 180 : 0 }}
             transition={reduce ? { duration: 0 } : { type: 'spring', stiffness: 160, damping: 18 }}
           >
-            <span className={face}>
+            <span className={face} style={{ visibility: flipped ? 'hidden' : 'inherit' }}>
               <Band left={labels.id} right="Nº 0001" />
               <span className="flex flex-1 flex-col p-[1.25em]">
                 <span className="flex gap-[1em]">
@@ -200,10 +196,8 @@ export function DevBadge({
                   <br />
                   {lastName}
                 </span>
-                <span className={cn(micro, accent, 'mt-[0.9em] tracking-[0.12em] uppercase')}>
-                  {role}
-                </span>
-                <span className="mt-[1.1em] flex items-end justify-between gap-[1em] border-t border-background/15 pt-[0.9em]">
+                <span className={cn(micro, accent, 'mt-[0.9em]')}>{role}</span>
+                <span className="mt-[1.1em] flex items-end justify-between gap-[1em] pt-[0.9em]">
                   <span className="flex h-[1.6em] gap-[0.125em]">
                     {BARS.map((width, index) => (
                       <span
@@ -218,29 +212,33 @@ export function DevBadge({
               </span>
             </span>
 
-            <span className={cn(face, 'rotate-y-180')}>
-              <Band left={labels.stack} right={String(stack.length).padStart(2, '0')} />
+            <span
+              className={cn(face, 'rotate-y-180')}
+              style={{ visibility: flipped ? 'inherit' : 'hidden' }}
+            >
+              <Band left={labels.stack} right={String(stack.length)} />
               <span className="flex flex-1 flex-col p-[1.25em]">
-                <span className="mt-[0.5em] flex flex-col gap-[0.08em] text-[1.6em] leading-[0.95] font-extrabold tracking-[-0.045em] uppercase">
+                <span className="mt-[0.5em] flex flex-col gap-[0.08em]">
                   {stack.map((item, index) => (
-                    <span key={item} className={cn(index === stack.length - 1 && accent)}>
+                    <span
+                      key={item}
+                      className={cn(
+                        'text-[1.6em] leading-[0.95] font-extrabold tracking-[-0.045em] uppercase',
+                        index === stack.length - 1 && accent,
+                      )}
+                    >
                       {item}
                     </span>
                   ))}
                 </span>
                 <span className="flex-1" />
-                <span className="flex flex-col gap-[0.4em] border-t border-background/15 pt-[0.9em]">
+                <span className="flex flex-col gap-[0.4em] pt-[0.9em]">
                   <span className={label}>{labels.found}</span>
-                  <span className="font-mono text-[0.875em]">ignaciofigueroa.dev</span>
+                  <span className="text-[0.875em] font-medium">ignaciofigueroa.dev</span>
                 </span>
               </span>
             </span>
           </motion.span>
-          <motion.span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 rounded-[0.75em] bg-[linear-gradient(105deg,transparent_38%,rgb(255_255_255/0.13)_50%,transparent_62%)] bg-size-[250%_100%] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{ backgroundPosition: shinePosition }}
-          />
         </motion.button>
       </motion.div>
     </div>

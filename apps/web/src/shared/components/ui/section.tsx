@@ -28,14 +28,13 @@ export function SectionShell({
   return (
     <section
       id={id}
-      className={cn('scroll-mt-12', className)}
+      className={cn('scroll-mt-20', className)}
       aria-hidden={busy || undefined}
       aria-busy={busy || undefined}
     >
-      <div className="rule-bleed" aria-hidden="true" />
-      <div className="frame-column pt-7 pb-8 md:pt-8 md:pb-9">
+      <div className="frame-column py-14 lg:py-16" data-reveal>
         {label}
-        <div className="mt-6 scroll-blur-in">{children}</div>
+        <div className="mt-8">{children}</div>
       </div>
       {accessory}
     </section>
@@ -57,7 +56,7 @@ export function Section({ id, title, children, className, accessory }: SectionPr
       className={className}
       accessory={accessory}
       label={
-        <h2 className="scroll-blur-label text-xl leading-tight font-semibold tracking-[-0.025em]">
+        <h2 className="type-section">
           <ScrambleText text={title} mode="in-view" />
         </h2>
       }

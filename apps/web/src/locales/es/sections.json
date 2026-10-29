@@ -20,8 +20,10 @@
       "links": "Links",
       "ask": "Preguntale",
       "assistant": "Mi asistente",
-      "resume": "CV"
-    }
+      "resume": "CV",
+      "askLong": "Preguntale a mi asistente"
+    },
+    "lead": "Frontend engineer en Buenos Aires. Construyo la parte del producto que la gente toca."
   },
   "aboutMe": {
     "title": "Sobre mí",

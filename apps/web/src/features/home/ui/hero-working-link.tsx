@@ -21,7 +21,7 @@ export function HeroWorkingLink({ href, label, note }: HeroWorkingLinkProps) {
           {label} ↗
         </a>
       </Tooltip.Trigger>
-      <Tooltip.Content className="font-mono text-[11px]">{note} :D</Tooltip.Content>
+      <Tooltip.Content className="text-[13px]">{note} :D</Tooltip.Content>
     </Tooltip>
   );
 }

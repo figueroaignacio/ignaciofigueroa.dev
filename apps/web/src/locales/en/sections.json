@@ -20,8 +20,10 @@
       "links": "Links",
       "ask": "Ask",
       "assistant": "My assistant",
-      "resume": "Resume"
-    }
+      "resume": "Resume",
+      "askLong": "Ask my assistant"
+    },
+    "lead": "Frontend engineer in Buenos Aires. I build the part of the product people touch."
   },
   "aboutMe": {
     "title": "About Me",

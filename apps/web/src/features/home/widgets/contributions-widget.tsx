@@ -15,7 +15,7 @@ export function ContributionsWidget({ id, title = '', contributions }: Contribut
 
   return (
     <Section id={id} title={title}>
-      <ul className="space-y-4">
+      <ul className="flex flex-col gap-14" data-reveal>
         {contributions.map((contribution) => (
           <ContributionCard
             key={contribution.id}

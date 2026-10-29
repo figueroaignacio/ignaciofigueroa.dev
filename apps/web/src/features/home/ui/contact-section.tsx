@@ -49,7 +49,7 @@ const SITE_LINKS = [
 ];
 
 const minorLink =
-  'font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline';
+  'inline-flex min-h-11 items-center text-[15px] text-foreground underline-offset-4 transition-colors hover:text-brand hover:underline';
 
 export function ContactSection() {
   const t = useTranslations('components.contactForm');
@@ -59,37 +59,25 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="contact-stage scroll-mt-12">
-      <div className="hero-waves" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
-
-      <div className="relative flex w-full flex-col gap-7 lg:gap-9">
-        <p className="type-label lowercase text-muted-foreground">
-          <span aria-hidden="true" className="text-muted-foreground/60">
-            ./
-          </span>
-          <ScrambleText text={tPages('label')} mode="in-view" />
-        </p>
-        <h2 className="max-w-[9em] text-[clamp(2.5rem,min(9vw,8vh),5.5rem)] leading-[0.88] font-extrabold tracking-[-0.055em] uppercase text-foreground">
-          {t('title')}
+      <div className="relative flex w-full flex-col gap-10 lg:gap-14" data-reveal>
+        <h2 className="type-hero text-[clamp(2.5rem,7vw,6rem)]">
+          <ScrambleText text={t('title')} mode="in-view" />
         </h2>
 
-        <div className="flex flex-col gap-8 border-t border-foreground/15 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
           <div className="flex max-w-[36rem] flex-col">
-            <p className="text-lg leading-tight font-bold tracking-[-0.03em] text-pretty text-foreground sm:text-xl">
+            <p className="text-lg leading-snug font-semibold tracking-[-0.02em] text-pretty text-foreground">
               {tPages('description')}
             </p>
 
             <a
               href={email.href}
-              className="mt-6 font-mono text-base text-foreground underline decoration-border underline-offset-8 transition-colors hover:text-brand hover:decoration-brand md:text-lg"
+              className="mt-6 w-fit text-lg font-medium text-foreground underline decoration-border underline-offset-8 transition-colors hover:text-brand hover:decoration-brand"
             >
               {email.handle}
             </a>
 
-            <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <ul className="mt-6 flex flex-wrap items-center gap-x-6">
               {socials.map((link) => (
                 <li key={link.id}>
                   <a
@@ -98,13 +86,13 @@ export function ContactSection() {
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     className={minorLink}
                   >
-                    {link.label.toLowerCase()} ↗
+                    {link.label} ↗
                   </a>
                 </li>
               ))}
             </ul>
 
-            <ul className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <ul className="flex flex-wrap items-center gap-x-6">
               <li>
                 <Link href="/projects" className={minorLink}>
                   projects
@@ -125,8 +113,8 @@ export function ContactSection() {
             </ul>
           </div>
 
-          <div className="w-full max-w-lg shrink-0 text-left">
-            <p className="type-label mb-4 text-muted-foreground">{tPages('formTitle')}</p>
+          <div className="w-full max-w-lg shrink-0 rounded-2xl bg-background p-6 text-left sm:p-8">
+            <h3 className="mb-6 text-lg font-semibold tracking-[-0.02em]">{tPages('formTitle')}</h3>
             <ContactForm />
           </div>
         </div>

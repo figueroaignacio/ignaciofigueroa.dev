@@ -17,7 +17,7 @@ const TARGETS = [
      * plain `currentColor` it would inherit the link's muted grey and read as
      * washed out beside two logos sitting at full strength.
      */
-    iconClassName: 'text-foreground',
+    iconClassName: 'text-foreground group-hover:text-background',
   },
   { id: 'claude', label: 'Claude', base: 'https://claude.ai/new?q=', Icon: ClaudeIcon },
   {
@@ -33,16 +33,21 @@ export async function AskAiLinks({ className }: { className?: string }) {
   const encoded = encodeURIComponent(t('prompt', { url: `${BASE_URL}/llms.txt` }));
 
   return (
-    <div className={cn('flex flex-wrap items-center gap-x-5 gap-y-2', className)}>
+    <div className={cn('flex flex-wrap items-center gap-2', className)}>
       {TARGETS.map(({ id, label, base, Icon, iconClassName }) => (
         <a
           key={id}
           href={`${base}${encoded}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+          className="group inline-flex h-12 items-center gap-2.5 rounded-full bg-secondary px-5 text-[15px] font-medium transition-colors hover:bg-foreground hover:text-background active:translate-y-px"
         >
-          <Icon className={cn('size-4 shrink-0', iconClassName)} />
+          <Icon
+            className={cn(
+              'size-4 shrink-0 transition-transform group-hover:rotate-[-8deg]',
+              iconClassName,
+            )}
+          />
           {label}
         </a>
       ))}

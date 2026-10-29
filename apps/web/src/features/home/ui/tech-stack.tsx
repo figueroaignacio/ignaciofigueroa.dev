@@ -1,6 +1,6 @@
 import { Icon, type IconName } from '@/shared/components/tech-icons/index';
 import { Section } from '@/shared/components/ui/section';
-import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
+import { cn } from '@/shared/lib/cn';
 import { useTranslations } from 'next-intl';
 
 const iconMap: Record<string, IconName> = {
@@ -82,31 +82,41 @@ export function TechStack() {
 
   return (
     <Section id="stack" title={t('stack.title')}>
-      <div className="scroll-stagger grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="flex flex-col gap-10" data-reveal>
         {techStack.map((section) => (
-          <div key={section.category} className="rounded-xl border border-border bg-card p-4">
-            <h3 className="type-label text-muted-foreground">{section.category}</h3>
-            <TechChipGroup role="list" className="mt-3">
+          <div
+            key={section.category}
+            className="grid gap-x-8 gap-y-3 sm:grid-cols-[8.5rem_minmax(0,1fr)]"
+          >
+            <h3 className="pt-1 text-[15px] font-normal text-muted-foreground">
+              {section.category}
+            </h3>
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
               {section.items.map((name) => {
                 const isCore = CORE_STACK.has(name);
                 return (
-                  <TechChip
+                  <li
                     key={name}
-                    role="listitem"
-                    tone={isCore ? 'lead' : 'muted'}
-                    icon={
-                      <Icon
-                        name={iconMap[name]}
-                        width={isCore ? 14 : 12}
-                        height={isCore ? 14 : 12}
-                      />
-                    }
+                    className={cn(
+                      'group/tech inline-flex items-center gap-2 text-lg font-medium tracking-[-0.02em]',
+                      isCore ? 'text-foreground' : 'text-muted-foreground',
+                    )}
                   >
+                    <Icon
+                      name={iconMap[name]}
+                      width={18}
+                      height={18}
+                      className={cn(
+                        'shrink-0 transition-[filter,translate] duration-300 group-hover/tech:-translate-y-0.5',
+                        !isCore &&
+                          'opacity-70 grayscale group-hover/tech:opacity-100 group-hover/tech:grayscale-0',
+                      )}
+                    />
                     {name}
-                  </TechChip>
+                  </li>
                 );
               })}
-            </TechChipGroup>
+            </ul>
           </div>
         ))}
       </div>

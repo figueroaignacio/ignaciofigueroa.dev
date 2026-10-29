@@ -1,26 +1,11 @@
 import { Section } from '@/shared/components/ui/section';
 import { getTranslations } from 'next-intl/server';
-import { Fragment } from 'react';
 import { DevBadge } from './dev-badge';
 import { FocusAreas } from './interests';
 
 export const FOCUS_LEAD = ['React', 'Next.js', 'TypeScript', 'Node.js'];
 
 const FACTS = ['now', 'before', 'maintain', 'study'] as const;
-
-const factLabel = 'border-t border-rule py-3 font-mono text-xs text-muted-foreground';
-const factValue = 'border-t border-rule py-3';
-
-function FactLabel({ label }: { label: string }) {
-  return (
-    <dt className={factLabel}>
-      <span aria-hidden="true" className="text-muted-foreground/60">
-        ./
-      </span>
-      {label}
-    </dt>
-  );
-}
 
 export async function AboutSection() {
   const t = await getTranslations('sections.aboutMe.content');
@@ -29,47 +14,59 @@ export async function AboutSection() {
 
   return (
     <Section id="about" title={tSection('title')}>
-      <div className="grid gap-10 sm:grid-cols-[15.3rem_minmax(0,1fr)] sm:gap-x-12">
-        <DevBadge
-          name={tHome('name')}
-          role={tHome('title')}
-          company={tHome('status.company')}
-          city={tHome('status.city')}
-          stack={FOCUS_LEAD}
-          labels={{
-            id: tSection('badge.id'),
-            now: tSection('badge.now'),
-            base: tSection('badge.base'),
-            stack: tSection('badge.stack'),
-            found: tSection('badge.found'),
-            flip: tSection('badge.flip'),
-          }}
-          strapClassName="h-10"
-          className="mx-auto text-[0.875rem] sm:mx-0"
-        />
+      <div className="flex flex-col gap-12" data-reveal>
+        <p className="text-lg leading-snug font-semibold tracking-[-0.02em] text-pretty sm:text-xl">
+          {t('lead')}
+        </p>
 
-        <div className="flex min-w-0 flex-col gap-7 sm:pt-14">
-          <p className="text-xl leading-snug font-medium tracking-[-0.02em] text-pretty text-foreground">
-            {t('lead')}
-          </p>
-          <dl className="grid grid-cols-[6.5rem_minmax(0,1fr)] text-sm">
+        <div className="grid items-start gap-10 sm:grid-cols-[15.3rem_minmax(0,1fr)] sm:gap-x-10">
+          <DevBadge
+            name={tHome('name')}
+            role={tHome('title')}
+            company={tHome('status.company')}
+            city={tHome('status.city')}
+            stack={FOCUS_LEAD}
+            labels={{
+              id: tSection('badge.id'),
+              now: tSection('badge.now'),
+              base: tSection('badge.base'),
+              stack: tSection('badge.stack'),
+              found: tSection('badge.found'),
+              flip: tSection('badge.flip'),
+            }}
+            strapClassName="h-10"
+            className="mx-auto text-[0.875rem] sm:mx-0"
+          />
+          <dl className="flex flex-col gap-4 rounded-xl bg-(--stage) p-6 sm:mt-14">
             {FACTS.map((fact) => (
-              <Fragment key={fact}>
-                <FactLabel label={tSection(`facts.${fact}.label`)} />
-                <dd className={factValue}>{tSection(`facts.${fact}.value`)}</dd>
-              </Fragment>
+              <div key={fact} className="flex flex-col gap-0.5">
+                <dt className="text-[15px] text-muted-foreground first-letter:uppercase">
+                  {tSection(`facts.${fact}.label`)}
+                </dt>
+                <dd className="text-[15px]">{tSection(`facts.${fact}.value`)}</dd>
+              </div>
             ))}
-            <FactLabel label={tSection('facts.focus.label')} />
-            <dd className="border-t border-rule py-2.5">
-              <FocusAreas />
-            </dd>
+            <div className="flex flex-col gap-2">
+              <dt className="text-[15px] text-muted-foreground first-letter:uppercase">
+                {tSection('facts.focus.label')}
+              </dt>
+              <dd>
+                <FocusAreas />
+              </dd>
+            </div>
           </dl>
         </div>
-      </div>
 
-      <div className="prose-reading mt-12">
-        <p>{t('bio')}</p>
-        <p className="text-muted-foreground">{t('more')}</p>
+        <div className="prose-reading">
+          <p>{t('bio')}</p>
+          <p>{t('more')}</p>
+          <p className="mt-6 mb-0 text-lg font-semibold tracking-[-0.02em]">
+            {tHome('name')}
+            <span className="block text-[15px] font-normal text-muted-foreground">
+              {tHome('title')}, {tHome('status.city')}
+            </span>
+          </p>
+        </div>
       </div>
     </Section>
   );

@@ -40,7 +40,7 @@ export function FocusAreas() {
           key={key}
           role="listitem"
           tone="lead"
-          className="cursor-default transition-colors [&>span]:text-muted-foreground"
+          className="cursor-default bg-background [&>span]:text-muted-foreground"
           icon={<Icon className="size-full" />}
         >
           {t(key)}

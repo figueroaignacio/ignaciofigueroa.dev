@@ -7,10 +7,12 @@ export async function AskAiSection() {
 
   return (
     <Section id="ask-ai" title={t('title')}>
-      <div className="prose-reading">
-        <p>{t('description')}</p>
+      <div className="flex flex-col gap-8" data-reveal>
+        <p className="max-w-[52ch] text-lg leading-snug font-medium tracking-[-0.015em] text-pretty">
+          {t('description')}
+        </p>
+        <AskAiLinks />
       </div>
-      <AskAiLinks className="mt-6" />
     </Section>
   );
 }

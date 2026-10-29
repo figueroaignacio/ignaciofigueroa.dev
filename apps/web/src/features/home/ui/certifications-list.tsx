@@ -2,7 +2,6 @@
 
 import { Icon, type IconName } from '@/shared/components/tech-icons';
 import { Collapsible } from '@/shared/components/ui/collapsible';
-import { Frame } from '@/shared/components/ui/frame';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -23,40 +22,32 @@ function CertificationCard({ item, cta }: { item: CertificationItem; cta: string
   const iconName = item.icon?.toLowerCase() as IconName | undefined;
 
   return (
-    <Frame>
-      <Frame.Header className="flex-row flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-        <Frame.Title className="flex items-center gap-2 type-item-title text-foreground">
-          {iconName && <Icon name={iconName} width={16} height={16} />}
-          {item.title}{' '}
-          <span className="text-[14px] font-normal text-muted-foreground">· {item.issuer}</span>
-        </Frame.Title>
-        <span className="shrink-0 type-meta text-muted-foreground tracking-wider">
-          {item.credentialId}
-        </span>
-      </Frame.Header>
-      <Frame.Panel>
-        <article className="space-y-2">
-          <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-          {item.skills.length > 0 && (
-            <TechChipGroup className="pt-1">
-              {item.skills.map((skill) => (
-                <TechChip key={skill}>{skill}</TechChip>
-              ))}
-            </TechChipGroup>
-          )}
-          <div className="pt-1">
-            <a
-              href={item.credentialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-mono text-muted-foreground hover:text-brand transition-colors underline decoration-border/60 hover:decoration-brand"
-            >
-              {cta} ↗
-            </a>
-          </div>
-        </article>
-      </Frame.Panel>
-    </Frame>
+    <article className="grid gap-x-8 gap-y-3 sm:grid-cols-[8.5rem_minmax(0,1fr)]">
+      <div className="flex items-center gap-2 pt-0.5 text-[15px] text-muted-foreground">
+        {iconName && <Icon name={iconName} width={16} height={16} />}
+        {item.issuer}
+      </div>
+      <div className="flex min-w-0 flex-col gap-3">
+        <h3 className="text-lg leading-snug font-semibold tracking-[-0.02em]">{item.title}</h3>
+        <p className="text-[15px] leading-relaxed">{item.description}</p>
+        {item.skills.length > 0 && (
+          <TechChipGroup>
+            {item.skills.map((skill) => (
+              <TechChip key={skill}>{skill}</TechChip>
+            ))}
+          </TechChipGroup>
+        )}
+        <a
+          href={item.credentialUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${cta}: ${item.title} (${item.credentialId})`}
+          className="inline-flex min-h-11 w-fit items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+        >
+          {cta} ↗
+        </a>
+      </div>
+    </article>
   );
 }
 
@@ -69,7 +60,7 @@ export function CertificationsList({ items }: { items: CertificationItem[] }) {
 
   return (
     <div className="relative">
-      <ul className="scroll-stagger space-y-4">
+      <ul className="space-y-12" data-reveal>
         {visible.map((item) => (
           <li key={item.credentialId}>
             <CertificationCard item={item} cta={t('cta')} />
@@ -80,7 +71,7 @@ export function CertificationsList({ items }: { items: CertificationItem[] }) {
       {rest.length > 0 && (
         <Collapsible open={expanded} onOpenChange={setExpanded}>
           <Collapsible.Content>
-            <ul className="space-y-4 pt-4">
+            <ul className="space-y-12 pt-12">
               {rest.map((item) => (
                 <li key={item.credentialId}>
                   <CertificationCard item={item} cta={t('cta')} />
@@ -88,9 +79,9 @@ export function CertificationsList({ items }: { items: CertificationItem[] }) {
               ))}
             </ul>
           </Collapsible.Content>
-          <div className="flex justify-center pt-6">
-            <Collapsible.Trigger className="w-auto text-xs font-mono text-muted-foreground hover:text-foreground underline decoration-border/60 hover:decoration-foreground">
-              {expanded ? t('showLess').toLowerCase() : t('showMore').toLowerCase()}
+          <div className="pt-8 sm:ps-[10.5rem]">
+            <Collapsible.Trigger className="inline-flex min-h-11 w-auto items-center rounded-full bg-secondary px-5 text-[15px] font-medium transition-colors hover:bg-foreground hover:text-background">
+              {expanded ? t('showLess') : t('showMore')}
             </Collapsible.Trigger>
           </div>
         </Collapsible>

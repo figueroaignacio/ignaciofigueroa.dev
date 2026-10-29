@@ -4,9 +4,7 @@ import {
   TimelineContent,
   TimelineDate,
   TimelineHeader,
-  TimelineIndicator,
   TimelineItem as TimelineRootItem,
-  TimelineSeparator,
   TimelineTitle,
 } from '@/shared/components/ui/timeline';
 
@@ -28,63 +26,68 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
   const value = currentIndex === -1 ? 0 : items.length - currentIndex;
 
   return (
-    <TimelineRoot value={value} className="ml-1">
+    <TimelineRoot value={value} className="gap-14" data-reveal>
       {items.map((item, index) => (
         <TimelineRootItem
           key={item.key}
           step={items.length - index}
-          className="ps-6 pb-8 last:pb-0"
+          className="grid gap-x-8 gap-y-3 ps-0 pb-0 sm:grid-cols-[8.5rem_minmax(0,1fr)]"
         >
-          <TimelineIndicator
-            data-current={item.current || undefined}
-            className="top-2 left-0 size-2 border group-data-[active]/item:border-brand group-data-[active]/item:bg-brand group-data-[active]/item:ring-4 group-data-[active]/item:ring-brand/15"
-          />
-          <TimelineSeparator className="top-2 left-0 bg-border group-data-[completed]/item:bg-border" />
-          <TimelineHeader>
-            <TimelineDate className="type-meta text-muted-foreground tracking-wider">
-              {item.period}
-            </TimelineDate>
-            <TimelineTitle className="type-item-title text-foreground mt-1">
-              {item.title}{' '}
-              <span className="text-[14px] font-normal text-muted-foreground">
-                {item.connector ? `${item.connector} ` : ''}
-                {item.subtitleHref ? (
-                  <a
-                    href={item.subtitleHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-brand transition-colors underline decoration-border hover:decoration-brand"
-                  >
-                    {item.subtitle}
-                  </a>
-                ) : (
-                  item.subtitle
-                )}
-              </span>
-            </TimelineTitle>
-          </TimelineHeader>
+          <TimelineDate className="flex items-center gap-2 pt-1 text-[15px] text-muted-foreground tabular-nums sm:flex-col sm:items-start sm:gap-1">
+            {item.current && <span aria-hidden="true" className="size-2 bg-brand" />}
+            {item.period}
+          </TimelineDate>
 
-          <TimelineContent className="text-sm leading-relaxed">
-            {item.description && <p className="mt-3">{item.description}</p>}
+          <div className="min-w-0">
+            <TimelineHeader>
+              <TimelineTitle className="text-lg leading-snug font-semibold tracking-[-0.02em] text-foreground">
+                {item.title}{' '}
+                <span className="font-normal text-muted-foreground">
+                  {item.connector ? `${item.connector} ` : ''}
+                  {item.subtitleHref ? (
+                    <a
+                      href={item.subtitleHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+                    >
+                      {item.subtitle}
+                    </a>
+                  ) : (
+                    item.subtitle
+                  )}
+                </span>
+              </TimelineTitle>
+            </TimelineHeader>
 
-            {item.bullets && item.bullets.length > 0 && (
-              <ul className="mt-3 pl-4 space-y-2 list-disc marker:text-border">
-                {item.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
-            )}
+            <TimelineContent className="text-[15px] leading-relaxed text-foreground">
+              {item.description && <p className="mt-4">{item.description}</p>}
 
-            {item.chips && item.chips.length > 0 && (
-              <TechChipGroup className="mt-4">
-                {item.chips.map((chip, index) => (
-                  <TechChip key={chip} tone={index < 3 ? 'lead' : 'muted'}>
-                    {chip}
-                  </TechChip>
-                ))}
-              </TechChipGroup>
-            )}
-          </TimelineContent>
+              {item.bullets && item.bullets.length > 0 && (
+                <ul className="mt-4 list-none space-y-2.5">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="relative ps-5">
+                      <span
+                        aria-hidden="true"
+                        className="absolute top-[0.6em] left-0 size-1.5 bg-muted-foreground"
+                      />
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {item.chips && item.chips.length > 0 && (
+                <TechChipGroup className="mt-5">
+                  {item.chips.map((chip, index) => (
+                    <TechChip key={`${chip}-${index}`} tone={index < 3 ? 'lead' : 'muted'}>
+                      {chip}
+                    </TechChip>
+                  ))}
+                </TechChipGroup>
+              )}
+            </TimelineContent>
+          </div>
         </TimelineRootItem>
       ))}
     </TimelineRoot>

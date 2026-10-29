@@ -1,6 +1,5 @@
 'use client';
 
-import { BarChartIcon } from '@/shared/components/icons';
 import { useQueryTab } from '@/shared/hooks/use-query-tab';
 import { useTranslations } from 'next-intl';
 import { GithubContributionCalendar } from './github-contribution-calendar';
@@ -19,20 +18,17 @@ export function GithubStatsClient({
   const currentYearData = years[Number(activeYear)] || { totalContributions: 0, contributions: [] };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-5">
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">{t('description')}</p>
+    <div className="flex flex-col gap-8" data-reveal>
+      <p className="max-w-[52ch] text-[15px] leading-relaxed">{t('description')}</p>
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <GithubStatsCard
+          title={`${t('stats.contributions')} (${activeYear})`}
+          value={currentYearData.totalContributions.toLocaleString()}
+        />
         <GithubYearTabs
           activeYear={activeYear}
           availableYears={availableYears}
           onChange={setActiveYear}
-        />
-      </div>
-      <div>
-        <GithubStatsCard
-          title={`${t('stats.contributions')} (${activeYear})`}
-          value={currentYearData.totalContributions.toLocaleString()}
-          icon={BarChartIcon}
         />
       </div>
       <div>
