@@ -1,6 +1,6 @@
 import { getProjectCategories } from '@/features/projects/api/categories';
 import { getProjects } from '@/features/projects/api/projects';
-import type { CategoryProjects } from '@/features/projects/ui/projects-tabs';
+import type { CategoryProjects } from '@/shared/lib/content-types';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ProjectsWidget } from '../widgets/projects-widget';
 

@@ -1,3 +1,5 @@
+import type { ProjectDto } from '@repo/contracts';
+
 export type {
   ContentStatus,
   ContributionDto as Contribution,
@@ -13,3 +15,8 @@ export type {
   TechStackDto as TechStack,
   TestimonialDto as Testimonial,
 } from '@repo/contracts';
+
+export type CategoryProjects = {
+  category: string;
+  projects: ProjectDto[];
+};

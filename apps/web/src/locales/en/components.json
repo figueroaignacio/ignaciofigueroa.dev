@@ -18,8 +18,6 @@
     "dismiss": "Dismiss summary",
     "title": "AI Summary"
   },
-  "error": "An error occurred while loading the data.",
-  "loader": "Loading...",
   "ctaCv": {
     "url": "/pdf/cv_ignacio_figueroa_fullstack_developer.pdf",
     "cta": {
@@ -28,16 +26,9 @@
       "text": "Download Resume"
     }
   },
-  "ctaContact": {
-    "title": "Open to opportunities",
-    "description": "Looking for fullstack or AI integration roles. Contract or full-time. If the problem is interesting, I'm interested."
-  },
   "chat": {
     "header": {
-      "title": "N-bot",
-      "subtitle": "Ignacio's virtual assistant.",
       "reset": "Reset chat",
-      "newChat": "New Chat",
       "resetConfirmTitle": "Are you sure you want to reset the chat?",
       "resetConfirmDescription": "This will delete all your messages in this chat.",
       "resetConfirmCancel": "Cancel",
@@ -45,32 +36,15 @@
       "panelLabel": "Chat with the assistant"
     },
     "input": {
-      "placeholder": "Type a message...",
       "send": "Send message",
       "sendHint": "to send",
       "newlineHint": "for a new line"
     },
     "messages": {
-      "initial": "Hi! 👋 How can I help you today?",
       "error": "I'm sorry, I encountered an error. Please try again.",
-      "tooltip": "Ask me about Ignacio",
-      "thinking": "Thinking...",
-      "tools": {
-        "get_projects": "Looking up projects...",
-        "get_experience": "Checking experience...",
-        "send_contact_email": "Preparing your message...",
-        "analyze_job_description": "Analyzing the job description..."
-      },
       "emailSending": "Sending message...",
       "emailSuccess": "Message sent successfully!",
       "emailError": "Failed to send message.",
-      "pitchTitle": "Recruiter Match Report",
-      "matchScore": "Match Score",
-      "matchingSkills": "Matching Requirements",
-      "gapAnalysis": "Gap Analysis",
-      "recommendedProjects": "Recommended Projects",
-      "roleLabel": "Role",
-      "companyLabel": "Company",
       "trace": {
         "title": "Process",
         "reading": "Reading your question",
@@ -82,8 +56,6 @@
       }
     },
     "suggestions": {
-      "title": "Try with...",
-      "subtitle": "Click any suggestion to get started",
       "who": "Who is Ignacio?",
       "projects": "What are his projects?",
       "technologies": "What stack does he use?",
@@ -92,34 +64,13 @@
       "contact": "Send him a message"
     },
     "page": {
-      "goodMorning": "Good morning!",
-      "goodAfternoon": "Good afternoon!",
-      "goodEvening": "Good evening!",
       "greeting": "Hey, what's up?",
       "subtitle": "Feel free to ask me anything about him.",
-      "role": "AI Assistant",
-      "inputPlaceholder": "What's your question?",
-      "quickActions": {
-        "me": "Me",
-        "projects": "Projects",
-        "skills": "Skills",
-        "fun": "Fun",
-        "contact": "Contact"
-      }
-    },
-    "railBot": {
-      "tooltip": "psst. i already read all of this",
-      "label": "Open the AI assistant"
+      "inputPlaceholder": "What's your question?"
     }
-  },
-  "openToWorkBadge": "Open to work",
-  "theme": {
-    "dark": "Dark",
-    "light": "Light"
   },
   "contactForm": {
     "title": "Get in touch.",
-    "description": "Open to fullstack or AI roles, contract work, or a technical conversation. I read every message.",
     "nameLabel": "Name",
     "namePlaceholder": "Your name",
     "emailLabel": "Email",

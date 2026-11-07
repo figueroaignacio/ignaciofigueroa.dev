@@ -6,11 +6,6 @@
     "keywords": "Frontend Engineer, Ignacio Figueroa, React, Next.js, TypeScript, Design Systems, NestJS, PostgreSQL, Integración de IA, Vercel AI SDK, Gemini, NachUI, Librería de Componentes, Open Source, Buenos Aires, Argentina, Reclee",
     "jobTitle": "Frontend Engineer"
   },
-  "aboutMe": {
-    "title": "Sobre mí",
-    "description": "Frontend engineer en Buenos Aires. Design systems, Next.js, y el NestJS y Postgres necesarios para sacar el producto entero. Actualmente en Reclee.",
-    "keywords": "Sobre mí, Biografía Developer, Stack Tecnológico, Experiencia Laboral, Ignacio Figueroa, Perfil Profesional, Linux, Fedora, UTN, Argentina"
-  },
   "projects": {
     "title": "Proyectos",
     "ogTitle": "Proyectos de Ignacio Figueroa",
@@ -18,14 +13,5 @@
     "keywords": "Proyectos Web, Portfolio, Proyectos React, Open Source, NachUI, Design System, NestJS, Asistente IA, Gemini, Frontend Engineer",
     "heading": "Proyectos",
     "intro": "Todo lo que construí y mantengo funcionando, empezando por lo más reciente. Cada proyecto enlaza a su código fuente y, cuando existe, a una demo en vivo."
-  },
-  "chat": {
-    "title": "Asistente IA",
-    "description": "Preguntá sobre el trabajo, el stack y la experiencia de Ignacio Figueroa. El asistente corre sobre Google Gemini con el Vercel AI SDK dentro de una API en NestJS, con búsqueda vectorial sobre el contenido de este sitio."
-  },
-  "contact": {
-    "title": "Contacto",
-    "description": "Ignacio Figueroa es frontend engineer en Buenos Aires (UTC−3), abierto a roles frontend y de integración de IA, en remoto, por contrato o full-time. Escribile a contact@ignaciofigueroa.dev, por LinkedIn o por GitHub.",
-    "keywords": "Contacto, Contratar Frontend Engineer, Desarrollador React, Desarrollador Next.js, Ignacio Figueroa, Buenos Aires, Argentina, Remoto"
   }
 }

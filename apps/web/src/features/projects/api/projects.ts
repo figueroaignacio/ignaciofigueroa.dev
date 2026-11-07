@@ -6,27 +6,6 @@ export async function getProjects(locale: Locale): Promise<Project[]> {
   return apiPublic<Project[]>(`/projects${toQuery({ locale })}`, { tags: ['projects'] });
 }
 
-export async function getCommercialProjects(locale: Locale): Promise<Project[]> {
-  return apiPublic<Project[]>(`/projects${toQuery({ locale, commercial: true })}`, {
-    tags: ['projects'],
-  });
-}
-
-export async function getPersonalProjects(locale: Locale): Promise<Project[]> {
-  return apiPublic<Project[]>(`/projects${toQuery({ locale, commercial: false })}`, {
-    tags: ['projects'],
-  });
-}
-
-export async function getProjectsByCategory(
-  locale: Locale,
-  categorySlug: string,
-): Promise<Project[]> {
-  return apiPublic<Project[]>(`/projects${toQuery({ locale, category: categorySlug })}`, {
-    tags: ['projects'],
-  });
-}
-
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
   try {
     return await apiPublic<Project>(`/projects/${slug}`, { tags: ['projects', `project-${slug}`] });

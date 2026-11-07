@@ -1,6 +1,6 @@
 'use client';
 
-import type { CategoryProjects } from '@/features/projects/ui/projects-tabs';
+import type { CategoryProjects } from '@/shared/lib/content-types';
 import { Link } from '@/i18n/navigation';
 import { Tabs } from '@/shared/components/ui/tabs';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';

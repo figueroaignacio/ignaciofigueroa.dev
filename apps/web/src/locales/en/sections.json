@@ -1,25 +1,16 @@
 {
   "home": {
-    "greeting": "Frontend Engineer · Backend when it's needed · Buenos Aires",
     "name": "Ignacio Figueroa",
     "title": "Frontend Engineer",
-    "roleNote": "Frontend by trade. <mark>Backend when nobody's looking.</mark>",
-    "description": "I build the part of the product people actually touch, and enough of what's behind it to ship without waiting on anyone. I use AI every day. The judgment is still mine.",
     "status": {
-      "working": "Working at reclee.com",
       "workingUrl": "https://reclee.com",
       "madeThat": "I made that landing",
-      "localTime": "local time in Buenos Aires",
-      "workingHours": "within working hours",
-      "offHours": "outside working hours",
       "company": "reclee.com",
       "city": "Buenos Aires"
     },
     "labels": {
       "now": "Now",
       "links": "Links",
-      "ask": "Ask",
-      "assistant": "My assistant",
       "resume": "Resume",
       "askLong": "Ask my assistant"
     },
@@ -33,14 +24,6 @@
       "photoLegend": "Ignacio Figueroa, known as Nacho",
       "lead": "I build B2B products and work T-shaped: deep on frontend and design systems, with enough backend and infrastructure to ship the whole product.",
       "more": "AI is part of how I work every day: at Reclee I run Claude Code agents and subagents in parallel to implement, review and test, and I build it into products too. This site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components: I maintain NachUI, an open source component system with its own CLI, registry and AI Elements for chat interfaces, from messages and streaming to tool calls. I study Programming at UTN and work on Fedora."
-    },
-    "badge": {
-      "id": "Dev ID",
-      "now": "Now",
-      "base": "Based",
-      "stack": "Stack",
-      "found": "If found, return to",
-      "flip": "Flip the badge"
     },
     "facts": {
       "now": {
@@ -74,7 +57,6 @@
   },
   "stack": {
     "title": "Stack",
-    "description": "Technologies I work with and focus on the most.",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend & data",
@@ -85,8 +67,6 @@
   },
   "experience": {
     "title": "Experience",
-    "description": "Roles where I shipped features, fixed real bugs, and worked with other engineers.",
-    "connector": "at",
     "present": "Present",
     "years": "{count, plural, one {# yr} other {# yrs}}",
     "months": "{count, plural, one {# mo} other {# mos}}",
@@ -94,9 +74,7 @@
   },
   "education": {
     "title": "Education",
-    "description": "University and self-directed study. Both matter.",
     "present": "present",
-    "skills": "Skills",
     "items": [
       {
         "title": "Associate Degree in Programming and Software Development",
@@ -153,9 +131,7 @@
   },
   "certifications": {
     "title": "Certifications",
-    "description": "Verified credentials from structured programs I completed.",
     "cta": "View credential",
-    "skills": "Skills",
     "showMore": "Show more",
     "showLess": "Show less",
     "items": [
@@ -303,19 +279,13 @@
   },
   "contributions": {
     "title": "Open Source Contributions",
-    "description": "Repositories I've contributed to, including bug fixes, new features, and improvements.",
     "viewRepo": "View repository",
-    "viewFork": "View fork",
-    "pr": "Pull Request"
+    "viewFork": "View fork"
   },
   "github": {
     "title": "Stats & Activity",
     "description": "Real-time statistics and contributions fetched directly from my GitHub profile.",
     "stats": {
-      "stars": "Stars",
-      "repos": "Public Repos",
-      "followers": "Followers",
-      "following": "Following",
       "contributions": "Total Contributions",
       "topLanguages": "Top Languages"
     },
@@ -324,17 +294,7 @@
       "more": "More"
     }
   },
-  "whoAmI": {
-    "title": "Who Am I",
-    "description": "A short video introduction about who I am.",
-    "videoLabel": "Video presentation of Ignacio Figueroa",
-    "play": "Play video",
-    "pause": "Pause video",
-    "videoUrl": "https://res.cloudinary.com/dowusv05c/video/upload/v1782250393/20260623_180433_ekdyx4.mp4"
-  },
   "interests": {
-    "title": "Areas of Focus",
-    "description": "Where I spend my time and where I can add real value.",
     "items": {
       "frontend": "Frontend Engineering",
       "software": "Software Engineering",
@@ -354,21 +314,12 @@
       "title": "Experience",
       "description": "Here are some of Ignacio's work experiences."
     },
-    "skills": {
-      "title": "Skills",
-      "description": "Here are some of Ignacio's skills."
-    },
-    "education": {
-      "title": "Education",
-      "description": "Here are some of Ignacio's educational background."
-    },
     "contact": {
       "title": "Contact",
       "description": "Here's how to reach Ignacio."
     }
   },
   "faq": {
-    "title": "Frequently asked",
     "items": [
       {
         "question": "Who is Ignacio Figueroa?",

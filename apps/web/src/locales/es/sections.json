@@ -1,25 +1,16 @@
 {
   "home": {
-    "greeting": "Frontend Engineer · Backend cuando hace falta · Buenos Aires",
     "name": "Ignacio Figueroa",
     "title": "Frontend Engineer",
-    "roleNote": "Frontend de profesión. <mark>Backend cuando nadie mira.</mark>",
-    "description": "Construyo la parte del producto que la gente toca, y lo suficiente de lo que hay detrás como para no depender de nadie para salir a producción. Uso IA todos los días. El criterio sigue siendo mío.",
     "status": {
-      "working": "Trabajando en reclee.com",
       "workingUrl": "https://reclee.com",
       "madeThat": "Esa landing la hice yo",
-      "localTime": "hora local en Buenos Aires",
-      "workingHours": "en horario laboral",
-      "offHours": "fuera de horario",
       "company": "reclee.com",
       "city": "Buenos Aires"
     },
     "labels": {
       "now": "Ahora",
       "links": "Links",
-      "ask": "Preguntale",
-      "assistant": "Mi asistente",
       "resume": "CV",
       "askLong": "Preguntale a mi asistente"
     },
@@ -33,14 +24,6 @@
       "photoLegend": "Ignacio Figueroa, conocido como Nacho",
       "lead": "Construyo productos B2B y trabajo en forma de T: profundidad en frontend y design systems, con el backend y la infraestructura suficientes para sacar el producto entero.",
       "more": "La IA es parte de cómo trabajo todos los días: en Reclee corro agentes y subagentes de Claude Code en paralelo para implementar, revisar y testear, y también la integro en productos. Este sitio corre sobre un CMS en NestJS que escribí de cero, con Postgres, un panel de admin y un asistente sobre Gemini con búsqueda vectorial. Lo que más disfruto es desarrollar componentes: mantengo NachUI, un sistema de componentes open source con su propio CLI, registry y AI Elements para interfaces de chat, desde mensajes y streaming hasta tool calls. Estudio Programación en la UTN y trabajo sobre Fedora."
-    },
-    "badge": {
-      "id": "Dev ID",
-      "now": "Ahora",
-      "base": "Base",
-      "stack": "Stack",
-      "found": "Si lo encontrás, devolver a",
-      "flip": "Dar vuelta el gafete"
     },
     "facts": {
       "now": {
@@ -74,7 +57,6 @@
   },
   "stack": {
     "title": "Stack",
-    "description": "Tecnologías con las que trabajo y en las que más me enfoco.",
     "categories": {
       "frontend": "Frontend",
       "backend": "Backend y datos",
@@ -85,8 +67,6 @@
   },
   "experience": {
     "title": "Experiencia",
-    "description": "Roles donde entregué features, fixé bugs reales y trabajé con otros desarrolladores.",
-    "connector": "en",
     "present": "hoy",
     "years": "{count, plural, one {# año} other {# años}}",
     "months": "{count, plural, one {# mes} other {# meses}}",
@@ -94,9 +74,7 @@
   },
   "education": {
     "title": "Educación",
-    "description": "Universidad y aprendizaje autodirigido. Ambos importan.",
     "present": "presente",
-    "skills": "Habilidades",
     "items": [
       {
         "title": "Tecnicatura Universitaria en Programación y Desarrollo de Software",
@@ -154,9 +132,7 @@
   },
   "certifications": {
     "title": "Certificaciones",
-    "description": "Credenciales verificadas de programas estructurados que completé.",
     "cta": "Ver credencial",
-    "skills": "Habilidades",
     "showMore": "Ver más",
     "showLess": "Ver menos",
     "items": [
@@ -304,19 +280,13 @@
   },
   "contributions": {
     "title": "Contribuciones Open Source",
-    "description": "Repositorios a los que contribuí, incluyendo corrección de errores, nuevas funcionalidades y mejoras.",
     "viewRepo": "Ver repositorio",
-    "viewFork": "Ver fork",
-    "pr": "Pull Request"
+    "viewFork": "Ver fork"
   },
   "github": {
     "title": "Stats y Actividad",
     "description": "Estadísticas en tiempo real y contribuciones obtenidas directamente de mi perfil de GitHub.",
     "stats": {
-      "stars": "Estrellas",
-      "repos": "Repos públicos",
-      "followers": "Seguidores",
-      "following": "Siguiendo",
       "contributions": "Contribuciones totales",
       "topLanguages": "Lenguajes principales"
     },
@@ -325,17 +295,7 @@
       "more": "Más"
     }
   },
-  "whoAmI": {
-    "title": "¿Quién soy?",
-    "description": "Una breve presentación en video de quién soy.",
-    "videoLabel": "Presentación en video de Ignacio Figueroa",
-    "play": "Reproducir video",
-    "pause": "Pausar video",
-    "videoUrl": "https://res.cloudinary.com/dowusv05c/video/upload/v1782250355/20260623_180103_nkqygj.mp4"
-  },
   "interests": {
-    "title": "Áreas de Enfoque",
-    "description": "Dónde invierto el tiempo y dónde puedo aportar valor real.",
     "items": {
       "frontend": "Ingeniería Frontend",
       "software": "Ingeniería de Software",
@@ -355,21 +315,12 @@
       "title": "Experiencia Laboral",
       "description": "Aquí están algunas de las experiencias laborales de Ignacio."
     },
-    "skills": {
-      "title": "Habilidades",
-      "description": "Aquí están algunas de las habilidades de Ignacio."
-    },
-    "education": {
-      "title": "Educación",
-      "description": "Aquí está la formación académica de Ignacio."
-    },
     "contact": {
       "title": "Contacto",
       "description": "Así podés contactar a Ignacio."
     }
   },
   "faq": {
-    "title": "Preguntas frecuentes",
     "items": [
       {
         "question": "¿Quién es Ignacio Figueroa?",

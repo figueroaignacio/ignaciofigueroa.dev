@@ -18,8 +18,6 @@
     "dismiss": "Cerrar resumen",
     "title": "Resumen IA"
   },
-  "error": "Ha ocurrido un error al cargar los datos.",
-  "loader": "Cargando...",
   "ctaCv": {
     "url": "/pdf/cv_ignacio_figueroa_desarrollador_fullstack.pdf",
     "cta": {
@@ -28,15 +26,9 @@
       "text": "Descargar CV"
     }
   },
-  "ctaContact": {
-    "title": "Abierto a oportunidades",
-    "description": "Busco roles fullstack o de integración de IA. Full-time o contrato. Si el problema es interesante, me interesa."
-  },
   "chat": {
     "header": {
-      "title": "Asistente virtual de Ignacio",
       "reset": "Reiniciar chat",
-      "newChat": "Nuevo Chat",
       "resetConfirmTitle": "¿Estás seguro de que querés reiniciar el chat?",
       "resetConfirmDescription": "Esto eliminará todos tus mensajes en este chat.",
       "resetConfirmCancel": "Cancelar",
@@ -44,32 +36,15 @@
       "panelLabel": "Chat con el asistente"
     },
     "input": {
-      "placeholder": "Escribí un mensaje...",
       "send": "Enviar mensaje",
       "sendHint": "para enviar",
       "newlineHint": "para un salto de línea"
     },
     "messages": {
-      "initial": "¡Hola! 👋 ¿En qué puedo ayudarte?",
       "error": "Ocurrió un error. Por favor, intentá de nuevo.",
-      "tooltip": "Preguntame sobre Ignacio",
-      "thinking": "Pensando...",
-      "tools": {
-        "get_projects": "Buscando proyectos...",
-        "get_experience": "Revisando experiencia...",
-        "send_contact_email": "Preparando el mensaje...",
-        "analyze_job_description": "Analizando la búsqueda..."
-      },
       "emailSending": "Enviando mensaje...",
       "emailSuccess": "¡Mensaje enviado con éxito!",
       "emailError": "Error al enviar el mensaje.",
-      "pitchTitle": "Reporte de Compatibilidad",
-      "matchScore": "Puntaje de Match",
-      "matchingSkills": "Requisitos Cumplidos",
-      "gapAnalysis": "Análisis de Brechas",
-      "recommendedProjects": "Proyectos Recomendados",
-      "roleLabel": "Rol",
-      "companyLabel": "Compañía",
       "trace": {
         "title": "Proceso",
         "reading": "Leyendo tu consulta",
@@ -81,8 +56,6 @@
       }
     },
     "suggestions": {
-      "title": "Probá con...",
-      "subtitle": "Hacé click en una sugerencia para empezar",
       "who": "¿Quién es Ignacio?",
       "projects": "¿Qué proyectos tiene?",
       "technologies": "¿Qué tecnologías usa?",
@@ -91,27 +64,13 @@
       "contact": "Enviar mensaje"
     },
     "page": {
-      "goodMorning": "¡Buenos días!",
-      "goodAfternoon": "¡Buenas tardes!",
-      "goodEvening": "¡Buenas noches!",
       "greeting": "¡Hola! ¿Cómo estás?",
       "subtitle": "Preguntame lo que quieras sobre Ignacio.",
-      "role": "Asistente IA",
       "inputPlaceholder": "¿En qué puedo ayudarte?"
-    },
-    "railBot": {
-      "tooltip": "psst. yo ya me leí todo esto",
-      "label": "Abrir el asistente de IA"
     }
-  },
-  "openToWorkBadge": "Disponible para trabajar",
-  "theme": {
-    "dark": "Oscuro",
-    "light": "Claro"
   },
   "contactForm": {
     "title": "Hablemos.",
-    "description": "Abierto a roles fullstack, integración de IA, trabajo por contrato o una charla técnica. Leo todos los mensajes.",
     "nameLabel": "Nombre",
     "namePlaceholder": "Tu nombre",
     "emailLabel": "Email",

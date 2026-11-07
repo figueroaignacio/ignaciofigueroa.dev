@@ -150,116 +150,6 @@
     animation-delay: 320ms;
   }
 
-  .panel-show {
-    position: absolute;
-    inset-block-end: 0;
-    inset-inline-end: 0;
-    inline-size: 2.5rem;
-    translate: 0 130%;
-    transition:
-      translate 9000ms linear,
-      opacity 400ms ease-out;
-  }
-
-  .panel-show[data-phase='climb'] {
-    translate: 0 0;
-    transition-duration: 1800ms;
-    transition-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
-  }
-
-  .panel-show[data-phase='walk'],
-  .panel-show[data-phase='sit'],
-  .panel-show[data-phase='code'],
-  .panel-show[data-phase='wave'],
-  .panel-show[data-phase='stand'] {
-    translate: calc(2.5rem - 100cqi) 0;
-  }
-
-  .panel-show[data-phase='back'] {
-    translate: 0 0;
-  }
-
-  .panel-show[data-phase='sit'],
-  .panel-show[data-phase='code'],
-  .panel-show[data-phase='wave'],
-  .panel-show[data-phase='stand'] {
-    transition-duration: 700ms;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .panel-show-bot {
-    inline-size: 100%;
-    block-size: auto;
-    overflow: visible;
-  }
-
-  .panel-show-body {
-    transition: translate 500ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .panel-show[data-phase='climb'] .panel-show-body {
-    animation: climb-strain 520ms ease-in-out infinite;
-  }
-
-  .panel-show[data-phase='sit'] .panel-show-body,
-  .panel-show[data-phase='code'] .panel-show-body,
-  .panel-show[data-phase='wave'] .panel-show-body {
-    translate: 0 3px;
-  }
-
-  .panel-show[data-phase='walk'] .panel-show-body,
-  .panel-show[data-phase='back'] .panel-show-body {
-    animation: gait-bob 680ms steps(1, end) infinite;
-  }
-
-  .panel-show[data-phase='back'] .panel-show-body {
-    scale: -1 1;
-    transform-origin: center;
-  }
-
-  .panel-show-laptop {
-    opacity: 0;
-    translate: 0 6px;
-    transition:
-      opacity 320ms ease-out,
-      translate 420ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .panel-show[data-phase='code'] .panel-show-laptop {
-    opacity: 1;
-    translate: 0 0;
-  }
-
-  .panel-show-arm {
-    transform-box: fill-box;
-    transform-origin: 50% 90%;
-    opacity: 0;
-  }
-
-  .panel-show[data-phase='wave'] .panel-show-arm {
-    opacity: 1;
-    animation: arm-wave 620ms ease-in-out 3;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .panel-show {
-      translate: 0 0;
-      transition: none;
-    }
-
-    .panel-show .panel-show-body,
-    .panel-show .panel-show-arm,
-    .panel-show .panel-show-laptop {
-      animation: none;
-    }
-
-    .panel-show-laptop {
-      opacity: 1;
-      translate: 0 0;
-      transition: none;
-    }
-  }
-
   [data-expression='reading'] .assistant-eyes {
     animation: none;
     translate: 0 1.3px;
@@ -277,10 +167,6 @@
 
   .assistant-strolling .assistant-gait {
     animation: gait-bob 480ms steps(1, end) infinite;
-  }
-
-  .assistant-perch {
-    overflow: visible;
   }
 
   [data-expression='asleep'] .assistant-leg-dangle {
@@ -667,60 +553,5 @@
   }
   3% {
     translate: 0 0;
-  }
-}
-
-@keyframes hop {
-  0%,
-  9% {
-    translate: 0 0;
-  }
-  10%,
-  19% {
-    translate: 0 -3px;
-  }
-  20%,
-  44% {
-    translate: 0 -6px;
-  }
-  45%,
-  59% {
-    translate: 0 -3px;
-  }
-  60%,
-  71% {
-    translate: 0 0;
-  }
-  72%,
-  81% {
-    translate: 0 -1px;
-  }
-  82%,
-  100% {
-    translate: 0 0;
-  }
-}
-
-@keyframes climb-strain {
-  0%,
-  100% {
-    translate: 0 0;
-    rotate: -2deg;
-  }
-
-  50% {
-    translate: 0 -1px;
-    rotate: 2deg;
-  }
-}
-
-@keyframes arm-wave {
-  0%,
-  100% {
-    rotate: -8deg;
-  }
-
-  50% {
-    rotate: 24deg;
   }
 }

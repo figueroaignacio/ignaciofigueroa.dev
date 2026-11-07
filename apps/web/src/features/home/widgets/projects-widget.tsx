@@ -1,4 +1,4 @@
-import type { CategoryProjects } from '@/features/projects/ui/projects-tabs';
+import type { CategoryProjects } from '@/shared/lib/content-types';
 import { Link } from '@/i18n/navigation';
 import { Section } from '@/shared/components/ui/section';
 import { ProjectIndex } from '../ui/project-index';
