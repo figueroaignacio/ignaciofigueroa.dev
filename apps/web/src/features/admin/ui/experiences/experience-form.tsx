@@ -2,6 +2,7 @@
 
 import { Frame } from '@/shared/components/ui/frame';
 import { Input } from '@/shared/components/ui/input';
+import { Textarea } from '@/shared/components/ui/textarea';
 import { useToast } from '@/shared/components/ui/toast';
 import type { CreateExperienceInput, ExperienceDto } from '@repo/contracts';
 import { useCallback, useState } from 'react';
@@ -23,6 +24,8 @@ export function ExperienceForm({ experience }: { experience?: ExperienceDto }) {
     title: experience?.title ?? '',
     company: experience?.company ?? '',
     location: experience?.location ?? '',
+    employmentType: experience?.employmentType ?? '',
+    description: experience?.description ?? '',
     tasks: experience?.tasks ?? [],
     technologies: experience?.technologies ?? [],
     startDate: experience?.startDate ?? today(),
@@ -51,6 +54,8 @@ export function ExperienceForm({ experience }: { experience?: ExperienceDto }) {
     void save({
       ...fields,
       location: fields.location || null,
+      employmentType: fields.employmentType?.trim() || null,
+      description: fields.description?.trim() || null,
       link: fields.link || null,
       endDate: fields.endDate || null,
       tasks: (fields.tasks ?? []).map((task) => task.trim()).filter(Boolean),
@@ -90,6 +95,18 @@ export function ExperienceForm({ experience }: { experience?: ExperienceDto }) {
               label="location"
               value={fields.location ?? ''}
               onChange={(event) => patch({ location: event.target.value })}
+            />
+            <Input
+              label="employment type"
+              placeholder="Full-time"
+              value={fields.employmentType ?? ''}
+              onChange={(event) => patch({ employmentType: event.target.value })}
+            />
+            <Textarea
+              label="description"
+              value={fields.description ?? ''}
+              onChange={(event) => patch({ description: event.target.value })}
+              autoResize
             />
             <Input
               label="link"

@@ -86,7 +86,11 @@
   "experience": {
     "title": "Experiencia",
     "description": "Roles donde entregué features, fixé bugs reales y trabajé con otros desarrolladores.",
-    "connector": "en"
+    "connector": "en",
+    "present": "hoy",
+    "years": "{count, plural, one {# año} other {# años}}",
+    "months": "{count, plural, one {# mes} other {# meses}}",
+    "moreSkills": "y {count} más"
   },
   "education": {
     "title": "Educación",

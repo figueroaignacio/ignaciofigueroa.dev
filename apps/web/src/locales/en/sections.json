@@ -86,7 +86,11 @@
   "experience": {
     "title": "Experience",
     "description": "Roles where I shipped features, fixed real bugs, and worked with other engineers.",
-    "connector": "at"
+    "connector": "at",
+    "present": "Present",
+    "years": "{count, plural, one {# yr} other {# yrs}}",
+    "months": "{count, plural, one {# mo} other {# mos}}",
+    "moreSkills": "and {count} more"
   },
   "education": {
     "title": "Education",

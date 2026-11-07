@@ -14,6 +14,8 @@ export const createExperienceSchema = z.object({
   title: z.string().min(1).max(200),
   company: z.string().min(1).max(200),
   location: optionalText,
+  employmentType: z.string().max(80).nullable().optional(),
+  description: z.string().max(4000).nullable().optional(),
   tasks: z.array(z.string().min(1).max(500)).default([]),
   technologies: z.array(z.string().min(1).max(80)).default([]),
   startDate: isoDateSchema,

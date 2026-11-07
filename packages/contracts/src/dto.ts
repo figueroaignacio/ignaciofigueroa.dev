@@ -68,6 +68,8 @@ export type ExperienceDto = Timestamps & {
   title: string;
   company: string;
   location: string | null;
+  employmentType: string | null;
+  description: string | null;
   tasks: string[];
   technologies: string[];
   startDate: string;

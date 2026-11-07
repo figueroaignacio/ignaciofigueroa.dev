@@ -10,6 +10,8 @@ export const experiences = pgTable(
     title: text().notNull(),
     company: text().notNull(),
     location: text(),
+    employmentType: text(),
+    description: text(),
     tasks: jsonb().$type<string[]>().notNull().default([]),
     technologies: jsonb().$type<string[]>().notNull().default([]),
     startDate: date().notNull(),
