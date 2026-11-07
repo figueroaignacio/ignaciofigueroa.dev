@@ -77,10 +77,10 @@
     "description": "Tecnologías con las que trabajo y en las que más me enfoco.",
     "categories": {
       "frontend": "Frontend",
-      "backend": "Backend e Infraestructura",
-      "cms": "CMS y Contenido",
-      "others": "Herramientas y extras",
-      "ai": "IA, Copilotos y SDKs"
+      "backend": "Backend y datos",
+      "ai": "IA",
+      "testing": "Testing y calidad",
+      "others": "Infra y herramientas"
     }
   },
   "experience": {

@@ -77,10 +77,10 @@
     "description": "Technologies I work with and focus on the most.",
     "categories": {
       "frontend": "Frontend",
-      "backend": "Backend & Infrastructure",
-      "cms": "CMS & Content",
-      "others": "Tools & extras",
-      "ai": "AI, Copilots & SDKs"
+      "backend": "Backend & data",
+      "ai": "AI",
+      "testing": "Testing & quality",
+      "others": "Infra & tooling"
     }
   },
   "experience": {

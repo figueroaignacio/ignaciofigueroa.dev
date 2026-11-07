@@ -3,119 +3,141 @@ import { Section } from '@/shared/components/ui/section';
 import { cn } from '@/shared/lib/cn';
 import { useTranslations } from 'next-intl';
 
-const iconMap: Record<string, IconName> = {
-  Vite: 'vite',
-  React: 'react',
-  NextJS: 'nextjs',
-  TypeScript: 'typescript',
-  TailwindCSS: 'tailwind',
-  CSS: 'css',
-  HTML: 'html',
-  NodeJS: 'nodejs',
-  'Nest.js': 'nestjs',
-  Python: 'python',
-  FastAPI: 'fastapi',
-  PostgreSQL: 'postgres',
-  'Claude Code': 'claudeCode',
-  'Open Code': 'openCode',
-  'Antigravity IDE': 'googleAntigravity',
-  'Antigravity CLI': 'googleAntigravity',
-  'Vercel AI SDK': 'vercel',
-  'GenAI SDK': 'gemini',
-  'Groq SDK': 'groq',
-  Git: 'git',
-  GitHub: 'github',
-  pnpm: 'pnpm',
-  Turborepo: 'turborepo',
-  UV: 'uv',
-  Linux: 'linux',
-  Fedora: 'fedora',
-};
+type Tech = { name: string; icon?: IconName };
 
-/**
- * The tools worth remembering. Everything outside this set renders muted so the
- * grid reads as "these, plus supporting cast" instead of one flat wall of chips.
- */
-const CORE_STACK = new Set([
-  'React',
-  'NextJS',
-  'TypeScript',
-  'TailwindCSS',
-  'NodeJS',
-  'Python',
-  'PostgreSQL',
-  'Claude Code',
-  'Vercel AI SDK',
-  'Git',
-  'Linux',
-]);
+const STACK: {
+  key: 'frontend' | 'backend' | 'ai' | 'testing' | 'others';
+  core: Tech[];
+  rest: Tech[];
+}[] = [
+  {
+    key: 'frontend',
+    core: [
+      { name: 'React', icon: 'react' },
+      { name: 'Next.js', icon: 'nextjs' },
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'Tailwind CSS', icon: 'tailwind' },
+    ],
+    rest: [
+      { name: 'shadcn/ui', icon: 'shadcn' },
+      { name: 'Base UI', icon: 'baseUi' },
+      { name: 'Motion', icon: 'motion' },
+      { name: 'TanStack Table', icon: 'tanstack' },
+      { name: 'React Hook Form', icon: 'reactHookForm' },
+      { name: 'Zustand' },
+      { name: 'Tiptap' },
+      { name: 'next-intl' },
+      { name: 'MDX', icon: 'mdx' },
+      { name: 'Vite', icon: 'vite' },
+    ],
+  },
+  {
+    key: 'backend',
+    core: [
+      { name: 'Node.js', icon: 'nodejs' },
+      { name: 'PostgreSQL', icon: 'postgres' },
+      { name: 'Supabase', icon: 'supabase' },
+    ],
+    rest: [
+      { name: 'Nest.js', icon: 'nestjs' },
+      { name: 'Drizzle ORM', icon: 'drizzle' },
+      { name: 'Zod', icon: 'zod' },
+      { name: 'Resend', icon: 'resend' },
+    ],
+  },
+  {
+    key: 'ai',
+    core: [
+      { name: 'Claude Code', icon: 'claudeCode' },
+      { name: 'Vercel AI SDK', icon: 'vercel' },
+      { name: 'MCP', icon: 'mcp' },
+    ],
+    rest: [
+      { name: 'OpenRouter', icon: 'openRouter' },
+      { name: 'Gemini', icon: 'gemini' },
+      { name: 'Groq', icon: 'groq' },
+      { name: 'Open Code', icon: 'openCode' },
+      { name: 'Antigravity', icon: 'googleAntigravity' },
+    ],
+  },
+  {
+    key: 'testing',
+    core: [
+      { name: 'Vitest', icon: 'vitest' },
+      { name: 'Playwright', icon: 'playwright' },
+    ],
+    rest: [
+      { name: 'Jest', icon: 'jest' },
+      { name: 'Testing Library', icon: 'testingLibrary' },
+      { name: 'axe-core' },
+      { name: 'ESLint', icon: 'eslint' },
+      { name: 'Prettier', icon: 'prettier' },
+    ],
+  },
+  {
+    key: 'others',
+    core: [
+      { name: 'Git', icon: 'git' },
+      { name: 'Vercel', icon: 'vercel' },
+      { name: 'Linux', icon: 'linux' },
+    ],
+    rest: [
+      { name: 'GitHub Actions', icon: 'githubActions' },
+      { name: 'Docker', icon: 'docker' },
+      { name: 'Turborepo', icon: 'turborepo' },
+      { name: 'pnpm', icon: 'pnpm' },
+      { name: 'Sentry', icon: 'sentry' },
+      { name: 'Linear', icon: 'linear' },
+      { name: 'Fedora', icon: 'fedora' },
+    ],
+  },
+];
+
+function TechItem({ tech, core }: { tech: Tech; core: boolean }) {
+  return (
+    <li
+      className={cn(
+        'group/tech flex items-center gap-2.5',
+        core ? 'text-foreground' : 'text-muted-foreground',
+      )}
+    >
+      {tech.icon ? (
+        <Icon
+          name={tech.icon}
+          width={17}
+          height={17}
+          className={cn(
+            'shrink-0 transition-[filter,opacity] duration-300',
+            !core &&
+              'opacity-70 grayscale group-hover/tech:opacity-100 group-hover/tech:grayscale-0',
+          )}
+        />
+      ) : (
+        <span aria-hidden className="mx-[5.5px] size-1.5 shrink-0 bg-current opacity-60" />
+      )}
+      {tech.name}
+    </li>
+  );
+}
 
 export function TechStack() {
   const t = useTranslations('sections');
 
-  const techStack = [
-    {
-      category: t('stack.categories.frontend'),
-      items: ['Vite', 'React', 'NextJS', 'TypeScript', 'TailwindCSS', 'CSS', 'HTML'],
-    },
-    {
-      category: t('stack.categories.backend'),
-      items: ['NodeJS', 'Nest.js', 'Python', 'FastAPI', 'PostgreSQL'],
-    },
-    {
-      category: t('stack.categories.ai'),
-      items: [
-        'Claude Code',
-        'Open Code',
-        'Antigravity IDE',
-        'Antigravity CLI',
-        'Vercel AI SDK',
-        'GenAI SDK',
-        'Groq SDK',
-      ],
-    },
-    {
-      category: t('stack.categories.others'),
-      items: ['Git', 'GitHub', 'pnpm', 'Turborepo', 'UV', 'Linux', 'Fedora'],
-    },
-  ];
-
   return (
     <Section id="stack" title={t('stack.title')}>
-      <div className="flex flex-col gap-10" data-reveal>
-        {techStack.map((section) => (
-          <div
-            key={section.category}
-            className="grid gap-x-8 gap-y-3 sm:grid-cols-[8.5rem_minmax(0,1fr)]"
-          >
-            <h3 className="pt-1 text-[15px] font-normal text-muted-foreground">
-              {section.category}
+      <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-10" data-reveal>
+        {STACK.map((group) => (
+          <div key={group.key} className="flex flex-col gap-2.5 sm:gap-3">
+            <h3 className="text-sm font-normal text-muted-foreground sm:text-[15px]">
+              {t(`stack.categories.${group.key}`)}
             </h3>
-            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
-              {section.items.map((name) => {
-                const isCore = CORE_STACK.has(name);
-                return (
-                  <li
-                    key={name}
-                    className={cn(
-                      'group/tech inline-flex items-center gap-2 text-lg font-medium tracking-[-0.02em]',
-                      isCore ? 'text-foreground' : 'text-muted-foreground',
-                    )}
-                  >
-                    <Icon
-                      name={iconMap[name]}
-                      width={18}
-                      height={18}
-                      className={cn(
-                        'shrink-0 transition-[filter,translate] duration-300 group-hover/tech:-translate-y-0.5',
-                        !isCore &&
-                          'opacity-70 grayscale group-hover/tech:opacity-100 group-hover/tech:grayscale-0',
-                      )}
-                    />
-                    {name}
-                  </li>
-                );
-              })}
+            <ul className="flex flex-col gap-[7px] text-[15px] font-medium tracking-[-0.01em] sm:gap-2 sm:text-[17px]">
+              {group.core.map((tech) => (
+                <TechItem key={tech.name} tech={tech} core />
+              ))}
+              {group.rest.map((tech) => (
+                <TechItem key={tech.name} tech={tech} core={false} />
+              ))}
             </ul>
           </div>
         ))}

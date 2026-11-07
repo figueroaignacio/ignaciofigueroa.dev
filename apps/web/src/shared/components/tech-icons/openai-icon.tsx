@@ -5,7 +5,7 @@ export function OpenAIIcon({ className }: { className?: string }) {
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
       fillRule="evenodd"
-      aria-hidden="true"
+
       focusable="false"
       className={className}
     >
