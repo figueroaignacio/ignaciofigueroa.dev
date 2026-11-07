@@ -1,71 +1,81 @@
 import { Section } from '@/shared/components/ui/section';
-import { getTranslations } from 'next-intl/server';
-import { DevBadge } from './dev-badge';
-import { FocusAreas } from './interests';
-
-export const FOCUS_LEAD = ['React', 'Next.js', 'TypeScript', 'Node.js'];
+import { getLocale, getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 
 const FACTS = ['now', 'before', 'maintain', 'study'] as const;
 
+const FOCUS = [
+  'frontend',
+  'software',
+  'programming',
+  'linux',
+  'uxui',
+  'sdd',
+  'aiOrchestration',
+] as const;
+
 export async function AboutSection() {
-  const t = await getTranslations('sections.aboutMe.content');
-  const tSection = await getTranslations('sections.aboutMe');
-  const tHome = await getTranslations('sections.home');
+  const [t, tSection, tHome, tFocus, locale] = await Promise.all([
+    getTranslations('sections.aboutMe.content'),
+    getTranslations('sections.aboutMe'),
+    getTranslations('sections.home'),
+    getTranslations('sections.interests.items'),
+    getLocale(),
+  ]);
+
+  const rows = [
+    ...FACTS.map((fact) => ({
+      label: tSection(`facts.${fact}.label`),
+      value: tSection(`facts.${fact}.value`),
+    })),
+    {
+      label: tSection('facts.focus.label'),
+      value: new Intl.ListFormat(locale, { type: 'conjunction' }).format(
+        FOCUS.map((key) => tFocus(key)),
+      ),
+    },
+  ];
 
   return (
     <Section id="about" title={tSection('title')}>
-      <div className="flex flex-col gap-12" data-reveal>
+      <div className="flex flex-col gap-10" data-reveal>
+        <header className="flex items-center gap-4 sm:gap-5">
+          <Image
+            src="/images/profile-photo.webp"
+            alt={t('photoLegend')}
+            width={144}
+            height={144}
+            className="size-15 shrink-0 object-cover object-[50%_30%] brightness-110 contrast-125 grayscale sm:size-18"
+          />
+          <div className="min-w-0">
+            <p className="text-lg font-bold tracking-[-0.03em] sm:text-xl">{tHome('name')}</p>
+            <p className="text-[15px] text-muted-foreground">
+              {tHome('title')} · {tHome('status.city')}
+            </p>
+          </div>
+        </header>
+
         <p className="text-lg leading-snug font-semibold tracking-[-0.02em] text-pretty sm:text-xl">
           {t('lead')}
         </p>
 
-        <div className="grid items-start gap-10 sm:grid-cols-[15.3rem_minmax(0,1fr)] sm:gap-x-10">
-          <DevBadge
-            name={tHome('name')}
-            role={tHome('title')}
-            company={tHome('status.company')}
-            city={tHome('status.city')}
-            stack={FOCUS_LEAD}
-            labels={{
-              id: tSection('badge.id'),
-              now: tSection('badge.now'),
-              base: tSection('badge.base'),
-              stack: tSection('badge.stack'),
-              found: tSection('badge.found'),
-              flip: tSection('badge.flip'),
-            }}
-            strapClassName="h-10"
-            className="mx-auto text-[0.875rem] sm:mx-0"
-          />
-          <dl className="flex flex-col gap-4 rounded-xl bg-(--stage) p-6 sm:mt-14">
-            {FACTS.map((fact) => (
-              <div key={fact} className="flex flex-col gap-0.5">
-                <dt className="text-[15px] text-muted-foreground first-letter:uppercase">
-                  {tSection(`facts.${fact}.label`)}
-                </dt>
-                <dd className="text-[15px]">{tSection(`facts.${fact}.value`)}</dd>
-              </div>
-            ))}
-            <div className="flex flex-col gap-2">
+        <dl className="flex flex-col gap-3.5">
+          {rows.map((row) => (
+            <div
+              key={row.label}
+              className="grid gap-0.5 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-4"
+            >
               <dt className="text-[15px] text-muted-foreground first-letter:uppercase">
-                {tSection('facts.focus.label')}
+                {row.label}
               </dt>
-              <dd>
-                <FocusAreas />
-              </dd>
+              <dd className="text-[15px] leading-relaxed">{row.value}</dd>
             </div>
-          </dl>
-        </div>
+          ))}
+        </dl>
 
         <div className="prose-reading">
           <p>{t('bio')}</p>
-          <p>{t('more')}</p>
-          <p className="mt-6 mb-0 text-lg font-semibold tracking-[-0.02em]">
-            {tHome('name')}
-            <span className="block text-[15px] font-normal text-muted-foreground">
-              {tHome('title')}, {tHome('status.city')}
-            </span>
-          </p>
+          <p className="mb-0">{t('more')}</p>
         </div>
       </div>
     </Section>
