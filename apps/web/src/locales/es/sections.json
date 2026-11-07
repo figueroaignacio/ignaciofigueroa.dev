@@ -28,7 +28,7 @@
   "aboutMe": {
     "title": "Sobre mí",
     "content": {
-      "bio": "Soy frontend engineer en Buenos Aires. Desde julio de 2026 trabajo en Reclee, un SaaS B2B: el ATS, CRM y sourcing con IA para agencias de reclutamiento, donde soy responsable del frontend, el design system y la experiencia de producto. Armé el design system sobre shadcn/ui y ReUI, construí la app mobile-first y organicé el código por feature para que la lógica de negocio no viva en la UI. Cada feature arranca de un spec escrito, y trabajo cerca de ventas y marketing: la landing de reclee.com, los videos de lanzamiento y las demos también son míos. Antes pasé un año en Pawtrics Software como ingeniero de software en un sistema de gestión B2B para clínicas veterinarias, con turnos, CRM y ventas, sobre Next.js, Supabase y PostgreSQL.",
+      "bio": "Soy frontend engineer en Buenos Aires. Desde julio de 2026 trabajo en Reclee, un SaaS B2B: el ATS, CRM y sourcing con IA para agencias de reclutamiento, donde soy responsable del frontend, el design system y la experiencia de producto. Armé el design system sobre shadcn/ui y ReUI, construí la app mobile-first y organicé el código por feature para que la lógica de negocio no viva en la UI. Cada feature arranca de un spec escrito, y trabajo cerca de ventas y marketing: la landing de reclee.com, los videos de lanzamiento y las demos también son míos. Antes pasé un año en Pawtrics Software como ingeniero de software en un SaaS B2B de gestión para clínicas veterinarias, con turnos, CRM y ventas, sobre Next.js, Supabase y PostgreSQL.",
       "details": "Construyo productos B2B y trabajo en forma de T: profundidad en frontend y design systems, con el backend y la infraestructura suficientes para sacar el producto entero. La IA es parte de cómo trabajo todos los días: en Reclee corro agentes y subagentes de Claude Code en paralelo para implementar, revisar y testear, y también la integro en productos. Este sitio corre sobre un CMS en NestJS que escribí de cero, con Postgres, un panel de admin y un asistente sobre Gemini con búsqueda vectorial. Lo que más disfruto es desarrollar componentes: mantengo NachUI, un sistema de componentes open source con su propio CLI, registry y AI Elements para interfaces de chat, desde mensajes y streaming hasta tool calls. Estudio Programación en la UTN y trabajo sobre Fedora.",
       "photoLegend": "Ignacio Figueroa, conocido como Nacho",
       "lead": "Construyo productos B2B y trabajo en forma de T: profundidad en frontend y design systems, con el backend y la infraestructura suficientes para sacar el producto entero.",
@@ -49,7 +49,7 @@
       },
       "before": {
         "label": "antes",
-        "value": "Ingeniero de software en Pawtrics, software B2B para veterinarias, un año"
+        "value": "Ingeniero de software en Pawtrics, SaaS B2B para veterinarias, un año"
       },
       "maintain": {
         "label": "mantengo",
@@ -373,7 +373,7 @@
     "items": [
       {
         "question": "¿Quién es Ignacio Figueroa?",
-        "answer": "Soy Ignacio Figueroa, frontend engineer de Buenos Aires, Argentina. Desde julio de 2026 trabajo en Reclee, un SaaS B2B: el ATS, CRM y sourcing con IA para agencias de reclutamiento, donde soy responsable del frontend, el design system y la experiencia de producto. Antes pasé un año en Pawtrics Software como ingeniero de software en un sistema de gestión B2B para clínicas veterinarias. También soy el autor de NachUI, un sistema de componentes open source."
+        "answer": "Soy Ignacio Figueroa, frontend engineer de Buenos Aires, Argentina. Desde julio de 2026 trabajo en Reclee, un SaaS B2B: el ATS, CRM y sourcing con IA para agencias de reclutamiento, donde soy responsable del frontend, el design system y la experiencia de producto. Antes pasé un año en Pawtrics Software como ingeniero de software en un SaaS B2B de gestión para clínicas veterinarias. También soy el autor de NachUI, un sistema de componentes open source."
       },
       {
         "question": "¿Ignacio Figueroa es desarrollador frontend o fullstack?",
