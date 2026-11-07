@@ -1,6 +1,5 @@
 import { routing } from '@/i18n/routing';
 import { Dock } from '@/shared/components/dock';
-import { Grain } from '@/shared/components/grain';
 import { LogoMark } from '@/shared/components/logo';
 import { Link } from '@/i18n/navigation';
 import { hasLocale, type Locale } from 'next-intl';
@@ -23,7 +22,6 @@ export default async function ArticleLayout({ children, params }: ArticleLayoutP
 
   return (
     <div id="app-shell" className="flex min-h-screen flex-col overflow-x-clip">
-      <Grain />
       <div className="page-frame-outer flex flex-1 flex-col">
         <header className="page-frame">
           <div className="frame-column flex items-center justify-between gap-4 py-6">
