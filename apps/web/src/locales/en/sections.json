@@ -28,10 +28,10 @@
   "aboutMe": {
     "title": "About Me",
     "content": {
-      "bio": "I'm a frontend engineer in Buenos Aires. Since July 2026 I've been at Reclee, the AI-native ATS, CRM and sourcing tool for recruiting agencies, where I own the frontend, the design system and the product experience. I built the design system on shadcn/ui and ReUI, laid out the app mobile-first and organized the code by feature so business logic stays out of the UI. Every feature starts from a written spec, and I work close to sales and marketing: the landing at reclee.com, the launch videos and the demos are mine too. Before that I spent a year at Pawtrics Software as a software engineer on a practice management system for veterinary clinics, with appointments, CRM and sales, built on Next.js, Supabase and PostgreSQL.",
-      "details": "I work T-shaped: deep on frontend and design systems, with enough backend and infrastructure to ship the whole product. AI is part of how I work every day: at Reclee I run Claude Code agents and subagents in parallel to implement, review and test, and I build it into products too. This site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components: I maintain NachUI, an open source component system with its own CLI, registry and AI Elements for chat interfaces, from messages and streaming to tool calls. I study Programming at UTN and work on Fedora.",
+      "bio": "I'm a frontend engineer in Buenos Aires. Since July 2026 I've been at Reclee, a B2B SaaS: the AI-native ATS, CRM and sourcing tool for recruiting agencies, where I own the frontend, the design system and the product experience. I built the design system on shadcn/ui and ReUI, laid out the app mobile-first and organized the code by feature so business logic stays out of the UI. Every feature starts from a written spec, and I work close to sales and marketing: the landing at reclee.com, the launch videos and the demos are mine too. Before that I spent a year at Pawtrics Software as a software engineer on a B2B practice management system for veterinary clinics, with appointments, CRM and sales, built on Next.js, Supabase and PostgreSQL.",
+      "details": "I build B2B products and work T-shaped: deep on frontend and design systems, with enough backend and infrastructure to ship the whole product. AI is part of how I work every day: at Reclee I run Claude Code agents and subagents in parallel to implement, review and test, and I build it into products too. This site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components: I maintain NachUI, an open source component system with its own CLI, registry and AI Elements for chat interfaces, from messages and streaming to tool calls. I study Programming at UTN and work on Fedora.",
       "photoLegend": "Ignacio Figueroa, known as Nacho",
-      "lead": "I work T-shaped: deep on frontend and design systems, with enough backend and infrastructure to ship the whole product.",
+      "lead": "I build B2B products and work T-shaped: deep on frontend and design systems, with enough backend and infrastructure to ship the whole product.",
       "more": "AI is part of how I work every day: at Reclee I run Claude Code agents and subagents in parallel to implement, review and test, and I build it into products too. This site runs on a NestJS CMS I wrote from scratch, with Postgres, an admin panel and an assistant on Gemini with vector search. What I enjoy most is building components: I maintain NachUI, an open source component system with its own CLI, registry and AI Elements for chat interfaces, from messages and streaming to tool calls. I study Programming at UTN and work on Fedora."
     },
     "badge": {
@@ -45,11 +45,11 @@
     "facts": {
       "now": {
         "label": "now",
-        "value": "Frontend at Reclee, an AI-native ATS for recruiting agencies"
+        "value": "Frontend at Reclee, B2B SaaS for recruiting agencies"
       },
       "before": {
         "label": "before",
-        "value": "Software engineer at Pawtrics, a veterinary PIMS, one year"
+        "value": "Software engineer at Pawtrics, B2B software for vet clinics, one year"
       },
       "maintain": {
         "label": "maintain",
@@ -372,7 +372,7 @@
     "items": [
       {
         "question": "Who is Ignacio Figueroa?",
-        "answer": "I'm Ignacio Figueroa, a frontend engineer from Buenos Aires, Argentina. Since July 2026 I've been at Reclee, the AI-native ATS, CRM and sourcing tool for recruiting agencies, where I own the frontend, the design system and the product experience. Before that I spent a year at Pawtrics Software as a software engineer on a practice management system for veterinary clinics. I'm also the author of NachUI, an open source component system."
+        "answer": "I'm Ignacio Figueroa, a frontend engineer from Buenos Aires, Argentina. Since July 2026 I've been at Reclee, a B2B SaaS: the AI-native ATS, CRM and sourcing tool for recruiting agencies, where I own the frontend, the design system and the product experience. Before that I spent a year at Pawtrics Software as a software engineer on a B2B practice management system for veterinary clinics. I'm also the author of NachUI, an open source component system."
       },
       {
         "question": "Is Ignacio Figueroa a frontend or a fullstack developer?",
