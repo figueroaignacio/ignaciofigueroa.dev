@@ -49,7 +49,7 @@ export class TestimonialsService {
   async create(dto: CreateTestimonialInput) {
     const [created] = await this.db
       .insert(testimonials)
-      .values({ ...dto, date: dto.date ?? null, avatar: dto.avatar || null })
+      .values({ ...dto, date: dto.date ?? null, avatar: dto.avatar || null, url: dto.url || null })
       .returning();
     return created;
   }
@@ -64,6 +64,7 @@ export class TestimonialsService {
         ...dto,
         ...(dto.date !== undefined ? { date: dto.date ?? null } : {}),
         ...(dto.avatar !== undefined ? { avatar: dto.avatar || null } : {}),
+        ...(dto.url !== undefined ? { url: dto.url || null } : {}),
       })
       .where(eq(testimonials.id, id))
       .returning();

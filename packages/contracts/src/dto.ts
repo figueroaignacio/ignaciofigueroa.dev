@@ -103,6 +103,7 @@ export type TestimonialDto = Timestamps & {
   role: string;
   company: string | null;
   avatar: string | null;
+  url: string | null;
   testimonial: string;
   date: string | null;
   order: number;

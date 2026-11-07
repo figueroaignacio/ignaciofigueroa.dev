@@ -9,6 +9,11 @@ export const slugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'slug m
 export const isoDateSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'expected YYYY-MM-DD');
 export const urlSchema = z.url();
 export const optionalUrl = urlSchema.or(z.literal('')).nullable().optional();
+export const optionalImage = urlSchema
+  .or(z.string().regex(/^\/[^/]/, 'expected a URL or a site path'))
+  .or(z.literal(''))
+  .nullable()
+  .optional();
 export const optionalText = z.string().nullable().optional();
 export const uuidSchema = z.uuid();
 

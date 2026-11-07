@@ -11,6 +11,7 @@ export const testimonials = pgTable(
     role: text().notNull(),
     company: text(),
     avatar: text(),
+    url: text(),
     testimonial: text().notNull(),
     date: date(),
     order: integer().notNull().default(0),

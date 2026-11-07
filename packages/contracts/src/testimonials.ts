@@ -4,6 +4,7 @@ import {
   contentStatusSchema,
   isoDateSchema,
   localeSchema,
+  optionalImage,
   optionalText,
   optionalUrl,
 } from './common.js';
@@ -14,7 +15,8 @@ export const createTestimonialSchema = z.object({
   name: z.string().min(1).max(120),
   role: z.string().min(1).max(120),
   company: optionalText,
-  avatar: optionalUrl,
+  avatar: optionalImage,
+  url: optionalUrl,
   testimonial: z.string().min(1).max(3000),
   date: isoDateSchema.nullable().optional(),
   order: z.number().int().default(0),

@@ -22,6 +22,7 @@ export function TestimonialForm({ testimonial }: { testimonial?: TestimonialDto 
     role: testimonial?.role ?? '',
     company: testimonial?.company ?? '',
     avatar: testimonial?.avatar ?? '',
+    url: testimonial?.url ?? '',
     testimonial: testimonial?.testimonial ?? '',
     date: testimonial?.date ?? '',
     order: testimonial?.order ?? 0,
@@ -47,6 +48,7 @@ export function TestimonialForm({ testimonial }: { testimonial?: TestimonialDto 
       ...fields,
       company: fields.company || null,
       avatar: fields.avatar || null,
+      url: fields.url || null,
       date: fields.date || null,
     });
   }, [fields, save, toast]);
@@ -85,10 +87,16 @@ export function TestimonialForm({ testimonial }: { testimonial?: TestimonialDto 
               onChange={(event) => patch({ company: event.target.value })}
             />
             <Input
-              label="avatar url"
-              placeholder="https://"
+              label="avatar"
+              placeholder="https:// or /images/…"
               value={fields.avatar ?? ''}
               onChange={(event) => patch({ avatar: event.target.value })}
+            />
+            <Input
+              label="profile url"
+              placeholder="https://www.linkedin.com/in/…"
+              value={fields.url ?? ''}
+              onChange={(event) => patch({ url: event.target.value })}
             />
             <Textarea
               label="quote"

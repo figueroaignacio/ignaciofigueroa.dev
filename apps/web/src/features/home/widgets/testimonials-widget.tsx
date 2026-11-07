@@ -7,6 +7,8 @@ export interface TestimonialItem {
   testimonial: string;
   name: string;
   role: string;
+  avatar: string | null;
+  url: string | null;
 }
 
 interface TestimonialsWidgetProps {

@@ -12,6 +12,8 @@ export async function TestimonialsContainer() {
     testimonial: testimonial.testimonial,
     name: testimonial.name,
     role: testimonial.role,
+    avatar: testimonial.avatar,
+    url: testimonial.url,
   }));
 
   return <TestimonialsWidget id="testimonials" title={t('title')} testimonials={items} />;
