@@ -5,6 +5,16 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperiences } from '../api/experience';
 import { ExperienceList } from '../ui/experience-list';
 
+const LOGOS: Record<string, string> = {
+  'reclee.com': '/images/logos/reclee.svg',
+};
+
+function logoFor(link: string | null) {
+  if (!link) return undefined;
+  const host = new URL(link).host.replace(/^www\./, '');
+  return LOGOS[host];
+}
+
 function monthsBetween(start: string, end: string | null) {
   const from = new Date(start);
   const to = end ? new Date(end) : new Date();
@@ -38,6 +48,7 @@ export async function ExperienceContainer() {
       title: experience.title,
       company: experience.company,
       companyHref: experience.link,
+      logo: logoFor(experience.link),
       employmentType: experience.employmentType,
       period: `${formatDate(experience.startDate, locale)} – ${end} · ${duration}`,
       location: experience.location?.trim(),

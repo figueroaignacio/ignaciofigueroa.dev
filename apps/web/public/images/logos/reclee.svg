@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 255 231" width="255" height="231" fill="none">
+  <defs>
+    <linearGradient id="rc-dot" x1="88" y1="16" x2="166" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D5A96"/><stop offset="0.55" stop-color="#1B84B4"/><stop offset="1" stop-color="#31BBB8"/>
+    </linearGradient>
+    <linearGradient id="rc-left" x1="10" y1="107" x2="98" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D5791"/><stop offset="1" stop-color="#1D88B6"/>
+    </linearGradient>
+    <linearGradient id="rc-right" x1="245" y1="107" x2="156" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2DB4BF"/><stop offset="1" stop-color="#36CDBC"/>
+    </linearGradient>
+    <linearGradient id="rc-diamond" x1="100" y1="224" x2="158" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1777AF"/><stop offset="1" stop-color="#2DB1BB"/>
+    </linearGradient>
+  </defs>
+  <circle cx="127.176" cy="54.9565" r="54.9565" fill="url(#rc-dot)"/>
+  <path d="M102.54 147.098L60.1071 104.644C44.0677 88.5822 18.0211 88.5822 1.95869 104.644C-0.652898 107.255 -0.652898 111.485 1.95869 114.096L69.1205 181.278C71.6166 183.774 75.6379 183.774 78.134 181.278L102.54 156.873C105.244 154.169 105.244 149.802 102.54 147.098Z" fill="url(#rc-left)"/>
+  <path d="M151.813 156.873L176.219 181.278C178.715 183.774 182.736 183.774 185.232 181.278L252.394 114.096C255.006 111.485 255.006 107.255 252.394 104.644C236.355 88.5822 210.308 88.5822 194.246 104.644L151.813 147.098C149.109 149.802 149.109 154.169 151.813 156.873Z" fill="url(#rc-right)"/>
+  <path d="M161.22 194.012C164.247 197.039 164.247 201.962 161.22 204.989L141.76 224.356C133.833 232.236 121.052 232.236 113.148 224.356L94.104 205.382C91.0532 202.355 91.0532 197.432 94.104 194.428L122.346 166.164C125.397 163.113 130.366 163.113 133.417 166.164L161.266 194.035H161.243L161.22 194.012Z" fill="url(#rc-diamond)"/>
+</svg>

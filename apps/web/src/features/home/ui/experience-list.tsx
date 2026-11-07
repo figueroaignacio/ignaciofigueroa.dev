@@ -5,6 +5,7 @@ export interface ExperienceEntry {
   title: string;
   company: string;
   companyHref?: string | null;
+  logo?: string;
   employmentType?: string | null;
   period: string;
   location?: string | null;
@@ -24,7 +25,11 @@ export function ExperienceList({ items }: { items: ExperienceEntry[] }) {
               aria-hidden="true"
               className="flex size-10 shrink-0 items-center justify-center bg-secondary text-[17px] font-bold sm:size-12 sm:text-xl"
             >
-              {item.company.trim().charAt(0).toUpperCase()}
+              {item.logo ? (
+                <img src={item.logo} alt="" className="size-6 sm:size-7" />
+              ) : (
+                item.company.trim().charAt(0).toUpperCase()
+              )}
             </span>
 
             <div className="min-w-0 flex-1">
