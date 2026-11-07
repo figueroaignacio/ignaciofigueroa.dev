@@ -149,4 +149,89 @@
   .prose-reading a {
     @apply underline underline-offset-4 hover:text-brand;
   }
+
+  .case-body {
+    counter-reset: case;
+    font-size: 15px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+  }
+
+  .case-body p {
+    @apply mb-4 text-muted-strong md:text-base;
+  }
+
+  .case-body strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .case-body :is(h2, h3) {
+    counter-increment: case;
+    @apply relative mt-16 mb-4 text-xl font-semibold tracking-[-0.02em] text-foreground first:mt-0;
+  }
+
+  .case-body :is(h2, h3)::before {
+    content: counter(case, decimal-leading-zero);
+    @apply mb-3 block font-mono text-[13px] font-normal tracking-normal text-muted-foreground md:absolute md:top-1.5 md:-left-16 md:mb-0;
+  }
+
+  .case-body h4 {
+    @apply mt-8 mb-2 text-base font-semibold text-foreground;
+  }
+
+  .case-body :is(ul, ol) {
+    @apply mb-6 border-t border-border;
+  }
+
+  .case-body ol {
+    @apply list-inside list-decimal;
+  }
+
+  .case-body li {
+    @apply border-b border-border py-3 text-[15px] leading-relaxed text-foreground;
+  }
+
+  .case-body li:empty {
+    display: none;
+  }
+
+  .case-body li > p {
+    @apply mb-0 text-foreground;
+  }
+
+  .case-body li > :is(ul, ol) {
+    @apply mt-3 mb-0 ms-4 border-t-0;
+  }
+
+  .case-body li li {
+    @apply border-b-0 py-1.5 text-muted-strong;
+  }
+
+  .case-body code {
+    @apply rounded bg-secondary/80 px-1.5 py-0.5 font-mono text-[13px] text-foreground;
+  }
+
+  .case-body pre {
+    @apply mb-6 overflow-x-auto rounded-lg border border-border bg-secondary/60 p-4 text-[13px];
+  }
+
+  .case-body pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .case-body blockquote {
+    @apply my-10 border-t border-border pt-5 text-[26px] leading-tight font-bold tracking-[-0.035em] text-foreground md:text-[28px];
+  }
+
+  .case-body blockquote p {
+    @apply mb-0 text-foreground md:text-[28px];
+  }
+
+  .case-body a {
+    @apply underline decoration-border underline-offset-4 hover:text-brand hover:decoration-brand;
+  }
+
+  .case-body hr {
+    @apply my-12 border-border;
+  }
 }

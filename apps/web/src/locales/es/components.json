@@ -4,7 +4,11 @@
       "details": "Ver más detalles",
       "source": "Repositorio",
       "preview": "Sitio web"
-    }
+    },
+    "next": "siguiente",
+    "areas": "áreas",
+    "stack": "stack",
+    "projects": "proyectos"
   },
   "projectSummary": {
     "button": "Resumir con IA",

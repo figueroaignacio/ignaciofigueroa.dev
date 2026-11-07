@@ -2,6 +2,7 @@ import { cn } from '@/shared/lib/cn';
 
 interface ProjectVideoProps {
   videoUrl?: string | null;
+  poster?: string;
   className?: string;
   autoPlay?: boolean;
   muted?: boolean;
@@ -11,6 +12,7 @@ interface ProjectVideoProps {
 
 export function ProjectVideo({
   videoUrl,
+  poster,
   className,
   autoPlay,
   muted,
@@ -28,6 +30,7 @@ export function ProjectVideo({
     >
       <video
         src={videoUrl}
+        poster={poster}
         controls={controls}
         autoPlay={autoPlay}
         muted={muted}

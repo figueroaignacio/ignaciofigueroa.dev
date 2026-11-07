@@ -6,16 +6,13 @@ import { Tabs } from '@/shared/components/ui/tabs';
 import { TechChip, TechChipGroup } from '@/shared/components/ui/tech-chip';
 import { useQueryTab } from '@/shared/hooks/use-query-tab';
 import type { Project } from '@/shared/lib/content-types';
+import { videoPoster } from '@/shared/lib/video-poster';
 import { useReducedMotion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 const action =
   'inline-flex min-h-11 items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand';
-
-function videoPoster(url: string) {
-  return url.replace('/upload/', '/upload/so_1,w_1200,f_jpg/').replace(/\.mp4$/, '.jpg');
-}
 
 function ProjectRow({
   project,
