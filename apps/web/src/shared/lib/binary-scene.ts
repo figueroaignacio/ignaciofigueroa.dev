@@ -8,7 +8,7 @@ const W = 2400;
 const H = 900;
 const SCALE = 1.5;
 const OFFSET_X = 750;
-const LEVELS = [0, 0.12, 0.26, 0.42, 0.6, 0.8, 1];
+const LEVELS = [0, 0.08, 0.17, 0.27, 0.38, 0.5, 0.63, 0.8, 1];
 
 function painter(c: CanvasRenderingContext2D) {
   const K = (d: number) => {
@@ -321,12 +321,36 @@ function drawDesk({ c, K, A, Wt, LGS, RGS, RR, EL, PG, LN, lerp, keyboard }: Pai
 }
 
 function drawSetup({ c, K, A, Wt, LGS, RGS, RR, EL, PG, LN, keyboard }: Painter) {
-  c.fillStyle = RGS(260, 180, 80, 620, [
-    [0, K(0.16)],
-    [1, K(0.42)],
+  const metal = (x0: number, x1: number) =>
+    LGS(x0, 0, x1, 0, [
+      [0, K(0.25)],
+      [0.3, K(0.04)],
+      [0.55, K(0.3)],
+      [1, K(0.55)],
+    ]);
+  const glowEllipse = (x: number, y: number, rx: number, ry: number, alpha: number) => {
+    c.save();
+    c.translate(x, y);
+    c.scale(1, ry / rx);
+    EL(
+      0,
+      0,
+      rx,
+      rx,
+      RGS(0, 0, 0, rx, [
+        [0, Wt(alpha)],
+        [1, Wt(0)],
+      ]),
+    );
+    c.restore();
+  };
+
+  c.fillStyle = RGS(230, 170, 60, 640, [
+    [0, K(0.14)],
+    [1, K(0.44)],
   ]);
   c.fillRect(-520, 0, 1640, 620);
-  EL(195, 190, 140, 95, Wt(0.18));
+  glowEllipse(195, 185, 175, 115, 0.3);
 
   RR(60, 354, 560, 620, 0, K(0.72));
   RR(
@@ -336,11 +360,11 @@ function drawSetup({ c, K, A, Wt, LGS, RGS, RR, EL, PG, LN, keyboard }: Painter)
     620,
     0,
     LGS(0, 354, 0, 620, [
-      [0, K(0.85)],
-      [1, K(0.7)],
+      [0, K(0.88)],
+      [1, K(0.72)],
     ]),
   );
-  const panel = (x0: number, x1: number) =>
+  const panel = (x0: number, x1: number) => {
     RR(
       x0,
       354,
@@ -352,25 +376,53 @@ function drawSetup({ c, K, A, Wt, LGS, RGS, RR, EL, PG, LN, keyboard }: Painter)
         [1, K(0.62)],
       ]),
     );
+    for (let x = x0 + 3; x < x1 - 1; x += 4) LN([x, 356, x + 0.6, 618], 0.8, A(0.12));
+  };
   panel(60, 74);
   panel(420, 432);
   RR(548, 354, 560, 620, 0, K(0.55));
-  RR(432, 354, 548, 368, 0, A(0.25));
+  RR(
+    74,
+    354,
+    548,
+    382,
+    0,
+    LGS(0, 354, 0, 382, [
+      [0, A(0.35)],
+      [1, A(0)],
+    ]),
+  );
   RR(432, 452, 548, 462, 0, K(0.5));
-  LN([434, 457, 546, 457], 1.5, Wt(0.2));
+  LN([434, 452.5, 546, 452.5], 1.2, Wt(0.3));
   PG([448, 452, 500, 452, 504, 436, 452, 432], K(0.92));
-  RR(510, 420, 530, 452, 2, K(0.35));
+  LN([452, 438, 500, 441], 1, Wt(0.18));
+  RR(
+    510,
+    420,
+    530,
+    452,
+    2,
+    LGS(510, 0, 530, 0, [
+      [0, K(0.25)],
+      [1, K(0.5)],
+    ]),
+  );
   RR(432, 540, 548, 550, 0, K(0.5));
 
   EL(310, 344, 270, 8, A(0.25));
   PG(
     [70, 298, 552, 298, 560, 340, 60, 340],
     LGS(0, 298, 0, 340, [
-      [0, K(0.86)],
+      [0, K(0.84)],
       [1, K(0.94)],
     ]),
   );
-  LN([70, 299, 552, 299], 2, Wt(0.15));
+  glowEllipse(200, 314, 150, 20, 0.16);
+  for (let x = 74; x < 548; x += 7) {
+    LN([x, 301.5, x + 3.5, 301.5], 1, Wt(0.16));
+    LN([x - 2, 336.5, x + 2, 336.5], 1, Wt(0.14));
+  }
+  LN([70, 298.6, 552, 298.6], 1.6, Wt(0.18));
   RR(
     58,
     340,
@@ -378,55 +430,84 @@ function drawSetup({ c, K, A, Wt, LGS, RGS, RR, EL, PG, LN, keyboard }: Painter)
     354,
     1,
     LGS(0, 340, 0, 354, [
-      [0, K(0.45)],
+      [0, K(0.42)],
       [1, K(0.62)],
     ]),
   );
-  for (let i = 0; i < 3; i++) LN([62, 344 + i * 4, 558, 343 + i * 4], 1, A(0.12));
+  for (let i = 0; i < 4; i++) LN([62, 343 + i * 3, 558, 342.4 + i * 3 + (i % 2)], 0.9, A(0.13));
+  LN([58, 340.4, 562, 340.4], 1.2, Wt(0.28));
 
-  RR(95, 110, 295, 262, 6, K(0.96));
-  RR(103, 117, 287, 252, 2, K(0.9));
-  RR(103, 117, 134, 252, 0, K(0.82));
-  for (let i = 0; i < 14; i++)
-    LN([108 + (i % 3) * 3, 124 + i * 9, 126 - (i % 4) * 3, 124 + i * 9], 2.5, K(0.45));
-  const code: Points[] = [
-    [0, 60],
-    [8, 110],
-    [8, 90],
-    [16, 70],
-    [16, 120],
-    [8, 40],
-    [0, 20],
-    [0, 80],
-    [8, 130],
-    [16, 60],
-    [16, 100],
-    [8, 50],
-    [0, 90],
-    [8, 70],
-  ];
-  code.forEach(([indent, length], i) => {
+  EL(197, 304, 132, 4, A(0.4));
+  RR(
+    95,
+    108,
+    295,
+    262,
+    7,
+    LGS(95, 0, 295, 0, [
+      [0, K(0.9)],
+      [1, K(1)],
+    ]),
+  );
+  LN([102, 108.8, 288, 108.8], 1.2, Wt(0.35));
+  EL(195, 112.5, 1.7, 1.7, K(0.45));
+  RR(103, 117, 287, 252, 2, K(0.94));
+  RR(103, 117, 287, 126, 0, K(0.96));
+  RR(134, 117, 178, 126, 0, K(0.84));
+  LN([140, 121.5, 168, 121.5], 2.6, K(0.3));
+  LN([184, 121.5, 206, 121.5], 2.6, K(0.62));
+  LN([214, 121.5, 232, 121.5], 2.6, K(0.62));
+  RR(103, 126, 134, 247, 0, K(0.84));
+  RR(103, 164, 134, 170, 0, K(0.74));
+  for (let i = 0; i < 12; i++) {
     LN(
-      [142 + indent, 124 + i * 9, Math.min(280, 142 + indent + length), 124 + i * 9],
+      [107 + (i % 3) * 3, 132 + i * 9.6, 129 - (i % 4) * 3, 132 + i * 9.6],
       3,
-      K(i % 5 === 2 ? 0.15 : 0.4),
+      K(i === 4 ? 0.22 : 0.5),
     );
+  }
+  RR(134, 160.5, 262, 166.5, 0, K(0.84));
+  const indents = [0, 6, 12, 12, 6, 0, 0, 6, 12, 18, 12, 6];
+  const tones = [0.1, 0.36, 0.22, 0.5];
+  indents.forEach((indent, i) => {
+    const y = 132 + i * 9.6;
+    LN([138, y, 141.5, y], 2.6, K(0.6));
+    const end = Math.min(258, 146 + indent + 40 + hash(i, 99) * 70);
+    let x = 146 + indent;
+    for (let k = 0; x < end; k++) {
+      const len = Math.min(end - x, 6 + hash(i, k) * 18);
+      LN([x, y, x + len, y], 4, K(i === 5 ? 0.72 : tones[Math.floor(hash(k, i + 7) * 4)]));
+      x += len + 3.5;
+    }
   });
-  LN([105, 249, 285, 249], 2.5, K(0.6));
+  RR(196, 159.5, 198, 166.5, 0, K(0.05));
+  RR(262, 126, 287, 247, 0, K(0.87));
+  for (let i = 0; i < 29; i++)
+    LN([265, 129 + i * 4, 266 + 4 + hash(i, 3) * 14, 129 + i * 4], 1.8, K(0.5));
+  RR(262, 140, 287, 172, 0, Wt(0.07));
+  RR(103, 247, 287, 252, 0, K(0.8));
+  LN([107, 249.5, 132, 249.5], 1.3, K(0.45));
+  LN([248, 249.5, 283, 249.5], 1.3, K(0.45));
+  PG([215, 117, 252, 117, 172, 252, 135, 252], Wt(0.035));
+  LN([92, 262, 298, 262], 2.5, K(0.55));
   PG(
     [92, 262, 298, 262, 322, 302, 68, 302],
     LGS(0, 262, 0, 302, [
-      [0, K(0.1)],
-      [1, K(0.2)],
+      [0, K(0.12)],
+      [1, K(0.24)],
     ]),
   );
-  PG([110, 266, 280, 266, 292, 284, 100, 284], K(0.62));
-  keyboard([110, 266], [280, 266], [100, 284], [292, 284], 5, 15, 1.2, Wt(0.4));
-  PG([162, 287, 226, 287, 228, 298, 160, 298], K(0.24));
-  LN([68, 302, 322, 302], 2.5, K(0.4));
+  PG([110, 266, 280, 266, 292, 284, 100, 284], K(0.58));
+  keyboard([110, 266], [280, 266], [100, 284], [292, 284], 5, 15, 1, Wt(0.42));
+  PG([162, 287, 226, 287, 228, 298, 160, 298], K(0.22));
+  LN([162, 287, 226, 287, 228, 298, 160, 298, 162, 287], 0.8, A(0.25));
+  PG([68, 302, 322, 302, 320, 305, 70, 305], K(0.45));
+  LN([70, 301.6, 320, 301.6], 1, Wt(0.5));
 
-  EL(400, 322, 24, 4, A(0.35));
-  LN([380, 190, 368, 192, 368, 252, 380, 254], 5, K(0.95));
+  EL(400, 322, 26, 4, A(0.4));
+  LN([380, 186, 366, 190, 366, 254, 380, 258], 5, K(0.95));
+  RR(377, 182, 383, 191, 1, K(0.5));
+  RR(377, 252, 383, 261, 1, K(0.5));
   RR(
     380,
     160,
@@ -434,67 +515,51 @@ function drawSetup({ c, K, A, Wt, LGS, RGS, RR, EL, PG, LN, keyboard }: Painter)
     320,
     7,
     LGS(380, 0, 414, 0, [
-      [0, K(0.78)],
-      [0.35, K(0.92)],
+      [0, K(0.74)],
+      [0.22, K(0.62)],
+      [0.4, K(0.9)],
       [1, K(1)],
     ]),
   );
-  RR(386, 170, 391, 308, 2, Wt(0.28));
-  RR(
-    382,
-    136,
-    412,
-    164,
-    5,
-    LGS(382, 0, 412, 0, [
-      [0, K(0.18)],
-      [0.4, K(0.04)],
-      [1, K(0.45)],
-    ]),
-  );
-  LN([382, 160, 412, 160], 2, A(0.5));
-  RR(
-    380,
-    306,
-    414,
-    320,
-    3,
-    LGS(380, 0, 414, 0, [
-      [0, K(0.2)],
-      [1, K(0.5)],
-    ]),
-  );
+  RR(385, 168, 389, 306, 2, Wt(0.32));
+  RR(409, 170, 411, 306, 1, Wt(0.12));
+  EL(397, 161.5, 17, 3, K(0.82));
+  RR(382, 134, 412, 163, 5, metal(382, 412));
+  for (let i = 0; i < 5; i++) LN([383.5, 140 + i * 4.2, 410.5, 140 + i * 4.2], 0.9, A(0.25));
+  EL(397, 134.6, 15, 2.6, K(0.35));
+  RR(390, 128, 404, 135, 2, metal(390, 404));
+  RR(380, 306, 414, 320, 3, metal(380, 414));
+  LN([381, 310.5, 413, 310.5], 0.9, A(0.3));
 
-  EL(462, 322, 26, 4, A(0.35));
+  EL(462, 322, 28, 4.5, A(0.4));
   EL(
     458,
     300,
     20,
     22,
-    RGS(452, 294, 2, 26, [
-      [0, K(0.6)],
+    RGS(450, 292, 2, 28, [
+      [0, K(0.5)],
+      [0.5, K(0.85)],
       [1, K(1)],
     ]),
   );
-  RR(
-    438,
-    276,
-    478,
-    290,
-    3,
-    LGS(438, 0, 478, 0, [
-      [0, K(0.15)],
-      [0.4, K(0.03)],
-      [1, K(0.45)],
-    ]),
-  );
-  EL(458, 277, 20, 5, K(0.2));
-  EL(458, 276, 16, 4, K(0.62));
-  LN([462, 276, 444, 244, 436, 242], 4, K(0.55));
-  LN([461, 273, 444, 246], 1.2, Wt(0.6));
+  RR(438, 276, 478, 290, 3, metal(438, 478));
+  for (let i = 0; i < 9; i++) LN([441.5 + i * 4.4, 279.5, 441.5 + i * 4.4, 287.5], 0.8, A(0.25));
+  EL(458, 277, 20, 5, K(0.15));
+  EL(458, 276.6, 17, 3.8, K(0.55));
+  EL(461, 275.2, 12, 3.4, K(0.68));
+  for (let i = 0; i < 14; i++) {
+    EL(451 + hash(i, 1) * 18, 273.6 + hash(i, 2) * 3, 0.9, 0.6, K(hash(i, 3) < 0.5 ? 0.85 : 0.45));
+  }
+  LN([462, 276, 444, 244, 436, 242], 3.2, K(0.5));
+  LN([461, 273, 444, 246], 1, Wt(0.7));
+  EL(436, 242, 2.2, 1.6, K(0.4));
 
+  EL(373, 322, 13, 3, A(0.4));
   EL(372, 316, 11, 6, K(1));
-  EL(369, 313, 5, 2.5, Wt(0.3));
+  EL(369, 313, 5, 2.2, Wt(0.32));
+  LN([372, 310.5, 372, 314], 0.8, Wt(0.25));
+  RR(371.2, 311, 372.8, 313.6, 0.8, K(0.6));
 }
 
 const SCENES: Record<SceneId, (p: Painter) => void> = { setup: drawSetup, desk: drawDesk };
@@ -503,7 +568,7 @@ const FRAMING: Record<
   SceneId,
   { fx: number; fxNarrow: number; anchorY: number; anchorV: number; span: number }
 > = {
-  setup: { fx: 300, fxNarrow: 290, anchorY: 110, anchorV: 0.25, span: 340 },
+  setup: { fx: 300, fxNarrow: 290, anchorY: 108, anchorV: 0.2, span: 300 },
   desk: { fx: 300, fxNarrow: 380, anchorY: 152, anchorV: 0.28, span: 320 },
 };
 
@@ -558,7 +623,7 @@ export interface Glyphs {
 
 export const DECODE_SECONDS = 2.1;
 
-export function buildGrid(scene: SceneId, width: number, height: number, cell = 6): Grid | null {
+export function buildGrid(scene: SceneId, width: number, height: number, cell = 5): Grid | null {
   const px = scenePixels(scene);
   if (!px) return null;
 
@@ -593,8 +658,8 @@ export function buildGrid(scene: SceneId, width: number, height: number, cell = 
 
   for (let r = 0; r < rows; r++) {
     const v = (r + 0.5) / rows;
-    const fade = smooth(0.04, 0.3, v);
-    const haze = 0.32 * Math.exp(-Math.pow((v - 0.1) / 0.065, 2));
+    const fade = smooth(0.03, 0.2, v);
+    const haze = 0.3 * Math.exp(-Math.pow((v - 0.07) / 0.05, 2));
     for (let q = 0; q < cols; q++) {
       let sum = 0;
       for (let dy = -1; dy <= 1; dy++) {
@@ -607,7 +672,7 @@ export function buildGrid(scene: SceneId, width: number, height: number, cell = 
       const i = r * cols + q;
       const d = Math.min(1, (1 - sum / 9 / 255) * fade + haze);
       density[i] = d;
-      jitter[i] = (hash(q * 7 + 3, r * 13 + 1) - 0.5) * 1.3;
+      jitter[i] = (hash(q * 7 + 3, r * 13 + 1) - 0.5) * 1.1;
       bit[i] = hash(q, r) < d ? 1 : 0;
       reveal[i] = 0.15 + (1 - v) * 0.9 + hash(q * 3 + 11, r * 5 + 2) * 0.55;
     }
@@ -672,7 +737,7 @@ export class SceneRenderer {
     for (let r = 0; r < rows; r++) {
       for (let q = 0; q < cols; q++) {
         const i = r * cols + q;
-        const lv = Math.min(6, Math.round(density[i] * 6 + jitter[i] + boost * 1.4));
+        const lv = Math.min(8, Math.round(density[i] * 8 + jitter[i] + boost * 1.9));
         if (lv <= 0) continue;
         ctx.globalAlpha = Math.min(1, LEVELS[lv] * alpha);
         ctx.drawImage(
@@ -708,7 +773,7 @@ export class SceneRenderer {
       const slow = Math.floor(time * 3);
       for (let i = 0; i < bit.length; i++) {
         if (hash(i, slow) >= 0.006) continue;
-        const lv = Math.min(6, Math.round(density[i] * 6 + jitter[i]));
+        const lv = Math.min(8, Math.round(density[i] * 8 + jitter[i]));
         if (lv <= 0) continue;
         const x = (i % cols) * cw;
         const y = Math.floor(i / cols) * ch;
@@ -724,18 +789,18 @@ export class SceneRenderer {
     for (let r = 0; r < rows; r++) {
       for (let q = 0; q < cols; q++) {
         const i = r * cols + q;
-        const base = density[i] * 6 + jitter[i];
+        const base = density[i] * 8 + jitter[i];
         let level: number;
         let b = bit[i];
         if (time < reveal[i]) {
           if (hash(i, tick) > 0.32 * Math.min(1, time / 0.4)) continue;
-          level = 1 + hash(i * 3, tick) * 1.8;
+          level = 1 + hash(i * 3, tick) * 2.4;
           b = hash(i, tick + 7) < 0.5 ? 0 : 1;
         } else {
           const k = Math.min(1, (time - reveal[i]) / 0.35);
-          level = base * k + (1 - k) * 2.2;
+          level = base * k + (1 - k) * 3;
         }
-        const lv = Math.min(6, Math.round(level));
+        const lv = Math.min(8, Math.round(level));
         if (lv <= 0) continue;
         ctx.globalAlpha = Math.min(1, LEVELS[lv] * this.opacity);
         ctx.drawImage(b ? this.glyphs.one : this.glyphs.zero, q * cw, r * ch, cw, ch);
