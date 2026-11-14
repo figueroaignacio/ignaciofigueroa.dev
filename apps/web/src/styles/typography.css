@@ -147,7 +147,7 @@
   }
 
   .prose-reading a {
-    @apply underline underline-offset-4 hover:text-brand;
+    @apply underline underline-offset-4 hover:text-brand-text;
   }
 
   .case-body {
@@ -228,7 +228,7 @@
   }
 
   .case-body a {
-    @apply underline decoration-border underline-offset-4 hover:text-brand hover:decoration-brand;
+    @apply underline decoration-border underline-offset-4 hover:text-brand-text hover:decoration-brand;
   }
 
   .case-body hr {

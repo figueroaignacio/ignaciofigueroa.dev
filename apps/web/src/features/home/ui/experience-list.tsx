@@ -42,7 +42,7 @@ export function ExperienceList({ items }: { items: ExperienceEntry[] }) {
                     href={item.companyHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+                    className="underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
                   >
                     {item.company}
                   </a>
@@ -75,7 +75,7 @@ export function ExperienceList({ items }: { items: ExperienceEntry[] }) {
                   href={item.companyHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+                  className="mt-3 inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
                 >
                   → {new URL(item.companyHref).host.replace(/^www\./, '')}
                 </a>

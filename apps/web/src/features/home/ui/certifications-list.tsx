@@ -42,7 +42,7 @@ function CertificationCard({ item, cta }: { item: CertificationItem; cta: string
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${cta}: ${item.title} (${item.credentialId})`}
-          className="inline-flex min-h-11 w-fit items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+          className="inline-flex min-h-11 w-fit items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
         >
           {cta} ↗
         </a>

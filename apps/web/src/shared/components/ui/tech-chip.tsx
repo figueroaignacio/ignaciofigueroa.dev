@@ -12,7 +12,7 @@ const toneStyles: Record<TechChipTone, string> = {
 };
 
 /* Lead icons keep their brand colors; the tail is desaturated so a long list
- * doesn't turn into a rainbow competing with the amber accent. */
+ * doesn't turn into a rainbow competing with the brand accent. */
 const toneIconStyles: Record<TechChipTone, string> = {
   lead: 'size-3.5',
   muted: 'size-3.5 grayscale opacity-70',

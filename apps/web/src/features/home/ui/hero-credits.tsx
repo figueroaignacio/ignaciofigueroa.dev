@@ -9,7 +9,7 @@ export function HeroCredits() {
         href="https://nachui.tech"
         target="_blank"
         rel="noopener noreferrer"
-        className="font-medium text-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+        className="font-medium text-foreground underline-offset-4 transition-colors hover:text-brand-text hover:underline"
       >
         NachUI
       </a>

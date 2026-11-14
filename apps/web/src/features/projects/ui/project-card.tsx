@@ -28,7 +28,7 @@ export function ProjectCard({
       <Frame.Header className="px-2.5 py-2 flex-row flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <div className="flex min-w-0 flex-wrap items-baseline gap-x-2.5 gap-y-1.5">
           <h3 className="type-item-title text-foreground">
-            <Link href={`/projects/${slug}`} className="hover:text-brand transition-colors">
+            <Link href={`/projects/${slug}`} className="hover:text-brand-text transition-colors">
               {title}
             </Link>
           </h3>
@@ -57,7 +57,7 @@ export function ProjectCard({
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-brand transition-colors"
+              className="text-muted-foreground hover:text-brand-text transition-colors"
             >
               {t('preview')}
             </a>
@@ -67,14 +67,14 @@ export function ProjectCard({
               href={repository}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-brand transition-colors"
+              className="text-muted-foreground hover:text-brand-text transition-colors"
             >
               {t('source')}
             </a>
           )}
           <Link
             href={`/projects/${slug}`}
-            className="text-muted-foreground hover:text-brand transition-colors"
+            className="text-muted-foreground hover:text-brand-text transition-colors"
           >
             {t('details')}
           </Link>

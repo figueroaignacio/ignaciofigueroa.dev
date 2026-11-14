@@ -17,6 +17,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-brand: var(--brand);
+  --color-brand-text: var(--brand-text);
   --color-brand-foreground: var(--brand-foreground);
   --color-inverse: var(--inverse);
   --color-inverse-foreground: var(--inverse-foreground);

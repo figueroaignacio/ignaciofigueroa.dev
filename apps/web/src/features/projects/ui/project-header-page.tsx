@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { ProjectSummary } from './project-summary';
 
 const action =
-  'inline-flex min-h-11 items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand';
+  'inline-flex min-h-11 items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand';
 
 export async function ProjectHeaderPage({
   slug,

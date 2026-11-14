@@ -21,7 +21,7 @@ export function ProjectsWidget({ id, title = '', viewAllLabel, data }: ProjectsW
       {viewAllLabel && (
         <Link
           href="/projects"
-          className="group mt-6 inline-flex min-h-11 items-center gap-2 text-[15px] font-medium transition-colors hover:text-brand"
+          className="group mt-6 inline-flex min-h-11 items-center gap-2 text-[15px] font-medium transition-colors hover:text-brand-text"
         >
           {viewAllLabel}
           <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">

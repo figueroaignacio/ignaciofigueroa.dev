@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
 const action =
-  'inline-flex min-h-11 items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand';
+  'inline-flex min-h-11 items-center text-[15px] font-medium underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand';
 
 function ProjectRow({
   project,
@@ -43,7 +43,7 @@ function ProjectRow({
           />
           <Link
             href={`/projects/${project.slug}`}
-            className="transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+            className="transition-colors hover:text-brand-text focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
           >
             {project.title}
           </Link>

@@ -121,7 +121,7 @@ export function GithubContributionCalendar({
           href="https://github.com/figueroaignacio"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+          className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand-text hover:underline"
         >
           github.com/figueroaignacio ↗
         </a>

@@ -23,7 +23,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('source')}
-              className="text-muted-foreground transition-colors duration-150 hover:text-brand"
+              className="text-muted-foreground transition-colors duration-150 hover:text-brand-text"
             >
               <CodeIcon className="size-4" />
             </a>
@@ -34,7 +34,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
               target="_blank"
               rel="noopener noreferrer"
               aria-label={t('preview')}
-              className="text-muted-foreground transition-colors duration-150 hover:text-brand"
+              className="text-muted-foreground transition-colors duration-150 hover:text-brand-text"
             >
               <ExternalLinkIcon className="size-4" />
             </a>
@@ -43,7 +43,7 @@ export function ChatProjectCard({ slug, title, demo, repository, technologies }:
             <Link
               href={`/projects/${slug}`}
               aria-label={t('details')}
-              className="text-muted-foreground transition-colors duration-150 hover:text-brand"
+              className="text-muted-foreground transition-colors duration-150 hover:text-brand-text"
             >
               <InfoIcon className="size-4" />
             </Link>

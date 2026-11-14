@@ -9,7 +9,7 @@ import { HeroCredits } from './hero-credits';
 import { HeroWorkingLink } from './hero-working-link';
 
 const link =
-  'group inline-flex min-h-11 items-center gap-2 text-[15px] font-medium underline-offset-4 transition-colors hover:text-brand';
+  'group inline-flex min-h-11 items-center gap-2 text-[15px] font-medium underline-offset-4 transition-colors hover:text-brand-text';
 
 export async function HomeHero() {
   const t = await getTranslations('sections.home');

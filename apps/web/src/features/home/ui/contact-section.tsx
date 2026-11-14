@@ -49,7 +49,7 @@ const SITE_LINKS = [
 ];
 
 const minorLink =
-  'inline-flex min-h-11 items-center text-[15px] text-foreground underline-offset-4 transition-colors hover:text-brand hover:underline';
+  'inline-flex min-h-11 items-center text-[15px] text-foreground underline-offset-4 transition-colors hover:text-brand-text hover:underline';
 
 export function ContactSection() {
   const t = useTranslations('components.contactForm');
@@ -72,7 +72,7 @@ export function ContactSection() {
 
             <a
               href={email.href}
-              className="mt-6 w-fit text-lg font-medium text-foreground underline decoration-border underline-offset-8 transition-colors hover:text-brand hover:decoration-brand"
+              className="mt-6 w-fit text-lg font-medium text-foreground underline decoration-border underline-offset-8 transition-colors hover:text-brand-text hover:decoration-brand"
             >
               {email.handle}
             </a>

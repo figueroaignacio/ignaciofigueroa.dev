@@ -49,7 +49,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
                       href={item.subtitleHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-brand hover:decoration-brand"
+                      className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
                     >
                       {item.subtitle}
                     </a>

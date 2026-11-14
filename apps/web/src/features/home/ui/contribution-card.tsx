@@ -30,7 +30,7 @@ export function ContributionCard({
             href={repository}
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-brand"
+            className="transition-colors hover:text-brand-text"
           >
             {title}
           </a>
@@ -40,7 +40,7 @@ export function ContributionCard({
             href={repository}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+            className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand-text hover:underline"
           >
             {t('viewRepo')} ↗
           </a>
@@ -49,7 +49,7 @@ export function ContributionCard({
               href={fork}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+              className="text-muted-foreground underline-offset-4 transition-colors hover:text-brand-text hover:underline"
             >
               {t('viewFork')} ↗
             </a>
