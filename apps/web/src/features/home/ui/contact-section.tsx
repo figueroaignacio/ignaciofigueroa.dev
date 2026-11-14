@@ -1,7 +1,6 @@
 'use client';
 
 import { Link } from '@/i18n/navigation';
-import { BinaryScene } from '@/shared/components/binary-scene';
 import { ScrambleText } from '@/shared/components/scramble-text';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
@@ -60,7 +59,6 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="contact-stage scroll-mt-12">
-      <BinaryScene scene="desk" motion="spotlight" className="contact-scene" />
       <div className="relative flex w-full flex-col gap-10 lg:gap-14" data-reveal>
         <h2 className="type-hero text-[clamp(2.5rem,7vw,6rem)]">
           <ScrambleText text={t('title')} mode="in-view" />
