@@ -58,7 +58,7 @@ export async function ProjectDetailWidget({
             href={`/projects/${next.slug}`}
             className="group flex min-h-11 items-baseline justify-between gap-6 py-3"
           >
-            <span className="flex min-w-0 items-baseline gap-3 text-2xl font-semibold tracking-[-0.03em] transition-colors group-hover:text-brand-text md:text-[32px]">
+            <span className="flex min-w-0 items-baseline gap-3 text-2xl font-normal tracking-[-0.03em] transition-colors group-hover:text-brand-text md:text-3xl">
               <span aria-hidden="true" className="size-2.5 shrink-0 bg-brand" />
               {next.title}
             </span>

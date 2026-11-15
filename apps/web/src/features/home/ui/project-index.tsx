@@ -36,7 +36,7 @@ function ProjectRow({
       className="project-row group/row"
     >
       <div className="flex items-baseline justify-between gap-6 py-3.5">
-        <h3 className="flex min-w-0 items-baseline gap-3 text-xl leading-tight font-semibold tracking-[-0.025em] text-muted-foreground transition-colors group-data-active/row:text-foreground">
+        <h3 className="flex min-w-0 items-baseline gap-3 text-lg leading-snug font-medium tracking-[-0.02em] text-muted-foreground transition-colors group-data-active/row:text-foreground">
           <span
             aria-hidden="true"
             className="size-2.5 shrink-0 -translate-x-2 bg-brand opacity-0 transition-[opacity,translate] duration-300 group-data-active/row:translate-x-0 group-data-active/row:opacity-100"

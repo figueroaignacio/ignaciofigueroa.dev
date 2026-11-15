@@ -38,7 +38,7 @@ export function ProjectCard({
                 <Badge
                   key={label.id}
                   variant="outline"
-                  className="rounded-full font-mono text-[10px] font-normal text-muted-foreground"
+                  className="rounded-full font-mono text-[11px] font-normal text-muted-foreground"
                 >
                   <span
                     aria-hidden="true"

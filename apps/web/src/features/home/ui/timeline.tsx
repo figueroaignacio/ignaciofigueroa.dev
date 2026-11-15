@@ -40,7 +40,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
 
           <div className="min-w-0">
             <TimelineHeader>
-              <TimelineTitle className="text-lg leading-snug font-semibold tracking-[-0.02em] text-foreground">
+              <TimelineTitle className="text-lg leading-snug font-medium tracking-[-0.02em] text-foreground">
                 {item.title}{' '}
                 <span className="font-normal text-muted-foreground">
                   {item.connector ? `${item.connector} ` : ''}

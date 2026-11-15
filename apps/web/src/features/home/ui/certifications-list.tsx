@@ -28,7 +28,7 @@ function CertificationCard({ item, cta }: { item: CertificationItem; cta: string
         {item.issuer}
       </div>
       <div className="flex min-w-0 flex-col gap-3">
-        <h3 className="text-lg leading-snug font-semibold tracking-[-0.02em]">{item.title}</h3>
+        <h3 className="text-lg leading-snug font-medium tracking-[-0.02em]">{item.title}</h3>
         <p className="text-[15px] leading-relaxed">{item.description}</p>
         {item.skills.length > 0 && (
           <TechChipGroup>

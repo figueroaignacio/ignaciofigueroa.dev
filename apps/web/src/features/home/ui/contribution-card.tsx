@@ -25,7 +25,7 @@ export function ContributionCard({
   return (
     <li className="flex flex-col gap-4">
       <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-        <h3 className="text-lg leading-snug font-semibold tracking-[-0.02em]">
+        <h3 className="text-lg leading-snug font-medium tracking-[-0.02em]">
           <a
             href={repository}
             target="_blank"

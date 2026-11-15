@@ -52,9 +52,7 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
                hardcoded a near-black fill that stayed dark in light mode. */
             <div className="my-3 overflow-hidden rounded-sm border border-border bg-card">
               <div className="border-b border-border px-3 py-1.5">
-                <span className="type-chip uppercase text-muted-foreground">
-                  {match?.[1] || 'code'}
-                </span>
+                <span className="type-chip text-muted-foreground">{match?.[1] || 'code'}</span>
               </div>
               <div className="overflow-x-auto bg-surface-muted p-3.5">
                 <code

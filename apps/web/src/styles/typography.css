@@ -1,26 +1,26 @@
 @layer components {
   .type-hero {
-    @apply text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.92] font-bold tracking-[-0.045em] uppercase;
+    @apply text-[clamp(2.5rem,4vw,3.5rem)] leading-[0.95] font-light tracking-[-0.035em];
   }
 
   .type-section {
-    @apply text-2xl leading-[1.1] font-semibold tracking-[-0.025em];
+    @apply text-2xl leading-[1.1] font-normal tracking-[-0.02em];
   }
 
   .type-display {
-    @apply text-[1.5rem] md:text-[1.875rem] font-semibold tracking-tight leading-[1.15];
+    @apply text-[1.5rem] md:text-[1.875rem] font-normal tracking-[-0.03em] leading-[1.15];
   }
 
   .type-page-title {
-    @apply text-lg md:text-[1.375rem] font-semibold tracking-tight leading-tight;
+    @apply text-lg md:text-[1.375rem] font-normal tracking-[-0.02em] leading-tight;
   }
 
   .type-item-title {
-    @apply text-[15px] font-medium tracking-tight leading-snug;
+    @apply text-lg font-medium tracking-[-0.02em] leading-snug;
   }
 
   .type-label {
-    @apply font-mono text-[10px] uppercase tracking-[0.2em];
+    @apply font-mono text-[11px];
   }
 
   .type-meta {
@@ -28,7 +28,7 @@
   }
 
   .type-chip {
-    @apply font-mono text-[10px] tracking-wide;
+    @apply font-mono text-[11px] tracking-wide;
   }
 
   .prose-reading {

@@ -60,13 +60,13 @@ export function ContactSection() {
   return (
     <section id="contact" className="contact-stage scroll-mt-12">
       <div className="relative flex w-full flex-col gap-10 lg:gap-14" data-reveal>
-        <h2 className="type-hero text-[clamp(2.5rem,7vw,6rem)]">
+        <h2 className="type-hero">
           <ScrambleText text={t('title')} mode="in-view" />
         </h2>
 
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-16">
           <div className="flex max-w-[36rem] flex-col">
-            <p className="text-lg leading-snug font-semibold tracking-[-0.02em] text-pretty text-foreground">
+            <p className="text-lg leading-snug font-medium tracking-[-0.015em] text-pretty text-foreground">
               {tPages('description')}
             </p>
 
@@ -114,7 +114,7 @@ export function ContactSection() {
           </div>
 
           <div className="w-full max-w-lg shrink-0 rounded-2xl bg-background p-6 text-left sm:p-8">
-            <h3 className="mb-6 text-lg font-semibold tracking-[-0.02em]">{tPages('formTitle')}</h3>
+            <h3 className="mb-6 text-lg font-medium tracking-[-0.02em]">{tPages('formTitle')}</h3>
             <ContactForm />
           </div>
         </div>

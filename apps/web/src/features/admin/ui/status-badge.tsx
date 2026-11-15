@@ -11,7 +11,7 @@ export function StatusBadge({ status }: { status: ContentStatus }) {
 
 export function LocaleBadge({ locale }: { locale: Locale }) {
   return (
-    <Badge variant="outline" className="font-mono uppercase">
+    <Badge variant="outline" className="font-mono">
       {locale}
     </Badge>
   );

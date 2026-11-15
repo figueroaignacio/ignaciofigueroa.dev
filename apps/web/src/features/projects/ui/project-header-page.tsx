@@ -36,17 +36,17 @@ export async function ProjectHeaderPage({
       <p className="mt-10 font-mono text-[13px] text-muted-foreground">
         ./{t('projects')}/{slug?.replace(/-(es|en)$/, '')}
       </p>
-      <h1 className="mt-5 text-[clamp(2.75rem,7vw,4rem)] leading-[0.95] font-bold tracking-[-0.045em] text-balance uppercase">
+      <h1 className="type-hero mt-5 text-balance">
         {title}
         <span aria-hidden="true" className="ml-[0.08em] inline-block size-[0.16em] bg-brand" />
       </h1>
       {subtitle && (
-        <p className="mt-6 max-w-[34ch] text-lg leading-snug font-medium tracking-[-0.015em] text-pretty md:text-[22px]">
+        <p className="mt-6 max-w-[34ch] text-lg leading-snug font-medium tracking-[-0.015em] text-pretty">
           {subtitle.trim()}
         </p>
       )}
       {description && (
-        <p className="mt-4 max-w-[58ch] text-[15px] leading-relaxed text-muted-strong md:text-base">
+        <p className="mt-4 max-w-[58ch] text-[15px] leading-relaxed text-muted-strong">
           {description}
         </p>
       )}

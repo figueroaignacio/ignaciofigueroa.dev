@@ -33,9 +33,7 @@ export function ExperienceList({ items }: { items: ExperienceEntry[] }) {
             </span>
 
             <div className="min-w-0 flex-1">
-              <h3 className="text-lg leading-snug font-semibold tracking-[-0.02em]">
-                {item.title}
-              </h3>
+              <h3 className="text-lg leading-snug font-medium tracking-[-0.02em]">{item.title}</h3>
               <p className="text-[15px]">
                 {item.companyHref ? (
                   <a
@@ -63,7 +61,7 @@ export function ExperienceList({ items }: { items: ExperienceEntry[] }) {
               )}
 
               {item.tasks.length > 0 && (
-                <ul className="mt-3 list-disc space-y-1.5 ps-5 text-[15px] leading-relaxed sm:text-base">
+                <ul className="mt-3 list-disc space-y-1.5 ps-5 text-[15px] leading-relaxed">
                   {item.tasks.map((task) => (
                     <li key={task}>{task}</li>
                   ))}
@@ -82,7 +80,7 @@ export function ExperienceList({ items }: { items: ExperienceEntry[] }) {
               )}
 
               {item.skills.length > 0 && (
-                <p className="mt-2 text-[15px] font-semibold">
+                <p className="mt-2 text-[15px] font-medium">
                   {item.skills.join(' · ')}
                   {item.moreSkills && (
                     <span className="font-normal text-muted-foreground"> {item.moreSkills}</span>

@@ -30,7 +30,7 @@ export default function NotFound() {
               404
             </span>
 
-            <h1 className="-mt-16 type-page-title text-foreground">{t('title')}</h1>
+            <h1 className="-mt-16 type-display text-foreground">{t('title')}</h1>
 
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               {t('description')}

@@ -99,7 +99,6 @@ const h1 = {
   lineHeight: '1',
   color: '#000000',
   margin: '0',
-  textTransform: 'uppercase' as const,
 };
 
 const infoSection = {
