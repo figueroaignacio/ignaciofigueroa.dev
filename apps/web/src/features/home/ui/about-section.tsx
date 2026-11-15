@@ -41,21 +41,21 @@ export async function AboutSection() {
       <div className="flex flex-col gap-10" data-reveal>
         <header className="flex items-center gap-4 sm:gap-5">
           <Image
-            src="/images/profile-photo.webp"
+            src="/images/profile-photo-2026.webp"
             alt={t('photoLegend')}
             width={144}
             height={144}
             className="size-15 shrink-0 object-cover object-[50%_30%] brightness-110 contrast-125 grayscale sm:size-18"
           />
           <div className="min-w-0">
-            <p className="text-lg font-bold tracking-[-0.03em] sm:text-xl">{tHome('name')}</p>
+            <p className="text-lg font-medium tracking-[-0.02em]">{tHome('name')}</p>
             <p className="text-[15px] text-muted-foreground">
               {tHome('title')} · {tHome('status.city')}
             </p>
           </div>
         </header>
 
-        <p className="text-lg leading-snug font-semibold tracking-[-0.02em] text-pretty sm:text-xl">
+        <p className="text-lg leading-snug font-medium tracking-[-0.015em] text-pretty">
           {t('lead')}
         </p>
 

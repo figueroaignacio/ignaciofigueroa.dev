@@ -112,7 +112,7 @@ export function buildPersonNode({
     name: 'Ignacio Figueroa',
     alternateName: 'Nacho',
     url: `${BASE_URL}/${locale}`,
-    image: `${BASE_URL}/images/profile-photo.webp`,
+    image: `${BASE_URL}/images/profile-photo-2026.webp`,
     jobTitle,
     description,
     hasOccupation: {
