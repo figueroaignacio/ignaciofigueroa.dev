@@ -1,16 +1,16 @@
-import { IBM_Plex_Mono, Schibsted_Grotesk } from 'next/font/google';
+import { DM_Mono, Hanken_Grotesk } from 'next/font/google';
 
-export const fontSans = Schibsted_Grotesk({
+export const fontSans = Hanken_Grotesk({
   subsets: ['latin'],
-  variable: '--font-schibsted',
+  variable: '--font-hanken',
   display: 'swap',
   preload: true,
 });
 
-export const fontCode = IBM_Plex_Mono({
+export const fontCode = DM_Mono({
   subsets: ['latin'],
-  variable: '--font-plex-mono',
+  variable: '--font-dm-mono',
   display: 'swap',
-  weight: ['400', '500', '700'],
+  weight: ['300', '400', '500'],
   preload: false,
 });
