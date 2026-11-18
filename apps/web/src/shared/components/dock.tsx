@@ -269,23 +269,17 @@ export function Dock() {
               aria-modal={!isDesktop}
               aria-label={tChat('panelLabel')}
               tabIndex={-1}
-              initial={
-                deskOn
-                  ? { opacity: 0, scale: 0.97 }
-                  : isDesktop
-                    ? { x: '115%' }
-                    : { opacity: 0, y: 24 }
-              }
+              initial={deskOn ? { opacity: 0 } : isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
               animate={
                 deskOn
-                  ? { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.95 } }
+                  ? { opacity: 1, transition: { duration: 0.3, delay: 0.15 } }
                   : isDesktop
                     ? { x: 0 }
                     : { opacity: 1, y: 0 }
               }
               exit={
                 deskOn
-                  ? { opacity: 0, scale: 0.97, transition: { duration: 0.2 } }
+                  ? { opacity: 0, transition: { duration: 0.15 } }
                   : isDesktop
                     ? { x: '115%' }
                     : { opacity: 0, y: 24 }

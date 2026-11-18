@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { SCREEN_SIZE, screenPose } from './objects/laptop';
 import type { DeskObjectKey, DeskVariant, DeskView } from './types';
 
+const SCREEN_RAISE = 0.04;
+
 export type PropKey = DeskObjectKey | 'mouse' | 'earbuds';
 
 type Placement = [x: number, z: number, turn: number];
@@ -83,12 +85,7 @@ export function placementOf(variant: DeskVariant, key: PropKey) {
   return { position: new THREE.Vector3(x, onPad ? PAD_HEIGHT : 0, z), turn };
 }
 
-export function poseFor(
-  view: DeskView,
-  variant: DeskVariant,
-  aspect: number,
-  focus: DeskObjectKey | null,
-): Pose {
+export function poseFor(view: DeskView, variant: DeskVariant, aspect: number): Pose {
   const layout = LAYOUTS[variant];
   const fov = FOV[variant];
   const laptop = placementOf(variant, 'laptop').position;
@@ -101,17 +98,11 @@ export function poseFor(
   }
 
   if (view === 'screen') {
-    const { center, normal } = screenPose(laptop);
+    const { center, normal, up } = screenPose(laptop);
     const distance = fit(SCREEN_SIZE.width / 0.86, SCREEN_SIZE.height / 0.8, fov, aspect);
-    return { target: center, position: center.clone().addScaledVector(normal, distance) };
-  }
-
-  if (view === 'focus' && focus) {
-    const target = placementOf(variant, focus).position.clone();
-    target.y = 0.03;
-    const direction = new THREE.Vector3(0, 1, 0.6).normalize();
-    const distance = variant === 'tall' ? 0.78 : 0.58;
-    return { target, position: target.clone().addScaledVector(direction, distance) };
+    const visible = 2 * distance * Math.tan(THREE.MathUtils.degToRad(fov) / 2);
+    const target = center.clone().addScaledVector(up, -SCREEN_RAISE * visible);
+    return { target, position: target.clone().addScaledVector(normal, distance) };
   }
 
   const target = new THREE.Vector3(layout.frame.x, 0.02, layout.frame.z);

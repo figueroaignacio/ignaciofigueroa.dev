@@ -11,7 +11,7 @@ import {
 } from './layout';
 import { createMaterials, type Materials } from './materials';
 import { createMate, createThermos } from './objects/drinks';
-import { createLaptop, type Laptop } from './objects/laptop';
+import { createLaptop, SCREEN_SIZE, screenPose, type Laptop } from './objects/laptop';
 import {
   createAskKey,
   createBadge,
@@ -31,6 +31,7 @@ import type {
   SceneState,
   SceneStrings,
   ScreenPoint,
+  ScreenRect,
 } from './types';
 
 export interface DeskSceneOptions {
@@ -118,7 +119,6 @@ export class DeskScene {
   private state: SceneState = {
     lid: false,
     view: 'top',
-    focus: null,
     hover: null,
     theme: 'dark',
     still: false,
@@ -188,7 +188,7 @@ export class DeskScene {
     this.fill.position.set(0.8, 1.1, 1.2);
     this.scene.add(this.hemisphere, this.lamp, this.lamp.target, this.fill);
 
-    this.goal = poseFor('top', this.variant, 1.6, null);
+    this.goal = poseFor('top', this.variant, 1.6);
     this.applyLayout();
     this.applyTheme();
 
@@ -232,7 +232,7 @@ export class DeskScene {
   }
 
   private retarget() {
-    this.goal = poseFor(this.state.view, this.variant, this.width / this.height, this.state.focus);
+    this.goal = poseFor(this.state.view, this.variant, this.width / this.height);
     if (!this.snapped) {
       this.position.copy(this.goal.position);
       this.target.copy(this.goal.target);
@@ -286,6 +286,51 @@ export class DeskScene {
       y: (-this.scratch.y * 0.5 + 0.5) * this.height,
       visible: this.scratch.z < 1 && Math.abs(this.scratch.x) < 1 && Math.abs(this.scratch.y) < 1,
     };
+  }
+
+  isWide() {
+    return this.variant === 'wide';
+  }
+
+  screenQuad(): number[] | null {
+    const halfWidth = SCREEN_SIZE.width / 2;
+    const halfHeight = SCREEN_SIZE.height / 2;
+    const corners = [
+      [-halfWidth, halfHeight],
+      [halfWidth, halfHeight],
+      [halfWidth, -halfHeight],
+      [-halfWidth, -halfHeight],
+    ];
+    const quad: number[] = [];
+    for (const [x, z] of corners) {
+      this.scratch.set(x ?? 0, 0, z ?? 0);
+      this.laptop.screen.localToWorld(this.scratch);
+      this.scratch.project(this.camera);
+      if (this.scratch.z > 1) return null;
+      quad.push(
+        (this.scratch.x * 0.5 + 0.5) * this.width,
+        (-this.scratch.y * 0.5 + 0.5) * this.height,
+      );
+    }
+    return quad;
+  }
+
+  screenRest(): ScreenRect {
+    const pose = poseFor('screen', this.variant, this.width / this.height);
+    const probe = this.camera.clone();
+    probe.position.copy(pose.position);
+    probe.lookAt(pose.target);
+    probe.updateMatrixWorld();
+    const { center, up } = screenPose(placementOf(this.variant, 'laptop').position);
+    const corner = (x: number, y: number) => {
+      const point = center.clone().addScaledVector(up, y);
+      point.x += x;
+      point.project(probe);
+      return [(point.x * 0.5 + 0.5) * this.width, (-point.y * 0.5 + 0.5) * this.height] as const;
+    };
+    const [left, top] = corner(-SCREEN_SIZE.width / 2, SCREEN_SIZE.height / 2);
+    const [right, bottom] = corner(SCREEN_SIZE.width / 2, -SCREEN_SIZE.height / 2);
+    return { left, top, width: right - left, height: bottom - top };
   }
 
   dispose() {
@@ -346,7 +391,7 @@ export class DeskScene {
 
   private readonly onClick = (event: MouseEvent) => {
     this.setPointer(event);
-    if (this.state.view === 'screen' || this.state.view === 'focus') {
+    if (this.state.view === 'screen') {
       this.options.onDismiss();
       return;
     }
@@ -355,7 +400,7 @@ export class DeskScene {
   };
 
   private pick(): DeskObjectKey | null {
-    if (this.state.view === 'screen' || this.state.view === 'focus') return null;
+    if (this.state.view === 'screen') return null;
     this.raycaster.setFromCamera(this.pointer, this.camera);
     const hits = this.raycaster.intersectObjects(this.pickables, true);
     for (const hit of hits) {
@@ -370,7 +415,7 @@ export class DeskScene {
   }
 
   private readonly tick = (time: number) => {
-    const dt = this.last ? Math.min((time - this.last) / 1000, 0.05) : 1 / 60;
+    const dt = this.last ? Math.min((time - this.last) / 1000, 0.25) : 1 / 60;
     this.last = time;
     const { view, still } = this.state;
     const browsing = view === 'top' || view === 'desk';
@@ -382,11 +427,16 @@ export class DeskScene {
     } else {
       const stiffness = lidGoal ? 62 : 90;
       const damping = lidGoal ? 9.5 : 19;
-      this.lidVelocity += (stiffness * (lidGoal - this.lidAngle) - damping * this.lidVelocity) * dt;
-      this.lidAngle += this.lidVelocity * dt;
-      if (this.lidAngle < 0) {
-        this.lidAngle = 0;
-        this.lidVelocity = 0;
+      const steps = Math.max(1, Math.ceil(dt * 120));
+      const step = dt / steps;
+      for (let i = 0; i < steps; i++) {
+        const force = stiffness * (lidGoal - this.lidAngle) - damping * this.lidVelocity;
+        this.lidVelocity += force * step;
+        this.lidAngle += this.lidVelocity * step;
+        if (this.lidAngle < 0) {
+          this.lidAngle = 0;
+          this.lidVelocity = 0;
+        }
       }
     }
     this.laptop.setOpen(this.lidAngle);

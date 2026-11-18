@@ -4,9 +4,11 @@ import { XIcon } from '@/shared/components/icons';
 import { useTheme } from 'nach-themes';
 import { useTranslations } from 'next-intl';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { deskStore, OBJECT_PANEL, PANEL_OBJECT, useDesk } from '../lib/desk-store';
+import { createPortal } from 'react-dom';
+import { deskStore, OBJECT_PANEL, useDesk, type DeskPanel } from '../lib/desk-store';
+import { quadFacesViewer, quadTransform } from '../lib/screen-matrix';
 import type { DeskScene } from '../scene/desk-scene';
-import type { DeskObjectKey, DeskView, SceneState } from '../scene/types';
+import type { DeskObjectKey, DeskView, SceneState, ScreenRect } from '../scene/types';
 
 const LABELLED: DeskObjectKey[] = ['laptop', 'ask', 'mate', 'badge', 'notebook', 'phone', 'sheet'];
 
@@ -16,6 +18,8 @@ const ASSETS = {
   claude: '/images/desk/claude-code.svg',
   linux: '/images/desk/linux.svg',
 };
+
+type Surface = DeskPanel | 'chat';
 
 function fontsReady(families: string[]) {
   const loads = families.flatMap((family) =>
@@ -41,6 +45,20 @@ function select(key: DeskObjectKey, scene: DeskScene | null) {
   if (panel) deskStore.openPanel(panel);
 }
 
+function surfaceNode(surface: Surface) {
+  if (surface === 'chat') return document.querySelector<HTMLElement>('.chat-rail');
+  if (surface === 'contact') return document.querySelector<HTMLElement>('#app-shell > .reveal');
+  return document.querySelector<HTMLElement>('.desk-host');
+}
+
+function release(node: HTMLElement | null) {
+  if (!node) return;
+  node.style.transform = '';
+  node.style.width = '';
+  node.style.height = '';
+  node.style.visibility = '';
+}
+
 export function DeskStage() {
   const desk = useDesk();
   const t = useTranslations('ui');
@@ -50,13 +68,17 @@ export function DeskStage() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<DeskScene | null>(null);
   const labelRefs = useRef<Partial<Record<DeskObjectKey, HTMLSpanElement | null>>>({});
+  const gluedRef = useRef<HTMLElement | null>(null);
   const [hover, setHover] = useState<DeskObjectKey | null>(null);
   const [focused, setFocused] = useState<DeskObjectKey | null>(null);
   const [coarse, setCoarse] = useState(false);
   const [still, setStill] = useState(false);
+  const [rest, setRest] = useState<ScreenRect | null>(null);
 
   const active = desk.mode !== 'reading';
   const browsing = desk.mode === 'on' && !desk.panel && !desk.chat;
+  const surface: Surface | null = desk.mode !== 'on' ? null : desk.chat ? 'chat' : desk.panel;
+  const onScreen = rest !== null;
 
   const labels = useMemo<Record<DeskObjectKey, string>>(
     () => ({
@@ -73,17 +95,10 @@ export function DeskStage() {
   );
 
   const sceneState = useMemo<SceneState>(() => {
-    const view: DeskView = !desk.lid
-      ? 'top'
-      : desk.chat || desk.panel === 'projects'
-        ? 'screen'
-        : desk.panel
-          ? 'focus'
-          : 'desk';
+    const view: DeskView = !desk.lid ? 'top' : desk.chat || desk.panel ? 'screen' : 'desk';
     return {
       lid: desk.lid,
       view,
-      focus: desk.panel ? PANEL_OBJECT[desk.panel] : null,
       hover: focused,
       theme: resolvedTheme === 'light' ? 'light' : 'dark',
       still,
@@ -102,6 +117,12 @@ export function DeskStage() {
         : hover
           ? [hover === 'thermos' ? 'mate' : hover]
           : [];
+
+  const glueRef = useRef<{ surface: Surface | null; rest: ScreenRect | null }>({
+    surface: null,
+    rest: null,
+  });
+  glueRef.current = { surface, rest };
 
   useLayoutEffect(() => {
     deskStore.boot();
@@ -148,6 +169,32 @@ export function DeskStage() {
       }
     };
 
+    const glue = () => {
+      const { surface: current, rest: size } = glueRef.current;
+      if (!scene || !current || !size) return;
+      let node = gluedRef.current;
+      if (!node || !node.isConnected) {
+        node = surfaceNode(current);
+        gluedRef.current = node;
+        if (!node) return;
+        node.style.width = `${size.width}px`;
+        node.style.height = `${size.height}px`;
+      }
+      const quad = scene.screenQuad();
+      if (!quad || !quadFacesViewer(quad)) {
+        node.style.visibility = 'hidden';
+        return;
+      }
+      node.style.visibility = '';
+      node.style.transform = quadTransform(size.width, size.height, quad);
+    };
+
+    const measure = () => {
+      if (!scene) return;
+      scene.resize(stage.clientWidth, stage.clientHeight);
+      setRest(scene.isWide() && stage.clientWidth >= 1024 ? scene.screenRest() : null);
+    };
+
     const start = async () => {
       const style = getComputedStyle(document.body);
       const fonts = {
@@ -175,13 +222,16 @@ export function DeskStage() {
         onDismiss: () => {
           if (deskStore.getState().panel) deskStore.closePanel();
         },
-        onFrame: paintLabels,
+        onFrame: () => {
+          paintLabels();
+          glue();
+        },
       });
       sceneRef.current = scene;
       scene.update(stateRef.current);
-      observer = new ResizeObserver(() => scene?.resize(stage.clientWidth, stage.clientHeight));
+      observer = new ResizeObserver(measure);
       observer.observe(stage);
-      scene.resize(stage.clientWidth, stage.clientHeight);
+      measure();
       deskStore.ready();
     };
 
@@ -195,12 +245,31 @@ export function DeskStage() {
       scene?.dispose();
       sceneRef.current = null;
       setHover(null);
+      setRest(null);
     };
   }, [active, t, tHome]);
 
   useEffect(() => {
     sceneRef.current?.update(sceneState);
   }, [sceneState]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (desk.mode === 'on') root.dataset.deskFit = onScreen ? 'screen' : 'sheet';
+    return () => {
+      delete root.dataset.deskFit;
+    };
+  }, [desk.mode, onScreen]);
+
+  useEffect(() => {
+    release(gluedRef.current);
+    gluedRef.current = null;
+    sceneRef.current?.update(stateRef.current);
+    return () => {
+      release(gluedRef.current);
+      gluedRef.current = null;
+    };
+  }, [surface, rest]);
 
   useEffect(() => {
     if (desk.mode !== 'on') return;
@@ -230,9 +299,7 @@ export function DeskStage() {
 
   useEffect(() => {
     if (desk.mode !== 'on' || !desk.panel) return;
-    const host = document.querySelector<HTMLElement>(
-      desk.panel === 'contact' ? '#app-shell > .reveal' : '.desk-host',
-    );
+    const host = surfaceNode(desk.panel);
     if (!host) return;
     host.scrollTop = 0;
     host.tabIndex = -1;
@@ -322,18 +389,21 @@ export function DeskStage() {
         </div>
       )}
 
-      {desk.mode === 'on' && desk.panel && (
-        <button
-          type="button"
-          className="desk-close"
-          data-panel={desk.panel}
-          aria-label={t('desk.close')}
-          onClick={deskStore.closePanel}
-        >
-          <XIcon size={18} />
-          <kbd>esc</kbd>
-        </button>
-      )}
+      {desk.mode === 'on' &&
+        desk.panel &&
+        createPortal(
+          <button
+            type="button"
+            className="desk-close"
+            aria-label={t('desk.close')}
+            style={rest ? { left: rest.left + rest.width - 84, top: rest.top + 12 } : undefined}
+            onClick={deskStore.closePanel}
+          >
+            <XIcon size={18} />
+            <kbd>esc</kbd>
+          </button>,
+          document.body,
+        )}
     </div>
   );
 }

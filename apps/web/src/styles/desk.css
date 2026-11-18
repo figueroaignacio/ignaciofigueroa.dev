@@ -41,17 +41,12 @@ html[data-desk='on'] .desk-canvas {
   opacity: 1;
 }
 
-html[data-desk-panel] .desk-canvas,
-html[data-desk-chat] .desk-canvas {
+html[data-desk-fit='sheet'][data-desk-panel] .desk-canvas,
+html[data-desk-fit='sheet'][data-desk-chat] .desk-canvas {
   filter: blur(9px) brightness(0.5);
   transition:
     opacity 900ms ease,
-    filter 700ms ease 450ms;
-}
-
-html[data-desk-panel='projects'] .desk-canvas,
-html[data-desk-chat] .desk-canvas {
-  transition-delay: 0ms, 950ms;
+    filter 700ms ease 700ms;
 }
 
 .desk-head {
@@ -218,8 +213,8 @@ html[data-desk='pending'] .desk-stage .desk-head {
 
 .desk-close {
   position: fixed;
-  inset-block-start: 4.5rem;
-  inset-inline-start: min(calc(50% + 23.75rem), calc(100% - 5.5rem));
+  inset-block-start: 0.75rem;
+  inset-inline-end: 0.75rem;
   z-index: 46;
   display: inline-flex;
   min-block-size: 2.75rem;
@@ -229,18 +224,13 @@ html[data-desk='pending'] .desk-stage .desk-head {
   border: 1px solid oklch(100% 0 0 / 0.3);
   border-radius: 0.75rem;
   background: oklch(10% 0 0 / 0.72);
+  color: #f5f5f4;
   cursor: pointer;
-  animation: desk-panel-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both;
+  animation: desk-surface-in 400ms ease 900ms both;
 }
 
-.desk-close[data-panel='projects'] {
-  inset-block-start: 1rem;
-  inset-inline: auto max(1rem, calc(50% - 31rem));
-  animation-delay: 1100ms;
-}
-
-.desk-close[data-panel='contact'] {
-  inset-inline-start: min(calc(50% + 32.75rem), calc(100% - 5.5rem));
+html[data-desk-fit='screen'] .desk-close {
+  inset-inline-end: auto;
 }
 
 .desk-close kbd {
@@ -252,8 +242,8 @@ html[data-desk='on'][data-desk-panel] .desk-host,
 html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal {
   visibility: visible;
   position: fixed;
-  inset-block: 4.5rem 6.25rem;
-  inset-inline: max(0.75rem, calc(50% - 23rem));
+  inset-block: 4rem 5.75rem;
+  inset-inline: 0.75rem;
   z-index: 45;
   overflow-x: clip;
   overflow-y: auto;
@@ -262,11 +252,10 @@ html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal {
   border-radius: var(--radius-2xl);
   background: var(--background);
   outline: none;
-  animation: desk-panel-in 550ms cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+  animation: desk-surface-in 450ms ease 700ms both;
 }
 
 html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal {
-  inset-inline: max(0.75rem, calc(50% - 32rem));
   background: var(--stage);
 }
 
@@ -274,13 +263,15 @@ html[data-desk='on'][data-desk-panel='contact'] .desk-host {
   visibility: hidden;
 }
 
-html[data-desk='on'][data-desk-panel='projects'] .desk-host {
-  inset-block: 4.25rem 6.25rem;
-  inset-inline: max(0.75rem, calc(50% - 31rem));
-  border: 10px solid #050505;
-  border-radius: 1.375rem;
-  outline: 1px solid oklch(100% 0 0 / 0.16);
-  animation-delay: 1000ms;
+html[data-desk-fit='screen'][data-desk='on'][data-desk-panel] .desk-host,
+html[data-desk-fit='screen'][data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal,
+html[data-desk-fit='screen'][data-desk='on'] .chat-rail {
+  inset: 0 auto auto 0;
+  transform-origin: 0 0;
+  border: 0;
+  border-radius: 3px;
+  animation: desk-surface-in 350ms ease 140ms both;
+  will-change: transform;
 }
 
 html[data-desk-panel] .desk-host > :not(section) {
@@ -308,38 +299,7 @@ html[data-desk] .contact-stage {
   border-radius: 0;
 }
 
-html[data-desk='on'] .chat-rail {
-  animation: desk-panel-in 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@media (min-width: 64rem) {
-  html[data-desk='on'] .chat-rail {
-    inset: 4.25rem max(1rem, 14vw) 6.25rem;
-    inline-size: auto;
-    border: 10px solid #050505;
-    border-radius: 1.375rem;
-    outline: 1px solid oklch(100% 0 0 / 0.16);
-  }
-}
-
 @media (max-width: 63.999rem) {
-  .desk-close,
-  .desk-close[data-panel='projects'] {
-    inset-block-start: 0.75rem;
-    inset-inline: auto 0.75rem;
-  }
-
-  .desk-close[data-panel='contact'] {
-    inset-inline-start: auto;
-  }
-
-  html[data-desk='on'][data-desk-panel] .desk-host,
-  html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal,
-  html[data-desk='on'][data-desk-panel='projects'] .desk-host {
-    inset-block: 4rem 5.75rem;
-    inset-inline: 0.75rem;
-  }
-
   .desk-note {
     inset-block-end: 5.75rem;
     inset-inline: 1rem;
@@ -352,10 +312,9 @@ html[data-desk='on'] .chat-rail {
   }
 }
 
-@keyframes desk-panel-in {
+@keyframes desk-surface-in {
   from {
     opacity: 0;
-    scale: 0.97;
   }
 }
 

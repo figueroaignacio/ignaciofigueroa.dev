@@ -30,15 +30,6 @@ const SECTION_PANEL: Record<string, DeskPanel> = {
   cv: 'cv',
 };
 
-export const PANEL_OBJECT: Record<DeskPanel, DeskObjectKey> = {
-  experience: 'badge',
-  projects: 'laptop',
-  about: 'mate',
-  education: 'notebook',
-  contact: 'phone',
-  cv: 'sheet',
-};
-
 export const OBJECT_PANEL: Partial<Record<DeskObjectKey, DeskPanel>> = {
   badge: 'experience',
   mate: 'about',

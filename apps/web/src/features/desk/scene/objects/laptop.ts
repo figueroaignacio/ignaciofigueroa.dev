@@ -25,6 +25,7 @@ const KEY_ROWS = [
 
 export interface Laptop {
   group: THREE.Group;
+  screen: THREE.Mesh;
   setOpen: (amount: number) => void;
 }
 
@@ -33,7 +34,7 @@ export function screenPose(position: THREE.Vector3) {
   const along = new THREE.Vector3(0, Math.sin(LID_OPEN), Math.cos(LID_OPEN));
   const center = hinge.clone().addScaledVector(along, SCREEN_OFFSET);
   const normal = new THREE.Vector3(0, -Math.cos(LID_OPEN), Math.sin(LID_OPEN));
-  return { center, normal };
+  return { center, normal, up: along };
 }
 
 function decal(texture: THREE.Texture, width: number, depth: number) {
@@ -118,7 +119,15 @@ export function createLaptop(
   shellGeometry.translate(0, 0, LID_DEPTH / 2);
   lid.add(solid(new THREE.Mesh(shellGeometry, materials.aluminum)));
 
-  const bezel = new THREE.Mesh(facingDown(WIDTH - 0.008, LID_DEPTH - 0.006), materials.glass);
+  const bezel = new THREE.Mesh(
+    facingDown(WIDTH - 0.008, LID_DEPTH - 0.006),
+    new THREE.MeshStandardMaterial({
+      color: 0x050506,
+      metalness: 0.2,
+      roughness: 0.4,
+      envMapIntensity: 0.25,
+    }),
+  );
   bezel.position.set(0, -0.0004, LID_DEPTH / 2);
   lid.add(bezel);
 
@@ -198,5 +207,5 @@ export function createLaptop(
     glow.intensity = lit * 0.22;
   };
 
-  return { group, setOpen };
+  return { group, screen, setOpen };
 }

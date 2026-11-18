@@ -1,7 +1,7 @@
 export type DeskObjectKey =
   'laptop' | 'ask' | 'mate' | 'thermos' | 'badge' | 'notebook' | 'phone' | 'sheet';
 
-export type DeskView = 'top' | 'desk' | 'screen' | 'focus';
+export type DeskView = 'top' | 'desk' | 'screen';
 
 export type DeskVariant = 'wide' | 'tall';
 
@@ -30,10 +30,16 @@ export interface SceneAssets {
 export interface SceneState {
   lid: boolean;
   view: DeskView;
-  focus: DeskObjectKey | null;
   hover: DeskObjectKey | null;
   theme: DeskTheme;
   still: boolean;
+}
+
+export interface ScreenRect {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
 }
 
 export interface ScreenPoint {
