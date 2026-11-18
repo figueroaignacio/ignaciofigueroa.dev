@@ -8,5 +8,6 @@
 @import '../styles/assistant.css';
 @import '../styles/scroll.css';
 @import '../styles/utilities.css';
+@import '../styles/desk.css';
 
 @custom-variant dark (&:where(.dark, .dark *));

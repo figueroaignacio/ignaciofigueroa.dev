@@ -5,6 +5,7 @@ export { AlertTriangleIcon } from './alert-triangle';
 export { ArrowLeftIcon } from './arrow-left';
 export { BoldIcon } from './bold';
 export { BookIcon } from './book';
+export { BoxIcon } from './box';
 export { BriefcaseIcon } from './briefcase';
 export { CheckCircleIcon } from './check-circle';
 export { CheckIcon } from './check';

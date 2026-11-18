@@ -1,3 +1,5 @@
+import { DeskBootScript } from '@/features/desk/ui/desk-boot-script';
+import { DeskStage } from '@/features/desk/widgets/desk-stage';
 import { HomeView } from '@/features/home/views/home-view';
 import { BASE_URL } from '@/shared/lib/constants';
 import { getContentFreshness } from '@/shared/lib/content-freshness';
@@ -63,6 +65,8 @@ export default async function HomePage({ params }: HomePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <DeskBootScript />
+      <DeskStage />
       <HomeView />
     </>
   );

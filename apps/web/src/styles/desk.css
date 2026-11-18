@@ -1,0 +1,375 @@
+.desk-stage {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  background: #0a0908;
+  color: #f5f5f4;
+}
+
+html[data-desk] body {
+  overflow: hidden;
+}
+
+html[data-desk] {
+  --chat-inset: 0px;
+}
+
+html[data-desk] #app-shell > .reveal-cover,
+html[data-desk] #app-shell > .reveal {
+  visibility: hidden;
+}
+
+html[data-desk] .desk-stage {
+  display: block;
+  visibility: visible;
+}
+
+.desk-canvas {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  opacity: 0;
+  transition:
+    opacity 900ms ease,
+    filter 500ms ease;
+}
+
+html[data-desk='on'] .desk-canvas {
+  opacity: 1;
+}
+
+html[data-desk-panel] .desk-canvas,
+html[data-desk-chat] .desk-canvas {
+  filter: blur(9px) brightness(0.5);
+  transition:
+    opacity 900ms ease,
+    filter 700ms ease 450ms;
+}
+
+html[data-desk-panel='projects'] .desk-canvas,
+html[data-desk-chat] .desk-canvas {
+  transition-delay: 0ms, 950ms;
+}
+
+.desk-head {
+  position: absolute;
+  inset-block-start: clamp(1.25rem, 6vh, 4.5rem);
+  inset-inline-start: clamp(1.25rem, 6vw, 6rem);
+  display: flex;
+  max-inline-size: 21rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+  text-shadow:
+    0 1px 2px oklch(0% 0 0 / 0.45),
+    0 0 1.25rem oklch(0% 0 0 / 0.55);
+  transition: opacity 450ms ease;
+}
+
+.desk-stage[data-busy] .desk-head {
+  opacity: 0;
+}
+
+html[data-desk='pending'] .desk-stage .desk-head {
+  opacity: 1;
+}
+
+.desk-name {
+  font-size: clamp(1.75rem, 3.1vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.desk-name span {
+  display: inline-block;
+  inline-size: 0.16em;
+  block-size: 0.16em;
+  margin-inline-start: 0.06em;
+  background: var(--brand);
+}
+
+.desk-lead {
+  max-inline-size: 31ch;
+  color: #e7e5e4;
+  font-size: clamp(0.875rem, 1.2vw, 1.0625rem);
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+.desk-objects {
+  position: absolute;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.desk-objects button {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.desk-objects button:focus-visible {
+  position: static;
+  inline-size: auto;
+  block-size: auto;
+  min-block-size: 2.75rem;
+  padding-inline: 0.875rem;
+  clip-path: none;
+  border: 1px solid oklch(100% 0 0 / 0.3);
+  border-radius: 0.5rem;
+  background: oklch(10% 0 0 / 0.92);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+.desk-labels span {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4375rem 0.6875rem 0.4375rem 0.5625rem;
+  border: 1px solid oklch(100% 0 0 / 0.2);
+  border-radius: 0.5rem;
+  background: oklch(10% 0 0 / 0.9);
+  font-family: var(--font-mono);
+  font-size: 0.78125rem;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  will-change: transform;
+}
+
+.desk-labels i,
+.desk-note i {
+  inline-size: 0.4375rem;
+  block-size: 0.4375rem;
+  flex: none;
+  background: var(--brand);
+}
+
+.desk-note {
+  position: absolute;
+  inset-block-end: 2.25rem;
+  inset-inline-start: clamp(1rem, 2.8vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-mono);
+  font-size: 0.78125rem;
+  text-shadow: 0 0 0.75rem oklch(0% 0 0 / 0.7);
+  pointer-events: none;
+}
+
+.desk-note kbd {
+  display: inline-flex;
+  block-size: 1.625rem;
+  align-items: center;
+  padding-inline: 0.5rem;
+  border: 1px solid oklch(100% 0 0 / 0.4);
+  border-radius: 0.375rem;
+  background: oklch(10% 0 0 / 0.6);
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.desk-actions {
+  position: absolute;
+  inset-block-end: 1.375rem;
+  inset-inline-end: clamp(0.5rem, 2vw, 1.75rem);
+  display: flex;
+  align-items: center;
+}
+
+.desk-actions button {
+  display: inline-flex;
+  min-block-size: 2.75rem;
+  align-items: center;
+  padding-inline: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.78125rem;
+  text-shadow: 0 0 0.75rem oklch(0% 0 0 / 0.7);
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.desk-actions button:hover {
+  color: var(--brand);
+}
+
+.desk-close {
+  position: fixed;
+  inset-block-start: 4.5rem;
+  inset-inline-start: min(calc(50% + 23.75rem), calc(100% - 5.5rem));
+  z-index: 46;
+  display: inline-flex;
+  min-block-size: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding-inline: 0.75rem;
+  border: 1px solid oklch(100% 0 0 / 0.3);
+  border-radius: 0.75rem;
+  background: oklch(10% 0 0 / 0.72);
+  cursor: pointer;
+  animation: desk-panel-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 500ms both;
+}
+
+.desk-close[data-panel='projects'] {
+  inset-block-start: 1rem;
+  inset-inline: auto max(1rem, calc(50% - 31rem));
+  animation-delay: 1100ms;
+}
+
+.desk-close[data-panel='contact'] {
+  inset-inline-start: min(calc(50% + 32.75rem), calc(100% - 5.5rem));
+}
+
+.desk-close kbd {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+html[data-desk='on'][data-desk-panel] .desk-host,
+html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal {
+  visibility: visible;
+  position: fixed;
+  inset-block: 4.5rem 6.25rem;
+  inset-inline: max(0.75rem, calc(50% - 23rem));
+  z-index: 45;
+  overflow-x: clip;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  background: var(--background);
+  outline: none;
+  animation: desk-panel-in 550ms cubic-bezier(0.16, 1, 0.3, 1) 380ms both;
+}
+
+html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal {
+  inset-inline: max(0.75rem, calc(50% - 32rem));
+  background: var(--stage);
+}
+
+html[data-desk='on'][data-desk-panel='contact'] .desk-host {
+  visibility: hidden;
+}
+
+html[data-desk='on'][data-desk-panel='projects'] .desk-host {
+  inset-block: 4.25rem 6.25rem;
+  inset-inline: max(0.75rem, calc(50% - 31rem));
+  border: 10px solid #050505;
+  border-radius: 1.375rem;
+  outline: 1px solid oklch(100% 0 0 / 0.16);
+  animation-delay: 1000ms;
+}
+
+html[data-desk-panel] .desk-host > :not(section) {
+  display: none;
+}
+
+html[data-desk-panel='experience'] .desk-host > section:not(#experience),
+html[data-desk-panel='projects'] .desk-host > section:not(#projects, #contributions, #github),
+html[data-desk-panel='about'] .desk-host > section:not(#about, #stack, #testimonials, #ask-ai),
+html[data-desk-panel='education'] .desk-host > section:not(#education, #certifications),
+html[data-desk-panel='cv'] .desk-host > section:not(#cv) {
+  display: none;
+}
+
+html[data-desk] .desk-host > section,
+html[data-desk] #app-shell > .reveal > section {
+  padding-inline: var(--frame-pad);
+}
+
+html[data-desk] .contact-stage {
+  align-items: center;
+  min-block-size: 100%;
+  margin: 0;
+  padding-block: 3rem;
+  border-radius: 0;
+}
+
+html[data-desk='on'] .chat-rail {
+  animation: desk-panel-in 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (min-width: 64rem) {
+  html[data-desk='on'] .chat-rail {
+    inset: 4.25rem max(1rem, 14vw) 6.25rem;
+    inline-size: auto;
+    border: 10px solid #050505;
+    border-radius: 1.375rem;
+    outline: 1px solid oklch(100% 0 0 / 0.16);
+  }
+}
+
+@media (max-width: 63.999rem) {
+  .desk-close,
+  .desk-close[data-panel='projects'] {
+    inset-block-start: 0.75rem;
+    inset-inline: auto 0.75rem;
+  }
+
+  .desk-close[data-panel='contact'] {
+    inset-inline-start: auto;
+  }
+
+  html[data-desk='on'][data-desk-panel] .desk-host,
+  html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal,
+  html[data-desk='on'][data-desk-panel='projects'] .desk-host {
+    inset-block: 4rem 5.75rem;
+    inset-inline: 0.75rem;
+  }
+
+  .desk-note {
+    inset-block-end: 5.75rem;
+    inset-inline: 1rem;
+    justify-content: center;
+  }
+
+  .desk-actions {
+    inset-block: 0.5rem auto;
+    inset-inline-end: 0.25rem;
+  }
+}
+
+@keyframes desk-panel-in {
+  from {
+    opacity: 0;
+    scale: 0.97;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desk-canvas,
+  .desk-head,
+  .desk-labels span {
+    transition: none;
+  }
+
+  .desk-close,
+  html[data-desk='on'] .chat-rail,
+  html[data-desk='on'][data-desk-panel] .desk-host,
+  html[data-desk='on'][data-desk-panel='contact'] #app-shell > .reveal {
+    animation: none;
+  }
+}

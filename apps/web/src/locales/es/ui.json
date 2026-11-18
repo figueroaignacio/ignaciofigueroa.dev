@@ -27,5 +27,19 @@
     "github": "stats",
     "testimonials": "testimonios",
     "contact": "contacto"
+  },
+  "desk": {
+    "open": "apretá para abrir",
+    "openHint": "o click en la laptop para abrir",
+    "objectsHint": "cada objeto abre una sección",
+    "closeLaptop": "cerrar la laptop",
+    "close": "Cerrar",
+    "loading": "cargando el escritorio",
+    "readingMode": "Modo lectura",
+    "deskMode": "Escritorio 3D",
+    "objects": "Objetos del escritorio",
+    "ask": "ask",
+    "cv": "cv",
+    "message": "mensaje nuevo"
   }
 }

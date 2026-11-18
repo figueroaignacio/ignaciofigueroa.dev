@@ -18,7 +18,7 @@ import { TimelineSkeleton } from '../ui/timeline-skeleton';
 
 export function HomeView() {
   return (
-    <div>
+    <div className="desk-host">
       <Suspense fallback={<TimelineSkeleton />}>
         <ExperienceContainer />
       </Suspense>

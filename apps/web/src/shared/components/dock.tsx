@@ -1,6 +1,8 @@
 'use client';
 
 import {
+  BookIcon,
+  BoxIcon,
   BriefcaseIcon,
   FolderIcon,
   HomeIcon,
@@ -10,6 +12,7 @@ import {
   UserIcon,
 } from '@/shared/components/icons';
 import { DockBotIcon } from '@/features/assistant/ui/dock-bot-icon';
+import { deskStore, useDesk, type DeskPanel } from '@/features/desk/lib/desk-store';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { locales } from '@/i18n/routing';
 import { Dock as DockBar, useDockAutoHide } from '@/shared/components/ui/dock';
@@ -52,6 +55,8 @@ export function Dock() {
   const locale = useLocale();
   const [isLocalePending, startLocaleTransition] = useTransition();
   const { setTheme, resolvedTheme } = useTheme();
+  const desk = useDesk();
+  const deskOn = desk.mode === 'on';
   const sectionLabels = useMemo(() => t.raw('sectionIndex') as Record<string, string>, [t]);
   const navigation = useMemo(
     () => t.raw('navigation') as Array<{ label: string; href: string }>,
@@ -195,6 +200,10 @@ export function Dock() {
   }, [isChatOpen, isDesktop]);
 
   useEffect(() => {
+    deskStore.setChat(isChatOpen);
+  }, [isChatOpen]);
+
+  useEffect(() => {
     const root = document.documentElement;
     if (isChatOpen) {
       root.dataset.chatDocked = 'true';
@@ -260,9 +269,27 @@ export function Dock() {
               aria-modal={!isDesktop}
               aria-label={tChat('panelLabel')}
               tabIndex={-1}
-              initial={isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
-              animate={isDesktop ? { x: 0 } : { opacity: 1, y: 0 }}
-              exit={isDesktop ? { x: '115%' } : { opacity: 0, y: 24 }}
+              initial={
+                deskOn
+                  ? { opacity: 0, scale: 0.97 }
+                  : isDesktop
+                    ? { x: '115%' }
+                    : { opacity: 0, y: 24 }
+              }
+              animate={
+                deskOn
+                  ? { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.95 } }
+                  : isDesktop
+                    ? { x: 0 }
+                    : { opacity: 1, y: 0 }
+              }
+              exit={
+                deskOn
+                  ? { opacity: 0, scale: 0.97, transition: { duration: 0.2 } }
+                  : isDesktop
+                    ? { x: '115%' }
+                    : { opacity: 0, y: 24 }
+              }
               transition={{
                 type: 'spring',
                 damping: 30,
@@ -291,29 +318,56 @@ export function Dock() {
       <div className="dock-nav">
         <DockBar
           floating={false}
-          hidden={autoHidden && !isChatOpen}
+          hidden={autoHidden && !isChatOpen && desk.mode === 'reading'}
           label="Main Navigation"
           itemSize={isCompact ? 34 : 40}
           className={cn(isCompact && 'gap-0.5')}
         >
-          {items.map((item) => (
-            <DockBar.Item
-              key={item.key}
-              label={item.label}
-              active={activeSection === item.href}
-              asChild
-            >
-              <Link href={item.href ?? '/'}>{item.icon}</Link>
-            </DockBar.Item>
-          ))}
+          {items.map((item) =>
+            deskOn ? (
+              <DockBar.Item
+                key={item.key}
+                label={item.label}
+                active={!isChatOpen && (item.sectionId ?? null) === desk.panel}
+                onClick={() => {
+                  setIsChatOpen(false);
+                  if (item.sectionId) deskStore.openPanel(item.sectionId as DeskPanel);
+                  else deskStore.closePanel();
+                }}
+              >
+                {item.icon}
+              </DockBar.Item>
+            ) : (
+              <DockBar.Item
+                key={item.key}
+                label={item.label}
+                active={activeSection === item.href}
+                asChild
+              >
+                <Link href={item.href ?? '/'}>{item.icon}</Link>
+              </DockBar.Item>
+            ),
+          )}
         </DockBar>
         <DockBar
           floating={false}
-          hidden={autoHidden && !isChatOpen}
+          hidden={autoHidden && !isChatOpen && desk.mode === 'reading'}
           label="Preferences"
           itemSize={isCompact ? 34 : 40}
           className={cn(isCompact && 'gap-0.5')}
         >
+          {desk.available && pathname === '/' && (
+            <DockBar.Item
+              label={desk.mode === 'reading' ? t('desk.deskMode') : t('desk.readingMode')}
+              onClick={() => (desk.mode === 'reading' ? deskStore.enter() : deskStore.leave())}
+            >
+              {desk.mode === 'reading' ? (
+                <BoxIcon strokeWidth={1.5} />
+              ) : (
+                <BookIcon strokeWidth={1.5} />
+              )}
+            </DockBar.Item>
+          )}
           <DockBar.Item label={themeLabel} onClick={(e) => setTheme(isDark ? 'light' : 'dark', e)}>
             {isDark ? <SunIcon /> : <MoonIcon />}
           </DockBar.Item>
