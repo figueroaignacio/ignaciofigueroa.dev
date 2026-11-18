@@ -1,3 +1,4 @@
+import { DeskEnterLink } from '@/features/desk/ui/desk-enter-link';
 import { FileIcon } from '@/shared/components/icons';
 import { Logo } from '@/shared/components/logo';
 import { ScrambleText } from '@/shared/components/scramble-text';
@@ -70,6 +71,7 @@ export async function HomeHero() {
                 {label}
               </a>
             ))}
+            <DeskEnterLink className={`${link} cursor-pointer`} />
           </nav>
         </div>
       </div>
