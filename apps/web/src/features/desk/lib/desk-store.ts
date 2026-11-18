@@ -51,6 +51,18 @@ export const OBJECT_PANEL: Partial<Record<DeskObjectKey, DeskPanel>> = {
   board: 'contributions',
 };
 
+const LAPTOP_PANELS: ReadonlySet<DeskPanel> = new Set([
+  'projects',
+  'about',
+  'experience',
+  'contributions',
+  'cv',
+]);
+
+export function isLaptopPanel(panel: DeskPanel) {
+  return LAPTOP_PANELS.has(panel);
+}
+
 export function panelExists(panel: DeskPanel) {
   return Object.entries(SECTION_PANEL).some(
     ([id, owner]) => owner === panel && document.getElementById(id) !== null,

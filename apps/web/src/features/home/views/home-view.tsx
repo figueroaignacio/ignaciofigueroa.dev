@@ -1,3 +1,4 @@
+import { DeskScreenBar } from '@/features/desk/ui/desk-screen-bar';
 import { Suspense } from 'react';
 import { ContributionsContainer } from '../containers/contributions-container';
 import { EducationContainer } from '../containers/education-container';
@@ -19,6 +20,7 @@ import { TimelineSkeleton } from '../ui/timeline-skeleton';
 export function HomeView() {
   return (
     <div className="desk-host">
+      <DeskScreenBar />
       <Suspense fallback={<TimelineSkeleton />}>
         <ExperienceContainer />
       </Suspense>

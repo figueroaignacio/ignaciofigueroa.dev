@@ -1,4 +1,5 @@
 import { DeskBootScript } from '@/features/desk/ui/desk-boot-script';
+import { DeskObjects } from '@/features/desk/widgets/desk-objects';
 import { DeskStage } from '@/features/desk/widgets/desk-stage';
 import { HomeView } from '@/features/home/views/home-view';
 import { BASE_URL } from '@/shared/lib/constants';
@@ -67,6 +68,7 @@ export default async function HomePage({ params }: HomePageProps) {
       />
       <DeskBootScript />
       <DeskStage />
+      <DeskObjects locale={locale} />
       <HomeView />
     </>
   );

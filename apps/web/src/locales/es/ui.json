@@ -41,6 +41,8 @@
     "ask": "ask",
     "cv": "cv",
     "message": "mensaje nuevo",
-    "contributions": "contribuciones"
+    "contributions": "contribuciones",
+    "back": "volver al escritorio",
+    "apps": "Apps de la laptop"
   }
 }

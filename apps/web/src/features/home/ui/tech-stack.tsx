@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 type Tech = { name: string; icon?: IconName };
 
-const STACK: {
+export const STACK: {
   key: 'frontend' | 'backend' | 'ai' | 'testing' | 'others';
   core: Tech[];
   rest: Tech[];

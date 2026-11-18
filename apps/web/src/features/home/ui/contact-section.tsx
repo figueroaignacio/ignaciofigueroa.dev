@@ -5,7 +5,7 @@ import { ScrambleText } from '@/shared/components/scramble-text';
 import { useTranslations } from 'next-intl';
 import { ContactForm } from './contact-form';
 
-const SOCIAL_LINKS = [
+export const SOCIAL_LINKS = [
   {
     id: 'email',
     label: 'Email',

@@ -1,11 +1,17 @@
 'use client';
 
-import { XIcon } from '@/shared/components/icons';
 import { useTheme } from 'nach-themes';
 import { useTranslations } from 'next-intl';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { deskStore, OBJECT_PANEL, panelExists, useDesk, type DeskPanel } from '../lib/desk-store';
+import {
+  deskStore,
+  isLaptopPanel,
+  OBJECT_PANEL,
+  panelExists,
+  useDesk,
+  type DeskPanel,
+} from '../lib/desk-store';
+import { pathLabel } from '../lib/path-label';
 import { quadFacesViewer, quadTransform } from '../lib/screen-matrix';
 import type { DeskScene } from '../scene/desk-scene';
 import type { DeskObjectKey, DeskView, SceneState, ScreenRect } from '../scene/types';
@@ -44,16 +50,6 @@ const ASSETS = {
 
 type Surface = DeskPanel | 'chat';
 
-function pathLabel(label: string) {
-  const slug = label
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim()
-    .replace(/\s+/g, '-')
-    .toLowerCase();
-  return `./${slug}`;
-}
-
 function fontsReady(families: string[]) {
   const loads = families.flatMap((family) =>
     ['400', '500', '700', '800'].map((weight) => document.fonts.load(`${weight} 20px ${family}`)),
@@ -80,7 +76,6 @@ function select(key: DeskObjectKey, scene: DeskScene | null) {
 
 function surfaceNode(surface: Surface) {
   if (surface === 'chat') return document.querySelector<HTMLElement>('.chat-rail');
-  if (surface === 'contact') return document.querySelector<HTMLElement>('#app-shell > .reveal');
   return document.querySelector<HTMLElement>('.desk-host');
 }
 
@@ -111,7 +106,8 @@ export function DeskStage() {
 
   const active = desk.mode !== 'reading';
   const browsing = desk.mode === 'on' && !desk.panel && !desk.chat;
-  const surface: Surface | null = desk.mode !== 'on' ? null : desk.chat ? 'chat' : desk.panel;
+  const screenPanel = desk.panel && isLaptopPanel(desk.panel) ? desk.panel : null;
+  const surface: Surface | null = desk.mode !== 'on' ? null : desk.chat ? 'chat' : screenPanel;
   const onScreen = rest !== null;
 
   const labels = useMemo<Record<DeskObjectKey, string>>(
@@ -132,17 +128,18 @@ export function DeskStage() {
   );
 
   const sceneState = useMemo<SceneState>(() => {
-    const view: DeskView = !desk.lid ? 'top' : desk.chat || desk.panel ? 'screen' : 'desk';
+    const onLaptop = desk.chat || Boolean(screenPanel);
+    const view: DeskView = !desk.lid ? 'top' : onLaptop ? 'screen' : 'desk';
     return {
       lid: desk.lid,
       view,
-      covered: onScreen && (desk.chat || Boolean(desk.panel)),
+      covered: onScreen && onLaptop,
       absent,
       hover: focused,
       theme: resolvedTheme === 'light' ? 'light' : 'dark',
       still,
     };
-  }, [absent, desk.lid, desk.chat, desk.panel, focused, onScreen, resolvedTheme, still]);
+  }, [absent, desk.lid, desk.chat, screenPanel, focused, onScreen, resolvedTheme, still]);
 
   const reachable = useMemo(() => LABELLED.filter((key) => !absent.includes(key)), [absent]);
 
@@ -353,7 +350,9 @@ export function DeskStage() {
 
   useEffect(() => {
     if (desk.mode !== 'on' || !desk.panel) return;
-    const host = surfaceNode(desk.panel);
+    const host = isLaptopPanel(desk.panel)
+      ? surfaceNode(desk.panel)
+      : document.querySelector<HTMLElement>('.desk-object');
     if (!host) return;
     host.scrollTop = 0;
     host.tabIndex = -1;
@@ -443,22 +442,6 @@ export function DeskStage() {
           </button>
         </div>
       )}
-
-      {desk.mode === 'on' &&
-        desk.panel &&
-        createPortal(
-          <button
-            type="button"
-            className="desk-close"
-            aria-label={t('desk.close')}
-            style={rest ? { left: rest.left + rest.width - 84, top: rest.top + 12 } : undefined}
-            onClick={deskStore.closePanel}
-          >
-            <XIcon size={18} />
-            <kbd>esc</kbd>
-          </button>,
-          document.body,
-        )}
     </div>
   );
 }

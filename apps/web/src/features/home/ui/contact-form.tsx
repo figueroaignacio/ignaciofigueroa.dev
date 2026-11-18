@@ -7,7 +7,7 @@ import { Callout } from '@/shared/components/ui/callout';
 import { Input, inputVariants } from '@/shared/components/ui/input';
 import { cn } from '@/shared/lib/cn';
 import { useTranslations } from 'next-intl';
-import { useActionState, useEffect, useRef, useState } from 'react';
+import { useActionState, useEffect, useId, useRef, useState } from 'react';
 import { sendEmail } from '../actions/send-email';
 
 const field =
@@ -23,13 +23,16 @@ const initialState: ContactFormState = {
   success: false,
 };
 
-export function ContactForm() {
+export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [attempt, setAttempt] = useState(0);
 
-  return <ContactFormFields key={attempt} onReset={() => setAttempt((n) => n + 1)} />;
+  return (
+    <ContactFormFields key={attempt} compact={compact} onReset={() => setAttempt((n) => n + 1)} />
+  );
 }
 
-function ContactFormFields({ onReset }: { onReset: () => void }) {
+function ContactFormFields({ compact, onReset }: { compact: boolean; onReset: () => void }) {
+  const uid = useId();
   const t = useTranslations('components.contactForm');
   const [state, formAction, isPending] = useActionState(sendEmail, initialState);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -57,9 +60,9 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
   return (
     <div className="w-full">
       <form action={formAction} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+        <div className={cn('grid grid-cols-1 gap-x-6 gap-y-5', !compact && 'md:grid-cols-2')}>
           <Input
-            id="name"
+            id={`${uid}-name`}
             name="name"
             type="text"
             required
@@ -70,7 +73,7 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
             className={field}
           />
           <Input
-            id="email"
+            id={`${uid}-email`}
             name="email"
             type="email"
             required
@@ -83,10 +86,10 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
         </div>
 
         <Input.Wrapper>
-          <Input.Label htmlFor="message">{t('messageLabel')}</Input.Label>
+          <Input.Label htmlFor={`${uid}-message`}>{t('messageLabel')}</Input.Label>
           <textarea
             ref={textareaRef}
-            id="message"
+            id={`${uid}-message`}
             name="message"
             required
             disabled={locked}
@@ -107,7 +110,12 @@ function ContactFormFields({ onReset }: { onReset: () => void }) {
           </div>
         )}
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div
+          className={cn(
+            'flex flex-col justify-between gap-4',
+            !compact && 'sm:flex-row sm:items-center',
+          )}
+        >
           <div className="flex-1" aria-live="polite">
             {state.error && (
               <Callout variant="danger" className="animate-in fade-in slide-in-from-top-1">
