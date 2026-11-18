@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 export function createMaterials() {
   return {
-    aluminum: new THREE.MeshStandardMaterial({ color: 0xbfc2c7, metalness: 1, roughness: 0.4 }),
-    graphite: new THREE.MeshStandardMaterial({ color: 0x2b2c2f, metalness: 0.85, roughness: 0.5 }),
+    aluminum: new THREE.MeshStandardMaterial({ color: 0xd2d5d9, metalness: 1, roughness: 0.42 }),
+    graphite: new THREE.MeshStandardMaterial({ color: 0x232426, metalness: 0.35, roughness: 0.55 }),
     steel: new THREE.MeshStandardMaterial({ color: 0xe9ebed, metalness: 1, roughness: 0.16 }),
     black: new THREE.MeshStandardMaterial({ color: 0x0b0b0c, metalness: 0.15, roughness: 0.5 }),
     matte: new THREE.MeshStandardMaterial({ color: 0x0f0f10, metalness: 0, roughness: 0.92 }),

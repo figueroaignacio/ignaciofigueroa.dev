@@ -35,24 +35,40 @@ export interface AskKey {
 export function createAskKey(materials: Materials, fonts: SceneFonts): AskKey {
   const group = new THREE.Group();
 
-  const plate = solid(new THREE.Mesh(slab(0.064, 0.064, 0.008, 0.011, 0.0012), materials.graphite));
-  const well = new THREE.Mesh(facingUp(0.046, 0.046), materials.matte);
+  const plate = solid(new THREE.Mesh(slab(0.064, 0.064, 0.008, 0.013, 0.0012), materials.matte));
+  const well = new THREE.Mesh(facingUp(0.05, 0.05), materials.black);
   well.position.y = 0.0083;
 
   const cap = new THREE.Group();
   cap.position.y = 0.0105;
 
-  const frustum = new THREE.CylinderGeometry(0.0262, 0.0318, 0.015, 4, 1).toNonIndexed();
-  frustum.rotateY(Math.PI / 4);
-  frustum.computeVertexNormals();
-  const shell = solid(new THREE.Mesh(frustum, materials.celeste));
-  shell.position.y = 0.0075;
+  const shell = solid(
+    new THREE.Mesh(
+      slab(0.047, 0.047, 0.0145, 0.0095, 0.0042),
+      new THREE.MeshStandardMaterial({
+        color: 0x7cc4ee,
+        emissive: 0x7cc4ee,
+        emissiveIntensity: 0.16,
+        roughness: 0.38,
+      }),
+    ),
+  );
 
-  const legend = printed(keycapTexture(fonts), 0.0366, 0.0366, 0.4);
-  legend.position.y = 0.0152;
+  const legend = new THREE.Mesh(
+    facingUp(0.036, 0.036),
+    new THREE.MeshStandardMaterial({
+      map: keycapTexture(fonts),
+      transparent: true,
+      roughness: 0.4,
+      polygonOffset: true,
+      polygonOffsetFactor: -2,
+      polygonOffsetUnits: -2,
+    }),
+  );
+  legend.position.y = 0.0147;
   cap.add(shell, legend);
 
-  const light = new THREE.PointLight(0x7cc4ee, 0.05, 0.22, 2);
+  const light = new THREE.PointLight(0x7cc4ee, 0.09, 0.26, 2);
   light.position.set(0, 0.02, 0.03);
 
   group.add(plate, well, cap, light);
@@ -118,34 +134,18 @@ export function createBadge(
   clip.position.set(0, 0.001, -0.059);
 
   const strap = new THREE.MeshStandardMaterial({ color: 0x7cc4ee, roughness: 0.85 });
-  const loop = (points: Array<[number, number]>) => {
-    const curve = new THREE.CatmullRomCurve3(
-      points.map(([x, z]) => new THREE.Vector3(x, 0.0012, z)),
-    );
-    const ribbon = solid(new THREE.Mesh(new THREE.TubeGeometry(curve, 40, 0.0052, 8), strap));
-    ribbon.scale.y = 0.16;
-    return ribbon;
+  const ribbon = (turn: number, tone: number) => {
+    const geometry = new THREE.BoxGeometry(0.26, 0.0009, 0.0125);
+    geometry.translate(-0.13, 0, 0);
+    const material = strap.clone();
+    material.color.multiplyScalar(tone);
+    const mesh = solid(new THREE.Mesh(geometry, material));
+    mesh.position.set(0, 0.0014, -0.062);
+    mesh.rotation.y = turn;
+    return mesh;
   };
 
-  group.add(
-    card,
-    face,
-    clip,
-    loop([
-      [0.002, -0.066],
-      [-0.03, -0.12],
-      [-0.12, -0.15],
-      [-0.26, -0.12],
-      [-0.4, -0.16],
-    ]),
-    loop([
-      [-0.002, -0.066],
-      [-0.05, -0.09],
-      [-0.14, -0.08],
-      [-0.27, -0.03],
-      [-0.4, -0.06],
-    ]),
-  );
+  group.add(card, face, clip, ribbon(-0.3, 1), ribbon(-0.1, 0.82));
   return group;
 }
 
@@ -161,7 +161,7 @@ export function createPhone(materials: Materials, fonts: SceneFonts, strings: Sc
       map: display,
       emissiveMap: display,
       emissive: 0xffffff,
-      emissiveIntensity: 0.35,
+      emissiveIntensity: 0.8,
       roughness: 0.12,
       metalness: 0.2,
       polygonOffset: true,

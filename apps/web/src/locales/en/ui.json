@@ -31,7 +31,7 @@
   "desk": {
     "open": "press to open",
     "openHint": "or click the laptop to open",
-    "objectsHint": "every object opens a section",
+    "objectsHint": "every object opens a section · tab to move between them",
     "closeLaptop": "close the laptop",
     "close": "Close",
     "loading": "loading the desk",
@@ -40,6 +40,7 @@
     "objects": "Desk objects",
     "ask": "ask",
     "cv": "cv",
-    "message": "new message"
+    "message": "new message",
+    "contributions": "contributions"
   }
 }

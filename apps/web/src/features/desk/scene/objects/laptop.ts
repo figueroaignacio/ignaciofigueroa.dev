@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { facingDown, facingUp, slab, solid } from '../geometry';
+import { facingDown, facingUp, roundedRectShape, slab, solid } from '../geometry';
 import type { Materials } from '../materials';
 import { codeTexture, stickerTexture, tagTexture } from '../textures';
 import type { SceneAssets, SceneFonts, SceneStrings } from '../types';
@@ -10,10 +10,15 @@ const BASE = 0.011;
 const LID = 0.0055;
 const HINGE_Z = -DEPTH / 2 + 0.003;
 const LID_DEPTH = DEPTH - 0.003;
-const SCREEN_OFFSET = LID_DEPTH / 2 + 0.002;
+const SCREEN_OFFSET = LID_DEPTH / 2;
+const RIM = 0.003;
+const BEZEL = 0.008;
 
 export const LID_OPEN = THREE.MathUtils.degToRad(104);
-export const SCREEN_SIZE = { width: 0.298, height: 0.186 };
+export const SCREEN_SIZE = {
+  width: WIDTH - (RIM + BEZEL) * 2,
+  height: LID_DEPTH - (RIM + BEZEL) * 2,
+};
 
 const KEY_ROWS = [
   [...Array<number>(13).fill(28), 36],
@@ -26,7 +31,7 @@ const KEY_ROWS = [
 export interface Laptop {
   group: THREE.Group;
   screen: THREE.Mesh;
-  setOpen: (amount: number) => void;
+  setOpen: (amount: number, brightness: number) => void;
 }
 
 export function screenPose(position: THREE.Vector3) {
@@ -119,13 +124,18 @@ export function createLaptop(
   shellGeometry.translate(0, 0, LID_DEPTH / 2);
   lid.add(solid(new THREE.Mesh(shellGeometry, materials.aluminum)));
 
+  const bezelShape = new THREE.ShapeGeometry(
+    roundedRectShape(WIDTH - RIM * 2, LID_DEPTH - RIM * 2, 0.011),
+    12,
+  );
+  bezelShape.rotateX(Math.PI / 2);
   const bezel = new THREE.Mesh(
-    facingDown(WIDTH - 0.008, LID_DEPTH - 0.006),
+    bezelShape,
     new THREE.MeshStandardMaterial({
       color: 0x050506,
-      metalness: 0.2,
-      roughness: 0.4,
-      envMapIntensity: 0.25,
+      metalness: 0,
+      roughness: 0.6,
+      envMapIntensity: 0.08,
     }),
   );
   bezel.position.set(0, -0.0004, LID_DEPTH / 2);
@@ -199,12 +209,12 @@ export function createLaptop(
 
   lid.add(react, claude, linux, pill, tag);
 
-  const setOpen = (amount: number) => {
+  const setOpen = (amount: number, brightness: number) => {
     lid.rotation.x = -amount * LID_OPEN;
     keys.visible = amount > 0.02;
     const lit = THREE.MathUtils.smoothstep(amount, 0.45, 0.95);
-    display.color.setScalar(lit);
-    glow.intensity = lit * 0.22;
+    display.color.setScalar(lit * brightness);
+    glow.intensity = lit * 0.09;
   };
 
   return { group, screen, setOpen };

@@ -31,7 +31,7 @@
   "desk": {
     "open": "apretá para abrir",
     "openHint": "o click en la laptop para abrir",
-    "objectsHint": "cada objeto abre una sección",
+    "objectsHint": "cada objeto abre una sección · tab para recorrerlos",
     "closeLaptop": "cerrar la laptop",
     "close": "Cerrar",
     "loading": "cargando el escritorio",
@@ -40,6 +40,7 @@
     "objects": "Objetos del escritorio",
     "ask": "ask",
     "cv": "cv",
-    "message": "mensaje nuevo"
+    "message": "mensaje nuevo",
+    "contributions": "contribuciones"
   }
 }

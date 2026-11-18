@@ -49,10 +49,21 @@ html[data-desk-fit='sheet'][data-desk-chat] .desk-canvas {
     filter 700ms ease 700ms;
 }
 
+.desk-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 82% 78% at 46% 42%,
+    oklch(0% 0 0 / 0) 44%,
+    oklch(0% 0 0 / 0.55) 100%
+  );
+}
+
 .desk-head {
   position: absolute;
-  inset-block-start: clamp(1.25rem, 6vh, 4.5rem);
-  inset-inline-start: clamp(1.25rem, 6vw, 6rem);
+  inset-block-start: clamp(1.75rem, 10.7vh, 7rem);
+  inset-inline-start: clamp(1.25rem, 13.6vw, 16rem);
   display: flex;
   max-inline-size: 21rem;
   flex-direction: column;
@@ -73,7 +84,7 @@ html[data-desk='pending'] .desk-stage .desk-head {
 }
 
 .desk-name {
-  font-size: clamp(1.75rem, 3.1vw, 2.75rem);
+  font-size: clamp(1.75rem, 2.8vw, 2.75rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.035em;
@@ -279,9 +290,12 @@ html[data-desk-panel] .desk-host > :not(section) {
 }
 
 html[data-desk-panel='experience'] .desk-host > section:not(#experience),
-html[data-desk-panel='projects'] .desk-host > section:not(#projects, #contributions, #github),
-html[data-desk-panel='about'] .desk-host > section:not(#about, #stack, #testimonials, #ask-ai),
+html[data-desk-panel='projects'] .desk-host > section:not(#projects),
+html[data-desk-panel='about'] .desk-host > section:not(#about, #ask-ai),
 html[data-desk-panel='education'] .desk-host > section:not(#education, #certifications),
+html[data-desk-panel='contributions'] .desk-host > section:not(#contributions, #github),
+html[data-desk-panel='stack'] .desk-host > section:not(#stack),
+html[data-desk-panel='testimonials'] .desk-host > section:not(#testimonials),
 html[data-desk-panel='cv'] .desk-host > section:not(#cv) {
   display: none;
 }
@@ -300,6 +314,11 @@ html[data-desk] .contact-stage {
 }
 
 @media (max-width: 63.999rem) {
+  .desk-head {
+    inset-block-start: 3.25rem;
+    inset-inline-start: 1.25rem;
+  }
+
   .desk-note {
     inset-block-end: 5.75rem;
     inset-inline: 1rem;

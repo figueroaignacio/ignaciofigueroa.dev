@@ -1,5 +1,15 @@
 export type DeskObjectKey =
-  'laptop' | 'ask' | 'mate' | 'thermos' | 'badge' | 'notebook' | 'phone' | 'sheet';
+  | 'laptop'
+  | 'ask'
+  | 'mate'
+  | 'thermos'
+  | 'badge'
+  | 'notebook'
+  | 'phone'
+  | 'sheet'
+  | 'books'
+  | 'photos'
+  | 'board';
 
 export type DeskView = 'top' | 'desk' | 'screen';
 
@@ -25,11 +35,14 @@ export interface SceneAssets {
   react: string;
   claude: string;
   linux: string;
+  people: string[];
 }
 
 export interface SceneState {
   lid: boolean;
   view: DeskView;
+  covered: boolean;
+  absent: DeskObjectKey[];
   hover: DeskObjectKey | null;
   theme: DeskTheme;
   still: boolean;

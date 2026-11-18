@@ -3,7 +3,16 @@ import type { DeskObjectKey } from '../scene/types';
 
 export type DeskMode = 'reading' | 'pending' | 'on';
 
-export type DeskPanel = 'experience' | 'projects' | 'about' | 'education' | 'contact' | 'cv';
+export type DeskPanel =
+  | 'experience'
+  | 'projects'
+  | 'about'
+  | 'education'
+  | 'contact'
+  | 'cv'
+  | 'contributions'
+  | 'stack'
+  | 'testimonials';
 
 export interface DeskState {
   mode: DeskMode;
@@ -18,11 +27,11 @@ const STORAGE_KEY = 'desk-mode';
 const SECTION_PANEL: Record<string, DeskPanel> = {
   experience: 'experience',
   projects: 'projects',
-  contributions: 'projects',
-  github: 'projects',
+  contributions: 'contributions',
+  github: 'contributions',
   about: 'about',
-  stack: 'about',
-  testimonials: 'about',
+  stack: 'stack',
+  testimonials: 'testimonials',
   'ask-ai': 'about',
   education: 'education',
   certifications: 'education',
@@ -37,7 +46,16 @@ export const OBJECT_PANEL: Partial<Record<DeskObjectKey, DeskPanel>> = {
   notebook: 'education',
   phone: 'contact',
   sheet: 'cv',
+  books: 'stack',
+  photos: 'testimonials',
+  board: 'contributions',
 };
+
+export function panelExists(panel: DeskPanel) {
+  return Object.entries(SECTION_PANEL).some(
+    ([id, owner]) => owner === panel && document.getElementById(id) !== null,
+  );
+}
 
 const IDLE: DeskState = {
   mode: 'reading',
@@ -92,9 +110,7 @@ export function canRenderDesk() {
 
 export function prefersDesk() {
   try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === 'reading') return false;
-    if (stored === 'desk') return true;
+    if (window.localStorage.getItem(STORAGE_KEY) === 'desk') return true;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } })
       .connection;
@@ -105,9 +121,10 @@ export function prefersDesk() {
   }
 }
 
-function remember(mode: 'desk' | 'reading') {
+function remember(desk: boolean) {
   try {
-    window.localStorage.setItem(STORAGE_KEY, mode);
+    if (desk) window.localStorage.setItem(STORAGE_KEY, 'desk');
+    else window.localStorage.removeItem(STORAGE_KEY);
   } catch {
     return;
   }
@@ -143,13 +160,13 @@ export const deskStore = {
   },
   enter() {
     if (!state.available) return;
-    remember('desk');
+    remember(true);
     window.scrollTo({ top: 0, behavior: 'instant' });
     const panel = panelFromHash();
     commit({ mode: 'pending', panel, lid: Boolean(panel) });
   },
   leave() {
-    remember('reading');
+    remember(false);
     const { panel } = state;
     commit({ mode: 'reading', panel: null, chat: false });
     if (panel) document.getElementById(panel)?.scrollIntoView({ behavior: 'instant' });

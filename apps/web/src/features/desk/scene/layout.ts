@@ -12,43 +12,68 @@ interface Layout {
   pad: { width: number; depth: number; x: number; z: number };
   frame: { width: number; depth: number; x: number; z: number };
   objects: Record<PropKey, Placement>;
+  hidden: PropKey[];
 }
 
 export const PAD_HEIGHT = 0.0035;
 
 export const LAYOUTS: Record<DeskVariant, Layout> = {
   wide: {
-    pad: { width: 1.02, depth: 0.56, x: 0, z: 0.02 },
-    frame: { width: 1.16, depth: 0.78, x: 0, z: -0.01 },
+    pad: { width: 0.7, depth: 0.43, x: 0, z: 0 },
+    frame: { width: 0.93, depth: 0.58, x: 0, z: 0.022 },
     objects: {
-      laptop: [0.02, -0.02, 0],
-      ask: [-0.185, 0.13, 0.07],
-      mate: [0.3, -0.14, 0],
-      thermos: [0.425, -0.165, 0.5],
-      badge: [-0.41, 0.175, -0.09],
-      notebook: [-0.33, -0.035, 0.12],
-      phone: [0.31, 0.145, -0.17],
-      sheet: [0.165, 0.3, 0.07],
-      mouse: [0.245, 0.02, -0.1],
-      earbuds: [0.43, 0.035, 0.3],
+      laptop: [0.074, 0, 0],
+      ask: [-0.125, 0.06, 0.07],
+      mate: [0.289, -0.117, 0],
+      thermos: [0.352, -0.196, 0.5],
+      badge: [-0.368, 0.173, -0.087],
+      notebook: [-0.244, -0.002, 0.122],
+      phone: [0.286, 0.134, -0.17],
+      sheet: [0.245, 0.277, 0.07],
+      mouse: [0.2835, 0.015, -0.1],
+      earbuds: [0.385, 0.03, 0.3],
+      books: [0.393, 0.145, -0.14],
+      photos: [-0.218, 0.157, 0],
+      board: [0.028, 0.154, 0.035],
     },
+    hidden: [],
   },
   tall: {
     pad: { width: 0.54, depth: 0.92, x: 0, z: 0.03 },
-    frame: { width: 0.6, depth: 1.04, x: 0, z: 0.04 },
+    frame: { width: 0.6, depth: 1.04, x: 0, z: -0.005 },
     objects: {
       laptop: [0, 0, 0],
-      ask: [-0.165, 0.2, 0.07],
-      mate: [0.14, -0.3, 0],
-      thermos: [0.2, -0.4, 0.5],
-      badge: [-0.14, 0.37, -0.09],
-      notebook: [-0.145, -0.31, 0.12],
-      phone: [0.175, 0.3, -0.17],
-      sheet: [0.03, 0.41, 0.07],
+      ask: [-0.19, 0.2, 0.07],
+      mate: [0.16, -0.27, 0],
+      thermos: [0.21, -0.39, 0.5],
+      badge: [-0.18, 0.38, -0.09],
+      notebook: [-0.185, -0.3, 0.12],
+      phone: [0.19, 0.22, -0.17],
+      sheet: [0.13, 0.42, 0.07],
       mouse: [0.17, 0.17, -0.1],
       earbuds: [-0.02, -0.235, 0.3],
+      books: [0, -0.37, 0.12],
+      photos: [-0.04, 0.3, 0],
+      board: [0, 0.165, 0.04],
     },
+    hidden: ['mouse', 'earbuds'],
   },
+};
+
+export const SCALE: Record<PropKey, number> = {
+  laptop: 1,
+  ask: 0.82,
+  mate: 0.87,
+  thermos: 0.78,
+  badge: 1.22,
+  notebook: 0.88,
+  phone: 0.9,
+  sheet: 0.73,
+  mouse: 0.62,
+  earbuds: 0.8,
+  books: 0.7,
+  photos: 0.62,
+  board: 0.62,
 };
 
 export const LABEL_HEIGHT: Record<DeskObjectKey, number> = {
@@ -60,6 +85,9 @@ export const LABEL_HEIGHT: Record<DeskObjectKey, number> = {
   notebook: 0.04,
   phone: 0.03,
   sheet: 0.02,
+  books: 0.12,
+  photos: 0.02,
+  board: 0.03,
 };
 
 export interface Pose {
@@ -67,7 +95,7 @@ export interface Pose {
   target: THREE.Vector3;
 }
 
-const FOV = { wide: 32, tall: 44 } as const;
+const FOV = { wide: 26, tall: 44 } as const;
 
 export function fovFor(variant: DeskVariant) {
   return FOV[variant];
@@ -80,9 +108,7 @@ function fit(width: number, height: number, fov: number, aspect: number) {
 
 export function placementOf(variant: DeskVariant, key: PropKey) {
   const [x, z, turn] = LAYOUTS[variant].objects[key];
-  const { pad } = LAYOUTS[variant];
-  const onPad = Math.abs(x - pad.x) < pad.width / 2 && Math.abs(z - pad.z) < pad.depth / 2;
-  return { position: new THREE.Vector3(x, onPad ? PAD_HEIGHT : 0, z), turn };
+  return { position: new THREE.Vector3(x, PAD_HEIGHT, z), turn };
 }
 
 export function poseFor(view: DeskView, variant: DeskVariant, aspect: number): Pose {
@@ -91,9 +117,9 @@ export function poseFor(view: DeskView, variant: DeskVariant, aspect: number): P
   const laptop = placementOf(variant, 'laptop').position;
 
   if (view === 'top') {
-    const target = new THREE.Vector3(laptop.x, 0.01, laptop.z);
-    const distance = fit(0.6, 0.42, fov, aspect);
-    const direction = new THREE.Vector3(0, 1, 0.07).normalize();
+    const target = new THREE.Vector3(layout.frame.x, 0.01, layout.frame.z);
+    const distance = fit(layout.frame.width, layout.frame.depth, fov, aspect);
+    const direction = new THREE.Vector3(0, 1, 0.05).normalize();
     return { target, position: target.clone().addScaledVector(direction, distance) };
   }
 
@@ -106,7 +132,7 @@ export function poseFor(view: DeskView, variant: DeskVariant, aspect: number): P
   }
 
   const target = new THREE.Vector3(layout.frame.x, 0.02, layout.frame.z);
-  const direction = new THREE.Vector3(0, 1, 0.46).normalize();
-  const distance = fit(layout.frame.width, layout.frame.depth * 0.93, fov, aspect);
+  const direction = new THREE.Vector3(0, 1, 0.29).normalize();
+  const distance = fit(layout.frame.width, layout.frame.depth * 0.97, fov, aspect);
   return { target, position: target.clone().addScaledVector(direction, distance) };
 }

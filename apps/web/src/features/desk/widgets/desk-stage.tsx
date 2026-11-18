@@ -5,21 +5,54 @@ import { useTheme } from 'nach-themes';
 import { useTranslations } from 'next-intl';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { deskStore, OBJECT_PANEL, useDesk, type DeskPanel } from '../lib/desk-store';
+import { deskStore, OBJECT_PANEL, panelExists, useDesk, type DeskPanel } from '../lib/desk-store';
 import { quadFacesViewer, quadTransform } from '../lib/screen-matrix';
 import type { DeskScene } from '../scene/desk-scene';
 import type { DeskObjectKey, DeskView, SceneState, ScreenRect } from '../scene/types';
 
-const LABELLED: DeskObjectKey[] = ['laptop', 'ask', 'mate', 'badge', 'notebook', 'phone', 'sheet'];
+const LABELLED: DeskObjectKey[] = [
+  'laptop',
+  'ask',
+  'mate',
+  'badge',
+  'notebook',
+  'phone',
+  'sheet',
+  'books',
+  'photos',
+  'board',
+];
+
+const PEOPLE = ['joseph', 'kiefer', 'manuel', 'pia'].map(
+  (name) => `/images/testimonials/${name}.jpg`,
+);
+
+function absentObjects() {
+  return (Object.keys(OBJECT_PANEL) as DeskObjectKey[]).filter((key) => {
+    const panel = OBJECT_PANEL[key];
+    return panel ? !panelExists(panel) : false;
+  });
+}
 
 const ASSETS = {
   photo: '/images/profile-photo-2026.webp',
   react: '/images/desk/react.svg',
   claude: '/images/desk/claude-code.svg',
   linux: '/images/desk/linux.svg',
+  people: PEOPLE,
 };
 
 type Surface = DeskPanel | 'chat';
+
+function pathLabel(label: string) {
+  const slug = label
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+  return `./${slug}`;
+}
 
 function fontsReady(families: string[]) {
   const loads = families.flatMap((family) =>
@@ -74,6 +107,7 @@ export function DeskStage() {
   const [coarse, setCoarse] = useState(false);
   const [still, setStill] = useState(false);
   const [rest, setRest] = useState<ScreenRect | null>(null);
+  const [absent, setAbsent] = useState<DeskObjectKey[]>([]);
 
   const active = desk.mode !== 'reading';
   const browsing = desk.mode === 'on' && !desk.panel && !desk.chat;
@@ -90,6 +124,9 @@ export function DeskStage() {
       notebook: t('sectionIndex.education'),
       phone: t('sectionIndex.contact'),
       sheet: t('desk.cv'),
+      books: t('sectionIndex.stack'),
+      photos: t('sectionIndex.testimonials'),
+      board: t('desk.contributions'),
     }),
     [t],
   );
@@ -99,11 +136,15 @@ export function DeskStage() {
     return {
       lid: desk.lid,
       view,
+      covered: onScreen && (desk.chat || Boolean(desk.panel)),
+      absent,
       hover: focused,
       theme: resolvedTheme === 'light' ? 'light' : 'dark',
       still,
     };
-  }, [desk.lid, desk.chat, desk.panel, focused, resolvedTheme, still]);
+  }, [absent, desk.lid, desk.chat, desk.panel, focused, onScreen, resolvedTheme, still]);
+
+  const reachable = useMemo(() => LABELLED.filter((key) => !absent.includes(key)), [absent]);
 
   const stateRef = useRef(sceneState);
   stateRef.current = sceneState;
@@ -113,7 +154,7 @@ export function DeskStage() {
     !browsing || !desk.lid
       ? []
       : coarse
-        ? LABELLED
+        ? reachable
         : hover
           ? [hover === 'thermos' ? 'mate' : hover]
           : [];
@@ -127,6 +168,19 @@ export function DeskStage() {
   useLayoutEffect(() => {
     deskStore.boot();
     return () => deskStore.shutdown();
+  }, []);
+
+  useEffect(() => {
+    const host = document.querySelector('.desk-host');
+    const sync = () => {
+      const next = absentObjects();
+      setAbsent((current) => (current.join() === next.join() ? current : next));
+    };
+    sync();
+    if (!host) return;
+    const observer = new MutationObserver(sync);
+    observer.observe(host, { childList: true });
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -318,6 +372,7 @@ export function DeskStage() {
       data-busy={browsing ? undefined : 'true'}
     >
       <canvas ref={canvasRef} className="desk-canvas" aria-hidden="true" />
+      <div className="desk-vignette" aria-hidden="true" />
 
       <div className="desk-head">
         <p role="heading" aria-level={1} className="desk-name">
@@ -329,7 +384,7 @@ export function DeskStage() {
 
       {desk.mode === 'on' && (
         <nav aria-label={t('desk.objects')} className="desk-objects">
-          {LABELLED.map((key) => (
+          {reachable.map((key) => (
             <button
               key={key}
               type="button"
@@ -353,7 +408,7 @@ export function DeskStage() {
             }}
           >
             <i />
-            {labels[key]}
+            {pathLabel(labels[key])}
           </span>
         ))}
       </div>
@@ -380,11 +435,11 @@ export function DeskStage() {
         <div className="desk-actions">
           {desk.lid && (
             <button type="button" onClick={deskStore.closeLid}>
-              {t('desk.closeLaptop')}
+              {t('desk.closeLaptop').toLowerCase()}
             </button>
           )}
           <button type="button" onClick={deskStore.leave}>
-            {t('desk.readingMode')}
+            {t('desk.readingMode').toLowerCase()}
           </button>
         </div>
       )}

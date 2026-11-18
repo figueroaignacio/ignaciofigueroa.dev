@@ -59,9 +59,9 @@ function tiled(texture: THREE.CanvasTexture, x: number, y: number) {
 export function woodTexture() {
   const texture = paint(1024, 1024, (g, w, h) => {
     const rand = prng(11);
-    g.fillStyle = '#5f4230';
+    g.fillStyle = '#3f2c1f';
     g.fillRect(0, 0, w, h);
-    const planks = 4;
+    const planks = 8;
     const plank = h / planks;
     for (let i = 0; i < planks; i++) {
       g.fillStyle = `rgba(${rand() > 0.5 ? '255,214,170' : '20,10,4'},${0.03 + rand() * 0.07})`;
@@ -71,7 +71,7 @@ export function woodTexture() {
       const y = rand() * h;
       const light = rand() > 0.58;
       g.strokeStyle = light
-        ? `rgba(206,160,118,${0.03 + rand() * 0.07})`
+        ? `rgba(196,150,108,${0.02 + rand() * 0.05})`
         : `rgba(26,14,6,${0.05 + rand() * 0.13})`;
       g.lineWidth = 0.5 + rand() * 2.6;
       const amplitude = rand() * 6;
@@ -150,7 +150,7 @@ const CODE_COLORS: Record<CodeTone, string> = {
 };
 
 export function codeTexture(fonts: SceneFonts) {
-  return paint(1600, 1000, (g, w, h) => {
+  return paint(1600, 1034, (g, w, h) => {
     g.fillStyle = '#0e1013';
     g.fillRect(0, 0, w, h);
     g.fillStyle = '#090a0c';
@@ -280,16 +280,10 @@ export function tagTexture(text: string, fonts: SceneFonts, options: TagOptions)
 
 export function keycapTexture(fonts: SceneFonts) {
   return paint(256, 256, (g, w, h) => {
-    const shade = g.createRadialGradient(w * 0.38, h * 0.3, 10, w / 2, h / 2, w * 0.75);
-    shade.addColorStop(0, '#b4e0f8');
-    shade.addColorStop(0.6, BRAND);
-    shade.addColorStop(1, '#5aaad8');
-    g.fillStyle = shade;
-    g.fillRect(0, 0, w, h);
     g.fillStyle = '#08222f';
     g.textAlign = 'center';
     g.textBaseline = 'middle';
-    g.font = `500 82px ${fonts.mono}`;
+    g.font = `500 92px ${fonts.mono}`;
     g.fillText('ask', w / 2, h / 2 + 4);
   });
 }
@@ -417,4 +411,56 @@ export function notebookLabelTexture(fonts: SceneFonts) {
     g.font = `400 27px ${fonts.mono}`;
     g.fillText('programación · 2025', 30, 114);
   });
+}
+
+export function titleTexture(
+  text: string,
+  fonts: SceneFonts,
+  ink: string,
+  width: number,
+  height: number,
+  size: number,
+) {
+  return paint(width, height, (g, w, h) => {
+    g.fillStyle = ink;
+    g.textBaseline = 'middle';
+    g.font = `700 ${size}px ${fonts.sans}`;
+    g.fillText(text, 8, h / 2 + 2, w - 16);
+  });
+}
+
+export function photoTexture(url: string, onChange: () => void) {
+  const draw =
+    (image: HTMLImageElement | null): Draw =>
+    (g, w, h) => {
+      g.fillStyle = '#f4f2ec';
+      g.fillRect(0, 0, w, h);
+      const inset = 22;
+      const side = w - inset * 2;
+      g.fillStyle = '#1b1b1c';
+      g.fillRect(inset, inset, side, side);
+      if (!image) return;
+      const crop = Math.min(image.naturalWidth, image.naturalHeight);
+      g.filter = 'grayscale(1) contrast(1.08)';
+      g.drawImage(
+        image,
+        (image.naturalWidth - crop) / 2,
+        (image.naturalHeight - crop) / 2,
+        crop,
+        crop,
+        inset,
+        inset,
+        side,
+        side,
+      );
+      g.filter = 'none';
+    };
+  const texture = paint(310, 375, draw(null));
+  loadImage(url)
+    .then((image) => {
+      repaint(texture, draw(image));
+      onChange();
+    })
+    .catch(() => undefined);
+  return texture;
 }

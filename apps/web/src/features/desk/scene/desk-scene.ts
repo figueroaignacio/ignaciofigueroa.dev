@@ -5,12 +5,14 @@ import {
   LABEL_HEIGHT,
   LAYOUTS,
   placementOf,
+  SCALE,
   poseFor,
   type Pose,
   type PropKey,
 } from './layout';
 import { createMaterials, type Materials } from './materials';
 import { createMate, createThermos } from './objects/drinks';
+import { createBoard, createBooks, createPhotos } from './objects/extras';
 import { createLaptop, SCREEN_SIZE, screenPose, type Laptop } from './objects/laptop';
 import {
   createAskKey,
@@ -54,6 +56,9 @@ const INTERACTIVE: DeskObjectKey[] = [
   'notebook',
   'phone',
   'sheet',
+  'books',
+  'photos',
+  'board',
 ];
 
 const LIFT: Record<DeskObjectKey, number> = {
@@ -65,19 +70,22 @@ const LIFT: Record<DeskObjectKey, number> = {
   notebook: 0.008,
   phone: 0.008,
   sheet: 0.006,
+  books: 0.006,
+  photos: 0.006,
+  board: 0.008,
 };
 
 const LIGHTING = {
   dark: {
-    background: 0x0a0908,
-    environment: 0.3,
-    sky: 0x8fa2c2,
-    ground: 0x2a1c12,
-    hemisphere: 0.4,
-    lamp: 0xffc48c,
-    lampPower: 8.5,
-    fill: 0.3,
-    wall: 0x3a3b3f,
+    background: 0x070707,
+    environment: 0.42,
+    sky: 0xc9d4e6,
+    ground: 0x1b1a19,
+    hemisphere: 0.55,
+    lamp: 0xffdcb8,
+    lampPower: 5.2,
+    fill: 0.35,
+    wall: 0x2e2f32,
   },
   light: {
     background: 0xd8d3ca,
@@ -119,6 +127,8 @@ export class DeskScene {
   private state: SceneState = {
     lid: false,
     view: 'top',
+    covered: false,
+    absent: [],
     hover: null,
     theme: 'dark',
     still: false,
@@ -130,6 +140,7 @@ export class DeskScene {
   private lidAngle = 0;
   private lidVelocity = 0;
   private press = 0;
+  private cover = 0;
   private pointerHover: DeskObjectKey | null = null;
   private pointerInside = false;
   private pointerDirty = false;
@@ -175,6 +186,9 @@ export class DeskScene {
     this.register('sheet', createSheet(fonts, strings));
     this.register('mouse', createMouse(this.materials));
     this.register('earbuds', createEarbuds(this.materials));
+    this.register('books', createBooks(this.materials, fonts));
+    this.register('photos', createPhotos(this.materials, assets.people, this.wake));
+    this.register('board', createBoard(this.materials));
 
     this.lamp.position.set(-0.75, 1.25, -0.35);
     this.lamp.target.position.set(0.05, 0, 0.05);
@@ -202,7 +216,6 @@ export class DeskScene {
     this.scene.add(group);
     if ((INTERACTIVE as PropKey[]).includes(key)) {
       group.userData.deskKey = key;
-      this.pickables.push(group);
       this.lifts.set(key as DeskObjectKey, 0);
     }
   }
@@ -214,7 +227,19 @@ export class DeskScene {
       const { position, turn } = placementOf(this.variant, key);
       group.position.copy(position);
       group.rotation.y = turn;
+      group.scale.setScalar(SCALE[key]);
       this.baseY.set(key, position.y);
+    }
+    this.applyPresence();
+  }
+
+  private applyPresence() {
+    const { hidden } = LAYOUTS[this.variant];
+    this.pickables.length = 0;
+    for (const [key, group] of this.props) {
+      const absent = (this.state.absent as PropKey[]).includes(key);
+      group.visible = !absent && !hidden.includes(key);
+      if (group.visible && group.userData.deskKey) this.pickables.push(group);
     }
   }
 
@@ -265,6 +290,7 @@ export class DeskScene {
     const themeChanged = next.theme !== this.state.theme;
     this.state = next;
     if (themeChanged) this.applyTheme();
+    this.applyPresence();
     this.retarget();
     this.wake();
   }
@@ -439,7 +465,11 @@ export class DeskScene {
         }
       }
     }
-    this.laptop.setOpen(this.lidAngle);
+    const coverGoal = this.state.covered ? 1 : 0;
+    this.cover = still
+      ? coverGoal
+      : this.cover + (coverGoal - this.cover) * (1 - Math.exp(-dt * 9));
+    this.laptop.setOpen(this.lidAngle, 1 - this.cover);
 
     const ease = still ? 1 : 1 - Math.exp(-dt * (view === 'screen' ? 2.7 : 3.4));
     this.position.lerp(this.goal.position, ease);
@@ -490,6 +520,7 @@ export class DeskScene {
       Math.abs(this.lidAngle - lidGoal) < 1e-4 &&
       Math.abs(this.lidVelocity) < 1e-4 &&
       this.press < 0.002 &&
+      Math.abs(this.cover - coverGoal) < 0.002 &&
       !moving;
     if (settled && time > this.awakeUntil) {
       this.running = false;
