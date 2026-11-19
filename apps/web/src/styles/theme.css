@@ -14,6 +14,9 @@
   --color-muted-strong: var(--muted-strong);
   --color-rule: var(--rule);
   --color-surface-muted: var(--surface-muted);
+  --color-page: var(--page);
+  --color-island: var(--island);
+  --color-brand-soft: var(--brand-soft);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-brand: var(--brand);
@@ -50,11 +53,11 @@
   --shadow-sm: var(--elevation-sm);
   --shadow-md: var(--elevation-md);
   --shadow-lg: var(--elevation-lg);
-  --radius-sm: calc(var(--radius) - 0.5rem);
-  --radius-md: calc(var(--radius) - 0.25rem);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 0.25rem);
-  --radius-2xl: calc(var(--radius) + 0.5rem);
+  --radius-sm: calc(var(--radius) * 0.66);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.33);
+  --radius-xl: calc(var(--radius) * 1.66);
+  --radius-2xl: calc(var(--radius) * 2);
 
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-sans);

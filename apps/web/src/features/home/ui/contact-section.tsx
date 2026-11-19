@@ -113,7 +113,7 @@ export function ContactSection() {
             </ul>
           </div>
 
-          <div className="w-full max-w-lg shrink-0 rounded-2xl bg-background p-6 text-left sm:p-8">
+          <div className="w-full max-w-lg shrink-0 rounded-lg bg-card p-6 text-left shadow-sm sm:p-8">
             <h3 className="mb-6 text-lg font-medium tracking-[-0.02em]">{tPages('formTitle')}</h3>
             <ContactForm />
           </div>

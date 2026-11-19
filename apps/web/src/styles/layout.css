@@ -41,6 +41,26 @@
     animation: stage-drift 14s ease-in-out infinite alternate;
   }
 
+  .hero-island {
+    margin: 0.625rem calc(0.625rem - var(--frame-pad)) 0.75rem;
+    padding-inline: var(--frame-pad);
+    border-radius: var(--radius-xl);
+    background: var(--island);
+  }
+
+  .section-island {
+    margin-inline: max(calc(0.625rem - var(--frame-pad)), calc((100% - 56rem) / 2));
+    padding-inline: var(--frame-pad);
+    border-radius: var(--radius-xl);
+    background: var(--island);
+  }
+
+  .desk-host {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .hero-sheet {
     display: flex;
     flex-direction: column;
@@ -51,7 +71,7 @@
 
   @media (min-width: 64rem) {
     .hero-sheet {
-      min-block-size: 100svh;
+      min-block-size: calc(100svh - 1.25rem);
       padding-block: 1.75rem var(--dock-space);
     }
   }
@@ -84,7 +104,7 @@
   .reveal-cover {
     position: relative;
     z-index: 1;
-    background: var(--background);
+    background: var(--page);
   }
 
   .reveal {
@@ -100,9 +120,9 @@
     flex: 1;
     align-items: flex-end;
     min-block-size: calc(100dvh - 1.5rem);
-    margin: 0.75rem;
+    margin: 0.75rem 0.625rem 0.625rem;
     padding: 4rem var(--frame-pad) calc(var(--dock-space) + env(safe-area-inset-bottom));
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-xl);
     background: var(--stage);
   }
 
@@ -184,7 +204,8 @@
 
 @media (min-width: 64rem) {
   .chat-rail {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-xl);
+    background: var(--island);
+    box-shadow: var(--elevation-lg);
   }
 }

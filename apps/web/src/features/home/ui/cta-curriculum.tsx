@@ -4,9 +4,12 @@ export function CTACurriculum() {
   const t = useTranslations('components.ctaCv');
 
   return (
-    <section id="cv" className="scroll-mt-20 py-14 lg:py-16">
+    <section
+      id="cv"
+      className="section-island scroll-mt-20 bg-inverse py-12 text-inverse-foreground lg:py-14"
+    >
       <div
-        className="frame-column flex flex-col gap-6 rounded-2xl bg-inverse p-8 text-inverse-foreground sm:flex-row sm:items-end sm:justify-between sm:p-10"
+        className="frame-column flex flex-col gap-6 px-[var(--frame-pad)] sm:flex-row sm:items-end sm:justify-between sm:px-0"
         data-reveal
       >
         <div className="flex max-w-[30ch] flex-col gap-3">

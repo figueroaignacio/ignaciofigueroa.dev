@@ -223,17 +223,10 @@ html[data-desk='pending'] .desk-stage .desk-head {
 }
 
 html[data-desk] {
-  --desk-page: oklch(10% 0 0);
-  --desk-island: oklch(15.5% 0 0);
-  --desk-card: oklch(20% 0 0);
-  --desk-raised: oklch(26% 0 0);
-}
-
-html[data-desk]:not(.dark) {
-  --desk-page: oklch(95.5% 0.004 85);
-  --desk-island: oklch(99.5% 0.002 85);
-  --desk-card: oklch(96.5% 0.004 85);
-  --desk-raised: oklch(91% 0.005 85);
+  --desk-page: var(--background);
+  --desk-island: var(--surface-muted);
+  --desk-card: var(--card);
+  --desk-raised: var(--popover);
 }
 
 html[data-desk='on']:is(
@@ -560,9 +553,6 @@ html[data-desk='on']:is(
   color: #f5f5f4;
   outline: none;
   animation: desk-object-grow 600ms cubic-bezier(0.16, 1, 0.3, 1) 650ms both;
-  --desk-island: oklch(15.5% 0 0);
-  --desk-card: oklch(20% 0 0);
-  --desk-raised: oklch(26% 0 0);
 }
 
 .desk-object-bar {

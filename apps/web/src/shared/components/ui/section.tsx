@@ -28,7 +28,7 @@ export function SectionShell({
   return (
     <section
       id={id}
-      className={cn('scroll-mt-20', className)}
+      className={cn('section-island scroll-mt-20', className)}
       aria-hidden={busy || undefined}
       aria-busy={busy || undefined}
     >
