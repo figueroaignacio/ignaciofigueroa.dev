@@ -9,12 +9,12 @@ const CV = {
   es: {
     label: 'Español',
     pdf: '/pdf/cv_ignacio_figueroa_frontend_product_engineer_es.pdf',
-    page: '/images/desk/cv-es.webp',
+    page: '/images/desk/cv-frontend-product-engineer-es.webp',
   },
   en: {
     label: 'English',
     pdf: '/pdf/cv_ignacio_figueroa_frontend_product_engineer_en.pdf',
-    page: '/images/desk/cv-en.webp',
+    page: '/images/desk/cv-frontend-product-engineer-en.webp',
   },
 } as const;
 
