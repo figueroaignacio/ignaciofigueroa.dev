@@ -192,7 +192,8 @@ export const deskStore = {
   },
   closeLid() {
     writeHash(null);
-    commit({ lid: false, panel: null });
+    if (state.chat) window.dispatchEvent(new Event('close-chat'));
+    commit({ lid: false, panel: null, chat: false });
   },
   openPanel(panel: DeskPanel) {
     writeHash(panel);

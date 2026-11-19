@@ -20,7 +20,7 @@ import { TimelineSkeleton } from '../ui/timeline-skeleton';
 export function HomeView() {
   return (
     <div className="desk-host">
-      <DeskScreenBar />
+      <DeskScreenBar surface="page" />
       <Suspense fallback={<TimelineSkeleton />}>
         <ExperienceContainer />
       </Suspense>

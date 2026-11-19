@@ -1,5 +1,6 @@
 'use client';
 
+import { DeskScreenBar } from '@/features/desk/ui/desk-screen-bar';
 import {
   BookIcon,
   BoxIcon,
@@ -303,6 +304,7 @@ export function Dock() {
                 'lg:w-[calc(var(--chat-panel-width)-2rem)]',
               )}
             >
+              <DeskScreenBar surface="chat" />
               <FloatingChat onClose={() => setIsChatOpen(false)} autoFocusInput={isDesktop} />
             </motion.div>
           )}
