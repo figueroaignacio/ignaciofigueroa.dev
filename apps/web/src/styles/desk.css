@@ -378,7 +378,7 @@ html[data-desk='on']:is(
   filter: blur(8px) brightness(0.45);
   transition:
     opacity 900ms ease,
-    filter 600ms ease;
+    filter 500ms ease 650ms;
 }
 
 .desk-object {
@@ -393,7 +393,7 @@ html[data-desk='on']:is(
   padding: clamp(1rem, 2.2vw, 2rem) clamp(1rem, 3vw, 2.75rem) 6.5rem;
   color: #f5f5f4;
   outline: none;
-  animation: desk-surface-in 450ms ease 150ms both;
+  animation: desk-object-grow 600ms cubic-bezier(0.16, 1, 0.3, 1) 650ms both;
   --desk-island: oklch(15.5% 0 0);
   --desk-card: oklch(20% 0 0);
   --desk-raised: oklch(26% 0 0);
@@ -751,6 +751,13 @@ html[data-desk] .desk-host > section {
 @keyframes desk-surface-in {
   from {
     opacity: 0;
+  }
+}
+
+@keyframes desk-object-grow {
+  from {
+    opacity: 0;
+    scale: 0.35;
   }
 }
 

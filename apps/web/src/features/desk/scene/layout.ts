@@ -111,6 +111,14 @@ export function placementOf(variant: DeskVariant, key: PropKey) {
   return { position: new THREE.Vector3(x, PAD_HEIGHT, z), turn };
 }
 
+export function focusPoseFor(point: THREE.Vector3, variant: DeskVariant, aspect: number): Pose {
+  const fov = FOV[variant];
+  const target = new THREE.Vector3(point.x, PAD_HEIGHT + 0.01, point.z);
+  const direction = new THREE.Vector3(0, 1, 0.22).normalize();
+  const distance = fit(0.3, 0.22, fov, aspect);
+  return { target, position: target.clone().addScaledVector(direction, distance) };
+}
+
 export function poseFor(view: DeskView, variant: DeskVariant, aspect: number): Pose {
   const layout = LAYOUTS[variant];
   const fov = FOV[variant];

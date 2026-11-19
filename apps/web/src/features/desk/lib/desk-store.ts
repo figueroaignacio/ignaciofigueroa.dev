@@ -69,6 +69,10 @@ export function panelExists(panel: DeskPanel) {
   );
 }
 
+function opensLid(panel: DeskPanel | null) {
+  return panel !== null && isLaptopPanel(panel);
+}
+
 const IDLE: DeskState = {
   mode: 'reading',
   available: false,
@@ -157,7 +161,7 @@ export const deskStore = {
       available,
       mode: available && prefersDesk() ? 'pending' : 'reading',
       panel,
-      lid: Boolean(panel),
+      lid: opensLid(panel),
       chat: false,
     });
   },
@@ -175,7 +179,7 @@ export const deskStore = {
     remember(true);
     window.scrollTo({ top: 0, behavior: 'instant' });
     const panel = panelFromHash();
-    commit({ mode: 'pending', panel, lid: Boolean(panel) });
+    commit({ mode: 'pending', panel, lid: opensLid(panel) });
   },
   leave() {
     remember(false);
@@ -192,7 +196,8 @@ export const deskStore = {
   },
   openPanel(panel: DeskPanel) {
     writeHash(panel);
-    commit({ panel, lid: true });
+    if (state.chat) window.dispatchEvent(new Event('close-chat'));
+    commit({ panel, chat: false, lid: state.lid || opensLid(panel) });
   },
   closePanel() {
     writeHash(null);
@@ -202,11 +207,16 @@ export const deskStore = {
     if (state.mode === 'reading') return;
     const panel = panelFromHash();
     if (panel === state.panel) return;
-    commit({ panel, lid: state.lid || Boolean(panel) });
+    commit({ panel, lid: state.lid || opensLid(panel) });
   },
   setChat(chat: boolean) {
     if (state.chat === chat) return;
-    commit(chat ? { chat, lid: true } : { chat });
+    if (!chat) {
+      commit({ chat });
+      return;
+    }
+    if (state.panel) writeHash(null);
+    commit({ chat, panel: null, lid: true });
   },
 };
 

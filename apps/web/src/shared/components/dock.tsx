@@ -151,9 +151,14 @@ export function Dock() {
     const handleOpenChat = () => {
       setIsChatOpen(true);
     };
+    const handleCloseChat = () => {
+      setIsChatOpen(false);
+    };
     window.addEventListener('open-chat', handleOpenChat);
+    window.addEventListener('close-chat', handleCloseChat);
     return () => {
       window.removeEventListener('open-chat', handleOpenChat);
+      window.removeEventListener('close-chat', handleCloseChat);
     };
   }, []);
 

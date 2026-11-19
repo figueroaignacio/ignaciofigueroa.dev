@@ -42,6 +42,7 @@ export interface SceneState {
   lid: boolean;
   view: DeskView;
   covered: boolean;
+  focus: DeskObjectKey | null;
   absent: DeskObjectKey[];
   hover: DeskObjectKey | null;
   theme: DeskTheme;

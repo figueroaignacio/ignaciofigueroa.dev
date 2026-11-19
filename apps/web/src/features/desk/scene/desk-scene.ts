@@ -6,6 +6,7 @@ import {
   LAYOUTS,
   placementOf,
   SCALE,
+  focusPoseFor,
   poseFor,
   type Pose,
   type PropKey,
@@ -128,6 +129,7 @@ export class DeskScene {
     lid: false,
     view: 'top',
     covered: false,
+    focus: null,
     absent: [],
     hover: null,
     theme: 'dark',
@@ -257,7 +259,11 @@ export class DeskScene {
   }
 
   private retarget() {
-    this.goal = poseFor(this.state.view, this.variant, this.width / this.height);
+    const aspect = this.width / this.height;
+    const focused = this.state.focus ? this.props.get(this.state.focus) : undefined;
+    this.goal = focused
+      ? focusPoseFor(focused.position, this.variant, aspect)
+      : poseFor(this.state.view, this.variant, aspect);
     if (!this.snapped) {
       this.position.copy(this.goal.position);
       this.target.copy(this.goal.target);
@@ -417,7 +423,7 @@ export class DeskScene {
 
   private readonly onClick = (event: MouseEvent) => {
     this.setPointer(event);
-    if (this.state.view === 'screen') {
+    if (this.state.view === 'screen' || this.state.focus) {
       this.options.onDismiss();
       return;
     }
@@ -426,7 +432,7 @@ export class DeskScene {
   };
 
   private pick(): DeskObjectKey | null {
-    if (this.state.view === 'screen') return null;
+    if (this.state.view === 'screen' || this.state.focus) return null;
     this.raycaster.setFromCamera(this.pointer, this.camera);
     const hits = this.raycaster.intersectObjects(this.pickables, true);
     for (const hit of hits) {
@@ -443,8 +449,8 @@ export class DeskScene {
   private readonly tick = (time: number) => {
     const dt = this.last ? Math.min((time - this.last) / 1000, 0.25) : 1 / 60;
     this.last = time;
-    const { view, still } = this.state;
-    const browsing = view === 'top' || view === 'desk';
+    const { view, still, focus } = this.state;
+    const browsing = !focus && (view === 'top' || view === 'desk');
 
     const lidGoal = this.state.lid ? 1 : 0;
     if (still) {

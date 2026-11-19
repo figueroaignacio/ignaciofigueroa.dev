@@ -33,6 +33,13 @@ const PEOPLE = ['joseph', 'kiefer', 'manuel', 'pia'].map(
   (name) => `/images/testimonials/${name}.jpg`,
 );
 
+const PANEL_OBJECT: Partial<Record<DeskPanel, DeskObjectKey>> = {
+  education: 'notebook',
+  contact: 'phone',
+  stack: 'books',
+  testimonials: 'photos',
+};
+
 function absentObjects() {
   return (Object.keys(OBJECT_PANEL) as DeskObjectKey[]).filter((key) => {
     const panel = OBJECT_PANEL[key];
@@ -134,12 +141,23 @@ export function DeskStage() {
       lid: desk.lid,
       view,
       covered: onScreen && onLaptop,
+      focus: !onLaptop && desk.panel ? (PANEL_OBJECT[desk.panel] ?? null) : null,
       absent,
       hover: focused,
       theme: resolvedTheme === 'light' ? 'light' : 'dark',
       still,
     };
-  }, [absent, desk.lid, desk.chat, screenPanel, focused, onScreen, resolvedTheme, still]);
+  }, [
+    absent,
+    desk.lid,
+    desk.chat,
+    desk.panel,
+    screenPanel,
+    focused,
+    onScreen,
+    resolvedTheme,
+    still,
+  ]);
 
   const reachable = useMemo(() => LABELLED.filter((key) => !absent.includes(key)), [absent]);
 
