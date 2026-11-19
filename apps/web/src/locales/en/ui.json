@@ -43,6 +43,16 @@
     "message": "new message",
     "contributions": "contributions",
     "back": "back to the desk",
-    "apps": "Laptop apps"
+    "apps": "Laptop apps",
+    "folder": {
+      "close": "close the folder",
+      "note": "Updated Nov 2026. One page, no fluff.",
+      "sign": "— Nacho",
+      "meta": "resume · 1 page · pdf",
+      "download": "Download resume",
+      "open": "Open in a new tab",
+      "alt": "First page of Ignacio Figueroa’s resume",
+      "languages": "Resume language"
+    }
   }
 }

@@ -14,7 +14,6 @@ const TITLE_KEY: Partial<Record<Tab, string>> = {
   about: 'sectionIndex.about',
   experience: 'sectionIndex.experience',
   contributions: 'desk.contributions',
-  cv: 'desk.cv',
   ask: 'desk.ask',
 };
 

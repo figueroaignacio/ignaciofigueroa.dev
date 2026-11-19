@@ -233,8 +233,7 @@ html[data-desk='on']:is(
     [data-desk-panel='projects'],
     [data-desk-panel='about'],
     [data-desk-panel='experience'],
-    [data-desk-panel='contributions'],
-    [data-desk-panel='cv']
+    [data-desk-panel='contributions']
   )
   .desk-host {
   visibility: visible;
@@ -259,8 +258,7 @@ html[data-desk-fit='screen'][data-desk='on']:is(
     [data-desk-panel='projects'],
     [data-desk-panel='about'],
     [data-desk-panel='experience'],
-    [data-desk-panel='contributions'],
-    [data-desk-panel='cv']
+    [data-desk-panel='contributions']
   )
   .desk-host,
 html[data-desk-fit='screen'][data-desk='on'] .chat-rail {
@@ -528,6 +526,7 @@ a.desk-pill:hover {
 }
 
 html[data-desk='on']:is(
+    [data-desk-panel='cv'],
     [data-desk-panel='education'],
     [data-desk-panel='stack'],
     [data-desk-panel='testimonials'],
@@ -829,6 +828,218 @@ html[data-desk='on']:is(
   color: #1d6f9c;
 }
 
+.desk-folder {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.desk-folder-spread {
+  --kraft: linear-gradient(160deg, #e3c48c, #d2ad6f 60%, #c49c5c);
+  position: relative;
+  display: grid;
+  flex: 0 1 60rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  aspect-ratio: 960 / 640;
+  max-block-size: calc(100dvh - 11rem);
+  rotate: -1.5deg;
+  filter: drop-shadow(6px 14px 30px oklch(0% 0 0 / 0.5));
+  animation: desk-folder-in 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.desk-folder-leaf {
+  position: relative;
+  min-block-size: 0;
+  background: var(--kraft);
+}
+
+.desk-folder-left {
+  border-radius: 0.625rem 0.25rem 0.25rem 0.625rem;
+  overflow: hidden;
+}
+
+.desk-folder-right {
+  border-radius: 0.25rem 0.625rem 0.625rem 0.25rem;
+  box-shadow: inset 14px 0 18px -14px oklch(35% 0.06 70 / 0.55);
+}
+
+.desk-folder-tab {
+  position: absolute;
+  inset-block-start: -1.75rem;
+  inset-inline-end: 12%;
+  inline-size: 40%;
+  block-size: 1.875rem;
+  border-radius: 0.625rem 0.625rem 0 0;
+  background: #d8b678;
+}
+
+.desk-folder-note {
+  position: absolute;
+  inset-block-start: 11%;
+  inset-inline-start: 10%;
+  inline-size: 68%;
+  padding: 1rem 1.125rem;
+  background: #bfe3f6;
+  color: #0c2a3a;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+  rotate: -3deg;
+  box-shadow: 2px 4px 10px oklch(0% 0 0 / 0.25);
+}
+
+.desk-folder-note span {
+  display: block;
+  margin-block-start: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.71875rem;
+}
+
+.desk-folder-card {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 14%;
+  display: flex;
+  inline-size: 56%;
+  aspect-ratio: 1.75;
+  flex-direction: column;
+  padding: 0.875rem 1rem;
+  background: #fbfaf6;
+  color: #141414;
+  rotate: 4deg;
+  box-shadow: 2px 4px 10px oklch(0% 0 0 / 0.3);
+}
+
+.desk-folder-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.desk-folder-card-name i {
+  display: inline-block;
+  inline-size: 0.3rem;
+  block-size: 0.3rem;
+  margin-inline-start: 0.125rem;
+  background: #3a8fc0;
+}
+
+.desk-folder-pocket {
+  position: absolute;
+  inset-inline: 4%;
+  inset-block-end: 0;
+  block-size: 33%;
+  clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 100%);
+  background: linear-gradient(170deg, #c9a262, #b98f4f);
+  box-shadow: inset 0 2px 0 oklch(100% 0 0 / 0.18);
+}
+
+.desk-folder-page {
+  position: absolute;
+  inset: 5% 8% 5% 9%;
+  display: block;
+  overflow: hidden;
+  background: #fbfaf6;
+  rotate: 1.5deg;
+  box-shadow:
+    1px 2px 3px oklch(0% 0 0 / 0.35),
+    10px 16px 30px oklch(0% 0 0 / 0.3);
+  transition:
+    rotate 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    scale 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desk-folder-page:hover {
+  rotate: 0deg;
+  scale: 1.02;
+}
+
+.desk-folder-page:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 4px;
+}
+
+.desk-folder-page img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.desk-folder-clip {
+  position: absolute;
+  inset-block-start: 2.5%;
+  inset-inline-end: 22%;
+  inline-size: 1.375rem;
+  block-size: 4rem;
+  border: 3px solid #a9acb1;
+  border-radius: 0.75rem;
+  rotate: 4deg;
+  pointer-events: none;
+}
+
+.desk-folder-actions {
+  display: flex;
+  flex: none;
+  inline-size: 15.75rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  box-shadow: var(--elevation-lg);
+}
+
+.desk-folder-action {
+  display: flex;
+  min-block-size: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-inline: 1.125rem;
+  border-radius: 999px;
+  background: var(--desk-card);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition: background-color 200ms ease;
+}
+
+.desk-folder-action:hover {
+  background: var(--desk-raised);
+}
+
+.desk-folder-primary {
+  background: var(--brand);
+  color: var(--brand-foreground);
+}
+
+.desk-folder-primary:hover {
+  background: color-mix(in oklch, var(--brand) 88%, white);
+  color: var(--brand-foreground);
+}
+
+.desk-folder-languages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: var(--desk-page);
+}
+
+.desk-folder-languages button {
+  min-block-size: 2.25rem;
+  border-radius: 999px;
+  color: var(--muted-foreground);
+  font-size: 0.84375rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.desk-folder-languages button[aria-checked='true'] {
+  background: var(--desk-raised);
+  color: var(--foreground);
+}
+
 .desk-contact {
   flex-direction: row;
   align-items: center;
@@ -892,8 +1103,7 @@ html[data-desk='on']:is(
 html[data-desk-panel='experience'] .desk-host > section:not(#experience),
 html[data-desk-panel='projects'] .desk-host > section:not(#projects),
 html[data-desk-panel='about'] .desk-host > section:not(#about, #ask-ai),
-html[data-desk-panel='contributions'] .desk-host > section:not(#contributions, #github),
-html[data-desk-panel='cv'] .desk-host > section:not(#cv) {
+html[data-desk-panel='contributions'] .desk-host > section:not(#contributions, #github) {
   display: none;
 }
 
@@ -927,9 +1137,30 @@ html[data-desk] .desk-host > section {
     justify-content: flex-start;
   }
 
-  .desk-contact {
+  .desk-contact,
+  .desk-folder {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .desk-folder-spread {
+    grid-template-columns: minmax(0, 1fr);
+    flex: none;
+    aspect-ratio: 480 / 640;
+    max-block-size: none;
+    rotate: 0deg;
+  }
+
+  .desk-folder-left {
+    display: none;
+  }
+
+  .desk-folder-right {
+    border-radius: 0.625rem;
+  }
+
+  .desk-folder-actions {
+    inline-size: auto;
   }
 
   .desk-contact-intro,
@@ -990,6 +1221,14 @@ html[data-desk] .desk-host > section {
   }
 }
 
+@keyframes desk-folder-in {
+  from {
+    opacity: 0;
+    scale: 0.9;
+    rotate: -6deg;
+  }
+}
+
 @keyframes desk-quote-in {
   from {
     opacity: 0;
@@ -1043,6 +1282,7 @@ html[data-desk] .desk-host > section {
   html[data-desk='on'][data-desk-panel] .desk-host,
   .desk-object,
   .desk-book,
+  .desk-folder-spread,
   .desk-quote,
   .desk-phone,
   .desk-notebook,

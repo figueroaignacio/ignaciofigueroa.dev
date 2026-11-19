@@ -38,6 +38,7 @@ const PANEL_OBJECT: Partial<Record<DeskPanel, DeskObjectKey>> = {
   contact: 'phone',
   stack: 'books',
   testimonials: 'photos',
+  cv: 'sheet',
 };
 
 function absentObjects() {

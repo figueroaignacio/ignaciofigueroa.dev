@@ -3,9 +3,10 @@ import { facingUp, slab, solid } from '../geometry';
 import type { Materials } from '../materials';
 import {
   badgeTexture,
+  folderLabelTexture,
+  kraftTexture,
   keycapTexture,
   notebookLabelTexture,
-  paperTexture,
   phoneTexture,
 } from '../textures';
 import type { SceneAssets, SceneFonts, SceneStrings } from '../types';
@@ -174,20 +175,30 @@ export function createPhone(materials: Materials, fonts: SceneFonts, strings: Sc
   return group;
 }
 
-export function createSheet(fonts: SceneFonts, strings: SceneStrings) {
+export function createFolder(fonts: SceneFonts, strings: SceneStrings) {
   const group = new THREE.Group();
-  const blank = new THREE.Mesh(
-    facingUp(0.168, 0.2376),
-    new THREE.MeshStandardMaterial({ color: 0xe2dfd6, roughness: 0.95 }),
+  const kraft = new THREE.MeshStandardMaterial({ map: kraftTexture(11), roughness: 0.92 });
+  const cover = new THREE.MeshStandardMaterial({
+    map: kraftTexture(23),
+    color: 0xfff4e2,
+    roughness: 0.9,
+  });
+  const back = solid(new THREE.Mesh(slab(0.19, 0.25, 0.0012, 0.006), kraft));
+  const tab = solid(new THREE.Mesh(slab(0.07, 0.03, 0.0012, 0.006), kraft));
+  tab.position.set(0.045, 0, -0.128);
+  const paper = solid(
+    new THREE.Mesh(
+      slab(0.176, 0.236, 0.0008, 0.002),
+      new THREE.MeshStandardMaterial({ color: 0xf4f2ec, roughness: 0.95 }),
+    ),
   );
-  blank.position.y = 0.0004;
-  blank.rotation.y = -0.06;
-  blank.castShadow = true;
-  blank.receiveShadow = true;
-  const sheet = printed(paperTexture(fonts, strings), 0.168, 0.2376, 0.92);
-  sheet.position.y = 0.001;
-  sheet.castShadow = true;
-  group.add(blank, sheet);
+  paper.position.set(0.004, 0.0012, -0.006);
+  paper.rotation.y = -0.025;
+  const front = solid(new THREE.Mesh(slab(0.19, 0.236, 0.0012, 0.006), cover));
+  front.position.set(0, 0.0021, 0.007);
+  const label = printed(folderLabelTexture(fonts, strings), 0.104, 0.035, 0.85);
+  label.position.set(-0.034, 0.0034, -0.068);
+  group.add(back, tab, paper, front, label);
   return group;
 }
 

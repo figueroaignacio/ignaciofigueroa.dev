@@ -56,7 +56,6 @@ const LAPTOP_PANELS: ReadonlySet<DeskPanel> = new Set([
   'about',
   'experience',
   'contributions',
-  'cv',
 ]);
 
 export function isLaptopPanel(panel: DeskPanel) {

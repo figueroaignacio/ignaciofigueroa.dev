@@ -288,34 +288,6 @@ export function keycapTexture(fonts: SceneFonts) {
   });
 }
 
-export function paperTexture(fonts: SceneFonts, strings: SceneStrings) {
-  return paint(600, 848, (g, w, h) => {
-    const rand = prng(52);
-    g.fillStyle = '#f4f2ec';
-    g.fillRect(0, 0, w, h);
-    g.fillStyle = INK;
-    g.textBaseline = 'top';
-    g.font = `700 44px ${fonts.sans}`;
-    g.fillText(strings.name, 60, 64);
-    g.fillStyle = '#3d3d3d';
-    g.font = `400 24px ${fonts.sans}`;
-    g.fillText(`${strings.role} · ${strings.city}`, 60, 122);
-    let y = 196;
-    for (let block = 0; block < 3; block++) {
-      g.fillStyle = INK;
-      g.fillRect(60, y, 150 + rand() * 120, 10);
-      y += 30;
-      const lines = 5 + Math.floor(rand() * 3);
-      for (let i = 0; i < lines; i++) {
-        g.fillStyle = '#b3b0a8';
-        g.fillRect(60, y, 300 + rand() * 180, 6);
-        y += 24;
-      }
-      y += 26;
-    }
-  });
-}
-
 export function badgeTexture(
   fonts: SceneFonts,
   strings: SceneStrings,
@@ -396,6 +368,35 @@ export function phoneTexture(fonts: SceneFonts, strings: SceneStrings) {
     g.fillStyle = '#5b5e64';
     g.fillRect(50, h / 2 + 4, w - 100, 12);
     g.fillRect(50, h / 2 + 34, (w - 100) * 0.62, 12);
+  });
+}
+
+export function kraftTexture(seed: number) {
+  return paint(512, 512, (g, w, h) => {
+    const rand = prng(seed);
+    g.fillStyle = '#d6b273';
+    g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 2600; i++) {
+      const light = rand() > 0.5;
+      g.fillStyle = light ? 'rgba(255, 236, 196, 0.18)' : 'rgba(120, 82, 30, 0.14)';
+      g.fillRect(rand() * w, rand() * h, 1 + rand() * 6, 1);
+    }
+  });
+}
+
+export function folderLabelTexture(fonts: SceneFonts, strings: SceneStrings) {
+  return paint(520, 176, (g, w) => {
+    g.fillStyle = '#f4f2ec';
+    g.fillRect(0, 0, w, 176);
+    g.fillStyle = INK;
+    g.textBaseline = 'top';
+    g.font = `800 64px ${fonts.sans}`;
+    g.fillText('CV', 28, 22);
+    g.fillStyle = BRAND;
+    g.fillRect(124, 70, 14, 14);
+    g.fillStyle = '#3d3d3d';
+    g.font = `400 26px ${fonts.mono}`;
+    g.fillText(strings.name.toLowerCase(), 28, 112);
   });
 }
 

@@ -7,10 +7,11 @@ import { deskStore } from '../lib/desk-store';
 interface DeskObjectPanelProps {
   path: string;
   label: string;
+  closeLabel?: string;
   children: ReactNode;
 }
 
-export function DeskObjectPanel({ path, label, children }: DeskObjectPanelProps) {
+export function DeskObjectPanel({ path, label, closeLabel, children }: DeskObjectPanelProps) {
   const t = useTranslations('ui.desk');
 
   return (
@@ -27,7 +28,7 @@ export function DeskObjectPanel({ path, label, children }: DeskObjectPanelProps)
           {path}
         </span>
         <button type="button" className="desk-pill" onClick={deskStore.closePanel}>
-          {t('back')}
+          {closeLabel ?? t('back')}
           <kbd>esc</kbd>
         </button>
       </header>

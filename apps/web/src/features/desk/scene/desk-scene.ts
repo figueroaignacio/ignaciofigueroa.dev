@@ -22,7 +22,7 @@ import {
   createMouse,
   createNotebook,
   createPhone,
-  createSheet,
+  createFolder,
   type AskKey,
 } from './objects/props';
 import { createSurface, type Surface } from './objects/surface';
@@ -185,7 +185,7 @@ export class DeskScene {
     this.register('badge', createBadge(this.materials, fonts, strings, assets, this.wake));
     this.register('notebook', createNotebook(this.materials, fonts));
     this.register('phone', createPhone(this.materials, fonts, strings));
-    this.register('sheet', createSheet(fonts, strings));
+    this.register('sheet', createFolder(fonts, strings));
     this.register('mouse', createMouse(this.materials));
     this.register('earbuds', createEarbuds(this.materials));
     this.register('books', createBooks(this.materials, fonts));

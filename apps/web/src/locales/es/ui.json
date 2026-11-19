@@ -43,6 +43,16 @@
     "message": "mensaje nuevo",
     "contributions": "contribuciones",
     "back": "volver al escritorio",
-    "apps": "Apps de la laptop"
+    "apps": "Apps de la laptop",
+    "folder": {
+      "close": "cerrar la carpeta",
+      "note": "Actualizado en nov 2026. Una página, sin relleno.",
+      "sign": "— Nacho",
+      "meta": "cv · 1 página · pdf",
+      "download": "Descargar CV",
+      "open": "Abrir en otra pestaña",
+      "alt": "Primera página del CV de Ignacio Figueroa",
+      "languages": "Idioma del CV"
+    }
   }
 }
