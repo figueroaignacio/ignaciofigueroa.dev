@@ -9,6 +9,7 @@ export interface DeskTestimonial {
   id: string;
   name: string;
   role: string;
+  company: string | null;
   testimonial: string;
   avatar: string | null;
   url: string | null;
@@ -80,26 +81,31 @@ export function DeskPhotos({ path, items }: { path: string; items: DeskTestimoni
           })}
         </div>
 
-        <div aria-live="polite" className="desk-island desk-quote">
-          <div className="desk-card flex flex-col gap-1.5 p-5">
-            <span className="font-code text-xs text-muted-foreground">{t('title')}</span>
-            <h2 className="text-2xl leading-tight font-bold tracking-[-0.03em]">{current.name}</h2>
-            <span className="text-sm text-muted-foreground">{current.role}</span>
+        <article key={current.id} aria-live="polite" className="desk-quote">
+          <span aria-hidden="true" className="desk-quote-tape" />
+          <span aria-hidden="true" className="desk-quote-mark">
+            “
+          </span>
+          <blockquote className="desk-quote-text">{current.testimonial}</blockquote>
+          <footer className="desk-quote-sign">
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <span className="text-base font-bold tracking-[-0.015em]">{current.name}</span>
+              <span className="font-code text-xs text-muted-foreground">
+                {[current.role, current.company].filter(Boolean).join(' · ')}
+              </span>
+            </div>
             {current.url && (
               <a
                 href={current.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="desk-pill mt-auto w-fit"
+                className="desk-pill shrink-0 font-sans text-sm font-medium"
               >
                 LinkedIn ↗
               </a>
             )}
-          </div>
-          <blockquote className="m-0 p-5 text-lg leading-normal font-medium tracking-[-0.012em] text-pretty">
-            {current.testimonial}
-          </blockquote>
-        </div>
+          </footer>
+        </article>
       </div>
     </DeskObjectPanel>
   );

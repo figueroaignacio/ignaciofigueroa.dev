@@ -11,6 +11,7 @@ export async function DeskObjects({ locale }: { locale: Locale }) {
         id: item.id,
         name: item.name,
         role: item.role,
+        company: item.company,
         testimonial: item.testimonial,
         avatar: item.avatar,
         url: item.url,
