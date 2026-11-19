@@ -12,7 +12,6 @@ import {
   type IconComponent,
 } from '@/shared/components/icons';
 import { LogoutButton } from '@/features/auth/ui/logout-button';
-import { LogoMark } from '@/shared/components/logo';
 import { cn } from '@/shared/lib/cn';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -106,7 +105,6 @@ export function AdminSidebar({ email, counts }: AdminSidebarProps) {
           href="/admin"
           className="flex items-center gap-2 text-[15px] font-semibold tracking-tight"
         >
-          <LogoMark size={20} className="text-foreground/70" />
           cms
         </Link>
         <span className="type-label text-muted-foreground">/admin</span>

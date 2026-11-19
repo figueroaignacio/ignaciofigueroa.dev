@@ -1,6 +1,5 @@
 import { routing } from '@/i18n/routing';
 import { Dock } from '@/shared/components/dock';
-import { LogoMark } from '@/shared/components/logo';
 import { Link } from '@/i18n/navigation';
 import { hasLocale, type Locale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -25,14 +24,11 @@ export default async function ArticleLayout({ children, params }: ArticleLayoutP
       <div className="page-frame-outer flex flex-1 flex-col">
         <header className="page-frame">
           <div className="frame-column flex items-center justify-between gap-4 py-6">
-            <Link href="/" className="group flex min-w-0 items-center gap-3">
-              <LogoMark
-                size={24}
-                className="logo-mark shrink-0 text-foreground/70 transition-colors duration-300 group-hover:text-foreground"
-              />
-              <span className="truncate font-mono text-[11px] text-muted-foreground">
-                {t('components.logo.tagline')}
-              </span>
+            <Link
+              href="/"
+              className="text-[15px] font-medium tracking-[-0.015em] text-foreground/70 transition-colors hover:text-foreground"
+            >
+              {t('sections.home.name')}
             </Link>
           </div>
         </header>
