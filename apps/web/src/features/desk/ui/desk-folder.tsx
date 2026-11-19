@@ -8,12 +8,12 @@ import { DeskObjectPanel } from './desk-object-panel';
 const CV = {
   es: {
     label: 'Español',
-    pdf: '/pdf/cv_ignacio_figueroa_desarrollador_fullstack.pdf',
+    pdf: '/pdf/cv_ignacio_figueroa_frontend_product_engineer_es.pdf',
     page: '/images/desk/cv-es.webp',
   },
   en: {
     label: 'English',
-    pdf: '/pdf/cv_ignacio_figueroa_fullstack_developer.pdf',
+    pdf: '/pdf/cv_ignacio_figueroa_frontend_product_engineer_en.pdf',
     page: '/images/desk/cv-en.webp',
   },
 } as const;
