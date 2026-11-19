@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { DeskObjectPanel } from './desk-object-panel';
 
 export interface DeskTestimonial {
@@ -14,7 +14,14 @@ export interface DeskTestimonial {
   url: string | null;
 }
 
-const TURNS = ['-5deg', '3deg', '-2deg', '4deg', '-3deg', '2deg'];
+const SCATTER = [
+  { turn: '-7deg', drop: '0.75rem' },
+  { turn: '5deg', drop: '-0.5rem' },
+  { turn: '-3deg', drop: '1.5rem' },
+  { turn: '8deg', drop: '0rem' },
+  { turn: '-5deg', drop: '1rem' },
+  { turn: '3deg', drop: '-0.25rem' },
+];
 
 function initials(name: string) {
   return name
@@ -38,6 +45,7 @@ export function DeskPhotos({ path, items }: { path: string; items: DeskTestimoni
         <div role="tablist" aria-label={t('title')} className="desk-photos">
           {items.map((item, index) => {
             const selected = index === picked;
+            const scatter = SCATTER[index % SCATTER.length]!;
             return (
               <button
                 key={item.id}
@@ -45,7 +53,13 @@ export function DeskPhotos({ path, items }: { path: string; items: DeskTestimoni
                 role="tab"
                 aria-selected={selected}
                 className="desk-photo"
-                style={{ rotate: selected ? '0deg' : TURNS[index % TURNS.length] }}
+                style={
+                  {
+                    '--turn': scatter.turn,
+                    '--drop': scatter.drop,
+                    zIndex: selected ? items.length + 1 : index + 1,
+                  } as CSSProperties
+                }
                 onClick={() => setPicked(index)}
               >
                 <span className="desk-photo-frame">
@@ -55,10 +69,12 @@ export function DeskPhotos({ path, items }: { path: string; items: DeskTestimoni
                     <span aria-hidden="true">{initials(item.name)}</span>
                   )}
                 </span>
-                <span className="mt-3 block text-base leading-tight font-bold tracking-[-0.02em]">
+                <span className="mt-2 block truncate text-sm leading-tight font-bold tracking-[-0.02em]">
                   {item.name}
                 </span>
-                <span className="font-code block text-[0.6875rem] text-[#3d3d3d]">{item.role}</span>
+                <span className="font-code block truncate text-[0.6875rem] text-[#3d3d3d]">
+                  {item.role}
+                </span>
               </button>
             );
           })}

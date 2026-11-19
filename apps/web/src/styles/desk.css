@@ -676,31 +676,42 @@ html[data-desk='on']:is(
 .desk-photos {
   display: flex;
   justify-content: center;
-  gap: clamp(1rem, 3vw, 2.75rem);
-  overflow-x: auto;
-  padding: 1.5rem 0.5rem 0.5rem;
+  padding: 2.5rem 1rem 1.5rem;
 }
 
 .desk-photo {
+  position: relative;
   flex: 0 0 auto;
-  inline-size: clamp(9.5rem, 15vw, 13.75rem);
-  padding: 0.875rem 0.875rem 1rem;
+  inline-size: clamp(7rem, 11vw, 9.5rem);
+  margin-inline-start: clamp(-2.25rem, -2.5vw, -1rem);
+  padding: 0.5625rem 0.5625rem 0.75rem;
   background: #f4f2ec;
   color: #141414;
   text-align: start;
   cursor: pointer;
+  rotate: var(--turn);
+  translate: 0 var(--drop);
   box-shadow:
-    2px 3px 4px oklch(0% 0 0 / 0.55),
-    18px 26px 36px oklch(0% 0 0 / 0.5);
+    1px 2px 3px oklch(0% 0 0 / 0.55),
+    12px 18px 28px oklch(0% 0 0 / 0.45);
   transition:
     rotate 350ms cubic-bezier(0.16, 1, 0.3, 1),
     translate 350ms cubic-bezier(0.16, 1, 0.3, 1),
     scale 350ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.desk-photo:first-child {
+  margin-inline-start: 0;
+}
+
+.desk-photo:hover {
+  translate: 0 calc(var(--drop) - 0.5rem);
+}
+
 .desk-photo[aria-selected='true'] {
-  translate: 0 -1.125rem;
-  scale: 1.06;
+  rotate: 0deg;
+  translate: 0 -1.25rem;
+  scale: 1.12;
 }
 
 .desk-photo:focus-visible {
@@ -884,7 +895,12 @@ html[data-desk] .desk-host > section {
   }
 
   .desk-photos {
-    justify-content: flex-start;
+    padding-inline: 0.5rem;
+  }
+
+  .desk-photo {
+    inline-size: clamp(5rem, 22vw, 6.5rem);
+    margin-inline-start: -2rem;
   }
 
   .desk-quote {
