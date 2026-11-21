@@ -6,7 +6,7 @@ export async function AskAiSection() {
   const t = await getTranslations('sections.askAi');
 
   return (
-    <Section id="ask-ai" title={t('title')}>
+    <Section id="ask-ai" title={t('title')} tone="brand">
       <div className="flex flex-col gap-8" data-reveal>
         <p className="max-w-[52ch] text-lg leading-snug font-medium tracking-[-0.015em] text-pretty">
           {t('description')}

@@ -37,7 +37,7 @@ export async function AboutSection() {
   ];
 
   return (
-    <Section id="about" title={tSection('title')}>
+    <Section id="about" title={tSection('title')} tone="brand">
       <div className="flex flex-col gap-10" data-reveal>
         <header className="flex items-center gap-4 sm:gap-5">
           <Image

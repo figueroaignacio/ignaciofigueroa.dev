@@ -15,6 +15,7 @@ interface SectionShellProps {
    * it off the section edge.
    */
   accessory?: React.ReactNode;
+  tone?: 'brand';
 }
 
 export function SectionShell({
@@ -24,11 +25,13 @@ export function SectionShell({
   className,
   busy,
   accessory,
+  tone,
 }: SectionShellProps) {
   return (
     <section
       id={id}
       className={cn('section-island scroll-mt-20', className)}
+      data-tone={tone}
       aria-hidden={busy || undefined}
       aria-busy={busy || undefined}
     >
@@ -47,14 +50,16 @@ interface SectionProps {
   children: React.ReactNode;
   className?: string;
   accessory?: React.ReactNode;
+  tone?: 'brand';
 }
 
-export function Section({ id, title, children, className, accessory }: SectionProps) {
+export function Section({ id, title, children, className, accessory, tone }: SectionProps) {
   return (
     <SectionShell
       id={id}
       className={className}
       accessory={accessory}
+      tone={tone}
       label={
         <h2 className="type-section">
           <ScrambleText text={title} mode="in-view" />

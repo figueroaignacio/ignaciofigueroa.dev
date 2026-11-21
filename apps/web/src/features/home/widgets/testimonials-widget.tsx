@@ -22,7 +22,7 @@ export function TestimonialsWidget({ id, title = '', testimonials }: Testimonial
   if (testimonials === null || testimonials.length === 0) return null;
 
   return (
-    <Section id={id} title={title}>
+    <Section id={id} title={title} tone="brand">
       <TestimonialsList testimonials={testimonials} />
     </Section>
   );

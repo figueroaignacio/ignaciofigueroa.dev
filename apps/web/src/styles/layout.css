@@ -55,6 +55,27 @@
     background: var(--island);
   }
 
+  html:not([data-desk]) .section-island {
+    margin-inline: calc(0.625rem - var(--frame-pad));
+  }
+
+  html:not([data-desk]) .section-island[data-tone='brand'] {
+    --background: var(--primary);
+    --foreground: var(--primary-foreground);
+    --muted-foreground: color-mix(in oklch, var(--primary-foreground) 82%, var(--primary));
+    --muted-strong: var(--primary-foreground);
+    --secondary: color-mix(in oklch, oklch(100% 0 0) 72%, var(--primary));
+    --secondary-foreground: var(--primary-foreground);
+    --accent: color-mix(in oklch, var(--primary-foreground) 10%, var(--primary));
+    --border: color-mix(in oklch, var(--primary-foreground) 24%, var(--primary));
+    --rule: color-mix(in oklch, var(--primary-foreground) 24%, var(--primary));
+    --brand: var(--primary-foreground);
+    --brand-text: var(--primary-foreground);
+    --brand-foreground: var(--primary);
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
   .desk-host {
     display: flex;
     flex-direction: column;
