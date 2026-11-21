@@ -76,7 +76,7 @@ function TestimonialCard({
         </figcaption>
         <blockquote
           className={cn(
-            'm-0 rounded-xl rounded-tl-none bg-(--stage) px-5 py-4 text-pretty text-inverse',
+            'testimonial-bubble m-0 rounded-xl rounded-tl-none bg-(--stage) px-5 py-4 text-pretty text-inverse',
             lead
               ? 'text-lg leading-snug font-medium tracking-[-0.015em]'
               : 'text-[15px] leading-relaxed',
@@ -98,7 +98,7 @@ export function TestimonialsList({ testimonials }: { testimonials: TestimonialDa
 
   return (
     <div className="relative">
-      <div className="flex flex-col gap-y-8" data-reveal>
+      <div className="flex flex-col gap-y-8" data-reveal="bubbles">
         {visible.map((testimonial, index) => (
           <TestimonialCard key={testimonial.id} testimonial={testimonial} lead={index === 0} />
         ))}

@@ -1,5 +1,6 @@
 'use client';
 
+import { useCountUp } from '@/shared/hooks/use-count-up';
 import { useQueryTab } from '@/shared/hooks/use-query-tab';
 import { useTranslations } from 'next-intl';
 import { GithubContributionCalendar } from './github-contribution-calendar';
@@ -16,15 +17,18 @@ export function GithubStatsClient({
   const t = useTranslations('sections.github');
   const [activeYear, setActiveYear] = useQueryTab('year', availableYears.map(String), initialYear);
   const currentYearData = years[Number(activeYear)] || { totalContributions: 0, contributions: [] };
+  const [totalRef, total] = useCountUp<HTMLDivElement>(currentYearData.totalContributions);
 
   return (
     <div className="flex flex-col gap-8" data-reveal>
       <p className="max-w-[52ch] text-[15px] leading-relaxed">{t('description')}</p>
       <div className="flex flex-wrap items-end justify-between gap-6">
-        <GithubStatsCard
-          title={`${t('stats.contributions')} (${activeYear})`}
-          value={currentYearData.totalContributions.toLocaleString()}
-        />
+        <div ref={totalRef}>
+          <GithubStatsCard
+            title={`${t('stats.contributions')} (${activeYear})`}
+            value={total.toLocaleString()}
+          />
+        </div>
         <GithubYearTabs
           activeYear={activeYear}
           availableYears={availableYears}

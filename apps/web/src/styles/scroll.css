@@ -39,3 +39,113 @@
 [data-reveal] > :nth-child(n + 7) {
   --i: 6;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    html:not([data-desk]) .section-island {
+      animation: island-open linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 65%;
+    }
+
+    html:not([data-desk]) [data-reveal] > *,
+    html:not([data-desk]).reveal-ready [data-reveal]:not([data-revealed]) > * {
+      opacity: 1;
+      translate: none;
+      transition: none;
+    }
+
+    html:not([data-desk]) [data-reveal]:not([data-reveal='bubbles']) > * {
+      animation: content-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+
+    html:not([data-desk]) [data-slot='timeline-separator'] {
+      transform-origin: top;
+      animation: line-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 55%;
+    }
+
+    html:not([data-desk]) [data-slot='timeline-indicator'] {
+      animation: dot-pop linear both;
+      animation-timeline: view();
+      animation-range: entry 40% entry 80%;
+    }
+
+    html:not([data-desk]) .stage-drift {
+      animation: media-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    html:not([data-desk]) .testimonial-bubble {
+      transform-origin: 0 0;
+      animation: bubble-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes island-open {
+  from {
+    clip-path: inset(0 6% round 2.75rem);
+  }
+  99% {
+    clip-path: inset(0 0 round var(--radius-xl));
+  }
+  to {
+    clip-path: none;
+  }
+}
+
+@keyframes content-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.875rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes line-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes dot-pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes media-parallax {
+  from {
+    transform: translateY(-1.375rem) scale(1.08);
+  }
+  to {
+    transform: translateY(1.375rem) scale(1.08);
+  }
+}
+
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.625rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
