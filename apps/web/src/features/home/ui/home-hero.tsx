@@ -1,5 +1,5 @@
 import { DeskEnterLink } from '@/features/desk/ui/desk-enter-link';
-import { FileIcon } from '@/shared/components/icons';
+import { FileIcon, HigoIcon } from '@/shared/components/icons';
 import { ScrambleText } from '@/shared/components/scramble-text';
 import { LinkedInIcon } from '@/shared/components/tech-icons';
 import { GitHubIcon } from '@/shared/components/tech-icons/github-icon';
@@ -27,6 +27,11 @@ export async function HomeHero() {
     <div className="hero-island">
       <header className="hero-sheet frame-column">
         <div className="my-auto flex flex-col">
+          <HigoIcon
+            cut="regular"
+            className="hero-rise mb-7 size-9"
+            style={{ '--d': '60ms' } as React.CSSProperties}
+          />
           <h1 className="type-hero hero-rise" style={{ '--d': '120ms' } as React.CSSProperties}>
             <ScrambleText text={firstName} />
             <br />

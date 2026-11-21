@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import { slab } from '../geometry';
+import { facingUp, slab } from '../geometry';
 import type { Materials } from '../materials';
-import { fabricTexture, woodTexture } from '../textures';
+import { debossTexture, fabricTexture, woodTexture } from '../textures';
 
 export interface Surface {
   group: THREE.Group;
@@ -37,12 +37,28 @@ export function createSurface(materials: Materials): Surface {
 
   fabric.repeat.set(15, 15);
 
+  const higo = new THREE.Mesh(
+    facingUp(0.03, 0.03),
+    new THREE.MeshStandardMaterial({
+      map: debossTexture(),
+      transparent: true,
+      depthWrite: false,
+      roughness: 0.96,
+      metalness: 0,
+      polygonOffset: true,
+      polygonOffsetFactor: -2,
+      polygonOffsetUnits: -2,
+    }),
+  );
+  higo.receiveShadow = true;
+
   const setPad = (width: number, depth: number, x: number, z: number) => {
     pad.geometry.dispose();
     pad.geometry = slab(width, depth, 0.0035, 0.02, 0.0008);
     pad.position.set(x, 0, z);
+    higo.position.set(x - width / 2 + width * 0.35, 0.0036, z + depth / 2 - 0.028);
   };
 
-  group.add(wood, wall, pad);
+  group.add(wood, wall, pad, higo);
   return { group, setPad };
 }

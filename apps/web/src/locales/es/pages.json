@@ -4,7 +4,7 @@
     "formTitle": "Escribir un mensaje"
   },
   "notFound": {
-    "title": "Página no encontrada",
+    "title": "Acá adentro no hay nada.",
     "description": "Esta página no existe o fue movida. Volvamos a donde estabas.",
     "codeBlockTitle": "terminal",
     "codeBlockContent": "$ git log --oneline {filename}\nfatal: bad default revision 'HEAD'\n\n$ find . -name '{query}*'\n[sin resultados]\n\n# parece que esta ruta nunca se deployeó.",

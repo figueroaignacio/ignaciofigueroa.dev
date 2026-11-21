@@ -173,6 +173,15 @@ html[data-desk='pending'] .desk-stage .desk-head {
   background: var(--brand);
 }
 
+.desk-loader {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 4.75rem;
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
 .desk-note {
   position: absolute;
   inset-block-end: 2.25rem;
@@ -336,9 +345,10 @@ html[data-desk-panel] .desk-host > section > .frame-column {
   background: #6b6b6b;
 }
 
-.desk-workspaces i:first-child {
-  inline-size: 1.125rem;
-  background: #f5f5f5;
+.desk-activities {
+  inline-size: 0.75rem;
+  block-size: 0.75rem;
+  color: #f5f5f5;
 }
 
 .desk-tray {

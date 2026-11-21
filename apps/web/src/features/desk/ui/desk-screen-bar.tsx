@@ -86,7 +86,7 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
     <div className="desk-browser">
       <div className="desk-topbar" aria-hidden="true">
         <span className="desk-workspaces">
-          <i />
+          <HigoIcon className="desk-activities" />
           <i />
           <i />
         </span>

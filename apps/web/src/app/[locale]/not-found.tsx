@@ -1,6 +1,7 @@
 'use client';
 
-import { ChevronLeftIcon, HomeIcon } from '@/shared/components/icons';
+import { ChevronLeftIcon, HigoIcon } from '@/shared/components/icons';
+import { HigoSplit } from '@/shared/components/higo-split';
 import { AssistantAvatar } from '@/features/assistant/ui/assistant-avatar';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { Dock } from '@/shared/components/dock';
@@ -26,11 +27,11 @@ export default function NotFound() {
           tabIndex={-1}
         >
           <div className="space-y-6 max-w-sm flex flex-col items-center">
-            <span className="text-[8rem] sm:text-[10rem] font-heading font-bold leading-none tracking-tighter text-foreground/6 select-none">
-              404
-            </span>
+            <HigoSplit className="h-28 w-auto text-foreground" />
 
-            <h1 className="-mt-16 type-display text-foreground">{t('title')}</h1>
+            <p className="type-label text-muted-foreground">404</p>
+
+            <h1 className="type-display text-foreground">{t('title')}</h1>
 
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               {t('description')}
@@ -46,7 +47,7 @@ export default function NotFound() {
               </Button>
               <Button
                 variant="default"
-                leftIcon={<HomeIcon className="size-4" />}
+                leftIcon={<HigoIcon className="size-4" />}
                 onClick={() => router.push('/')}
               >
                 {t('actionHome')}

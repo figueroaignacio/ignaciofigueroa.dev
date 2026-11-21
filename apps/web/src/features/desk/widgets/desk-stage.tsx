@@ -1,5 +1,6 @@
 'use client';
 
+import { HigoSplit } from '@/shared/components/higo-split';
 import { useTheme } from 'nach-themes';
 import { useTranslations } from 'next-intl';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
@@ -55,6 +56,7 @@ const ASSETS = {
   linux: '/images/desk/linux.svg',
   higo: '/images/desk/higo.svg',
   nachui: '/images/desk/nachui.svg',
+  lockup: '/brand/higo-horizontal.svg',
   people: PEOPLE,
 };
 
@@ -433,7 +435,12 @@ export function DeskStage() {
         ))}
       </div>
 
-      {desk.mode === 'pending' && <p className="desk-note">{t('desk.loading')}</p>}
+      {desk.mode === 'pending' && (
+        <>
+          <HigoSplit animated className="desk-loader" />
+          <p className="desk-note">{t('desk.loading')}</p>
+        </>
+      )}
 
       {browsing && (
         <p className="desk-note">

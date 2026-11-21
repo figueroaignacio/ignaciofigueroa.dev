@@ -37,6 +37,7 @@ export interface SceneAssets {
   linux: string;
   higo: string;
   nachui: string;
+  lockup: string;
   people: string[];
 }
 

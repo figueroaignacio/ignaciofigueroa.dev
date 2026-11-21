@@ -415,20 +415,47 @@ export function kraftTexture(seed: number) {
   });
 }
 
-export function folderLabelTexture(fonts: SceneFonts, strings: SceneStrings) {
-  return paint(520, 176, (g, w) => {
-    g.fillStyle = '#f4f2ec';
-    g.fillRect(0, 0, w, 176);
-    g.fillStyle = INK;
-    g.textBaseline = 'top';
-    g.font = `800 64px ${fonts.sans}`;
-    g.fillText('CV', 28, 22);
-    g.fillStyle = BRAND;
-    g.fillRect(124, 70, 14, 14);
-    g.fillStyle = '#3d3d3d';
-    g.font = `400 26px ${fonts.mono}`;
-    g.fillText(strings.name.toLowerCase(), 28, 112);
+const HIGO =
+  'M120 40L105 14.02L90 22.68L100 40C98 84 42 80 42 150A86 86 0 0 0 120 235.63ZM136 40H156C158 84 214 80 214 150A86 86 0 0 1 136 235.63V207.45A58 58 0 0 0 136 92.55Z';
+
+export function debossTexture() {
+  return paint(256, 256, (g) => {
+    const mark = new Path2D(HIGO);
+    g.save();
+    g.translate(0, 4);
+    g.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    g.fill(mark);
+    g.restore();
+    g.fillStyle = 'rgba(0, 0, 0, 0.62)';
+    g.fill(mark);
   });
+}
+
+export function folderLabelTexture(fonts: SceneFonts, lockup: string, onChange: () => void) {
+  const draw =
+    (image: HTMLImageElement | null): Draw =>
+    (g, w) => {
+      g.fillStyle = '#f4f2ec';
+      g.fillRect(0, 0, w, 176);
+      g.fillStyle = INK;
+      g.textBaseline = 'top';
+      g.font = `800 64px ${fonts.sans}`;
+      g.fillText('CV', 28, 22);
+      g.fillStyle = BRAND;
+      g.fillRect(124, 70, 14, 14);
+      if (image) {
+        const height = 50;
+        g.drawImage(image, 28, 104, height * (image.naturalWidth / image.naturalHeight), height);
+      }
+    };
+  const texture = paint(520, 176, draw(null));
+  loadImage(lockup)
+    .then((image) => {
+      repaint(texture, draw(image));
+      onChange();
+    })
+    .catch(() => undefined);
+  return texture;
 }
 
 export function notebookLabelTexture(fonts: SceneFonts) {

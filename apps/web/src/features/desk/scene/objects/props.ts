@@ -175,7 +175,7 @@ export function createPhone(materials: Materials, fonts: SceneFonts, strings: Sc
   return group;
 }
 
-export function createFolder(fonts: SceneFonts, strings: SceneStrings) {
+export function createFolder(fonts: SceneFonts, assets: SceneAssets, onChange: () => void) {
   const group = new THREE.Group();
   const kraft = new THREE.MeshStandardMaterial({ map: kraftTexture(11), roughness: 0.92 });
   const cover = new THREE.MeshStandardMaterial({
@@ -196,7 +196,7 @@ export function createFolder(fonts: SceneFonts, strings: SceneStrings) {
   paper.rotation.y = -0.025;
   const front = solid(new THREE.Mesh(slab(0.19, 0.236, 0.0012, 0.006), cover));
   front.position.set(0, 0.0021, 0.007);
-  const label = printed(folderLabelTexture(fonts, strings), 0.104, 0.035, 0.85);
+  const label = printed(folderLabelTexture(fonts, assets.lockup, onChange), 0.104, 0.035, 0.85);
   label.position.set(-0.034, 0.0034, -0.068);
   group.add(back, tab, paper, front, label);
   return group;
