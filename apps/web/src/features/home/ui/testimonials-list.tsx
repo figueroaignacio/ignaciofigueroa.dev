@@ -76,7 +76,7 @@ function TestimonialCard({
         </figcaption>
         <blockquote
           className={cn(
-            'm-0 rounded-xl rounded-tl-none bg-(--stage) px-5 py-4 text-pretty',
+            'm-0 rounded-xl rounded-tl-none bg-(--stage) px-5 py-4 text-pretty text-inverse',
             lead
               ? 'text-lg leading-snug font-medium tracking-[-0.015em]'
               : 'text-[15px] leading-relaxed',
