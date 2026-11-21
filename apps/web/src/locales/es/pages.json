@@ -4,11 +4,13 @@
     "formTitle": "Escribir un mensaje"
   },
   "notFound": {
-    "title": "Acá adentro no hay nada.",
-    "description": "Esta página no existe o fue movida. Volvamos a donde estabas.",
-    "codeBlockTitle": "terminal",
-    "codeBlockContent": "$ git log --oneline {filename}\nfatal: bad default revision 'HEAD'\n\n$ find . -name ''{query}*''\n[sin resultados]\n\n# parece que esta ruta nunca se deployeó.",
-    "actionBack": "Volver",
-    "actionHome": "Inicio"
+    "titleLead": "Acá adentro",
+    "titleRest": "no hay nada",
+    "description": "La página que buscás no existe o se movió. El resto del sitio sigue en su lugar.",
+    "actionsLabel": "Salidas",
+    "actionBack": "Atrás",
+    "actionHome": "Volver al inicio",
+    "actionProjects": "Proyectos",
+    "reportLead": "¿Te llegó un link roto? Avisame a"
   }
 }

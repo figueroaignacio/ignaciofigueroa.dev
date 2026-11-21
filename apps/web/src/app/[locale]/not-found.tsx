@@ -1,78 +1,88 @@
 'use client';
 
-import { ChevronLeftIcon, HigoIcon } from '@/shared/components/icons';
-import { HigoSplit } from '@/shared/components/higo-split';
-import { AssistantAvatar } from '@/features/assistant/ui/assistant-avatar';
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import { Dock } from '@/shared/components/dock';
-import { Button } from '@/shared/components/ui/button';
+import { HigoSplit } from '@/shared/components/higo-split';
+import { ChevronLeftIcon, FolderIcon, HigoIcon } from '@/shared/components/icons';
 import { useTranslations } from 'next-intl';
+
+const EMAIL = 'contact@ignaciofigueroa.dev';
+
+const link =
+  'group inline-flex min-h-11 cursor-pointer items-center gap-2 text-[15px] font-medium underline-offset-4 transition-colors hover:text-brand-text';
 
 export default function NotFound() {
   const t = useTranslations('pages.notFound');
   const router = useRouter();
   const pathname = usePathname();
-  const segments = pathname.split('/').filter(Boolean);
-  const lastSegment = segments[segments.length - 1];
-  const cleanSegment = lastSegment ? lastSegment.replace(/[^a-zA-Z0-9-_]/g, '') : '';
-  const query = cleanSegment || 'page';
-  const filename = `${query}.tsx`;
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-clip">
-      <div className="page-frame-outer flex flex-1 flex-col">
-        <main
-          id="main-content"
-          className="page-frame flex flex-1 flex-col items-center justify-center py-16 text-center"
-          tabIndex={-1}
-        >
-          <div className="space-y-6 max-w-sm flex flex-col items-center">
-            <HigoSplit className="h-28 w-auto text-foreground" />
+      <main id="main-content" className="page-frame flex flex-1 flex-col" tabIndex={-1}>
+        <div className="hero-island flex flex-1 flex-col">
+          <div className="hero-sheet frame-column flex-1 pb-(--dock-space)">
+            <div className="my-auto flex flex-col">
+              <HigoSplit
+                className="hero-rise mb-7 h-9 w-auto self-start"
+                style={{ '--d': '60ms' } as React.CSSProperties}
+              />
+              <p
+                className="hero-rise type-label mb-4 break-all text-muted-foreground"
+                style={{ '--d': '100ms' } as React.CSSProperties}
+              >
+                error 404 · {pathname}
+              </p>
+              <h1 className="type-hero hero-rise" style={{ '--d': '120ms' } as React.CSSProperties}>
+                {t('titleLead')}
+                <br />
+                {t('titleRest')}
+                <span
+                  aria-hidden="true"
+                  className="ml-[0.06em] inline-block size-[0.16em] bg-brand"
+                />
+              </h1>
+              <p
+                className="hero-rise mt-8 max-w-[34ch] text-lg leading-snug font-medium tracking-[-0.015em] text-pretty"
+                style={{ '--d': '220ms' } as React.CSSProperties}
+              >
+                {t('description')}
+              </p>
 
-            <p className="type-label text-muted-foreground">404</p>
+              <nav
+                aria-label={t('actionsLabel')}
+                className="hero-rise mt-10 flex flex-wrap items-center gap-x-7 gap-y-3"
+                style={{ '--d': '320ms' } as React.CSSProperties}
+              >
+                <Link
+                  href="/"
+                  className="inline-flex h-12 items-center gap-3 rounded-full bg-foreground ps-4 pe-5 text-[15px] font-medium text-background transition-[translate,background-color] hover:bg-brand hover:text-brand-foreground active:translate-y-px"
+                >
+                  <HigoIcon className="size-[18px]" />
+                  {t('actionHome')}
+                </Link>
+                <button type="button" className={link} onClick={() => router.back()}>
+                  <ChevronLeftIcon className="size-4 shrink-0" />
+                  {t('actionBack')}
+                </button>
+                <Link href="/projects" className={link}>
+                  <FolderIcon className="size-4 shrink-0 transition-transform group-hover:-translate-y-0.5" />
+                  {t('actionProjects')}
+                </Link>
+              </nav>
+            </div>
 
-            <h1 className="type-display text-foreground">{t('title')}</h1>
-
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              {t('description')}
+            <p className="text-[13px] text-muted-foreground">
+              {t('reportLead')}{' '}
+              <a
+                href={`mailto:${EMAIL}`}
+                className="text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-brand-text hover:decoration-brand"
+              >
+                {EMAIL}
+              </a>
             </p>
-
-            <div className="flex flex-wrap justify-center gap-3 pt-2">
-              <Button
-                variant="outline"
-                leftIcon={<ChevronLeftIcon className="size-4" />}
-                onClick={() => router.back()}
-              >
-                {t('actionBack')}
-              </Button>
-              <Button
-                variant="default"
-                leftIcon={<HigoIcon className="size-4" />}
-                onClick={() => router.push('/')}
-              >
-                {t('actionHome')}
-              </Button>
-            </div>
-
-            <div className="relative w-full pt-4">
-              <div className="pointer-events-none absolute right-5 -top-2 z-0" aria-hidden="true">
-                <AssistantAvatar size="lg" follow expression="reading" />
-              </div>
-
-              <div className="relative z-10 w-full overflow-hidden rounded-sm border border-border bg-card font-mono text-[11px] text-left">
-                <div className="border-b border-rule px-4 py-2.5">
-                  <span className="type-label text-muted-foreground select-none">
-                    {t('codeBlockTitle')}
-                  </span>
-                </div>
-                <div className="p-4 text-muted-foreground leading-relaxed whitespace-pre-wrap">
-                  {t('codeBlockContent', { filename, query })}
-                </div>
-              </div>
-            </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
 
       <Dock />
     </div>

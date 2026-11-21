@@ -3,10 +3,11 @@ import { cn } from '@/shared/lib/cn';
 
 interface HigoSplitProps {
   className?: string;
+  style?: React.CSSProperties;
   animated?: boolean;
 }
 
-export function HigoSplit({ className, animated = false }: HigoSplitProps) {
+export function HigoSplit({ className, style, animated = false }: HigoSplitProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,6 +15,7 @@ export function HigoSplit({ className, animated = false }: HigoSplitProps) {
       fill="currentColor"
       aria-hidden="true"
       className={cn('higo-split', animated && 'higo-split-animated', className)}
+      style={style}
     >
       <path className="higo-split-left" d={HIGO_HALVES.left} />
       <path className="higo-split-right" d={HIGO_HALVES.right} />

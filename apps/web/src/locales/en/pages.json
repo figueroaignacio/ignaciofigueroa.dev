@@ -4,11 +4,13 @@
     "formTitle": "Drop a message"
   },
   "notFound": {
-    "title": "Nothing in here.",
-    "description": "This page doesn't exist or may have been moved. Let's get you back on track.",
-    "codeBlockTitle": "terminal",
-    "codeBlockContent": "$ git log --oneline {filename}\nfatal: bad default revision 'HEAD'\n\n$ find . -name ''{query}*''\n[no results]\n\n# looks like this route was never deployed.",
-    "actionBack": "Go Back",
-    "actionHome": "Home"
+    "titleLead": "Nothing",
+    "titleRest": "in here",
+    "description": "The page you're looking for doesn't exist or has moved. The rest of the site is right where you left it.",
+    "actionsLabel": "Ways out",
+    "actionBack": "Back",
+    "actionHome": "Back to home",
+    "actionProjects": "Projects",
+    "reportLead": "Found a broken link? Let me know at"
   }
 }
