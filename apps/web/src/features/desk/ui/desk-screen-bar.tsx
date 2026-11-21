@@ -3,10 +3,11 @@
 import { HigoIcon } from '@/shared/components/icons';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { deskStore, useDesk, type DeskPanel } from '../lib/desk-store';
+import { useEffect, useRef, useState } from 'react';
+import { deskStore, useDesk } from '../lib/desk-store';
+import { type DeskApp, DeskOverview } from './desk-overview';
 
-type Tab = DeskPanel | 'ask';
+type Tab = DeskApp;
 
 const TABS: Tab[] = ['projects', 'about', 'experience', 'ask'];
 
@@ -66,8 +67,24 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
   const tHome = useTranslations('sections.home');
   const locale = useLocale();
   const clock = useClock(locale);
+  const browser = useRef<HTMLDivElement>(null);
+  const [overview, setOverview] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (overview === null) return;
+    const host = browser.current?.closest<HTMLElement>('.desk-host, .chat-rail');
+    if (!host) return;
+    host.style.overflowY = 'hidden';
+    return () => {
+      host.style.overflowY = '';
+    };
+  }, [overview]);
 
   const active: Tab | null = desk.chat ? 'ask' : desk.panel;
+
+  useEffect(() => {
+    setOverview(null);
+  }, [active]);
   const shown =
     desk.mode === 'on' &&
     active !== null &&
@@ -76,22 +93,32 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
   if (!shown || !active) return null;
 
   const tabs = TABS.includes(active) ? TABS : [...TABS.slice(0, 3), active, 'ask' as const];
-  const title = (tab: Tab) => {
-    const name = capitalize(t(TITLE_KEY[tab]!));
-    return tab === 'ask' ? name : `${name} · ${tHome('name')}`;
+  const name = (tab: Tab) => capitalize(t(TITLE_KEY[tab]!));
+  const title = (tab: Tab) => (tab === 'ask' ? name(tab) : `${name(tab)} · ${tHome('name')}`);
+  const toggleOverview = () => {
+    if (overview !== null) return setOverview(null);
+    const host = browser.current?.closest<HTMLElement>('.desk-host, .chat-rail');
+    const bar = browser.current?.querySelector<HTMLElement>('.desk-topbar');
+    setOverview((host?.clientHeight ?? 0) - (bar?.offsetHeight ?? 0));
   };
   const path = active === 'ask' ? `/${locale}?chat=open` : `/${locale}#${active}`;
 
   return (
-    <div className="desk-browser">
-      <div className="desk-topbar" aria-hidden="true">
-        <span className="desk-workspaces">
+    <div className="desk-browser" ref={browser}>
+      <div className="desk-topbar">
+        <button
+          type="button"
+          className="desk-workspaces"
+          aria-label={t('desk.activities')}
+          aria-expanded={overview !== null}
+          onClick={toggleOverview}
+        >
           <HigoIcon className="desk-activities" />
           <i />
           <i />
-        </span>
-        <span>{clock}</span>
-        <span className="desk-tray">
+        </button>
+        <span aria-hidden="true">{clock}</span>
+        <span className="desk-tray" aria-hidden="true">
           <Glyph
             size={13}
             d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0M12 19.5h.01"
@@ -148,6 +175,20 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
           className="desk-avatar"
         />
       </div>
+      {overview !== null && (
+        <DeskOverview
+          active={active}
+          windows={tabs}
+          height={overview}
+          name={name}
+          title={title}
+          onClose={() => setOverview(null)}
+          onPick={(app) => {
+            setOverview(null);
+            if (app !== active) openTab(app);
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -53,6 +53,11 @@
       "open": "Open in a new tab",
       "alt": "First page of Ignacio Figueroa’s resume",
       "languages": "Resume language"
-    }
+    },
+    "activities": "Activities",
+    "search": "Search the laptop",
+    "showApps": "Show apps",
+    "noResults": "Nothing by that name",
+    "dash": "Dash"
   }
 }

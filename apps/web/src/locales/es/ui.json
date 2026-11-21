@@ -53,6 +53,11 @@
       "open": "Abrir en otra pestaña",
       "alt": "Primera página del CV de Ignacio Figueroa",
       "languages": "Idioma del CV"
-    }
+    },
+    "activities": "Actividades",
+    "search": "Buscar en la laptop",
+    "showApps": "Mostrar aplicaciones",
+    "noResults": "Nada con ese nombre",
+    "dash": "Dash"
   }
 }
