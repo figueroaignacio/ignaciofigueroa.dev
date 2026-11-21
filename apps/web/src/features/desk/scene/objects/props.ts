@@ -47,8 +47,8 @@ export function createAskKey(materials: Materials, fonts: SceneFonts): AskKey {
     new THREE.Mesh(
       slab(0.047, 0.047, 0.0145, 0.0095, 0.0042),
       new THREE.MeshStandardMaterial({
-        color: 0x7cc4ee,
-        emissive: 0x7cc4ee,
+        color: 0xf8894b,
+        emissive: 0xf8894b,
         emissiveIntensity: 0.16,
         roughness: 0.38,
       }),
@@ -69,7 +69,7 @@ export function createAskKey(materials: Materials, fonts: SceneFonts): AskKey {
   legend.position.y = 0.0147;
   cap.add(shell, legend);
 
-  const light = new THREE.PointLight(0x7cc4ee, 0.09, 0.26, 2);
+  const light = new THREE.PointLight(0xf8894b, 0.09, 0.26, 2);
   light.position.set(0, 0.02, 0.03);
 
   group.add(plate, well, cap, light);
@@ -92,7 +92,7 @@ export function createNotebook(materials: Materials, fonts: SceneFonts) {
   const label = printed(notebookLabelTexture(fonts), 0.084, 0.0385);
   label.position.set(-0.012, 0.0153, -0.058);
 
-  const ribbon = new THREE.Mesh(facingUp(0.006, 0.03), materials.celeste);
+  const ribbon = new THREE.Mesh(facingUp(0.006, 0.03), materials.brand);
   ribbon.position.set(-0.01, 0.0006, 0.118);
   ribbon.receiveShadow = true;
 
@@ -134,7 +134,7 @@ export function createBadge(
   const clip = solid(new THREE.Mesh(slab(0.016, 0.02, 0.003, 0.003, 0.0006), materials.steel));
   clip.position.set(0, 0.001, -0.059);
 
-  const strap = new THREE.MeshStandardMaterial({ color: 0x7cc4ee, roughness: 0.85 });
+  const strap = new THREE.MeshStandardMaterial({ color: 0xf8894b, roughness: 0.85 });
   const ribbon = (turn: number, tone: number) => {
     const geometry = new THREE.BoxGeometry(0.26, 0.0009, 0.0125);
     geometry.translate(-0.13, 0, 0);

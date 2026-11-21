@@ -38,7 +38,7 @@ const BOOKS: BookSpec[] = [
   },
   {
     title: 'React',
-    cover: 0x7cc4ee,
+    cover: 0xf8894b,
     ink: '#08222f',
     width: 0.148,
     depth: 0.108,
@@ -153,7 +153,7 @@ export function createPhotos(materials: Materials, people: string[], onChange: (
   return group;
 }
 
-const LEVELS = [0x1b2a33, 0x27556f, 0x3d86ad, 0x5eaad3, 0x7cc4ee];
+const LEVELS = [0x2f190f, 0x5f2d15, 0x994920, 0xcd632d, 0xf98751];
 const RISE = [0.0012, 0.002, 0.003, 0.0042, 0.0056];
 
 export function createBoard(materials: Materials) {

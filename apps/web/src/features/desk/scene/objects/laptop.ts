@@ -147,7 +147,7 @@ export function createLaptop(
   screen.position.set(0, -0.0008, SCREEN_OFFSET);
   lid.add(screen);
 
-  const glow = new THREE.PointLight(0x7cc4ee, 0, 0.7, 2);
+  const glow = new THREE.PointLight(0xe8eef7, 0, 0.7, 2);
   glow.position.set(0, -0.05, SCREEN_OFFSET);
   lid.add(glow);
 
@@ -193,7 +193,7 @@ export function createLaptop(
 
   const tag = decal(
     tagTexture(strings.openTag, fonts, {
-      background: '#7cc4ee',
+      background: '#f8894b',
       color: '#08222f',
       radius: 6,
       width: 512,

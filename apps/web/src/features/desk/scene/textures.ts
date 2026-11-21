@@ -4,7 +4,7 @@ import type { SceneFonts, SceneStrings } from './types';
 
 type Draw = (g: CanvasRenderingContext2D, width: number, height: number) => void;
 
-const BRAND = '#7cc4ee';
+const BRAND = '#f8894b';
 const INK = '#141414';
 
 function prng(seed: number) {

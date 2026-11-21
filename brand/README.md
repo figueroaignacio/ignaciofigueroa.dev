@@ -51,7 +51,7 @@ The mark is one colour. It is never filled with the site accent.
 | Night | `#070707` | Dark surfaces; the site's dark `--background`                     |
 | Black | `#000000` | Print and one-colour reproduction (K100; Pantone Neutral Black C) |
 
-Approved pairs: ink on white or light neutrals, white on ink, night or black, and white on the dark areas of a photo. The celeste accent stays in the interface (links, markers) and never touches the mark.
+Approved pairs: ink on white or light neutrals, white on ink, night or black, and white on the dark areas of a photo. The persimmon accent (NachUI `--primary`) stays in the interface (buttons, markers, the period after the name) and never touches the mark.
 
 ## Typography
 

@@ -10,8 +10,8 @@
   --inverse-foreground: oklch(98.5% 0 0);
   --overlay: oklch(19% 0 0 / 0.5);
 
-  --primary: oklch(52% 0.115 234);
-  --primary-foreground: oklch(99% 0.003 230);
+  --primary: oklch(68% 0.185 42);
+  --primary-foreground: oklch(19% 0 0);
   --secondary: oklch(92.5% 0 0);
   --secondary-foreground: oklch(19% 0 0);
   --accent: oklch(94% 0 0);
@@ -23,7 +23,7 @@
   --border: oklch(88.5% 0 0);
   --border-interactive: oklch(60% 0 0);
   --input: oklch(82% 0 0);
-  --ring: oklch(60% 0.115 232);
+  --ring: oklch(68% 0.185 42);
   --rule: oklch(88.5% 0 0);
   --grid-color: oklch(19% 0 0 / 0.035);
 
@@ -68,15 +68,15 @@
   --island: var(--surface-muted);
   --stage: var(--surface-muted);
 
-  --brand: oklch(60% 0.115 232);
-  --brand-foreground: oklch(99% 0.003 230);
-  --brand-text: oklch(45% 0.11 236);
-  --brand-soft: oklch(95% 0.03 228);
+  --brand: oklch(68% 0.185 42);
+  --brand-foreground: oklch(19% 0 0);
+  --brand-text: oklch(54% 0.17 38);
+  --brand-soft: oklch(95.5% 0.03 50);
 
   --wave-base: oklch(97% 0 0);
   --wave-fold: oklch(88% 0 0);
   --wave-deep: oklch(78% 0 0);
-  --wave-glow: oklch(80% 0.09 230 / 0.5);
+  --wave-glow: oklch(80% 0.12 48 / 0.5);
   --wave-scrim: oklch(100% 0 0 / 0.55);
 }
 
@@ -92,8 +92,8 @@
   --inverse-foreground: oklch(18% 0 0);
   --overlay: oklch(0% 0 0 / 0.72);
 
-  --primary: oklch(82% 0.095 230);
-  --primary-foreground: oklch(22% 0.04 232);
+  --primary: oklch(74% 0.155 48);
+  --primary-foreground: oklch(28% 0.07 40);
   --secondary: oklch(30.5% 0 0);
   --secondary-foreground: oklch(97% 0 0);
   --accent: oklch(30.5% 0 0);
@@ -105,7 +105,7 @@
   --border: oklch(33.5% 0 0);
   --border-interactive: oklch(55% 0 0);
   --input: oklch(37% 0 0);
-  --ring: oklch(82% 0.095 230);
+  --ring: oklch(74% 0.155 48);
   --rule: oklch(33.5% 0 0);
   --grid-color: oklch(97% 0 0 / 0.015);
 
@@ -148,14 +148,14 @@
   --island: var(--surface-muted);
   --stage: var(--surface-muted);
 
-  --brand: oklch(80% 0.1 228);
-  --brand-foreground: oklch(20% 0.035 240);
-  --brand-text: oklch(84% 0.09 228);
-  --brand-soft: oklch(29% 0.045 232);
+  --brand: oklch(74% 0.155 48);
+  --brand-foreground: oklch(28% 0.07 40);
+  --brand-text: oklch(78% 0.13 50);
+  --brand-soft: oklch(28% 0.06 40);
 
   --wave-base: oklch(15% 0 0);
   --wave-fold: oklch(26% 0 0);
   --wave-deep: oklch(36% 0 0);
-  --wave-glow: oklch(72% 0.1 230 / 0.35);
+  --wave-glow: oklch(72% 0.12 48 / 0.35);
   --wave-scrim: oklch(13% 0 0 / 0.45);
 }

@@ -11,7 +11,7 @@ export function createMaterials() {
     glass: new THREE.MeshStandardMaterial({ color: 0x050506, metalness: 0.6, roughness: 0.12 }),
     leather: new THREE.MeshStandardMaterial({ color: 0x5c3b27, metalness: 0, roughness: 0.74 }),
     paper: new THREE.MeshStandardMaterial({ color: 0xe6e2d8, metalness: 0, roughness: 0.92 }),
-    celeste: new THREE.MeshStandardMaterial({ color: 0x7cc4ee, metalness: 0, roughness: 0.42 }),
+    brand: new THREE.MeshStandardMaterial({ color: 0xf8894b, metalness: 0, roughness: 0.42 }),
     wall: new THREE.MeshStandardMaterial({ color: 0x6f7074, metalness: 0, roughness: 0.95 }),
   };
 }
