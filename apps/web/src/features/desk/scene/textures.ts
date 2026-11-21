@@ -240,6 +240,37 @@ export function stickerTexture(url: string, options: StickerOptions, onChange: (
   return texture;
 }
 
+export function logoStickerTexture(url: string, background: string, onChange: () => void) {
+  const width = 512;
+  const height = 160;
+  const draw =
+    (image: HTMLImageElement | null): Draw =>
+    (g, w, h) => {
+      const edge = 12;
+      g.fillStyle = '#f6f6f3';
+      g.beginPath();
+      g.roundRect(2, 2, w - 4, h - 4, 40);
+      g.fill();
+      g.fillStyle = background;
+      g.beginPath();
+      g.roundRect(2 + edge, 2 + edge, w - 4 - edge * 2, h - 4 - edge * 2, 30);
+      g.fill();
+      if (image) {
+        const logoHeight = h * 0.5;
+        const logoWidth = logoHeight * (image.naturalWidth / image.naturalHeight);
+        g.drawImage(image, (w - logoWidth) / 2, (h - logoHeight) / 2, logoWidth, logoHeight);
+      }
+    };
+  const texture = paint(width, height, draw(null));
+  loadImage(url)
+    .then((image) => {
+      repaint(texture, draw(image));
+      onChange();
+    })
+    .catch(() => undefined);
+  return texture;
+}
+
 interface TagOptions {
   background: string;
   color: string;

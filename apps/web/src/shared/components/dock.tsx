@@ -6,7 +6,7 @@ import {
   BoxIcon,
   BriefcaseIcon,
   FolderIcon,
-  HomeIcon,
+  HigoIcon,
   MailIcon,
   MoonIcon,
   SunIcon,
@@ -71,7 +71,7 @@ export function Dock() {
         key: 'home',
         label: home?.label ?? 'home',
         href: '/',
-        icon: <HomeIcon strokeWidth={1.5} />,
+        icon: <HigoIcon />,
       },
       ...SECTION_IDS.map((id) => ({
         key: id,

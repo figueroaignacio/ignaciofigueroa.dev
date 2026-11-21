@@ -53,6 +53,8 @@ const ASSETS = {
   react: '/images/desk/react.svg',
   claude: '/images/desk/claude-code.svg',
   linux: '/images/desk/linux.svg',
+  higo: '/images/desk/higo.svg',
+  nachui: '/images/desk/nachui.svg',
   people: PEOPLE,
 };
 

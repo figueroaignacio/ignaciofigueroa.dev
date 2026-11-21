@@ -35,6 +35,8 @@ export interface SceneAssets {
   react: string;
   claude: string;
   linux: string;
+  higo: string;
+  nachui: string;
   people: string[];
 }
 

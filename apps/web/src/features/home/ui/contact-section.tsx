@@ -118,6 +118,17 @@ export function ContactSection() {
             <ContactForm />
           </div>
         </div>
+
+        <div className="flex items-center gap-4">
+          <span
+            role="img"
+            aria-label="Ignacio Figueroa"
+            className="block aspect-[1232/256] h-7 bg-foreground [mask:url(/brand/higo-horizontal.svg)_center/contain_no-repeat]"
+          />
+          <span className="font-mono text-xs text-muted-foreground">
+            © {new Date().getFullYear()} · Buenos Aires
+          </span>
+        </div>
       </div>
     </section>
   );

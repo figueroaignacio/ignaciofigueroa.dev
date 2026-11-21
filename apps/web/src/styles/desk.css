@@ -409,23 +409,10 @@ html[data-desk-panel] .desk-host > section > .frame-column {
 }
 
 .desk-favicon {
-  display: grid;
   inline-size: 0.875rem;
   block-size: 0.875rem;
   flex: none;
-  place-items: center;
-  border-radius: 0.25rem;
-  background: var(--foreground);
-}
-
-.desk-favicon i {
-  inline-size: 0.3125rem;
-  block-size: 0.3125rem;
-  background: var(--desk-page);
-}
-
-.desk-tabs nav button[aria-current] .desk-favicon i {
-  background: var(--brand);
+  color: var(--foreground);
 }
 
 .desk-window-close {

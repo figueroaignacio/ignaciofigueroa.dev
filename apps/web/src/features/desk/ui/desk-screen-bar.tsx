@@ -1,5 +1,6 @@
 'use client';
 
+import { HigoIcon } from '@/shared/components/icons';
 import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -112,9 +113,7 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
               aria-current={tab === active ? 'page' : undefined}
               onClick={() => openTab(tab)}
             >
-              <span className="desk-favicon" aria-hidden="true">
-                <i />
-              </span>
+              <HigoIcon className="desk-favicon" />
               <span className="truncate">{title(tab)}</span>
             </button>
           ))}

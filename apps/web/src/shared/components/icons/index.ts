@@ -20,6 +20,7 @@ export { GitMergeIcon } from './git-merge';
 export { GlobeIcon } from './globe';
 export { Heading2Icon } from './heading-2';
 export { Heading3Icon } from './heading-3';
+export { HigoIcon } from './higo';
 export { HomeIcon } from './home';
 export { ImagePlusIcon } from './image-plus';
 export { ImageIcon } from './image';

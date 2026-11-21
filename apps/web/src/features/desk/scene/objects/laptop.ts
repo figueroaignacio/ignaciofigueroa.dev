@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { facingDown, facingUp, roundedRectShape, slab, solid } from '../geometry';
 import type { Materials } from '../materials';
-import { codeTexture, stickerTexture, tagTexture } from '../textures';
+import { codeTexture, logoStickerTexture, stickerTexture, tagTexture } from '../textures';
 import type { SceneAssets, SceneFonts, SceneStrings } from '../types';
 
 const WIDTH = 0.32;
@@ -176,25 +176,22 @@ export function createLaptop(
   linux.position.set(-0.094, top, 0.152);
   linux.rotation.y = -0.1;
 
-  const pill = decal(
-    tagTexture('nachui', fonts, {
-      background: '#f6f6f3',
-      color: '#141414',
-      radius: 48,
-      width: 320,
-      height: 100,
-      size: 46,
-    }),
-    0.07,
-    0.022,
+  const higo = decal(
+    stickerTexture(assets.higo, { background: '#141414', shape: 'disc', inset: 0.2 }, onChange),
+    0.048,
+    0.048,
   );
-  pill.position.set(-0.006, top, 0.092);
-  pill.rotation.y = 0.07;
+  higo.position.set(0.023, top, 0.031);
+  higo.rotation.y = -0.14;
+
+  const nachui = decal(logoStickerTexture(assets.nachui, '#ffffff', onChange), 0.082, 0.0256);
+  nachui.position.set(-0.006, top, 0.092);
+  nachui.rotation.y = 0.07;
 
   const tag = decal(
     tagTexture(strings.openTag, fonts, {
       background: '#f8894b',
-      color: '#08222f',
+      color: '#141414',
       radius: 6,
       width: 512,
       height: 132,
@@ -207,7 +204,7 @@ export function createLaptop(
   tag.position.set(0.07, top, 0.168);
   tag.rotation.y = 0.1;
 
-  lid.add(react, claude, linux, pill, tag);
+  lid.add(react, claude, linux, higo, nachui, tag);
 
   const setOpen = (amount: number, brightness: number) => {
     lid.rotation.x = -amount * LID_OPEN;
