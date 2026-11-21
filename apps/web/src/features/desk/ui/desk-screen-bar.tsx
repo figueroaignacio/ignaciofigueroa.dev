@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { deskStore, useDesk } from '../lib/desk-store';
-import { type DeskApp, DeskOverview } from './desk-overview';
+import { type DeskApp, DeskDash, DeskOverview } from './desk-overview';
 
 type Tab = DeskApp;
 
@@ -68,7 +68,25 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
   const locale = useLocale();
   const clock = useClock(locale);
   const browser = useRef<HTMLDivElement>(null);
-  const [overview, setOverview] = useState<number | null>(null);
+  const [overview, setOverview] = useState<'windows' | 'apps' | null>(null);
+  const [hostHeight, setHostHeight] = useState(0);
+
+  const active: Tab | null = desk.chat ? 'ask' : desk.panel;
+  const shown =
+    desk.mode === 'on' &&
+    active !== null &&
+    TITLE_KEY[active] !== undefined &&
+    (surface === 'chat') === desk.chat;
+
+  useEffect(() => {
+    const host = browser.current?.closest<HTMLElement>('.desk-host, .chat-rail');
+    if (!host) return;
+    const sync = () => setHostHeight(host.clientHeight);
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(host);
+    return () => observer.disconnect();
+  }, [shown]);
 
   useEffect(() => {
     if (overview === null) return;
@@ -80,26 +98,19 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
     };
   }, [overview]);
 
-  const active: Tab | null = desk.chat ? 'ask' : desk.panel;
-
   useEffect(() => {
     setOverview(null);
   }, [active]);
-  const shown =
-    desk.mode === 'on' &&
-    active !== null &&
-    TITLE_KEY[active] !== undefined &&
-    (surface === 'chat') === desk.chat;
+
   if (!shown || !active) return null;
 
   const tabs = TABS.includes(active) ? TABS : [...TABS.slice(0, 3), active, 'ask' as const];
   const name = (tab: Tab) => capitalize(t(TITLE_KEY[tab]!));
   const title = (tab: Tab) => (tab === 'ask' ? name(tab) : `${name(tab)} · ${tHome('name')}`);
-  const toggleOverview = () => {
-    if (overview !== null) return setOverview(null);
-    const host = browser.current?.closest<HTMLElement>('.desk-host, .chat-rail');
-    const bar = browser.current?.querySelector<HTMLElement>('.desk-topbar');
-    setOverview((host?.clientHeight ?? 0) - (bar?.offsetHeight ?? 0));
+  const toggleOverview = () => setOverview((value) => (value === null ? 'windows' : null));
+  const pick = (app: Tab) => {
+    setOverview(null);
+    if (app !== active) openTab(app);
   };
   const path = active === 'ask' ? `/${locale}?chat=open` : `/${locale}#${active}`;
 
@@ -175,19 +186,32 @@ export function DeskScreenBar({ surface }: { surface: 'page' | 'chat' }) {
           className="desk-avatar"
         />
       </div>
-      {overview !== null && (
+      {overview !== null ? (
         <DeskOverview
           active={active}
           windows={tabs}
-          height={overview}
+          height={hostHeight}
           name={name}
           title={title}
+          apps={overview === 'apps'}
           onClose={() => setOverview(null)}
-          onPick={(app) => {
-            setOverview(null);
-            if (app !== active) openTab(app);
-          }}
+          onPick={pick}
         />
+      ) : (
+        hostHeight > 0 && (
+          <div
+            className="desk-screen-dock"
+            style={{ insetBlockStart: `calc(${hostHeight}px - 4.5rem)` }}
+          >
+            <DeskDash
+              active={active}
+              windows={tabs}
+              name={name}
+              onPick={pick}
+              onApps={() => setOverview('apps')}
+            />
+          </div>
+        )
       )}
     </div>
   );

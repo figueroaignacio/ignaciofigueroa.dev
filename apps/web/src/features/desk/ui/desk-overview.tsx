@@ -26,6 +26,7 @@ interface DeskOverviewProps {
   title: (app: DeskApp) => string;
   onPick: (app: DeskApp) => void;
   onClose: () => void;
+  apps?: boolean;
 }
 
 export function DeskOverview({
@@ -36,10 +37,11 @@ export function DeskOverview({
   title,
   onPick,
   onClose,
+  apps = false,
 }: DeskOverviewProps) {
   const t = useTranslations('ui.desk');
   const [query, setQuery] = useState('');
-  const [grid, setGrid] = useState(false);
+  const [grid, setGrid] = useState(apps);
   const search = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -62,7 +64,7 @@ export function DeskOverview({
   return (
     <div
       className="desk-overview"
-      style={{ blockSize: height }}
+      style={{ blockSize: `calc(${height}px - 1.75rem)` }}
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -116,45 +118,69 @@ export function DeskOverview({
 
       {needle && shownApps.length === 0 && <p className="desk-overview-empty">{t('noResults')}</p>}
 
-      <nav className="desk-dash" aria-label={t('dash')}>
-        {DESK_APPS.map((app) => (
-          <button
-            key={app}
-            type="button"
-            aria-label={name(app)}
-            title={name(app)}
-            data-running={windows.includes(app) || undefined}
-            aria-current={app === active ? 'page' : undefined}
-            onClick={() => onPick(app)}
-          >
-            <span className="desk-app-tile" data-app={app}>
-              {APP_ICONS[app]}
-            </span>
-          </button>
-        ))}
-        <span className="desk-dash-rule" aria-hidden="true" />
+      <DeskDash
+        active={active}
+        windows={windows}
+        name={name}
+        onPick={onPick}
+        appsPressed={grid}
+        onApps={() => setGrid((value) => !value)}
+      />
+    </div>
+  );
+}
+
+interface DeskDashProps {
+  active: DeskApp;
+  windows: DeskApp[];
+  name: (app: DeskApp) => string;
+  onPick: (app: DeskApp) => void;
+  onApps: () => void;
+  appsPressed?: boolean;
+}
+
+export function DeskDash({ active, windows, name, onPick, onApps, appsPressed }: DeskDashProps) {
+  const t = useTranslations('ui.desk');
+
+  return (
+    <nav className="desk-dash" aria-label={t('dash')}>
+      {DESK_APPS.map((app) => (
         <button
+          key={app}
           type="button"
-          aria-label={t('showApps')}
-          title={t('showApps')}
-          aria-pressed={grid}
-          onClick={() => setGrid((value) => !value)}
+          aria-label={name(app)}
+          title={name(app)}
+          data-running={windows.includes(app) || undefined}
+          aria-current={app === active ? 'page' : undefined}
+          onClick={() => onPick(app)}
         >
-          <span className="desk-app-tile" data-app="grid">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <circle cx="5" cy="5" r="1.8" />
-              <circle cx="12" cy="5" r="1.8" />
-              <circle cx="19" cy="5" r="1.8" />
-              <circle cx="5" cy="12" r="1.8" />
-              <circle cx="12" cy="12" r="1.8" />
-              <circle cx="19" cy="12" r="1.8" />
-              <circle cx="5" cy="19" r="1.8" />
-              <circle cx="12" cy="19" r="1.8" />
-              <circle cx="19" cy="19" r="1.8" />
-            </svg>
+          <span className="desk-app-tile" data-app={app}>
+            {APP_ICONS[app]}
           </span>
         </button>
-      </nav>
-    </div>
+      ))}
+      <span className="desk-dash-rule" aria-hidden="true" />
+      <button
+        type="button"
+        aria-label={t('showApps')}
+        title={t('showApps')}
+        aria-pressed={appsPressed ?? false}
+        onClick={onApps}
+      >
+        <span className="desk-app-tile" data-app="grid">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <circle cx="5" cy="5" r="1.8" />
+            <circle cx="12" cy="5" r="1.8" />
+            <circle cx="19" cy="5" r="1.8" />
+            <circle cx="5" cy="12" r="1.8" />
+            <circle cx="12" cy="12" r="1.8" />
+            <circle cx="19" cy="12" r="1.8" />
+            <circle cx="5" cy="19" r="1.8" />
+            <circle cx="12" cy="19" r="1.8" />
+            <circle cx="19" cy="19" r="1.8" />
+          </svg>
+        </span>
+      </button>
+    </nav>
   );
 }
